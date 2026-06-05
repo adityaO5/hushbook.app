@@ -4,9 +4,9 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.hushbook.app" }],
-      "destination": "https://hushbook.app/:path*",
+      "destination": "https://hushbook.app/$1",
       "permanent": true
     }
   ],
