@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Research — HushBook landing page</title>
+<style>
+  :root{--ink:#1a1410;--body:#33302c;--muted:#7a736b;--line:#e7e0d4;--accent:#6f3825;--cream:#faf7f1;--blue:#eaf2fb;--blueln:#bcd6f2}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--body);font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:48px 22px 96px}
+  h1{font-size:34px;line-height:1.1;color:var(--ink);margin:0 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 28px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 10px;letter-spacing:-.01em;border-top:1px solid var(--line);padding-top:30px}
+  h3{font-size:17px;color:var(--ink);margin:26px 0 8px}
+  p{margin:0 0 12px}
+  a{color:var(--accent)}
+  ul,ol{margin:0 0 14px;padding-left:1.25em}
+  li{margin:5px 0}
+  code{background:var(--cream);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13px}
+  .tldr{background:var(--blue);border:1px solid var(--blueln);border-radius:14px;padding:18px 20px;margin:0 0 8px}
+  .tldr b{color:#16447a}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:3px 9px;margin-left:6px;vertical-align:middle}
+  pre{background:#0f0d0b;color:#f3ece2;border-radius:12px;padding:16px;overflow:auto;font-size:12.5px;line-height:1.45}
+  .gal{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin:14px 0 6px}
+  figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--cream)}
+  figure img{display:block;width:100%;height:190px;object-fit:cover;object-position:top;background:#ddd}
+  figcaption{padding:10px 12px;font-size:13px;color:var(--body)}
+  figcaption b{color:var(--ink)}
+  .src{font-size:11px;color:var(--muted);font-weight:700}
+  .grid2{display:grid;gap:24px;grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .note{font-size:13px;color:var(--muted)}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0 16px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--cream)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Design Research — HushBook landing page</h1>
+  <p class="sub">How top mobile-app landing pages handle dual iOS+Android download CTAs, single-page feature showcases, and TOS / Privacy / About — with real references. Compiled 4 Jun 2026 · Lazyweb screenshot DB + web research.</p>
+
+  <div class="tldr">
+    <p><b>TL;DR.</b> The winning pattern is a single scrolling page: a hero that <em>proves the product</em> + a clear download CTA, then social proof, a feature-card showcase with app screenshots, a repeated/sticky download bar, and a footer linking Privacy / Terms / About. HushBook's edge is the hero itself — <b>no audiobook competitor uses kinetic typography</b>, so a scroll-driven "karaoke" hero (oversized words that highlight word-by-word and sweep left↔right) is a genuine differentiator. Pair it with the table-stakes structure below and lead the Privacy page with the on-device story.</p>
+  </div>
+  <p class="note">19 reference screenshots downloaded to <code>references/</code> (Lazyweb), grouped A–E below. Web sources are linked under Sources. No mismatched images: each caption reflects what's actually in the shot.</p>
+
+  <h2>Recommendations <span class="tag">do this</span></h2>
+  <ol>
+    <li><b>Lead with a kinetic "karaoke" hero that demonstrates the core feature.</b> Most app pages show a phone mockup; HushBook can instead <em>be</em> the feature — oversized book text that lights up word-by-word as you scroll. It's the X100 detail competitors don't have. Keep it readable and add a reduced-motion fallback.</li>
+    <li><b>Put download front-and-centre, then repeat it.</b> One CTA above the fold, official App Store + Google Play badges in a dedicated section, and a sticky mobile download bar. (authy, transit, gamecharger, beeper.)</li>
+    <li><b>One scrolling page: hero → meaning → feature cards → app screenshots → providers/social proof → download → footer.</b> Feature-card grids with screenshots + an FAQ are the universal shape (onX, ultrahuman, Apple Books/Audible).</li>
+    <li><b>Sell Privacy on "on-device," and make Terms handle user imports.</b> Lead the Privacy page with "nothing leaves your phone"; Terms must cover imported-audio rights + a DMCA path (Instapaper-style tabs, tripsy app-privacy layout).</li>
+    <li><b>Footer carries the legal + about links</b> (Privacy, Terms, About, contact) — the standard home for them (selleb, photomath).</li>
+  </ol>
+
+  <h3>Wireframe — kinetic karaoke hero</h3>
+<pre>┌──────────────────────────────────────────────┐
+│ ◐ HushBook        Features  How  About  [Get] │
+├──────────────────────────────────────────────┤
+│ [▢ A Scandal in Bohemia · LibriVox      ▶]    │  ← now-playing chip
+│                                                │
+│   To Sherlock Holmes                           │  ← words highlight
+│   she is always 𝘵𝘩𝘦 woman.   ◀──sweep          │     L→R on scroll,
+│   I have seldom heard him    ──sweep▶          │     like the app's
+│   mention her under any other name.            │     lyrics view
+│                                                │
+│   [ Get HushBook ]  [ See how it works ]       │
+│   0:42 ▬▬▬▬▬▬▬▬░░░░░░░  / 3:04   scroll to play │  ← scrubber = scroll
+└──────────────────────────────────────────────┘</pre>
+
+  <div class="grid2">
+    <div>
+      <h3>Wireframe — download + sticky bar</h3>
+<pre>┌───────────────────────────┐
+│   Read along, anywhere.   │
+│  [ Google Play ] [ App ▸] │  ← App Store
+│                           │     "Coming soon"
+└───────────────────────────┘
+  …on mobile, persistent:
+┌───────────────────────────┐
+│ HushBook        [Get app] │  ← sticky dock
+└───────────────────────────┘</pre>
+    </div>
+    <div>
+      <h3>Wireframe — feature showcase</h3>
+<pre>┌───────────────────────────┐
+│ Everything an audiobook…  │
+│ ┌─────┐ ┌─────┐ ┌─────┐   │
+│ │ ♪   │ │ 🔒  │ │ 📈  │   │
+│ │karao│ │priv │ │analy│   │
+│ └─────┘ └─────┘ └─────┘   │
+│ ┌─────┐ ┌─────┐ ┌─────┐   │
+│ │ 👁  │ │ 📚  │ │ ★  │   │
+│ └─────┘ └─────┘ └─────┘   │
+│  [ 📱 lyrics ][ lib ][ 📊]│  ← device mocks
+└───────────────────────────┘</pre>
+    </div>
+  </div>
+
+  <h2>Key examples <span class="tag">evidence</span></h2>
+
+  <h3>E · Audiobook & audio competitors (the closest comparisons)</h3>
+  <div class="gal">
+    <figure><img src="references/applebooks-read-listen-discover.png" alt="Apple Books"><figcaption><b>Apple Books</b> — "Read, listen, discover": phone mockups of library/player/reading, cross-device row, FAQ accordion. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/audible-listen-everywhere.png" alt="Audible"><figcaption><b>Audible</b> — "listen everywhere": device/use-case sections (car, speakers, watch) with App Store + Google Play buttons. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/everand-vs-audible-listen-free.png" alt="Everand"><figcaption><b>Everand</b> — comparison-led hero, "Listen free" CTA, feature-comparison table, testimonials, FAQ. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/neuecast-minimal-podcast-lp.png" alt="neuecast"><figcaption><b>neuecast</b> — minimalist hero: headline + single App Store button + one big phone-player mockup. Clean single-mockup model. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/speechify-ios-word-highlight.png" alt="Speechify"><figcaption><b>Speechify (iOS)</b> — dark TTS page; highlights words as they're read + voice/speed controls. Closest to HushBook's word-highlight. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/speechcentral-accessibility-profiles.png" alt="Speech Central"><figcaption><b>Speech Central</b> — iOS + Mac + Google Play badges and explicit "vision / accessibility profiles" — mirrors HushBook's profiles. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/artoffauna-scrolling-text-dark.png" alt="art of fauna"><figcaption><b>Art of Fauna</b> — large high-contrast scrolling text on a dark background with playback — essentially the read-along look. <span class="src">[Lazyweb]</span></figcaption></figure>
+  </div>
+
+  <h3>A · Hero + dual store buttons</h3>
+  <div class="gal">
+    <figure><img src="references/authy-dual-badge.png" alt="Authy"><figcaption><b>Authy</b> — clean "Mobile" section with prominent Google Play + App Store buttons; footer carries legal/privacy. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/widgetable-hero.png" alt="Widgetable"><figcaption><b>Widgetable</b> — hero with phone mockups and "Download on the App Store" / "Get it on Google Play" as primary CTAs. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/transit-longscroll-download.png" alt="Transit"><figcaption><b>Transit</b> — long-scroll page with QR + App Store/Google Play CTAs, testimonials, press/awards, newsletter. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/gamecharger-download-cta.png" alt="GameCharger"><figcaption><b>GameCharger</b> — "Download for free" with store badges + scan-to-download QR, star ratings and testimonial cards. <span class="src">[Lazyweb]</span></figcaption></figure>
+  </div>
+
+  <h3>B · Single-page feature showcase</h3>
+  <div class="gal">
+    <figure><img src="references/onx-offroad-feature-grid.png" alt="onX Offroad"><figcaption><b>onX Offroad</b> — "App Features" as a grid of cards, each a map screenshot + description. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/ultrahuman-longscroll-lp.png" alt="Ultrahuman"><figcaption><b>Ultrahuman</b> — full long-scroll template: hero imagery, feature sections, pricing, "as seen in" logos, testimonials, FAQ. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/apple-card-feature-tiles.png" alt="Apple Card"><figcaption><b>Apple Card</b> — benefits as a clean scrollable grid of feature tiles; restrained type and lots of air. <span class="src">[Lazyweb]</span></figcaption></figure>
+  </div>
+
+  <h3>C · Kinetic / oversized typography (thin in the corpus — see Findings)</h3>
+  <div class="gal">
+    <figure><img src="references/hubspot-big-staggered-type.png" alt="HubSpot Spotlight"><figcaption><b>HubSpot Spotlight</b> — oversized staggered headline ("All the data makes all the difference") on a dark gradient. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/deeo-oversized-serif.png" alt="Deeo Studio"><figcaption><b>Deeo Studio</b> — bold oversized serif on black/yellow — editorial big-type energy akin to the traffic.productions ref. <span class="src">[Lazyweb]</span></figcaption></figure>
+  </div>
+
+  <h3>D · Legal & About pages</h3>
+  <div class="gal">
+    <figure><img src="references/tripsy-app-privacy.png" alt="Tripsy privacy"><figcaption><b>Tripsy</b> — app Privacy Policy: long-form sections, top nav with a "Get the app" CTA, footer links. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/instapaper-legal-tabs-dmca.png" alt="Instapaper legal"><figcaption><b>Instapaper</b> — legal page with tabs for Privacy / Terms / API / <em>Copyright</em> and a DMCA procedure. Ideal for the UGC angle. <span class="src">[Lazyweb]</span></figcaption></figure>
+    <figure><img src="references/photomath-about-page.png" alt="Photomath about"><figcaption><b>Photomath</b> — About/company history: team-photo hero, "get the app" CTA, store badges + legal links in footer. <span class="src">[Lazyweb]</span></figcaption></figure>
+  </div>
+
+  <h2>Patterns (table stakes)</h2>
+  <ul>
+    <li><b>Hero = value prop + one CTA</b>, ideally with product proof (mockup, demo, or — for us — the live feature).</li>
+    <li><b>Social proof early:</b> ratings, user counts, "as seen in" logos, awards (gamecharger, ultrahuman, transit).</li>
+    <li><b>Feature cards with real screenshots</b>, often a 2–3 column grid (onX, Apple Books, Apple Card).</li>
+    <li><b>Cross-device / "listen everywhere" row</b> is standard for audio apps (Audible, Apple Books).</li>
+    <li><b>FAQ accordion</b> near the bottom (Apple Books, Audible, Everand, ultrahuman, musi).</li>
+    <li><b>QR code</b> to bridge desktop→mobile install (transit, gamecharger, gemini, Calm).</li>
+    <li><b>Official store badges</b> + a repeated/sticky CTA; legal links live in the footer.</li>
+  </ul>
+
+  <h2>Anti-patterns (avoid)</h2>
+  <ul>
+    <li><b>Restyling/animating the official store badges</b> — Apple & Google both forbid it; keep ¼-height clear space, min ~40px.</li>
+    <li><b>Burying the download</b> with no sticky/repeat CTA on mobile.</li>
+    <li><b>Walls of legal text</b> with no in-page TOC or section anchors.</li>
+    <li><b>Generic stock hero</b> that shows nothing of the product (every strong example proves the app).</li>
+    <li><b>Kinetic type that hurts readability</b> or ignores <code>prefers-reduced-motion</code> — motion must enhance, never block the words (especially for an accessibility-first app).</li>
+  </ul>
+
+  <h2>Unique angles (steal these)</h2>
+  <ul>
+    <li><b>Speechify / Speech Central</b> foreground <em>word-highlighting</em> and <em>accessibility/vision profiles</em> — exactly HushBook's strengths; we can out-do them by making the hero itself the karaoke demo.</li>
+    <li><b>Art of Fauna</b> proves big high-contrast scrolling text on dark reads beautifully — validates the hero treatment.</li>
+    <li><b>neuecast</b> shows a hero can be a single phone-player mockup + one button; restraint is on-brand.</li>
+    <li><b>Everand</b> positions via a comparison table ("vs Audible") — a later option for HushBook ("vs plain audiobooks").</li>
+    <li><b>traffic.productions</b> (the user's reference): oversized editorial type that travels left↔right on scroll — the kinetic spine of our hero.</li>
+  </ul>
+
+  <h2>Findings</h2>
+  <p>The Lazyweb corpus is <b>strong</b> for the buckets that matter most here: audiobook/audio competitors (Apple Books appears across many sites; Audible, Everand, Speechify, Speech Central, neuecast), hero-with-dual-download-buttons, single-page feature showcases, and legal/about pages. It is <b>thin on true kinetic-typography heroes</b> — the closest were brand/marketing pages (HubSpot Spotlight, Deeo) and type-specimen experiments rather than app landing pages. That gap is the opportunity: a scroll-driven karaoke hero would stand out in the audiobook category, where pages are screenshot-and-FAQ formulaic.</p>
+  <p>Build implication, carried into the prototype: reuse the app's own visual language — dark lyrics canvas (<code>#0B0B0B</code>, blurred ambient backdrop), word spoken/idle colours, brown accent (<code>#6F3825</code> / <code>#C98A6A</code>) — so the site feels like the app, and let GSAP ScrollTrigger map scroll position to "playback."</p>
+
+  <h2>Sources</h2>
+  <p><b>Lazyweb screenshot DB</b> — cited inline above (19 images in <code>references/</code>): authy, widgetable, transit, gamecharger, onX Offroad, Ultrahuman, Apple Card, HubSpot, Deeo, Tripsy, Instapaper, Photomath, Apple Books, Audible, Everand, neuecast, Speechify, Speech Central, Art of Fauna.</p>
+  <p><b>Web</b> <span class="src">[Web]</span>:</p>
+  <ul>
+    <li>Apple — App Store marketing guidelines &amp; badge: <a href="https://developer.apple.com/app-store/marketing/guidelines/">developer.apple.com/app-store/marketing/guidelines</a>, <a href="https://toolbox.marketingtools.apple.com/app-store/">toolbox.marketingtools.apple.com</a></li>
+    <li>Google Play — badge guidelines: <a href="https://partnermarketinghub.withgoogle.com/brands/google-play/visual-identity/badge-guidelines/">partnermarketinghub.withgoogle.com</a></li>
+    <li>MDN — CSS scroll-driven animations: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations">developer.mozilla.org</a></li>
+    <li>GSAP — ScrollTrigger docs: <a href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/">gsap.com/docs</a></li>
+    <li>Landing-page best practices: Unicorn Platform (app landing pages 2026), CXL (high-converting landing pages), LandingPageFlow (CTA placement).</li>
+    <li>Legal templates: TermsFeed / iubenda (app privacy &amp; UGC terms).</li>
+  </ul>
+
+  <p class="note" style="margin-top:30px">Generated for the HushBook landing-page build. Screenshots are third-party marketing pages, used here as design reference only.</p>
+
+</div>
+</body>
+</html>

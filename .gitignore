@@ -1,0 +1,10 @@
+# Local tooling / QC artifacts
+.playwright-mcp/
+.lazyweb/
+qc-*.png
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
