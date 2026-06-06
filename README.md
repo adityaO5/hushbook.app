@@ -22,8 +22,8 @@ python -m http.server 8080   # then visit http://localhost:8080
 index.html        Landing page — kinetic karaoke hero (Sherlock Holmes demo text),
                   features showcase, device mockups, download CTAs, footer
 about.html        "About" — mission + values
-privacy.html      Privacy Policy (on-device-processing angle)
-terms.html        Terms of Service (user-import / copyright / DMCA angle)
+privacy-policy.html    Privacy Policy (on-device-processing angle)
+terms-conditions.html  Terms of Service (user-import / copyright / DMCA angle)
 research/
   report.html     Design-research report (Lazyweb DB + web research)
   references/      19 reference screenshots used in the report

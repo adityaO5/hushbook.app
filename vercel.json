@@ -8,7 +8,9 @@
       "has": [{ "type": "host", "value": "www.hushbook.app" }],
       "destination": "https://hushbook.app/$1",
       "permanent": true
-    }
+    },
+    { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/terms", "destination": "/terms-conditions", "permanent": true }
   ],
   "headers": [
     {
