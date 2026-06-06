@@ -250,6 +250,7 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
 
   <nav class="toc" aria-label="On this page">
     <a href="#collect">What we collect</a>
+    <a href="#diag">Crashes &amp; performance</a>
     <a href="#use">How it's used</a>
     <a href="#third">Third parties</a>
     <a href="#delete">Deleting</a>
@@ -260,7 +261,9 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   the word-level transcripts the HushBook Engine generates, your saved quotes, and all of your listening
   data (progress, goals, streaks, badges, your neuron score and your accessibility profile) are created and
   stored <strong>only on your device</strong>. Your audio never leaves your phone, and we never receive it.
-  The app does not send us analytics, usage tracking or crash reports.</p>
+  The app sends us no analytics or usage tracking. The one exception is <strong>crash and performance
+  diagnostics</strong> — purely technical app-health data, described in <a href="#diag">Crashes &amp;
+  performance</a> below.</p>
   <p><strong>On this website, if you join the waitlist</strong> — when you submit the waitlist form we store:</p>
   <ul>
     <li>the <strong>email address</strong> you enter;</li>
@@ -269,12 +272,28 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   </ul>
   <p>That's all. We don't use advertising trackers and we don't build a profile on you.</p>
 
+  <h2 id="diag">What about crashes and performance?</h2>
+  <p>When the app crashes or runs slowly, it sends a <strong>diagnostic report</strong> so we can find the
+  bug and fix it. We use <strong>Sentry</strong>, a standard crash-reporting tool, to collect these. It's
+  technical app-health data only — it tells us <em>how the app behaved</em>, never <em>what you were
+  listening to or reading</em>.</p>
+  <p><strong>What's sent:</strong></p>
+  <ul>
+    <li>a <strong>crash report</strong> — the technical trace showing where the code failed;</li>
+    <li><strong>device and app info</strong> — device model, OS version and HushBook version;</li>
+    <li><strong>performance data</strong> — e.g. how long a screen or action took to load.</li>
+  </ul>
+  <p><strong>What's never sent:</strong> your audio, your transcripts, your saved quotes or your listening
+  data — and nothing that identifies you, because there's no name, email or account attached to any of it.
+  It's the bare minimum we need to fix a crash, and nothing more.</p>
+
   <h2 id="use">How do you use my information?</h2>
   <ul>
     <li>The on-device data is used only to run the app's features on your phone.</li>
     <li>Your waitlist email is used only to email you about HushBook — chiefly to tell you it has launched
       and where to download it, plus the occasional important update before then.</li>
     <li>The signup context (page / referrer / user-agent) is used only to understand interest in HushBook.</li>
+    <li>Crash and performance diagnostics are used only to fix bugs and keep the app running smoothly.</li>
   </ul>
 
   <h2 id="third">What third-party services does the app talk to?</h2>
@@ -291,6 +310,8 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <ul>
     <li><strong>App data:</strong> delete individual books, transcripts and quotes inside the app, reset
       analytics in settings, or uninstall the app to remove everything HushBook stored locally.</li>
+    <li><strong>Diagnostics:</strong> uninstalling the app stops any further crash or performance reports
+      being sent to Sentry.</li>
   </ul>
 
   <p>If you have any questions or concerns about this Privacy Policy, please contact us at
