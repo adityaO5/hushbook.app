@@ -47,11 +47,7 @@ Those requests are subject to those providers' own privacy practices.
 ## Can I delete my information?
 
 - **App data:** delete individual books, transcripts and quotes inside the app, reset analytics in settings, or uninstall the app to remove everything HushBook stored locally.
-- **Waitlist email:** email us at privacy@hushbook.app and we'll remove you.
-
-## Can I have a copy of my information?
-
-Your app data already lives on your device, in your control. For the waitlist email we hold, email privacy@hushbook.app and we'll send you a copy or confirm what we have.
+- **Waitlist email:** email us at hello@hushbook.app and we'll remove you.
 
 ## Children's privacy
 
@@ -61,10 +57,6 @@ HushBook is not directed at children under 13. The app collects no personal data
 
 We may update this Policy to reflect changes to the app, our services or applicable law — but we will keep our commitment to keeping your data on your device. We'll post revisions here and update the date above; for material changes we'll also surface a notice in the app. Your continued use after a change means you accept the updated Policy.
 
-If you have any questions or concerns about this Privacy Policy, please contact us at privacy@hushbook.app.
+If you have any questions or concerns about this Privacy Policy, please contact us at hello@hushbook.app.
 
 Effective date: 5 June 2026
-
----
-
-*Note (prototype): privacy@hushbook.app is a placeholder address. Have this reviewed by counsel before publishing, and complete the Play Console / App Store data-safety forms to match (currently: no analytics or crash collection in the app; email collected only via the website waitlist).*
