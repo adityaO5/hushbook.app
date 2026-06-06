@@ -23,18 +23,6 @@ That's all. We don't use advertising trackers and we don't build a profile on yo
 - Your waitlist email is used only to email you about HushBook — chiefly to tell you it has launched and where to download it, plus the occasional important update before then.
 - The signup context (page / referrer / user-agent) is used only to understand interest in HushBook.
 
-## Where is my waitlist email stored?
-
-In a database hosted by **Supabase**. It is configured so that the public key this website uses can **add** a signup but can **never read the list back** — only we can, from a protected admin area. Duplicate signups are de-duplicated.
-
-## Will you send me emails?
-
-Only if you joined the waitlist, and only about HushBook — the launch announcement and the occasional important update. No spam, and no third-party marketing.
-
-## Will you share or sell my information?
-
-No. We do not sell your data, and we do not share it with advertisers or data brokers.
-
 ## What third-party services does the app talk to?
 
 Only when *you* ask it to, and HushBook adds no identifiers beyond what's needed to fetch the content:
@@ -47,15 +35,6 @@ Those requests are subject to those providers' own privacy practices.
 ## Can I delete my information?
 
 - **App data:** delete individual books, transcripts and quotes inside the app, reset analytics in settings, or uninstall the app to remove everything HushBook stored locally.
-- **Waitlist email:** email us at hello@hushbook.app and we'll remove you.
-
-## Children's privacy
-
-HushBook is not directed at children under 13. The app collects no personal data and has no accounts, so it does not knowingly process children's personal information.
-
-## Will this Privacy Policy ever change?
-
-We may update this Policy to reflect changes to the app, our services or applicable law — but we will keep our commitment to keeping your data on your device. We'll post revisions here and update the date above; for material changes we'll also surface a notice in the app. Your continued use after a change means you accept the updated Policy.
 
 If you have any questions or concerns about this Privacy Policy, please contact us at hello@hushbook.app.
 

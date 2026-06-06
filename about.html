@@ -116,6 +116,17 @@ img,svg{display:block;max-width:100%}
 .callout strong{color:var(--paper)}
 .doc-cta{margin-top:36px}
 
+.maker{display:flex;align-items:center;gap:18px;border:1px solid var(--line);border-radius:var(--r-md);
+  background:linear-gradient(165deg,var(--surface),var(--ink-2));padding:22px 24px;margin:22px 0 8px}
+.maker-ava{flex:none;width:60px;height:60px;border-radius:16px;object-fit:cover;
+  border:1px solid rgba(243,192,121,.30);box-shadow:0 8px 22px -10px var(--glow)}
+.maker-name{font-family:var(--font-d);font-weight:500;font-size:19px;color:var(--paper);margin:0 0 3px;line-height:1.2}
+.maker-role{color:var(--muted);font-size:14px;margin:0 0 10px}
+.maker-links{display:flex;flex-wrap:wrap;gap:18px}
+.maker-links a{color:var(--amber);font-size:14.5px;font-weight:600;text-decoration:none}
+.maker-links a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:520px){.maker{flex-direction:column;align-items:flex-start}}
+
 footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(--ink-2)}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
 @media(max-width:780px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
@@ -212,12 +223,29 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <p>HushBook is coming to <strong>iOS and Android</strong>, launching together. The fastest way to hear
   about it is to join the waitlist — we'll email you the moment it's ready.</p>
 
-  <div class="callout">
-    <p><strong>Say hello.</strong> Feedback, bug reports and book requests are all welcome — email
-    <a href="mailto:hello@hushbook.app">hello@hushbook.app</a>. <em>(Placeholder address for this prototype.)</em></p>
+  <h2>Who builds HushBook</h2>
+  <p>HushBook is a solo, indie project by <strong>Rakesh Aditya</strong> — a product manager based in
+  Bengaluru. Across 3+ years in fintech, B2B SaaS and growth, I've shipped products end to end: discovery,
+  delivery, and the messy middle in between. This one I'm building for <em>myself</em> — the read-along
+  player I always wanted as a listener, made privacy- and accessibility-first from day one rather than
+  bolted on later.</p>
+
+  <div class="maker">
+    <img class="maker-ava" src="assets/img/rakesh.jpg" width="60" height="60" alt="Rakesh Aditya" loading="lazy" decoding="async">
+    <div class="maker-body">
+      <p class="maker-name">Rakesh Aditya</p>
+      <p class="maker-role">Product Manager · Bengaluru, India</p>
+      <div class="maker-links">
+        <a href="https://adityarakesh.xyz" target="_blank" rel="noopener">Portfolio ↗</a>
+        <a href="https://www.linkedin.com/in/rakesh-aditya-194795181/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
   </div>
 
-  <p class="doc-cta"><a class="btn btn-primary" href="index.html#top">Join the waitlist</a></p>
+  <div class="callout">
+    <p><strong>Say hello.</strong> Feedback, bug reports and book requests are all welcome — email
+    <a href="mailto:hello@hushbook.app">hello@hushbook.app</a>.</p>
+  </div>
 </main>
 
 <footer>
