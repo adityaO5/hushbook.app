@@ -140,9 +140,6 @@ img,svg{display:block;max-width:100%}
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a:not(.btn){font-size:15px;color:var(--paper-dim);font-weight:500;transition:color .2s}
 .nav-links a:not(.btn):hover{color:var(--paper)}
-.nav-cta{display:flex;align-items:center;gap:8px}
-.nav-cta .storebadge{height:34px}
-.nav-cta .storebadge.soon::after{display:none}
 
 /* hamburger toggle — hidden on desktop */
 .nav-toggle{display:none;width:44px;height:44px;flex:none;align-items:center;justify-content:center;
@@ -169,8 +166,6 @@ img,svg{display:block;max-width:100%}
   .nav.open .nav-links{transform:none;opacity:1;pointer-events:auto}
   .nav-links a:not(.btn){display:block;padding:15px 6px;font-size:16px;color:var(--paper);
     border-bottom:1px solid var(--line-soft)}
-  .nav-cta{margin-top:14px;gap:10px}
-  .nav-cta .storebadge{height:42px}
 }
 
 /* ---------------------------------------------------------- HERO */
