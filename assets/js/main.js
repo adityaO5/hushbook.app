@@ -1,172 +1,200 @@
 /* ============================================================
-   HushBook landing — auto karaoke hero
-   The big lyric text BEHIND the waitlist is its own ambient layer.
-   It highlights word-by-word on a time-based loop (no scroll) —
-   like the app's synced_lyrics_view running by itself, "shader" style.
-   Degrades to a static lit block under prefers-reduced-motion.
+   HushBook landing — interactions
+   Vanilla, no deps. Each module guards for missing nodes and
+   honors prefers-reduced-motion. Brand: dark amber, a11y-first.
    ============================================================ */
-(function () {
-  "use strict";
+'use strict';
 
-  var body = document.body;
-  var hero = document.querySelector(".hero");
-  var layer = document.querySelector(".hero__lyrics");
-  var lines = layer ? Array.prototype.slice.call(layer.querySelectorAll(".ll")) : [];
+(function(){
+  var REDUCE = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-  // ---- split each line into word spans, collect in reading order ----
-  var words = [];
-  lines.forEach(function (line) {
-    var text = line.textContent.replace(/\s+/g, " ").trim();
-    line.textContent = "";
-    text.split(" ").forEach(function (w, i) {
-      if (i) line.appendChild(document.createTextNode(" "));
-      var s = document.createElement("span");
-      s.className = "w";
-      s.textContent = w;
-      line.appendChild(s);
-      words.push(s);
-    });
-  });
-
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // ---- fallback: reduced motion / nothing to animate -> static lit text ----
-  if (!hero || !words.length || reduce) {
-    body.classList.add("no-motion");
-    words.forEach(function (w) { w.classList.add("spoken"); });
-    initReveal();
-    initWaitlist();
-    return;
-  }
-
-  // ---- time-based karaoke playhead ----
-  var PER_WORD = 340;   // ms a word holds the "current" highlight
-  var LEAD_IN  = 650;   // ms of quiet before the first word lights
-  var HOLD_END = 2400;  // ms the fully-lit verse holds before looping
-  var FADE     = 1100;  // ms the layer dims down, then the loop restarts
-  var TOTAL = LEAD_IN + words.length * PER_WORD + HOLD_END + FADE;
-  var fadeStart = TOTAL - FADE;
-
-  var startTs = null;
-  var lastCur = -2;
-  var raf = 0;
-
-  function frame(ts) {
-    if (startTs === null) startTs = ts;
-    var t = (ts - startTs) % TOTAL;
-
-    // gentle dim before the verse loops back to the top (never fully blanks)
-    layer.style.opacity = t > fadeStart
-      ? (1 - 0.88 * (t - fadeStart) / FADE).toFixed(3)
-      : 1;
-
-    // which word is "current"? -1 during lead-in, >=length during the hold
-    var cur = t < LEAD_IN ? -1 : Math.floor((t - LEAD_IN) / PER_WORD);
-    if (cur !== lastCur) {
-      for (var i = 0; i < words.length; i++) {
-        var c = words[i].classList;
-        c.toggle("spoken", i < cur);     // already passed -> stays lit
-        c.toggle("current", i === cur);  // being spoken -> bright + glow
-      }
-      lastCur = cur;
+  /* ---------- mobile nav (hamburger) ---------- */
+  (function(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    var btn = nav.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if(!btn || !menu) return;
+    function setOpen(o){
+      nav.classList.toggle('open', o);
+      btn.setAttribute('aria-expanded', o ? 'true' : 'false');
+      btn.setAttribute('aria-label', o ? 'Close menu' : 'Open menu');
     }
-    raf = requestAnimationFrame(frame);
-  }
-  raf = requestAnimationFrame(frame);
+    btn.addEventListener('click', function(){ setOpen(!nav.classList.contains('open')); });
+    menu.addEventListener('click', function(e){ if(e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+    document.addEventListener('click', function(e){ if(nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false); });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 980) setOpen(false); });
+  })();
 
-  // pause the loop while the hero is scrolled out of view (battery / CPU)
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          if (!raf) { startTs = null; lastCur = -2; raf = requestAnimationFrame(frame); }
-        } else if (raf) {
-          cancelAnimationFrame(raf); raf = 0;
-        }
+  /* ---------- live karaoke (hero read-along player) ---------- */
+  (function(){
+    var text = "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.";
+    var el = document.getElementById('karaoke');
+    var scrub = document.getElementById('scrub');
+    if(!el) return;
+    var words = text.split(' ');
+    words.forEach(function(w, i){
+      var s = document.createElement('span');
+      s.className = 'w'; s.textContent = w; s.dataset.i = i;
+      el.appendChild(s); el.appendChild(document.createTextNode(' '));
+    });
+    var spans = el.querySelectorAll('.w');
+    var i = 0, timer;
+
+    function paint(idx){
+      spans.forEach(function(s, k){
+        s.classList.remove('lit', 'read');
+        if(k < idx) s.classList.add('read');
+        else if(k === idx) s.classList.add('lit');
       });
-    }, { threshold: 0.04 }).observe(hero);
-  }
+      if(scrub) scrub.style.width = ((idx + 1) / spans.length * 100) + '%';
+    }
+    function tick(){
+      paint(i);
+      var dur = (spans[i] && spans[i].textContent.length > 6) ? 420 : 300;
+      i++;
+      if(i >= spans.length){ clearTimeout(timer); setTimeout(function(){ i = 0; run(); }, 1400); return; }
+      timer = setTimeout(tick, dur);
+    }
+    function run(){ paint(0); timer = setTimeout(tick, 500); }
 
-  initReveal();
-  initWaitlist();
-
-  // ---- lightweight scroll reveal for the sections below the hero ----
-  function initReveal() {
-    var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
-    if (!items.length) return;
-    var hasGSAP = window.gsap && window.ScrollTrigger;
-    if (!hasGSAP || reduce) { items.forEach(function (n) { n.style.opacity = 1; }); return; }
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.set(items, { opacity: 0, y: 24 });
-    ScrollTrigger.batch(items, {
-      start: "top 88%",
-      onEnter: function (b) {
-        gsap.to(b, { opacity: 1, y: 0, duration: .6, stagger: .08, ease: "power2.out", overwrite: true });
-      }
+    // tap a word to jump there
+    el.addEventListener('click', function(e){
+      var t = e.target.closest('.w'); if(!t) return;
+      clearTimeout(timer); i = parseInt(t.dataset.i, 10); tick();
     });
-    window.addEventListener("load", function () { ScrollTrigger.refresh(); });
-  }
 
-  // ---- waitlist forms: POST to Supabase if configured, else local success ----
-  function initWaitlist() {
-    var forms = Array.prototype.slice.call(document.querySelectorAll("form.waitlist"));
+    if(REDUCE){ paint(4); } else { run(); }
+  })();
 
-    // a config is only "live" with real url+key (no placeholder tokens)
-    function isLive(cfg) {
-      if (!cfg || !cfg.url || !cfg.anonKey) return false;
-      var blob = String(cfg.url) + " " + String(cfg.anonKey);
-      return blob.indexOf("YOUR-PROJECT") === -1 && blob.indexOf("YOUR_ANON") === -1;
-    }
-
-    function succeed(form, input, btn) {
-      form.classList.add("done");
-      var ok = form.querySelector(".waitlist__ok");
-      if (ok) ok.textContent = "You're on the list — we'll email " +
-        (input && input.value ? input.value : "you") + " when HushBook lands.";
-      if (btn) btn.disabled = false;
-    }
-
-    forms.forEach(function (form) {
-      form.addEventListener("submit", function (ev) {
-        ev.preventDefault();
-        var input = form.querySelector("input[type=email]");
-        if (input && !input.checkValidity()) { input.reportValidity(); return; }
-
-        var btn = form.querySelector("button[type=submit], button, input[type=submit]");
-        var cfg = window.HB_SUPABASE;
-        var email = input && input.value ? input.value : "";
-
-        // not configured (or placeholder) -> resolve locally, current behaviour
-        if (!isLive(cfg)) { succeed(form, input, btn); return; }
-
-        if (btn) btn.disabled = true;
-
-        fetch(cfg.url + "/rest/v1/waitlist_signups", {
-          method: "POST",
-          headers: {
-            "apikey": cfg.anonKey,
-            "Authorization": "Bearer " + cfg.anonKey,
-            "Content-Type": "application/json",
-            "Prefer": "return=minimal"
-          },
-          body: JSON.stringify({
-            email: email,
-            source: location.pathname,
-            user_agent: navigator.userAgent,
-            referrer: document.referrer
-          })
-        }).then(function (res) {
-          // ok or 409 (duplicate email) both count as a successful signup
-          if (!res.ok && res.status !== 409) {
-            console.warn("HushBook waitlist: unexpected response", res.status);
-          }
-          succeed(form, input, btn);
-        }).catch(function (err) {
-          // network/other error -> never block the visitor
-          console.warn("HushBook waitlist: submit failed", err);
-          succeed(form, input, btn);
+  /* ---------- screen micro-loops (run once when revealed) ---------- */
+  (function(){
+    function onReveal(node, cb){
+      if(!node) return;
+      if(REDUCE){ cb(true); return; }            // reduced-motion: jump to final state
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(!en.isIntersecting) return;
+          io.unobserve(en.target);
+          cb(false);
         });
+      }, { threshold:.4 });
+      io.observe(node);
+    }
+
+    // neuron score count-up
+    var num = document.getElementById('neuron-num');
+    onReveal(num, function(jump){
+      var target = parseInt(num.getAttribute('data-target'), 10) || 0;
+      if(jump){ num.textContent = target; return; }
+      var t0 = null, dur = 1100;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        num.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+
+    // library: pulse the first download ring
+    var dl = document.querySelector('#screen-lib .lib__dl');
+    onReveal(document.getElementById('screen-lib'), function(jump){
+      if(jump || !dl) return;
+      dl.classList.add('pulsing');
+    });
+
+    // import: fill the transcription progress bar to a holding %
+    var bar = document.getElementById('imp-bar');
+    onReveal(document.getElementById('screen-import'), function(jump){
+      if(!bar) return;
+      var goal = 68;
+      if(jump){ bar.style.width = goal + '%'; return; }
+      var t0 = null, dur = 1600;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        bar.style.width = (goal * (1 - Math.pow(1 - p, 2))) + '%';
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  })();
+
+  /* ---------- accessibility profile switcher (click + auto-cycle) ---------- */
+  (function(){
+    var screen = document.getElementById('screen-a11y');
+    if(!screen) return;
+    var btns = screen.querySelectorAll('.a11y__seg button');
+    var order = ['vision', 'dyslexia', 'comprehension'];
+    var auto = true, idx = 0, timer;
+
+    function set(profile){
+      screen.setAttribute('data-profile', profile);
+      btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.profile === profile ? 'true' : 'false'); });
+      idx = order.indexOf(profile);
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){ auto = false; clearInterval(timer); set(b.dataset.profile); });
+    });
+    if(!REDUCE){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting && auto && !timer){
+            timer = setInterval(function(){ if(!auto){ clearInterval(timer); return; } idx = (idx + 1) % order.length; set(order[idx]); }, 2600);
+          }
+        });
+      }, { threshold:.4 });
+      io.observe(screen);
+    }
+  })();
+
+  /* ---------- reveal on scroll ---------- */
+  (function(){
+    var nodes = document.querySelectorAll('.reveal');
+    if(!nodes.length) return;
+    if(REDUCE){ nodes.forEach(function(n){ n.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+    nodes.forEach(function(n, i){ n.style.transitionDelay = ((i % 4) * 70) + 'ms'; io.observe(n); });
+  })();
+
+  /* ---------- waitlist forms (POST to Supabase if configured, else local success) ---------- */
+  (function(){
+    var rx = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    function isLive(cfg){
+      if(!cfg || !cfg.url || !cfg.anonKey) return false;
+      var blob = String(cfg.url) + ' ' + String(cfg.anonKey);
+      return blob.indexOf('YOUR-PROJECT') === -1 && blob.indexOf('YOUR_ANON') === -1;
+    }
+    function succeed(f, note, ok, btn){
+      ok.style.color = 'var(--sage)';
+      ok.textContent = "You're on the list. We'll email you the App Store and Google Play links at launch.";
+      if(note) note.style.display = 'none';
+      if(btn) btn.disabled = false;
+    }
+    document.querySelectorAll('.waitlist').forEach(function(f){
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var input = f.querySelector('input'), ok = f.querySelector('.waitlist__ok'), note = f.querySelector('.waitlist__note');
+        var btn = f.querySelector('button[type=submit], button');
+        var email = input ? input.value.trim() : '';
+        if(!rx.test(email)){ ok.style.color = '#E89B6A'; ok.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+        var cfg = window.HB_SUPABASE;
+        if(!isLive(cfg)){ succeed(f, note, ok, btn); input.value = ''; input.blur(); return; }
+        if(btn) btn.disabled = true;
+        fetch(cfg.url + '/rest/v1/waitlist_signups', {
+          method: 'POST',
+          headers: { 'apikey': cfg.anonKey, 'Authorization': 'Bearer ' + cfg.anonKey, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ email: email, source: location.pathname, user_agent: navigator.userAgent, referrer: document.referrer })
+        }).then(function(res){
+          if(!res.ok && res.status !== 409){ console.warn('HushBook waitlist: unexpected response', res.status); }
+          succeed(f, note, ok, btn); input.value = ''; input.blur();
+        }).catch(function(err){ console.warn('HushBook waitlist: submit failed', err); succeed(f, note, ok, btn); input.value = ''; input.blur(); });
       });
     });
-  }
+  })();
+
 })();
