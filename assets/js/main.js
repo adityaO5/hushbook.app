@@ -29,7 +29,7 @@
 
   /* ---------- live karaoke (hero read-along player) ---------- */
   (function(){
-    var text = "You are listening to Meditations by Marcus Aurelius, narrated by Christopher Hurt.";
+    var text = "You are listening to Meditations by Marcus Aurelius, narrated by Christopher Hurt. Chapter one, volume one. Marcus Aurelius was Roman emperor from 161 to 180 and a Stoic philosopher.";
     var el = document.getElementById('karaoke');
     var scrub = document.getElementById('scrub');
     if(!el) return;
