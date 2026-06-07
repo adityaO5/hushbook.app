@@ -161,40 +161,4 @@
     nodes.forEach(function(n, i){ n.style.transitionDelay = ((i % 4) * 70) + 'ms'; io.observe(n); });
   })();
 
-  /* ---------- waitlist forms (POST to Supabase if configured, else local success) ---------- */
-  (function(){
-    var rx = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-    function isLive(cfg){
-      if(!cfg || !cfg.url || !cfg.anonKey) return false;
-      var blob = String(cfg.url) + ' ' + String(cfg.anonKey);
-      return blob.indexOf('YOUR-PROJECT') === -1 && blob.indexOf('YOUR_ANON') === -1;
-    }
-    function succeed(f, note, ok, btn){
-      ok.style.color = 'var(--sage)';
-      ok.textContent = "You're on the list. We'll email you the App Store and Google Play links at launch.";
-      if(note) note.style.display = 'none';
-      if(btn) btn.disabled = false;
-    }
-    document.querySelectorAll('.waitlist').forEach(function(f){
-      f.addEventListener('submit', function(e){
-        e.preventDefault();
-        var input = f.querySelector('input'), ok = f.querySelector('.waitlist__ok'), note = f.querySelector('.waitlist__note');
-        var btn = f.querySelector('button[type=submit], button');
-        var email = input ? input.value.trim() : '';
-        if(!rx.test(email)){ ok.style.color = '#E89B6A'; ok.textContent = 'Please enter a valid email address.'; input.focus(); return; }
-        var cfg = window.HB_SUPABASE;
-        if(!isLive(cfg)){ succeed(f, note, ok, btn); input.value = ''; input.blur(); return; }
-        if(btn) btn.disabled = true;
-        fetch(cfg.url + '/rest/v1/waitlist_signups', {
-          method: 'POST',
-          headers: { 'apikey': cfg.anonKey, 'Authorization': 'Bearer ' + cfg.anonKey, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-          body: JSON.stringify({ email: email, source: location.pathname, user_agent: navigator.userAgent, referrer: document.referrer })
-        }).then(function(res){
-          if(!res.ok && res.status !== 409){ console.warn('HushBook waitlist: unexpected response', res.status); }
-          succeed(f, note, ok, btn); input.value = ''; input.blur();
-        }).catch(function(err){ console.warn('HushBook waitlist: submit failed', err); succeed(f, note, ok, btn); input.value = ''; input.blur(); });
-      });
-    });
-  })();
-
 })();
