@@ -174,17 +174,38 @@
       </div>
       <div class="feature-row__media">
         <div class="phone">
-          <div class="scr scr--lib" id="screen-lib" aria-hidden="true">
-            <div class="lib__search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search the library</div>
-            <div class="lib__chips"><span class="lib__chip on">All</span><span class="lib__chip">Classics</span><span class="lib__chip">Mystery</span><span class="lib__chip">Poetry</span></div>
-            <div class="lib__list">
-              <div class="lib__row"><span class="lib__cv"><img src="assets/book/sherlock-cover.svg" alt=""></span><span class="lib__meta"><span class="lib__ln" style="width:72%"></span><span class="lib__ln s"></span></span><span class="lib__dl" data-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span></div>
-              <div class="lib__row"><span class="lib__cv"></span><span class="lib__meta"><span class="lib__ln" style="width:58%"></span><span class="lib__ln s"></span></span><span class="lib__dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span></div>
-              <div class="lib__row"><span class="lib__cv"></span><span class="lib__meta"><span class="lib__ln" style="width:80%"></span><span class="lib__ln s"></span></span><span class="lib__dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span></div>
-              <div class="lib__row"><span class="lib__cv"></span><span class="lib__meta"><span class="lib__ln" style="width:50%"></span><span class="lib__ln s"></span></span><span class="lib__dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span></div>
-              <div class="lib__row"><span class="lib__cv"></span><span class="lib__meta"><span class="lib__ln" style="width:66%"></span><span class="lib__ln s"></span></span><span class="lib__dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg></span></div>
+          <div class="scr scr--home" aria-hidden="true">
+            <div class="home__top">
+              <span class="home__hi">Howdy, John</span>
+              <span class="home__icons">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+              </span>
             </div>
-            <div class="lib__providers"><span class="provider-chip"><img src="assets/img/librivox.png" alt="LibriVox"></span><span class="provider-chip"><img src="assets/img/internet_archive.png" alt="Internet Archive"></span></div>
+            <div class="home__np">
+              <span class="home__np-cov"><img src="assets/img/meditations-cover.png" alt=""></span>
+              <span class="home__np-txt"><b>Meditations</b><span>Marcus Aurelius</span></span>
+              <span class="home__np-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="home__np-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5l8 7-8 7V5zM15 5h2v14h-2z"/></svg></span>
+            </div>
+            <div class="home__feat">
+              <img class="home__feat-art" src="assets/img/lib-featured.jpg" alt="">
+              <span class="home__feat-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg></span>
+              <div class="home__feat-meta">
+                <b>Food in the Ancient World</b>
+                <span class="home__feat-sub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>2h Listen · Andrew Dalby</span>
+              </div>
+            </div>
+            <div class="home__lib-h">From my Library</div>
+            <div class="home__row">
+              <span class="home__spine s1"></span><span class="home__spine s2"></span><span class="home__spine s3"></span><span class="home__spine s4"></span>
+            </div>
+            <nav class="home__nav">
+              <span class="on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v16H6.5A2.5 2.5 0 0 0 4 21.5z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            </nav>
           </div>
         </div>
       </div>
@@ -194,25 +215,36 @@
     <div class="feature-row reveal">
       <div class="feature-row__copy">
         <span class="eyebrow">Analytics</span>
-        <h2>A living neuron score.</h2>
-        <p>Streak, words read, comprehension and consistency fuse into one neuroscience-inspired score that grows as you do — with heatmaps, momentum and habit insights that make listening feel like progress.</p>
+        <h2>Analytics that read like a story.</h2>
+        <p>A momentum streak that rewards showing up, habit insights that learn when you listen, words-per-book and focus time — listening turned into visible progress, all computed and stored on your device.</p>
         <ul class="feature-row__points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>One score from streaks, words and comprehension</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Heatmaps and momentum to keep the habit</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>All computed and stored on your device</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A momentum streak that rewards showing up</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Habit insights: when you listen, longest session, most active day</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Words-per-book and focus time — private, on-device</li>
         </ul>
       </div>
       <div class="feature-row__media">
         <div class="phone">
-          <div class="scr scr--stats" id="screen-stats" aria-hidden="true">
-            <div class="stats__ring"><b id="neuron-num" data-target="82">0</b></div>
-            <div class="stats__cap">Neuron score</div>
-            <div class="stats__chips">
-              <span><b>14</b>day streak</span>
-              <span><b>96k</b>words</span>
-              <span><b>91%</b>focus</span>
+          <div class="scr scr--analytics" aria-hidden="true">
+            <div class="an__top"><b>Analytics</b><span class="an__top-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="av"></span></span></div>
+            <div class="an__streak">
+              <div class="an__streak-h">Momentum<span class="an__share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.7l7.6-4.4M8.2 13.3l7.6 4.4"/></svg></span></div>
+              <div class="an__streak-n"><b id="neuron-num" data-target="128">0</b><span>Day streak</span><span class="an__flame"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2 4 6 5 6 10a6 6 0 0 1-12 0c0-2 1-3.2 2-4 0 2 1 3 2 3 0-3-1-4 0-9z"/></svg></span></div>
+              <div class="an__streak-sub">320 total reading days</div>
             </div>
-            <div class="stats__spark"><span style="height:40%"></span><span style="height:62%"></span><span style="height:50%"></span><span style="height:80%"></span><span style="height:68%"></span><span style="height:96%"></span><span style="height:74%"></span></div>
+            <div class="an__tabs"><span>Insights</span><span>Platform</span><span class="on">Personal</span></div>
+            <div class="an__card an__habit">
+              <div class="an__card-h">Habit Insights</div>
+              <div class="an__hrow"><span>You usually listen</span><b>9–10 PM</b></div>
+              <div class="an__hrow"><span>Longest session</span><b>22 min</b></div>
+              <div class="an__hrow"><span>Average session</span><b>14 m</b></div>
+              <div class="an__hrow"><span>Most active day</span><b>Thu</b></div>
+            </div>
+            <div class="an__card an__bars">
+              <div class="an__card-h dark">Words per book</div>
+              <div class="an__barwrap"><span style="--h:48%"></span><span style="--h:64%"></span><span style="--h:92%"></span><span style="--h:80%"></span><span style="--h:58%"></span></div>
+            </div>
+            <span class="an__fade"></span>
           </div>
         </div>
       </div>
