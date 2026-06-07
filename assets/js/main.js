@@ -29,7 +29,7 @@
 
   /* ---------- live karaoke (hero read-along player) ---------- */
   (function(){
-    var text = "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.";
+    var text = "You are listening to Meditations by Marcus Aurelius, narrated by Christopher Hurt.";
     var el = document.getElementById('karaoke');
     var scrub = document.getElementById('scrub');
     if(!el) return;
