@@ -102,12 +102,6 @@ img,svg{display:block;max-width:100%}
 .storebadges{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .storebadge{display:inline-flex;height:48px;position:relative;border-radius:9px;overflow:hidden}
 .storebadge img{height:100%;width:auto;display:block}
-.storebadge.soon{opacity:.6}
-.storebadge.soon::after{
-  content:"Soon";position:absolute;top:5px;right:5px;
-  font:700 8.5px/1 var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:#fff;
-  background:rgba(224,162,76,.92);padding:3px 6px;border-radius:99px;white-space:nowrap;
-}
 
 /* ---------------------------------------------------------- PHONE FRAME (reused by all screens) */
 .phone{
