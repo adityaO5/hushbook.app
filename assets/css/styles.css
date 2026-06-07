@@ -387,11 +387,11 @@ img,svg{display:block;max-width:100%}
 .an__streak-h{display:flex;align-items:center;font-weight:700;font-size:15px}
 .an__share{margin-left:auto;width:24px;height:24px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#2f2f2f}
 .an__share svg{width:13px;height:13px}
-.an__streak-n{display:flex;align-items:baseline;gap:8px;margin-top:8px}
-.an__streak-n b{font-family:var(--font-d);font-size:46px;font-weight:600;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
-.an__streak-n > span{font-size:17px;font-weight:700}
-.an__flame{margin-left:auto;align-self:center;color:var(--amber)}
-.an__flame svg{width:30px;height:30px}
+.an__streak-n{display:flex;align-items:center;gap:9px;margin-top:8px}
+.an__streak-n b{font-family:var(--font-d);font-size:40px;font-weight:600;line-height:1.05;color:var(--amber);font-variant-numeric:tabular-nums}
+.an__streak-n > span{font-size:14px;font-weight:700;line-height:1.15;min-width:0}
+.an__flame{margin-left:auto;flex:none;color:var(--amber)}
+.an__flame svg{width:26px;height:26px;display:block}
 .an__streak-sub{font-size:12px;color:rgba(255,255,255,.72);margin-top:8px}
 .an__tabs{display:flex;gap:20px;font-size:12px;color:#9a948a;border-bottom:1px solid rgba(0,0,0,.1);padding-bottom:9px}
 .an__tabs .on{color:#2f2f2f;font-weight:700;position:relative}
