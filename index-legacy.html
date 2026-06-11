@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HushBook — Read along with every word you hear</title>
+<meta name="description" content="HushBook turns any audiobook into word-level karaoke, transcribed privately on your phone with the on-device HushBook Engine. Privacy-first, accessibility-first. Free on iOS & Android — download today.">
+<meta name="theme-color" content="#0B0A09">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:title" content="HushBook — Read along with every word you hear">
+<meta property="og:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android. Download today.">
+<meta property="og:url" content="https://hushbook.app/">
+<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HushBook — Read along with every word you hear">
+<meta name="twitter:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android — download today.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<link rel="canonical" href="https://hushbook.app/">
+<link rel="icon" href="assets/img/default_preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ewert&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..800;1,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HushBook wordmark (inverted via currentColor) — referenced with <use href="#hb-wordmark"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hb-wordmark" viewBox="0 0 617 93">
+    <path d="M95.5122 4.53087C88.5962 9.80887 88.0502 33.6509 88.0502 46.3909C88.0502 59.1309 88.5962 83.1549 95.5122 88.2509C97.3322 89.7069 97.3322 92.8009 93.5102 92.8009H55.6542C53.8342 92.8009 53.1062 90.4349 54.9262 88.9789C61.2962 84.2469 62.5702 80.2429 62.5702 73.5089V50.7589H33.9962C34.1782 63.8629 35.4522 83.7009 41.4582 88.2509C43.4602 89.7069 43.4602 92.8009 39.6382 92.8009H1.78223C-0.037775 92.8009 -0.765775 90.4349 1.05422 88.9789C7.42423 84.2469 8.51623 80.2429 8.51623 73.5089V19.2729C8.51623 12.7209 7.42423 8.53487 1.05422 3.80286C-0.765775 2.34687 -0.037775 0.162868 1.78223 0.162868H39.6382C43.4602 0.162868 43.4602 3.07487 41.4582 4.53087C34.9062 9.62687 33.9962 32.7409 33.9962 45.6629H62.5702V19.2729C62.5702 12.7209 61.2962 8.53487 54.9262 3.80286C53.1062 2.34687 53.8342 0.162868 55.6542 0.162868H93.5102C97.3322 0.162868 97.3322 3.07487 95.5122 4.53087Z" fill="currentColor"/>
+    <path d="M171.655 30.1929C169.289 44.7529 166.559 75.5109 177.843 88.9789C179.481 90.7989 179.117 92.8009 177.297 92.8009H160.553C152.545 92.8009 147.449 87.5229 145.629 82.2449C141.625 88.0689 135.983 92.8009 127.793 92.8009C111.413 92.8009 98.8551 85.1569 98.8551 58.2209C98.8551 51.4869 97.7631 47.4829 91.3931 42.5689C89.5731 41.1129 90.3011 38.9289 92.1211 38.9289C109.593 38.9289 116.873 27.0989 123.789 25.6429C127.611 24.9149 125.973 27.8269 125.427 30.1929C120.877 51.8509 121.605 84.4289 135.255 84.4289C139.077 84.4289 142.535 78.9689 144.901 73.5089V58.2209C144.901 51.4869 143.809 47.4829 137.439 42.5689C135.619 41.1129 136.347 38.9289 138.167 38.9289C155.639 38.9289 163.101 27.0989 169.835 25.6429C173.657 24.9149 172.019 27.8269 171.655 30.1929Z" fill="currentColor"/>
+    <path d="M323.075 88.9789C324.895 90.4349 324.167 92.8009 322.347 92.8009H286.129C282.307 92.8009 282.489 89.8889 284.309 88.2509C295.957 77.6949 290.679 33.1049 278.121 33.1049C274.663 33.1049 269.931 37.1089 266.473 44.2069C266.473 66.2289 269.567 84.9749 273.753 88.2509C275.755 89.7069 275.755 92.8009 271.933 92.8009H235.715C233.895 92.8009 233.167 90.4349 234.987 88.9789C241.357 84.2469 242.631 80.2429 242.631 73.5089V32.5589C242.631 12.9029 221.883 15.6329 232.439 36.3809L232.985 37.6549C239.355 51.6689 208.597 54.3989 210.053 38.3829C210.781 28.3729 202.045 29.1009 201.135 35.2889C198.405 50.9409 231.165 54.3989 233.895 71.1429C235.533 81.3349 222.247 92.2549 206.413 92.6189L206.049 92.8009C194.401 92.9829 180.933 89.3429 176.929 80.6069C170.559 66.5929 201.317 63.8629 200.043 79.8789C199.133 89.8889 207.505 88.9789 208.779 82.9729C212.419 67.5029 178.385 66.2289 176.201 48.0289C174.563 34.5609 187.303 26.0069 203.501 25.4609H203.865C208.415 25.4609 213.329 25.8249 217.879 27.0989C220.245 13.0849 240.447 17.4529 253.915 8.35287C259.739 4.53087 264.289 0.89087 268.111 0.162868C271.751 -0.747131 270.295 2.34687 269.749 4.71286C268.111 14.3589 267.019 24.5509 266.655 34.5609C270.659 29.4649 276.301 25.4609 283.399 25.4609C303.055 25.4609 315.431 41.4769 315.431 61.4969V73.5089C315.431 80.2429 316.705 84.2469 323.075 88.9789Z" fill="currentColor"/>
+    <path d="M387.474 44.5709C400.214 47.1189 409.496 56.7649 409.496 68.2309C409.496 81.6989 396.756 92.8009 380.922 92.8009H325.23C323.41 92.8009 322.682 90.4349 324.502 88.9789C330.872 84.2469 331.964 80.2429 331.964 73.5089V19.2729C331.964 12.7209 330.872 8.53487 324.502 3.80286C322.682 2.34687 323.41 0.162868 325.23 0.162868H372.55C386.2 0.162868 399.668 11.0829 399.668 24.5509C399.668 32.7409 394.572 40.0209 387.474 44.5709ZM363.268 87.7049C374.188 87.7049 383.47 78.9689 383.47 68.2309C383.47 57.6749 374.188 48.9389 363.268 48.9389H357.444C357.626 60.5869 358.172 73.6909 359.81 87.7049H363.268ZM375.826 24.5509C375.826 14.3589 369.456 5.98687 359.628 5.25887C358.9 12.1749 357.626 26.0069 357.444 43.8429H358.172C368.91 43.8429 375.826 35.1069 375.826 24.5509Z" fill="currentColor"/>
+    <path d="M490.88 25.4609C510.9 25.4609 527.28 40.5669 527.28 59.1309C527.28 77.6949 510.9 92.8009 490.88 92.8009C481.962 92.8009 473.772 89.7069 467.402 84.7929C461.214 89.7069 453.024 92.8009 444.106 92.8009C423.904 92.8009 407.706 77.6949 407.706 59.1309C407.706 40.5669 423.904 25.4609 444.106 25.4609C453.024 25.4609 461.214 28.5549 467.402 33.4689C473.772 28.5549 481.962 25.4609 490.88 25.4609ZM444.106 87.7049C449.748 87.7049 454.48 74.7829 454.48 59.1309C454.48 43.2969 449.748 30.5569 444.106 30.5569C438.282 30.5569 433.55 43.2969 433.55 59.1309C433.55 74.7829 438.282 87.7049 444.106 87.7049ZM490.88 87.7049C496.704 87.7049 501.436 74.7829 501.436 59.1309C501.436 43.2969 496.704 30.5569 490.88 30.5569C485.056 30.5569 480.506 43.2969 480.506 59.1309C480.506 74.7829 485.056 87.7049 490.88 87.7049Z" fill="currentColor"/>
+    <path d="M614.71 88.2509C617.076 89.7069 617.986 92.8009 614.164 92.8009H575.944C573.942 92.8009 572.486 90.4349 573.942 88.9789C578.674 84.2469 578.128 80.2429 576.49 73.5089C573.942 63.6809 570.302 46.7549 560.838 49.1209C561.202 68.9589 564.114 85.3389 568.118 88.2509C569.938 89.7069 570.12 92.8009 566.116 92.8009H530.08C528.26 92.8009 527.532 90.4349 529.352 88.9789C535.722 84.2469 536.814 80.2429 536.814 73.5089V32.5589C536.814 25.8249 535.722 21.8209 529.352 17.0889C527.532 15.6329 528.26 13.4489 530.08 13.4489C547.552 13.4489 555.56 1.43687 562.294 0.162868C566.116 -0.747131 564.478 2.34687 564.114 4.71286C561.748 17.2709 560.838 31.1029 560.838 43.8429C570.12 41.2949 585.59 18.3629 600.696 27.8269C613.072 35.4709 600.15 50.0309 586.864 41.6589C582.678 38.9289 579.038 40.0209 575.398 42.0229C591.778 46.3909 595.418 76.0569 614.71 88.2509Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#features">Skip to content</a>
+
+<!-- ============================================================ NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="HushBook home">
+      <span class="logo" aria-hidden="true"><span class="h">H</span></span>
+      <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true" focusable="false"><use href="#hb-wordmark"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================ HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero__copy">
+      <span class="badge"><span class="dot"></span>Out now on iOS &amp; Android</span>
+      <h1>Read along with <span class="hl">every word</span> you hear.</h1>
+      <p class="hero__sub">Turn any audiobook into word-level karaoke — so you read and listen at once, transcribed privately on your phone.</p>
+
+      <div class="hero__cta">
+        <div class="storebadges" aria-label="Get HushBook on the App Store and Google Play">
+          <a class="storebadge" href="https://apps.apple.com/" target="_blank" rel="noopener"><img src="assets/badges/app-store-badge.svg" alt="Download HushBook on the App Store" width="135" height="40"></a>
+          <a class="storebadge" href="https://play.google.com/store/apps" target="_blank" rel="noopener"><img src="assets/badges/google-play-badge.svg" alt="Get HushBook on Google Play" width="135" height="40"></a>
+        </div>
+        <a class="hero__alt" href="#how">Free — see how it works <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="hero__qr">
+        <span class="hero__qr-box"><img src="assets/img/qr-hushbook.svg" alt="QR code linking to hushbook.app" width="84" height="84"></span>
+        <small>Scan to download HushBook on your phone.</small>
+      </div>
+    </div>
+
+    <!-- live read-along player (Screen 1) — Apple-Music-style transcription -->
+    <div class="hero__visual reveal">
+      <div class="phone phone--hero">
+        <div class="scr scr--player" id="player-hero" aria-hidden="true">
+          <span class="player__bg" style="background-image:url('assets/img/meditations-cover.png')"></span>
+          <div class="player__top">
+            <span class="player__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg></span>
+            <span class="player__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg></span>
+          </div>
+          <p class="karaoke" id="karaoke"></p>
+          <span class="player__fade"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRUST -->
+<section class="wrap trust-wrap" aria-label="Why HushBook">
+  <div class="trust reveal">
+    <span class="trust__item"><b>100% on-device</b>Transcription runs locally — audio never leaves your phone.</span>
+    <span class="trust__item"><b>Works offline</b>One model download, then no account and no cloud.</span>
+    <span class="trust__item"><b>Thousands of titles</b>Free classics from LibriVox &amp; the Internet Archive.</span>
+    <span class="trust__item"><b>MP3, M4B &amp; more</b>Import your own books in most common audio formats.</span>
+  </div>
+</section>
+
+<!-- ============================================================ FEATURES (Raycast rhythm: a section per app screen) -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">What it does</span>
+      <h2>Everything a plain audiobook player can't do.</h2>
+      <p>All built around synced read-along, on-device privacy, and accessibility you can actually feel.</p>
+    </div>
+
+    <!-- §1 Read-along karaoke -->
+    <div class="feature-row reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Read-along</span>
+        <h2>Word-level karaoke for any audiobook.</h2>
+        <p>Every word lights up in sync with the narration — Apple-Music lyrics, for books. Tap a word to jump straight there; auto-scroll keeps your place and waits the moment you scroll up.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Word-perfect highlighting, generated on your phone</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tap any word to seek; save a line as a quote and share it as a card</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Smart auto-scroll that never loses your place</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--player is-static" aria-hidden="true">
+            <span class="player__bg" style="background-image:url('assets/img/meditations-cover.png')"></span>
+            <div class="player__top">
+              <span class="player__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg></span>
+              <span class="player__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg></span>
+            </div>
+            <div class="player__np">
+              <span class="player__cover"><img src="assets/img/meditations-cover.png" alt=""></span>
+              <span class="player__np-text"><b>Meditations</b><span>Marcus Aurelius</span></span>
+              <span class="player__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            </div>
+            <p class="karaoke">
+              <span class="w read">You</span> <span class="w read">are</span> <span class="w read">listening</span> <span class="w read">to</span>
+              <span class="w read">Meditations</span> <span class="w read">by</span> <span class="w read">Marcus</span> <span class="w read">Aurelius,</span>
+              <span class="w read">narrated</span> <span class="w read">by</span> <span class="w lit">Christopher</span> <span class="w">Hurt.</span>
+              <span class="w">Chapter</span> <span class="w">one,</span> <span class="w">volume</span> <span class="w">one.</span>
+              <span class="w">Marcus</span> <span class="w">Aurelius</span> <span class="w">was</span> <span class="w">Roman</span>
+              <span class="w">emperor</span> <span class="w">from</span> <span class="w">161</span> <span class="w">to</span> <span class="w">180.</span>
+            </p>
+            <span class="player__fade"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §2 Free public-domain library -->
+    <div class="feature-row flip reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Library</span>
+        <h2>Thousands of classics, free.</h2>
+        <p>Browse the public-domain shelves of LibriVox and the Internet Archive. Tap to download and HushBook starts transcribing, so you're reading along in minutes — no subscription, no catalogue paywall.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Curated categories and instant search</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Download once, read along forever, fully offline</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sourced from LibriVox &amp; the Internet Archive</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--home" aria-hidden="true">
+            <div class="home__top">
+              <span class="home__hi">Howdy, John</span>
+              <span class="home__icons">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+              </span>
+            </div>
+            <div class="home__np">
+              <span class="home__np-cov"><img src="assets/img/meditations-cover.png" alt=""></span>
+              <span class="home__np-txt"><b>Meditations</b><span>Marcus Aurelius</span></span>
+              <span class="home__np-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="home__np-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5l8 7-8 7V5zM15 5h2v14h-2z"/></svg></span>
+            </div>
+            <div class="home__feat">
+              <img class="home__feat-art" src="assets/img/lib-featured.jpg" alt="">
+              <span class="home__feat-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg></span>
+              <div class="home__feat-meta">
+                <b>Food in the Ancient World</b>
+                <span class="home__feat-sub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>2h Listen · Andrew Dalby</span>
+              </div>
+            </div>
+            <div class="home__lib-h">From my Library</div>
+            <div class="home__row">
+              <span class="home__spine s1"></span><span class="home__spine s2"></span><span class="home__spine s3"></span><span class="home__spine s4"></span>
+            </div>
+            <nav class="home__nav">
+              <span class="on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v16H6.5A2.5 2.5 0 0 0 4 21.5z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §3 Analytics & neuron score -->
+    <div class="feature-row reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Analytics</span>
+        <h2>Watch your reading brain light up.</h2>
+        <p>The more you read — and the more momentum you hold — the more a map of your brain lights up, region by region. Around it: momentum streaks, habit insights and words-per-book, all computed on your device.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A brain map that brightens as your streak, words and comprehension grow</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Habit insights: when you usually listen, longest session, most active day</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Goals, heatmaps and momentum — private, on your device</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--analytics" aria-hidden="true">
+            <div class="an__top"><b>Analytics</b><span class="an__top-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="av"></span></span></div>
+            <div class="an__streak">
+              <div class="an__streak-h">Momentum<span class="an__share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.7l7.6-4.4M8.2 13.3l7.6 4.4"/></svg></span></div>
+              <div class="an__streak-n"><b id="neuron-num" data-target="128">0</b><span>Day streak</span><span class="an__flame"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2 4 6 5 6 10a6 6 0 0 1-12 0c0-2 1-3.2 2-4 0 2 1 3 2 3 0-3-1-4 0-9z"/></svg></span></div>
+              <div class="an__streak-sub">320 total reading days</div>
+            </div>
+            <div class="an__tabs"><span>Insights</span><span>Platform</span><span class="on">Personal</span></div>
+            <div class="an__card an__habit">
+              <div class="an__card-h">Habit Insights</div>
+              <div class="an__hrow"><span>You usually listen</span><b>9–10 PM</b></div>
+              <div class="an__hrow"><span>Longest session</span><b>22 min</b></div>
+              <div class="an__hrow"><span>Average session</span><b>14 m</b></div>
+              <div class="an__hrow"><span>Most active day</span><b>Thu</b></div>
+            </div>
+            <div class="an__card an__bars">
+              <div class="an__card-h dark">Words per book</div>
+              <div class="an__barwrap"><span style="--h:48%"></span><span style="--h:64%"></span><span style="--h:92%"></span><span style="--h:80%"></span><span style="--h:58%"></span></div>
+            </div>
+            <span class="an__fade"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §4 Accessibility profiles -->
+    <div class="feature-row flip reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Accessibility</span>
+        <h2>An app that fits how you read.</h2>
+        <p>Choose a profile once — Vision, Dyslexia or Comprehension — and fonts, caption sizes, colours and reading overlays adapt across the whole app, from Atkinson Hyperlegible to dyslexia-friendly spacing. Plus five app icons to make it yours.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Vision, Dyslexia &amp; Comprehension profiles</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Atkinson Hyperlegible or OpenDyslexic, big captions, reading overlays</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Five app icons to make HushBook yours</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--a11y" id="screen-a11y" data-profile="vision" aria-hidden="true">
+            <div class="a11y__seg" role="group" aria-label="Reading profile">
+              <button type="button" data-profile="vision" aria-pressed="true">Vision</button>
+              <button type="button" data-profile="dyslexia" aria-pressed="false">Dyslexia</button>
+              <button type="button" data-profile="comprehension" aria-pressed="false">Comprehension</button>
+            </div>
+            <p class="a11y__sample">She is always <em>the</em> woman. I have seldom heard him mention her under any other name.</p>
+            <div class="a11y__meta"><span class="a11y__cap">Caption size</span><span class="a11y__dots"><i></i><i></i><i class="on"></i><i></i></span></div>
+            <div class="a11y__themes" aria-label="App icons">
+              <img src="assets/img/default_preview.png" alt="Default app icon">
+              <img src="assets/img/forest_preview.png" alt="Forest app icon">
+              <img src="assets/img/crimson_preview.png" alt="Crimson app icon">
+              <img src="assets/img/charcoal_preview.png" alt="Charcoal app icon">
+              <img src="assets/img/blush_preview.png" alt="Blush app icon">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §5 Collectible badges & streaks -->
+    <div class="feature-row reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Momentum</span>
+        <h2>Streaks you can hold in your hand.</h2>
+        <p>Keep daily streaks and earn dimensional, collectible badges — first transcript, 7 / 30 / 365 days, words read, marathon listens — with goals that keep you honest and a calendar that shows the chain you don't want to break.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Collectible 3D badges for every milestone</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Streak calendar and honest daily goals</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>First transcript, 7 / 30 / 365 days, 100k words &amp; more</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--badges" aria-hidden="true">
+            <div class="badges-grid">
+              <span class="badge-cell"><img src="assets/img/streak_7_front.webp" alt=""><span>7-day</span></span>
+              <span class="badge-cell"><img src="assets/img/streak_30_front.webp" alt=""><span>30-day</span></span>
+              <span class="badge-cell"><img src="assets/img/books_10_front.webp" alt=""><span>10 books</span></span>
+              <span class="badge-cell"><img src="assets/img/words_100k_front.webp" alt=""><span>100k words</span></span>
+              <span class="badge-cell"><img src="assets/img/hours_50_front.webp" alt=""><span>50 hours</span></span>
+              <span class="badge-cell"><img src="assets/img/special_first_transcript_front.webp" alt=""><span>First transcript</span></span>
+            </div>
+            <div class="streak-cal" aria-hidden="true">
+              <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>
+              <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §6 On-device & import (the privacy wedge) -->
+    <div class="feature-row flip reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Private by design</span>
+        <h2>Transcribed on your phone, never the cloud.</h2>
+        <p>Import an MP3, M4A, M4B, FLAC or OGG and the HushBook Engine transcribes it on-device — multi-chapter M4B files split automatically, nothing uploaded, no account. Once a model is downloaded the whole experience works completely offline.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>MP3, M4A, M4B, FLAC, OGG — multi-chapter M4B split automatically</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>On-device HushBook Engine — no upload, no account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully offline once a model is downloaded</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--import" id="screen-import" aria-hidden="true">
+            <div class="imp__file"><span class="fmt">M4B</span><span class="imp__meta"><span class="lib__ln" style="width:80%"></span><span class="lib__ln s"></span></span></div>
+            <div class="imp__chaps">
+              <div class="imp__chap"><span>1 · A Scandal in Bohemia</span><span>32:14</span></div>
+              <div class="imp__chap"><span>2 · The Red-Headed League</span><span>41:08</span></div>
+              <div class="imp__chap"><span>3 · A Case of Identity</span><span>28:55</span></div>
+            </div>
+            <div class="imp__prog"><span class="imp__prog-lab">Transcribing on this phone…</span><span class="imp__bar"><i id="imp-bar"></i></span></div>
+            <div class="imp__safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Audio never leaves this phone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §7 Character graph -->
+    <div class="feature-row reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Characters</span>
+        <h2>Map the cast as you read.</h2>
+        <p>Lose track of who's who in a sprawling novel? Build a living map of every character and how they connect — drag them around, draw the relationships, jot a note, and keep the whole web of a book at your fingertips.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A free-floating character graph for every book</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Drag characters, draw relationships, add your own notes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Never lose track of a big cast again</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone">
+          <div class="scr scr--chars" aria-hidden="true">
+            <div class="chars__title">A Scandal in Bohemia · Characters</div>
+            <div class="chars__canvas">
+              <svg class="chars__edges" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line x1="50" y1="18" x2="19" y2="45"/>
+                <line x1="50" y1="18" x2="80" y2="32"/>
+                <line x1="50" y1="18" x2="71" y2="64"/>
+                <line x1="50" y1="18" x2="34" y2="77"/>
+              </svg>
+              <span class="chars__lbl" style="left:34%;top:31%">ally</span>
+              <span class="chars__lbl" style="left:66%;top:24%">brother</span>
+              <span class="chars__lbl" style="left:61%;top:42%">rival</span>
+              <span class="chars__lbl" style="left:41%;top:49%">admires</span>
+              <span class="chars__node" style="left:50%;top:18%">SH<small>Holmes</small></span>
+              <span class="chars__node sub" style="left:19%;top:45%">JW<small>Watson</small></span>
+              <span class="chars__node sub" style="left:80%;top:32%">MH<small>Mycroft</small></span>
+              <span class="chars__node sub" style="left:71%;top:64%">JM<small>Moriarty</small></span>
+              <span class="chars__node sub" style="left:34%;top:77%">IA<small>Adler</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- §8 Player -->
+    <div class="feature-row flip reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Player</span>
+        <h2>A player built for reading, not just hearing.</h2>
+        <p>Three views — cover, karaoke lyrics, and your up-next queue. Skip thirty seconds, nudge the speed, push the volume to 2×, and keep listening with full lock-screen controls when the screen goes dark.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cover, lyrics and queue — switch with a tap</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>30-second skips, variable speed, volume up to 2×</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Background playback with lock-screen controls</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone"><div class="scr scr--shot" aria-hidden="true"><img src="assets/img/default_preview.png" alt=""><span>Screenshot coming soon</span></div></div>
+      </div>
+    </div>
+
+    <!-- §9 Comprehension & trends -->
+    <div class="feature-row reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Insights, deeper</span>
+        <h2>Know what's actually sinking in.</h2>
+        <p>Drop a comprehension checkpoint as you read and watch your understanding chart across the whole book. See a heatmap of when you read, an attention curve for each title, a genre radar, and a daily-words trend line.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Comprehension checkpoints, charted across every book</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Session heatmaps and a per-book attention curve</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Genre radar and a daily-words trend</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone"><div class="scr scr--shot" aria-hidden="true"><img src="assets/img/default_preview.png" alt=""><span>Screenshot coming soon</span></div></div>
+      </div>
+    </div>
+
+    <!-- §10 Smart notifications -->
+    <div class="feature-row flip reveal">
+      <div class="feature-row__copy">
+        <span class="eyebrow">Gentle nudges</span>
+        <h2>Reminders that know when to stay quiet.</h2>
+        <p>A nudge when your streak is about to break, a reminder when a fresh import is still waiting — never at 2am. Quiet hours, frequency caps and adaptive timing keep it gentle, and every reminder is scheduled on your phone.</p>
+        <ul class="feature-row__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Streak-at-risk and unplayed-import reminders</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Quiet hours and frequency caps — never spammy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Scheduled on-device — no tracking, no server</li>
+        </ul>
+      </div>
+      <div class="feature-row__media">
+        <div class="phone"><div class="scr scr--shot" aria-hidden="true"><img src="assets/img/default_preview.png" alt=""><span>Screenshot coming soon</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MOMENT BAND -->
+<section class="band" id="how">
+  <div class="wrap reveal">
+    <h2><span class="accent">"Apple-Music lyrics, for books."</span></h2>
+    <p>That moving text isn't a gimmick — it's the whole product. HushBook transcribes any audiobook on your phone and lines each word up to the voice, so you read while you listen, tap a word to jump there, and never lose your place — even offline.</p>
+  </div>
+</section>
+
+<!-- ============================================================ AVAILABILITY -->
+<section class="sec avail">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">On every phone</span>
+      <h2>On iOS &amp; Android.</h2>
+      <p>HushBook is live on both stores — free to download, and ready to read along wherever you already listen.</p>
+    </div>
+    <div class="avail__row reveal">
+      <div class="phone phone--sm">
+        <div class="scr scr--player is-static" aria-hidden="true">
+          <span class="player__bg" style="background-image:url('assets/img/meditations-cover.png')"></span>
+          <div class="player__np">
+            <span class="player__cover"><img src="assets/img/meditations-cover.png" alt=""></span>
+            <span class="player__np-text"><b>Meditations</b><span>Marcus Aurelius</span></span>
+          </div>
+          <p class="karaoke sm"><span class="w read">You</span> <span class="w read">are</span> <span class="w lit">listening</span> <span class="w">to</span> <span class="w">Meditations</span> <span class="w">by</span> <span class="w">Marcus</span> <span class="w">Aurelius.</span></p>
+          <span class="player__fade"></span>
+        </div>
+      </div>
+      <div class="avail__mid">
+        <div class="storebadges" aria-label="Get HushBook on the App Store and Google Play">
+          <a class="storebadge" href="https://apps.apple.com/" target="_blank" rel="noopener"><img src="assets/badges/app-store-badge.svg" alt="Download HushBook on the App Store" width="135" height="40"></a>
+          <a class="storebadge" href="https://play.google.com/store/apps" target="_blank" rel="noopener"><img src="assets/badges/google-play-badge.svg" alt="Get HushBook on Google Play" width="135" height="40"></a>
+        </div>
+        <a class="avail__alt hero__alt" href="#features">See everything it does <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="phone phone--sm">
+        <div class="scr scr--stats" aria-hidden="true">
+          <div class="stats__ring sm"><b>82</b></div>
+          <div class="stats__cap">Neuron score</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ QR -->
+<section class="sec qr-sec" style="padding-top:0">
+  <div class="wrap qr reveal">
+    <span class="eyebrow">Take it with you</span>
+    <div class="qr__card"><img src="assets/img/qr-hushbook.svg" alt="QR code linking to hushbook.app"></div>
+    <p class="qr__cap">Scan to open <b>hushbook.app</b> and download HushBook on your phone.</p>
+  </div>
+</section>
+
+<!-- ============================================================ FAQ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Everything you might be wondering.</h2>
+      <p>Still curious? Email <a href="mailto:hello@hushbook.app">hello@hushbook.app</a> and we'll answer.</p>
+    </div>
+
+    <div class="faq reveal">
+      <details open>
+        <summary>Where can I get HushBook?<span class="x" aria-hidden="true">+</span></summary>
+        <p>HushBook is live now — free on the App Store and Google Play, on iPhone and Android. It's an indie project that launched on both platforms together.</p>
+      </details>
+      <details>
+        <summary>Does my audio ever leave my phone?<span class="x" aria-hidden="true">+</span></summary>
+        <p>No. Transcription runs entirely on-device with the HushBook Engine — there's no cloud upload, no account, and no sign-in. Your audiobooks and your listening data stay on your phone. Once a model is downloaded, the whole thing works fully offline.</p>
+      </details>
+      <details>
+        <summary>What audio files can I import?<span class="x" aria-hidden="true">+</span></summary>
+        <p>MP3, M4B, M4A and most common audio formats, one file per import. M4B chapter markers are detected automatically, and you can add more chapters to a book later. HushBook reads the duration and metadata, then starts transcribing in the background.</p>
+      </details>
+      <details>
+        <summary>Where do the synced lyrics come from?<span class="x" aria-hidden="true">+</span></summary>
+        <p>HushBook generates them itself. There's no lyrics database — the HushBook Engine runs on your imported audio to produce word-level timings, then highlights each word as the narrator speaks it. The first transcription of a long book takes a while; after that it's instant every time you open it.</p>
+      </details>
+      <details>
+        <summary>How much does it cost?<span class="x" aria-hidden="true">+</span></summary>
+        <p>The core read-along experience is free, and so is the built-in library of public-domain LibriVox and Internet Archive audiobooks. Some advanced analytics are planned as an optional upgrade, but reading along with your own books costs nothing.</p>
+      </details>
+      <details>
+        <summary>Who is it built for?<span class="x" aria-hidden="true">+</span></summary>
+        <p>Anyone who reads with their ears — and especially people served by our Vision, Dyslexia and Comprehension accessibility profiles. Pick one once and fonts, caption sizes and colours adapt across the entire app: Atkinson Hyperlegible and large captions for low vision, dyslexia-friendly spacing with reading overlays, and focused comprehension tools for everyone else.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FINALE -->
+<section class="finale" id="finale">
+  <div class="wrap">
+    <p class="finale__mark reveal">HushBook</p>
+    <h2 class="reveal">Read along with every word you hear.</h2>
+    <p class="reveal">Download HushBook free on the App Store and Google Play — and read along with your very next chapter.</p>
+
+    <div class="storebadges finale__badges reveal" aria-label="Get HushBook on the App Store and Google Play">
+      <a class="storebadge" href="https://apps.apple.com/" target="_blank" rel="noopener"><img src="assets/badges/app-store-badge.svg" alt="Download HushBook on the App Store" width="135" height="40"></a>
+      <a class="storebadge" href="https://play.google.com/store/apps" target="_blank" rel="noopener"><img src="assets/badges/google-play-badge.svg" alt="Get HushBook on Google Play" width="135" height="40"></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================ FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="HushBook home">
+          <span class="logo" aria-hidden="true"><span class="h">H</span></span>
+          <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true" focusable="false"><use href="#hb-wordmark"/></svg>
+        </a>
+        <p>An audiobook player that lets you read along — word-level karaoke, transcribed privately on your phone.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Accessibility</a>
+        <a href="#faq">FAQ</a>
+        <a href="#finale">Get the app</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="mailto:hello@hushbook.app">Contact</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms-conditions">Terms</a>
+        <a href="/refund-policy">Refunds</a>
+        <a href="/licenses">Licenses</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <small>© 2026 HushBook</small>
+      <div class="foot-social">
+        <a href="https://x.com/hushbook.app" target="_blank" rel="noopener" aria-label="HushBook on X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.7h1.8L7.4 4.4H5.5l12.2 15.8Z"/></svg></a>
+        <a href="https://www.instagram.com/hushbook.app/" target="_blank" rel="noopener" aria-label="HushBook on Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="mailto:hello@hushbook.app" aria-label="Email HushBook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ DOCKBAR -->
+<div class="dockbar">
+  <div><svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true" focusable="false"><use href="#hb-wordmark"/></svg><small>Read while you listen</small></div>
+  <a class="btn btn-primary" href="#finale">Get the app</a>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

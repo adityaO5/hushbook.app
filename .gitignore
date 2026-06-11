@@ -4,6 +4,9 @@
 qc-*.png
 *.log
 
+# Design source exports (keep local — web copies live in assets/img/mockups)
+Originals/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
