@@ -73,8 +73,6 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(201,163,106,.07);color:var(--gold-hi);font-size:13px;font-weight:600;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:26px}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
 .hero h1{margin:0 auto 20px;max-width:13ch}
-.hero h1 .kw{transition:color .35s ease,text-shadow .35s ease;color:var(--ink)}
-.hero h1 .kw.lit{color:var(--gold-hi);text-shadow:0 0 34px rgba(201,163,106,.45)}
 .hero .sub{margin:0 auto 34px;max-width:560px}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .25s,box-shadow .25s}
@@ -248,8 +246,8 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* progress + gl */
 .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-hi));z-index:60}
-#hero-gl{position:absolute;inset:0;z-index:0;pointer-events:none}
-#hero-gl canvas{width:100%;height:100%;display:block}
+#stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
+#stage-gl canvas{width:100%;height:100%;display:block}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
@@ -324,7 +322,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div id="hero-gl" aria-hidden="true"></div>
+  <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal"><span class="dot"></span>Out now on iOS &amp; Android</span>
     <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Transcribe</span> <span class="kw">Any</span> <span class="kw">Audiobook.</span></h1>
@@ -693,6 +691,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 // scroll reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -705,16 +705,6 @@ document.querySelector('.nav-toggle').addEventListener('click',()=>{
   document.querySelector('.nav-toggle').setAttribute('aria-expanded',open);
 });
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-
-// hero headline karaoke
-const kws=document.querySelectorAll('#hero-h1 .kw');
-let ki=0;
-function lightHero(){
-  kws.forEach(k=>k.classList.remove('lit'));
-  kws[ki].classList.add('lit');
-  ki=(ki+1)%kws.length;
-}
-lightHero();setInterval(lightHero,900);
 
 // karaoke demo line
 const QUOTE="You have power over your mind — not outside events. Realize this, and you will find strength.";
@@ -768,58 +758,252 @@ if(fine&&!calm)document.querySelectorAll('.stores a,.nav-cta').forEach(el=>{
   el.addEventListener('pointerleave',()=>el.style.transform='');
 });
 
-// three.js — a galaxy of knowledge in the hero
+// three.js + GSAP — The Transcription Field
+// An audiobook's waveform streams in from the left, crosses the playhead beam,
+// and crystallizes into transcript words on the right. The product, as a shader.
 (function(){
-  if(!window.THREE||calm)return;
-  const host=document.getElementById('hero-gl');if(!host)return;
+  if(!window.THREE||!window.gsap||calm)return;
+  const host=document.getElementById('stage-gl');if(!host)return;
   try{
-    const renderer=new THREE.WebGLRenderer({alpha:true,antialias:false,powerPreference:'low-power'});
-    renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+    gsap.registerPlugin(ScrollTrigger);
+
+    const renderer=new THREE.WebGLRenderer({alpha:true,antialias:false,powerPreference:'high-performance'});
+    const DPR=Math.min(devicePixelRatio||1,fine?1.75:1.5);
+    renderer.setPixelRatio(DPR);
+    renderer.setClearColor(0x000000,0);
     host.appendChild(renderer.domElement);
+
     const scene=new THREE.Scene();
-    const cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=14;
-    // soft round star sprite
-    const cv=document.createElement('canvas');cv.width=cv.height=64;
-    const g=cv.getContext('2d');
-    const grd=g.createRadialGradient(32,32,0,32,32,32);
-    grd.addColorStop(0,'rgba(255,255,255,1)');
-    grd.addColorStop(.35,'rgba(255,255,255,.85)');
-    grd.addColorStop(1,'rgba(255,255,255,0)');
-    g.fillStyle=grd;g.fillRect(0,0,64,64);
-    const star=new THREE.CanvasTexture(cv);
-    const scale=fine?1:.5;
-    function layer(n,size,color,opacity){
-      const pos=new Float32Array(n*3),seed=new Float32Array(n);
-      for(let i=0;i<n;i++){pos[i*3]=(Math.random()-.5)*38;pos[i*3+1]=(Math.random()-.5)*22;pos[i*3+2]=(Math.random()-.5)*18;seed[i]=Math.random()*Math.PI*2}
-      const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-      const mat=new THREE.PointsMaterial({color,size,map:star,transparent:true,opacity,sizeAttenuation:true,depthWrite:false,blending:THREE.AdditiveBlending});
-      const pts=new THREE.Points(geo,mat);scene.add(pts);
-      return{geo,mat,pts,seed,n,base:opacity,tw:.12+Math.random()*.18,ph:Math.random()*6.28};
+    const cam=new THREE.PerspectiveCamera(50,1,.1,100);cam.position.z=16;
+    let halfH=Math.tan(THREE.MathUtils.degToRad(25))*16,halfW=halfH;
+
+    const N=fine?15000:6500;
+    const u={
+      uTime:{value:0},uAmp:{value:1},
+      uPlayheadX:{value:0},uHalfW:{value:12},uCenterY:{value:-.6},
+      uTargetMix:{value:0},uSweepX:{value:-999},
+      uPR:{value:DPR},uSize:{value:fine?2.2:2.7},
+      uMouse:{value:new THREE.Vector2(-999,-999)},uMouseForce:{value:fine?.34:0},
+      uGold:{value:new THREE.Color('#C9A36A')},
+      uGoldHi:{value:new THREE.Color('#E8C893')},
+      uInk:{value:new THREE.Color('#F5EFE6')},
+      uGlobalAlpha:{value:0}
+    };
+
+    // each particle lives one loop: born off-screen left, rides the waveform,
+    // crosses the playhead, then crystallizes into a word or drifts away
+    const geo=new THREE.BufferGeometry();
+    const rand=new Float32Array(N*4),has=new Float32Array(N),pick=new Float32Array(N);
+    for(let i=0;i<N;i++){
+      rand[i*4]=Math.random();rand[i*4+1]=Math.random();rand[i*4+2]=Math.random();rand[i*4+3]=Math.random();
+      has[i]=i<N*.58?1:0;pick[i]=Math.random();
     }
-    const layers=[
-      layer(Math.round(430*scale),.05,0xC9A36A,.5),   // fine golden dust
-      layer(Math.round(170*scale),.1,0xE8C893,.7),    // mid stars
-      layer(Math.round(48*scale),.18,0xF5EFE6,.9)     // bright near-white stars
-    ];
-    let mx=0,my=0;
-    if(fine)addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
-    function size(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
-    size();addEventListener('resize',size);
-    let visible=true;new IntersectionObserver(e=>visible=e[0].isIntersecting).observe(host);
+    geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aRand',new THREE.BufferAttribute(rand,4));
+    geo.setAttribute('aTargetA',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aTargetB',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aHasTarget',new THREE.BufferAttribute(has,1));
+
+    const mat=new THREE.ShaderMaterial({
+      uniforms:u,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+      vertexShader:`
+        uniform float uTime,uAmp,uPlayheadX,uHalfW,uCenterY,uTargetMix,uSweepX,uPR,uSize,uMouseForce;
+        uniform vec2 uMouse;
+        attribute vec4 aRand;
+        attribute vec3 aTargetA,aTargetB;
+        attribute float aHasTarget;
+        varying float vLit,vMorph,vAlpha,vTw;
+        float voice(float t){
+          float v=sin(t*1.31)*sin(t*.43+1.7)*sin(t*2.87+.53);
+          return clamp(.16+1.05*abs(v)+.1*sin(t*7.1),0.,1.15);
+        }
+        void main(){
+          float speed=.030+.05*aRand.y;
+          float p=fract(aRand.x+uTime*speed);
+          float pW=mix(.62,.40,aHasTarget); // word particles cross over sooner and dwell longer
+          float xStart=-uHalfW*1.12;
+          float wx=mix(xStart,uPlayheadX,min(p,pW)/pW);
+          float env=voice(uTime*1.35-(wx-xStart)*.42);
+          // audio waveform: symmetric envelope around the centerline, multi-frequency carrier
+          float carrier=sin(wx*2.3-uTime*3.1)*.5+sin(wx*4.9-uTime*4.7)*.3+sin(wx*9.1-uTime*6.3)*.2;
+          float A=(.16+.84*abs(carrier))*env*uAmp*1.7;
+          float th=aRand.z*2.-1.;
+          th=sign(th)*pow(abs(th),1.5); // cluster particles toward the centerline
+          float meander=sin(wx*.5-uTime*1.1)*.25*env*uAmp;
+          vec3 wavePos=vec3(wx,uCenterY+meander+th*A,(aRand.w-.5)*1.2);
+          float centerGlow=1.-abs(th)*.6;
+
+          vec3 target=mix(aTargetA,aTargetB,uTargetMix);
+          target.x+=sin(uTime*1.7+aRand.x*40.)*.006;
+          target.y+=cos(uTime*2.3+aRand.y*40.)*.006;
+
+          float q=clamp((p-pW)/(1.-pW),0.,1.);
+          float m=smoothstep(0.,.30,q);m=m*m*(3.-2.*m);
+          vec3 drift=vec3(uPlayheadX+q*(uHalfW*1.08-uPlayheadX),
+                          uCenterY+meander+th*A*.4+q*1.7*(aRand.y-.35),
+                          (aRand.w-.5)*1.2);
+          vec3 dest=mix(drift,target,aHasTarget);
+          vec3 pos=mix(wavePos,dest,m);
+          float arc=sin(m*3.14159);
+          pos.y+=arc*.7*(aRand.z-.5)*aHasTarget;
+          pos.x+=arc*.3*(aRand.w-.5);
+
+          vec2 d=pos.xy-uMouse;
+          pos.xy+=(d/(dot(d,d)+.35))*uMouseForce*(1.-.45*m*aHasTarget);
+
+          float fadeIn=smoothstep(0.,.05,p);
+          float fadeOut=mix(1.-smoothstep(.78,.97,p),1.-smoothstep(.93,1.,p),aHasTarget);
+          vAlpha=fadeIn*fadeOut*mix((.25+.75*env)*centerGlow,1.,m);
+          vMorph=m*aHasTarget;
+          vLit=aHasTarget*m*step(target.x,uSweepX);
+          vTw=aRand.w;
+
+          vec4 mv=modelViewMatrix*vec4(pos,1.);
+          gl_Position=projectionMatrix*mv;
+          gl_PointSize=max(uSize*(.55+.9*aRand.w)*(1.+vLit*.9+vMorph*.45)*uPR*(14./-mv.z),1.);
+        }`,
+      fragmentShader:`
+        uniform vec3 uGold,uGoldHi,uInk;
+        uniform float uGlobalAlpha,uTime;
+        varying float vLit,vMorph,vAlpha,vTw;
+        void main(){
+          float r=length(gl_PointCoord-.5);
+          float disc=smoothstep(.5,.06,r);
+          vec3 col=mix(uGold,uInk,vMorph*.9);
+          col=mix(col,uGoldHi,vLit);
+          float tw=1.+sin(uTime*(1.5+vTw*3.)+vTw*40.)*.25*(1.-vMorph*.7);
+          float body=mix(.5+.5*vTw,.85+.15*vTw,vMorph);
+          float a=disc*vAlpha*uGlobalAlpha*body*(1.+vLit*.7)*tw;
+          if(a<.004)discard;
+          gl_FragColor=vec4(col,a);
+        }`
+    });
+    const pts=new THREE.Points(geo,mat);pts.frustumCulled=false;scene.add(pts);
+
+    // the playhead — a vertical beam where audio becomes text
+    const beam=new THREE.Mesh(
+      new THREE.PlaneGeometry(1,1),
+      new THREE.ShaderMaterial({
+        uniforms:{uTime:u.uTime,uGlobalAlpha:u.uGlobalAlpha,uColor:u.uGoldHi},
+        transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+        vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`
+          uniform float uTime,uGlobalAlpha;uniform vec3 uColor;varying vec2 vUv;
+          void main(){
+            float x=abs(vUv.x-.5)*2.;
+            float fall=pow(max(0.,1.-x),3.);
+            float core=pow(max(0.,1.-x),16.);
+            float cap=pow(sin(vUv.y*3.14159),.6);
+            float pulse=.7+.3*sin(uTime*2.3);
+            gl_FragColor=vec4(uColor,(fall*.08+core*.3)*cap*pulse*uGlobalAlpha);
+          }`
+      })
+    );
+    scene.add(beam);
+
+    // phrases are rasterized to a 2d canvas, then sampled into particle targets
+    const tcv=document.createElement('canvas'),tg=tcv.getContext('2d',{willReadFrequently:true});
+    function samplePhrase(text){
+      const cw=1400,ch=380;tcv.width=cw;tcv.height=ch;
+      let fs=210;
+      tg.font='italic 700 '+fs+'px Fraunces,Georgia,serif';
+      const w=tg.measureText(text).width;
+      if(w>cw*.94){fs=Math.floor(fs*cw*.94/w);tg.font='italic 700 '+fs+'px Fraunces,Georgia,serif';}
+      tg.fillStyle='#fff';tg.textAlign='center';tg.textBaseline='middle';
+      tg.fillText(text,cw/2,ch/2);
+      const d=tg.getImageData(0,0,cw,ch).data,P=[];
+      for(let y=0;y<ch;y+=2)for(let x=0;x<cw;x+=2)
+        if(d[(y*cw+x)*4+3]>120)P.push(x,y);
+      return{P,cw,ch};
+    }
+    function zone(){
+      const l=u.uPlayheadX.value+1.2,r=halfW*.95;
+      return{cx:(l+r)/2,cy:u.uCenterY.value+.3,w:Math.max(r-l,.5),h:Math.min(halfH*.5,3.4)};
+    }
+    let bounds={l:0,r:0},shownAttr=null;
+    function fillAttr(attr,text){
+      const s=samplePhrase(text);if(!s.P.length)return bounds;
+      const z=zone(),sc=Math.min(z.w*.96/s.cw,z.h/s.ch),a=attr.array,L=s.P.length/2;
+      let mn=1e9,mx=-1e9;
+      for(let i=0;i<N;i++){
+        if(!has[i])continue;
+        const j=((pick[i]*L)|0)*2;
+        const x=z.cx+(s.P[j]-s.cw/2)*sc+(rand[i*4+2]-.5)*.025;
+        const y=z.cy-(s.P[j+1]-s.ch/2)*sc+(rand[i*4+3]-.5)*.025;
+        a[i*3]=x;a[i*3+1]=y;a[i*3+2]=(rand[i*4+1]-.5)*.24;
+        if(x<mn)mn=x;if(x>mx)mx=x;
+      }
+      attr.needsUpdate=true;
+      return{l:mn,r:mx};
+    }
+
+    // phrase engine: double-buffered targets, GSAP crossfade, then karaoke sweep
+    const PHRASES=['Once upon a time','I want to be terrific','To be, or not to be','All for one,','one for all.','Memories are everything.','Happily ever after.'];
+    let idx=0,activeA=true,currentText=null,cycleCall=null,sweepT=null,morphT=null;
+    function show(text){
+      if(text===currentText)return;currentText=text;
+      cycleCall&&cycleCall.kill();sweepT&&sweepT.kill();morphT&&morphT.kill();
+      const attr=activeA?geo.attributes.aTargetB:geo.attributes.aTargetA;
+      shownAttr=attr;
+      const b=fillAttr(attr,text);
+      gsap.set(u.uSweepX,{value:-999});
+      morphT=gsap.to(u.uTargetMix,{value:activeA?1:0,duration:1.8,ease:'power3.inOut',onComplete:()=>{
+        activeA=!activeA;bounds=b;
+        sweepT=gsap.fromTo(u.uSweepX,{value:b.l-.4},
+          {value:b.r+.7,delay:.3,duration:Math.max(1.1,(b.r-b.l)*.22),ease:'power1.inOut'});
+        cycleCall=gsap.delayedCall(7.5,()=>{idx=(idx+1)%PHRASES.length;show(PHRASES[idx]);});
+      }});
+    }
+    show(PHRASES[0]);
+    if(document.fonts&&document.fonts.load)
+      document.fonts.load('italic 600 100px Fraunces').then(()=>{ // resample once the webfont is in
+        if(shownAttr&&currentText)bounds=fillAttr(shownAttr,currentText);
+      }).catch(()=>{});
+
+    function size(){
+      const w=host.clientWidth||innerWidth,h=host.clientHeight||innerHeight;
+      renderer.setSize(w,h,false);
+      cam.aspect=w/h;cam.updateProjectionMatrix();
+      halfH=Math.tan(THREE.MathUtils.degToRad(25))*16;halfW=halfH*cam.aspect;
+      u.uHalfW.value=halfW;
+      u.uPlayheadX.value=0;
+      beam.position.set(u.uPlayheadX.value,0,0);
+      beam.scale.set(1.2,halfH*2.2,1);
+      if(shownAttr&&currentText)bounds=fillAttr(shownAttr,currentText);
+    }
+    size();
+    let rT;addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(size,150)});
+
+    // pointer: the field leans away from the cursor; click sends a shockwave
+    const mTgt=new THREE.Vector2(-999,-999);
+    if(fine){
+      addEventListener('pointermove',e=>{
+        const r=host.getBoundingClientRect();
+        mTgt.set(((e.clientX-r.left)/r.width*2-1)*halfW,-((e.clientY-r.top)/r.height*2-1)*halfH);
+      },{passive:true});
+      addEventListener('pointerdown',()=>{
+        gsap.fromTo(u.uMouseForce,{value:3.4},{value:.34,duration:1.5,ease:'expo.out',overwrite:'auto'});
+      });
+    }
+
+    // intro fade-in × scroll fade-out, composed in the render loop
+    const fade={intro:0,scroll:1};
+    gsap.to(fade,{intro:1,duration:1.8,ease:'power2.out',delay:.2});
+    gsap.fromTo(fade,{scroll:1},{scroll:0,ease:'none',immediateRender:false,
+      scrollTrigger:{trigger:'.hero',start:'40% top',end:'bottom 25%',scrub:.8}});
+    gsap.from(cam.position,{z:21,duration:2.6,ease:'power3.out'});
+
+    // render only while the hero is on screen
+    let vis=true;new IntersectionObserver(es=>{vis=es[0].isIntersecting}).observe(host);
+
     const clock=new THREE.Clock();
     (function loop(){
-      requestAnimationFrame(loop);if(!visible)return;
-      const t=clock.getElapsedTime();
-      layers.forEach((L,li)=>{
-        const p=L.geo.attributes.position.array;
-        for(let i=0;i<L.n;i++){p[i*3+1]+=Math.sin(t*.5+L.seed[i])*.0014;p[i*3]+=Math.cos(t*.35+L.seed[i])*.001}
-        L.geo.attributes.position.needsUpdate=true;
-        L.pts.rotation.y+=.0003+li*.0002;          // deeper layers drift faster — parallax
-        L.mat.opacity=L.base+Math.sin(t*L.tw*6+L.ph)*L.base*.28; // twinkle
-      });
-      cam.position.x+=((mx*1.8)-cam.position.x)*.045;
-      cam.position.y+=((-my*1.1)-cam.position.y)*.045;
-      cam.lookAt(0,0,0);
+      requestAnimationFrame(loop);
+      const dt=Math.min(clock.getDelta(),.05);
+      if(!vis)return;
+      u.uTime.value+=dt;
+      u.uGlobalAlpha.value=fade.intro*fade.scroll;
+      u.uMouse.value.lerp(mTgt,.09);
       renderer.render(scene,cam);
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
