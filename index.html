@@ -173,7 +173,10 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .split-media img{width:clamp(240px,28vw,330px);border-radius:clamp(26px,3.4vw,44px);filter:drop-shadow(0 36px 64px rgba(28,21,13,.28))}
 .split h2{margin-bottom:18px}
 .split .sub{margin-bottom:30px}
-@media (max-width:880px){.split{grid-template-columns:1fr}.split.rev>.split-media{order:0}}
+@media (max-width:880px){.split{grid-template-columns:1fr}.split.rev>.split-media{order:0}
+.split-media.layer{margin-top:8px}
+.split-media.layer .front{width:min(66vw,290px)}
+.split-media.layer .back{width:min(46vw,200px);transform:translate(-42%,-50%) rotate(-6deg)}}
 .profiles{display:grid;gap:14px}
 .profile{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid rgba(28,21,13,.08);border-radius:18px;padding:18px 20px;box-shadow:0 10px 26px rgba(28,21,13,.06)}
 .profile .pic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:rgba(111,56,37,.08)}
@@ -184,6 +187,10 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .duo{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,3vw,36px)}
 .duo img{width:clamp(190px,24vw,290px);border-radius:clamp(22px,3vw,40px);filter:drop-shadow(0 34px 60px rgba(10,8,5,.4))}
 .duo img:last-child{width:clamp(165px,21vw,250px);transform:translateY(26px)}
+.split-media.layer{position:relative;width:fit-content;margin:0 auto}
+.split-media.layer img{border-radius:clamp(22px,3vw,40px)}
+.split-media.layer .front{position:relative;z-index:2;display:block;width:clamp(220px,26vw,300px);filter:drop-shadow(0 36px 64px rgba(28,21,13,.32))}
+.split-media.layer .back{position:absolute;z-index:1;left:0;top:50%;width:clamp(170px,21vw,238px);transform:translate(-52%,-52%) rotate(-6deg);filter:drop-shadow(0 30px 54px rgba(28,21,13,.26))}
 
 /* reading life */
 .life-head h2{background:linear-gradient(92deg,var(--gold-hi),#E8927C 55%,#C9A36A);-webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
@@ -586,8 +593,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="sec" style="padding-top:30px">
   <div class="wrap">
     <div class="split rev">
-      <div class="split-media reveal">
-        <img src="assets/img/mockups/character-graph.webp" alt="Character relationship graph with draggable nodes" loading="lazy">
+      <div class="split-media layer reveal">
+        <img class="back" src="assets/img/mockups/character-slide.webp?v=2" alt="Character detail sheet — role, first seen, attributes and relationships" loading="lazy">
+        <img class="front" src="assets/img/mockups/character-graph.webp" alt="Character relationship graph with draggable nodes" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Reading companions</span>
