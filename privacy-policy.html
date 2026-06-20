@@ -261,6 +261,7 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
     <a href="#retention">Retention</a>
     <a href="#rights">Your rights</a>
     <a href="#delete">Deleting your data</a>
+    <a href="#security">Security</a>
     <a href="#children">Children</a>
     <a href="#changes">Changes</a>
     <a href="#contact">Grievance &amp; contact</a>
@@ -289,10 +290,10 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
     <li>crash stack traces and error logs (technical traces showing where code failed);</li>
     <li>device and app information (device model, operating system version, App version, language/locale);</li>
     <li>performance metrics (e.g., how long a screen took to load, app responsiveness);</li>
-    <li>approximate network and technical metadata that may be included by the SDK/service (such as IP address and device identifiers), depending on configuration.</li>
+    <li>a randomly generated, per-installation identifier used only to group related reports (this is not your device's advertising ID or a stable hardware identifier).</li>
   </ul>
-  <p>Diagnostics are intended to be technical app-health data and are <strong>not</strong> intended to include your audio, the content of your transcripts, your saved quotes, or the titles you are listening to or reading (except where such information is inadvertently included in an error message you send us).</p>
-  <p>Diagnostic data is transmitted over an encrypted connection (encrypted in transit) to our diagnostics provider.</p>
+  <p>The App is configured so that diagnostics do <strong>not</strong> attach your IP address by default, and so that file paths and book titles are stripped from reports before they are sent. Diagnostics do <strong>not</strong> include your audio, the content of your transcripts, your saved quotes, screenshots, or the titles you are listening to or reading (except where such information is inadvertently included in an error message you choose to send us).</p>
+  <p>Diagnostic data is transmitted over an encrypted connection (encrypted in transit). <strong>Sentry</strong> acts as our data processor for diagnostics under a data-processing agreement and processes this data on servers in the European Union. See Sentry's privacy policy at <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">sentry.io/privacy</a>.</p>
 
   <p><strong>C. Information you provide when contacting us.</strong> If you contact us at <a href="mailto:hello@hushbook.app">hello@hushbook.app</a>, we collect:</p>
   <ul>
@@ -302,6 +303,8 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   </ul>
 
   <p><strong>D. Website information.</strong> Our Website is a marketing site and we do not intentionally run analytics or tracking scripts. However, our hosting provider/CDN may automatically process basic server logs (e.g., IP address, user-agent, timestamp, and requested URL) for security, abuse prevention, and reliable delivery of the site.</p>
+
+  <p><strong>E. App permissions.</strong> The App requests only the permissions needed for its features: access to audio files you choose to import (to play and transcribe your own files on your device); camera or photo access (only when you set a profile picture or create a shareable quote image); and notifications (to show playback and download/transcription progress). The App does <strong>not</strong> request microphone or location access.</p>
 
   <h2 id="use">2. How we use information</h2>
   <p>We use information only for the purposes below:</p>
@@ -329,13 +332,14 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <h2 id="sharing">4. Sharing and third parties</h2>
   <p>We may share limited information with the following categories of service providers solely to run and support HushBook:</p>
   <ul>
-    <li><strong>Crash/performance provider:</strong> Sentry (diagnostics described above).</li>
-    <li><strong>Platform providers:</strong> Apple App Store / Google Play (they process payments and may process purchase-related information under their own policies).</li>
-    <li><strong>Model hosting/CDN:</strong> speech-recognition models may be downloaded to your device from a model host/CDN when you set up on-device transcription.</li>
+    <li><strong>Crash/performance provider:</strong> Sentry, acting as our processor for diagnostics (described above).</li>
+    <li><strong>Platform providers:</strong> Apple App Store and Google Play. When you make a paid purchase, they act as independent controllers and process payment and purchase-related information under their own policies (<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple</a>, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>). We do not receive your full payment-card details.</li>
+    <li><strong>Subscription management:</strong> RevenueCat processes purchase/receipt data and an anonymous app-user identifier on our behalf to manage your entitlements when you make a paid purchase (<a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat privacy</a>).</li>
+    <li><strong>Model hosting:</strong> speech-recognition models are downloaded to your device from Hugging Face (huggingface.co) when you set up on-device transcription. That host receives standard request information (such as your IP address and the model file requested) under its own policy, and receives no HushBook account or app content.</li>
   </ul>
-  <p>We only engage service providers that are contractually bound to protect this data to a standard equivalent to this policy and to use it solely to provide their service to us.</p>
+  <p>We only engage service providers that are contractually bound to protect this data to a standard equivalent to this policy and to use it solely to provide their service to us. Some providers may process data outside your country, including outside the EEA/UK; where that happens we rely on appropriate safeguards (such as the provider's standard contractual clauses or equivalent transfer mechanism).</p>
 
-  <p><strong>4.1 Public-domain catalogue (LibriVox &amp; Internet Archive).</strong> If you choose to browse, search, view details, stream, or download titles from the App's public-domain catalogue, the App must connect to third-party services such as LibriVox and the Internet Archive (archive.org) to fetch search results, metadata, and files. When the App makes these requests, those third parties will receive certain information as part of standard internet communications, and they will process it under their own privacy policies and terms. HushBook does not control how those third parties use or retain that information.</p>
+  <p><strong>4.1 Public-domain catalogue (LibriVox &amp; Internet Archive).</strong> If you choose to browse, search, view details, stream, or download titles from the App's public-domain catalogue, the App must connect to third-party services such as LibriVox and the Internet Archive (<a href="https://archive.org/about/terms.php" target="_blank" rel="noopener">archive.org</a>) to fetch search results, metadata, and files. These services act as <strong>independent controllers</strong> of any information they receive. When the App makes these requests, those third parties will receive certain information as part of standard internet communications, and they will process it under their own privacy policies and terms. HushBook does not control how those third parties use or retain that information.</p>
   <p><strong>What can be shared with archive.org:</strong></p>
   <ul>
     <li>IP address;</li>
@@ -357,8 +361,8 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <h2 id="retention">5. Data retention</h2>
   <ul>
     <li><strong>On-device App data:</strong> stored on your device until you delete it within the App or uninstall the App.</li>
-    <li><strong>Crash/performance diagnostics:</strong> retained only as long as necessary for debugging and service reliability, and generally for a limited period based on our Sentry settings (typically up to 90 days, unless a longer period is required to investigate recurring issues or comply with legal obligations).</li>
-    <li><strong>Support emails:</strong> retained for as long as needed to address your request and maintain reasonable support records.</li>
+    <li><strong>Crash/performance diagnostics:</strong> retained for up to 90 days and then automatically deleted, unless a longer period is required to investigate a recurring issue or to comply with a legal obligation.</li>
+    <li><strong>Support emails:</strong> retained for up to 24 months after your request is resolved, unless a longer period is required to maintain reasonable support records or by law.</li>
   </ul>
 
   <h2 id="rights">6. Your choices and rights</h2>
@@ -378,18 +382,23 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <h2 id="delete">7. How to delete your information</h2>
   <ul>
     <li><strong>App data:</strong> delete individual books, transcripts and quotes inside the App (where available), reset in-App data (if provided), or uninstall the App to remove locally stored data.</li>
-    <li><strong>Diagnostics:</strong> uninstalling the App stops future diagnostics from being sent.</li>
+    <li><strong>Diagnostics:</strong> uninstalling the App stops future diagnostics from being sent. To request deletion of diagnostic data already received, email <a href="mailto:hello@hushbook.app">hello@hushbook.app</a>; we will action verified requests within a reasonable period.</li>
+    <li><strong>No account:</strong> HushBook has no user accounts, so there is no account to delete; removing the App and requesting deletion of diagnostics (above) clears the data associated with you.</li>
   </ul>
 
-  <h2 id="children">8. Children</h2>
+  <h2 id="security">8. Security &amp; data breaches</h2>
+  <p>We use reasonable technical and organizational measures, including encryption in transit, to protect the limited personal data we process. No method of transmission or storage is completely secure; however, if a breach affecting your personal data occurs, we will notify you and the relevant authorities where required by applicable law (including the DPDP Act and, where it applies, the GDPR).</p>
+
+  <h2 id="children">9. Children</h2>
   <p>The App is not directed to children and is not intended for those below the applicable age of digital consent in their jurisdiction. We do not knowingly collect personal data from children without verifiable parental or guardian consent, and our diagnostics are not used to profile or target children. If you are a parent or guardian and believe a child has provided personal data to us, please contact <a href="mailto:hello@hushbook.app">hello@hushbook.app</a> and we will delete it.</p>
 
-  <h2 id="changes">9. Changes to this policy</h2>
+  <h2 id="changes">10. Changes to this policy</h2>
   <p>We may update this Privacy Policy from time to time. We will update the "Last updated" date above. Material changes may be communicated through the Website or App release notes where appropriate.</p>
 
-  <h2 id="contact">10. Grievance / Contact</h2>
+  <h2 id="contact">11. Grievance / Contact</h2>
   <p>For questions, requests, or complaints, contact us by email at <a href="mailto:hello@hushbook.app">hello@hushbook.app</a>.</p>
   <p>Response timeline: we aim to acknowledge and respond within a reasonable time and in line with applicable law.</p>
+  <p>We process personal data only occasionally and on a small scale, and have concluded that we are not required to appoint an EU/UK Article 27 representative or a Data Protection Officer. If this changes, we will update this policy with the relevant details.</p>
 
 </main>
 
