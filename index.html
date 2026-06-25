@@ -153,7 +153,8 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .marquee-track{display:flex;gap:30px;width:max-content;animation:slide 46s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
-@keyframes slide{to{transform:translateX(-50%)}}
+/* shift exactly one 6-card set: (img 190 + gap 30) × 6 = 1320px. needs 4 copies in markup so 3 sets always cover the viewport */
+@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 6))}}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
 /* moment */
@@ -178,8 +179,12 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .split-media.layer .front{width:min(66vw,290px)}
 .split-media.layer .back{width:min(46vw,200px);transform:translate(-42%,-50%) rotate(-6deg)}}
 .profiles{display:grid;gap:14px}
-.profile{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid rgba(28,21,13,.08);border-radius:18px;padding:18px 20px;box-shadow:0 10px 26px rgba(28,21,13,.06)}
-.profile .pic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:rgba(111,56,37,.08)}
+.profile{position:relative;overflow:hidden;display:flex;gap:16px;align-items:flex-start;background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,253,249,.26));-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:18px 20px;box-shadow:0 14px 34px rgba(28,21,13,.10),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(111,56,37,.06);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.profile::before{content:"";position:absolute;left:0;right:0;top:0;height:48%;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.5),transparent);border-radius:18px 18px 0 0}
+.profile:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(28,21,13,.14),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(111,56,37,.06)}
+.profile>*{position:relative;z-index:1}
+.profile .pic{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--brown);background:linear-gradient(150deg,rgba(111,56,37,.15),rgba(111,56,37,.05));border:1px solid rgba(111,56,37,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.profile .pic svg{width:22px;height:22px}
 .profile b{font-family:var(--serif);font-size:17.5px;display:block;margin-bottom:2px}
 .profile span{font-size:14px;color:var(--cream-muted)}
 .mat-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:60px}
@@ -292,6 +297,54 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 .fcol a{display:block;margin-bottom:10px;color:var(--dim)}
 .fcol a:hover{color:var(--gold-hi)}
 .foot-base{border-top:1px solid var(--line-soft);padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* languages — translate any audiobook */
+.langsec{position:relative;overflow:hidden}
+.langsec::before{content:"";position:absolute;left:50%;top:50%;width:min(820px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,163,106,.15),rgba(201,163,106,.05) 42%,transparent 66%);pointer-events:none}
+.langsec h2 em{font-style:italic;color:var(--gold-hi)}
+/* ONE variable drives ring AND phones, so proportions never drift with zoom */
+.lang-stage{--ring:min(600px,88vw);position:relative;width:var(--ring);margin:54px auto 0;padding-bottom:calc(var(--ring) * .40)}
+.lang-ring{position:relative;width:var(--ring);height:var(--ring)}
+.ring-svg{width:100%;height:100%;overflow:visible;display:block}
+.ring-text{font-family:'Hanken Grotesk','Noto Sans',system-ui,'Segoe UI',sans-serif;font-weight:800;font-size:19px;letter-spacing:.045em;fill:#43341a;
+  filter:drop-shadow(0 -1px 0 rgba(246,225,172,.36)) drop-shadow(0 1.5px .8px rgba(0,0,0,.96)) drop-shadow(0 0 1px rgba(0,0,0,.55))}
+.ring-rot{transform-box:view-box;transform-origin:300px 300px}
+.lang-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;z-index:4}
+.lang-core .n{display:block;font-family:var(--serif);font-weight:500;font-size:calc(var(--ring) * .12);line-height:1;color:var(--gold-hi);text-shadow:0 1px 0 rgba(0,0,0,.5),0 2px 18px rgba(201,163,106,.35)}
+.lang-core .l{display:block;margin-top:.4em;font-size:calc(var(--ring) * .0215);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+/* phones rise from the ring base, sized off --ring so they scale WITH it */
+.lang-phones{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;gap:calc(var(--ring) * .012);z-index:3;width:max-content;max-width:100%}
+.lp{position:relative;display:flex;flex-direction:column;align-items:center;flex:0 0 auto;width:calc(var(--ring) * .225)}
+.lp .ph{position:relative;width:100%;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.lp img{display:block;border-radius:calc(var(--ring) * .035);filter:drop-shadow(0 26px 46px rgba(0,0,0,.6))}
+.lp .front{position:relative;z-index:2;width:100%}
+.lp .back{position:absolute;z-index:1;left:50%;top:6%;width:80%;transform:translateX(-78%) rotate(-9deg);filter:drop-shadow(0 22px 40px rgba(0,0,0,.5))}
+.lp figcaption{margin-top:1em;max-width:calc(var(--ring) * .23);font-size:12.5px;line-height:1.32;color:var(--muted);text-align:center}
+.lp figcaption b{display:block;color:var(--gold-hi);font-weight:700;margin-bottom:1px}
+/* fan along a smooth curve: each phone pivots from its base, outer pairs dip lower */
+.lp:nth-child(1){margin-bottom:calc(var(--ring) * -.055);z-index:1}
+.lp:nth-child(1) .ph{transform:rotate(-13deg)}
+.lp:nth-child(2){z-index:3}
+.lp:nth-child(2) .ph{transform:rotate(-4.5deg)}
+.lp:nth-child(3){z-index:3}
+.lp:nth-child(3) .ph{transform:rotate(4.5deg)}
+.lp:nth-child(4){margin-bottom:calc(var(--ring) * -.055);z-index:1}
+.lp:nth-child(4) .ph{transform:rotate(13deg)}
+.lp:hover{z-index:6}
+.lp:hover .ph{transform:translateY(-8px) rotate(0deg)}
+@media (max-width:880px){
+  .lang-stage{--ring:min(440px,82vw);padding-bottom:0;margin-bottom:0}
+  .lang-phones{position:static;transform:none;margin-top:30px;width:auto;overflow-x:auto;justify-content:flex-start;gap:16px;padding:8px 2px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .lp{scroll-snap-align:center;width:auto;margin:0!important}
+  .lp .ph{transform:none!important;width:auto}
+  .lp .back{display:none}
+  .lp .front{width:clamp(140px,44vw,176px)}
+  .lp img{border-radius:22px}
+  .lp figcaption{font-size:12.5px;max-width:none;white-space:nowrap}
+  .lang-core .n{font-size:clamp(40px,16vw,70px)}
+  .lang-core .l{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.lp img{transition:none}}
 </style>
 </head>
 <body>
@@ -466,6 +519,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   </div>
   <div class="marquee reveal" aria-hidden="true">
     <div class="marquee-track">
+      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
       <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
       <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
       <img src="assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
@@ -478,6 +532,75 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <img src="assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
       <img src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LANGUAGES ============ -->
+<section class="sec langsec" id="languages">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Ninety&#8209;nine languages</span>
+      <h2>Translate <em>any</em> audiobook</h2>
+      <p class="sub">Spanish, Hindi, Japanese, Arabic, French — ninety-nine languages in all. HushBook listens in the tongue a book was meant to be heard in, then paints every word in time, so you read along no matter where the story comes from.</p>
+    </div>
+
+    <div class="lang-stage reveal">
+      <div class="lang-ring">
+        <svg class="ring-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <defs>
+            <path id="lr-spiral" fill="none"/>
+          </defs>
+          <g class="ring-rot">
+            <text class="ring-text"><textPath href="#lr-spiral" startOffset="0">English · Español · 中文 · हिन्दी · العربية · Português · Français · Русский · 日本語 · Deutsch · 한국어 · Italiano · Türkçe · Tiếng Việt · Polski · Nederlands · Ελληνικά · עברית · Українська · Svenska · ไทย · فارسی · Bahasa · Čeština · Magyar · Română · Dansk · Suomi · தமிழ் · বাংলা · తెలుగు · ગુજરાતી · ਪੰਜਾਬੀ · اردو · Kiswahili · Norsk · Hrvatski · Català · Slovenčina · Lietuvių · සිංහල · ខ្មែរ · မြန်မာ · Монгол · Հայերեն · ქართული</textPath></text>
+          </g>
+        </svg>
+        <div class="lang-core">
+          <span class="n">99</span>
+          <span class="l">languages</span>
+        </div>
+      </div>
+
+      <div class="lang-phones">
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="assets/img/mockups/lang-es-poetry-player.webp" alt="HushBook reading along to a Spanish poetry collection" loading="lazy">
+          </div>
+          <figcaption><b>Español</b> · Spanish Poetry</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="assets/img/mockups/lang-es-lobo-read.webp" alt="" loading="lazy">
+            <img class="front" src="assets/img/mockups/lang-es-lobo-player.webp" alt="HushBook reading along to Los Motivos del Lobo by Rubén Darío in Spanish" loading="lazy">
+          </div>
+          <figcaption><b>Español</b> · Rubén Darío</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="assets/img/mockups/lang-it-read.webp" alt="" loading="lazy">
+            <img class="front" src="assets/img/mockups/lang-it-player.webp" alt="HushBook reading along to an Italian poetry book" loading="lazy">
+          </div>
+          <figcaption><b>Italiano</b> · Due esempi di poesia</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="assets/img/mockups/lang-fr-player.webp" alt="HushBook reading along to Épigramme by François Maynard in French" loading="lazy">
+          </div>
+          <figcaption><b>Français</b> · François Maynard</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -500,9 +623,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <h2>An app that fits <em>how you read.</em></h2>
         <p class="sub">Pick a profile once and the whole app adapts — fonts, caption sizes, colors, contrast, and spacing. Not a settings toggle buried three menus deep. The app, reshaped.</p>
         <div class="profiles">
-          <div class="profile"><span class="pic">📖</span><span><b>Comprehension</b><span>For daily readers — focus tools, night mode, and a clean reading rhythm.</span></span></div>
-          <div class="profile"><span class="pic">🧠</span><span><b>Dyslexia / ADHD</b><span>OpenDyslexic and friends, color overlays, generous spacing — and a highlight that anchors your eye to the voice.</span></span></div>
-          <div class="profile"><span class="pic">👁️</span><span><b>Vision</b><span>Atkinson Hyperlegible, very large captions, and high-contrast themes built for low-vision reading.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.4C10.1 5.1 7.7 4.6 5.3 5v12.3c2.4-.4 4.8.1 6.7 1.4 1.9-1.3 4.3-1.8 6.7-1.4V5c-2.4-.4-4.8.1-6.7 1.4Z"/><path d="M12 6.4v12.3"/></svg></span><span><b>Comprehension</b><span>For daily readers — focus tools, night mode, and a clean reading rhythm.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.5h15"/><path d="M4.5 12h9"/><path d="M4.5 16.5h11.5"/><circle cx="18.4" cy="12" r="2.3" fill="currentColor" stroke="none"/></svg></span><span><b>Dyslexia / ADHD</b><span>OpenDyslexic and friends, color overlays, generous spacing — and a highlight that anchors your eye to the voice.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 12S6 5.6 12 5.6 21.4 12 21.4 12 18 18.4 12 18.4 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Vision</b><span>Atkinson Hyperlegible, very large captions, and high-contrast themes built for low-vision reading.</span></span></div>
         </div>
       </div>
     </div>
@@ -1028,6 +1151,31 @@ if(fine&&!calm)document.querySelectorAll('.stores a,.nav-cta').forEach(el=>{
       renderer.render(scene,cam);
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
+})();
+
+// language spiral — build an inward swirl path, then revolve it on scroll
+(function(){
+  const stage=document.querySelector('.lang-stage'); if(!stage) return;
+  const path=stage.querySelector('#lr-spiral');
+  const tp=stage.querySelector('.ring-text textPath');
+  if(path){
+    const cx=300,cy=300,Ro=286,Ri=56,turns=3.65,N=440,thMax=2*Math.PI*turns;
+    let d='';
+    for(let i=0;i<=N;i++){
+      const t=i/N, th=thMax*t, r=Ro-(Ro-Ri)*t;
+      d+=(i?'L':'M')+(cx+r*Math.cos(th)).toFixed(1)+','+(cy+r*Math.sin(th)).toFixed(1)+' ';
+    }
+    path.setAttribute('d',d);
+    if(tp){ tp.setAttribute('textLength', Math.round(path.getTotalLength())); tp.setAttribute('lengthAdjust','spacing'); }
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!window.gsap||!window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const g=stage.querySelector('.ring-rot');
+  if(g) gsap.fromTo(g,{rotation:0},{
+    rotation:150, transformOrigin:'50% 50%', svgOrigin:'300 300', ease:'none',
+    scrollTrigger:{trigger:stage,start:'top bottom',end:'bottom top',scrub:1}
+  });
 })();
 </script>
 </body>
