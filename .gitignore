@@ -1,6 +1,7 @@
 # Local tooling / QC artifacts
 .playwright-mcp/
 .lazyweb/
+.superpowers/
 qc-*.png
 *.log
 
