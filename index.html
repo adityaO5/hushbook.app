@@ -75,7 +75,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero h1{margin:0 auto 20px;max-width:13ch}
 .hero .sub{margin:0 auto 34px;max-width:560px}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .25s,box-shadow .25s}
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .25s,box-shadow .25s;border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
 .pill .pic{width:22px;height:22px;flex:none;fill:currentColor}
 .pill span{text-align:left}
@@ -83,6 +83,9 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .pill b{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
 .finale .pill{background:#171310;color:var(--cream);box-shadow:0 16px 40px rgba(23,19,16,.4)}
 .finale .pill:hover{box-shadow:0 22px 52px rgba(23,19,16,.5)}
+.store-toast{text-align:center;font-size:14px;color:var(--gold);font-weight:600;margin-top:14px;opacity:0;transform:translateY(-8px);transition:opacity .3s cubic-bezier(.2,.7,.2,1),transform .3s cubic-bezier(.2,.7,.2,1);line-height:1}
+.store-toast.visible{opacity:1;transform:translateY(0)}
+.store-toast.fade-out{opacity:0;transform:translateY(-8px)}
 .hero-note{margin-top:16px;font-size:13.5px;color:var(--dim)}
 
 /* hero phone fan */
@@ -149,7 +152,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .gcard h3{margin:22px 0 6px;font-size:19px}
 .gcard p{font-size:14px;color:var(--muted)}
 @media (max-width:680px){.gallery{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
-.marquee{margin-top:80px;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.marquee{margin-top:40px;height:480px;position:relative;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
 .marquee-track{display:flex;gap:30px;width:max-content;animation:slide 46s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
@@ -389,20 +392,20 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="hero">
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="badge reveal"><span class="dot"></span>Out now on iOS &amp; Android</span>
+    <span class="badge reveal">Out now on iOS</span>
     <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Transcribe</span> <span class="kw">Any</span> <span class="kw">Audiobook.</span></h1>
     <p class="sub reveal">Dive into a galaxy of knowledge — every word lights up in sync with the narration, transcribed privately on your phone. No upload. No account. No cloud.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
-      <a class="pill" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
+      <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
         <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         <span><small>Download on the</small><b>App Store</b></span>
       </a>
-      <a class="pill" href="https://play.google.com/store/apps" target="_blank" rel="noopener" aria-label="Get HushBook on Google Play">
+      <button class="pill" type="button" aria-label="Coming soon on Google Play" onclick="showAndroidToast(this)">
         <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-        <span><small>Get it on</small><b>Google Play</b></span>
-      </a>
+        <span><small>Coming soon on</small><b>Google Play</b></span>
+      </button>
     </div>
-    <p class="hero-note reveal">Free to start. The core read-along and the classics library cost nothing.</p>
+    <p class="hero-note reveal">🌟 Free to download, Zero Ads.</p>
   </div>
   <div class="fan reveal" aria-hidden="true">
     <img class="f1" src="assets/img/mockups/brain-health.webp" alt="" loading="eager">
@@ -517,8 +520,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       </figure>
     </div>
   </div>
-  <div class="marquee reveal" aria-hidden="true">
-    <div class="marquee-track">
+  <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
+    <div class="marquee-track" id="marquee-fallback">
       <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
       <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
       <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
@@ -780,14 +783,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <h2 class="reveal">Start reading along with every word you hear.</h2>
   <p class="sub reveal">Free on iPhone and Android. No account. Nothing to set up but you.</p>
   <div class="stores reveal">
-    <a class="pill" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
+    <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
       <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
       <span><small>Download on the</small><b>App Store</b></span>
     </a>
-    <a class="pill" href="https://play.google.com/store/apps" target="_blank" rel="noopener" aria-label="Get HushBook on Google Play">
+    <button class="pill" type="button" aria-label="Coming soon on Google Play" onclick="showAndroidToast(this)">
       <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-      <span><small>Get it on</small><b>Google Play</b></span>
-    </a>
+      <span><small>Coming soon on</small><b>Google Play</b></span>
+    </button>
   </div>
   <small class="reveal">Transcribed privately on your phone — never the cloud.</small>
 </section>
@@ -818,8 +821,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       </div>
       <div class="fcol">
         <b>Get the app</b>
-        <a href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
-        <a href="https://play.google.com/store/apps" target="_blank" rel="noopener">Google Play</a>
+        <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">App Store</a>
+        <a href="#">Google Play</a>
       </div>
     </div>
     <div class="foot-base">
@@ -833,6 +836,31 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+function showAndroidToast(button) {
+  const storesContainer = button.closest('.stores');
+  if (!storesContainer) return;
+  let toast = storesContainer.nextElementSibling;
+  if (!toast || !toast.classList.contains('store-toast')) {
+    toast = document.createElement('div');
+    toast.className = 'store-toast';
+    toast.textContent = "Coming soon, Stay tuned!";
+    storesContainer.parentNode.insertBefore(toast, storesContainer.nextSibling);
+  }
+  toast.classList.remove('fade-out');
+  void toast.offsetWidth;
+  toast.classList.add('visible');
+  if (toast.timeoutId) clearTimeout(toast.timeoutId);
+  toast.timeoutId = setTimeout(() => {
+    toast.classList.remove('visible');
+    toast.classList.add('fade-out');
+    setTimeout(() => {
+      if (toast && !toast.classList.contains('visible') && toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+    }, 300);
+  }, 2500);
+}
+
 // scroll reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -889,7 +917,7 @@ if(fan&&fine&&!calm){
 }
 
 // magnetic buttons
-if(fine&&!calm)document.querySelectorAll('.stores a,.nav-cta').forEach(el=>{
+if(fine&&!calm)document.querySelectorAll('.stores .pill,.nav-cta').forEach(el=>{
   el.addEventListener('pointermove',e=>{
     const r=el.getBoundingClientRect();
     el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.16}px,${(e.clientY-r.top-r.height/2)*.28}px)`;
@@ -1151,6 +1179,194 @@ if(fine&&!calm)document.querySelectorAll('.stores a,.nav-cta').forEach(el=>{
       renderer.render(scene,cam);
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
+})();
+
+// 3D Marquee component using Three.js
+(function() {
+  const container = document.getElementById('marquee-3d-container');
+  if (!container || !window.THREE || calm) return;
+
+  const IMAGES = [
+    "assets/img/mockups/player-martian.webp",
+    "assets/img/mockups/player-lotr.webp",
+    "assets/img/mockups/player-love-hypothesis.webp",
+    "assets/img/mockups/player-crime-punishment.webp",
+    "assets/img/mockups/player-pride-prejudice.webp",
+    "assets/img/mockups/player-hitchhikers.webp",
+    "assets/img/mockups/player-martian.webp",
+    "assets/img/mockups/player-lotr.webp",
+    "assets/img/mockups/player-love-hypothesis.webp",
+    "assets/img/mockups/player-crime-punishment.webp",
+    "assets/img/mockups/player-pride-prejudice.webp",
+    "assets/img/mockups/player-hitchhikers.webp"
+  ];
+
+  const width = container.clientWidth;
+  const height = 480;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+  camera.position.set(0, 0, 7.5);
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(width, height);
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    container.appendChild(renderer.domElement);
+  } catch (e) {
+    console.error("WebGL failed for 3D marquee:", e);
+    return;
+  }
+
+  const fallback = document.getElementById('marquee-fallback');
+  if (fallback) fallback.style.display = 'none';
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+  scene.add(ambientLight);
+
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.55);
+  dirLight.position.set(0, 0, 5);
+  scene.add(dirLight);
+
+  const pointLight = new THREE.PointLight(0xfff5ea, 0.5, 15);
+  pointLight.position.set(0, 0, 5.5);
+  scene.add(pointLight);
+
+  const textureLoader = new THREE.TextureLoader();
+  const planeGeometry = new THREE.PlaneGeometry(2.1, 3.7);
+  const meshes = [];
+
+  const cardsGroup = new THREE.Group();
+  scene.add(cardsGroup);
+
+  let offset = 0;
+  const mouse = { x: 0, y: 0 };
+  let speedFactor = 1.0;
+  const mouse2D = new THREE.Vector2();
+  const raycaster = new THREE.Raycaster();
+  let hoveredIndex = null;
+
+  const materials = IMAGES.map((url) => {
+    const mat = new THREE.MeshStandardMaterial({
+      transparent: true,
+      side: THREE.DoubleSide,
+      roughness: 0.95,
+      metalness: 0.0
+    });
+
+    textureLoader.load(url, (texture) => {
+      if (THREE.SRGBColorSpace) {
+        texture.colorSpace = THREE.SRGBColorSpace;
+      } else {
+        texture.encoding = THREE.sRGBEncoding;
+      }
+      mat.map = texture;
+      mat.needsUpdate = true;
+    });
+
+    return mat;
+  });
+
+  materials.forEach((material) => {
+    const mesh = new THREE.Mesh(planeGeometry, material);
+    cardsGroup.add(mesh);
+    meshes.push(mesh);
+  });
+
+  const handleMouseMove = (event) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    mouse.x = x;
+    mouse.y = y;
+    mouse2D.set(x, y);
+
+    raycaster.setFromCamera(mouse2D, camera);
+    const intersects = raycaster.intersectObjects(meshes);
+
+    if (intersects.length > 0) {
+      const index = meshes.indexOf(intersects[0].object);
+      if (index !== -1) {
+        hoveredIndex = index;
+        return;
+      }
+    }
+    hoveredIndex = null;
+  };
+
+  const handleMouseLeave = () => {
+    hoveredIndex = null;
+    mouse.x = 0;
+    mouse.y = 0;
+  };
+
+  container.addEventListener("mousemove", handleMouseMove);
+  container.addEventListener("mouseleave", handleMouseLeave);
+
+  const spacing = 2.5;
+  const totalWidth = IMAGES.length * spacing;
+  const baseSpeed = 0.0035;
+
+  let frameId;
+  const animate = () => {
+    frameId = requestAnimationFrame(animate);
+    offset += baseSpeed * speedFactor;
+
+    if (hoveredIndex === null) {
+      speedFactor = THREE.MathUtils.lerp(speedFactor, 1.0, 0.05);
+    } else {
+      speedFactor = THREE.MathUtils.lerp(speedFactor, 0.08, 0.05);
+    }
+
+    meshes.forEach((mesh, index) => {
+      const baseX = index * spacing + offset;
+      const wrappedX = ((baseX % totalWidth) + totalWidth) % totalWidth - totalWidth / 2;
+      const curveRadius = 10;
+      const angle = wrappedX / curveRadius;
+
+      const targetX = Math.sin(angle) * curveRadius;
+      let targetZ = Math.cos(angle) * curveRadius - curveRadius;
+      let targetRotY = angle;
+      let targetRotX = 0;
+      let targetScale = 1.0;
+
+      if (hoveredIndex === index) {
+        targetZ += 0.8;
+        targetScale = 1.08;
+        targetRotY += mouse.x * 0.25;
+        targetRotX -= mouse.y * 0.25;
+      }
+
+      mesh.position.x = THREE.MathUtils.lerp(mesh.position.x, targetX, 0.08);
+      mesh.position.z = THREE.MathUtils.lerp(mesh.position.z, targetZ, 0.08);
+      mesh.rotation.y = THREE.MathUtils.lerp(mesh.rotation.y, targetRotY, 0.08);
+      mesh.rotation.x = THREE.MathUtils.lerp(mesh.rotation.x, targetRotX, 0.08);
+
+      const currentScale = mesh.scale.x;
+      const lerpedScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.08);
+      mesh.scale.set(lerpedScale, lerpedScale, 1);
+    });
+
+    renderer.render(scene, camera);
+  };
+
+  animate();
+
+  const handleResize = () => {
+    if (!container || !renderer || !camera) return;
+    const w = container.clientWidth;
+    camera.aspect = w / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, height);
+  };
+  window.addEventListener("resize", handleResize);
 })();
 
 // language spiral — build an inward swirl path, then revolve it on scroll
