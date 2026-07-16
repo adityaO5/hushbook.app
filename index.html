@@ -111,6 +111,42 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--muted)}
 .chip b{color:var(--ink);font-weight:700}
 
+/* ============ READER NOTES ============ */
+.reviews{padding:24px 0 92px;overflow:hidden}
+.reviews-head{text-align:center;margin:0 auto 34px;padding:0 24px}
+.reviews-head h2{margin-bottom:12px}
+.reviews-head .sub{margin-inline:auto;max-width:650px}
+.reviews-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reviews-track{display:flex;width:max-content;animation:reviews-scroll 48s linear infinite;will-change:transform}
+.review-set{display:flex;gap:20px;padding-right:20px}
+.review-card{position:relative;isolation:isolate;width:380px;min-height:260px;padding:28px;border:1px solid rgba(255,255,255,.11);border-radius:22px;background:linear-gradient(145deg,#2B2D30,#202225);box-shadow:inset 1px 1px 0 rgba(255,255,255,.09),inset -1px -1px 0 rgba(0,0,0,.38),0 18px 44px rgba(0,0,0,.28);overflow:hidden;display:flex;flex-direction:column}
+.review-card--wide{width:470px}
+.review-source{display:flex;align-items:center;gap:10px;margin-bottom:24px;position:relative;z-index:1}
+.review-source-icon{width:32px;height:32px;padding:7px;border-radius:10px;color:#D5D7DA;background:linear-gradient(145deg,#33363A,#222428);box-shadow:inset 1px 1px 0 rgba(255,255,255,.12),inset -2px -2px 3px rgba(0,0,0,.45)}
+.review-user{font-size:14px;font-weight:700;color:var(--ink)}
+.review-platform{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#969A9F}
+.review-stars{display:flex;gap:3px;color:var(--gold-hi);font-size:17px;letter-spacing:.04em;margin-bottom:14px;position:relative;z-index:1}
+.review-title{font-family:var(--serif);font-size:24px;line-height:1.15;margin-bottom:12px;position:relative;z-index:1}
+.review-quote{font-family:var(--serif);font-size:19px;line-height:1.48;color:#E4E1DC;position:relative;z-index:1}
+.review-mark{position:absolute;right:-22px;top:-28px;width:150px;height:150px;color:rgba(255,255,255,.025);filter:drop-shadow(1px 1px 0 rgba(255,255,255,.035)) drop-shadow(-1px -1px 0 rgba(0,0,0,.5));z-index:0}
+.review-card:focus-visible{outline:2px solid var(--gold-hi);outline-offset:-4px}
+.reviews-marquee:hover .reviews-track,.reviews-marquee:focus-within .reviews-track{animation-play-state:paused}
+@keyframes reviews-scroll{to{transform:translateX(-50%)}}
+@media(max-width:680px){
+  .reviews{padding-bottom:72px}
+  .reviews-head{margin-bottom:26px}
+  .review-card,.review-card--wide{width:84vw;min-height:250px;padding:24px}
+  .review-quote{font-size:18px}
+  .review-set{gap:14px;padding-right:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reviews-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none;scroll-snap-type:x mandatory;padding:0 20px}
+  .reviews-track{animation:none}
+  .review-set{padding-right:0}
+  .review-set[aria-hidden="true"]{display:none}
+  .review-card{scroll-snap-align:center}
+}
+
 /* ============ SECTIONS ============ */
 .sec{padding:110px 0}
 .sec-head{max-width:760px;margin-bottom:64px}
@@ -427,6 +463,67 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <span class="chip" role="listitem"><b>Works offline</b> after one download</span>
       <span class="chip" role="listitem"><b>No account,</b> ever</span>
       <span class="chip" role="listitem"><b>Thousands</b> of free classics</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READER NOTES ============ -->
+<section class="reviews" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap reviews-head reveal">
+    <span class="eyebrow">Reader notes</span>
+    <h2 id="reviews-title">Already finding their place in HushBook.</h2>
+    <p class="sub">From the small playback details to the first word lighting up, readers are noticing what changes when listening becomes reading too.</p>
+  </div>
+  <div class="reviews-marquee reveal">
+    <div class="reviews-track">
+      <div class="review-set" role="list" aria-label="HushBook reader reviews">
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user">u/larryloveinstein</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <p class="review-quote">“Hello, seriously LOVING the app! I am wondering where quotes are stored?”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">marksewell</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Just what I needed!</h3>
+          <p class="review-quote">“I’ve tried BookPlayer, Bound, and Apple Books. HushBook is the first app that correctly displays chapter elapsed and remaining time on my 2017 Toyota Camry JBL head unit, the steering wheel controls change chapters correctly, and the on-device transcription is excellent. Thank you!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user">u/larryloveinstein</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <p class="review-quote">“Hello! I have it downloaded and very cool app. Is there a way to increase playback speed? I find that’s the only thing from incorporating this into my daily reading.”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="48" cy="17" r="3.5" fill="currentColor"/></svg>
+          <header class="review-source">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="48" cy="17" r="3.5" fill="currentColor"/></svg>
+            <div><span class="review-user">@authorsanu</span><span class="review-platform">Instagram</span></div>
+          </header>
+          <p class="review-quote">“Hi, is HushBook available for Android?”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user">u/Momoflies</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <p class="review-quote">“AHHHHHH I’VE BEEN WAITING FOR SOMETHING JUST LIKE THIS. THANK YOUUUUUUUUUUU!”</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -902,6 +999,15 @@ addEventListener('scroll',()=>{
 },{passive:true});
 
 const fine=matchMedia('(pointer:fine)').matches, calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// duplicate the reader-note set once for a seamless marquee loop
+const reviewSet=document.querySelector('.review-set');
+if(reviewSet){
+  const reviewClone=reviewSet.cloneNode(true);
+  reviewClone.setAttribute('aria-hidden','true');
+  reviewClone.querySelectorAll('[tabindex]').forEach(el=>el.removeAttribute('tabindex'));
+  reviewSet.after(reviewClone);
+}
 
 // hero fan 3D tilt
 const fan=document.querySelector('.fan');
