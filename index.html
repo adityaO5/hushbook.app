@@ -117,7 +117,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reviews-head h2{margin-bottom:12px}
 .reviews-head .sub{margin-inline:auto;max-width:650px}
 .reviews-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.reviews-track{display:flex;width:max-content;animation:reviews-scroll 80s linear infinite;will-change:transform}
+.reviews-track{display:flex;width:max-content;animation:reviews-scroll 88s linear infinite;will-change:transform}
 .review-set{display:flex;align-items:stretch;gap:16px;padding-right:16px}
 .review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:linear-gradient(145deg,#2B2D30,#202225);box-shadow:inset 1px 1px 0 rgba(255,255,255,.09),inset -1px -1px 0 rgba(0,0,0,.38),0 16px 34px rgba(0,0,0,.26);overflow:hidden;display:flex;flex-direction:column}
 .review-card--wide{width:430px}
@@ -127,7 +127,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .review-source-icon{width:28px;height:28px;padding:6px;border-radius:9px;color:#D5D7DA;background:linear-gradient(145deg,#33363A,#222428);box-shadow:inset 1px 1px 0 rgba(255,255,255,.12),inset -2px -2px 3px rgba(0,0,0,.45)}
 .review-user{font-size:14px;font-weight:700;color:var(--ink)}
 .review-platform{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#969A9F}
-.review-stars{display:flex;gap:3px;color:var(--gold-hi);font-size:25px;letter-spacing:.025em;line-height:1;position:absolute;top:22px;left:22px;z-index:1}
+.review-stars{display:flex;gap:3px;color:#FFD84D;font-size:25px;letter-spacing:.025em;line-height:1;position:absolute;top:22px;left:22px;z-index:1;text-shadow:0 0 12px rgba(255,216,77,.28)}
 .review-title{font-family:var(--serif);font-size:20px;line-height:1.15;margin-bottom:9px;position:relative;z-index:1}
 .review-quote{font-family:var(--serif);font-size:16px;line-height:1.44;color:#E4E1DC;position:relative;z-index:1}
 .review-mark{position:absolute;right:-18px;top:-24px;width:122px;height:122px;color:rgba(255,255,255,.025);filter:drop-shadow(1px 1px 0 rgba(255,255,255,.035)) drop-shadow(-1px -1px 0 rgba(0,0,0,.5));z-index:0}
@@ -562,6 +562,17 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </header>
           <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
           <p class="review-quote">“I really like where you’re headed with this app. It would be great if you added the ability to change the speed”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">X-AANI</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Brilliant app for staying focused!</h3>
+          <p class="review-quote">“I love the on-device transcription and the specialized reading modes (the dyslexia font and high-contrast layouts are fantastic). Highly recommended!”</p>
         </article>
 
         <article class="review-card" role="listitem" tabindex="0">
