@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HushBook — Read along with every word you hear</title>
+<meta name="description" content="HushBook turns any audiobook into word-level karaoke, transcribed privately on your phone with the on-device HushBook Engine. Privacy-first, accessibility-first. Free on iOS & Android.">
+<meta name="theme-color" content="#0B0A09">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:title" content="HushBook — Transcribe Any Audiobook">
+<meta property="og:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
+<meta property="og:url" content="https://hushbook.app/">
+<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HushBook — Transcribe Any Audiobook">
+<meta name="twitter:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<link rel="canonical" href="https://hushbook.app/">
+<link rel="icon" href="assets/img/default_preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0A09; --panel:#14110E; --panel-2:#191511; --line:rgba(201,163,106,.14);
+  --line-soft:rgba(255,255,255,.08); --ink:#F5EFE6; --muted:#A89F90; --dim:#7C7468;
+  --gold:#C9A36A; --gold-hi:#E8C893; --cream:#FBF8F2; --cream-ink:#1C150D; --cream-muted:#6B6157;
+  --brown:#6F3825; --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --rad:24px; --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08}
+h1{font-size:clamp(44px,7.4vw,92px)}
+h2{font-size:clamp(32px,4.6vw,56px)}
+h3{font-size:clamp(21px,2.4vw,26px)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.sub{color:var(--muted);font-size:clamp(17px,1.6vw,20px);max-width:640px}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:var(--gold);color:#1a1208;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============ NAV ============ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,10,9,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink)}
+.brand .wordmark{height:18px;width:auto;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--gold);color:#1a1208;font-weight:700;padding:9px 18px;border-radius:999px;font-size:14px;transition:transform .2s,background .2s}
+.nav-cta:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:0;color:var(--ink);width:40px;height:40px;cursor:pointer}
+.nav-toggle svg{width:22px;height:22px}
+@media (max-width:820px){
+  .nav-toggle{display:grid;place-items:center}
+  .nav-links{position:fixed;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;padding:20px 24px 28px;background:rgba(11,10,9,.97);border-bottom:1px solid var(--line-soft);display:none}
+  .nav.open .nav-links{display:flex}
+  .nav .ic-close{display:none}.nav.open .ic-close{display:block}.nav.open .ic-open{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{padding:150px 0 0;text-align:center;position:relative}
+.hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(201,163,106,.07);color:var(--gold-hi);font-size:13px;font-weight:600;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:26px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.hero h1{margin:0 auto 20px;max-width:13ch}
+.hero h1 .kw{transition:color .35s ease,text-shadow .35s ease;color:var(--ink)}
+.hero h1 .kw.lit{color:var(--gold-hi);text-shadow:0 0 34px rgba(201,163,106,.45)}
+.hero .sub{margin:0 auto 34px;max-width:560px}
+.stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.stores img{height:48px;width:auto}
+.stores a{transition:transform .2s}.stores a:hover{transform:translateY(-2px)}
+.hero-note{margin-top:16px;font-size:13.5px;color:var(--dim)}
+
+/* hero phone fan */
+.fan{margin-top:64px;position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,26px);padding:0 12px;mask-image:linear-gradient(to bottom,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fan .f1{transform:translateY(46px) rotate(-4deg)}
+.fan .f2{transform:translateY(18px) rotate(-2deg)}
+.fan .f3{width:clamp(150px,20vw,268px);z-index:2}
+.fan .f4{transform:translateY(18px) rotate(2deg)}
+.fan .f5{transform:translateY(46px) rotate(4deg)}
+.fan img:hover{transform:translateY(-8px)}
+@media (max-width:680px){.fan .f1,.fan .f5{display:none}}
+
+/* ============ VALUE BAND ============ */
+.band{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
+.band h2{max-width:21ch;margin:0 auto 26px}
+.band h2 em{font-style:italic;color:var(--gold)}
+.karaoke-line{font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);line-height:1.5;max-width:760px;margin:0 auto 40px;color:var(--dim)}
+.karaoke-line .w{transition:color .25s}
+.karaoke-line .w.on{color:var(--gold-hi)}
+.karaoke-line .w.done{color:var(--ink)}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--muted)}
+.chip b{color:var(--ink);font-weight:700}
+
+/* ============ SECTIONS ============ */
+.sec{padding:110px 0}
+.sec-head{max-width:760px;margin-bottom:64px}
+.sec-head h2{margin-bottom:18px}
+.sec-head.center{margin-left:auto;margin-right:auto}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.step{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--rad);padding:26px 22px 0;overflow:hidden;display:flex;flex-direction:column}
+.step .num{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.1em;margin-bottom:10px}
+.step h3{font-size:20px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+.step img{width:82%;margin:auto auto 0;border-radius:22px 22px 0 0;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* privacy */
+.privacy-card{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;background:linear-gradient(160deg,var(--panel-2),#100D0A);border:1px solid var(--line);border-radius:32px;padding:clamp(36px,5vw,72px)}
+.privacy-card h2{margin-bottom:18px}
+.privacy-card .sub{margin-bottom:30px}
+.plist{display:grid;gap:14px;font-size:15.5px}
+.plist li{list-style:none;display:flex;gap:12px;color:var(--muted)}
+.plist li b{color:var(--ink)}
+.plist .tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(201,163,106,.14);color:var(--gold-hi);display:grid;place-items:center;font-size:12px;margin-top:2px}
+.qr-pane{justify-self:center;text-align:center}
+.qr-ring{width:clamp(200px,22vw,260px);height:clamp(200px,22vw,260px);border-radius:36px;background:var(--cream);display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(0,0,0,.06);position:relative}
+.qr-ring::after{content:"";position:absolute;inset:-14px;border-radius:46px;border:1px dashed rgba(201,163,106,.35);animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.qr-ring img{width:70%;height:70%}
+.qr-pane small{color:var(--dim);font-size:13.5px}
+@media (max-width:880px){.privacy-card{grid-template-columns:1fr;gap:44px}}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);align-items:end}
+.gcard{text-align:center}
+.gcard img{border-radius:clamp(22px,3vw,38px);filter:drop-shadow(0 34px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gcard:hover img{transform:translateY(-10px)}
+.gcard h3{margin:22px 0 6px;font-size:19px}
+.gcard p{font-size:14px;color:var(--muted)}
+@media (max-width:680px){.gallery{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
+.marquee{margin-top:80px;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:30px;width:max-content;animation:slide 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* moment */
+.moment{padding:130px 0;text-align:center;background:radial-gradient(900px 460px at 50% 50%,rgba(201,163,106,.12),transparent 70%)}
+.moment p{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
+.moment h2{font-size:clamp(36px,6vw,72px);font-style:italic;max-width:16ch;margin:0 auto}
+.moment h2 span{color:var(--gold)}
+
+/* light sections */
+.light{background:var(--cream);color:var(--cream-ink)}
+.light .eyebrow{color:var(--brown)}
+.light .sub{color:var(--cream-muted)}
+.light h2 em{font-style:italic;color:var(--brown)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.split.rev>.split-media{order:2}
+.split-media{display:flex;justify-content:center}
+.split-media img{width:clamp(240px,28vw,330px);border-radius:clamp(26px,3.4vw,44px);filter:drop-shadow(0 36px 64px rgba(28,21,13,.28))}
+.split h2{margin-bottom:18px}
+.split .sub{margin-bottom:30px}
+@media (max-width:880px){.split{grid-template-columns:1fr}.split.rev>.split-media{order:0}}
+.profiles{display:grid;gap:14px}
+.profile{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid rgba(28,21,13,.08);border-radius:18px;padding:18px 20px;box-shadow:0 10px 26px rgba(28,21,13,.06)}
+.profile .pic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:rgba(111,56,37,.08)}
+.profile b{font-family:var(--serif);font-size:17.5px;display:block;margin-bottom:2px}
+.profile span{font-size:14px;color:var(--cream-muted)}
+.mat-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:60px}
+.light .chip{background:#fff;border-color:rgba(28,21,13,.1);color:var(--cream-ink);box-shadow:0 6px 16px rgba(28,21,13,.05)}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,3vw,36px)}
+.duo img{width:clamp(190px,24vw,290px);border-radius:clamp(22px,3vw,40px);filter:drop-shadow(0 34px 60px rgba(28,21,13,.28))}
+.duo img:last-child{width:clamp(165px,21vw,250px);transform:translateY(26px)}
+
+/* reading life */
+.life-head h2{background:linear-gradient(92deg,var(--gold-hi),#E8927C 55%,#C9A36A);-webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
+.acard{background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 24px 56px rgba(0,0,0,.4);transition:transform .4s}
+.acard:hover{transform:translateY(-6px)}
+.acard img{width:100%}
+.acard.dark{background:#262220}
+.acard figcaption{padding:14px 18px;font-size:13.5px;color:var(--cream-muted);border-top:1px solid rgba(28,21,13,.06)}
+.acard.dark figcaption{color:var(--muted);border-color:rgba(255,255,255,.06)}
+@media (max-width:880px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.medals{display:flex;justify-content:center;gap:clamp(10px,2.4vw,28px);flex-wrap:wrap;margin-top:70px}
+.medals img{width:clamp(76px,9vw,116px);filter:drop-shadow(0 16px 30px rgba(0,0,0,.5));transition:transform .35s}
+.medals img:hover{transform:translateY(-8px) rotate(-3deg)}
+.medals-cap{text-align:center;color:var(--dim);font-size:14px;margin-top:18px}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.qa{border-bottom:1px solid var(--line-soft)}
+.qa button{width:100%;background:none;border:0;color:var(--ink);font:inherit;font-weight:700;font-size:17.5px;text-align:left;padding:24px 44px 24px 0;cursor:pointer;position:relative}
+.qa button::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:26px;font-weight:300;color:var(--gold);transition:transform .3s}
+.qa.open button::after{transform:translateY(-50%) rotate(45deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.qa .a p{color:var(--muted);font-size:15.5px;padding:0 0 24px;max-width:62ch}
+.qa.open .a{max-height:240px}
+
+/* finale */
+.finale{margin-top:60px;padding:130px 24px 120px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#241A10 34%,#7A5530 72%,#E8C893 130%);position:relative}
+.finale .glyph{width:64px;height:64px;margin:0 auto 28px;border-radius:18px;background:var(--cream);color:#1a1208;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:30px;box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.finale h2{max-width:16ch;margin:0 auto 16px}
+.finale .sub{color:#E9DFCF;margin:0 auto 36px}
+.finale .stores{margin-bottom:26px}
+.finale small{color:rgba(251,248,242,.75);font-size:13.5px}
+
+/* footer */
+footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 44px;font-size:14px;color:var(--dim)}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:44px}
+.foot-brand .wordmark{height:16px;color:var(--muted);margin-bottom:14px}
+.foot-brand p{max-width:30ch}
+.fcol b{display:block;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.fcol a{display:block;margin-bottom:10px;color:var(--dim)}
+.fcol a:hover{color:var(--gold-hi)}
+.foot-base{border-top:1px solid var(--line-soft);padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hb-wordmark" viewBox="0 0 617 93">
+    <path d="M95.5122 4.53087C88.5962 9.80887 88.0502 33.6509 88.0502 46.3909C88.0502 59.1309 88.5962 83.1549 95.5122 88.2509C97.3322 89.7069 97.3322 92.8009 93.5102 92.8009H55.6542C53.8342 92.8009 53.1062 90.4349 54.9262 88.9789C61.2962 84.2469 62.5702 80.2429 62.5702 73.5089V50.7589H33.9962C34.1782 63.8629 35.4522 83.7009 41.4582 88.2509C43.4602 89.7069 43.4602 92.8009 39.6382 92.8009H1.78223C-0.037775 92.8009 -0.765775 90.4349 1.05422 88.9789C7.42423 84.2469 8.51623 80.2429 8.51623 73.5089V19.2729C8.51623 12.7209 7.42423 8.53487 1.05422 3.80286C-0.765775 2.34687 -0.037775 0.162868 1.78223 0.162868H39.6382C43.4602 0.162868 43.4602 3.07487 41.4582 4.53087C34.9062 9.62687 33.9962 32.7409 33.9962 45.6629H62.5702V19.2729C62.5702 12.7209 61.2962 8.53487 54.9262 3.80286C53.1062 2.34687 53.8342 0.162868 55.6542 0.162868H93.5102C97.3322 0.162868 97.3322 3.07487 95.5122 4.53087Z" fill="currentColor"/>
+    <path d="M171.655 30.1929C169.289 44.7529 166.559 75.5109 177.843 88.9789C179.481 90.7989 179.117 92.8009 177.297 92.8009H160.553C152.545 92.8009 147.449 87.5229 145.629 82.2449C141.625 88.0689 135.983 92.8009 127.793 92.8009C111.413 92.8009 98.8551 85.1569 98.8551 58.2209C98.8551 51.4869 97.7631 47.4829 91.3931 42.5689C89.5731 41.1129 90.3011 38.9289 92.1211 38.9289C109.593 38.9289 116.873 27.0989 123.789 25.6429C127.611 24.9149 125.973 27.8269 125.427 30.1929C120.877 51.8509 121.605 84.4289 135.255 84.4289C139.077 84.4289 142.535 78.9689 144.901 73.5089V58.2209C144.901 51.4869 143.809 47.4829 137.439 42.5689C135.619 41.1129 136.347 38.9289 138.167 38.9289C155.639 38.9289 163.101 27.0989 169.835 25.6429C173.657 24.9149 172.019 27.8269 171.655 30.1929Z" fill="currentColor"/>
+    <path d="M323.075 88.9789C324.895 90.4349 324.167 92.8009 322.347 92.8009H286.129C282.307 92.8009 282.489 89.8889 284.309 88.2509C295.957 77.6949 290.679 33.1049 278.121 33.1049C274.663 33.1049 269.931 37.1089 266.473 44.2069C266.473 66.2289 269.567 84.9749 273.753 88.2509C275.755 89.7069 275.755 92.8009 271.933 92.8009H235.715C233.895 92.8009 233.167 90.4349 234.987 88.9789C241.357 84.2469 242.631 80.2429 242.631 73.5089V32.5589C242.631 12.9029 221.883 15.6329 232.439 36.3809L232.985 37.6549C239.355 51.6689 208.597 54.3989 210.053 38.3829C210.781 28.3729 202.045 29.1009 201.135 35.2889C198.405 50.9409 231.165 54.3989 233.895 71.1429C235.533 81.3349 222.247 92.2549 206.413 92.6189L206.049 92.8009C194.401 92.9829 180.933 89.3429 176.929 80.6069C170.559 66.5929 201.317 63.8629 200.043 79.8789C199.133 89.8889 207.505 88.9789 208.779 82.9729C212.419 67.5029 178.385 66.2289 176.201 48.0289C174.563 34.5609 187.303 26.0069 203.501 25.4609H203.865C208.415 25.4609 213.329 25.8249 217.879 27.0989C220.245 13.0849 240.447 17.4529 253.915 8.35287C259.739 4.53087 264.289 0.89087 268.111 0.162868C271.751 -0.747131 270.295 2.34687 269.749 4.71286C268.111 14.3589 267.019 24.5509 266.655 34.5609C270.659 29.4649 276.301 25.4609 283.399 25.4609C303.055 25.4609 315.431 41.4769 315.431 61.4969V73.5089C315.431 80.2429 316.705 84.2469 323.075 88.9789Z" fill="currentColor"/>
+    <path d="M387.474 44.5709C400.214 47.1189 409.496 56.7649 409.496 68.2309C409.496 81.6989 396.756 92.8009 380.922 92.8009H325.23C323.41 92.8009 322.682 90.4349 324.502 88.9789C330.872 84.2469 331.964 80.2429 331.964 73.5089V19.2729C331.964 12.7209 330.872 8.53487 324.502 3.80286C322.682 2.34687 323.41 0.162868 325.23 0.162868H372.55C386.2 0.162868 399.668 11.0829 399.668 24.5509C399.668 32.7409 394.572 40.0209 387.474 44.5709ZM363.268 87.7049C374.188 87.7049 383.47 78.9689 383.47 68.2309C383.47 57.6749 374.188 48.9389 363.268 48.9389H357.444C357.626 60.5869 358.172 73.6909 359.81 87.7049H363.268ZM375.826 24.5509C375.826 14.3589 369.456 5.98687 359.628 5.25887C358.9 12.1749 357.626 26.0069 357.444 43.8429H358.172C368.91 43.8429 375.826 35.1069 375.826 24.5509Z" fill="currentColor"/>
+    <path d="M490.88 25.4609C510.9 25.4609 527.28 40.5669 527.28 59.1309C527.28 77.6949 510.9 92.8009 490.88 92.8009C481.962 92.8009 473.772 89.7069 467.402 84.7929C461.214 89.7069 453.024 92.8009 444.106 92.8009C423.904 92.8009 407.706 77.6949 407.706 59.1309C407.706 40.5669 423.904 25.4609 444.106 25.4609C453.024 25.4609 461.214 28.5549 467.402 33.4689C473.772 28.5549 481.962 25.4609 490.88 25.4609ZM444.106 87.7049C449.748 87.7049 454.48 74.7829 454.48 59.1309C454.48 43.2969 449.748 30.5569 444.106 30.5569C438.282 30.5569 433.55 43.2969 433.55 59.1309C433.55 74.7829 438.282 87.7049 444.106 87.7049ZM490.88 87.7049C496.704 87.7049 501.436 74.7829 501.436 59.1309C501.436 43.2969 496.704 30.5569 490.88 30.5569C485.056 30.5569 480.506 43.2969 480.506 59.1309C480.506 74.7829 485.056 87.7049 490.88 87.7049Z" fill="currentColor"/>
+    <path d="M614.71 88.2509C617.076 89.7069 617.986 92.8009 614.164 92.8009H575.944C573.942 92.8009 572.486 90.4349 573.942 88.9789C578.674 84.2469 578.128 80.2429 576.49 73.5089C573.942 63.6809 570.302 46.7549 560.838 49.1209C561.202 68.9589 564.114 85.3389 568.118 88.2509C569.938 89.7069 570.12 92.8009 566.116 92.8009H530.08C528.26 92.8009 527.532 90.4349 529.352 88.9789C535.722 84.2469 536.814 80.2429 536.814 73.5089V32.5589C536.814 25.8249 535.722 21.8209 529.352 17.0889C527.532 15.6329 528.26 13.4489 530.08 13.4489C547.552 13.4489 555.56 1.43687 562.294 0.162868C566.116 -0.747131 564.478 2.34687 564.114 4.71286C561.748 17.2709 560.838 31.1029 560.838 43.8429C570.12 41.2949 585.59 18.3629 600.696 27.8269C613.072 35.4709 600.15 50.0309 586.864 41.6589C582.678 38.9289 579.038 40.0209 575.398 42.0229C591.778 46.3909 595.418 76.0569 614.71 88.2509Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#read-along">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="HushBook home">
+      <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="#read-along">Read-along</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#life">Analytics</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#get">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="badge reveal"><span class="dot"></span>Out now on iOS &amp; Android</span>
+    <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Transcribe</span> <span class="kw">Any</span> <span class="kw">Audiobook.</span></h1>
+    <p class="sub reveal">Every word lights up in sync with the narration — read and listen at once, transcribed privately on your phone. No upload. No account. No cloud.</p>
+    <div class="stores reveal" id="get" aria-label="Get HushBook">
+      <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener"><img src="assets/badges/app-store-badge.svg" alt="Download HushBook on the App Store"></a>
+      <a href="https://play.google.com/store/apps" target="_blank" rel="noopener"><img src="assets/badges/google-play-badge.svg" alt="Get HushBook on Google Play"></a>
+    </div>
+    <p class="hero-note reveal">Free to start. The core read-along and the classics library cost nothing.</p>
+  </div>
+  <div class="fan reveal" aria-hidden="true">
+    <img class="f1" src="assets/img/mockups/brain-health.webp" alt="" loading="eager">
+    <img class="f2" src="assets/img/mockups/home.webp" alt="" loading="eager">
+    <img class="f3" src="assets/img/mockups/karaoke-live.webp" alt="HushBook transcribing Meditations into live word-level karaoke" loading="eager">
+    <img class="f4" src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="eager">
+    <img class="f5" src="assets/img/mockups/library.webp" alt="" loading="eager">
+  </div>
+</section>
+
+<!-- ============ VALUE BAND ============ -->
+<section class="band center">
+  <div class="wrap">
+    <h2 class="reveal">Listening alone is easy to lose. <em>Reading along</em> is hard to forget.</h2>
+    <p class="karaoke-line reveal" id="karaoke-line" aria-label="You have power over your mind, not outside events. Realize this, and you will find strength. — Marcus Aurelius"></p>
+    <div class="trust reveal" role="list">
+      <span class="chip" role="listitem"><b>100% on-device</b> transcription</span>
+      <span class="chip" role="listitem"><b>Word-level</b> sync at 60 fps</span>
+      <span class="chip" role="listitem"><b>Works offline</b> after one download</span>
+      <span class="chip" role="listitem"><b>No account,</b> ever</span>
+      <span class="chip" role="listitem"><b>Thousands</b> of free classics</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="read-along">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From audio file to read-along, in three taps.</h2>
+      <p class="sub">Pick a book, tap Transcribe, and the HushBook Engine gets to work — chapter by chapter, right on your phone.</p>
+    </div>
+    <div class="steps">
+      <figure class="step reveal">
+        <span class="num">01</span>
+        <h3>Pick a book</h3>
+        <p>Browse free classics or import your own MP3, M4B and more.</p>
+        <img src="assets/img/mockups/library.webp" alt="HushBook library with imported and public-domain audiobooks" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">02</span>
+        <h3>Tap Transcribe</h3>
+        <p>One tap per chapter. Chapters in M4B files are detected automatically.</p>
+        <img src="assets/img/mockups/book-info-transcribe.webp" alt="Book info screen with Transcribe buttons for each chapter" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">03</span>
+        <h3>The Engine works</h3>
+        <p>Speech-to-text runs locally, resumes if interrupted, and stays cool.</p>
+        <img src="assets/img/mockups/transcribing-chapters.webp" alt="Chapter one transcribing with a progress bar" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">04</span>
+        <h3>Read along</h3>
+        <p>Every word lights up with the narrator. Tap any word to jump there.</p>
+        <img src="assets/img/mockups/ready-to-play.webp" alt="Chapters ready to play" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="sec" id="privacy">
+  <div class="wrap">
+    <div class="privacy-card reveal">
+      <div>
+        <span class="eyebrow">The HushBook Engine</span>
+        <h2>Transcribed on your phone. Never the cloud.</h2>
+        <p class="sub">The speech-to-text that powers HushBook runs natively on your device. Your audiobooks are never uploaded — there is no server to upload them to.</p>
+        <ul class="plist">
+          <li><span class="tick">✓</span><span><b>Nothing leaves your phone.</b> Audio, transcripts, notes, scores — all stored locally.</span></li>
+          <li><span class="tick">✓</span><span><b>No account, no sign-in.</b> Open the app and start reading.</span></li>
+          <li><span class="tick">✓</span><span><b>Fully offline</b> after a one-time engine download — on a flight, in a tunnel, anywhere.</span></li>
+          <li><span class="tick">✓</span><span><b>Thermal-aware.</b> Long books transcribe in chunks, resume on failure, and keep your phone cool.</span></li>
+        </ul>
+      </div>
+      <div class="qr-pane">
+        <div class="qr-ring"><img src="assets/img/qr-hushbook.svg" alt="QR code linking to hushbook.app"></div>
+        <small>Scan with your iPhone or Android camera<br>to get HushBook.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAYER GALLERY ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">The player</span>
+      <h2>Every book sets its own mood.</h2>
+      <p class="sub">A player built for reading, not just hearing — the cover art melts into a living backdrop while you follow along.</p>
+    </div>
+    <div class="gallery">
+      <figure class="gcard reveal">
+        <img src="assets/img/mockups/player-mexican-gothic.webp" alt="Mexican Gothic playing in HushBook" loading="lazy">
+        <h3>Three views, one tap</h3>
+        <p>Cover, karaoke lyrics, or the up-next queue.</p>
+      </figure>
+      <figure class="gcard reveal">
+        <img src="assets/img/mockups/player-fourth-wing.webp" alt="Fourth Wing playing in HushBook" loading="lazy">
+        <h3>Fine control</h3>
+        <p>0.5×–3× speed, ±30-second skips, chapter hops, volume boost.</p>
+      </figure>
+      <figure class="gcard reveal">
+        <img src="assets/img/mockups/player-born-a-crime.webp" alt="Born a Crime playing in HushBook" loading="lazy">
+        <h3>Keeps going</h3>
+        <p>Background playback, lock-screen controls, and a sleep timer that fades out gently.</p>
+      </figure>
+    </div>
+  </div>
+  <div class="marquee reveal" aria-hidden="true">
+    <div class="marquee-track">
+      <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MOMENT ============ -->
+<section class="moment">
+  <p class="reveal">The fastest way to explain it</p>
+  <h2 class="reveal">Apple&#8209;Music lyrics, <span>for books.</span></h2>
+</section>
+
+<!-- ============ ACCESSIBILITY (light) ============ -->
+<section class="sec light" id="accessibility">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-media reveal">
+        <img src="assets/img/mockups/reading-profiles.webp" alt="Choose your reading profile: Comprehension, Dyslexia/ADHD, or Vision" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Reading profiles</span>
+        <h2>An app that fits <em>how you read.</em></h2>
+        <p class="sub">Pick a profile once and the whole app adapts — fonts, caption sizes, colors, contrast, and spacing. Not a settings toggle buried three menus deep. The app, reshaped.</p>
+        <div class="profiles">
+          <div class="profile"><span class="pic">📖</span><span><b>Comprehension</b><span>For daily readers — focus tools, night mode, and a clean reading rhythm.</span></span></div>
+          <div class="profile"><span class="pic">🧠</span><span><b>Dyslexia / ADHD</b><span>OpenDyslexic and friends, color overlays, generous spacing — and a highlight that anchors your eye to the voice.</span></span></div>
+          <div class="profile"><span class="pic">👁️</span><span><b>Vision</b><span>Atkinson Hyperlegible, very large captions, and high-contrast themes built for low-vision reading.</span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-chips reveal" role="list">
+      <span class="chip" role="listitem">OpenDyslexic</span>
+      <span class="chip" role="listitem">Atkinson Hyperlegible</span>
+      <span class="chip" role="listitem">Lexend</span>
+      <span class="chip" role="listitem">Andika</span>
+      <span class="chip" role="listitem">Comic Neue</span>
+      <span class="chip" role="listitem">Reading overlays</span>
+      <span class="chip" role="listitem">A− / A / A+ sizing</span>
+      <span class="chip" role="listitem">High-contrast themes</span>
+      <span class="chip" role="listitem">Line-spacing control</span>
+      <span class="chip" role="listitem">Night mode</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRARY (light) ============ -->
+<section class="sec light" style="padding-top:0">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media duo reveal">
+        <img src="assets/img/mockups/home.webp" alt="HushBook home with featured books and your library" loading="lazy">
+        <img src="assets/img/mockups/library.webp" alt="My Collections library grid with an Upload Audiobook tile" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Your library</span>
+        <h2>Thousands of classics, free — <em>or bring your own.</em></h2>
+        <p class="sub">A built-in catalogue of public-domain audiobooks from LibriVox and the Internet Archive, in six languages. Download one and the transcription starts on its own — you're reading along in minutes.</p>
+        <p class="sub">Already own your books? Import MP3, M4A, M4B, FLAC, OGG and more. Chapters, covers, and metadata come along automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READING LIFE ============ -->
+<section class="sec" id="life">
+  <div class="wrap">
+    <div class="split">
+      <div class="life-head reveal">
+        <span class="eyebrow">Your reading life</span>
+        <h2>Watch your reading brain light up.</h2>
+        <p class="sub" style="margin-top:18px">A private analytics suite, computed entirely on your device. A brain score from 0 to 100 grows with your streak, words read, comprehension, and consistency — across eight levels, from Just Starting to Peak Brain Health.</p>
+        <p class="sub" style="margin-top:14px">Words are counted from the actual transcript — real words you really heard. Every card is shareable as a polished image.</p>
+      </div>
+      <div class="split-media reveal">
+        <img src="assets/img/mockups/brain-health.webp" alt="Brain Health score with the factors driving it" loading="lazy">
+      </div>
+    </div>
+
+    <div class="cards">
+      <figure class="acard dark reveal"><img src="assets/img/mockups/card-habit-insights.webp" alt="Habit Insights: usual listening hour, longest session, most active day" loading="lazy"><figcaption>Habit Insights learn when and how you actually listen.</figcaption></figure>
+      <figure class="acard reveal"><img src="assets/img/mockups/card-genre-radar.webp" alt="Most-read genres radar chart" loading="lazy"><figcaption>A genre radar maps what you reach for most.</figcaption></figure>
+      <figure class="acard reveal"><img src="assets/img/mockups/card-words-per-book.webp" alt="Words per book bar chart" loading="lazy"><figcaption>Words per book, counted from the transcript itself.</figcaption></figure>
+      <figure class="acard reveal"><img src="assets/img/mockups/goals-graphs.webp" alt="Words trend and total books read this year" loading="lazy"><figcaption>Daily, monthly, and yearly trends — and books finished.</figcaption></figure>
+      <figure class="acard reveal"><img src="assets/img/mockups/advanced-analytics.webp" alt="Start and end of listening per day, and top categories" loading="lazy"><figcaption>When you start, when you stop, what you return to.</figcaption></figure>
+      <figure class="acard reveal"><img src="assets/img/mockups/card-goals-sheet.webp" alt="Goal setting sheet for books and words" loading="lazy"><figcaption>Honest goals — weekly, monthly, yearly — at your own pace.</figcaption></figure>
+    </div>
+
+    <div class="medals reveal" aria-label="Collectible badges">
+      <img src="assets/img/streak_7_front.webp" alt="7-day streak badge" loading="lazy">
+      <img src="assets/img/streak_30_front.webp" alt="30-day streak badge" loading="lazy">
+      <img src="assets/img/books_10_front.webp" alt="10 books badge" loading="lazy">
+      <img src="assets/img/words_100k_front.webp" alt="100,000 words badge" loading="lazy">
+      <img src="assets/img/hours_50_front.webp" alt="50 hours badge" loading="lazy">
+      <img src="assets/img/special_first_transcript_front.webp" alt="First transcript badge" loading="lazy">
+    </div>
+    <p class="medals-cap reveal">Streaks you can hold in your hand — 30+ collectible badges for streaks, books, words, hours, and firsts.</p>
+  </div>
+</section>
+
+<!-- ============ CHARACTERS ============ -->
+<section class="sec" style="padding-top:30px">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media reveal">
+        <img src="assets/img/mockups/character-graph.webp" alt="Character relationship graph with draggable nodes" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Reading companions</span>
+        <h2>Map the cast as you read.</h2>
+        <p class="sub" style="margin-top:18px">Sprawling novels get confusing. Drag characters onto a canvas, draw the lines between them, and label each one in your own words — ally, rival, brother, admires. Your map lives with the book.</p>
+        <p class="sub" style="margin-top:14px">And when a line stops you cold: tap the first word, tap the last, and it's saved as a quote — ready to share as a card.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Questions?</span>
+      <h2>Answers.</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="qa"><button type="button" aria-expanded="false">Does my audio ever leave my phone?</button><div class="a"><p>No. Transcription runs entirely on your device — there's no upload, no account, and no server. After a one-time engine download, the whole app works offline.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Where do the synced lyrics come from?</button><div class="a"><p>HushBook generates them from your audio with the on-device HushBook Engine — there's no lyrics database. The first pass on a long book takes a while; after that, it's instant every time you open it.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">What files can I import?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, and more — one file per import. Chapters inside M4B files are detected automatically, along with cover art and metadata.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">How much does it cost?</button><div class="a"><p>The core read-along experience and the public-domain library are free. There's an optional Pro upgrade for advanced analytics — going Pro helps keep HushBook independent and improving.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Will it drain my battery or heat up my phone?</button><div class="a"><p>The Engine is thermal-aware: it caps its worker threads and rests between chunks to keep your phone cool, and it resumes automatically if a long transcription is interrupted.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Who is HushBook for?</button><div class="a"><p>Anyone who reads with their ears — and especially readers with dyslexia, ADHD, or low vision, language learners, and anyone who focuses better when they can see the words they hear.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Can I read in the dark?</button><div class="a"><p>Yes — night mode swaps the blurred cover backdrop for a solid dark canvas, and the Vision profile adds high-contrast themes like white-on-black and amber-on-black.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale">
+  <div class="glyph reveal">H</div>
+  <h2 class="reveal">Start reading along with every word you hear.</h2>
+  <p class="sub reveal">Free on iPhone and Android. No account. Nothing to set up but you.</p>
+  <div class="stores reveal">
+    <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener"><img src="assets/badges/app-store-badge.svg" alt="Download HushBook on the App Store"></a>
+    <a href="https://play.google.com/store/apps" target="_blank" rel="noopener"><img src="assets/badges/google-play-badge.svg" alt="Get HushBook on Google Play"></a>
+  </div>
+  <small class="reveal">Transcribed privately on your phone — never the cloud.</small>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+        <p>Read along with every word you hear.</p>
+      </div>
+      <div class="fcol">
+        <b>Product</b>
+        <a href="#read-along">How it works</a>
+        <a href="#privacy">Privacy by design</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#life">Analytics</a>
+      </div>
+      <div class="fcol">
+        <b>Company</b>
+        <a href="/about">About</a>
+        <a href="/privacy-policy">Privacy policy</a>
+        <a href="/terms-conditions">Terms &amp; conditions</a>
+        <a href="/refund-policy">Refund policy</a>
+        <a href="/licenses">Licenses</a>
+      </div>
+      <div class="fcol">
+        <b>Get the app</b>
+        <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">App Store</a>
+        <a href="https://play.google.com/store/apps" target="_blank" rel="noopener">Google Play</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 HushBook. All rights reserved.</span>
+      <span>Made for people who read with their ears.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// nav toggle
+const nav=document.getElementById('nav');
+document.querySelector('.nav-toggle').addEventListener('click',()=>{
+  const open=nav.classList.toggle('open');
+  document.querySelector('.nav-toggle').setAttribute('aria-expanded',open);
+});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// hero headline karaoke
+const kws=document.querySelectorAll('#hero-h1 .kw');
+let ki=0;
+function lightHero(){
+  kws.forEach(k=>k.classList.remove('lit'));
+  kws[ki].classList.add('lit');
+  ki=(ki+1)%kws.length;
+}
+lightHero();setInterval(lightHero,900);
+
+// karaoke demo line
+const QUOTE="You have power over your mind — not outside events. Realize this, and you will find strength.";
+const line=document.getElementById('karaoke-line');
+const words=QUOTE.split(' ');
+line.innerHTML=words.map(w=>`<span class="w">${w}</span>`).join(' ')+' <span class="w" style="font-style:italic">— Marcus Aurelius</span>';
+const spans=line.querySelectorAll('.w');
+let wi=0;
+function step(){
+  if(wi>0)spans[wi-1].classList.replace('on','done');
+  if(wi<spans.length){spans[wi].classList.add('on');wi++;setTimeout(step,wi===1?600:340)}
+  else setTimeout(()=>{spans.forEach(s=>s.classList.remove('on','done'));wi=0;step()},3800);
+}
+// start when visible
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){step();o.disconnect()}},{threshold:.4}).observe(line);
+
+// faq
+document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.parentElement,open=qa.classList.toggle('open');
+  b.setAttribute('aria-expanded',open);
+}));
+</script>
+</body>
+</html>

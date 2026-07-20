@@ -36,6 +36,6 @@ Those requests are subject to those providers' own privacy practices.
 
 - **App data:** delete individual books, transcripts and quotes inside the app, reset analytics in settings, or uninstall the app to remove everything HushBook stored locally.
 
-If you have any questions or concerns about this Privacy Policy, please contact us at hello@hushbook.app.
+If you have any questions or concerns about this Privacy Policy, please contact us at aditya@hushbook.app.
 
 Effective date: 5 June 2026

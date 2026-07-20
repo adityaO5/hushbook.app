@@ -564,7 +564,7 @@ git commit -m "Landing rewrite: FAQ + finale waitlist (Supabase) + store badges"
 
 **Files:** Modify `index.html`, `assets/css/styles.css`, `assets/js/main.js`
 
-- [ ] **Step 1: Footer** — port the `<footer>` multi-column grid (brand blurb, Product, Company, Legal columns with `/about`, `/privacy-policy`, `/terms-conditions`, `/licenses`, `mailto:hello@hushbook.app`), the `.foot-bottom` copyright + social icons (X, Instagram, email). Port `.foot-*` CSS.
+- [ ] **Step 1: Footer** — port the `<footer>` multi-column grid (brand blurb, Product, Company, Legal columns with `/about`, `/privacy-policy`, `/terms-conditions`, `/licenses`, `mailto:aditya@hushbook.app`), the `.foot-bottom` copyright + social icons (X, Instagram, email). Port `.foot-*` CSS.
 - [ ] **Step 2: Dockbar** — port the `.dockbar` sticky mobile CTA; change its button to scroll to `#finale` (waitlist). Port `.dockbar` CSS (shows ≤760px, adds footer bottom padding).
 - [ ] **Step 3: Reveal JS** — port the IntersectionObserver `reveal` IIFE (adds `.in`, staggered `transition-delay`). Ensure every `.reveal` element across all sections is observed.
 - [ ] **Step 4: Verify** — reload; footer columns + social links resolve to the right routes; dockbar appears ≤760px and scrolls to the waitlist; sections fade/rise in on scroll (instant under reduced-motion). No console errors.

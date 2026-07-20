@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HushBook — Transcribe Any Audiobook</title>
+<meta name="description" content="HushBook turns any audiobook into word-level karaoke, transcribed privately on your phone with the on-device HushBook Engine. Privacy-first, accessibility-first. Free on iOS & Android.">
+<meta name="theme-color" content="#FE4E02">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:title" content="HushBook — Transcribe Any Audiobook">
+<meta property="og:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
+<meta property="og:url" content="https://hushbook.app/">
+<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HushBook — Transcribe Any Audiobook">
+<meta name="twitter:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<link rel="canonical" href="https://hushbook.app/">
+<link rel="icon" href="assets/img/default_preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ================= TOKENS ================= */
+@font-face{
+  font-family:"HushFont";
+  src:url("assets/fonts/HushFont-Regular.otf") format("opentype");
+  font-display:swap;
+}
+:root{
+  --cream:#FFFDFA;          /* reference body: warm near-white */
+  --cream-deep:#FAF6F0;     /* reference secondary surface */
+  --card:#FFFFFF;
+  --ink:#171310;
+  --ink-soft:#4C443C;
+  --muted:#7C7264;
+  --orange:#FE4E02;         /* reference brand orange */
+  --orange-hi:#FF7E33;
+  --orange-soft:#FFB370;
+  --peach:#FFE7CE;
+  --dark:#0C0A08;
+  --dark-card:#17120E;
+  --line:rgba(23,19,16,.10);
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --wordmark:"HushFont","Fraunces",serif;
+  --script:"Caveat",cursive;
+  --rad:30px;
+  --rad-sm:20px;
+  --wrap:1180px;
+  --shadow:0 24px 60px -28px rgba(60,26,8,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;line-height:1.06}
+h2{font-size:clamp(30px,4vw,48px)}
+.sub{color:var(--muted);font-size:clamp(15.5px,1.4vw,17.5px);max-width:600px}
+.center{text-align:center}
+.center .sub{margin-left:auto;margin-right:auto}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;background:var(--orange);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+
+/* GSAP reveals: start hidden, GSAP (or fallback) shows them */
+.reveal{opacity:0;transform:translateY(28px)}
+.no-js .reveal,.reveal.in{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+h2 .w{display:inline-block;will-change:transform}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+}
+
+/* ================= NAV ================= */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s ease,box-shadow .35s ease}
+.nav.solid{background:rgba(255,253,250,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.brand .name-img{width:auto;height:17px;border-radius:0;filter:brightness(0) invert(1);transition:filter .35s ease}
+.nav.solid .brand .name-img{filter:none}
+.brand .name{font-family:var(--wordmark);font-size:21px;letter-spacing:-.03em;font-kerning:normal;color:#FFF6EC;transition:color .35s ease}
+.nav.solid .brand .name{color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:600;color:rgba(255,246,236,.9)}
+.nav.solid .nav-links{color:var(--ink-soft)}
+.nav-links a{transition:opacity .2s}
+.nav-links a:hover{opacity:.65}
+.nav-cta{background:#FFF6EC;color:var(--orange);font-weight:800;padding:9px 20px;border-radius:999px;font-size:14.5px;transition:transform .2s,background .25s,color .25s;white-space:nowrap}
+.nav.solid .nav-cta{background:var(--ink);color:#FFF6EC}
+.nav-cta:hover{transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:0;color:#FFF6EC;width:42px;height:42px}
+.nav.solid .nav-toggle{color:var(--ink)}
+.nav-toggle svg{width:24px;height:24px}
+@media (max-width:860px){
+  .nav-toggle{display:grid;place-items:center}
+  .nav-links{position:fixed;top:66px;left:0;right:0;flex-direction:column;align-items:flex-start;padding:18px 24px 26px;background:rgba(255,253,250,.98);color:var(--ink-soft);box-shadow:0 12px 30px -12px rgba(0,0,0,.18);display:none}
+  .nav.open .nav-links{display:flex}
+  .nav .ic-close{display:none}.nav.open .ic-close{display:block}.nav.open .ic-open{display:none}
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;text-align:center;
+  padding:140px 0 0;
+  background:
+    radial-gradient(52% 44% at 50% 12%, rgba(255,205,140,.78), rgba(255,205,140,0) 72%),
+    radial-gradient(46% 42% at 4% -8%, rgba(140,26,0,.62), rgba(140,26,0,0) 70%),
+    radial-gradient(46% 42% at 96% -8%, rgba(150,30,0,.58), rgba(150,30,0,0) 70%),
+    radial-gradient(120% 60% at 50% 108%, rgba(255,196,130,.55), rgba(255,196,130,0) 62%),
+    linear-gradient(180deg, #E84502 0%, #FE4E02 26%, #FF6716 48%, #FF8B45 68%, #FFC08A 84%, #FFFDFA 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:150px;background:linear-gradient(180deg,transparent,var(--cream));pointer-events:none;z-index:3}
+#heroFx{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{
+  color:#FFF6EC;font-size:clamp(40px,6.6vw,80px);max-width:12ch;margin:0 auto 18px;
+}
+.hero h1 .kw{position:relative;transition:color .45s ease,text-shadow .45s ease;color:rgba(255,246,236,.42)}
+.hero h1 .kw.lit{color:#FFF6EC;text-shadow:0 0 38px rgba(255,222,170,.6)}
+.hero .sub{color:rgba(255,240,224,.92);margin:0 auto 30px;max-width:600px}
+.hero-chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,246,236,.16);border:1px solid rgba(255,246,236,.32);color:#FFE7CE;font-size:13px;font-weight:600;letter-spacing:.05em;padding:7px 16px;border-radius:999px;margin-bottom:24px}
+.hero-chip .bar{width:54px;height:4px;border-radius:99px;background:rgba(255,246,236,.25);overflow:hidden;position:relative}
+.hero-chip .bar i{position:absolute;inset:0;width:40%;background:#FFD9A8;border-radius:99px;animation:transcribe 2.6s ease-in-out infinite}
+@keyframes transcribe{0%{transform:translateX(-110%)}55%{transform:translateX(180%)}100%{transform:translateX(180%)}}
+.cta{
+  display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#FFF1E2;
+  font-weight:700;font-size:16px;padding:15px 30px;border-radius:999px;
+  box-shadow:0 18px 40px -16px rgba(40,10,0,.55);transition:transform .2s,box-shadow .2s;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 24px 48px -16px rgba(40,10,0,.62)}
+.cta .play{width:24px;height:24px;border-radius:50%;background:var(--orange);display:grid;place-items:center;flex:0 0 24px}
+.cta .play svg{width:11px;height:11px;margin-left:1px}
+.hero-note{margin-top:14px;font-size:13.5px;color:rgba(255,240,224,.78)}
+.hero-phones{position:relative;z-index:2;margin:64px auto -4px;max-width:860px;display:flex;justify-content:center;align-items:flex-end;gap:0}
+.hero-phones img{width:min(300px,38vw);height:auto;filter:drop-shadow(0 40px 60px rgba(50,12,0,.45))}
+.hero-phones .ph-l{transform:rotate(-7deg) translate(26px,26px);z-index:1}
+.hero-phones .ph-r{transform:rotate(6deg) translate(-26px,52px);z-index:2}
+@media (max-width:640px){
+  .hero{padding-top:118px}
+  .hero-phones{margin-top:44px}
+  .hero-phones img{width:54vw}
+  .hero-phones .ph-l{transform:rotate(-7deg) translate(34px,20px)}
+  .hero-phones .ph-r{transform:rotate(6deg) translate(-34px,44px)}
+}
+
+/* ================= SECTION INTRO ================= */
+.intro{padding:110px 0 26px}
+.intro-icon{width:64px;height:64px;border-radius:19px;margin:0 auto 24px;display:grid;place-items:center;
+  background:linear-gradient(140deg,#FF9A4D,#EE4D0B 55%,#C2300B);box-shadow:0 18px 40px -16px rgba(238,77,11,.5)}
+.intro-icon img{width:36px;height:36px;border-radius:9px}
+.intro h2{margin-bottom:16px}
+.intro .sub{margin-bottom:30px}
+.chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14.5px;font-weight:600;color:var(--ink-soft);box-shadow:0 6px 18px -10px rgba(60,26,8,.18)}
+
+/* ================= SHARED CARD GRAMMAR ================= */
+.section{padding:34px 0}
+.bigcard{
+  position:relative;border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:34px;
+  padding:clamp(32px,4.5vw,60px);min-height:500px;
+}
+.bigcard::before{
+  content:"";position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .5s ease;pointer-events:none;
+  background:radial-gradient(440px circle at var(--mx,50%) var(--my,50%),rgba(255,196,128,.17),transparent 65%);
+}
+.bigcard:hover::before{opacity:1}
+.bigcard .copy{position:relative;z-index:1;max-width:480px;color:#FFF2E2}
+.bigcard .copy .kick{display:block;font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#FFC487;margin-bottom:14px}
+.bigcard .copy h3{font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.015em;line-height:1.08;margin-bottom:14px}
+.bigcard .copy p{font-size:15.5px;line-height:1.66;color:rgba(255,242,226,.85)}
+.bigcard .copy ul{list-style:none;margin-top:22px;display:grid;gap:10px}
+.bigcard .copy li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;font-weight:600}
+.bigcard .copy li::before{content:"";flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:var(--orange-hi);margin-top:7px}
+.bigcard .shot{position:relative;z-index:1;width:min(290px,100%);margin:0 auto;perspective:900px}
+.bigcard .shot img{filter:drop-shadow(0 36px 60px rgba(0,0,0,.45));will-change:transform;transform-style:preserve-3d}
+.bigcard.dark{background:radial-gradient(110% 140% at 80% 0%, #7E2406 0%, #33110A 48%, var(--dark) 85%)}
+.bigcard.warm{background:radial-gradient(120% 140% at 18% 0%, #FFE3BC 0%, #FFC68B 46%, #F08A3C 100%)}
+.bigcard.warm .copy{color:#4A1C04}
+.bigcard.warm .copy .kick{color:#9A4108}
+.bigcard.warm .copy p{color:#6B330F}
+.bigcard.warm .copy li::before{background:#C2440B}
+.bigcard.warm .shot img{filter:drop-shadow(0 36px 56px rgba(120,48,4,.42))}
+.bigcard.warm::before{background:radial-gradient(440px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.22),transparent 65%)}
+@media (max-width:880px){
+  .bigcard{grid-template-columns:1fr;min-height:0;gap:10px;padding:34px 26px 42px}
+  .bigcard .shot{width:min(290px,78vw);margin-top:22px}
+}
+
+/* pair cards */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--rad);
+  padding:34px 32px 0;overflow:hidden;box-shadow:0 14px 38px -22px rgba(60,26,8,.25);
+  display:flex;flex-direction:column;
+}
+.pcard h3{font-family:var(--sans);font-size:17.5px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.pcard p{font-size:15px;color:var(--muted);line-height:1.62;max-width:46ch}
+.pcard .shot{margin:30px auto -86px;width:min(280px,72%)}
+.pcard .shot img{filter:drop-shadow(0 26px 44px rgba(60,26,8,.3))}
+.pcard.tint{background:var(--cream-deep)}
+.pcard.night{background:var(--dark-card);border-color:rgba(255,255,255,.06)}
+.pcard.night h3{color:#F8EFE0}
+.pcard.night p{color:#A89C8B}
+.pcard{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.pcard:hover{transform:translateY(-7px);box-shadow:0 30px 60px -26px rgba(60,26,8,.36)}
+.pcard .shot img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover .shot img{transform:translateY(-6px) scale(1.015)}
+@media (max-width:880px){
+  .pair{grid-template-columns:1fr}
+  .pcard .shot{margin-bottom:-66px}
+}
+
+/* icon duo rows */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:64px 0}
+.duo .item{display:flex;gap:18px;align-items:flex-start}
+.duo .ic{flex:0 0 46px;width:46px;height:46px;border-radius:14px;background:var(--ink);color:#FFD9A8;display:grid;place-items:center}
+.duo .ic svg{width:22px;height:22px}
+.duo strong{display:block;font-size:16.5px;font-weight:800;margin-bottom:5px}
+.duo p{font-size:14.5px;color:var(--muted);line-height:1.6}
+@media (max-width:760px){.duo{grid-template-columns:1fr;gap:30px;padding:48px 0}}
+
+/* ================= FULL-BLEED PHOTO BANDS ================= */
+.band{
+  margin:54px auto;color:#FFF2E0;position:relative;overflow:hidden;background:var(--dark);
+  max-width:min(1224px,calc(100% - 44px));border-radius:var(--rad);box-shadow:var(--shadow);
+}
+.band .bg{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;z-index:0;will-change:transform}
+.band::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(195deg,rgba(10,6,3,0) 38%,rgba(10,6,3,.68) 88%)}
+.band .band-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;padding:130px clamp(28px,5vw,60px) 50px;min-height:500px}
+.band h2{color:#FFF6EC;max-width:11ch;text-shadow:0 2px 28px rgba(0,0,0,.4)}
+.band p{font-size:15.5px;line-height:1.65;color:rgba(255,242,224,.9);max-width:42ch;justify-self:end;align-self:end;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.band .kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#FFC487;margin-bottom:16px;font-family:var(--sans)}
+@media (max-width:760px){
+  .band{max-width:calc(100% - 24px);border-radius:var(--rad-sm)}
+  .band .band-inner{grid-template-columns:1fr;padding:110px 24px 38px;min-height:420px}
+  .band p{justify-self:start}
+}
+
+/* ================= PLAYER MARQUEE ================= */
+.players{padding:30px 0 60px;overflow:hidden}
+.players-head{padding-bottom:38px}
+.marquee{display:flex;gap:26px;width:max-content;animation:slide 48s linear infinite}
+.marquee:hover{animation-play-state:paused}
+.marquee img{width:200px;height:auto;border-radius:24px;filter:drop-shadow(0 22px 40px rgba(60,26,8,.32))}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none;overflow-x:auto;width:auto}}
+
+/* ================= ANALYTICS SHOWCASE (cards orbit the phone) ================= */
+.showcase{padding:90px 0 40px;position:relative;overflow:hidden}
+.showcase .stage{
+  position:relative;max-width:1020px;margin:64px auto 0;min-height:680px;
+}
+.stage .phone{
+  position:relative;z-index:3;width:min(295px,80vw);margin:0 auto;
+}
+.stage .phone img{filter:drop-shadow(0 38px 64px rgba(60,26,8,.38))}
+.fcard{
+  position:absolute;z-index:2;border-radius:18px;overflow:hidden;background:#fff;
+  border:1px solid var(--line);box-shadow:0 26px 54px -22px rgba(60,26,8,.4);
+  will-change:transform;
+}
+.fcard img{width:100%;height:auto;display:block}
+.fcard .tag{
+  position:absolute;top:12px;left:12px;background:var(--ink);color:#FFE7CE;
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;padding:5px 11px;border-radius:999px;z-index:2;
+}
+.fc-radar{left:-1%;top:4%;width:min(360px,34vw)}
+.fc-habit{right:0;top:0;width:min(290px,28vw)}
+.fc-words{left:2%;bottom:8%;width:min(330px,32vw)}
+.fc-add{right:13%;top:44%;width:min(170px,18vw)}
+.fc-sheet{right:-1%;bottom:2%;width:min(250px,26vw)}
+.showcase .legend{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:48px;font-size:13.5px;color:var(--muted)}
+.showcase .legend span{display:inline-flex;align-items:center;gap:7px}
+.showcase .legend i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+@media (max-width:880px){
+  .showcase .stage{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .stage .phone{grid-column:1/-1;width:min(300px,76vw);margin-bottom:6px}
+  .fcard{position:static;width:100% !important}
+  .fc-radar,.fc-words{grid-column:1/-1}
+}
+
+/* ================= LETTER ================= */
+.letter{padding:120px 0 90px;text-align:center}
+.letter h2{margin-bottom:14px}
+.letter .lead{color:var(--muted);max-width:560px;margin:0 auto 56px;font-size:17px}
+.paper{
+  position:relative;max-width:680px;margin:0 auto;background:#FCFAF3;border:1px solid var(--line);
+  border-radius:14px;padding:56px 54px 60px;text-align:left;box-shadow:0 30px 70px -34px rgba(60,26,8,.4);
+  transform:rotate(-.6deg);
+}
+.paper h3{font-size:clamp(26px,3vw,34px);margin-bottom:22px}
+.paper p{font-size:15.5px;color:var(--ink-soft);margin-bottom:16px;line-height:1.75}
+.paper .sig{font-family:var(--script);font-size:34px;color:var(--orange);margin-top:26px}
+.paper .sig small{display:block;font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:2px;letter-spacing:.02em}
+.polaroid{
+  position:absolute;right:-66px;bottom:-44px;width:168px;background:#fff;padding:10px 10px 38px;
+  box-shadow:0 22px 44px -18px rgba(60,26,8,.45);transform:rotate(6deg);
+}
+.polaroid img{width:100%;height:170px;object-fit:cover}
+.polaroid span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--script);font-size:19px;color:var(--ink-soft)}
+@media (max-width:880px){
+  .paper{padding:44px 28px 52px}
+  .polaroid{right:-8px;bottom:-58px;width:140px}
+  .polaroid img{height:140px}
+  .letter{padding-bottom:130px}
+}
+
+/* ================= FAQ ================= */
+.faq{padding:40px 0 90px;max-width:780px;margin:0 auto}
+.faq h2{text-align:center;margin-bottom:42px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-weight:700;font-size:16px;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{flex:0 0 18px;width:18px;height:18px;transition:transform .3s;color:var(--orange)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq .a{padding:0 24px 22px;font-size:15px;color:var(--muted);line-height:1.66}
+
+/* ================= FINALE ================= */
+.finale{
+  margin:30px 0 0;overflow:hidden;position:relative;
+  background:
+    radial-gradient(52% 44% at 50% 88%, rgba(255,205,140,.7), rgba(255,205,140,0) 72%),
+    radial-gradient(46% 42% at 4% 108%, rgba(140,26,0,.55), rgba(140,26,0,0) 70%),
+    radial-gradient(46% 42% at 96% 108%, rgba(150,30,0,.5), rgba(150,30,0,0) 70%),
+    linear-gradient(0deg, #E84502 0%, #FE4E02 26%, #FF6716 48%, #FF8B45 68%, #FFC08A 84%, var(--cream) 100%);
+  text-align:center;padding:110px 22px 0;
+}
+.finale::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+}
+.finale>*{position:relative;z-index:1}
+.finale h2{color:#FFF6EC;max-width:16ch;margin:0 auto 16px;text-shadow:0 2px 30px rgba(120,30,0,.3)}
+.finale .sub{color:rgba(255,240,224,.94);margin:0 auto 30px}
+.stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.stores img{height:50px;width:auto}
+.finale .tiny{font-size:13px;color:rgba(255,240,224,.8);margin-bottom:44px}
+.finale .shot{width:min(280px,64vw);margin:0 auto -4px}
+.finale .shot img{filter:drop-shadow(0 -10px 60px rgba(60,16,0,.4))}
+
+/* ================= FOOTER ================= */
+footer{background:var(--dark);color:#B9AE9E;padding:56px 0 42px;font-size:14px}
+.foot-grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+.foot-brand .name{font-family:var(--wordmark);font-size:22px;letter-spacing:-.03em;font-kerning:normal;color:#F8EFE0;display:block;margin-bottom:8px}
+.foot-brand .name-img{height:19px;width:auto;display:block;margin-bottom:10px;filter:brightness(0) invert(1)}
+.foot-brand p{max-width:34ch;line-height:1.6;color:#8C8273}
+.foot-links{display:flex;gap:56px;flex-wrap:wrap}
+.foot-links .col strong{display:block;color:#F8EFE0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.foot-links .col a{display:block;margin-bottom:10px;color:#B9AE9E}
+.foot-links .col a:hover{color:#F8EFE0}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#7C7264;font-size:13px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#" aria-label="HushBook home">
+      <img src="assets/img/logo.png" alt="">
+      <img class="name-img" src="assets/img/HushBook.png" alt="HushBook">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#engine">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#life">Your reading life</a>
+      <a href="#faq">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a class="nav-cta" href="#get">Download free</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navToggle">
+        <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <canvas id="heroFx" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-chip"><span class="bar"><i></i></span> Transcribing&nbsp;· Chapter 1</div>
+    <h1 id="heroLine" aria-label="Transcribe Any Audiobook">
+      <span class="kw">Transcribe</span> <span class="kw">Any</span><br><span class="kw">Audiobook</span>
+    </h1>
+    <p class="sub">Every word lights up in sync with the narration — like Apple&nbsp;Music lyrics, for books. Transcribed privately on your phone by the on-device HushBook Engine.</p>
+    <a class="cta" href="#get">
+      <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5-11-6.5z"/></svg></span>
+      Download for free
+    </a>
+    <div class="hero-note">Free on iOS &amp; Android · No account, ever</div>
+  </div>
+  <div class="hero-phones">
+    <img class="ph-l" src="assets/img/mockups/karaoke-live.webp" alt="HushBook karaoke view: words of Meditations highlighted in sync with the narration while the chapter transcribes" loading="eager">
+    <img class="ph-r" src="assets/img/mockups/book-info-transcribe.webp" alt="HushBook book page for The Count of Monte Cristo with a Transcribe button beside every chapter" loading="eager">
+  </div>
+</header>
+
+<!-- ============ MEET THE ENGINE ============ -->
+<section class="intro center" id="engine">
+  <div class="wrap reveal">
+    <div class="intro-icon"><img src="assets/img/logo.png" alt=""></div>
+    <h2>Meet the HushBook&nbsp;Engine</h2>
+    <p class="sub">Pick any chapter and tap Transcribe. The Engine listens on your phone, writes out every word with its exact timing, and never sends a second of audio anywhere.</p>
+    <div class="chips">
+      <span class="chip">Transcribe your own books</span>
+      <span class="chip">Read along, word by word</span>
+      <span class="chip">All on your phone</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTO BAND — HOME ============ -->
+<section class="band">
+  <img class="bg" src="assets/img/lifestyle/couch-home.png" alt="Relaxing on a couch, browsing the HushBook home screen" loading="lazy">
+  <div class="wrap band-inner">
+    <h2 class="reveal"><span class="kicker">Your reading home</span>Pick up where you left</h2>
+    <p class="reveal">One glance and you're back in the story — your current book up top, your library a thumb away, and a greeting that knows exactly how far you've come.</p>
+  </div>
+</section>
+
+<!-- ============ BIG DARK CARD — READ-ALONG ============ -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="bigcard dark">
+      <div class="copy">
+        <span class="kick">The karaoke view</span>
+        <h3>Read along, word by word</h3>
+        <p>Every word lights up the instant it's spoken — true word-level timing, smooth at 60&nbsp;fps, over the book's own cover.</p>
+        <ul>
+          <li>Tap any word to jump the audio right there</li>
+          <li>Smart auto-scroll that never fights your thumb</li>
+          <li>Save any line as a quote with two taps</li>
+        </ul>
+      </div>
+      <div class="shot"><img src="assets/img/mockups/karaoke-live.webp" alt="Word-level karaoke read-along in HushBook" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIR — TRANSCRIPTION FLOW ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="pair">
+      <div class="pcard reveal">
+        <h3>One tap to transcribe</h3>
+        <p>Open any book — imported or from the free library — and every chapter gets its own Transcribe button. Tap one, or queue them all.</p>
+        <div class="shot"><img src="assets/img/mockups/book-info-transcribe.webp" alt="Chapter list with Transcribe buttons in HushBook" loading="lazy"></div>
+      </div>
+      <div class="pcard tint reveal">
+        <h3>Watch it work</h3>
+        <p>The Engine moves through each chapter in the background and resumes if it's interrupted. The first pass takes a while — every open after that is instant.</p>
+        <div class="shot"><img src="assets/img/mockups/transcribing-chapters.webp" alt="A chapter transcribing with a progress bar in HushBook" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICON DUO — PRIVACY ============ -->
+<section>
+  <div class="wrap duo">
+    <div class="item reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+      <div>
+        <strong>100% on-device</strong>
+        <p>The HushBook Engine runs natively on your phone. Your audio is never uploaded, there's no account to make, and no server exists on the other end.</p>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5"/><path d="M4 17.5c2.5 2 5.2 3 8 3s5.5-1 8-3"/></svg></div>
+      <div>
+        <strong>Offline after one download</strong>
+        <p>Grab a model once and the whole app works without a connection — transcription, read-along, library, analytics. It's also thermal-aware, so long books stay cool.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAND 1 ============ -->
+<section class="band">
+  <img class="bg" src="assets/img/lifestyle/bed-karaoke.png" alt="Reading along with Project Hail Mary in bed, every word highlighted as it's narrated" loading="lazy">
+  <div class="wrap band-inner">
+    <h2 class="reveal"><span class="kicker">Word-level sync</span>Every word, in sync</h2>
+    <p class="reveal">See your book, your place, and your pace come together before you press play. Per-word timestamps mean the lit word truly tracks the narrator's voice — and a two-tap selection saves any line as a quote.</p>
+  </div>
+</section>
+
+<!-- ============ PAIR — LIBRARY ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="pair">
+      <div class="pcard reveal">
+        <h3>Ready in minutes</h3>
+        <p>Once a chapter is transcribed it's ready to play with full read-along. Pick up any chapter, in any order, whenever you are.</p>
+        <div class="shot"><img src="assets/img/mockups/ready-to-play.webp" alt="Transcribed chapters ready to play in HushBook" loading="lazy"></div>
+      </div>
+      <div class="pcard tint reveal">
+        <h3>Thousands of classics, free — or bring your own</h3>
+        <p>A built-in library from LibriVox and the Internet Archive in six languages, plus single-file import for MP3, M4A, M4B and more. M4B chapters are detected automatically.</p>
+        <div class="shot"><img src="assets/img/mockups/library.webp" alt="HushBook library with imported and public-domain books, and an Upload Audiobook tile" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIG WARM CARD — ACCESSIBILITY ============ -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="bigcard warm">
+      <div class="copy">
+        <span class="kick">Accessibility first</span>
+        <h3>An app that fits how you read</h3>
+        <p>Choose a Comprehension, Dyslexia/ADHD, or Vision profile once — and the entire app reshapes itself around it.</p>
+        <ul>
+          <li>OpenDyslexic and Atkinson Hyperlegible bundled</li>
+          <li>Fonts, caption sizes, contrast and spacing adapt app-wide</li>
+          <li>Switch profiles anytime as your reading changes</li>
+        </ul>
+      </div>
+      <div class="shot"><img src="assets/img/mockups/reading-profiles.webp" alt="Choosing a reading profile in HushBook: Comprehension, Dyslexia/ADHD, or Vision" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIR — ANALYTICS (dark cards) ============ -->
+<section class="section" id="life">
+  <div class="wrap">
+    <div class="pair">
+      <div class="pcard night reveal">
+        <h3>Watch your reading brain light up</h3>
+        <p>A Brain Score from 0 to 100 that blends your streak, words read, comprehension, completion, and consistency — computed entirely on your device.</p>
+        <div class="shot"><img src="assets/img/mockups/brain-health.webp" alt="Brain Health score screen showing what drives the score" loading="lazy"></div>
+      </div>
+      <div class="pcard night reveal">
+        <h3>Know your own rhythm</h3>
+        <p>When you start, when you stop, what you reach for most. Honest charts about your habit — and nothing about it ever leaves your phone.</p>
+        <div class="shot"><img src="assets/img/mockups/advanced-analytics.webp" alt="Analytics showing start and end times per day and top categories" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAND 2 ============ -->
+<section class="band">
+  <img class="bg" src="assets/img/lifestyle/bench-player.png" alt="Listening to The Lord of the Rings on a park bench with the HushBook player" loading="lazy">
+  <div class="wrap band-inner">
+    <h2 class="reveal"><span class="kicker">The player</span>Everything you need to read well</h2>
+    <p class="reveal">A full-screen player built for reading, not just hearing. Variable speed from 0.5× to 3×, ±30-second skips, chapter navigation, a sleep timer with a gentle fade, and lock-screen controls.</p>
+  </div>
+</section>
+
+<!-- ============ PLAYER MARQUEE ============ -->
+<section class="players">
+  <div class="wrap players-head center reveal">
+    <h2>Press play on anything</h2>
+    <p class="sub">From Tolkien to Austen to the book you imported last night — if you own the file, HushBook will read it with you.</p>
+  </div>
+  <div class="marquee" id="marquee">
+    <img src="assets/img/mockups/player-lotr.webp" alt="HushBook player: The Lord of the Rings" loading="lazy">
+    <img src="assets/img/mockups/player-pride-prejudice.webp" alt="HushBook player: Pride and Prejudice" loading="lazy">
+    <img src="assets/img/mockups/player-martian.webp" alt="HushBook player: The Martian" loading="lazy">
+    <img src="assets/img/mockups/player-crime-punishment.webp" alt="HushBook player: Crime and Punishment" loading="lazy">
+    <img src="assets/img/mockups/player-hitchhikers.webp" alt="HushBook player: The Hitchhiker's Guide to the Galaxy" loading="lazy">
+    <img src="assets/img/mockups/player-love-hypothesis.webp" alt="HushBook player: The Love Hypothesis" loading="lazy">
+    <img src="assets/img/mockups/player-born-a-crime.webp" alt="HushBook player: Born a Crime" loading="lazy">
+    <img src="assets/img/mockups/player-mexican-gothic.webp" alt="HushBook player: Mexican Gothic" loading="lazy">
+    <img src="assets/img/mockups/player-fourth-wing.webp" alt="HushBook player: Fourth Wing" loading="lazy">
+  </div>
+</section>
+
+<!-- ============ PAIR — COMPANIONS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="pair">
+      <div class="pcard reveal">
+        <h3>Map the cast as you read</h3>
+        <p>Big novels get confusing. Drag characters onto a canvas, draw the relationships between them, and keep the whole web a tap away.</p>
+        <div class="shot"><img src="assets/img/mockups/character-graph.webp" alt="Character relationship graph in HushBook" loading="lazy"></div>
+      </div>
+      <div class="pcard tint reveal">
+        <h3>Honest goals, kept privately</h3>
+        <p>Words per day, books per month, hours per week — set targets suggested from your own pace, and watch the trend lines answer back.</p>
+        <div class="shot"><img src="assets/img/mockups/goals-graphs.webp" alt="Words trend and total books read charts in HushBook" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANALYTICS SHOWCASE ============ -->
+<section class="showcase" id="cards">
+  <div class="wrap">
+    <div class="center reveal">
+      <h2>Analytics this deep shouldn't fit on a phone</h2>
+      <p class="sub" style="margin:14px auto 0">Every chart on screen is its own card — genre radar, habit insights, words per book, goals — computed on-device and shareable as a polished image.</p>
+    </div>
+    <div class="stage" id="stage">
+      <div class="fcard fc-radar" data-depth="-60"><span class="tag">Genre radar</span><img src="Originals/Most%20Read%20Genre.png" alt="Most-read genres radar card" loading="lazy"></div>
+      <div class="fcard fc-habit" data-depth="-110"><span class="tag">Habit insights</span><img src="Originals/Habits.png" alt="Habit insights card: usual listening hour, longest and average session, most active day" loading="lazy"></div>
+      <div class="phone" id="stagePhone"><img src="assets/img/mockups/goals-graphs.webp" alt="HushBook analytics screen with words trend and books read charts" loading="lazy"></div>
+      <div class="fcard fc-add" data-depth="-150"><span class="tag">Goals</span><img src="Originals/Add%20Goals.png" alt="Add goals card with daily, weekly, and monthly options" loading="lazy"></div>
+      <div class="fcard fc-words" data-depth="-90"><span class="tag">Words per book</span><img src="Originals/Books%20Words%20data.png" alt="Words per book chart card" loading="lazy"></div>
+      <div class="fcard fc-sheet" data-depth="-130"><span class="tag">Targets</span><img src="Originals/Goals%20sheet.png" alt="Goals sheet for books and words targets" loading="lazy"></div>
+    </div>
+    <div class="legend reveal">
+      <span><i></i>Computed on-device</span>
+      <span><i></i>Every card shareable</span>
+      <span><i></i>Nothing leaves your phone</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICON DUO — FREE / PRO ============ -->
+<section>
+  <div class="wrap duo">
+    <div class="item reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V6.5A2.5 2.5 0 0 1 6.5 4H20v13H6.5A2.5 2.5 0 0 0 4 19.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></svg></div>
+      <div>
+        <strong>Free to start</strong>
+        <p>The read-along experience and the public-domain library are free — no subscription, no catalogue paywall, and streaks stay free too.</p>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a4.2 4.2 0 0 1 7-3.1A4.2 4.2 0 0 1 19 11c0 5.4-7 10-7 10z"/></svg></div>
+      <div>
+        <strong>Pro keeps us independent</strong>
+        <p>An optional Pro upgrade unlocks advanced analytics. Going Pro helps keep HushBook independent and improving — no investors, no ads, no tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LETTER ============ -->
+<section class="letter">
+  <div class="wrap reveal">
+    <h2>Hello! Nice to meet you</h2>
+    <p class="lead">I made HushBook because listening alone never worked for how I read. If you ever want to reach out, I'd love to hear from you.</p>
+    <div class="paper">
+      <h3>I am a reader.</h3>
+      <p>I built HushBook for the moments a narrator's voice runs ahead of your attention — when you realize you've heard three pages and remember none of them.</p>
+      <p>I believe your books and your data are yours. Everything HushBook does — transcribing, scoring, reminding — happens on your phone. No account, no cloud, no server quietly watching.</p>
+      <p>I believe accessibility isn't a settings toggle. It's the shape of the whole app, chosen by you on the first screen.</p>
+      <p>It's just me, on purpose. No investors, no trend chasing — just an audiobook app that finally lets you read along.</p>
+      <div class="sig">Aditya<small>Maker of HushBook</small></div>
+      <div class="polaroid">
+        <img src="assets/img/rakesh.jpg" alt="Aditya, maker of HushBook">
+        <span>Aditya</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2 class="reveal">Questions, answered</h2>
+    <div class="reveal">
+      <details open>
+        <summary>Does my audio ever leave my phone?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">No. Transcription runs entirely on-device with the HushBook Engine. There's no cloud, no account, and the app works fully offline after a one-time model download.</div>
+      </details>
+      <details>
+        <summary>Where do the synced words come from?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">HushBook generates them from your audio — there's no lyrics database. The first pass on a long book takes a while because it's doing real speech-to-text on your phone; after that, it's instant every time you open the book.</div>
+      </details>
+      <details>
+        <summary>What files can I import?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">MP3, M4A, M4B, AAC, WAV, FLAC, OGG/OPUS and more, one file per import. M4B chapter markers are detected automatically, and cover art and metadata are pulled in for you.</div>
+      </details>
+      <details>
+        <summary>Will it drain my battery or heat my phone?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">The Engine is thermal-aware — it caps its worker threads and idles between chunks to stay cool on long transcriptions, and resumes automatically if it's ever interrupted.</div>
+      </details>
+      <details>
+        <summary>How much does it cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">The core read-along experience and the public-domain library are free. There's an optional Pro upgrade for advanced analytics — going Pro helps support HushBook's ongoing development.</div>
+      </details>
+      <details>
+        <summary>Can I read in the dark?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="a">Yes — a night mode swaps the blurred cover backdrop for a solid dark canvas, and the Vision profile adds high-contrast themes with very large captions.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale" id="get">
+  <h2 class="reveal">Your next book is waiting to be read along</h2>
+  <p class="sub reveal">Out now. Free on iPhone and Android — no account, ever.</p>
+  <div class="stores reveal">
+    <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Download on the App Store"><img src="assets/badges/app-store-badge.svg" alt="Download on the App Store"></a>
+    <a href="#" aria-label="Get it on Google Play"><img src="assets/badges/google-play-badge.svg" alt="Get it on Google Play"></a>
+  </div>
+  <div class="tiny reveal">Free download · Optional Pro supports development</div>
+  <div class="shot reveal"><img src="assets/img/mockups/home.webp" alt="HushBook home screen with a personal greeting, the current book, and your library" loading="lazy"></div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="name-img" src="assets/img/HushBook.png" alt="HushBook">
+        <p>Read along with every word you hear — transcribed privately on your phone.</p>
+      </div>
+      <div class="foot-links">
+        <div class="col">
+          <strong>Product</strong>
+          <a href="#engine">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="col">
+          <strong>Company</strong>
+          <a href="about.html">About</a>
+          <a href="licenses.html">Licenses</a>
+        </div>
+        <div class="col">
+          <strong>Legal</strong>
+          <a href="privacy-policy.html">Privacy policy</a>
+          <a href="terms-conditions.html">Terms &amp; conditions</a>
+          <a href="refund-policy.html">Refund policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HushBook. All rights reserved.</span>
+      <span>Audio never leaves your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasGsap=typeof gsap!=='undefined';
+
+/* ---------- nav ---------- */
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('solid',window.scrollY>40);
+onScroll();addEventListener('scroll',onScroll,{passive:true});
+const tg=document.getElementById('navToggle');
+tg.addEventListener('click',()=>{
+  const open=nav.classList.toggle('open');
+  tg.setAttribute('aria-expanded',open);
+});
+document.getElementById('navLinks').addEventListener('click',e=>{
+  if(e.target.tagName==='A'){nav.classList.remove('open');tg.setAttribute('aria-expanded','false');}
+});
+
+/* ---------- hero karaoke headline ---------- */
+const kws=[...document.querySelectorAll('#heroLine .kw')];
+if(reduce){kws.forEach(k=>k.classList.add('lit'));}
+else{
+  let i=0;
+  const step=()=>{
+    if(i<kws.length){kws[i++].classList.add('lit');setTimeout(step,520);}
+    else{setTimeout(()=>{kws.forEach(k=>k.classList.remove('lit'));i=0;setTimeout(step,420);},3600);}
+  };
+  setTimeout(step,500);
+}
+
+/* ---------- marquee loop ---------- */
+const mq=document.getElementById('marquee');
+if(!reduce){mq.innerHTML+=mq.innerHTML;}
+
+/* ---------- GSAP: reveals, hero entrance, showcase parallax ---------- */
+if(hasGsap && !reduce){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* hero entrance */
+  gsap.timeline({defaults:{ease:'power3.out'}})
+    .from('.hero-chip',{y:24,autoAlpha:0,duration:.7},.1)
+    .from('#heroLine',{y:34,autoAlpha:0,duration:.9},.2)
+    .from('.hero .sub',{y:24,autoAlpha:0,duration:.8},.4)
+    .from('.hero .cta,.hero-note',{y:18,autoAlpha:0,duration:.7,stagger:.08},.55)
+    .from('.hero-phones img',{y:120,autoAlpha:0,duration:1.1,stagger:.12,ease:'power4.out'},.5);
+
+  /* hero phones drift on scroll */
+  gsap.to('.hero-phones .ph-l',{yPercent:9,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-phones .ph-r',{yPercent:16,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* split section headlines into words */
+  const splitWords=el=>{[...el.childNodes].forEach(n=>{
+    if(n.nodeType===3&&n.textContent.trim()){
+      const f=document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t=>{
+        if(t.trim()){const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s);}
+        else f.appendChild(document.createTextNode(t));
+      });
+      el.replaceChild(f,n);
+    }});};
+  document.querySelectorAll('main h2.reveal').forEach(h=>{
+    splitWords(h);gsap.set(h,{autoAlpha:1,y:0});
+    gsap.fromTo(h.querySelectorAll('.w'),{y:'0.75em',autoAlpha:0},{
+      y:0,autoAlpha:1,duration:.75,stagger:.055,ease:'power3.out',
+      scrollTrigger:{trigger:h,start:'top 86%'}
+    });
+  });
+
+  /* generic reveals */
+  document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.matches('h2'))return;
+    gsap.fromTo(el,{y:34,autoAlpha:0},{
+      y:0,autoAlpha:1,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 86%'}
+    });
+  });
+
+  /* photo bands: slow cinematic parallax */
+  document.querySelectorAll('.band .bg').forEach(img=>{
+    gsap.fromTo(img,{yPercent:-7,scale:1.14},{yPercent:7,scale:1.04,ease:'none',
+      scrollTrigger:{trigger:img.closest('.band'),start:'top bottom',end:'bottom top',scrub:true}});
+  });
+
+  /* magnetic buttons */
+  document.querySelectorAll('.cta,.nav-cta').forEach(b=>{
+    b.addEventListener('mousemove',e=>{
+      const r=b.getBoundingClientRect();
+      gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.16,y:(e.clientY-r.top-r.height/2)*.3,duration:.3,ease:'power2.out'});
+    });
+    b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.45)'}));
+  });
+
+  /* bigcards: cursor-tracked glow + 3D phone tilt */
+  document.querySelectorAll('.bigcard').forEach(card=>{
+    const img=card.querySelector('.shot img');
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      card.style.setProperty('--mx',(x*100)+'%');
+      card.style.setProperty('--my',(y*100)+'%');
+      if(img) gsap.to(img,{rotateY:(x-.5)*10,rotateX:(.5-y)*8,duration:.5,ease:'power2.out'});
+    });
+    card.addEventListener('mouseleave',()=>{
+      if(img) gsap.to(img,{rotateY:0,rotateX:0,duration:.9,ease:'elastic.out(1,.5)'});
+    });
+  });
+
+  /* showcase: phone settles in, cards float at their own depth */
+  const stage=document.getElementById('stage');
+  if(stage && innerWidth>880){
+    gsap.fromTo('#stagePhone',{y:90,scale:.94,autoAlpha:0},{
+      y:0,scale:1,autoAlpha:1,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:stage,start:'top 78%'}
+    });
+    document.querySelectorAll('#stage .fcard').forEach((card,n)=>{
+      gsap.fromTo(card,
+        {y:70,autoAlpha:0,rotate:n%2?2.5:-2.5},
+        {y:0,autoAlpha:1,rotate:n%2?1.2:-1.2,duration:.9,delay:.08*n,ease:'power3.out',
+         scrollTrigger:{trigger:stage,start:'top 74%'}}
+      );
+      /* parallax: each card rises at its own speed while scrolling through */
+      gsap.to(card,{
+        y:parseFloat(card.dataset.depth||-80),ease:'none',
+        scrollTrigger:{trigger:stage,start:'top 80%',end:'bottom 20%',scrub:1.1}
+      });
+    });
+    gsap.to('#stagePhone',{y:-30,ease:'none',
+      scrollTrigger:{trigger:stage,start:'top 80%',end:'bottom 20%',scrub:1.1}});
+  }
+}else{
+  /* fallback: IntersectionObserver reveals */
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+
+/* ---------- three.js: rippled grain hero (matches reference bg) ---------- */
+(function(){
+  if(typeof THREE==='undefined') return;
+  const canvas=document.getElementById('heroFx');
+  const hero=document.getElementById('hero');
+  if(!canvas||!hero) return;
+
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
+  const scene=new THREE.Scene();
+  const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  const uni={
+    uTime:{value:0},
+    uRes:{value:new THREE.Vector2(1,1)},
+    uMouse:{value:new THREE.Vector2(.5,.5)}
+  };
+  const mat=new THREE.ShaderMaterial({
+    uniforms:uni,
+    vertexShader:'void main(){gl_Position=vec4(position,1.0);}',
+    fragmentShader:`
+      precision highp float;
+      uniform float uTime;uniform vec2 uRes;uniform vec2 uMouse;
+      float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+      float arcs(vec2 p,vec2 c,float f,float ph){
+        float d=length(p-c);
+        d+=0.10*sin(p.y*1.6+ph*0.5)+0.06*sin(p.x*2.2-ph*0.3);   /* warp the circles */
+        return sin(d*f-ph);
+      }
+      void main(){
+        vec2 uv=gl_FragCoord.xy/uRes;
+        vec2 p=uv;p.x*=uRes.x/uRes.y;
+        float ar=uRes.x/uRes.y;
+        /* vivid orange field: lighter bloom center, deeper top corners */
+        vec3 base=vec3(0.996,0.306,0.008);   /* #FE4E02 */
+        vec3 deep=vec3(0.700,0.205,0.000);
+        vec3 lite=vec3(1.000,0.560,0.270);
+        vec3 col=base;
+        col=mix(col,deep,0.6*smoothstep(0.42,0.95,distance(vec2(uv.x,uv.y*0.8),vec2(0.5,0.38))));
+        float g=exp(-pow(length((uv-vec2(0.5,0.74))*vec2(1.35,1.1)),2.0)*3.0);
+        col=mix(col,lite,g*0.55);
+        /* broad sweeping ripples, slight chromatic fringe, mouse-reactive */
+        vec2 m=(uMouse-0.5)*0.18;
+        vec2 c1=vec2(-0.35+m.x, 0.85+m.y);
+        vec2 c2=vec2(ar*0.95-m.x, 0.05-m.y);
+        float t1=uTime*0.16, t2=1.9+uTime*0.12;
+        float rr=arcs(p,c1,8.5,t1)*0.55+arcs(p,c2,7.0,t2)*0.45;
+        float rg=arcs(p,c1,8.5,t1+0.20)*0.55+arcs(p,c2,7.0,t2+0.20)*0.45;
+        float rb=arcs(p,c1,8.5,t1+0.40)*0.55+arcs(p,c2,7.0,t2+0.40)*0.45;
+        vec3 rip=vec3(rr,rg,rb);
+        rip=sign(rip)*pow(abs(rip),vec3(1.7));   /* widen the soft crests */
+        float vis=smoothstep(0.05,0.30,uv.y);
+        col+=rip*vis*vec3(0.058,0.040,0.034);
+        /* dissolve into the warm white page at the very bottom */
+        vec3 cream=vec3(1.000,0.992,0.980);   /* #FFFDFA */
+        col=mix(cream,col,smoothstep(0.0,0.17,uv.y));
+        /* static film grain — fixed pattern, no per-frame flicker */
+        float n=hash(uv*uRes);
+        col+=(n-0.5)*0.06;
+        gl_FragColor=vec4(col,1.0);
+      }`
+  });
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+
+  const buf=new THREE.Vector2();
+  function resize(){
+    renderer.setSize(hero.clientWidth,hero.clientHeight,false);
+    renderer.getDrawingBufferSize(buf);
+    uni.uRes.value.copy(buf);
+  }
+  resize();addEventListener('resize',resize);
+
+  const mouseTarget=new THREE.Vector2(.5,.5);
+  addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect();
+    mouseTarget.set((e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height);
+  },{passive:true});
+
+  let visible=true;
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;},{threshold:0}).observe(hero);
+
+  function tick(t){
+    requestAnimationFrame(tick);
+    if(!visible) return;
+    if(!reduce) uni.uTime.value=t*0.001;   /* reduced motion: frozen ripples, still the right look */
+    uni.uMouse.value.lerp(mouseTarget,0.045);   /* heavy damping: glides, never jitters */
+    renderer.render(scene,cam);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
