@@ -75,7 +75,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero h1{margin:0 auto 20px;max-width:13ch}
 .hero .sub{margin:0 auto 34px;max-width:560px}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .25s,box-shadow .25s;border:none;font-family:inherit;cursor:pointer;outline:none}
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
 .pill .pic{width:22px;height:22px;flex:none;fill:currentColor}
 .pill span{text-align:left}
@@ -83,9 +83,6 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .pill b{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
 .finale .pill{background:#171310;color:var(--cream);box-shadow:0 16px 40px rgba(23,19,16,.4)}
 .finale .pill:hover{box-shadow:0 22px 52px rgba(23,19,16,.5)}
-.store-toast{text-align:center;font-size:14px;color:var(--gold);font-weight:600;margin-top:14px;opacity:0;transform:translateY(-8px);transition:opacity .3s cubic-bezier(.2,.7,.2,1),transform .3s cubic-bezier(.2,.7,.2,1);line-height:1}
-.store-toast.visible{opacity:1;transform:translateY(0)}
-.store-toast.fade-out{opacity:0;transform:translateY(-8px)}
 .hero-note{margin-top:16px;font-size:13.5px;color:var(--dim)}
 
 /* hero phone fan */
@@ -339,6 +336,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:44px}
 .foot-brand .wordmark{height:16px;color:var(--muted);margin-bottom:14px}
 .foot-brand p{max-width:30ch}
+.foot-social{display:flex;align-items:center;gap:14px;margin-top:20px}
+.foot-social a{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line-soft);border-radius:50%;color:var(--dim)}
+.foot-social a:hover{color:var(--gold-hi)}
+.foot-social svg{width:16px;height:16px}
 .fcol b{display:block;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
 .fcol a{display:block;margin-bottom:10px;color:var(--dim)}
 .fcol a:hover{color:var(--gold-hi)}
@@ -434,7 +435,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="hero">
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="badge reveal">Out now on iOS</span>
+    <span class="badge reveal">Out now on iOS &amp; Android</span>
     <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Transcribe</span> <span class="kw">Any</span> <span class="kw">Audiobook.</span></h1>
     <p class="sub reveal">Dive into a galaxy of knowledge — every word lights up in sync with the narration, transcribed privately on your phone. No account. No cloud.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
@@ -442,10 +443,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         <span><small>Download on the</small><b>App Store</b></span>
       </a>
-      <button class="pill" type="button" aria-label="Coming soon on Google Play" onclick="showAndroidToast(this)">
+      <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="Get HushBook on Google Play">
         <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-        <span><small>Coming soon on</small><b>Google Play</b></span>
-      </button>
+        <span><small>Get it on</small><b>Google Play</b></span>
+      </a>
     </div>
     <p class="hero-note reveal">🌟 Free to download, Zero Ads.</p>
   </div>
@@ -642,7 +643,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         </ul>
       </div>
       <div class="qr-pane">
-        <div class="qr-ring"><img src="assets/img/qr-hushbook.svg" alt="QR code linking to hushbook.app"></div>
+        <div class="qr-ring"><img src="assets/img/qr-hushbook-download-v2.svg" alt="Scan to download HushBook for iPhone or Android"></div>
         <small>Scan with your iPhone or Android camera<br>to get HushBook.</small>
       </div>
     </div>
@@ -945,10 +946,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
       <span><small>Download on the</small><b>App Store</b></span>
     </a>
-    <button class="pill" type="button" aria-label="Coming soon on Google Play" onclick="showAndroidToast(this)">
+    <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="Get HushBook on Google Play">
       <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-      <span><small>Coming soon on</small><b>Google Play</b></span>
-    </button>
+      <span><small>Get it on</small><b>Google Play</b></span>
+    </a>
   </div>
   <small class="reveal">Transcribed privately on your phone — never the cloud.</small>
 </section>
@@ -961,6 +962,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="foot-brand">
         <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
         <p>Read along with every word you hear.</p>
+        <div class="foot-social" aria-label="HushBook social media">
+          <a href="https://www.instagram.com/hushbook.app/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.x.com/hushbookapp/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.7h1.8L7.4 4.4H5.5l12.2 15.8Z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="fcol">
         <b>Product</b>
@@ -980,7 +989,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="fcol">
         <b>Get the app</b>
         <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">App Store</a>
-        <a href="#">Google Play</a>
+        <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Google Play</a>
       </div>
     </div>
     <div class="foot-base">
@@ -994,31 +1003,6 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-function showAndroidToast(button) {
-  const storesContainer = button.closest('.stores');
-  if (!storesContainer) return;
-  let toast = storesContainer.nextElementSibling;
-  if (!toast || !toast.classList.contains('store-toast')) {
-    toast = document.createElement('div');
-    toast.className = 'store-toast';
-    toast.textContent = "Coming soon, Stay tuned!";
-    storesContainer.parentNode.insertBefore(toast, storesContainer.nextSibling);
-  }
-  toast.classList.remove('fade-out');
-  void toast.offsetWidth;
-  toast.classList.add('visible');
-  if (toast.timeoutId) clearTimeout(toast.timeoutId);
-  toast.timeoutId = setTimeout(() => {
-    toast.classList.remove('visible');
-    toast.classList.add('fade-out');
-    setTimeout(() => {
-      if (toast && !toast.classList.contains('visible') && toast.parentNode) {
-        toast.parentNode.removeChild(toast);
-      }
-    }, 300);
-  }, 2500);
-}
-
 // scroll reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -1075,15 +1059,6 @@ if(fan&&fine&&!calm){
   });
   hero.addEventListener('pointerleave',()=>{fan.style.setProperty('--rx','0deg');fan.style.setProperty('--ry','0deg')});
 }
-
-// magnetic buttons
-if(fine&&!calm)document.querySelectorAll('.stores .pill,.nav-cta').forEach(el=>{
-  el.addEventListener('pointermove',e=>{
-    const r=el.getBoundingClientRect();
-    el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.16}px,${(e.clientY-r.top-r.height/2)*.28}px)`;
-  });
-  el.addEventListener('pointerleave',()=>el.style.transform='');
-});
 
 // three.js + GSAP — The Transcription Field
 // An audiobook's waveform streams in from the left, crosses the playhead beam,
