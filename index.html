@@ -116,7 +116,8 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reviews-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .reviews-track{display:flex;width:max-content;animation:reviews-scroll 88s linear infinite;will-change:transform}
 .review-set{display:flex;align-items:stretch;gap:16px;padding-right:16px}
-.review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:linear-gradient(145deg,#2B2D30,#202225);box-shadow:inset 1px 1px 0 rgba(255,255,255,.09),inset -1px -1px 0 rgba(0,0,0,.38),0 16px 34px rgba(0,0,0,.26);overflow:hidden;display:flex;flex-direction:column}
+.review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:linear-gradient(145deg,rgba(57,60,65,.56),rgba(28,30,34,.48));backdrop-filter:blur(14px) saturate(115%);-webkit-backdrop-filter:blur(14px) saturate(115%);box-shadow:inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.28),0 18px 42px rgba(0,0,0,.24);overflow:hidden;display:flex;flex-direction:column}
+.review-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 0,rgba(255,255,255,.11),transparent 38%);z-index:0}
 .review-card--wide{width:430px}
 .review-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;min-height:30px;margin-bottom:16px;position:relative;z-index:1}
 .review-top--starless{justify-content:flex-end}
@@ -574,6 +575,26 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
           <h3 class="review-title">Brilliant app for staying focused!</h3>
           <p class="review-quote">“I love the on-device transcription and the specialized reading modes (the dyslexia font and high-contrast layouts are fantastic). Highly recommended!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Wilhelm Drescher</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Perfect app just what I wanted. Pro unlocks more stats as far as I can see.”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Dennis Branson</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Great app! Could you please add option to highlight the current sentence and not word, cause ai makes words bold either too slow or too fast, so they are not synched with speech. Ability to add whole book without choosing chapters 1 by 1 would also be nice for multiple files 👍”</p>
         </article>
 
         <article class="review-card" role="listitem" tabindex="0">
