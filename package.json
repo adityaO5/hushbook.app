@@ -1,0 +1,21 @@
+{
+  "name": "hushbook-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HushBook marketing site — static HTML, CSS, and JS",
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000",
+    "build:sitemap": "node scripts/build-sitemap.js",
+    "build:hreflang": "node scripts/inject-hreflang.js",
+    "build:vercel": "node scripts/build-vercel-locales.js",
+    "test": "node localization.test.js && node blur-in-heading-reveal.test.js",
+    "test:locale": "node scripts/verify-localization.js de"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

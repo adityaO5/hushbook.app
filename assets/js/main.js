@@ -29,7 +29,9 @@
 
   /* ---------- live karaoke (hero read-along player) ---------- */
   (function(){
-    var text = "You are listening to Meditations by Marcus Aurelius, narrated by Christopher Hurt. Chapter one, volume one. Marcus Aurelius was Roman emperor from 161 to 180 and a Stoic philosopher.";
+    var text = document.documentElement.lang === 'de'
+      ? 'Du hörst Meditationen von Marcus Aurelius, gelesen von Christopher Hurt. Erstes Kapitel, erster Band. Marcus Aurelius war von 161 bis 180 römischer Kaiser und stoischer Philosoph.'
+      : "You are listening to Meditations by Marcus Aurelius, narrated by Christopher Hurt. Chapter one, volume one. Marcus Aurelius was Roman emperor from 161 to 180 and a Stoic philosopher.";
     var el = document.getElementById('karaoke');
     var scrub = document.getElementById('scrub');
     if(!el) return;
@@ -152,13 +154,63 @@
 
   /* ---------- reveal on scroll ---------- */
   (function(){
-    var nodes = document.querySelectorAll('.reveal');
-    if(!nodes.length) return;
-    if(REDUCE){ nodes.forEach(function(n){ n.classList.add('in'); }); return; }
+    var blocks = document.querySelectorAll('.reveal');
+    var headings = document.querySelectorAll('h1, h2, h3');
+
+    function splitText(node, index){
+      Array.prototype.slice.call(node.childNodes).forEach(function(child){
+        if(child.nodeType === Node.TEXT_NODE){
+          var fragment = document.createDocumentFragment();
+          Array.prototype.forEach.call(child.textContent, function(character){
+            if(/\s/.test(character)){
+              fragment.appendChild(document.createTextNode(' '));
+              return;
+            }
+            var span = document.createElement('span');
+            span.className = 'reveal-char';
+            span.setAttribute('aria-hidden', 'true');
+            span.style.transitionDelay = (index.value++ * 30) + 'ms';
+            span.textContent = character;
+            fragment.appendChild(span);
+          });
+          child.parentNode.replaceChild(fragment, child);
+        } else if(child.nodeType === Node.ELEMENT_NODE){
+          splitText(child, index);
+        }
+      });
+    }
+
+    function prepareHeading(heading){
+      var label = heading.textContent.replace(/\s+/g, ' ').trim();
+      if(!label) return;
+      if(!heading.getAttribute('aria-label')) heading.setAttribute('aria-label', label);
+      splitText(heading, { value:0 });
+      heading.setAttribute('data-char-reveal', 'true');
+    }
+
+    function revealHeading(heading){
+      heading.querySelectorAll('.reveal-char').forEach(function(character){ character.classList.add('in'); });
+    }
+
+    if(REDUCE){
+      blocks.forEach(function(block){ block.classList.add('in'); });
+      return;
+    }
+
+    headings.forEach(prepareHeading);
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        if(en.target.getAttribute('data-char-reveal') === 'true') revealHeading(en.target);
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
     }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
-    nodes.forEach(function(n, i){ n.style.transitionDelay = ((i % 4) * 70) + 'ms'; io.observe(n); });
+    blocks.forEach(function(block, i){
+      block.style.transitionDelay = ((i % 4) * 70) + 'ms';
+      io.observe(block);
+    });
+    headings.forEach(function(heading){ if(!heading.classList.contains('reveal')) io.observe(heading); });
   })();
 
 })();

@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HushBook — Read along with every word you hear</title>
-<meta name="description" content="HushBook turns any audiobook into word-level karaoke, transcribed privately on your phone with the on-device HushBook Engine. Privacy-first, accessibility-first. Free on iOS & Android.">
+<title>Free Audiobook App with Synced Texts | HushBook</title>
+<meta name="description" content="Free audiobook app with synced texts — word-level read-along on iPhone &amp; Android. Import any book, transcribe privately on-device. Best free audiobook app for focus.">
+<meta name="keywords" content="free audiobook app with synced texts, best free audiobook app, best audiobook apps, audiobook with words, free audiobook app, audiobook apps for iphone, audiobook apps for android, project hail mary audiobook, read along audiobook">
 <meta name="theme-color" content="#0B0A09">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="HushBook">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HushBook">
-<meta property="og:title" content="HushBook — Transcribe Any Audiobook">
-<meta property="og:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Free Audiobook App with Synced Texts | HushBook">
+<meta property="og:description" content="Word-level read-along for any audiobook — free on iPhone &amp; Android. Synced text, on-device transcription, no account required.">
 <meta property="og:url" content="https://hushbook.app/">
-<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta property="og:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HushBook — free audiobook app with synced texts and word-level read-along">
+<meta property="og:image:type" content="image/webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HushBook — Transcribe Any Audiobook">
-<meta name="twitter:description" content="Any audiobook, turned into word-level karaoke — transcribed privately on your phone. Free on iOS & Android.">
-<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:title" content="Free Audiobook App with Synced Texts | HushBook">
+<meta name="twitter:description" content="Word-level read-along for any audiobook — free on iPhone &amp; Android. Synced text, on-device transcription, no account required.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta name="twitter:image:alt" content="HushBook — free audiobook app with synced texts and word-level read-along">
 <link rel="canonical" href="https://hushbook.app/">
 <link rel="icon" href="assets/img/default_preview.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HushBook",
+  "url": "https://hushbook.app/",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audiobook Player",
+  "operatingSystem": "iOS, Android",
+  "description": "Free audiobook app with synced texts. Turn any audiobook into word-level karaoke, transcribed privately on your phone.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Word-level synced read-along text",
+    "On-device private transcription",
+    "Works offline after engine download",
+    "Free public-domain library",
+    "Import MP3, M4B and more",
+    "Accessibility reading profiles"
+  ],
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597",
+    "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -47,7 +95,10 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+.reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
+.reveal-word{display:inline-block}
+.reveal-char.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
 /* ============ NAV ============ */
 .nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,10,9,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
@@ -116,7 +167,8 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reviews-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .reviews-track{display:flex;width:max-content;animation:reviews-scroll 88s linear infinite;will-change:transform}
 .review-set{display:flex;align-items:stretch;gap:16px;padding-right:16px}
-.review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:linear-gradient(145deg,#2B2D30,#202225);box-shadow:inset 1px 1px 0 rgba(255,255,255,.09),inset -1px -1px 0 rgba(0,0,0,.38),0 16px 34px rgba(0,0,0,.26);overflow:hidden;display:flex;flex-direction:column}
+.review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:linear-gradient(145deg,rgba(57,60,65,.56),rgba(28,30,34,.48));backdrop-filter:blur(14px) saturate(115%);-webkit-backdrop-filter:blur(14px) saturate(115%);box-shadow:inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.28),0 18px 42px rgba(0,0,0,.24);overflow:hidden;display:flex;flex-direction:column}
+.review-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 0,rgba(255,255,255,.11),transparent 38%);z-index:0}
 .review-card--wide{width:430px}
 .review-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;min-height:30px;margin-bottom:16px;position:relative;z-index:1}
 .review-top--starless{justify-content:flex-end}
@@ -242,7 +294,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .split-media.layer .back{position:absolute;z-index:1;left:0;top:50%;width:clamp(170px,21vw,238px);transform:translate(-52%,-52%) rotate(-6deg);filter:drop-shadow(0 30px 54px rgba(28,21,13,.26))}
 
 /* reading life */
-.life-head h2{background:linear-gradient(92deg,var(--gold-hi),#E8927C 55%,#C9A36A);-webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+.life-head h2{color:var(--gold-hi);max-width:14ch}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
 .collage{display:grid;grid-template-columns:1fr minmax(240px,330px) 1fr;gap:clamp(18px,3.4vw,48px);align-items:center;margin-top:90px}
 .collage-phone{position:relative;z-index:2}
@@ -311,6 +363,19 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
+
+/* seo long-form */
+.seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
+.seo-copy .sec-head{margin-bottom:40px}
+.seo-copy .prose{max-width:720px;margin:0 auto}
+.seo-copy .prose p{color:var(--muted);font-size:16.5px;line-height:1.72;margin-bottom:1.15em}
+.seo-copy .prose p:last-child{margin-bottom:0}
+.seo-copy .prose h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:2.1em 0 .75em}
+.seo-copy .prose h3:first-of-type{margin-top:0}
+.seo-copy .prose strong{color:var(--ink);font-weight:600}
+.seo-copy .prose a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.seo-copy .prose a:hover{color:var(--gold)}
+.seo-copy .prose .seo-cta{margin-top:2em;padding-top:1.4em;border-top:1px solid var(--line-soft);color:var(--ink)}
 
 /* faq */
 .faq{max-width:780px;margin:0 auto}
@@ -393,6 +458,28 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 }
 @media (prefers-reduced-motion:reduce){.lp img{transition:none}}
 </style>
+<link rel="alternate" hreflang="en" href="https://hushbook.app/">
+<link rel="alternate" hreflang="ar" href="https://hushbook.app/ar">
+<link rel="alternate" hreflang="da" href="https://hushbook.app/da">
+<link rel="alternate" hreflang="de" href="https://hushbook.app/de">
+<link rel="alternate" hreflang="es-419" href="https://hushbook.app/es-419">
+<link rel="alternate" hreflang="es-ES" href="https://hushbook.app/es-ES">
+<link rel="alternate" hreflang="fr" href="https://hushbook.app/fr">
+<link rel="alternate" hreflang="id" href="https://hushbook.app/id">
+<link rel="alternate" hreflang="it" href="https://hushbook.app/it">
+<link rel="alternate" hreflang="ja" href="https://hushbook.app/ja">
+<link rel="alternate" hreflang="ko" href="https://hushbook.app/ko">
+<link rel="alternate" hreflang="nl" href="https://hushbook.app/nl">
+<link rel="alternate" hreflang="pl" href="https://hushbook.app/pl">
+<link rel="alternate" hreflang="pt-BR" href="https://hushbook.app/pt-BR">
+<link rel="alternate" hreflang="pt-PT" href="https://hushbook.app/pt-PT">
+<link rel="alternate" hreflang="ru" href="https://hushbook.app/ru">
+<link rel="alternate" hreflang="sv" href="https://hushbook.app/sv">
+<link rel="alternate" hreflang="th" href="https://hushbook.app/th">
+<link rel="alternate" hreflang="tr" href="https://hushbook.app/tr">
+<link rel="alternate" hreflang="uk" href="https://hushbook.app/uk">
+<link rel="alternate" hreflang="vi" href="https://hushbook.app/vi">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
 </head>
 <body>
 
@@ -574,6 +661,26 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
           <h3 class="review-title">Brilliant app for staying focused!</h3>
           <p class="review-quote">“I love the on-device transcription and the specialized reading modes (the dyslexia font and high-contrast layouts are fantastic). Highly recommended!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Wilhelm Drescher</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Perfect app just what I wanted. Pro unlocks more stats as far as I can see.”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Dennis Branson</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Great app! Could you please add option to highlight the current sentence and not word, cause ai makes words bold either too slow or too fast, so they are not synched with speech. Ability to add whole book without choosing chapters 1 by 1 would also be nice for multiple files 👍”</p>
         </article>
 
         <article class="review-card" role="listitem" tabindex="0">
@@ -917,6 +1024,37 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   </div>
 </section>
 
+<!-- ============ SEO COPY ============ -->
+<section class="seo-copy" id="about-hushbook" aria-labelledby="seo-title">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">The free audiobook app</span>
+      <h2 id="seo-title">Free audiobook app with synced texts</h2>
+      <p class="sub">Read every word as you hear it — the read-along player built for focus, privacy, and books you already own.</p>
+    </div>
+    <article class="prose reveal">
+      <p>Looking for a <strong>free audiobook app with synced texts</strong>? HushBook is built for people who want more than plain playback. Ordinary players stream narration and leave your eyes with nothing to follow. HushBook turns listening into <strong>audiobook with words</strong>: every spoken word lights up in time with the narrator, so you read along the way lyrics move in a music app — only this time, the track is a full book.</p>
+
+      <h3>Why synced text beats listening alone</h3>
+      <p>Passive audio is easy to start and easy to lose. Minds drift. Names blur. You finish a chapter and realize you retained almost nothing. Word-level highlighting anchors attention to the voice: you see what you hear, seek any line with a tap, and keep place without rewinding half a chapter. That dual-channel focus is why many readers call HushBook one of the <strong>best free audiobook apps</strong> when comprehension matters as much as convenience.</p>
+
+      <h3>Best audiobook apps — what actually sets HushBook apart</h3>
+      <p>Search “<strong>best audiobook apps</strong>” and you’ll find storefronts, subscriptions, and cloud libraries. Those apps excel at discovery and catalogs. HushBook solves a different problem: <em>how you read the audio you already have</em>. Import your own MP3, M4B, FLAC, and more; chapters and cover art come along when the file includes them. Tap Transcribe, and the on-device HushBook Engine builds synchronized text — no lyrics database, no upload, no account. After a one-time engine download, the whole experience works offline. That private, file-first design is rare among mainstream <strong>audiobook apps for iPhone</strong> and <strong>audiobook apps for Android</strong>.</p>
+
+      <h3>A free audiobook app for iPhone and Android</h3>
+      <p>HushBook ships free on both platforms — App Store and Google Play — with zero ads in the core experience. The public-domain library (classics from LibriVox and the Internet Archive) is free to browse and download. The read-along karaoke, quotes, reading profiles, and offline playback are free too. An optional Pro tier unlocks deeper analytics if you want them; going Pro helps keep the app independent. Whether you need <strong>audiobook apps for iPhone</strong> for a commute or <strong>audiobook apps for Android</strong> for bed-time reading, the same product promise holds: free to start, private by design, synced text included.</p>
+
+      <h3>Your books — from classics to a Project Hail Mary audiobook</h3>
+      <p>Bring the titles you care about. Love long-haul science fiction? Import a <strong>Project Hail Mary audiobook</strong> file you already own (or any other book you have rights to play), run transcription on your phone, and follow Ryland Grace word by word as the narration unfolds. Prefer public-domain epics? Start with Monte Cristo, Austen, or Aurelius from the built-in catalogue. HushBook is not a piracy storefront — it is a player and read-along engine for files and free classics you choose. Synced text works across languages too: the engine supports dozens of tongues so an <strong>audiobook with words</strong> can match the language you hear.</p>
+
+      <h3>Privacy, accessibility, and habits that stick</h3>
+      <p>Transcription never leaves the device. There is no sign-in wall and no cloud for your audio. Reading profiles reshape the whole UI for comprehension, dyslexia/ADHD, or low vision — fonts like OpenDyslexic and Atkinson Hyperlegible, overlays, contrast, and night mode included. Streaks, badges, and gentle stats stay local, so habit-building does not require a surveillance stack. That combination — free core, synced text, on-device AI, accessibility — is why HushBook ranks among the strongest answers when people search for the <strong>best free audiobook app</strong> that respects both focus and privacy.</p>
+
+      <p class="seo-cta"><strong>Ready to read along?</strong> Download HushBook free for <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Android</a>, pick a free classic or import a book you own, and watch every word light up with the voice.</p>
+    </article>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="sec" id="faq" style="padding-top:40px">
   <div class="wrap">
@@ -1003,9 +1141,74 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-// scroll reveal
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// scroll reveal + per-character heading blur-in
+const revealBlocks=document.querySelectorAll('.reveal');
+const revealHeadings=document.querySelectorAll('h1, h2, h3');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function splitHeadingText(node,index){
+  Array.from(node.childNodes).forEach(child=>{
+    if(child.nodeType===Node.TEXT_NODE){
+      const fragment=document.createDocumentFragment();
+      let word;
+      Array.from(child.textContent).forEach(character=>{
+        if(/\s/.test(character)){
+          word=null;
+          fragment.appendChild(document.createTextNode(' '));
+          return;
+        }
+        if(!word){
+          word=document.createElement('span');
+          word.className='reveal-word';
+          fragment.appendChild(word);
+        }
+        const span=document.createElement('span');
+        span.className='reveal-char';
+        span.setAttribute('aria-hidden','true');
+        span.style.transitionDelay=(index.value++*30)+'ms';
+        span.textContent=character;
+        word.appendChild(span);
+      });
+      child.parentNode.replaceChild(fragment,child);
+    }else if(child.nodeType===Node.ELEMENT_NODE){splitHeadingText(child,index);}
+  });
+}
+
+function prepareHeading(heading){
+  const label=heading.textContent.replace(/\s+/g,' ').trim();
+  if(!label)return;
+  if(!heading.getAttribute('aria-label'))heading.setAttribute('aria-label',label);
+  splitHeadingText(heading,{value:0});
+  heading.dataset.charReveal='true';
+}
+
+function revealHeading(heading){
+  heading.querySelectorAll('.reveal-char').forEach(character=>character.classList.add('in'));
+}
+
+function revealHeadingTree(target){
+  if(target.dataset.charReveal==='true')revealHeading(target);
+  target.querySelectorAll('[data-char-reveal]').forEach(revealHeading);
+}
+
+if(reduceMotion){
+  revealBlocks.forEach(block=>block.classList.add('in'));
+}else{
+  revealHeadings.forEach(prepareHeading);
+  const revealIO=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    revealHeadingTree(entry.target);
+    entry.target.classList.add('in');
+    revealIO.unobserve(entry.target);
+  }),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  revealBlocks.forEach((block,index)=>{
+    block.style.transitionDelay=((index%4)*70)+'ms';
+    revealIO.observe(block);
+  });
+  revealHeadings.forEach(heading=>{
+    if(!heading.classList.contains('reveal'))revealIO.observe(heading);
+  });
+}
 
 // nav toggle
 const nav=document.getElementById('nav');
@@ -1516,5 +1719,6 @@ if(fan&&fine&&!calm){
   });
 })();
 </script>
-</body>
+<div class="locale-switcher" data-locale-switcher aria-label="Language selector"><a data-locale="en">English</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch</a></div>
+<script src="/assets/js/locale.js" defer></script></body>
 </html>

@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="largura=dispositivo-largura, escala inicial=1, viewport-fit=cover">
+<title>App de audiolivros grátis com texto sincronizado | HushBook</title>
+<meta name="description" content="App de audiolivros grátis com texto sincronizado — leitura palavra a palavra no iPhone e Android. Importe qualquer livro, transcrição privada no aparelho.">
+<meta name="keywords" content="app audiolivros grátis, audiolivro com texto, melhores apps de audiolivros, free audiobook app with synced texts, audiobook apps for iphone, audiobook apps for android, project hail mary audiobook">
+<meta name="theme-color" content="#0B0A09">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="HushBook">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="App de audiolivros grátis com texto sincronizado | HushBook">
+<meta property="og:description" content="Leitura sincronizada palavra a palavra para qualquer audiolivro — grátis no iPhone e Android. Texto sincronizado, transcrição no aparelho, sem conta.">
+<meta property="og:url" content="https://hushbook.app/pt/">
+<meta property="og:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HushBook — app de audiolivros grátis com texto sincronizado">
+<meta property="og:image:type" content="image/webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="App de audiolivros grátis com texto sincronizado | HushBook">
+<meta name="twitter:description" content="Leitura sincronizada palavra a palavra para qualquer audiolivro — grátis no iPhone e Android. Texto sincronizado, transcrição no aparelho, sem conta.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta name="twitter:image:alt" content="HushBook — app de audiolivros grátis com texto sincronizado">
+<link rel="canonical" href="https://hushbook.app/pt/">
+<link rel="icon" href="/assets/img/default_preview.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HushBook",
+  "url": "https://hushbook.app/pt/",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audiobook Player",
+  "operatingSystem": "iOS, Android",
+  "description": "App de audiolivros grátis com textos sincronizados. Transforma qualquer audiolivro em karaokê palavra a palavra, transcrito em privado no telefone.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Texto sincronizado palavra a palavra",
+    "Transcrição privada no aparelho",
+    "Funciona offline após baixar o motor",
+    "Biblioteca de domínio público grátis",
+    "Importa MP3, M4B e mais",
+    "Perfis de leitura acessíveis"
+  ],
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597",
+    "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0A09; --panel:#14110E; --panel-2:#191511; --line:rgba(201,163,106,.14);
+  --line-soft:rgba(255,255,255,.08); --ink:#F5EFE6; --muted:#A89F90; --dim:#7C7468;
+  --gold:#C9A36A; --gold-hi:#E8C893; --cream:#FBF8F2; --cream-ink:#1C150D; --cream-muted:#6B6157;
+  --brown:#6F3825; --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif; --hand:"Caveat",ui-rounded,cursive;
+  --rad:24px; --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08}
+h1{font-size:clamp(44px,7.4vw,92px)}
+h2{font-size:clamp(32px,4.6vw,56px)}
+h3{font-size:clamp(21px,2.4vw,26px)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.sub{color:var(--muted);font-size:clamp(17px,1.6vw,20px);max-width:640px}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:var(--gold);color:#1a1208;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
+.reveal-word{display:inline-block}
+.reveal-char.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
+
+/* ============ NAV ============ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,10,9,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink)}
+.brand .wordmark{height:18px;width:auto;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--gold);color:#1a1208;font-weight:700;padding:9px 18px;border-radius:999px;font-size:14px;transition:transform .2s,background .2s}
+.nav-cta:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:0;color:var(--ink);width:40px;height:40px;cursor:pointer}
+.nav-toggle svg{width:22px;height:22px}
+@media (max-width:820px){
+  .nav-toggle{display:grid;place-items:center}
+  .nav-links{position:fixed;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;padding:20px 24px 28px;background:rgba(11,10,9,.97);border-bottom:1px solid var(--line-soft);display:none}
+  .nav.open .nav-links{display:flex}
+  .nav .ic-close{display:none}.nav.open .ic-close{display:block}.nav.open .ic-open{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{padding:150px 0 0;text-align:center;position:relative}
+.hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;max-width:100%;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(201,163,106,.07);color:var(--gold-hi);font-size:13px;font-weight:600;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:26px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.hero h1{margin:0 auto 20px;max-width:13ch}
+.hero .sub{margin:0 auto 34px;max-width:560px}
+.stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
+.pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
+.pill .pic{width:22px;height:22px;flex:none;fill:currentColor}
+.pill span{text-align:left}
+.pill small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6;line-height:1.25}
+.pill b{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.finale .pill{background:#171310;color:var(--cream);box-shadow:0 16px 40px rgba(23,19,16,.4)}
+.finale .pill:hover{box-shadow:0 22px 52px rgba(23,19,16,.5)}
+.hero-note{margin-top:16px;font-size:13.5px;color:var(--dim)}
+
+/* hero phone fan */
+.fan{margin-top:64px;position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,26px);padding:0 12px;mask-image:linear-gradient(to bottom,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fan .f1{transform:translateY(46px) rotate(-4deg)}
+.fan .f2{transform:translateY(18px) rotate(-2deg)}
+.fan .f3{width:clamp(150px,20vw,268px);z-index:2}
+.fan .f4{transform:translateY(18px) rotate(2deg)}
+.fan .f5{transform:translateY(46px) rotate(4deg)}
+.fan img:hover{transform:translateY(-8px)}
+@media (max-width:680px){.fan .f1,.fan .f5{display:none}}
+
+/* ============ VALUE BAND ============ */
+.band{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
+.band h2{max-width:21ch;margin:0 auto 26px}
+.band h2 em{font-style:italic;color:var(--gold)}
+.karaoke-line{font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);line-height:1.5;max-width:760px;margin:0 auto 40px;color:var(--dim)}
+.karaoke-line .w{transition:color .25s}
+.karaoke-line .w.on{color:var(--gold-hi)}
+.karaoke-line .w.done{color:var(--ink)}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--muted)}
+.chip b{color:var(--ink);font-weight:700}
+
+/* ============ READER NOTES ============ */
+.reviews{padding:24px 0 92px;overflow:hidden}
+.reviews-head{text-align:center;margin:0 auto 34px;padding:0 24px}
+.reviews-head h2{margin-bottom:12px}
+.reviews-head .sub{margin-inline:auto;max-width:650px}
+.reviews-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.reviews-track{display:flex;width:max-content;animation:reviews-scroll 88s linear infinite;will-change:transform}
+.review-set{display:flex;align-items:stretch;gap:16px;padding-right:16px}
+.review-card{position:relative;isolation:isolate;width:310px;min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:linear-gradient(145deg,rgba(57,60,65,.56),rgba(28,30,34,.48));backdrop-filter:blur(14px) saturate(115%);-webkit-backdrop-filter:blur(14px) saturate(115%);box-shadow:inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.28),0 18px 42px rgba(0,0,0,.24);overflow:hidden;display:flex;flex-direction:column}
+.review-card--wide{width:430px}
+.review-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;min-height:30px;margin-bottom:16px;position:relative;z-index:1}
+.review-top--starless{justify-content:flex-end}
+.review-source{display:flex;flex-direction:row-reverse;align-items:center;gap:8px;margin-left:auto;text-align:right;position:relative;z-index:1}
+.review-source-icon{width:28px;height:28px;padding:6px;border-radius:9px;color:#D5D7DA;background:linear-gradient(145deg,#33363A,#222428);box-shadow:inset 1px 1px 0 rgba(255,255,255,.12),inset -2px -2px 3px rgba(0,0,0,.45)}
+.review-user{font-size:14px;font-weight:700;color:var(--ink)}
+.review-platform{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#969A9F}
+.review-stars{display:flex;gap:3px;color:#FFD84D;font-size:25px;letter-spacing:.025em;line-height:1;position:absolute;top:22px;left:22px;z-index:1;text-shadow:0 0 12px rgba(255,216,77,.28)}
+.review-title{font-family:var(--serif);font-size:20px;line-height:1.15;margin-bottom:9px;position:relative;z-index:1}
+.review-quote{font-family:var(--serif);font-size:16px;line-height:1.44;color:#E4E1DC;position:relative;z-index:1}
+.review-mark{position:absolute;right:-18px;top:-24px;width:122px;height:122px;color:rgba(255,255,255,.025);filter:drop-shadow(1px 1px 0 rgba(255,255,255,.035)) drop-shadow(-1px -1px 0 rgba(0,0,0,.5));z-index:0}
+.review-card:has(.review-user--reddit) .review-mark{display:none}
+.review-card:has(.review-user--reddit)::before{content:"";position:absolute;right:-18px;top:-24px;width:122px;height:122px;background:url("/assets/img/reddit-logo.png") center/contain no-repeat;filter:grayscale(1) contrast(1.15) drop-shadow(1px 1px 0 rgba(255,255,255,.08)) drop-shadow(-1px -1px 0 rgba(0,0,0,.55));opacity:.075;z-index:0}
+.review-source:has(.review-user--reddit) .review-source-icon{display:none}
+.review-source:has(.review-user--reddit)::before{content:"";width:28px;height:28px;flex:none;border-radius:50%;background:#74777C url("/assets/img/reddit-logo.png") center/cover no-repeat;filter:grayscale(1) saturate(0) contrast(.9);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 2px 7px rgba(0,0,0,.28)}
+.review-card:focus-visible{outline:2px solid var(--gold-hi);outline-offset:-4px}
+.reviews-marquee:hover .reviews-track,.reviews-marquee:focus-within .reviews-track{animation-play-state:paused}
+@keyframes reviews-scroll{to{transform:translateX(-50%)}}
+@media(max-width:680px){
+  .reviews{padding-bottom:72px}
+  .reviews-head{margin-bottom:26px}
+  .review-card,.review-card--wide{width:80vw;min-height:200px;padding:20px}
+  .review-quote{font-size:15.5px}
+  .review-title{font-size:19px}
+  .review-stars{font-size:22px;top:20px;left:20px}
+  .review-set{gap:12px;padding-right:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reviews-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none;scroll-snap-type:x mandatory;padding:0 20px}
+  .reviews-track{animation:none}
+  .review-set{padding-right:0}
+  .review-set[aria-hidden="true"]{display:none}
+  .review-card{scroll-snap-align:center}
+}
+
+/* ============ SECTIONS ============ */
+.sec{padding:110px 0}
+.sec-head{max-width:760px;margin-bottom:64px}
+.sec-head h2{margin-bottom:18px}
+.sec-head.center{margin-left:auto;margin-right:auto}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.step{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--rad);padding:26px 22px 0;overflow:hidden;display:flex;flex-direction:column}
+.step .num{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.1em;margin-bottom:10px}
+.step h3{font-size:20px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+.step img{width:82%;margin:auto auto 0;border-radius:22px 22px 0 0;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* privacy */
+.privacy-card{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;background:linear-gradient(160deg,var(--panel-2),#100D0A);border:1px solid var(--line);border-radius:32px;padding:clamp(36px,5vw,72px)}
+.privacy-card h2{margin-bottom:18px}
+.privacy-card .sub{margin-bottom:30px}
+.plist{display:grid;gap:14px;font-size:15.5px}
+.plist li{list-style:none;display:flex;gap:12px;color:var(--muted)}
+.plist li b{color:var(--ink)}
+.plist .tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(201,163,106,.14);color:var(--gold-hi);display:grid;place-items:center;font-size:12px;margin-top:2px}
+.qr-pane{justify-self:center;text-align:center}
+.qr-ring{width:clamp(200px,22vw,260px);height:clamp(200px,22vw,260px);border-radius:36px;background:var(--cream);display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(0,0,0,.06);position:relative}
+.qr-ring::after{content:"";position:absolute;inset:-14px;border-radius:46px;border:1px dashed rgba(201,163,106,.35);animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.qr-ring img{width:70%;height:70%}
+.qr-pane small{color:var(--dim);font-size:13.5px}
+@media (max-width:880px){.privacy-card{grid-template-columns:1fr;gap:44px}}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);align-items:end}
+.gcard{text-align:center}
+.gcard img{width:min(100%,246px);margin:0 auto;border-radius:clamp(22px,3vw,34px);filter:drop-shadow(0 30px 54px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gcard:hover img{transform:translateY(-10px)}
+.gcard .num{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.1em;display:block;margin-bottom:14px}
+.gcard h3{margin:22px 0 6px;font-size:19px}
+.gcard p{font-size:14px;color:var(--muted)}
+@media (max-width:680px){.gallery{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
+.marquee{margin-top:40px;height:480px;position:relative;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:30px;width:max-content;animation:slide 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
+/* shift exactly one 6-card set: (img 190 + gap 30) × 6 = 1320px. needs 4 copies in markup so 3 sets always cover the viewport */
+@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 6))}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* moment */
+.moment{padding:130px 0;text-align:center;background:radial-gradient(900px 460px at 50% 50%,rgba(201,163,106,.12),transparent 70%)}
+.moment p{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
+.moment h2{font-size:clamp(36px,6vw,72px);font-style:italic;max-width:16ch;margin:0 auto}
+.moment h2 span{color:var(--gold)}
+
+/* light sections */
+.light{background:var(--cream);color:var(--cream-ink)}
+.light .eyebrow{color:var(--brown)}
+.light .sub{color:var(--cream-muted)}
+.light h2 em{font-style:italic;color:var(--brown)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.split.rev>.split-media{order:2}
+.split-media{display:flex;justify-content:center}
+.split-media img{width:clamp(240px,28vw,330px);border-radius:clamp(26px,3.4vw,44px);filter:drop-shadow(0 36px 64px rgba(28,21,13,.28))}
+.split h2{margin-bottom:18px}
+.split .sub{margin-bottom:30px}
+@media (max-width:880px){.split{grid-template-columns:1fr}.split.rev>.split-media{order:0}
+.split-media.layer{margin-top:8px}
+.split-media.layer .front{width:min(66vw,290px)}
+.split-media.layer .back{width:min(46vw,200px);transform:translate(-42%,-50%) rotate(-6deg)}}
+.profiles{display:grid;gap:14px}
+.profile{position:relative;overflow:hidden;display:flex;gap:16px;align-items:flex-start;background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,253,249,.26));-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:18px 20px;box-shadow:0 14px 34px rgba(28,21,13,.10),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(111,56,37,.06);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.profile::before{content:"";position:absolute;left:0;right:0;top:0;height:48%;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.5),transparent);border-radius:18px 18px 0 0}
+.profile:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(28,21,13,.14),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(111,56,37,.06)}
+.profile>*{position:relative;z-index:1}
+.profile .pic{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--brown);background:linear-gradient(150deg,rgba(111,56,37,.15),rgba(111,56,37,.05));border:1px solid rgba(111,56,37,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.profile .pic svg{width:22px;height:22px}
+.profile b{font-family:var(--serif);font-size:17.5px;display:block;margin-bottom:2px}
+.profile span{font-size:14px;color:var(--cream-muted)}
+.mat-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:60px}
+.light .chip{background:#fff;border-color:rgba(28,21,13,.1);color:var(--cream-ink);box-shadow:0 6px 16px rgba(28,21,13,.05)}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,3vw,36px)}
+.duo img{width:clamp(190px,24vw,290px);border-radius:clamp(22px,3vw,40px);filter:drop-shadow(0 34px 60px rgba(10,8,5,.4))}
+.duo img:last-child{width:clamp(165px,21vw,250px);transform:translateY(26px)}
+.split-media.layer{position:relative;width:fit-content;margin:0 auto}
+.split-media.layer img{border-radius:clamp(22px,3vw,40px)}
+.split-media.layer .front{position:relative;z-index:2;display:block;width:clamp(220px,26vw,300px);filter:drop-shadow(0 36px 64px rgba(28,21,13,.32))}
+.split-media.layer .back{position:absolute;z-index:1;left:0;top:50%;width:clamp(170px,21vw,238px);transform:translate(-52%,-52%) rotate(-6deg);filter:drop-shadow(0 30px 54px rgba(28,21,13,.26))}
+
+/* reading life */
+.life-head h2{color:var(--gold-hi);max-width:14ch}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
+.collage{display:grid;grid-template-columns:1fr minmax(240px,330px) 1fr;gap:clamp(18px,3.4vw,48px);align-items:center;margin-top:90px}
+.collage-phone{position:relative;z-index:2}
+.collage-phone img{width:100%;border-radius:clamp(26px,3.2vw,42px);filter:drop-shadow(0 44px 76px rgba(0,0,0,.62))}
+.cstack{display:grid;gap:clamp(20px,3vw,40px)}
+.ccard{position:relative;background:var(--cream);border-radius:20px;box-shadow:0 26px 60px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.ccard img{width:100%;border-radius:20px}
+.ccard.dark{background:#262220}
+.cstack--l .ccard:nth-child(1){transform:rotate(-2.5deg) translateX(10px)}
+.cstack--l .ccard:nth-child(2){transform:rotate(1.5deg)}
+.cstack--r .ccard:nth-child(1){transform:rotate(2.5deg) translateX(-10px)}
+.cstack--r .ccard:nth-child(2){transform:rotate(-1.5deg)}
+.ccard:hover{transform:translateY(-8px) rotate(0)!important}
+.collage-cap{text-align:center;color:var(--dim);font-size:14px;margin-top:74px}
+/* annotation tags */
+.tag{position:absolute;z-index:3;font-family:var(--hand);font-size:21px;font-weight:600;line-height:1;letter-spacing:.01em;color:var(--gold-hi);white-space:nowrap;pointer-events:none}
+.tag::after{content:"";position:absolute;width:1px;height:26px;background:linear-gradient(to bottom,rgba(201,163,106,.65),rgba(201,163,106,.18))}
+.tag::before{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.tag-tl{top:-46px;left:10px}.tag-tl::after{left:7px;top:100%;margin-top:2px}.tag-tl::before{left:4.5px;top:calc(100% + 26px)}
+.tag-tr{top:-46px;right:10px}.tag-tr::after{right:7px;top:100%;margin-top:2px}.tag-tr::before{right:4.5px;top:calc(100% + 26px)}
+.tag-bl{bottom:-46px;left:10px}.tag-bl::after{left:7px;bottom:100%;margin-bottom:2px;background:linear-gradient(to top,rgba(201,163,106,.65),rgba(201,163,106,.18))}.tag-bl::before{left:4.5px;bottom:calc(100% + 26px)}
+.tag-br{bottom:-46px;right:10px}.tag-br::after{right:7px;bottom:100%;margin-bottom:2px;background:linear-gradient(to top,rgba(201,163,106,.65),rgba(201,163,106,.18))}.tag-br::before{right:4.5px;bottom:calc(100% + 26px)}
+.tag-c{top:-46px;left:50%;transform:translateX(-50%)}.tag-c::after{left:50%;top:100%;margin-top:2px}.tag-c::before{left:calc(50% - 2.5px);top:calc(100% + 26px)}
+@media (max-width:880px){
+  .tag{display:block;position:static;transform:none;text-align:center;font-size:22px;line-height:1.1;letter-spacing:.01em;margin:2px 0 7px;padding:0 4px;white-space:normal;color:var(--brown)}
+  .tag::after,.tag::before{display:none}
+  .ccard.dark .tag,.collage-phone .tag{color:var(--gold-hi)}
+}
+@media (max-width:880px){
+  .collage{grid-template-columns:1fr 1fr;gap:20px}
+  .collage-phone{grid-column:1/-1;grid-row:1;justify-self:center;width:min(300px,80%)}
+  .cstack .ccard{transform:none}
+}
+.acard{background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 24px 56px rgba(0,0,0,.4);transition:transform .4s}
+.acard:hover{transform:translateY(-6px)}
+.acard img{width:100%}
+.acard.dark{background:#262220}
+.acard figcaption{padding:14px 18px;font-size:13.5px;color:var(--cream-muted);border-top:1px solid rgba(28,21,13,.06)}
+.acard.dark figcaption{color:var(--muted);border-color:rgba(255,255,255,.06)}
+@media (max-width:880px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.medals{display:flex;justify-content:center;gap:clamp(10px,2.4vw,28px);flex-wrap:wrap;margin-top:70px}
+.medals img{width:clamp(76px,9vw,116px);filter:drop-shadow(0 16px 30px rgba(0,0,0,.5));transition:transform .35s}
+.medals img:hover{transform:translateY(-8px) rotate(-3deg)}
+.medals-cap{text-align:center;color:var(--dim);font-size:14px;margin-top:18px}
+
+/* lifestyle */
+.lifestyle{padding:120px 0 40px}
+.lifestyle .big{font-size:clamp(44px,7.4vw,100px);line-height:1.02;max-width:12ch;margin-bottom:18px}
+.lifestyle .big i{font-style:italic;color:var(--gold)}
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px);margin-top:70px}
+.lcard{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4}
+.lcard img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.lcard:hover img{transform:scale(1.07)}
+.lcard::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,.82) 0%,rgba(8,6,4,.14) 46%,transparent 72%)}
+.lcard:nth-child(2){transform:translateY(46px)}
+.lcap{position:absolute;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(18px,2.4vw,28px);z-index:2}
+.lcap h3{font-size:clamp(24px,2.4vw,33px);font-weight:600;line-height:1.12;margin-bottom:8px}
+.lcap h3 i{font-style:italic;color:var(--gold-hi)}
+.lcap p{font-size:14px;color:rgba(245,239,230,.78)}
+@media (max-width:780px){.life-grid{grid-template-columns:1fr;max-width:430px;margin-inline:auto}.lcard:nth-child(2){transform:none}}
+
+/* hero gl */
+#stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
+#stage-gl canvas{width:100%;height:100%;display:block}
+.hero .wrap,.hero .fan{position:relative;z-index:1}
+.hero{perspective:1400px}
+.fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
+
+/* seo long-form */
+.seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
+.seo-copy .sec-head{margin-bottom:40px}
+.seo-copy .prose{max-width:720px;margin:0 auto}
+.seo-copy .prose p{color:var(--muted);font-size:16.5px;line-height:1.72;margin-bottom:1.15em}
+.seo-copy .prose p:last-child{margin-bottom:0}
+.seo-copy .prose h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:2.1em 0 .75em}
+.seo-copy .prose h3:first-of-type{margin-top:0}
+.seo-copy .prose strong{color:var(--ink);font-weight:600}
+.seo-copy .prose a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.seo-copy .prose a:hover{color:var(--gold)}
+.seo-copy .prose .seo-cta{margin-top:2em;padding-top:1.4em;border-top:1px solid var(--line-soft);color:var(--ink)}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.qa{border-bottom:1px solid var(--line-soft)}
+.qa button{width:100%;background:none;border:0;color:var(--ink);font:inherit;font-weight:700;font-size:17.5px;text-align:left;padding:24px 44px 24px 0;cursor:pointer;position:relative}
+.qa button::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:26px;font-weight:300;color:var(--gold);transition:transform .3s}
+.qa.open button::after{transform:translateY(-50%) rotate(45deg)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.qa .a p{color:var(--muted);font-size:15.5px;padding:0 0 24px;max-width:62ch}
+.qa.open .a{max-height:240px}
+
+/* finale */
+.finale{margin-top:60px;padding:130px 24px 120px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#241A10 34%,#7A5530 72%,#E8C893 130%);position:relative}
+.finale .glyph{width:68px;height:68px;margin:0 auto 28px;border-radius:18px;background:var(--cream);display:grid;place-items:center;box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.finale .glyph img{width:64%;height:64%;object-fit:contain}
+.finale h2{max-width:16ch;margin:0 auto 16px}
+.finale .sub{color:#E9DFCF;margin:0 auto 36px}
+.finale .stores{margin-bottom:26px}
+.finale small{color:rgba(251,248,242,.75);font-size:13.5px}
+
+/* footer */
+footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 44px;font-size:14px;color:var(--dim)}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:44px}
+.foot-brand .wordmark{height:16px;color:var(--muted);margin-bottom:14px}
+.foot-brand p{max-width:30ch}
+.foot-social{display:flex;align-items:center;gap:14px;margin-top:20px}
+.foot-social a{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line-soft);border-radius:50%;color:var(--dim)}
+.foot-social a:hover{color:var(--gold-hi)}
+.foot-social svg{width:16px;height:16px}
+.fcol b{display:block;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.fcol a{display:block;margin-bottom:10px;color:var(--dim)}
+.fcol a:hover{color:var(--gold-hi)}
+.foot-base{border-top:1px solid var(--line-soft);padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* languages — translate any audiobook */
+.langsec{position:relative;overflow:hidden}
+.langsec::before{content:"";position:absolute;left:50%;top:50%;width:min(820px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,163,106,.15),rgba(201,163,106,.05) 42%,transparent 66%);pointer-events:none}
+.langsec h2 em{font-style:italic;color:var(--gold-hi)}
+/* ONE variable drives ring AND phones, so proportions never drift with zoom */
+.lang-stage{--ring:min(600px,88vw);position:relative;width:var(--ring);margin:54px auto 0;padding-bottom:calc(var(--ring) * .40)}
+.lang-ring{position:relative;width:var(--ring);height:var(--ring)}
+.ring-svg{width:100%;height:100%;overflow:visible;display:block}
+.ring-text{font-family:'Hanken Grotesk','Noto Sans',system-ui,'Segoe UI',sans-serif;font-weight:800;font-size:19px;letter-spacing:.045em;fill:#43341a;
+  filter:drop-shadow(0 -1px 0 rgba(246,225,172,.36)) drop-shadow(0 1.5px .8px rgba(0,0,0,.96)) drop-shadow(0 0 1px rgba(0,0,0,.55))}
+.ring-rot{transform-box:view-box;transform-origin:300px 300px}
+.lang-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;z-index:4}
+.lang-core .n{display:block;font-family:var(--serif);font-weight:500;font-size:calc(var(--ring) * .12);line-height:1;color:var(--gold-hi);text-shadow:0 1px 0 rgba(0,0,0,.5),0 2px 18px rgba(201,163,106,.35)}
+.lang-core .l{display:block;margin-top:.4em;font-size:calc(var(--ring) * .0215);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+/* phones rise from the ring base, sized off --ring so they scale WITH it */
+.lang-phones{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;gap:calc(var(--ring) * .012);z-index:3;width:max-content;max-width:100%}
+.lp{position:relative;display:flex;flex-direction:column;align-items:center;flex:0 0 auto;width:calc(var(--ring) * .225)}
+.lp .ph{position:relative;width:100%;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.lp img{display:block;border-radius:calc(var(--ring) * .035);filter:drop-shadow(0 26px 46px rgba(0,0,0,.6))}
+.lp .front{position:relative;z-index:2;width:100%}
+.lp .back{position:absolute;z-index:1;left:50%;top:6%;width:80%;transform:translateX(-78%) rotate(-9deg);filter:drop-shadow(0 22px 40px rgba(0,0,0,.5))}
+.lp figcaption{margin-top:1em;max-width:calc(var(--ring) * .23);font-size:12.5px;line-height:1.32;color:var(--muted);text-align:center}
+.lp figcaption b{display:block;color:var(--gold-hi);font-weight:700;margin-bottom:1px}
+/* fan along a smooth curve: each phone pivots from its base, outer pairs dip lower */
+.lp:nth-child(1){margin-bottom:calc(var(--ring) * -.055);z-index:1}
+.lp:nth-child(1) .ph{transform:rotate(-13deg)}
+.lp:nth-child(2){z-index:3}
+.lp:nth-child(2) .ph{transform:rotate(-4.5deg)}
+.lp:nth-child(3){z-index:3}
+.lp:nth-child(3) .ph{transform:rotate(4.5deg)}
+.lp:nth-child(4){margin-bottom:calc(var(--ring) * -.055);z-index:1}
+.lp:nth-child(4) .ph{transform:rotate(13deg)}
+.lp:hover{z-index:6}
+.lp:hover .ph{transform:translateY(-8px) rotate(0deg)}
+@media (max-width:880px){
+  .lang-stage{--ring:min(440px,82vw);padding-bottom:0;margin-bottom:0}
+  .lang-phones{position:static;transform:none;margin-top:30px;width:auto;overflow-x:auto;justify-content:flex-start;gap:16px;padding:8px 2px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .lp{scroll-snap-align:center;width:auto;margin:0!important}
+  .lp .ph{transform:none!important;width:auto}
+  .lp .back{display:none}
+  .lp .front{width:clamp(140px,44vw,176px)}
+  .lp img{border-radius:22px}
+  .lp figcaption{font-size:12.5px;max-width:none;white-space:nowrap}
+  .lang-core .n{font-size:clamp(40px,16vw,70px)}
+  .lang-core .l{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.lp img{transition:none}}
+</style>
+<link rel="alternate" hreflang="en" href="https://hushbook.app">
+<link rel="alternate" hreflang="de" href="https://hushbook.app/de">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hb-wordmark" viewBox="0 0 617 93">
+    <path d="M95.5122 4.53087C88.5962 9.80887 88.0502 33.6509 88.0502 46.3909C88.0502 59.1309 88.5962 83.1549 95.5122 88.2509C97.3322 89.7069 97.3322 92.8009 93.5102 92.8009H55.6542C53.8342 92.8009 53.1062 90.4349 54.9262 88.9789C61.2962 84.2469 62.5702 80.2429 62.5702 73.5089V50.7589H33.9962C34.1782 63.8629 35.4522 83.7009 41.4582 88.2509C43.4602 89.7069 43.4602 92.8009 39.6382 92.8009H1.78223C-0.037775 92.8009 -0.765775 90.4349 1.05422 88.9789C7.42423 84.2469 8.51623 80.2429 8.51623 73.5089V19.2729C8.51623 12.7209 7.42423 8.53487 1.05422 3.80286C-0.765775 2.34687 -0.037775 0.162868 1.78223 0.162868H39.6382C43.4602 0.162868 43.4602 3.07487 41.4582 4.53087C34.9062 9.62687 33.9962 32.7409 33.9962 45.6629H62.5702V19.2729C62.5702 12.7209 61.2962 8.53487 54.9262 3.80286C53.1062 2.34687 53.8342 0.162868 55.6542 0.162868H93.5102C97.3322 0.162868 97.3322 3.07487 95.5122 4.53087Z" fill="currentColor"/>
+    <path d="M171.655 30.1929C169.289 44.7529 166.559 75.5109 177.843 88.9789C179.481 90.7989 179.117 92.8009 177.297 92.8009H160.553C152.545 92.8009 147.449 87.5229 145.629 82.2449C141.625 88.0689 135.983 92.8009 127.793 92.8009C111.413 92.8009 98.8551 85.1569 98.8551 58.2209C98.8551 51.4869 97.7631 47.4829 91.3931 42.5689C89.5731 41.1129 90.3011 38.9289 92.1211 38.9289C109.593 38.9289 116.873 27.0989 123.789 25.6429C127.611 24.9149 125.973 27.8269 125.427 30.1929C120.877 51.8509 121.605 84.4289 135.255 84.4289C139.077 84.4289 142.535 78.9689 144.901 73.5089V58.2209C144.901 51.4869 143.809 47.4829 137.439 42.5689C135.619 41.1129 136.347 38.9289 138.167 38.9289C155.639 38.9289 163.101 27.0989 169.835 25.6429C173.657 24.9149 172.019 27.8269 171.655 30.1929Z" fill="currentColor"/>
+    <path d="M323.075 88.9789C324.895 90.4349 324.167 92.8009 322.347 92.8009H286.129C282.307 92.8009 282.489 89.8889 284.309 88.2509C295.957 77.6949 290.679 33.1049 278.121 33.1049C274.663 33.1049 269.931 37.1089 266.473 44.2069C266.473 66.2289 269.567 84.9749 273.753 88.2509C275.755 89.7069 275.755 92.8009 271.933 92.8009H235.715C233.895 92.8009 233.167 90.4349 234.987 88.9789C241.357 84.2469 242.631 80.2429 242.631 73.5089V32.5589C242.631 12.9029 221.883 15.6329 232.439 36.3809L232.985 37.6549C239.355 51.6689 208.597 54.3989 210.053 38.3829C210.781 28.3729 202.045 29.1009 201.135 35.2889C198.405 50.9409 231.165 54.3989 233.895 71.1429C235.533 81.3349 222.247 92.2549 206.413 92.6189L206.049 92.8009C194.401 92.9829 180.933 89.3429 176.929 80.6069C170.559 66.5929 201.317 63.8629 200.043 79.8789C199.133 89.8889 207.505 88.9789 208.779 82.9729C212.419 67.5029 178.385 66.2289 176.201 48.0289C174.563 34.5609 187.303 26.0069 203.501 25.4609H203.865C208.415 25.4609 213.329 25.8249 217.879 27.0989C220.245 13.0849 240.447 17.4529 253.915 8.35287C259.739 4.53087 264.289 0.89087 268.111 0.162868C271.751 -0.747131 270.295 2.34687 269.749 4.71286C268.111 14.3589 267.019 24.5509 266.655 34.5609C270.659 29.4649 276.301 25.4609 283.399 25.4609C303.055 25.4609 315.431 41.4769 315.431 61.4969V73.5089C315.431 80.2429 316.705 84.2469 323.075 88.9789Z" fill="currentColor"/>
+    <path d="M387.474 44.5709C400.214 47.1189 409.496 56.7649 409.496 68.2309C409.496 81.6989 396.756 92.8009 380.922 92.8009H325.23C323.41 92.8009 322.682 90.4349 324.502 88.9789C330.872 84.2469 331.964 80.2429 331.964 73.5089V19.2729C331.964 12.7209 330.872 8.53487 324.502 3.80286C322.682 2.34687 323.41 0.162868 325.23 0.162868H372.55C386.2 0.162868 399.668 11.0829 399.668 24.5509C399.668 32.7409 394.572 40.0209 387.474 44.5709ZM363.268 87.7049C374.188 87.7049 383.47 78.9689 383.47 68.2309C383.47 57.6749 374.188 48.9389 363.268 48.9389H357.444C357.626 60.5869 358.172 73.6909 359.81 87.7049H363.268ZM375.826 24.5509C375.826 14.3589 369.456 5.98687 359.628 5.25887C358.9 12.1749 357.626 26.0069 357.444 43.8429H358.172C368.91 43.8429 375.826 35.1069 375.826 24.5509Z" fill="currentColor"/>
+    <path d="M490.88 25.4609C510.9 25.4609 527.28 40.5669 527.28 59.1309C527.28 77.6949 510.9 92.8009 490.88 92.8009C481.962 92.8009 473.772 89.7069 467.402 84.7929C461.214 89.7069 453.024 92.8009 444.106 92.8009C423.904 92.8009 407.706 77.6949 407.706 59.1309C407.706 40.5669 423.904 25.4609 444.106 25.4609C453.024 25.4609 461.214 28.5549 467.402 33.4689C473.772 28.5549 481.962 25.4609 490.88 25.4609ZM444.106 87.7049C449.748 87.7049 454.48 74.7829 454.48 59.1309C454.48 43.2969 449.748 30.5569 444.106 30.5569C438.282 30.5569 433.55 43.2969 433.55 59.1309C433.55 74.7829 438.282 87.7049 444.106 87.7049ZM490.88 87.7049C496.704 87.7049 501.436 74.7829 501.436 59.1309C501.436 43.2969 496.704 30.5569 490.88 30.5569C485.056 30.5569 480.506 43.2969 480.506 59.1309C480.506 74.7829 485.056 87.7049 490.88 87.7049Z" fill="currentColor"/>
+    <path d="M614.71 88.2509C617.076 89.7069 617.986 92.8009 614.164 92.8009H575.944C573.942 92.8009 572.486 90.4349 573.942 88.9789C578.674 84.2469 578.128 80.2429 576.49 73.5089C573.942 63.6809 570.302 46.7549 560.838 49.1209C561.202 68.9589 564.114 85.3389 568.118 88.2509C569.938 89.7069 570.12 92.8009 566.116 92.8009H530.08C528.26 92.8009 527.532 90.4349 529.352 88.9789C535.722 84.2469 536.814 80.2429 536.814 73.5089V32.5589C536.814 25.8249 535.722 21.8209 529.352 17.0889C527.532 15.6329 528.26 13.4489 530.08 13.4489C547.552 13.4489 555.56 1.43687 562.294 0.162868C566.116 -0.747131 564.478 2.34687 564.114 4.71286C561.748 17.2709 560.838 31.1029 560.838 43.8429C570.12 41.2949 585.59 18.3629 600.696 27.8269C613.072 35.4709 600.15 50.0309 586.864 41.6589C582.678 38.9289 579.038 40.0209 575.398 42.0229C591.778 46.3909 595.418 76.0569 614.71 88.2509Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#read-along">Saltar para o conteúdo</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="HushBook home">
+      <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir o menu" aria-expanded="false">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="#read-along">Leitura sincronizada</a>
+      <a href="#privacy">Privacidade</a>
+      <a href="#accessibility">acessibilidade</a>
+      <a href="#life">Análise</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#get">Transferir</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div id="stage-gl" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="badge reveal">Disponível no iOS e Android</span>
+    <h1 id="hero-h1" class="reveal" aria-label="Transcrever qualquer audiolivro."><span class="kw">Transcrever</span> <span class="kw">Qualquer</span> <span class="kw">audiolivro.</span></h1>
+    <p class="sub reveal">Mergulhe em uma galáxia do conhecimento — cada palavra ilumina-se em sincronia com a narração, transcrita em particular em seu telefone. Nenhuma conta. Não há nuvens.</p>
+    <div class="stores reveal" id="get" aria-label="Obter HushBook">
+      <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Baixe HushBook na App Store">
+        <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span><small>Baixar na</small><b>Loja de aplicativos</b></span>
+      </a>
+      <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="Obter HushBook no Google Play">
+        <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+        <span><small>Põe-no.</small><b>Google Play</b></span>
+      </a>
+    </div>
+    <p class="hero-note reveal">• Grátis para transferir, sem anúncios.</p>
+  </div>
+  <div class="fan reveal" aria-hidden="true">
+    <img class="f1" src="/assets/img/mockups/brain-health.webp" alt="" loading="eager">
+    <img class="f2" src="/assets/img/mockups/home.webp" alt="" loading="eager">
+    <img class="f3" src="/assets/img/mockups/karaoke-live.webp" alt="HushBook transcrevendo Meditações em karaoke de nível de palavra ao vivo" loading="eager">
+    <img class="f4" src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="eager">
+    <img class="f5" src="/assets/img/mockups/library.webp" alt="" loading="eager">
+  </div>
+</section>
+
+<!-- ============ VALUE BAND ============ -->
+<section class="band center">
+  <div class="wrap">
+    <h2 class="reveal">Ouvir sozinho é fácil de perder. <em>Lendo ao longo</em> é difícil de esquecer.</h2>
+    <p class="karaoke-line reveal" id="karaoke-line" aria-label="Você tem poder sobre sua mente, não sobre eventos externos. Se perceberes isto, encontrarás força. — Marco Aurélio"></p>
+    <div class="trust reveal" role="list">
+      <span class="chip" role="listitem"><b>100% no dispositivo</b> transcrição</span>
+      <span class="chip" role="listitem"><b>Nível de palavras</b> sincronizar a 60 fps</span>
+      <span class="chip" role="listitem"><b>Funciona offline</b> após uma transferência do motor</span>
+      <span class="chip" role="listitem"><b>Nenhuma conta,</b> nunca</span>
+      <span class="chip" role="listitem"><b>Milhares</b> de clássicos livres</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READER NOTES ============ -->
+<section class="reviews" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap reviews-head reveal">
+    <span class="eyebrow">Notas do leitor</span>
+    <h2 id="reviews-title">Já encontrei o seu lugar em HushBook.</h2>
+    <p class="sub">Desde os pequenos detalhes da reprodução até a primeira palavra se iluminar, os leitores estão percebendo o que muda quando ouvir também se torna ler.</p>
+  </div>
+  <div class="reviews-marquee reveal">
+    <div class="reviews-track">
+      <div class="review-set" role="list" aria-label="Comentários do leitor do HushBook">
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/larryloveinstein</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Sério amando o aplicativo</h3>
+          <p class="review-quote">“Olá, seriamente adorando o aplicativo! Estou me perguntando onde as citações são armazenadas?”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">marchewell</span><span class="review-platform">Loja de aplicativos</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Era mesmo o que eu precisava!</h3>
+          <p class="review-quote">“Eu tentei BookPlayer, Bound, e Apple Books. O HushBook é o primeiro aplicativo que exibe corretamente o capítulo decorrido e o tempo restante na minha unidade de cabeça Toyota Camry JBL 2017, o volante controla os capítulos corretamente, e a transcrição no dispositivo é excelente. Obrigado!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/larryloveinstein</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Feito para leitura diária</h3>
+          <p class="review-quote">“Olá! Eu tenho-o baixado e muito legal app. Existe uma maneira de aumentar a velocidade de reprodução? Eu acho que é a única coisa de incorporar isso em minha leitura diária.”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/autorsanu</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Faça-o ao vivo para Android!</h3>
+          <p class="review-quote">“Oi, é HushBook disponível para Android?”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">Leitor Reddit</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Um aplicativo que eu sempre quis</h3>
+          <p class="review-quote">“Eu sempre estive interessado em um aplicativo como este!”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/Mulheres</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Exatamente o que eu estava esperando</h3>
+          <p class="review-quote">“AHHHHH eu estive esperando por algo assim. OBRIGADOUUUUUUUUUUUU!”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">chihuatlan</span><span class="review-platform">Loja de aplicativos</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Estou ansioso para experimentar isso”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">HarvensonJamesII</span><span class="review-platform">Loja de aplicativos</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Eu realmente gosto para onde você está indo com este aplicativo. Seria ótimo se você adicionasse a capacidade de mudar a velocidade”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">X-AANI</span><span class="review-platform">Loja de aplicativos</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Aplicativo brilhante para manter o foco!</h3>
+          <p class="review-quote">“Adoro a transcrição no dispositivo e os modos de leitura especializados (a fonte dislexia e layouts de alto contraste são fantásticos). Altamente recomendado!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Wilhelm Drescher</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Aplicativo perfeito exatamente o que eu queria. Pro desbloqueia mais estatísticas, tanto quanto posso ver.”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Dennis Branson</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 de 5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Óptimo aplicativo! Você poderia por favor adicionar opção para destacar a frase atual e não palavra, porque ai torna as palavras em negrito ou muito lento ou muito rápido, então eles não são sincronizados com o discurso. Capacidade de adicionar o livro inteiro sem escolher capítulos 1 por 1 também seria bom para vários arquivos "</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <span class="review-mark" aria-hidden="true"></span>
+          <header class="review-source review-top review-top--starless">
+            <span class="review-source-icon" aria-hidden="true"></span>
+            <div><span class="review-user review-user--reddit">u/Temporary Relevant</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Merece cinco estrelas</h3>
+          <p class="review-quote">“Acabei de baixar. Merece realmente 5 estrelas! Bom trabalho”</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="read-along">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Do arquivo de áudio para leitura-long, em três toques.</h2>
+      <p class="sub">Escolha um livro, toque em Transcrição e o Motor HushBook começa a funcionar — capítulo por capítulo, diretamente no seu telefone.</p>
+    </div>
+    <div class="steps">
+      <figure class="step reveal">
+        <span class="num">01</span>
+        <h3>Escolha um livro</h3>
+        <p>Navegue gratuitamente em clássicos ou importe seu próprio MP3, M4B, FLAC, OGG e muitos mais.</p>
+        <img src="/assets/img/mockups/library.webp" alt="Biblioteca HushBook com audiolivros importados e de domínio público" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">02</span>
+        <h3>Toque em Transcrever</h3>
+        <p>Um toque por capítulo. Capítulos em arquivos M4B são detectados automaticamente.</p>
+        <img src="/assets/img/mockups/book-info-transcribe.webp" alt="Ecrã de informação do livro com botões de Transcrição para cada capítulo" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">03</span>
+        <h3>O motor funciona</h3>
+        <p>O HushBook Engine transcreve cada palavra falada em texto sincronizado que se move com a narração.</p>
+        <img src="/assets/img/mockups/transcribing-chapters.webp" alt="Capítulo um a transcrever com uma barra de progresso" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">04</span>
+        <h3>Ler ao longo</h3>
+        <p>Cada palavra se ilumina com o narrador. Toque em qualquer palavra para saltar lá.</p>
+        <img src="/assets/img/mockups/read-along-monte-cristo.png" alt="Lendo junto com O Conde de Monte Cristo — cada palavra destacada em sincronia com a narração" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="sec" id="privacy">
+  <div class="wrap">
+    <div class="privacy-card reveal">
+      <div>
+        <span class="eyebrow">O motor HushBook</span>
+        <h2>Transcrito no teu telemóvel. Nunca a nuvem.</h2>
+        <p class="sub">O discurso-para-texto que alimenta o HushBook é executado nativamente no seu dispositivo. Seus audiolivros nunca são enviados — não há servidor para onde enviá-los.</p>
+        <ul class="plist">
+          <li><span class="tick">✓</span><span><b>Nada deixa o teu telemóvel.</b> Áudio, transcrições, notas, notas — todas armazenadas localmente.</span></li>
+          <li><span class="tick">✓</span><span><b>Nenhuma conta, nenhuma entrada.</b> Abra o aplicativo e comece a ler.</span></li>
+          <li><span class="tick">✓</span><span><b>Totalmente offline</b> Depois de uma única transferência do motor — num voo, num túnel, em qualquer lugar.</span></li>
+          <li><span class="tick">✓</span><span><b>Conscientes térmicos.</b> Longos livros transcrever em pedaços, retomar no fracasso, e manter o telefone fresco.</span></li>
+        </ul>
+      </div>
+      <div class="qr-pane">
+        <div class="qr-ring"><img src="/assets/img/qr-hushbook-download-v2.svg" alt="Digitalize para baixar HushBook para iPhone ou Android"></div>
+        <small>Digitalize com sua câmera iPhone ou Android<br>Para ir buscar o HushBook.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Citações</span>
+      <h2>Poupe a linha. Partilha o cartão.</h2>
+      <p class="sub">Pegue uma citação no momento em que você a ouvir — duas batidas na leitura, a sua para manter ou postar.</p>
+    </div>
+    <div class="gallery">
+      <figure class="gcard reveal">
+        <span class="num">01</span>
+        <img src="/assets/img/mockups/quote-select.webp" alt="Selecionando uma citação no HushBook — tocando na primeira e última palavra da letra lida" loading="lazy">
+        <h3>Apanha-o em duas torneiras</h3>
+        <p>Toque na primeira palavra, toque na última. A linha que você acabou de ouvir é salva — sem deixar a leitura.</p>
+      </figure>
+      <figure class="gcard reveal">
+        <span class="num">02</span>
+        <img src="/assets/img/mockups/quotes-collection.webp" alt="Todas as citações salvas no HushBook, coletadas por livro" loading="lazy">
+        <h3>Cada linha, num só lugar</h3>
+        <p>As suas citações reúnem-se por livro, armazenadas no seu telemóvel. Revisitar, editar ou enviar qualquer um adiante.</p>
+      </figure>
+      <figure class="gcard reveal">
+        <span class="num">03</span>
+        <img src="/assets/img/mockups/quote-card-share.webp" alt="Um cartão de cotação HushBook terminado pronto para compartilhar — a linha, o autor e o livro" loading="lazy">
+        <h3>Uma carta que vale a pena postar</h3>
+        <p>Cada citação se torna um cartão acabado — as palavras, o livro, o autor. Prontos para partilhar.</p>
+      </figure>
+    </div>
+  </div>
+  <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
+    <div class="marquee-track" id="marquee-fallback">
+      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LANGUAGES ============ -->
+<section class="sec langsec" id="languages">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Ninety&#8209;nine languages</span>
+      <h2>Traduzir <em>qualquer</em> audiobook</h2>
+      <p class="sub">Espanhol, hindi, japonês, árabe, francês — noventa e nove línguas ao todo. HushBook escuta na língua um livro era para ser ouvido em, em seguida, pinta cada palavra no tempo, então você lê junto, não importa de onde a história vem.</p>
+    </div>
+
+    <div class="lang-stage reveal">
+      <div class="lang-ring">
+        <svg class="ring-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <defs>
+            <path id="lr-spiral" fill="none"/>
+          </defs>
+          <g class="ring-rot">
+            <text class="ring-text"><textPath href="#lr-spiral" startOffset="0">Português · Français · Русский · 日本語 · Deutsch · □ Γοι Italiano · Türkçe · Türkçe · Tüng Viït · Polski · Nederlands · Ελληνικά · □οοι · Deutsch · □οнська · Svenska · □ορον · Bahasa · Čeština · Magyar · Română · Dansk · Suomi · Slovenčina · Lietuvi · · Lötuvi · Lö· · L' · L' · L' · L'l' · l''' · L'· ار · L' · L'swahili · H'swatski · Hrvatski · Català · Slovenčina · Lietuvi · L' · L'l' · L'l' · L' l' l' · L' l' l' ι Ι ι · Ι · Ι · о¡ · L' · L' · L' · L' · L' ·</textPath></text>
+          </g>
+        </svg>
+        <div class="lang-core">
+          <span class="n">99</span>
+          <span class="l">línguas</span>
+        </div>
+      </div>
+
+      <div class="lang-phones">
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="/assets/img/mockups/lang-es-poetry-player.webp" alt="HushBook lendo para uma coleção de poesia espanhola" loading="lazy">
+          </div>
+          <figcaption><b>Español</b> · Poesia espanhola</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="/assets/img/mockups/lang-es-lobo-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/lang-es-lobo-player.webp" alt="HushBook lendo ao longo de Los Motivos del Lobo por Rubén Darío em espanhol" loading="lazy">
+          </div>
+          <figcaption><b>Español</b> · Rubén Darío</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="/assets/img/mockups/lang-it-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/lang-it-player.webp" alt="HushBook lendo para um livro de poesia italiano" loading="lazy">
+          </div>
+          <figcaption><b>Italiano</b> · Due esempi di poesia</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="/assets/img/mockups/lang-fr-player.webp" alt="HushBook lendo ao longo de Épigramme por François Maynard em francês" loading="lazy">
+          </div>
+          <figcaption><b>Français</b> · François Maynard</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MOMENT ============ -->
+<section class="moment">
+  <p class="reveal">A maneira mais rápida de explicar</p>
+  <h2 class="reveal">Apple&#8209;Music lyrics, <span>para livros.</span></h2>
+</section>
+
+<!-- ============ ACCESSIBILITY (light) ============ -->
+<section class="sec light" id="accessibility">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-media reveal">
+        <img src="/assets/img/mockups/reading-profiles.webp" alt="Escolha seu perfil de leitura: Compreensão, Dislexia/ADHD ou Visão" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Lendo perfis</span>
+        <h2>Um aplicativo que se encaixa <em>Como você lê.</em></h2>
+        <p class="sub">Escolha um perfil uma vez e todo o aplicativo se adapta — fontes, tamanhos de legenda, cores, contraste e espaçamento. Não é uma configuração que comuta três menus enterrados. A aplicação, remodelada.</p>
+        <div class="profiles">
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.4C10.1 5.1 7.7 4.6 5.3 5v12.3c2.4-.4 4.8.1 6.7 1.4 1.9-1.3 4.3-1.8 6.7-1.4V5c-2.4-.4-4.8.1-6.7 1.4Z"/><path d="M12 6.4v12.3"/></svg></span><span><b>Compreensão</b><span>Para os leitores diários — ferramentas de foco, modo noturno e um ritmo de leitura limpo.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.5h15"/><path d="M4.5 12h9"/><path d="M4.5 16.5h11.5"/><circle cx="18.4" cy="12" r="2.3" fill="currentColor" stroke="none"/></svg></span><span><b>Dislexia / ADHD</b><span>OpenDyslexic e amigos, sobreposições de cores, espaçamento generoso — e um destaque que ancora o olho na voz.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 12S6 5.6 12 5.6 21.4 12 21.4 12 18 18.4 12 18.4 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Visão</b><span>Atkinson Hyperlegible, legendas muito grandes e temas de alto contraste construídos para leitura de baixa visão.</span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-chips reveal" role="list">
+      <span class="chip" role="listitem">OpenDyslexic</span>
+      <span class="chip" role="listitem">Atkinson Hiperlegível</span>
+      <span class="chip" role="listitem">Lexend</span>
+      <span class="chip" role="listitem">Andika</span>
+      <span class="chip" role="listitem">Neue Comic</span>
+      <span class="chip" role="listitem">Sobreposições de leitura</span>
+      <span class="chip" role="listitem">A- / A / A+ dimensionamento</span>
+      <span class="chip" role="listitem">Temas de alto contraste</span>
+      <span class="chip" role="listitem">Controle de oscilação de linha</span>
+      <span class="chip" role="listitem">Modo noturno</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRARY (light) ============ -->
+<section class="sec light" style="padding-top:0">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media duo reveal">
+        <img src="/assets/img/mockups/home.webp" alt="Casa HushBook com livros e sua biblioteca" loading="lazy">
+        <img src="/assets/img/mockups/library.webp" alt="A grelha da minha biblioteca de Colecções com um bloco de upload de audiolivros" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Sua biblioteca</span>
+        <h2>Milhares de clássicos, livres — <em>Ou traz o teu.</em></h2>
+        <p class="sub">Um catálogo integrado de audiolivros de domínio público da LibriVox e do Internet Archive, em seis línguas. Baixe um e a transcrição começa por conta própria — você está lendo em minutos.</p>
+        <p class="sub">Já tens os teus livros? Importar MP3, M4A, M4B, AAC, WAV, FLAC, OGG e muitos mais. Capítulos, capas e metadados aparecem automaticamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READING LIFE ============ -->
+<section class="sec" id="life">
+  <div class="wrap">
+    <div class="split">
+      <div class="life-head reveal">
+        <span class="eyebrow">A sua vida de leitura</span>
+        <h2>Cuidado com o teu cérebro de leitura.</h2>
+        <p class="sub" style="margin-top:18px">Uma suite de análise privada, calculada inteiramente no seu dispositivo. Uma pontuação cerebral de 0 a 100 cresce com a sua sequência, as palavras lidas, a compreensão e a consistência — em oito níveis, do início à melhor saúde mental.</p>
+        <p class="sub" style="margin-top:14px">As palavras são contadas a partir da transcrição real — palavras reais que você realmente ouviu. Cada carta é compartilhável como uma imagem polida.</p>
+      </div>
+      <div class="split-media duo reveal">
+        <img src="/assets/img/mockups/brain-health.webp" alt="Cérebro Escore de saúde com os fatores que o conduzem" loading="lazy">
+        <img src="/assets/img/mockups/goals-graphs.webp" alt="Tendência de palavras e livros totais lidos este ano" loading="lazy">
+      </div>
+    </div>
+
+    <div class="sec-head center reveal" style="margin:130px auto 0">
+      <span class="eyebrow">Análise avançada · Pro</span>
+      <h2>Análise avançada, ao seu serviço.</h2>
+      <p class="sub">Vá mais fundo do que estrias — quando você começa, quando para, o que você busca, e quantas palavras você realmente ouviu. Todos os números calculados das vossas transcrições, no vosso dispositivo.</p>
+    </div>
+
+    <div class="collage">
+      <div class="cstack cstack--l reveal">
+        <figure class="ccard dark"><span class="tag tag-tl">Perspectivas do hábito</span><img src="/assets/img/mockups/card-habit-insights.webp" alt="Insights Habit: horário habitual de audição, sessão mais longa, dia mais ativo" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">Radar do género</span><img src="/assets/img/mockups/card-genre-radar.webp" alt="Gráfico de radar de gêneros mais lidos" loading="lazy"></figure>
+      </div>
+      <div class="collage-phone reveal">
+        <span class="tag tag-c" style="top:-52px">O seu ritmo diário</span>
+        <img src="/assets/img/mockups/advanced-analytics.webp" alt="Análise avançada: início e fim da audição por dia e suas principais categorias" loading="lazy">
+      </div>
+      <div class="cstack cstack--r reveal">
+        <figure class="ccard"><span class="tag tag-tr">Palavras por livro</span><img src="/assets/img/mockups/card-words-per-book.webp" alt="Palavras por gráfico de barras de livros" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">Objectivos honestos</span><img src="/assets/img/mockups/card-goals-sheet.webp" alt="Folha de definição de objetivos para livros e palavras" loading="lazy"></figure>
+      </div>
+    </div>
+    <p class="collage-cap reveal">Insights do hábito · gênero radar · palavras por livro · objetivos honestos — cada cartão compartilhável como uma imagem polida.</p>
+
+    <div class="medals reveal" aria-label="Emblemas colecionáveis">
+      <img src="/assets/img/streak_7_front.webp" alt="Emblema de raia de 7 dias" loading="lazy">
+      <img src="/assets/img/streak_30_front.webp" alt="Emblema de 30 dias" loading="lazy">
+      <img src="/assets/img/books_10_front.webp" alt="10 livros emblema" loading="lazy">
+      <img src="/assets/img/words_100k_front.webp" alt="100 000 palavras emblema" loading="lazy">
+      <img src="/assets/img/hours_50_front.webp" alt="50 horas emblema" loading="lazy">
+      <img src="/assets/img/special_first_transcript_front.webp" alt="Emblema da primeira transcrição" loading="lazy">
+    </div>
+    <p class="medals-cap reveal">Streaks que você pode segurar em sua mão — 30 + emblemas colecionáveis para faixas, livros, palavras, horas e primeiros.</p>
+  </div>
+</section>
+
+<!-- ============ CHARACTERS ============ -->
+<section class="sec" style="padding-top:30px">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media layer reveal">
+        <img class="back" src="/assets/img/mockups/character-slide.webp?v=2" alt="Folha de detalhe do caráter — papel, visto pela primeira vez, atributos e relacionamentos" loading="lazy">
+        <img class="front" src="/assets/img/mockups/character-graph.webp" alt="Gráfico de relação de caracteres com nós arrastáveis" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Colegas de leitura</span>
+        <h2>Mapear o elenco como você lê.</h2>
+        <p class="sub" style="margin-top:18px">Os romances espalhados ficam confusos. Arraste personagens para uma tela, desenhe as linhas entre eles e rotule cada um em suas próprias palavras — aliado, rival, irmão, admira. O teu mapa vive com o livro.</p>
+        <p class="sub" style="margin-top:14px">E quando uma linha para você fria: toque na primeira palavra, toque na última, e ela é salva como uma citação — pronta para compartilhar como uma carta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFESTYLE ============ -->
+<section class="sec lifestyle">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Onde quer que estejas</span>
+      <h2 class="big">Feito para <i>O teu dia-a-dia.</i></h2>
+      <p class="sub">Não é necessário ler o local. HushBook se encaixa nos momentos que você já tem — e os transforma em páginas.</p>
+    </div>
+    <div class="life-grid">
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/couch-home.png" alt="Navegação da tela inicial do HushBook no sofá" loading="lazy">
+        <figcaption class="lcap"><h3>O teu sofá.<br><i>O teu próximo capítulo.</i></h3><p>Recomeça exactamente onde paraste, antes que a chaleira ferva.</p></figcaption>
+      </figure>
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="Lendo junto com Projeto Ave Maria na cama à noite" loading="lazy">
+        <figcaption class="lcap"><h3>As tuas 11 horas.<br><i>Luzes apagadas, palavras acesas.</i></h3><p>O quarto fica escuro. As palavras continuam a brilhar.</p></figcaption>
+      </figure>
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/bench-player.png" alt="Ouvindo o Senhor dos Anéis num banco de parque" loading="lazy">
+        <figcaption class="lcap"><h3>A tua hora de almoço.<br><i>Incluindo a Terra Média.</i></h3><p>Totalmente offline — o parque não tem Wi-Fi, e isso não importa.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEO COPY ============ -->
+<section class="seo-copy" id="about-hushbook" aria-labelledby="seo-title">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">O app de audiolivros grátis</span>
+      <h2 id="seo-title">App de audiolivros grátis com texto sincronizado</h2>
+      <p class="sub">Leia cada palavra enquanto a ouve — o player de leitura guiada para foco, privacidade e os livros que você já tem.</p>
+    </div>
+    <article class="prose reveal">
+      <p>Procura um <strong>app de audiolivros grátis com texto sincronizado</strong>? O HushBook é para quem quer mais do que só reproduzir. Players comuns só narram e deixam os olhos sem âncora. O HushBook transforma a escuta em <strong>audiolivro com palavras</strong>: cada palavra falada acende no ritmo do narrador, como letra de música — só que a faixa é um livro inteiro.</p>
+
+      <h3>Por que texto sincronizado vence só ouvir</h3>
+      <p>Áudio passivo é fácil de começar e fácil de perder. A mente vagueia. Nomes se apagam. Você termina um capítulo e quase não reteve nada. O destaque palavra a palavra ancora a atenção na voz: você vê o que ouve, pula para qualquer linha com um toque e não perde o lugar. Por isso muitos veem o HushBook entre os <strong>melhores apps de audiolivros grátis</strong> quando a compreensão importa tanto quanto a comodidade.</p>
+
+      <h3>Melhores apps de audiolivros — o que diferencia o HushBook</h3>
+      <p>Pesquise «<strong>melhores apps de audiolivros</strong>» e achará lojas, assinaturas e catálogos na nuvem. Eles brilham em descoberta. O HushBook resolve outro problema: <em>como você lê o áudio que já tem</em>. Importe MP3, M4B, FLAC e mais; capítulos e capa vêm se o arquivo os tiver. Toque em Transcrever e o motor HushBook no aparelho gera texto sincronizado — sem base de letras, sem upload, sem conta. Depois de um download único do motor, tudo funciona offline. Esse design privado e centrado em arquivos é raro entre <strong>apps de audiolivros para iPhone</strong> e <strong>apps de audiolivros para Android</strong>.</p>
+
+      <h3>Grátis no iPhone e no Android</h3>
+      <p>O HushBook é grátis nas duas plataformas — App Store e Google Play — sem anúncios na experiência principal. A biblioteca de domínio público (clássicos do LibriVox e Internet Archive) é grátis. Leitura sincronizada, citações, perfis e offline também. Um Pro opcional aprofunda as análises. Se você precisa de <strong>apps de audiolivros para iPhone</strong> no trajeto ou <strong>apps para Android</strong> à noite, a promessa é a mesma: grátis para começar, privado por design, texto sincronizado incluso.</p>
+
+      <h3>Seus livros — de clássicos a Project Hail Mary</h3>
+      <p>Traga os títulos que importam. Ficção científica longa? Importe um arquivo de <strong>audiolivro de Project Hail Mary</strong> que você já possui (ou outro livro que tenha direito de ouvir), transcreva no telefone e acompanhe Ryland Grace palavra a palavra. Prefere épicos de domínio público? Monte Cristo, Austen ou Aurélio no catálogo. O HushBook não é vitrine de pirataria — é player e motor de leitura sincronizada para arquivos e clássicos grátis que você escolhe. Texto sincronizado funciona em muitos idiomas para que um <strong>audiolivro com palavras</strong> combine com o que você ouve.</p>
+
+      <h3>Privacidade, acessibilidade e hábitos que ficam</h3>
+      <p>A transcrição nunca sai do aparelho. Sem muro de login nem nuvem para o seu áudio. Perfis de leitura remodelam toda a UI — compreensão, dislexia/TDAH ou baixa visão — com fontes como OpenDyslexic e Atkinson Hyperlegible, sobreposições, contraste e modo noturno. Sequências, medalhas e estatísticas leves ficam locais. Essa combinação — núcleo grátis, texto sincronizado, IA no aparelho, acessibilidade — coloca o HushBook entre as melhores respostas à <strong>melhor app de audiolivros grátis</strong> que respeita foco e privacidade.</p>
+
+      <p class="seo-cta"><strong>Pronto para ler junto?</strong> Baixe o HushBook grátis para <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">iPhone</a> ou <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Android</a>, escolha um clássico grátis ou importe um livro seu e veja cada palavra acender com a voz.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Perguntas?</span>
+      <h2>Respostas.</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="qa"><button type="button" aria-expanded="false">O meu áudio nunca deixa o meu telemóvel?</button><div class="a"><p>Não. A transcrição é totalmente executada no seu dispositivo — não há envio, conta ou servidor. Após uma única transferência do motor, toda a aplicação funciona offline.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">De onde vêm as letras sincronizadas?</button><div class="a"><p>O HushBook gera-os a partir do seu áudio com o mecanismo HushBook no dispositivo — não há base de dados de letras. A primeira passagem em um livro longo leva um tempo; depois disso, é instantâneo cada vez que você abri-lo.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Que arquivos posso importar?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA e ALAC — um arquivo por importação. Capítulos dentro de arquivos M4B são detectados automaticamente, juntamente com arte de capa e metadados.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Quanto custa?</button><div class="a"><p>A experiência de leitura e a biblioteca de domínio público são gratuitas. Existe uma atualização Pro opcional para análises avançadas — ir para o Pro ajuda a manter o HushBook independente e melhorando.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Vai drenar a bateria ou aquecer o telemóvel?</button><div class="a"><p>O motor é termal-consciente: ele tampa seus threads do trabalhador e descansa entre pedaços para manter seu telefone fresco, e ele retoma automaticamente se uma transcrição longa é interrompida.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Para quem é o HushBook?</button><div class="a"><p>Quem lê com os ouvidos — e especialmente os leitores com dislexia, TDAH ou baixa visão, aprendizes de línguas, e quem se concentra melhor quando pode ver as palavras que ouve.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Posso ler no escuro?</button><div class="a"><p>Sim — o modo noturno troca o pano de fundo da capa borrada por uma tela escura sólida, e o perfil Vision adiciona temas de alto contraste como o branco sobre preto e o âmbar sobre preto.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale">
+  <div class="glyph reveal"><img src="/assets/img/logo.png" alt="Monograma do HushBook"></div>
+  <h2 class="reveal">Comece a ler com todas as palavras que ouvir.</h2>
+  <p class="sub reveal">Grátis no iPhone e Android. Nenhuma conta. Nada para armar além de ti.</p>
+  <div class="stores reveal">
+    <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Baixe HushBook na App Store">
+      <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      <span><small>Baixar na</small><b>Loja de aplicativos</b></span>
+    </a>
+    <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="Obter HushBook no Google Play">
+      <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+      <span><small>Põe-no.</small><b>Google Play</b></span>
+    </a>
+  </div>
+  <small class="reveal">Você possui seus audiolivros e sua transcrição</small>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+        <p>Leia com cada palavra que ouvir.</p>
+        <div class="foot-social" aria-label="Redes sociais HushBook">
+          <a href="https://www.instagram.com/hushbook.app/" target="_blank" rel="noopener noreferrer" aria-label="HushBook no Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.x.com/hushbookapp/" target="_blank" rel="noopener noreferrer" aria-label="HushBook em X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.7h1.8L7.4 4.4H5.5l12.2 15.8Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fcol">
+        <b>Produto</b>
+        <a href="#read-along">Como funciona</a>
+        <a href="#privacy">Privacidade por projeto</a>
+        <a href="#accessibility">acessibilidade</a>
+        <a href="#life">Análise</a>
+      </div>
+      <div class="fcol">
+        <b>Empresa</b>
+        <a href="/about">Sobre</a>
+        <a href="/privacy-policy">Política de privacidade</a>
+        <a href="/terms-conditions">Terms &amp; conditions</a>
+        <a href="/refund-policy">Política dos reembolsos</a>
+        <a href="/licenses">Licenças</a>
+      </div>
+      <div class="fcol">
+        <b>Obter a aplicação</b>
+        <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">Loja de aplicativos</a>
+        <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Google Play</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 HushBook. Todos os direitos reservados.</span>
+      <span>Feito para quem lê com os ouvidos.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// scroll reveal + per-character heading blur-in
+const revealBlocks=document.querySelectorAll('.reveal');
+const revealHeadings=document.querySelectorAll('h1, h2, h3');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function splitHeadingText(node,index){
+  Array.from(node.childNodes).forEach(child=>{
+    if(child.nodeType===Node.TEXT_NODE){
+      const fragment=document.createDocumentFragment();
+      let word;
+      Array.from(child.textContent).forEach(character=>{
+        if(/\s/.test(character)){
+          word=null;
+          fragment.appendChild(document.createTextNode(' '));
+          return;
+        }
+        if(!word){
+          word=document.createElement('span');
+          word.className='reveal-word';
+          fragment.appendChild(word);
+        }
+        const span=document.createElement('span');
+        span.className='reveal-char';
+        span.setAttribute('aria-hidden','true');
+        span.style.transitionDelay=(index.value++*30)+'ms';
+        span.textContent=character;
+        word.appendChild(span);
+      });
+      child.parentNode.replaceChild(fragment,child);
+    }else if(child.nodeType===Node.ELEMENT_NODE){splitHeadingText(child,index);}
+  });
+}
+
+function prepareHeading(heading){
+  const label=heading.textContent.replace(/\s+/g,' ').trim();
+  if(!label)return;
+  if(!heading.getAttribute('aria-label'))heading.setAttribute('aria-label',label);
+  splitHeadingText(heading,{value:0});
+  heading.dataset.charReveal='true';
+}
+
+function revealHeading(heading){
+  heading.querySelectorAll('.reveal-char').forEach(character=>character.classList.add('in'));
+}
+
+function revealHeadingTree(target){
+  if(target.dataset.charReveal==='true')revealHeading(target);
+  target.querySelectorAll('[data-char-reveal]').forEach(revealHeading);
+}
+
+if(reduceMotion){
+  revealBlocks.forEach(block=>block.classList.add('in'));
+}else{
+  revealHeadings.forEach(prepareHeading);
+  const revealIO=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    revealHeadingTree(entry.target);
+    entry.target.classList.add('in');
+    revealIO.unobserve(entry.target);
+  }),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  revealBlocks.forEach((block,index)=>{
+    block.style.transitionDelay=((index%4)*70)+'ms';
+    revealIO.observe(block);
+  });
+  revealHeadings.forEach(heading=>{
+    if(!heading.classList.contains('reveal'))revealIO.observe(heading);
+  });
+}
+
+// nav toggle
+const nav=document.getElementById('nav');
+document.querySelector('.nav-toggle').addEventListener('click',()=>{
+  const open=nav.classList.toggle('open');
+  document.querySelector('.nav-toggle').setAttribute('aria-expanded',open);
+});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// karaoke demo line
+const QUOTE="You have power over your mind — not outside events. Realize this, and you will find strength.";
+const line=document.getElementById('karaoke-line');
+const words=QUOTE.split(' ');
+line.innerHTML=words.map(w=>`<span class="w">${w}</span>`).join(' ')+' <span class="w" style="font-style:italic">— Marcus Aurelius</span>';
+const spans=line.querySelectorAll('.w');
+let wi=0;
+function step(){
+  if(wi>0)spans[wi-1].classList.replace('on','done');
+  if(wi<spans.length){spans[wi].classList.add('on');wi++;setTimeout(step,wi===1?600:340)}
+  else setTimeout(()=>{spans.forEach(s=>s.classList.remove('on','done'));wi=0;step()},3800);
+}
+// start when visible
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){step();o.disconnect()}},{threshold:.4}).observe(line);
+
+// faq
+document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.parentElement,open=qa.classList.toggle('open');
+  b.setAttribute('aria-expanded',open);
+}));
+
+const fine=matchMedia('(pointer:fine)').matches, calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// duplicate the reader-note set once for a seamless marquee loop
+const reviewSet=document.querySelector('.review-set');
+if(reviewSet){
+  const reviewClone=reviewSet.cloneNode(true);
+  reviewClone.setAttribute('aria-hidden','true');
+  reviewClone.querySelectorAll('[tabindex]').forEach(el=>el.removeAttribute('tabindex'));
+  reviewSet.after(reviewClone);
+}
+
+// hero fan 3D tilt
+const fan=document.querySelector('.fan');
+if(fan&&fine&&!calm){
+  const hero=document.querySelector('.hero');
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    fan.style.setProperty('--rx',(-y*5)+'deg');
+    fan.style.setProperty('--ry',(x*7)+'deg');
+  });
+  hero.addEventListener('pointerleave',()=>{fan.style.setProperty('--rx','0deg');fan.style.setProperty('--ry','0deg')});
+}
+
+// three.js + GSAP — The Transcription Field
+// An audiobook's waveform streams in from the left, crosses the playhead beam,
+// and crystallizes into transcript words on the right. The product, as a shader.
+(function(){
+  if(!window.THREE||!window.gsap||calm)return;
+  const host=document.getElementById('stage-gl');if(!host)return;
+  try{
+    gsap.registerPlugin(ScrollTrigger);
+
+    const renderer=new THREE.WebGLRenderer({alpha:true,antialias:false,powerPreference:'high-performance'});
+    const DPR=Math.min(devicePixelRatio||1,fine?1.75:1.5);
+    renderer.setPixelRatio(DPR);
+    renderer.setClearColor(0x000000,0);
+    host.appendChild(renderer.domElement);
+
+    const scene=new THREE.Scene();
+    const cam=new THREE.PerspectiveCamera(50,1,.1,100);cam.position.z=16;
+    let halfH=Math.tan(THREE.MathUtils.degToRad(25))*16,halfW=halfH;
+
+    const N=fine?15000:6500;
+    // portrait phones are too narrow for the horizontal audio→text composition:
+    // words would crammed over the copy and sit off the waveline. there, run waveform-only.
+    const narrow=innerWidth<760;
+    const u={
+      uTime:{value:0},uAmp:{value:1},
+      uPlayheadX:{value:0},uHalfW:{value:12},uCenterY:{value:-.6},
+      uTargetMix:{value:0},uSweepX:{value:-999},
+      uPR:{value:DPR},uSize:{value:fine?2.2:2.7},
+      uMouse:{value:new THREE.Vector2(-999,-999)},uMouseForce:{value:fine?.34:0},
+      uGold:{value:new THREE.Color('#C9A36A')},
+      uGoldHi:{value:new THREE.Color('#E8C893')},
+      uInk:{value:new THREE.Color('#F5EFE6')},
+      uGlobalAlpha:{value:0}
+    };
+
+    // each particle lives one loop: born off-screen left, rides the waveform,
+    // crosses the playhead, then crystallizes into a word or drifts away
+    const geo=new THREE.BufferGeometry();
+    const rand=new Float32Array(N*4),has=new Float32Array(N),pick=new Float32Array(N);
+    for(let i=0;i<N;i++){
+      rand[i*4]=Math.random();rand[i*4+1]=Math.random();rand[i*4+2]=Math.random();rand[i*4+3]=Math.random();
+      has[i]=(!narrow&&i<N*.58)?1:0;pick[i]=Math.random();
+    }
+    geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aRand',new THREE.BufferAttribute(rand,4));
+    geo.setAttribute('aTargetA',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aTargetB',new THREE.BufferAttribute(new Float32Array(N*3),3));
+    geo.setAttribute('aHasTarget',new THREE.BufferAttribute(has,1));
+
+    const mat=new THREE.ShaderMaterial({
+      uniforms:u,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+      vertexShader:`
+        uniform float uTime,uAmp,uPlayheadX,uHalfW,uCenterY,uTargetMix,uSweepX,uPR,uSize,uMouseForce;
+        uniform vec2 uMouse;
+        attribute vec4 aRand;
+        attribute vec3 aTargetA,aTargetB;
+        attribute float aHasTarget;
+        varying float vLit,vMorph,vAlpha,vTw;
+        float voice(float t){
+          float v=sin(t*1.31)*sin(t*.43+1.7)*sin(t*2.87+.53);
+          return clamp(.16+1.05*abs(v)+.1*sin(t*7.1),0.,1.15);
+        }
+        void main(){
+          float speed=.030+.05*aRand.y;
+          float p=fract(aRand.x+uTime*speed);
+          float pW=mix(.62,.40,aHasTarget); // word particles cross over sooner and dwell longer
+          float xStart=-uHalfW*1.12;
+          float wx=mix(xStart,uPlayheadX,min(p,pW)/pW);
+          float env=voice(uTime*1.35-(wx-xStart)*.42);
+          // audio waveform: symmetric envelope around the centerline, multi-frequency carrier
+          float carrier=sin(wx*2.3-uTime*3.1)*.5+sin(wx*4.9-uTime*4.7)*.3+sin(wx*9.1-uTime*6.3)*.2;
+          float A=(.16+.84*abs(carrier))*env*uAmp*1.7;
+          float th=aRand.z*2.-1.;
+          th=sign(th)*pow(abs(th),1.5); // cluster particles toward the centerline
+          float meander=sin(wx*.5-uTime*1.1)*.25*env*uAmp;
+          vec3 wavePos=vec3(wx,uCenterY+meander+th*A,(aRand.w-.5)*1.2);
+          float centerGlow=1.-abs(th)*.6;
+
+          vec3 target=mix(aTargetA,aTargetB,uTargetMix);
+          target.x+=sin(uTime*1.7+aRand.x*40.)*.006;
+          target.y+=cos(uTime*2.3+aRand.y*40.)*.006;
+
+          float q=clamp((p-pW)/(1.-pW),0.,1.);
+          float m=smoothstep(0.,.30,q);m=m*m*(3.-2.*m);
+          vec3 drift=vec3(uPlayheadX+q*(uHalfW*1.08-uPlayheadX),
+                          uCenterY+meander+th*A*.4+q*1.7*(aRand.y-.35),
+                          (aRand.w-.5)*1.2);
+          vec3 dest=mix(drift,target,aHasTarget);
+          vec3 pos=mix(wavePos,dest,m);
+          float arc=sin(m*3.14159);
+          pos.y+=arc*.7*(aRand.z-.5)*aHasTarget;
+          pos.x+=arc*.3*(aRand.w-.5);
+
+          vec2 d=pos.xy-uMouse;
+          pos.xy+=(d/(dot(d,d)+.35))*uMouseForce*(1.-.45*m*aHasTarget);
+
+          float fadeIn=smoothstep(0.,.05,p);
+          float fadeOut=mix(1.-smoothstep(.78,.97,p),1.-smoothstep(.93,1.,p),aHasTarget);
+          vAlpha=fadeIn*fadeOut*mix((.25+.75*env)*centerGlow,1.,m);
+          vMorph=m*aHasTarget;
+          vLit=aHasTarget*m*step(target.x,uSweepX);
+          vTw=aRand.w;
+
+          vec4 mv=modelViewMatrix*vec4(pos,1.);
+          gl_Position=projectionMatrix*mv;
+          gl_PointSize=max(uSize*(.55+.9*aRand.w)*(1.+vLit*.9+vMorph*.45)*uPR*(14./-mv.z),1.);
+        }`,
+      fragmentShader:`
+        uniform vec3 uGold,uGoldHi,uInk;
+        uniform float uGlobalAlpha,uTime;
+        varying float vLit,vMorph,vAlpha,vTw;
+        void main(){
+          float r=length(gl_PointCoord-.5);
+          float disc=smoothstep(.5,.06,r);
+          vec3 col=mix(uGold,uInk,vMorph*.9);
+          col=mix(col,uGoldHi,vLit);
+          float tw=1.+sin(uTime*(1.5+vTw*3.)+vTw*40.)*.25*(1.-vMorph*.7);
+          float body=mix(.5+.5*vTw,.85+.15*vTw,vMorph);
+          float a=disc*vAlpha*uGlobalAlpha*body*(1.+vLit*.7)*tw;
+          if(a<.004)discard;
+          gl_FragColor=vec4(col,a);
+        }`
+    });
+    const pts=new THREE.Points(geo,mat);pts.frustumCulled=false;scene.add(pts);
+
+    // the playhead — a vertical beam where audio becomes text
+    const beam=new THREE.Mesh(
+      new THREE.PlaneGeometry(1,1),
+      new THREE.ShaderMaterial({
+        uniforms:{uTime:u.uTime,uGlobalAlpha:u.uGlobalAlpha,uColor:u.uGoldHi},
+        transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+        vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`
+          uniform float uTime,uGlobalAlpha;uniform vec3 uColor;varying vec2 vUv;
+          void main(){
+            float x=abs(vUv.x-.5)*2.;
+            float fall=pow(max(0.,1.-x),3.);
+            float core=pow(max(0.,1.-x),16.);
+            float cap=pow(sin(vUv.y*3.14159),.6);
+            float pulse=.7+.3*sin(uTime*2.3);
+            gl_FragColor=vec4(uColor,(fall*.08+core*.3)*cap*pulse*uGlobalAlpha);
+          }`
+      })
+    );
+    scene.add(beam);
+
+    // phrases are rasterized to a 2d canvas, then sampled into particle targets
+    const tcv=document.createElement('canvas'),tg=tcv.getContext('2d',{willReadFrequently:true});
+    function samplePhrase(text){
+      const cw=1400,ch=380;tcv.width=cw;tcv.height=ch;
+      let fs=210;
+      tg.font='italic 700 '+fs+'px Fraunces,Georgia,serif';
+      const w=tg.measureText(text).width;
+      if(w>cw*.94){fs=Math.floor(fs*cw*.94/w);tg.font='italic 700 '+fs+'px Fraunces,Georgia,serif';}
+      tg.fillStyle='#fff';tg.textAlign='center';tg.textBaseline='middle';
+      tg.fillText(text,cw/2,ch/2);
+      const d=tg.getImageData(0,0,cw,ch).data,P=[];
+      for(let y=0;y<ch;y+=2)for(let x=0;x<cw;x+=2)
+        if(d[(y*cw+x)*4+3]>120)P.push(x,y);
+      return{P,cw,ch};
+    }
+    function zone(){
+      const l=u.uPlayheadX.value+1.2,r=halfW*.95;
+      return{cx:(l+r)/2,cy:u.uCenterY.value+.3,w:Math.max(r-l,.5),h:Math.min(halfH*.5,3.4)};
+    }
+    let bounds={l:0,r:0},shownAttr=null;
+    function fillAttr(attr,text){
+      const s=samplePhrase(text);if(!s.P.length)return bounds;
+      const z=zone(),sc=Math.min(z.w*.96/s.cw,z.h/s.ch),a=attr.array,L=s.P.length/2;
+      let mn=1e9,mx=-1e9;
+      for(let i=0;i<N;i++){
+        if(!has[i])continue;
+        const j=((pick[i]*L)|0)*2;
+        const x=z.cx+(s.P[j]-s.cw/2)*sc+(rand[i*4+2]-.5)*.025;
+        const y=z.cy-(s.P[j+1]-s.ch/2)*sc+(rand[i*4+3]-.5)*.025;
+        a[i*3]=x;a[i*3+1]=y;a[i*3+2]=(rand[i*4+1]-.5)*.24;
+        if(x<mn)mn=x;if(x>mx)mx=x;
+      }
+      attr.needsUpdate=true;
+      return{l:mn,r:mx};
+    }
+
+    // phrase engine: double-buffered targets, GSAP crossfade, then karaoke sweep
+    const PHRASES=["Era uma vez","Quero ser incrível","Ser ou não ser","Todos por um,","um por todos.","Memórias são tudo.","E viveram felizes para sempre."];
+    let idx=0,activeA=true,currentText=null,cycleCall=null,sweepT=null,morphT=null;
+    function show(text){
+      if(text===currentText)return;currentText=text;
+      cycleCall&&cycleCall.kill();sweepT&&sweepT.kill();morphT&&morphT.kill();
+      const attr=activeA?geo.attributes.aTargetB:geo.attributes.aTargetA;
+      shownAttr=attr;
+      const b=fillAttr(attr,text);
+      gsap.set(u.uSweepX,{value:-999});
+      morphT=gsap.to(u.uTargetMix,{value:activeA?1:0,duration:1.8,ease:'power3.inOut',onComplete:()=>{
+        activeA=!activeA;bounds=b;
+        sweepT=gsap.fromTo(u.uSweepX,{value:b.l-.4},
+          {value:b.r+.7,delay:.3,duration:Math.max(1.1,(b.r-b.l)*.22),ease:'power1.inOut'});
+        cycleCall=gsap.delayedCall(7.5,()=>{idx=(idx+1)%PHRASES.length;show(PHRASES[idx]);});
+      }});
+    }
+    if(!narrow){
+      show(PHRASES[0]);
+      if(document.fonts&&document.fonts.load)
+        document.fonts.load('italic 600 100px Fraunces').then(()=>{ // resample once the webfont is in
+          if(shownAttr&&currentText)bounds=fillAttr(shownAttr,currentText);
+        }).catch(()=>{});
+    }
+
+    function size(){
+      const w=host.clientWidth||innerWidth,h=host.clientHeight||innerHeight;
+      renderer.setSize(w,h,false);
+      cam.aspect=w/h;cam.updateProjectionMatrix();
+      halfH=Math.tan(THREE.MathUtils.degToRad(25))*16;halfW=halfH*cam.aspect;
+      u.uHalfW.value=halfW;
+      u.uPlayheadX.value=0;
+      beam.position.set(u.uPlayheadX.value,0,0);
+      beam.scale.set(1.2,halfH*2.2,1);
+      if(shownAttr&&currentText)bounds=fillAttr(shownAttr,currentText);
+    }
+    size();
+    let rT;addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(size,150)});
+
+    // pointer: the field leans away from the cursor; click sends a shockwave
+    const mTgt=new THREE.Vector2(-999,-999);
+    if(fine){
+      addEventListener('pointermove',e=>{
+        const r=host.getBoundingClientRect();
+        mTgt.set(((e.clientX-r.left)/r.width*2-1)*halfW,-((e.clientY-r.top)/r.height*2-1)*halfH);
+      },{passive:true});
+      addEventListener('pointerdown',()=>{
+        gsap.fromTo(u.uMouseForce,{value:3.4},{value:.34,duration:1.5,ease:'expo.out',overwrite:'auto'});
+      });
+    }
+
+    // intro fade-in × scroll fade-out, composed in the render loop
+    const fade={intro:0,scroll:1};
+    gsap.to(fade,{intro:1,duration:1.8,ease:'power2.out',delay:.2});
+    gsap.fromTo(fade,{scroll:1},{scroll:0,ease:'none',immediateRender:false,
+      scrollTrigger:{trigger:'.hero',start:'40% top',end:'bottom 25%',scrub:.8}});
+    gsap.from(cam.position,{z:21,duration:2.6,ease:'power3.out'});
+
+    // render only while the hero is on screen
+    let vis=true;new IntersectionObserver(es=>{vis=es[0].isIntersecting}).observe(host);
+
+    const clock=new THREE.Clock();
+    (function loop(){
+      requestAnimationFrame(loop);
+      const dt=Math.min(clock.getDelta(),.05);
+      if(!vis)return;
+      u.uTime.value+=dt;
+      u.uGlobalAlpha.value=fade.intro*fade.scroll;
+      u.uMouse.value.lerp(mTgt,.09);
+      renderer.render(scene,cam);
+    })();
+  }catch(err){/* WebGL unavailable — hero gradient still carries it */}
+})();
+
+// 3D Marquee component using Three.js
+(function() {
+  const container = document.getElementById('marquee-3d-container');
+  if (!container || !window.THREE || calm) return;
+
+  const IMAGES = [
+    "assets/img/mockups/player-martian.webp",
+    "assets/img/mockups/player-lotr.webp",
+    "assets/img/mockups/player-love-hypothesis.webp",
+    "assets/img/mockups/player-crime-punishment.webp",
+    "assets/img/mockups/player-pride-prejudice.webp",
+    "assets/img/mockups/player-hitchhikers.webp",
+    "assets/img/mockups/player-martian.webp",
+    "assets/img/mockups/player-lotr.webp",
+    "assets/img/mockups/player-love-hypothesis.webp",
+    "assets/img/mockups/player-crime-punishment.webp",
+    "assets/img/mockups/player-pride-prejudice.webp",
+    "assets/img/mockups/player-hitchhikers.webp"
+  ];
+
+  const width = container.clientWidth;
+  const height = 480;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+  camera.position.set(0, 0, 7.5);
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(width, height);
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    container.appendChild(renderer.domElement);
+  } catch (e) {
+    console.error("WebGL failed for 3D marquee:", e);
+    return;
+  }
+
+  const fallback = document.getElementById('marquee-fallback');
+  if (fallback) fallback.style.display = 'none';
+
+  const textureLoader = new THREE.TextureLoader();
+  const planeGeometry = new THREE.PlaneGeometry(2.1, 3.7);
+  const meshes = [];
+
+  const cardsGroup = new THREE.Group();
+  scene.add(cardsGroup);
+
+  let offset = 0;
+  const mouse = { x: 0, y: 0 };
+  let speedFactor = 1.0;
+  const mouse2D = new THREE.Vector2();
+  const raycaster = new THREE.Raycaster();
+  let hoveredIndex = null;
+
+  const materials = IMAGES.map((url) => {
+    const mat = new THREE.MeshBasicMaterial({
+      transparent: true,
+      side: THREE.DoubleSide
+    });
+
+    textureLoader.load(url, (texture) => {
+      if (THREE.SRGBColorSpace) {
+        texture.colorSpace = THREE.SRGBColorSpace;
+      } else {
+        texture.encoding = THREE.sRGBEncoding;
+      }
+      mat.map = texture;
+      mat.needsUpdate = true;
+    });
+
+    return mat;
+  });
+
+  materials.forEach((material) => {
+    const mesh = new THREE.Mesh(planeGeometry, material);
+    cardsGroup.add(mesh);
+    meshes.push(mesh);
+  });
+
+  const handleMouseMove = (event) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    mouse.x = x;
+    mouse.y = y;
+    mouse2D.set(x, y);
+
+    raycaster.setFromCamera(mouse2D, camera);
+    const intersects = raycaster.intersectObjects(meshes);
+
+    if (intersects.length > 0) {
+      const index = meshes.indexOf(intersects[0].object);
+      if (index !== -1) {
+        hoveredIndex = index;
+        return;
+      }
+    }
+    hoveredIndex = null;
+  };
+
+  const handleMouseLeave = () => {
+    hoveredIndex = null;
+    mouse.x = 0;
+    mouse.y = 0;
+  };
+
+  container.addEventListener("mousemove", handleMouseMove);
+  container.addEventListener("mouseleave", handleMouseLeave);
+
+  const spacing = 2.5;
+  const totalWidth = IMAGES.length * spacing;
+  const baseSpeed = 0.0035;
+
+  let frameId;
+  const animate = () => {
+    frameId = requestAnimationFrame(animate);
+    offset += baseSpeed * speedFactor;
+
+    if (hoveredIndex === null) {
+      speedFactor = THREE.MathUtils.lerp(speedFactor, 1.0, 0.05);
+    } else {
+      speedFactor = THREE.MathUtils.lerp(speedFactor, 0.08, 0.05);
+    }
+
+    meshes.forEach((mesh, index) => {
+      const baseX = index * spacing + offset;
+      const wrappedX = ((baseX % totalWidth) + totalWidth) % totalWidth - totalWidth / 2;
+      const curveRadius = 10;
+      const angle = wrappedX / curveRadius;
+
+      const targetX = Math.sin(angle) * curveRadius;
+      let targetZ = Math.cos(angle) * curveRadius - curveRadius;
+      let targetRotY = angle;
+      let targetRotX = 0;
+      let targetScale = 1.0;
+
+      if (hoveredIndex === index) {
+        targetZ += 0.8;
+        targetScale = 1.08;
+        targetRotY += mouse.x * 0.25;
+        targetRotX -= mouse.y * 0.25;
+      }
+
+      mesh.position.x = THREE.MathUtils.lerp(mesh.position.x, targetX, 0.08);
+      mesh.position.z = THREE.MathUtils.lerp(mesh.position.z, targetZ, 0.08);
+      mesh.rotation.y = THREE.MathUtils.lerp(mesh.rotation.y, targetRotY, 0.08);
+      mesh.rotation.x = THREE.MathUtils.lerp(mesh.rotation.x, targetRotX, 0.08);
+
+      const currentScale = mesh.scale.x;
+      const lerpedScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.08);
+      mesh.scale.set(lerpedScale, lerpedScale, 1);
+    });
+
+    renderer.render(scene, camera);
+  };
+
+  animate();
+
+  const handleResize = () => {
+    if (!container || !renderer || !camera) return;
+    const w = container.clientWidth;
+    camera.aspect = w / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, height);
+  };
+  window.addEventListener("resize", handleResize);
+})();
+
+// language spiral — build an inward swirl path, then revolve it on scroll
+(function(){
+  const stage=document.querySelector('.lang-stage'); if(!stage) return;
+  const path=stage.querySelector('#lr-spiral');
+  const tp=stage.querySelector('.ring-text textPath');
+  if(path){
+    const cx=300,cy=300,Ro=286,Ri=56,turns=3.65,N=440,thMax=2*Math.PI*turns;
+    let d='';
+    for(let i=0;i<=N;i++){
+      const t=i/N, th=thMax*t, r=Ro-(Ro-Ri)*t;
+      d+=(i?'L':'M')+(cx+r*Math.cos(th)).toFixed(1)+','+(cy+r*Math.sin(th)).toFixed(1)+' ';
+    }
+    path.setAttribute('d',d);
+    if(tp){ tp.setAttribute('textLength', Math.round(path.getTotalLength())); tp.setAttribute('lengthAdjust','spacing'); }
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!window.gsap||!window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const g=stage.querySelector('.ring-rot');
+  if(g) gsap.fromTo(g,{rotation:0},{
+    rotation:150, transformOrigin:'50% 50%', svgOrigin:'300 300', ease:'none',
+    scrollTrigger:{trigger:stage,start:'top bottom',end:'bottom top',scrub:1}
+  });
+})();
+</script>
+<div class="locale-switcher" data-locale-switcher aria-label="Selector de línguas"><a data-locale="en">Inglês</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch</a></div>
+<script src="/assets/js/locale.js" defer></script></body>
+</html>
+
+
+

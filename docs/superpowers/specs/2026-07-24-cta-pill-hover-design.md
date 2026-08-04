@@ -11,7 +11,7 @@ Replace cursor-following magnetic movement on download CTA pills with a restrain
 - Keep a subtle 2px upward lift with a refined shadow on hover.
 - Use smooth 200ms easing for transform and shadow changes.
 - Preserve the existing reduced-motion behavior and keyboard accessibility.
-- Leave `.nav-cta` behavior unchanged because this request targets CTA pills.
+- Remove cursor-following movement from `.nav-cta` while preserving its subtle CSS hover lift.
 
 ## Interaction
 

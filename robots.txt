@@ -1,0 +1,6 @@
+# Canonical site only — Vercel *.vercel.app hosts also send
+# X-Robots-Tag: noindex, nofollow (see vercel.json).
+User-agent: *
+Allow: /
+
+Sitemap: https://hushbook.app/sitemap.xml

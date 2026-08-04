@@ -4,29 +4,1239 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ar"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ar"
+        }
+      ],
+      "destination": "/ar/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "da"
+        }
+      ],
+      "destination": "/da",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "da"
+        }
+      ],
+      "destination": "/da/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "de"
+        }
+      ],
+      "destination": "/de",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "de"
+        }
+      ],
+      "destination": "/de/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-419"
+        }
+      ],
+      "destination": "/es-419",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-419"
+        }
+      ],
+      "destination": "/es-419/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-ES"
+        }
+      ],
+      "destination": "/es-ES",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-ES"
+        }
+      ],
+      "destination": "/es-ES/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "fr"
+        }
+      ],
+      "destination": "/fr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "fr"
+        }
+      ],
+      "destination": "/fr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "id"
+        }
+      ],
+      "destination": "/id",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "id"
+        }
+      ],
+      "destination": "/id/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "it"
+        }
+      ],
+      "destination": "/it",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "it"
+        }
+      ],
+      "destination": "/it/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ja"
+        }
+      ],
+      "destination": "/ja",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ja"
+        }
+      ],
+      "destination": "/ja/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ko"
+        }
+      ],
+      "destination": "/ko",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ko"
+        }
+      ],
+      "destination": "/ko/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "nl"
+        }
+      ],
+      "destination": "/nl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "nl"
+        }
+      ],
+      "destination": "/nl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pl"
+        }
+      ],
+      "destination": "/pl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pl"
+        }
+      ],
+      "destination": "/pl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-BR"
+        }
+      ],
+      "destination": "/pt-BR",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-BR"
+        }
+      ],
+      "destination": "/pt-BR/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-PT"
+        }
+      ],
+      "destination": "/pt-PT",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-PT"
+        }
+      ],
+      "destination": "/pt-PT/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ru"
+        }
+      ],
+      "destination": "/ru",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ru"
+        }
+      ],
+      "destination": "/ru/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "sv"
+        }
+      ],
+      "destination": "/sv",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "sv"
+        }
+      ],
+      "destination": "/sv/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "th"
+        }
+      ],
+      "destination": "/th",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "th"
+        }
+      ],
+      "destination": "/th/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "tr"
+        }
+      ],
+      "destination": "/tr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "tr"
+        }
+      ],
+      "destination": "/tr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "uk"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "uk"
+        }
+      ],
+      "destination": "/uk/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "vi"
+        }
+      ],
+      "destination": "/vi",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "vi"
+        }
+      ],
+      "destination": "/vi/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/de",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/de/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "JP"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ja",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "JP"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ja/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "FR|BE|LU|MC"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/fr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "FR|BE|LU|MC"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/fr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES|MX|AR|CO|CL|PE|UY"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/es-ES",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES|MX|AR|CO|CL|PE|UY"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/es-ES/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pt-BR",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pt-BR/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "IT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/it",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "IT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/it/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "KR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ko",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "KR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ko/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "NL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/nl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "NL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/nl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/tr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/tr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "RU"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ru",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "RU"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ru/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "UA"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "UA"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/uk/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ID"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/id",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ID"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/id/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/th",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/th/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "VN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/vi",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "VN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/vi/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "SE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/sv",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "SE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/sv/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DK"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/da",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DK"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/da/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pt-PT",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/pt-PT/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "AE|SA|EG|MA|DZ|TN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "AE|SA|EG|MA|DZ|TN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        }
+      ],
+      "destination": "/ar/:path*",
+      "permanent": false
+    },
+    {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.hushbook.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hushbook.app"
+        }
+      ],
       "destination": "https://hushbook.app/$1",
       "permanent": true
     },
-    { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/terms", "destination": "/terms-conditions", "permanent": true }
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-conditions",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<h>.+)\\.vercel\\.app"
+        }
+      ],
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

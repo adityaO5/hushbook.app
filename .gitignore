@@ -1,5 +1,10 @@
+# Dependencies
+node_modules/
+
 # Local tooling / QC artifacts
 .playwright-mcp/
+.playwright-cli/
+.legacy-index/
 .lazyweb/
 .superpowers/
 qc-*.png
