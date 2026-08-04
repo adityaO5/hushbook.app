@@ -66,6 +66,126 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I read and listen to an audiobook at the same time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HushBook turns any audiobook into word-level read-along karaoke: every word lights up in sync with the narration so you can read and listen at once—like Apple Music lyrics, but for books."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do audiobooks have subtitles or captions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most audiobook apps do not show subtitles. HushBook generates word-synced text from your audio on your phone, so you get caption-style read-along text without a separate transcript file or ebook."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a Kindle or ebook to read along with an audiobook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You do not need a Kindle, ebook, or second purchase. Import your audio file and HushBook builds the synced read-along text on-device from the narration itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is HushBook different from Audible Whispersync or Immersion Reading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whispersync and Immersion Reading usually need both an Audible audiobook and a matching Kindle ebook. HushBook works from your own files only: it generates word-level synced text privately on your phone—no Amazon lock-in, no account, and no upload."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import my own MP3 or M4B audiobooks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Import MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA, and ALAC—one file per import. Chapters inside M4B files are detected automatically, along with cover art and metadata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the synced text or transcript come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HushBook generates it from your audio with the on-device HushBook Engine. There is no lyrics or transcript database. Text is produced in chunks, so you can start reading as soon as the first chunk is ready; after that, reopening is instant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my audio ever leave my phone? Is HushBook private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Transcription runs entirely on your device—there is no upload, no account, and no server. After a one-time engine download, the whole app works offline. Your audiobooks and transcripts stay on your phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is reading and listening at the same time better for focus and comprehension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many listeners find dual input helps them stay focused and retain more than plain listening alone—especially if they zone out on audio. HushBook makes immersion reading seamless by highlighting each spoken word so your eyes and ears stay on the same line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is HushBook good for dyslexia or ADHD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—word-level highlighting anchors attention to the voice, and accessibility profiles adapt fonts, spacing, and contrast for dyslexia, ADHD, low vision, and comprehension. You can also use night mode and high-contrast themes for comfortable reading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does HushBook work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. After a one-time download of the HushBook Engine, playback, read-along, and transcription all run on your device with no internet required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the first transcription take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Transcription runs instantly in chunks on your phone. As soon as the first chunk finishes, you can start reading along—you do not wait for the whole book. Later chunks keep processing in the background so more text unlocks as you go. After a section is transcribed once, reopening it is instant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free audiobook library with read-along?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HushBook includes a free public-domain classics library (including titles from sources like LibriVox and the Internet Archive). Open a book, run the on-device Engine, and you get the same word-level read-along karaoke—no subscription required for the free library."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is HushBook free? How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core read-along experience and the public-domain library are free on iPhone and Android. There is an optional Pro upgrade for advanced analytics—going Pro helps keep HushBook independent and improving."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will HushBook drain my battery or heat up my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Engine is thermal-aware: it caps its worker threads and rests between chunks to keep your phone cool, and it resumes automatically if a long transcription is interrupted."
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -385,7 +505,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .qa.open button::after{transform:translateY(-50%) rotate(45deg)}
 .qa .a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .qa .a p{color:var(--muted);font-size:15.5px;padding:0 0 24px;max-width:62ch}
-.qa.open .a{max-height:240px}
+.qa.open .a{max-height:520px}
 
 /* finale */
 .finale{margin-top:60px;padding:130px 24px 120px;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#241A10 34%,#7A5530 72%,#E8C893 130%);position:relative}
@@ -1063,13 +1183,20 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h2>Answers.</h2>
     </div>
     <div class="faq reveal">
-      <div class="qa"><button type="button" aria-expanded="false">Does my audio ever leave my phone?</button><div class="a"><p>No. Transcription runs entirely on your device — there's no upload, no account, and no server. After a one-time engine download, the whole app works offline.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">Where do the synced lyrics come from?</button><div class="a"><p>HushBook generates them from your audio with the on-device HushBook Engine — there's no lyrics database. The first pass on a long book takes a while; after that, it's instant every time you open it.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">What files can I import?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA, and ALAC — one file per import. Chapters inside M4B files are detected automatically, along with cover art and metadata.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">How much does it cost?</button><div class="a"><p>The core read-along experience and the public-domain library are free. There's an optional Pro upgrade for advanced analytics — going Pro helps keep HushBook independent and improving.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">Will it drain my battery or heat up my phone?</button><div class="a"><p>The Engine is thermal-aware: it caps its worker threads and rests between chunks to keep your phone cool, and it resumes automatically if a long transcription is interrupted.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">Who is HushBook for?</button><div class="a"><p>Anyone who reads with their ears — and especially readers with dyslexia, ADHD, or low vision, language learners, and anyone who focuses better when they can see the words they hear.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">Can I read in the dark?</button><div class="a"><p>Yes — night mode swaps the blurred cover backdrop for a solid dark canvas, and the Vision profile adds high-contrast themes like white-on-black and amber-on-black.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Can I read and listen to an audiobook at the same time?</button><div class="a"><p>Yes. HushBook turns any audiobook into word-level read-along karaoke: every word lights up in sync with the narration so you can read and listen at once—like Apple Music lyrics, but for books.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Do audiobooks have subtitles or captions?</button><div class="a"><p>Most audiobook apps do not show subtitles. HushBook generates word-synced text from your audio on your phone, so you get caption-style read-along text without a separate transcript file or ebook.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Do I need a Kindle or ebook to read along with an audiobook?</button><div class="a"><p>No. You do not need a Kindle, ebook, or second purchase. Import your audio file and HushBook builds the synced read-along text on-device from the narration itself.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">How is HushBook different from Audible Whispersync or Immersion Reading?</button><div class="a"><p>Whispersync and Immersion Reading usually need both an Audible audiobook and a matching Kindle ebook. HushBook works from your own files only: it generates word-level synced text privately on your phone—no Amazon lock-in, no account, and no upload.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Can I import my own MP3 or M4B audiobooks?</button><div class="a"><p>Yes. Import MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA, and ALAC—one file per import. Chapters inside M4B files are detected automatically, along with cover art and metadata.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Where does the synced text or transcript come from?</button><div class="a"><p>HushBook generates it from your audio with the on-device HushBook Engine. There is no lyrics or transcript database. Text is produced in chunks, so you can start reading as soon as the first chunk is ready; after that, reopening is instant.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Does my audio ever leave my phone? Is HushBook private?</button><div class="a"><p>No. Transcription runs entirely on your device—there is no upload, no account, and no server. After a one-time engine download, the whole app works offline. Your audiobooks and transcripts stay on your phone.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Is reading and listening at the same time better for focus and comprehension?</button><div class="a"><p>Many listeners find dual input helps them stay focused and retain more than plain listening alone—especially if they zone out on audio. HushBook makes immersion reading seamless by highlighting each spoken word so your eyes and ears stay on the same line.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Is HushBook good for dyslexia or ADHD?</button><div class="a"><p>Yes—word-level highlighting anchors attention to the voice, and accessibility profiles adapt fonts, spacing, and contrast for dyslexia, ADHD, low vision, and comprehension. You can also use night mode and high-contrast themes for comfortable reading.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Does HushBook work offline?</button><div class="a"><p>Yes. After a one-time download of the HushBook Engine, playback, read-along, and transcription all run on your device with no internet required.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">How long does the first transcription take?</button><div class="a"><p>Transcription runs instantly in chunks on your phone. As soon as the first chunk finishes, you can start reading along—you do not wait for the whole book. Later chunks keep processing in the background so more text unlocks as you go. After a section is transcribed once, reopening it is instant.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Is there a free audiobook library with read-along?</button><div class="a"><p>Yes. HushBook includes a free public-domain classics library (including titles from sources like LibriVox and the Internet Archive). Open a book, run the on-device Engine, and you get the same word-level read-along karaoke—no subscription required for the free library.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Is HushBook free? How much does it cost?</button><div class="a"><p>The core read-along experience and the public-domain library are free on iPhone and Android. There is an optional Pro upgrade for advanced analytics—going Pro helps keep HushBook independent and improving.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Will HushBook drain my battery or heat up my phone?</button><div class="a"><p>The Engine is thermal-aware: it caps its worker threads and rests between chunks to keep your phone cool, and it resumes automatically if a long transcription is interrupted.</p></div></div>
     </div>
   </div>
 </section>
