@@ -45,7 +45,7 @@ for (const file of files) {
   ) {
     html = html.replace(
       /(<meta property="og:image" content="https:\/\/hushbook\.app\/assets\/img\/og-hushbook\.webp">)/,
-      '$1\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'
+      '$1\n<meta property="og:image:width" content="1800">\n<meta property="og:image:height" content="945">'
     );
   }
 
@@ -75,7 +75,7 @@ if (fs.existsSync(injectPath)) {
   if (next.includes('og:image:type') && !next.includes('og:image:width')) {
     const patched = next.replace(
       /(<meta property="og:image:type" content="image\/webp">)/,
-      '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n$1'
+      '<meta property="og:image:width" content="1800">\n<meta property="og:image:height" content="945">\n$1'
     );
     fs.writeFileSync(injectPath, patched, 'utf8');
     console.log('updated scripts/inject-seo-copy.js');

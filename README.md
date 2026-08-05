@@ -48,7 +48,7 @@ text) and degrades gracefully if GSAP fails to load.
 
 - **App screenshots** — the phone mockups are CSS placeholders; drop in real captures.
 - **Store links** — badges currently point to `#`. iOS shows "Coming soon" (Android-first app).
-- **Contact email** — `aditya@hushbook.app`.
+- **Contact email** — `hello@hushbook.app`.
 - **Legal pages** — solid starting templates aligned to HushBook's on-device + import model; have
   counsel review and reconcile with the in-progress consent design, and fill the Play Console Data
   safety form to match.

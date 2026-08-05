@@ -44,8 +44,8 @@ function metaBlock(cfg) {
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${OG_IMG}">
 <meta property="og:image:alt" content="${cfg.ogImageAlt}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="945">
 <meta property="og:image:type" content="image/webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${cfg.ogTitle}">
