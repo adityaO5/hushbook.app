@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HushBook — อ่านพร้อมกับทุกคําที่คุณได้ยิน</title>
+<meta name="description" content="HushBook เปลี่ยนบันทึกเสียงใด ๆ เป็นคาราโอเกะระดับคํา, เชื่อมโยงส่วนตัวบนโทรศัพท์ของคุณกับเครื่องมือ HBTERMX บนเครื่อง เริ่มแรก เข้าถึงก่อน ฟรีบน OS &amp; Android">
+<meta name="theme-color" content="#0B0A09">
+<meta property="og:type" content="เว็บไซต์">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:title" content="HushBook — Transemn anybook">
+<meta property="og:description" content="สมุดบันทึกเสียงใด ๆ ก็เปลี่ยนมาเป็นคาราโอเกะระดับคํา ตีพิมพ์แบบส่วนตัวทางโทรศัพท์ของคุณ ฟรีบน OS &amp; Android">
+<meta property="og:url" content="https://hushbook.app/">
+<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:card" content="สรุป ขยายภาพ">
+<meta name="twitter:title" content="HushBook — Transemn anybook">
+<meta name="twitter:description" content="สมุดบันทึกเสียงใด ๆ ก็เปลี่ยนมาเป็นคาราโอเกะระดับคํา ตีพิมพ์แบบส่วนตัวทางโทรศัพท์ของคุณ ฟรีบน OS &amp; Android">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<link rel="canonical" href="https://hushbook.app/">
+<link rel="icon" href="/assets/img/default_preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+HBOPEXIX
+<link rel="alternate" hreflang="en" href="https://hushbook.app">
+<link rel="alternate" hreflang="de" href="https://hushbook.app/de">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hb-wordmark" viewBox="0 0 617 93">
+    <path d="M95.5122 4.53087C88.5962 9.80887 88.0502 33.6509 88.0502 46.3909C88.0502 59.1309 88.5962 83.1549 95.5122 88.2509C97.3322 89.7069 97.3322 92.8009 93.5102 92.8009H55.6542C53.8342 92.8009 53.1062 90.4349 54.9262 88.9789C61.2962 84.2469 62.5702 80.2429 62.5702 73.5089V50.7589H33.9962C34.1782 63.8629 35.4522 83.7009 41.4582 88.2509C43.4602 89.7069 43.4602 92.8009 39.6382 92.8009H1.78223C-0.037775 92.8009 -0.765775 90.4349 1.05422 88.9789C7.42423 84.2469 8.51623 80.2429 8.51623 73.5089V19.2729C8.51623 12.7209 7.42423 8.53487 1.05422 3.80286C-0.765775 2.34687 -0.037775 0.162868 1.78223 0.162868H39.6382C43.4602 0.162868 43.4602 3.07487 41.4582 4.53087C34.9062 9.62687 33.9962 32.7409 33.9962 45.6629H62.5702V19.2729C62.5702 12.7209 61.2962 8.53487 54.9262 3.80286C53.1062 2.34687 53.8342 0.162868 55.6542 0.162868H93.5102C97.3322 0.162868 97.3322 3.07487 95.5122 4.53087Z" fill="currentColor"/>
+    <path d="M171.655 30.1929C169.289 44.7529 166.559 75.5109 177.843 88.9789C179.481 90.7989 179.117 92.8009 177.297 92.8009H160.553C152.545 92.8009 147.449 87.5229 145.629 82.2449C141.625 88.0689 135.983 92.8009 127.793 92.8009C111.413 92.8009 98.8551 85.1569 98.8551 58.2209C98.8551 51.4869 97.7631 47.4829 91.3931 42.5689C89.5731 41.1129 90.3011 38.9289 92.1211 38.9289C109.593 38.9289 116.873 27.0989 123.789 25.6429C127.611 24.9149 125.973 27.8269 125.427 30.1929C120.877 51.8509 121.605 84.4289 135.255 84.4289C139.077 84.4289 142.535 78.9689 144.901 73.5089V58.2209C144.901 51.4869 143.809 47.4829 137.439 42.5689C135.619 41.1129 136.347 38.9289 138.167 38.9289C155.639 38.9289 163.101 27.0989 169.835 25.6429C173.657 24.9149 172.019 27.8269 171.655 30.1929Z" fill="currentColor"/>
+    <path d="M323.075 88.9789C324.895 90.4349 324.167 92.8009 322.347 92.8009H286.129C282.307 92.8009 282.489 89.8889 284.309 88.2509C295.957 77.6949 290.679 33.1049 278.121 33.1049C274.663 33.1049 269.931 37.1089 266.473 44.2069C266.473 66.2289 269.567 84.9749 273.753 88.2509C275.755 89.7069 275.755 92.8009 271.933 92.8009H235.715C233.895 92.8009 233.167 90.4349 234.987 88.9789C241.357 84.2469 242.631 80.2429 242.631 73.5089V32.5589C242.631 12.9029 221.883 15.6329 232.439 36.3809L232.985 37.6549C239.355 51.6689 208.597 54.3989 210.053 38.3829C210.781 28.3729 202.045 29.1009 201.135 35.2889C198.405 50.9409 231.165 54.3989 233.895 71.1429C235.533 81.3349 222.247 92.2549 206.413 92.6189L206.049 92.8009C194.401 92.9829 180.933 89.3429 176.929 80.6069C170.559 66.5929 201.317 63.8629 200.043 79.8789C199.133 89.8889 207.505 88.9789 208.779 82.9729C212.419 67.5029 178.385 66.2289 176.201 48.0289C174.563 34.5609 187.303 26.0069 203.501 25.4609H203.865C208.415 25.4609 213.329 25.8249 217.879 27.0989C220.245 13.0849 240.447 17.4529 253.915 8.35287C259.739 4.53087 264.289 0.89087 268.111 0.162868C271.751 -0.747131 270.295 2.34687 269.749 4.71286C268.111 14.3589 267.019 24.5509 266.655 34.5609C270.659 29.4649 276.301 25.4609 283.399 25.4609C303.055 25.4609 315.431 41.4769 315.431 61.4969V73.5089C315.431 80.2429 316.705 84.2469 323.075 88.9789Z" fill="currentColor"/>
+    <path d="M387.474 44.5709C400.214 47.1189 409.496 56.7649 409.496 68.2309C409.496 81.6989 396.756 92.8009 380.922 92.8009H325.23C323.41 92.8009 322.682 90.4349 324.502 88.9789C330.872 84.2469 331.964 80.2429 331.964 73.5089V19.2729C331.964 12.7209 330.872 8.53487 324.502 3.80286C322.682 2.34687 323.41 0.162868 325.23 0.162868H372.55C386.2 0.162868 399.668 11.0829 399.668 24.5509C399.668 32.7409 394.572 40.0209 387.474 44.5709ZM363.268 87.7049C374.188 87.7049 383.47 78.9689 383.47 68.2309C383.47 57.6749 374.188 48.9389 363.268 48.9389H357.444C357.626 60.5869 358.172 73.6909 359.81 87.7049H363.268ZM375.826 24.5509C375.826 14.3589 369.456 5.98687 359.628 5.25887C358.9 12.1749 357.626 26.0069 357.444 43.8429H358.172C368.91 43.8429 375.826 35.1069 375.826 24.5509Z" fill="currentColor"/>
+    <path d="M490.88 25.4609C510.9 25.4609 527.28 40.5669 527.28 59.1309C527.28 77.6949 510.9 92.8009 490.88 92.8009C481.962 92.8009 473.772 89.7069 467.402 84.7929C461.214 89.7069 453.024 92.8009 444.106 92.8009C423.904 92.8009 407.706 77.6949 407.706 59.1309C407.706 40.5669 423.904 25.4609 444.106 25.4609C453.024 25.4609 461.214 28.5549 467.402 33.4689C473.772 28.5549 481.962 25.4609 490.88 25.4609ZM444.106 87.7049C449.748 87.7049 454.48 74.7829 454.48 59.1309C454.48 43.2969 449.748 30.5569 444.106 30.5569C438.282 30.5569 433.55 43.2969 433.55 59.1309C433.55 74.7829 438.282 87.7049 444.106 87.7049ZM490.88 87.7049C496.704 87.7049 501.436 74.7829 501.436 59.1309C501.436 43.2969 496.704 30.5569 490.88 30.5569C485.056 30.5569 480.506 43.2969 480.506 59.1309C480.506 74.7829 485.056 87.7049 490.88 87.7049Z" fill="currentColor"/>
+    <path d="M614.71 88.2509C617.076 89.7069 617.986 92.8009 614.164 92.8009H575.944C573.942 92.8009 572.486 90.4349 573.942 88.9789C578.674 84.2469 578.128 80.2429 576.49 73.5089C573.942 63.6809 570.302 46.7549 560.838 49.1209C561.202 68.9589 564.114 85.3389 568.118 88.2509C569.938 89.7069 570.12 92.8009 566.116 92.8009H530.08C528.26 92.8009 527.532 90.4349 529.352 88.9789C535.722 84.2469 536.814 80.2429 536.814 73.5089V32.5589C536.814 25.8249 535.722 21.8209 529.352 17.0889C527.532 15.6329 528.26 13.4489 530.08 13.4489C547.552 13.4489 555.56 1.43687 562.294 0.162868C566.116 -0.747131 564.478 2.34687 564.114 4.71286C561.748 17.2709 560.838 31.1029 560.838 43.8429C570.12 41.2949 585.59 18.3629 600.696 27.8269C613.072 35.4709 600.15 50.0309 586.864 41.6589C582.678 38.9289 579.038 40.0209 575.398 42.0229C591.778 46.3909 595.418 76.0569 614.71 88.2509Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#read-along">ข้ามไปยังเนื้อหา</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="HushBook บ้าน">
+      <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="เมนูเปิด" aria-expanded="false">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="#read-along">อ่าน- ภาษา</a>
+      <a href="#privacy">ชื่อแฟ้ม</a>
+      <a href="#accessibility">การช่วยใช้งาน</a>
+      <a href="#life">การ วิเคราะห์</a>
+      <a href="#faq">ขนาด FAQ</a>
+      <a class="nav-cta" href="#get">ดาวน์โหลด</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div id="stage-gl" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="badge reveal">พร้อมใช้งานบน iOS และ Android แล้ว</span>
+    <h1 id="hero-h1" class="reveal" aria-label="ถอดเสียง หนังสือเสียง ทุกเล่ม"><span class="kw">ถอดเสียง</span> <span class="kw">หนังสือเสียง</span> <span class="kw">ทุกเล่ม</span></h1>
+    <p class="sub reveal">จง ตรวจ สอบ ดู ใน กาแล็กซี แห่ง ความ รู้ — ทุก ๆ คํา จะ จุด ขึ้น มา สอดคล้อง กับ การ เฉลิม ฉลอง ซึ่ง ถูก รวบ รวม ไว้ เป็น ส่วน ตัว ทาง โทรศัพท์ ของ คุณ. ไม่มีบัญชี ไม่มีเมฆ</p>
+    <div class="stores reveal" id="get" aria-label="รับ HushBook">
+      <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="ดาวน์โหลด HushBook บน App Store">
+        <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span><small>ดาวน์โหลดใน</small><b>App Store</b></span>
+      </a>
+      <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="รับ HushBook บน Google Play">
+        <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+        <span><small>รับมันใน</small><b>HBTER2X</b></span>
+      </a>
+    </div>
+    <p class="hero-note reveal">○ ว่างในการดาวน์โหลด ซีโร่ แอดส์</p>
+  </div>
+  <div class="fan reveal" aria-hidden="true">
+    <img class="f1" src="/assets/img/mockups/brain-health.webp" alt="" loading="eager">
+    <img class="f2" src="/assets/img/mockups/home.webp" alt="" loading="eager">
+    <img class="f3" src="/assets/img/mockups/karaoke-live.webp" alt="HushBook การถอดภาพเป็นคาราโอเกะระดับคํา" loading="eager">
+    <img class="f4" src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="eager">
+    <img class="f5" src="/assets/img/mockups/library.webp" alt="" loading="eager">
+  </div>
+</section>
+
+<!-- ============ VALUE BAND ============ -->
+<section class="band center">
+  <div class="wrap">
+    <h2 class="reveal">การ ฟัง คน เดียว เป็น เรื่อง ง่าย ที่ จะ สูญ เสีย. <em>อ่านตาม</em> มันยากที่จะลืม</h2>
+    <p class="karaoke-line reveal" id="karaoke-line" aria-label="คุณมีอํานาจเหนือความคิดของคุณ ไม่ใช่ภายนอกเหตุการณ์ ตระหนักถึงสิ่งนี้ และคุณจะพบความแข็งแรง -มาร์คัส ออรีเลียส"></p>
+    <div class="trust reveal" role="list">
+      <span class="chip" role="listitem"><b>สัมพัทธ์ 100%</b> การถอดรหัส</span>
+      <span class="chip" role="listitem"><b>ระดับคํา</b> ปรับเทียบได้ที่ 60 เฟรม</span>
+      <span class="chip" role="listitem"><b>งานพิมพ์ออฟไลน์</b> ดาวน์โหลดหนึ่งครั้ง</span>
+      <span class="chip" role="listitem"><b>ไม่มีบัญชี</b> ตลอดไป</span>
+      <span class="chip" role="listitem"><b>พัน</b> แบบคลาสสิกฟรี</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READER NOTES ============ -->
+<section class="reviews" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap reviews-head reveal">
+    <span class="eyebrow">บันทึกช่วยจําสําหรับอ่าน</span>
+    <h2 id="reviews-title">หาที่ของพวกเขาแล้วใน HushBook</h2>
+    <p class="sub">จาก ราย ละเอียด เล็ก ๆ น้อย ๆ ของ การ เล่น จน ถึง คํา แรก ที่ จุด ขึ้น ผู้ อ่าน ก็ สังเกต ว่า การ ฟัง เปลี่ยน ไป อย่าง ไร.</p>
+  </div>
+  <div class="reviews-marquee reveal">
+    <div class="reviews-track">
+      <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">marksewell</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Just what I needed!</h3>
+          <p class="review-quote">“I’ve tried BookPlayer, Bound, and Apple Books. HushBook is the first app that correctly displays chapter elapsed and remaining time on my 2017 Toyota Camry JBL head unit, the steering wheel controls change chapters correctly, and the on-device transcription is excellent. Thank you!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/larryloveinstein</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Made for daily reading</h3>
+          <p class="review-quote">“สวัสดี! ฉันดาวน์โหลดแล้ว แอปดีมาก มีวิธีเพิ่มความเร็วการเล่นไหม? สำหรับการอ่านทุกวัน นี่เป็นสิ่งเดียวที่ยังขาดอยู่”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/authorsanu</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Make it Live for Android!</h3>
+          <p class="review-quote">“Hi, is HushBook available for Android?”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">Reddit reader</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">An app I’ve always wanted</h3>
+          <p class="review-quote">“I’ve always been interested in an app like this!”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">u/Momoflies</span><span class="review-platform">Reddit</span></div>
+          </header>
+          <h3 class="review-title">Exactly what I’ve been waiting for</h3>
+          <p class="review-quote">“AHHHHHH I’VE BEEN WAITING FOR SOMETHING JUST LIKE THIS. THANK YOUUUUUUUUUUU!”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">chihuatlan</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“Looking forward to trying this out”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">HarvensonJamesII</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“I really like where you’re headed with this app. It would be great if you added the ability to change the speed”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">X-AANI</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">Brilliant app for staying focused!</h3>
+          <p class="review-quote">“ผมชอบสําเนาบนและโหมดการอ่านพิเศษ (รูปแบบตัวอักษรแบบไดนามิคและผังสูง) แนะนําให้มาก!”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Wilhelm Drescher</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“แอพที่สมบูรณ์แบบสิ่งที่ฉันต้องการ โปรปลดล็อคได้มากกว่า เท่าที่ฉันเห็น”</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">Dennis Branson</span><span class="review-platform">Google Play</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“แอพที่ดี! คุณสามารถช่วยเพิ่มตัวเลือก เพื่อเน้นประโยคปัจจุบัน ไม่ใช่คํา เพราะ ai ทําให้คําตัวหนา เร็วเกินไป หรือเร็วเกินไป ดังนั้น คําเหล่านั้นจึงไม่รวมเข้ากับคําพูด ความสามารถที่จะเพิ่มหนังสือทั้งเล่มโดยไม่ต้องเลือกบทที่ 1 คูณ 1 จะดีสําหรับหลายแฟ้ม ○”</p>
+        </article>`r`n        <div class="review-set" role="list" aria-label="โปรแกรมอ่าน HushBook">
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">U/larry Loveinstein</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">ชอบแอพมาก</h3>
+          <p class="review-quote">“ สวัสดี กําลัง ทํา แอพ อยู่! ผมสงสัยจังว่าคําพูดพวกนี้เก็บไว้ที่ไหน</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">จุด</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">ผม ต้องการ จริง ๆ!</h3>
+          <p class="review-quote">“ ผม เคย ลอง เล่น หนังสือ เล่ม เล็ก, ผูก มัด, และ หนังสือ แอปเปิล. HushBook เป็นโปรแกรมแรกที่แสดงบทได้อย่างถูกต้อง และยังคงใช้เวลาของฉันต่อไปใน 2017 โตโยต้า แคมรี่ เฮด พวงมาลัยควบคุมการเปลี่ยนแปลงของบทได้อย่างถูกต้อง และตัวจําลองบนคอมพิวเตอร์นั้นเยี่ยมมาก ขอบคุณ</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">U/larry Loveinstein</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">สร้างมาเพื่อการอ่านทุกวัน</h3>
+          <p class="review-quote">“ สวัสดี! ผมดาวน์โหลดและแอพที่เจ๋งมาก มีวิธีเพิ่มความเร็วการเล่นไหม “และแท้จริงฉันเห็นว่าอัลกุรอานนั้นเป็นเพียงปัจจัยเดียวในการรวบรวมการอ่านของฉัน”</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">ยู/ ผู้เขียน</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">ให้มันมีชีวิตเพื่อแอนดรอยด์</h3>
+          <p class="review-quote">"สวัสดี HushBook มีให้แอนดรอยด์ไหม"</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">โปรแกรมอ่าน Reddiat</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">แอพ ที่ ดิฉัน ต้องการ มา ตลอด</h3>
+          <p class="review-quote">"ฉันสนใจแอพแบบนี้มาตลอด"</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+          <header class="review-source review-top review-top--starless">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M51 29c-2.8 0-5.2 1.8-6.1 4.3-3.4-2.2-7.8-3.7-12.7-3.9l2.4-11.2 7.8 1.7a5.7 5.7 0 1 0 .8-3.6l-9.7-2.1a1.9 1.9 0 0 0-2.2 1.5l-2.9 13.7c-5 .2-9.5 1.6-13 3.9A6.5 6.5 0 1 0-7.4 2.2c-.1.7-.2 1.5-.2 2.2 0 9 10.7 16.3 23.9 16.3S56 45.4 56 36.4c0-.8-.1-1.5-.2-2.2A6.5 6.5 0 0 0 51 29ZM20.8 37.2a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm20.8 12.1c-2.7 2.7-7.8 2.9-9.6 2.9s-6.9-.2-9.6-2.9a1.8 1.8 0 0 1 2.6-2.6c1.1 1.1 3.8 1.8 7 1.8s5.9-.7 7-1.8a1.8 1.8 0 0 1 2.6 2.6Zm1.6-4.7a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4Z"/></svg>
+            <div><span class="review-user review-user--reddit">รายการข้อมูล</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">สิ่ง ที่ ผม คอย อยู่</h3>
+          <p class="review-quote">“ ผม รอ คอย อะไร อย่าง นี้ อยู่. ขอบคุณ</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">ชิฮัทลัน</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">รอคอยที่จะทดลองสิ่งนี้</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">ฮาร์ เวน สัน เจมส์</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“ ดิฉัน ชอบ จริง ๆ ที่ คุณ จะ นํา แอพ นี้ ไป ใช้. มันจะดีมากถ้าคุณเพิ่มความสามารถในการเปลี่ยนความเร็ว</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+            <div><span class="review-user">ฟิล์ม X- AANI</span><span class="review-platform">App Store</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="review-title">แอพที่ยอดเยี่ยมสําหรับการอยู่ที่โฟกัส!</h3>
+          <p class="review-quote">“ ดิฉัน ชอบ การ คัด ลอก ด้วย มือ และ โหมด การ อ่าน แบบ พิเศษ (อักษร ที่ เป็น ดิส เลก เซีย และ แบบ ฟอร์ม สูง น่า ทึ่ง). ที่ได้รับการกล่าวถึงอย่างถ่องแท้</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">วิลเฮล์ม เด รส เชอ ร์</span><span class="review-platform">HBTER2X</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“ ผม ต้องการ แอพ ที่ สมบูรณ์ แบบ. โปรปลดล็อคสถิติมากขึ้นเท่าที่ฉันสามารถดู."</p>
+        </article>
+
+        <article class="review-card review-card--wide" role="listitem" tabindex="0">
+          <svg class="review-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+          <header class="review-source review-top">
+            <svg class="review-source-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M12 7.5v49L51.5 32 12 7.5Z"/></svg>
+            <div><span class="review-user">เดน นิส แบ รน สัน</span><span class="review-platform">HBTER2X</span></div>
+          </header>
+          <div class="review-stars" role="img" aria-label="5 จาก 5 ดวง"><span aria-hidden="true">★★★★★</span></div>
+          <p class="review-quote">“ แอพ ที่ ยอด เยี่ยม! คุณสามารถช่วยเพิ่มตัวเลือก เพื่อเน้นประโยคปัจจุบัน ไม่ใช่คํา เพราะ ai ทําให้คําตัวหนา เร็วเกินไป หรือเร็วเกินไป ดังนั้น คําเหล่านั้นจึงไม่รวมเข้ากับคําพูด ความสามารถที่จะเพิ่มหนังสือทั้งเล่มโดยไม่ต้องเลือกตอน 1 คูณ 1 จะดีกับหลายแฟ้ม *</p>
+        </article>
+
+        <article class="review-card" role="listitem" tabindex="0">
+          <span class="review-mark" aria-hidden="true"></span>
+          <header class="review-source review-top review-top--starless">
+            <span class="review-source-icon" aria-hidden="true"></span>
+            <div><span class="review-user review-user--reddit">U/ TMRUMRY  ยกระดับ</span><span class="review-platform">สีแดง</span></div>
+          </header>
+          <h3 class="review-title">5 ดาว</h3>
+          <p class="review-quote">“ ผม เพิ่ง ดาวน์โหลด. มันสมควรได้รับ 5 ดาวจริงๆ! ทํางานได้ดีมาก</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="read-along">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">มันทํางานอย่างไร</span>
+      <h2>จากไฟล์เพลงถึงอ่านได้ ใน 3 ก๊อก</h2>
+      <p class="sub">เลือก หนังสือ, แท็บ แท รน โน น์, และ เครื่อง ยนต์ HushBook ทํางานได้ — บทต่อบท ทางโทรศัพท์ของคุณ</p>
+    </div>
+    <div class="steps">
+      <figure class="step reveal">
+        <span class="num">01</span>
+        <h3>เลือกหนังสือ</h3>
+        <p>เรียกดูคลาสสิกฟรี หรือนําเข้า MP3, M4B, FLAC, OGG และอื่น ๆ</p>
+        <img src="/assets/img/mockups/library.webp" alt="ไลบรารี HushBook พร้อมการนําเข้าและบันทึกเสียงแบบสาธารณะ" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">02</span>
+        <h3>ตาราง</h3>
+        <p>หนึ่งทีต่อบท ตรวจพบในแฟ้ม M4B โดยอัตโนมัติ</p>
+        <img src="/assets/img/mockups/book-info-transcribe.webp" alt="หน้าจอข้อมูลหนังสือพร้อมปุ่ม Transmor สําหรับแต่ละบท" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">03</span>
+        <h3>เครื่องยนต์ทํางาน</h3>
+        <p>เครื่องยนต์ HushBook ประกอบคําพูดทุกคํา เข้าคู่กันของข้อความที่ย้ายด้วยการขยาย</p>
+        <img src="/assets/img/mockups/transcribing-chapters.webp" alt="บทที่หนึ่ง scriptioning กับแถบความคืบหน้า" loading="lazy">
+      </figure>
+      <figure class="step reveal">
+        <span class="num">04</span>
+        <h3>อ่านตาม</h3>
+        <p>ทุกคําจะสว่างด้วยเครื่องกําเนิด กดปุ่มใด ๆ ที่จะกระโดดมี</p>
+        <img src="/assets/img/mockups/read-along-monte-cristo.png" alt="การ อ่าน ควบ คู่ ไป กับ เคานต์ ออฟ มอน เต ค ริ ส โต — ทุก คํา ที่ เน้น ให้ เห็น ความ สอดคล้อง กับ การ เฉลิม ฉลอง" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="sec" id="privacy">
+  <div class="wrap">
+    <div class="privacy-card reveal">
+      <div>
+        <span class="eyebrow">เครื่องยนต์ HushBook</span>
+        <h2>เชื่อมต่อทางโทรศัพท์ของคุณ ไม่เคยมีเมฆ</h2>
+        <p class="sub">การพูดต่อข้อความที่พลัง HushBook ทํางานโดยส่วนตัวบนอุปกรณ์ของคุณ สมุด เสียง ของ คุณ ไม่ เคย ถูก อัปโหลด — ไม่ มี เครื่องแม่ข่าย ที่ จะ อัปโหลด ไป ยัง.</p>
+        <ul class="plist">
+          <li><span class="tick">✓</span><span><b>ไม่มีอะไรทิ้งโทรศัพท์ไว้</b> แผ่น เสียง, สําเนา, ข้อ ความ, คะแนน — ทั้ง หมด เก็บ ไว้ ใน ท้อง ถิ่น.</span></li>
+          <li><span class="tick">✓</span><span><b>ไม่มีบัญชี ไม่มีการลงชื่อเข้า</b> เปิดแอพแล้วเริ่มอ่าน</span></li>
+          <li><span class="tick">✓</span><span><b>ออฟไลน์เต็มที่</b> หลังจากดาวน์โหลดเครื่องยนต์ได้เพียงครั้งเดียว บนเครื่องบิน ในอุโมงค์ ทุกที่</span></li>
+          <li><span class="tick">✓</span><span><b>ความรู้ทางกาย</b> หนังสือยาวตัดต่อเป็นท่อน ดําเนินการล้มเหลว และให้โทรศัพท์ของคุณเย็น</span></li>
+        </ul>
+      </div>
+      <div class="qr-pane">
+        <div class="qr-ring"><img src="/assets/img/qr-hushbook-download-v2.svg" alt="ค้นหาเพื่อดาวน์โหลด HushBook สําหรับไอโฟนหรือ Android"></div>
+        <small>สแกนด้วยกล้องไอโฟนหรือแอนดรอยด์ของคุณ<br>เพื่อรับ HushBook</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">ข้อความอ้างถึง</span>
+      <h2>เก็บสายไว้ แบ่งไพ่กัน</h2>
+      <p class="sub">รับคําอ้างอิงในขณะที่คุณได้ยินมัน — สองแท็บในการอ่าน-along, ของคุณที่จะเก็บไว้หรือโพสต์</p>
+    </div>
+    <div class="gallery">
+      <figure class="gcard reveal">
+        <span class="num">01</span>
+        <img src="/assets/img/mockups/quote-select.webp" alt="เลือกคําอ้างอิงใน HushBook — การเคาะคําแรกและคําสุดท้ายในเนื้อเพลง อ่านไปพร้อมกัน" loading="lazy">
+        <h3>จับในสองถัง</h3>
+        <p>เคาะคําแรก เคาะสุดท้าย เส้นที่คุณเพิ่งได้ยินได้รับการบันทึก โดยไม่ต้องออกจากการอ่าน</p>
+      </figure>
+      <figure class="gcard reveal">
+        <span class="num">02</span>
+        <img src="/assets/img/mockups/quotes-collection.webp" alt="ทั้งหมดบันทึกอ้างอิงใน HushBook, เก็บรวบรวมโดยหนังสือ" loading="lazy">
+        <h3>ทุกบรรทัด ทุกที่</h3>
+        <p>คําคมของคุณรวมไว้ด้วยหนังสือ เก็บไว้ในโทรศัพท์ Recisit, แก้ไขหรือส่งใด ๆ ต่อไป</p>
+      </figure>
+      <figure class="gcard reveal">
+        <span class="num">03</span>
+        <img src="/assets/img/mockups/quote-card-share.webp" alt="การ์ด ยก ข้อ ความ จาก HushBook ที่ ทํา เสร็จ แล้ว พร้อม จะ แบ่ง — เส้น, ผู้ ประพันธ์, และ หนังสือ" loading="lazy">
+        <h3>ไพ่ที่คุ้มค่าที่จะโพสต์</h3>
+        <p>แต่ ละ ข้อ ยก มา เป็น บัตร สําเร็จ รูป — ถ้อย คํา, หนังสือ, ผู้ ประพันธ์. พร้อมที่จะแบ่งปัน</p>
+      </figure>
+    </div>
+  </div>
+  <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
+    <div class="marquee-track" id="marquee-fallback">
+      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LANGUAGES ============ -->
+<section class="sec langsec" id="languages">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Ninety&#8209;nine languages</span>
+      <h2>แปล <em>ใด ๆ</em> บันทึกเสียง</h2>
+      <p class="sub">สเปน, ฮินดี, ญี่ปุ่น, อาหรับ, ฝรั่งเศส — เก้า สิบ เก้า ภาษา ใน ทุก ภาษา. HushBook ฟังเสียงในลิ้นของหนังสือที่ถูกกําหนดให้ได้ยินใน แล้ววาดคําทุกคําในเวลา คุณอ่านตามไม่ว่าเรื่องราวมาจากไหน</p>
+    </div>
+
+    <div class="lang-stage reveal">
+      <div class="lang-ring">
+        <svg class="ring-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <defs>
+            <path id="lr-spiral" fill="none"/>
+          </defs>
+          <g class="ring-rot">
+            <text class="ring-text"><textPath href="#lr-spiral" startOffset="0">LNKHE ESPHE ESPHHHHEHHHHHHHHHHHEHHHHHHHHHHHHHHHAHHHHHHHHHHHHHAHHHHHHHHAHHHHHHHAHHHHAHHHHAHHHHAHHHHHHHHAHHHHHHHHHHHHHHAHHHHHHHHHHAHHHHHHHHHHHHHHAHHAHHHAHHHAHHAHHAHAHAHAHAHAHNHNHNHNHNHNHNHNHNHNHNHNHNHNHNHHNHNHNHNHNHNHNHNHNHNHNHNHNHNHHHNHNHNHNHNHNHNNHNHNHNHNHNN</textPath></text>
+          </g>
+        </svg>
+        <div class="lang-core">
+          <span class="n">99</span>
+          <span class="l">ภาษา</span>
+        </div>
+      </div>
+
+      <div class="lang-phones">
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="/assets/img/mockups/lang-es-poetry-player.webp" alt="HushBook อ่านตามบทกวีสเปน" loading="lazy">
+          </div>
+          <figcaption><b>เอสปาญอล</b> บทกวีสเปน</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="/assets/img/mockups/lang-es-lobo-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/lang-es-lobo-player.webp" alt="HushBook อ่านตาม Los Motivos Del Lobo โดย รูเบน ดารีโอ ในภาษาสเปน" loading="lazy">
+          </div>
+          <figcaption><b>เอสปาญอล</b> รู เบน ดา ริ โอ</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="back" src="/assets/img/mockups/lang-it-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/lang-it-player.webp" alt="HushBook อ่านตามบทกวีอิตาลี" loading="lazy">
+          </div>
+          <figcaption><b>ภาษาอิตาลีName</b> หม่อมเจ้า หม่อมเจ้า</figcaption>
+        </figure>
+        <figure class="lp">
+          <div class="ph">
+            <img class="front" src="/assets/img/mockups/lang-fr-player.webp" alt="HushBook อ่านตาม Epigramme โดย ฟรองซัวส์ เมย์นาร์ดในภาษาฝรั่งเศส" loading="lazy">
+          </div>
+          <figcaption><b>ฟรันซาริส</b> ฟรองซัว เมย์นาร์ด</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MOMENT ============ -->
+<section class="moment">
+  <p class="reveal">วิธีที่เร็วที่สุดในการอธิบาย</p>
+  <h2 class="reveal">Apple&#8209;Music lyrics, <span>สําหรับหนังสือ</span></h2>
+</section>
+
+<!-- ============ ACCESSIBILITY (light) ============ -->
+<section class="sec light" id="accessibility">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-media reveal">
+        <img src="/assets/img/mockups/reading-profiles.webp" alt="เลือกโพรไฟล์การอ่านของคุณ: Comopleon, Disxia/ADHD หรือ view" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">กําลังอ่านโพรไฟล์</span>
+        <h2>แอพที่พอดี <em>อ่านยังไง</em></h2>
+        <p class="sub">เลือก โปรไฟล์ หนึ่ง ตัว และ โปรแกรม ทั้ง หมด ที่ ปรับ ตัว ได้ เช่น แบบอักษร, ขนาด ของ คํา บรรยาย, สี, ความ แตก ต่าง, และ ช่อง ว่าง. ไม่ใช่การตั้งค่าที่จะสลับที่ฝังเมนู 3 เมนูลึก แอพฯ เปลี่ยนรูปร่าง</p>
+        <div class="profiles">
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.4C10.1 5.1 7.7 4.6 5.3 5v12.3c2.4-.4 4.8.1 6.7 1.4 1.9-1.3 4.3-1.8 6.7-1.4V5c-2.4-.4-4.8.1-6.7 1.4Z"/><path d="M12 6.4v12.3"/></svg></span><span><b>ความเข้าใจ</b><span>สําหรับ ผู้ อ่าน แต่ ละ วัน — เครื่อง มือ ที่ ให้ ความ สนใจ, โหมด ยาม ค่ํา คืน, และ จังหวะ การ อ่าน ที่ สะอาด.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7.5h15"/><path d="M4.5 12h9"/><path d="M4.5 16.5h11.5"/><circle cx="18.4" cy="12" r="2.3" fill="currentColor" stroke="none"/></svg></span><span><b>ดิส เลก เซีย / ADHD</b><span>การ เปิด ประตู และ เพื่อน ๆ ครอบ คลุม สี, ช่องว่าง อย่าง ใจ กว้าง — และ จุด เด่น ที่ ยึด อยู่ กับ เสียง ของ คุณ.</span></span></div>
+          <div class="profile"><span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 12S6 5.6 12 5.6 21.4 12 21.4 12 18 18.4 12 18.4 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>ภาพ</b><span>Atkinson Hyperlegable, คําบรรยายขนาดใหญ่มาก และชุดตกแต่งระดับสูงที่สร้างขึ้นสําหรับการอ่านรุ่นต่ํา</span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-chips reveal" role="list">
+      <span class="chip" role="listitem">OpenDyslexc</span>
+      <span class="chip" role="listitem">Atkinson Hyperleable</span>
+      <span class="chip" role="listitem">ฟิล์ม</span>
+      <span class="chip" role="listitem">อันดิกา</span>
+      <span class="chip" role="listitem">การ์ตูน</span>
+      <span class="chip" role="listitem">พื้นหน้าอ่าน</span>
+      <span class="chip" role="listitem">− / เอ / เอ + เฉลิม</span>
+      <span class="chip" role="listitem">ชุดตกแต่งชั้นสูง</span>
+      <span class="chip" role="listitem">ควบคุมการเลื่อนบรรทัด</span>
+      <span class="chip" role="listitem">โหมดกลางคืน</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRARY (light) ============ -->
+<section class="sec light" style="padding-top:0">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media duo reveal">
+        <img src="/assets/img/mockups/home.webp" alt="HushBook บ้านที่มีหนังสือและห้องสมุดของคุณ" loading="lazy">
+        <img src="/assets/img/mockups/library.webp" alt="ตารางไลบรารีชุดสะสมของฉันที่มีแผ่นพับบันทึกเสียง" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">ไลบรารีของคุณ</span>
+        <h2>เพลง คลาส สิก, ฟรี — <em>หรือเอามาเอง</em></h2>
+        <p class="sub">แคตตาล็อกของสมุดเสียงสาธารณะจาก LibriVox และ Internet Archive ใน 6 ภาษา ดาวน์โหลดหนึ่ง แล้วตัวจําลองจะเริ่มขึ้นเอง -- คุณอ่านเองในไม่กี่นาที</p>
+        <p class="sub">มีหนังสือของคุณหรือยัง นําเข้า MP3, M4A, M4B, AAC, WAV, FLAC, OGG และอื่น ๆ บท ต่าง ๆ, หน้า ปก, และ ข้อมูล กํากับ มา พร้อม กัน โดย อัตโนมัติ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READING LIFE ============ -->
+<section class="sec" id="life">
+  <div class="wrap">
+    <div class="split">
+      <div class="life-head reveal">
+        <span class="eyebrow">ชีวิตการอ่านของคุณ</span>
+        <h2>ดูสมองนายสิ</h2>
+        <p class="sub" style="margin-top:18px">ห้องวิเคราะห์ส่วนตัว คํานวณอุปกรณ์ทั้งหมด สมอง ที่ ได้ คะแนน จาก 0 ถึง 100 จะ เจริญ เติบโต ขึ้น พร้อม กับ ลักษณะ ของ คุณ คํา อ่าน, ความ เข้าใจ, และ ความ เสมอ ต้น เสมอ ปลาย — ตลอด แปด ระดับ ตั้ง แต่ เริ่ม ต้น จน ถึง สุขภาพ สมอง.</p>
+        <p class="sub" style="margin-top:14px">มี การ นับ คํา ต่าง ๆ จาก สําเนา ที่ คุณ ได้ ยิน จริง ๆ. ไพ่ทุกใบสามารถใช้เป็นภาพขัดได้</p>
+      </div>
+      <div class="split-media duo reveal">
+        <img src="/assets/img/mockups/brain-health.webp" alt="สมอง คะแนนสุขภาพที่มีปัจจัยที่ขับเคลื่อนมัน" loading="lazy">
+        <img src="/assets/img/mockups/goals-graphs.webp" alt="แนวโน้มคําและหนังสือรวมในปีนี้" loading="lazy">
+      </div>
+    </div>
+
+    <div class="sec-head center reveal" style="margin:130px auto 0">
+      <span class="eyebrow">การวิเคราะห์เพิ่มเติม</span>
+      <h2>ขั้นสูงการวิเคราะห์ ที่ให้บริการของคุณ</h2>
+      <p class="sub">จง ลึก กว่า เส้น เอ็น — เมื่อ คุณ เริ่ม ต้น, เมื่อ คุณ หยุด, สิ่ง ที่ คุณ หมาย ถึง, และ มี กี่ คํา ที่ คุณ ได้ ยิน จริง ๆ. ทุกหมายเลขที่คํานวณได้จากสําเนาของคุณ จากอุปกรณ์ของคุณ</p>
+    </div>
+
+    <div class="collage">
+      <div class="cstack cstack--l reveal">
+        <figure class="ccard dark"><span class="tag tag-tl">ความ เข้าใจ ใน เรื่อง นิสัย</span><img src="/assets/img/mockups/card-habit-insights.webp" alt="การ หยั่ง เห็น เข้าใจ ลักษณะ นิสัย: เวลา ฟัง, ช่วง เวลา ที่ ยาว นาน, วัน ที่ ทํา งาน มาก ที่ สุด" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">เรดาร์ Genre</span><img src="/assets/img/mockups/card-genre-radar.webp" alt="ตารางเรดาร์ที่อ่านมากที่สุด" loading="lazy"></figure>
+      </div>
+      <div class="collage-phone reveal">
+        <span class="tag tag-c" style="top:-52px">จังหวะประจําวันของคุณ</span>
+        <img src="/assets/img/mockups/advanced-analytics.webp" alt="การวิเคราะห์ขั้นสูง: เริ่มและจบการฟังต่อวัน และการจัดหมวดหมู่ด้านบน" loading="lazy">
+      </div>
+      <div class="cstack cstack--r reveal">
+        <figure class="ccard"><span class="tag tag-tr">คําต่อหนังสือ</span><img src="/assets/img/mockups/card-words-per-book.webp" alt="คําต่อแผนภูมิแท่งหนังสือ" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">เป้าหมายที่ซื่อสัตย์</span><img src="/assets/img/mockups/card-goals-sheet.webp" alt="ตั้งค่าหน้ากระดาษสําหรับหนังสือและคํา" loading="lazy"></figure>
+      </div>
+    </div>
+    <p class="collage-cap reveal">ความ เข้าใจ ใน ด้าน นิสัย</p>
+
+    <div class="medals reveal" aria-label="ตราที่สะสมได้">
+      <img src="/assets/img/streak_7_front.webp" alt="ตรา 7 วัน" loading="lazy">
+      <img src="/assets/img/streak_30_front.webp" alt="ตรา 30 วัน" loading="lazy">
+      <img src="/assets/img/books_10_front.webp" alt="ตราหนังสือ 10 เล่ม" loading="lazy">
+      <img src="/assets/img/words_100k_front.webp" alt="ตราคําพูด 100,000 คํา" loading="lazy">
+      <img src="/assets/img/hours_50_front.webp" alt="ตรา 50 ชั่วโมง" loading="lazy">
+      <img src="/assets/img/special_first_transcript_front.webp" alt="ตราพิมพ์ครั้งแรก" loading="lazy">
+    </div>
+    <p class="medals-cap reveal">ตรา ประทับ ที่ คุณ ถือ ได้ ใน มือ ของ คุณ — 30+ ตรา ที่ เก็บ ได้ สําหรับ ลาย ลาย, หนังสือ, คํา ต่าง ๆ, ชั่วโมง, และ ใบ แรก.</p>
+  </div>
+</section>
+
+<!-- ============ CHARACTERS ============ -->
+<section class="sec" style="padding-top:30px">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="split-media layer reveal">
+        <img class="back" src="/assets/img/mockups/character-slide.webp?v=2" alt="กระดาษ ราย ละเอียด — บทบาท ที่ เห็น ได้, คุณลักษณะ และ ความ สัมพันธ์ ครั้ง แรก" loading="lazy">
+        <img class="front" src="/assets/img/mockups/character-graph.webp" alt="กราฟความสัมพันธ์แบบอักขระที่มีโหนดที่ลากได้" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">การอ่านจดหมาย</span>
+        <h2>แผนที่นักแสดงที่คุณอ่าน</h2>
+        <p class="sub" style="margin-top:18px">นิยายที่พร่ามัวสับสน จง ลาก ตัว บุคคล มา ไว้ บน ผ้า ผืน หนึ่ง, วาด เส้น แบ่ง ระหว่าง เขา ทั้ง สอง, และ เขียน ชื่อ แต่ ละ คน ไว้ ใน คํา พูด ของ คุณ เอง — เป็น พันธมิตร, คู่ แข่ง, พี่ น้อง, และ การ ยกย่อง. แผนที่ของคุณอยู่กับหนังสือ</p>
+        <p class="sub" style="margin-top:14px">และเมื่อเส้นหยุด คุณหยุดความเย็น การเคาะคําแรก การเคาะคําสุดท้าย และบันทึกไว้เป็นคําพูด</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFESTYLE ============ -->
+<section class="sec lifestyle">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">ไม่ว่าคุณจะอยู่ที่ไหน</span>
+      <h2 class="big">สร้างมาเพื่อ <i>ทุกๆวันของคุณ</i></h2>
+      <p class="sub">ห้ามอ่านนะ HushBook ตรงกับช่วงเวลาที่คุณมีอยู่แล้ว และเปลี่ยนเป็นหน้า</p>
+    </div>
+    <div class="life-grid">
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/couch-home.png" alt="เปิดหน้าจอ HushBook บนโซฟา" loading="lazy">
+        <figcaption class="lcap"><h3>โซฟาของคุณ<br><i>บทต่อไปของคุณ</i></h3><p>หยิบขึ้นมาตรงที่คุณทิ้งไว้ ก่อนที่จะต้มหม้อน้ํา</p></figcaption>
+      </figure>
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="การ อ่าน ควบ คู่ ไป กับ โครงการ" loading="lazy">
+        <figcaption class="lcap"><h3>11 โมงเย็นของคุณ<br><i>ปิดไฟ แล้วพูดต่อ</i></h3><p>ห้องมืดไปหมด ถ้อย คํา ดัง กล่าว ทํา ให้ เบิก บาน.</p></figcaption>
+      </figure>
+      <figure class="lcard reveal">
+        <img src="/assets/img/lifestyle/bench-player.png" alt="การ ฟัง พระเจ้า แห่ง แหวน บน ม้า นั่ง สวน" loading="lazy">
+        <figcaption class="lcap"><h3>เวลาอาหารกลางวันของคุณ<br><i>รวมมิดเดิ้ลเอิร์ธด้วย</i></h3><p>ออฟไลน์อย่างสมบูรณ์ สวนสาธารณะไม่มีไวไฟ และไม่สําคัญ</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">คําถาม?</span>
+      <h2>คําตอบ</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="qa"><button type="button" aria-expanded="false">เสียงของฉันเคยทิ้งโทรศัพท์ไว้ไหม</button><div class="a"><p>ไม่ ทรานสคริปต์ใช้อุปกรณ์ของคุณทั้งหมด ไม่มีการอัปโหลด ไม่มีบัญชีผู้ใช้ และไม่มีเซิร์ฟเวอร์ หลังจากดาวน์โหลดเครื่องยนต์เพียงครั้งเดียว แอพทั้งหมดก็ออฟไลน์</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">เนื้อร้องที่ประสานกันมาจากไหน</button><div class="a"><p>HushBook สร้างมาจากเสียงของคุณ โดยมีกลไก HBTERMX แบบ On-device — ไม่มีฐานข้อมูลเนื้อเพลง การผ่านครั้งแรกของหนังสือยาวใช้เวลาสักครู่ หลังจากนั้น มันก็ทันทีทุกครั้งที่คุณเปิดมัน</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">ฉันจะนําเข้าแฟ้มอะไร?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGK, OPUS, OGA, AIFF, AIF, AIF, MKA, และ ALAC — แฟ้มหนึ่งไฟล์ต่อการนําเข้า. ตรวจพบในแฟ้ม M4B โดยอัตโนมัติ พร้อมกับภาพหน้าปกและข้อมูลกํากับภาพ</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">มันราคาเท่าไหร่?</button><div class="a"><p>หลักประสบการณ์การอ่าน-along และห้องสมุดสาธารณะ-เนติบัณฑิตฟรี. มีการอัพเกรดสินค้าเสริมสําหรับการวิเคราะห์ขั้นสูง การโปรช่วยรักษา HushBook ให้เป็นอิสระและปรับปรุง</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">มันจะดูดแบตเตอรี่ของฉัน หรือทําให้โทรศัพท์ฉันร้อนขึ้น</button><div class="a"><p>เครื่องยนต์มีความตระหนักในความร้อน: มันคว่ําเธรดงานของมัน และพักระหว่างชิ้นเสียงเพื่อให้โทรศัพท์ของคุณเย็นขึ้น</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">HushBook สําหรับใคร?</button><div class="a"><p>ใคร ก็ ตาม ที่ อ่าน ด้วย หู ของ ตน — และ โดย เฉพาะ ผู้ อ่าน ที่ เป็น ดิส เลก เซีย, ADHD, หรือ สายตา ต่ํา, นัก เรียน ภาษา, และ ใคร ก็ ตาม ที่ จดจ่อ อยู่ กับ สิ่ง ที่ ตน ได้ ยิน ได้ ดี กว่า.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">ผมอ่านในความมืดได้ไหม</button><div class="a"><p>ใช่ - โหมดกลางคืน จะสลับฉากหลังที่เบลอ สําหรับผ้าใบสีดําหนาๆ และภาพโปรไฟล์ทางภาพจะเพิ่มข้อมูล</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale">
+  <div class="glyph reveal"><img src="/assets/img/logo.png" alt="ขนาดย่อของ HushBook"></div>
+  <h2 class="reveal">เริ่มอ่านตามทุกคําที่คุณได้ยิน</h2>
+  <p class="sub reveal">ฟรีบนไอโฟนและแอนดรอยด์ ไม่มีบัญชี ไม่มีอะไรต้องจัดฉาก นอกจากคุณ</p>
+  <div class="stores reveal">
+    <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="ดาวน์โหลด HushBook บน App Store">
+      <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      <span><small>ดาวน์โหลดใน</small><b>App Store</b></span>
+    </a>
+    <a class="pill" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener" aria-label="รับ HushBook บน Google Play">
+      <svg class="pic" viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+      <span><small>รับมันใน</small><b>HBTER2X</b></span>
+    </a>
+  </div>
+  <small class="reveal">คุณเป็นเจ้าของสมุดเสียงและสําเนา</small>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true"><use href="#hb-wordmark"/></svg>
+        <p>อ่านตามทุกคําที่คุณได้ยิน</p>
+        <div class="foot-social" aria-label="สื่อสังคม HushBook">
+          <a href="https://www.instagram.com/hushbook.app/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.x.com/hushbookapp/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.7h1.8L7.4 4.4H5.5l12.2 15.8Z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fcol">
+        <b>โปรดักต์</b>
+        <a href="#read-along">มันทํางานอย่างไร</a>
+        <a href="#privacy">โครงสร้างตามการออกแบบ</a>
+        <a href="#accessibility">การช่วยใช้งาน</a>
+        <a href="#life">การ วิเคราะห์</a>
+      </div>
+      <div class="fcol">
+        <b>บริษัท</b>
+        <a href="/about">เกี่ยวกับ</a>
+        <a href="/privacy-policy">นโยบายการเปลี่ยนชื่อ</a>
+        <a href="/terms-conditions">Terms &amp; conditions</a>
+        <a href="/refund-policy">ข้อกําหนดการคืนทุน</a>
+        <a href="/licenses">สัญญาอนุญาตสิทธิ์</a>
+      </div>
+      <div class="fcol">
+        <b>รับโปรแกรม</b>
+        <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">HBTER2X</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>2026 HushBook. สงวน ลิขสิทธิ์.</span>
+      <span>ทําให้คนที่อ่านหนังสือด้วยหู</span>
+    </div>
+  </div>
+</footer>
+
+HBOPACK1X
+HBOPEXIF2X
+HBOKAKE3X
+HBOKAKE4X
+<div class="locale-switcher" data-locale-switcher aria-label="เลือกภาษา"><a data-locale="en">อังกฤษ</a><span aria-hidden="true">/</span><a data-locale="de">ซอฟต์แวร์Name</a></div>
+ขนาด HBOKAKE5X<script src="/assets/js/locale.js" defer></script></body>
+</html>
+
+
+

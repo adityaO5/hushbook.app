@@ -30,6 +30,9 @@ noscript p{color:var(--muted);margin:24px 0 0}
 @media(max-width:540px){main{padding:38px 22px}.store{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.store{transition:none}}
 </style>
+<link rel="alternate" hreflang="en" href="https://hushbook.app/download">
+<link rel="alternate" hreflang="de" href="https://hushbook.app/de/download">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/download">
 </head>
 <body>
 <main>
@@ -67,5 +70,6 @@ if(target){
   window.setTimeout(()=>location.replace(target),120);
 }
 </script>
-</body>
+<div class="locale-switcher" data-locale-switcher aria-label="Language selector"><a data-locale="en">English</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch</a></div>
+<script src="/assets/js/locale.js" defer></script></body>
 </html>

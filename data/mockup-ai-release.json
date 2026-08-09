@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "mode": "localized",
+  "approvedLocales": ["fr"],
+  "pendingLocales": [
+    "de",
+    "es-ES",
+    "es-419",
+    "pt-BR",
+    "pt-PT",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "pl",
+    "tr",
+    "ru",
+    "uk",
+    "ar",
+    "id",
+    "th",
+    "vi",
+    "sv",
+    "da"
+  ],
+  "rollback": {
+    "mode": "masters",
+    "reason": "Set mode to masters to restore immutable English screenshots without deleting generated variants."
+  }
+}

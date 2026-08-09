@@ -1,0 +1,6 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+const copy={
+de:['Transkribiere','jedes','Hörbuch.'],fr:['Transcrivez','n’importe quel','livre audio.'],'es-ES':['Transcribe','cualquier','audiolibro.'],'es-419':['Transcribe','cualquier','audiolibro.'],'pt-BR':['Transcreva','qualquer','audiolivro.'],'pt-PT':['Transcreva','qualquer','audiolivro.'],it:['Trascrivi','qualsiasi','audiolibro.'],ja:['あらゆる','オーディオブックを','文字起こし'],ko:['모든','오디오북을','받아쓰기'],nl:['Transcribeer','elk','audioboek.'],pl:['Transkrybuj','dowolny','audiobook.'],tr:['Her','audiobook’u','transkribe et.'],ru:['Транскрибируйте','любую','аудиокнигу.'],uk:['Транскрибуйте','будь-яку','аудіокнигу.'],ar:['انسخ','أي كتاب','صوتي.'],id:['Transkripsikan','audiobook','apa pun.'],th:['ถอดเสียง','หนังสือเสียง','ทุกเล่ม'],vi:['Chuyển mọi','sách nói','thành văn bản.'],sv:['Transkribera','valfri','ljudbok.'],da:['Transskriber','enhver','lydbog.']};
+for(const [locale,words] of Object.entries(copy)){const p=path.join(locale,'index.html');let h=fs.readFileSync(p,'utf8');h=h.replace(/<h1 id="hero-h1"[^>]*>[\s\S]*?<\/h1>/,`<h1 id="hero-h1" class="reveal" aria-label="${words.join(' ')}"><span class="kw">${words[0]}</span> <span class="kw">${words[1]}</span> <span class="kw">${words[2]}</span></h1>`);fs.writeFileSync(p,h)}
+console.log('Repaired hero meaning for',Object.keys(copy).length,'locales');

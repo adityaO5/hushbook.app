@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Warunki korzystania z serwisu - HushBook</title>
+<meta name="description" content="Warunki korzystania z HushBook - odtwarzacz on-device audiobook: kwalifikowalność, importowane treści, akceptowalne wykorzystanie, katalog domen publicznych i odpowiedzialność.">
+<meta name="theme-color" content="#0B0A09">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="strona internetowa">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:title" content="Warunki korzystania z serwisu - HushBook">
+<meta property="og:description" content="Wyraźnie określa narzędzie, które działa głównie na własnym urządzeniu, z własną zawartością.">
+<meta property="og:url" content="https://hushbook.app/terms-conditions">
+<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
+<meta name="twitter:card" content="supreme _ large _ image">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
+<link rel="canonical" href="https://hushbook.app/terms-conditions">
+<link rel="icon" href="/assets/img/default_preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ewert&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0B0A09; --ink-2:#100E0C; --surface:#181512; --surface-2:#211C18;
+  --line:rgba(245,238,227,.10); --line-soft:rgba(245,238,227,.06);
+  --paper:#F6EFE4; --paper-dim:#CABFB0; --muted:#8B8275;
+  --amber:#F3C079; --amber-deep:#E0A24C; --amber-2:#FFD89B; --glow:rgba(243,192,121,.40); --sage:#A6C9A9;
+  --r-sm:12px; --r-md:18px; --r-lg:26px; --r-xl:34px; --wrap:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --font-d:"Fraunces",Georgia,serif; --font-b:"Hanken Grotesk",system-ui,sans-serif; --font-logo:"Ewert","Fraunces",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-b);background:var(--ink);color:var(--paper);line-height:1.6;letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(120% 80% at 78% -8%, rgba(243,192,121,.16), transparent 55%),
+  radial-gradient(90% 70% at 10% 6%, rgba(166,201,169,.06), transparent 55%),
+  radial-gradient(140% 120% at 50% 120%, rgba(224,162,76,.07), transparent 60%), var(--ink)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:0;background:var(--amber);color:#000;padding:10px 16px;border-radius:0 0 10px 0;z-index:200}
+.skip:focus{left:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-b);font-weight:700;font-size:15px;letter-spacing:-.01em;
+  padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .25s;white-space:nowrap}
+.btn-primary{background:linear-gradient(180deg,var(--amber-2),var(--amber-deep));color:#241704;box-shadow:0 8px 24px -8px var(--glow), inset 0 1px 0 rgba(255,255,255,.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -8px var(--glow), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn:active{transform:translateY(0) scale(.98);transition-duration:.08s}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
+.btn:focus-visible{outline-offset:4px}
+
+.nav{position:sticky;top:0;z-index:100;backdrop-filter:saturate(140%) blur(14px);
+  background:linear-gradient(180deg,rgba(11,10,9,.86),rgba(11,10,9,.55));border-bottom:1px solid var(--line-soft)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand .logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(150deg,var(--amber-2),var(--amber-deep));color:#241704;box-shadow:0 6px 18px -8px var(--glow)}
+.brand .logo .h{font-family:var(--font-logo);font-weight:400;font-size:22px;line-height:1;color:#241704;transform:translateY(-1px)}
+.wordmark{height:19px;width:auto;color:var(--paper);display:block}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a:not(.btn){font-size:15px;color:var(--paper-dim);font-weight:500;transition:color .2s}
+.nav-links a:not(.btn):hover{color:var(--paper)}
+.nav-toggle{display:none;width:44px;height:44px;flex:none;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:12px;background:rgba(245,238,227,.04);color:var(--paper);cursor:pointer;transition:background .2s,border-color .2s}
+.nav-toggle:hover{background:rgba(245,238,227,.08)}
+.nav-toggle svg{width:22px;height:22px}
+.nav-toggle .ic-close{display:none}
+.nav.open .nav-toggle .ic-open{display:none}
+.nav.open .nav-toggle .ic-close{display:block}
+@media(max-width:880px){
+  .nav-toggle{display:inline-flex}
+  .nav-links{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;padding:6px 24px 18px;
+    background:linear-gradient(180deg,rgba(16,14,12,.98),rgba(11,10,9,.98));border-bottom:1px solid var(--line);
+    box-shadow:0 26px 44px -24px rgba(0,0,0,.85);transform:translateY(-10px);opacity:0;pointer-events:none;
+    transition:opacity .24s var(--ease),transform .24s var(--ease)}
+  .nav.open .nav-links{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a:not(.btn){display:block;padding:15px 6px;font-size:16px;color:var(--paper);border-bottom:1px solid var(--line-soft)}
+  .nav-links .btn{margin-top:16px;width:100%;padding:15px}
+}
+
+.doc-hero{padding:clamp(48px,8vw,84px) 0 clamp(20px,3vw,32px)}
+.backlink{display:inline-flex;align-items:center;gap:8px;color:var(--paper-dim);font-size:14px;font-weight:600;transition:color .2s}
+.backlink:hover{color:var(--amber)}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-deep);margin:18px 0 14px}
+.doc-hero h1{font-family:var(--font-d);font-weight:400;font-size:clamp(34px,5.5vw,60px);line-height:1.04;letter-spacing:-.03em}
+.doc-hero .sub{color:var(--paper-dim);font-size:clamp(16px,1.9vw,20px);margin-top:18px;max-width:48ch}
+
+.doc{max-width:760px;margin:0 auto;padding:14px 24px clamp(72px,10vw,120px)}
+.updated{color:var(--muted);font-size:13.5px;font-weight:500;margin-bottom:18px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 36px}
+.toc a{font-size:13px;font-weight:600;color:var(--paper-dim);padding:7px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(245,238,227,.03);transition:.2s}
+.toc a:hover{color:var(--amber);border-color:rgba(243,192,121,.35);background:rgba(243,192,121,.06)}
+.doc .lead{font-size:clamp(17px,2vw,20px);color:var(--paper);line-height:1.75;margin-bottom:8px}
+.doc h2{font-family:var(--font-d);font-weight:500;font-size:clamp(21px,2.6vw,28px);letter-spacing:-.01em;line-height:1.18;color:var(--paper);margin:46px 0 14px;scroll-margin-top:84px}
+.doc p{color:var(--paper-dim);font-size:16.5px;line-height:1.78;margin-bottom:14px}
+.doc ul{margin:6px 0 16px;padding-left:4px;list-style:none;display:flex;flex-direction:column;gap:10px}
+.doc li{color:var(--paper-dim);font-size:16.5px;line-height:1.65;padding-left:26px;position:relative}
+.doc li::before{content:"";position:absolute;left:6px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--amber-deep);box-shadow:0 0 8px var(--glow)}
+.doc strong{color:var(--paper);font-weight:600}
+.doc em{color:var(--paper)}
+.doc a{color:var(--amber);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(243,192,121,.4)}
+.doc a:hover{text-decoration-color:var(--amber)}
+.callout{border:1px solid rgba(243,192,121,.28);border-radius:var(--r-md);
+  background:linear-gradient(165deg,rgba(243,192,121,.08),rgba(243,192,121,.02));padding:22px 24px;margin:24px 0 8px}
+.callout p{color:var(--paper-dim);font-size:16px;line-height:1.7;margin:0}
+.callout strong{color:var(--paper)}
+.doc-note{margin-top:40px;padding-top:24px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:13.5px;font-style:italic;line-height:1.7;font-family:var(--font-d)}
+
+footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(--ink-2)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+@media(max-width:780px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+.foot-brand p{color:var(--muted);font-size:14px;margin:16px 0 18px;max-width:34ch}
+.foot-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px;font-weight:700}
+.foot-col a{display:block;color:var(--paper-dim);font-size:14px;margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--amber)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+.foot-bottom small{color:var(--muted);font-size:12.5px}
+.foot-social{display:flex;gap:14px}
+.foot-social a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--paper-dim);transition:.25s}
+.foot-social a:hover{color:var(--amber);border-color:rgba(243,192,121,.4);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+<link rel="alternate" hreflang="en" href="https://hushbook.app/terms-conditions">
+<link rel="alternate" hreflang="de" href="https://hushbook.app/de/terms-conditions">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/terms-conditions">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hb-wordmark" viewBox="0 0 617 93">
+    <path d="M95.5122 4.53087C88.5962 9.80887 88.0502 33.6509 88.0502 46.3909C88.0502 59.1309 88.5962 83.1549 95.5122 88.2509C97.3322 89.7069 97.3322 92.8009 93.5102 92.8009H55.6542C53.8342 92.8009 53.1062 90.4349 54.9262 88.9789C61.2962 84.2469 62.5702 80.2429 62.5702 73.5089V50.7589H33.9962C34.1782 63.8629 35.4522 83.7009 41.4582 88.2509C43.4602 89.7069 43.4602 92.8009 39.6382 92.8009H1.78223C-0.037775 92.8009 -0.765775 90.4349 1.05422 88.9789C7.42423 84.2469 8.51623 80.2429 8.51623 73.5089V19.2729C8.51623 12.7209 7.42423 8.53487 1.05422 3.80286C-0.765775 2.34687 -0.037775 0.162868 1.78223 0.162868H39.6382C43.4602 0.162868 43.4602 3.07487 41.4582 4.53087C34.9062 9.62687 33.9962 32.7409 33.9962 45.6629H62.5702V19.2729C62.5702 12.7209 61.2962 8.53487 54.9262 3.80286C53.1062 2.34687 53.8342 0.162868 55.6542 0.162868H93.5102C97.3322 0.162868 97.3322 3.07487 95.5122 4.53087Z" fill="currentColor"/>
+    <path d="M171.655 30.1929C169.289 44.7529 166.559 75.5109 177.843 88.9789C179.481 90.7989 179.117 92.8009 177.297 92.8009H160.553C152.545 92.8009 147.449 87.5229 145.629 82.2449C141.625 88.0689 135.983 92.8009 127.793 92.8009C111.413 92.8009 98.8551 85.1569 98.8551 58.2209C98.8551 51.4869 97.7631 47.4829 91.3931 42.5689C89.5731 41.1129 90.3011 38.9289 92.1211 38.9289C109.593 38.9289 116.873 27.0989 123.789 25.6429C127.611 24.9149 125.973 27.8269 125.427 30.1929C120.877 51.8509 121.605 84.4289 135.255 84.4289C139.077 84.4289 142.535 78.9689 144.901 73.5089V58.2209C144.901 51.4869 143.809 47.4829 137.439 42.5689C135.619 41.1129 136.347 38.9289 138.167 38.9289C155.639 38.9289 163.101 27.0989 169.835 25.6429C173.657 24.9149 172.019 27.8269 171.655 30.1929Z" fill="currentColor"/>
+    <path d="M323.075 88.9789C324.895 90.4349 324.167 92.8009 322.347 92.8009H286.129C282.307 92.8009 282.489 89.8889 284.309 88.2509C295.957 77.6949 290.679 33.1049 278.121 33.1049C274.663 33.1049 269.931 37.1089 266.473 44.2069C266.473 66.2289 269.567 84.9749 273.753 88.2509C275.755 89.7069 275.755 92.8009 271.933 92.8009H235.715C233.895 92.8009 233.167 90.4349 234.987 88.9789C241.357 84.2469 242.631 80.2429 242.631 73.5089V32.5589C242.631 12.9029 221.883 15.6329 232.439 36.3809L232.985 37.6549C239.355 51.6689 208.597 54.3989 210.053 38.3829C210.781 28.3729 202.045 29.1009 201.135 35.2889C198.405 50.9409 231.165 54.3989 233.895 71.1429C235.533 81.3349 222.247 92.2549 206.413 92.6189L206.049 92.8009C194.401 92.9829 180.933 89.3429 176.929 80.6069C170.559 66.5929 201.317 63.8629 200.043 79.8789C199.133 89.8889 207.505 88.9789 208.779 82.9729C212.419 67.5029 178.385 66.2289 176.201 48.0289C174.563 34.5609 187.303 26.0069 203.501 25.4609H203.865C208.415 25.4609 213.329 25.8249 217.879 27.0989C220.245 13.0849 240.447 17.4529 253.915 8.35287C259.739 4.53087 264.289 0.89087 268.111 0.162868C271.751 -0.747131 270.295 2.34687 269.749 4.71286C268.111 14.3589 267.019 24.5509 266.655 34.5609C270.659 29.4649 276.301 25.4609 283.399 25.4609C303.055 25.4609 315.431 41.4769 315.431 61.4969V73.5089C315.431 80.2429 316.705 84.2469 323.075 88.9789Z" fill="currentColor"/>
+    <path d="M387.474 44.5709C400.214 47.1189 409.496 56.7649 409.496 68.2309C409.496 81.6989 396.756 92.8009 380.922 92.8009H325.23C323.41 92.8009 322.682 90.4349 324.502 88.9789C330.872 84.2469 331.964 80.2429 331.964 73.5089V19.2729C331.964 12.7209 330.872 8.53487 324.502 3.80286C322.682 2.34687 323.41 0.162868 325.23 0.162868H372.55C386.2 0.162868 399.668 11.0829 399.668 24.5509C399.668 32.7409 394.572 40.0209 387.474 44.5709ZM363.268 87.7049C374.188 87.7049 383.47 78.9689 383.47 68.2309C383.47 57.6749 374.188 48.9389 363.268 48.9389H357.444C357.626 60.5869 358.172 73.6909 359.81 87.7049H363.268ZM375.826 24.5509C375.826 14.3589 369.456 5.98687 359.628 5.25887C358.9 12.1749 357.626 26.0069 357.444 43.8429H358.172C368.91 43.8429 375.826 35.1069 375.826 24.5509Z" fill="currentColor"/>
+    <path d="M490.88 25.4609C510.9 25.4609 527.28 40.5669 527.28 59.1309C527.28 77.6949 510.9 92.8009 490.88 92.8009C481.962 92.8009 473.772 89.7069 467.402 84.7929C461.214 89.7069 453.024 92.8009 444.106 92.8009C423.904 92.8009 407.706 77.6949 407.706 59.1309C407.706 40.5669 423.904 25.4609 444.106 25.4609C453.024 25.4609 461.214 28.5549 467.402 33.4689C473.772 28.5549 481.962 25.4609 490.88 25.4609ZM444.106 87.7049C449.748 87.7049 454.48 74.7829 454.48 59.1309C454.48 43.2969 449.748 30.5569 444.106 30.5569C438.282 30.5569 433.55 43.2969 433.55 59.1309C433.55 74.7829 438.282 87.7049 444.106 87.7049ZM490.88 87.7049C496.704 87.7049 501.436 74.7829 501.436 59.1309C501.436 43.2969 496.704 30.5569 490.88 30.5569C485.056 30.5569 480.506 43.2969 480.506 59.1309C480.506 74.7829 485.056 87.7049 490.88 87.7049Z" fill="currentColor"/>
+    <path d="M614.71 88.2509C617.076 89.7069 617.986 92.8009 614.164 92.8009H575.944C573.942 92.8009 572.486 90.4349 573.942 88.9789C578.674 84.2469 578.128 80.2429 576.49 73.5089C573.942 63.6809 570.302 46.7549 560.838 49.1209C561.202 68.9589 564.114 85.3389 568.118 88.2509C569.938 89.7069 570.12 92.8009 566.116 92.8009H530.08C528.26 92.8009 527.532 90.4349 529.352 88.9789C535.722 84.2469 536.814 80.2429 536.814 73.5089V32.5589C536.814 25.8249 535.722 21.8209 529.352 17.0889C527.532 15.6329 528.26 13.4489 530.08 13.4489C547.552 13.4489 555.56 1.43687 562.294 0.162868C566.116 -0.747131 564.478 2.34687 564.114 4.71286C561.748 17.2709 560.838 31.1029 560.838 43.8429C570.12 41.2949 585.59 18.3629 600.696 27.8269C613.072 35.4709 600.15 50.0309 586.864 41.6589C582.678 38.9289 579.038 40.0209 575.398 42.0229C591.778 46.3909 595.418 76.0569 614.71 88.2509Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#doc">Przejdź do treści</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="HushBook domu">
+      <span class="logo" aria-hidden="true"><span class="h">H</span></span>
+      <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true" focusable="false"><use href="#hb-wordmark"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="nav-menu">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="/#features">Cechy</a>
+      <a href="/#how">Jak to działa?</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/about">O</a>
+      <a class="btn btn-primary" href="/#finale">Pobierz aplikację</a>
+    </nav>
+  </div>
+</header>
+
+<section class="doc-hero">
+  <div class="wrap">
+    <a class="backlink" href="/">← Powrót do domu</a>
+    <span class="eyebrow">Prawne</span>
+    <h1>Warunki świadczenia usług</h1>
+    <p class="sub">Wyraźnie określa narzędzie, które działa głównie na własnym urządzeniu, z własną zawartością.</p>
+  </div>
+</section>
+
+<main class="doc" id="doc">
+  <p class="updated">Data wejścia w życie: 9 czerwca 2026 · Ostatnia aktualizacja: 20 czerwca 2026</p>
+  <nav class="toc" aria-label="Na tej stronie">
+    <a href="#service">Usługa</a>
+    <a href="#eligibility">Kwalifikacja</a>
+    <a href="#licence">Licencja</a>
+    <a href="#content">Twoja zawartość</a>
+    <a href="#use">Dopuszczalne stosowanie</a>
+    <a href="#third">Catalogue &amp; third parties</a>
+    <a href="#purchases">Purchases &amp; refunds</a>
+    <a href="#updates">Aktualizacja aplikacji</a>
+    <a href="#termination">Wypowiedzenie</a>
+    <a href="#disclaimers">Odrzuty</a>
+    <a href="#liability">Odpowiedzialność</a>
+    <a href="#law">Prawo właściwe</a>
+    <a href="#changes">Zmiany</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+
+  <p class="lead">Niniejsze warunki świadczenia usługi (<strong>"Terminy"</strong>) regulować instalację i korzystanie z aplikacji mobilnej HushBook (<strong>"HushBook", "App"</strong>). Pobierając, instalując lub korzystając z aplikacji, zgadzasz się na niniejsze Warunki. Jeśli się nie zgadzasz, nie używaj aplikacji.</p>
+
+  <h2 id="service">1. Serwis</h2>
+  <p>HushBook jest odtwarzaczem audiobook, który może (a) grać audio, (b) generować on-device, transkrypcje word- level i synchronizowane read- along tekst, oraz (c) oferuje funkcje takie jak katalog domen publicznych, czytanie / słuchanie analityki i funkcje dostępności.</p>
+  <p><strong>Domyślnie na urządzeniu.</strong> Aplikacja jest przeznaczona do pracy lokalnie na urządzeniu. HushBook nie przechowuje importowanych plików audio, transkrypcji, zapisanych cytatów, ani nie słucha postępu na serwerze HushBook. Nie ma konta użytkownika i nie ma logowania; ponieważ nie ma konta, nie ma nic do usunięcia po naszej stronie - usunięcie aplikacji usuwa dane przechowywane na urządzeniu.</p>
+  <p><strong>Diagnostyka.</strong> Aplikacja wysyła ograniczoną diagnostykę awarii i wydajności, aby pomóc nam naprawić błędy i poprawić niezawodność. Patrz <a href="/privacy-policy">Polityka prywatności</a> za dokładnie to, co dotyczy.</p>
+
+  <h2 id="eligibility">2. Kto może korzystać z aplikacji</h2>
+  <p>Aplikacja jest przeznaczona dla ogółu odbiorców i może być używana przez każdego. Pacjenci w wieku poniżej 18 lat <strong>"dziecko"</strong> Na mocy indyjskiej ustawy o cyfrowej ochronie danych osobowych (Digital Personal Data Protection Act, 2023) można korzystać z aplikacji wyłącznie za zgodą rodzica lub opiekuna prawnego, który zgadza się na niniejsze warunki w Twoim imieniu i jest odpowiedzialny za korzystanie z aplikacji.</p>
+  <p>Używając aplikacji, reprezentujesz i gwarantujesz, że:</p>
+  <ul>
+    <li>jesteś prawnie zdolny do zawarcia wiążącej umowy zgodnie z obowiązującym prawem lub Twój rodzic / opiekun prawny udzielił ważnej zgody i zaakceptował niniejsze Warunki dla Ciebie; oraz</li>
+    <li>Aplikacja będzie używana tylko w celach zgodnych z prawem i zgodnie z niniejszymi Warunkami oraz obowiązującymi zasadami app-store.</li>
+  </ul>
+  <p>Jeśli nie spełniasz tych wymagań, nie wolno używać aplikacji.</p>
+  <p>Korzystanie z aplikacji przez nieletnich jest również przedmiotem naszych <a href="/privacy-policy#children">Oświadczenie polityki prywatności na temat dzieci</a>.</p>
+
+  <h2 id="licence">3. Licencja na korzystanie z aplikacji</h2>
+  <p>Z zastrzeżeniem zgodności z niniejszymi Warunkami udzielamy Państwu ograniczonej, osobistej, niewyłącznej, niezbywalnej, odwołalnej licencji na pobieranie i korzystanie z aplikacji na urządzeniu, które Państwo kontrolują, wyłącznie w celach zgodnych z prawem i zgodnie z niniejszymi Warunkami oraz obowiązującymi zasadami app-store.</p>
+  <p>Wszelkie prawa, które nie zostały wyraźnie przyznane, są zastrzeżone przez HushBook i jego licencjodawców.</p>
+
+  <h2 id="content">4. Your content &amp; imports</h2>
+  <p><strong>4.1 Twoja treść.</strong> Aplikacja umożliwia importowanie i odtwarzanie plików audio (<strong>"Zawartość użytkownika"</strong>). Reprezentujesz i gwarantujesz, że:</p>
+  <ul>
+    <li>posiadasz zawartość Użytkownika lub masz wszelkie niezbędne prawa / uprawnienia do korzystania z niej w aplikacji; oraz</li>
+    <li>Korzystanie z aplikacji z treścią Użytkownika nie narusza prawa, praw osób trzecich (w tym praw autorskich) ani ograniczeń umownych.</li>
+  </ul>
+  <p>Użytkownik zachowuje wszystkie prawa w treści użytkownika. Nie żądamy jego własności.</p>
+  <p><strong>4.2 Przetwarzanie urządzeń pokładowych.</strong> Importowane pliki i transkrypcje wygenerowane z nich są przechowywane na urządzeniu. Jesteś odpowiedzialny za utrzymanie kopii zapasowych i ochronę urządzenia. Odinstalowanie aplikacji może usunąć lokalnie przechowywane dane.</p>
+  <p><strong>4.3 Brak piractwa / nadużycia.</strong> HushBook jest osobistym narzędziem do korzystania z treści. Nie wolno używać aplikacji do uzyskiwania, kopiowania, przetwarzania, udostępniania, rozpowszechniania lub umożliwienia dostępu do utworów chronionych prawami autorskimi, w przypadku gdy nie ma się niezbędnych praw.</p>
+  <div class="callout">
+    <p><strong>Ważne:</strong> HushBook to osobiste narzędzie do korzystania z treści - nie sposób na uzyskanie, udostępnianie lub dystrybucję audiobooków chronionych prawem autorskim. Korzystanie z niego do kopiowania lub przetwarzania prac, do których nie masz praw jest naruszeniem niniejszych Warunków i może złamać prawo.</p>
+  </div>
+
+  <h2 id="use">5. Akceptowalne stosowanie</h2>
+  <p>Zgadzasz się nie (i nie próbować):</p>
+  <ul>
+    <li>naruszają lub naruszają jakąkolwiek własność intelektualną, prywatność, reklamę lub inne prawa;</li>
+    <li>korzystać z aplikacji z treścią, której nie wolno używać zgodnie z prawem;</li>
+    <li>obchodzenie, wyłączanie lub zakłócanie środków bezpieczeństwa lub środków technicznych;</li>
+    <li>inżynier wsteczny, dekompilator lub próba uzyskania kodu źródłowego z aplikacji, z wyjątkiem zakresu dozwolonego przez prawo właściwe;</li>
+    <li>redystrybucja lub komercjalizacja aplikacji, powiązanych modeli mowy lub treści katalogowych z naruszeniem licencji lub obowiązujących przepisów;</li>
+    <li>używać aplikacji do przesyłania złośliwego oprogramowania lub do bezprawnego, szkodliwego lub obraźliwego zachowania.</li>
+  </ul>
+
+  <h2 id="third">6. Katalog domen publicznych i usług stron trzecich</h2>
+  <p>Aplikacja może wynurzać i / lub pobierać tytuły domeny publicznej i powiązane metadane ze źródeł osób trzecich (na przykład: <strong>LibriVox</strong> oraz <strong>Archiwum internetowe</strong>) i może pobrać modele rozpoznawania mowy z trzeciej strony hostów.</p>
+  <ul>
+    <li>Treści i usługi stron trzecich są świadczone na warunkach, licencji i praktyk prywatności.</li>
+    <li>HushBook nie jest powiązany z usługami trzeciej partii i nie kontroluje ich. Dostępność, dokładność metadanych oraz zawartość mogą ulec zmianie lub zostać usunięte bez uprzedzenia.</li>
+    <li>Nie jesteśmy odpowiedzialni za treści, usługi lub strony internetowe stron trzecich.</li>
+  </ul>
+
+  <h2 id="purchases">7. Zakupy i zwroty</h2>
+  <p>HushBook oferuje bezpłatne funkcje (w tym odtwarzacz read- along i darmowe treści domeny publicznej) i opcjonalne <strong>płatne zakupy w aplikacji</strong>. Płatne zakupy są dokonywane i rozliczane przez sklep aplikacji, z którego pobrałeś aplikację (Apple App Store lub Google Play), na warunkach tej platformy.</p>
+  <p>Refundacje za kwalifikowane zakupy w aplikacji są realizowane zgodnie z naszymi <a href="/refund-policy">Polityka refundacji</a> oraz zasady refundacji odpowiedniej platformy. Proszę zobaczyć <a href="/refund-policy">Polityka refundacji</a> w jaki sposób zwrócić się o zwrot kosztów.</p>
+  <p><strong>7.1 Subskrypcje i autoodnowienie.</strong> Gdzie HushBook oferuje autoodnawiającą abonament, tytuł subskrypcji, cenę, okres rozliczeniowy i co zawiera są wyświetlane na ekranie zakupu in- app przed zakupem. Jeśli nie odwołasz subskrypcji, prenumerata automatycznie aktualizuje się na koniec każdego okresu rozliczeniowego, a konto w sklepie jest obciążone bieżącą ceną za ten okres. Roczny plan jest rozliczany raz w roku po cenie rocznej.</p>
+  <p><strong>7.2 Darmowe próby i oferty wprowadzające.</strong> Jeżeli dostarczona jest bezpłatna próbna lub wprowadzająca oferta, jej długość oraz okres rozliczeniowy, które obowiązują po jej zakończeniu, są wykazywane przed rozpoczęciem. Jeśli nie odwołasz procesu przed zakończeniem procesu, automatycznie zamienia się na płatną, autoodnawiającą subskrypcję.</p>
+  <p><strong>7.3 Zarządzanie i anulowanie.</strong> You manage or cancel a subscription in your store account settings: on iOS, Settings &gt; your Apple Account &gt; Subscriptions; on Android, Play Store &gt; Payments &amp; subscriptions &gt; Subscriptions. Cancellation takes effect at the end of the current billing period; cancel at least 24 hours before a renewal to avoid being charged for the next period. Cancellation is handled entirely through the store.</p>
+  <p><strong>7.4 Zmiany cen.</strong> Ceny subskrypcji mogą ulec zmianie. Tam, gdzie jest to wymagane, Apple lub Google poinformuje Cię z wyprzedzeniem, a w przypadku gdy ich zasady wymagają, zwróć się o zgodę przed wejściem w życie zmienionej ceny; mechanizm powiadomienia i zgody jest obsługiwany przez sklep.</p>
+  <p><strong>7.5 Ustawowe prawa do wycofania (EOG / UK).</strong> Jeśli jesteś konsumentem w EOG lub Wielkiej Brytanii, możesz mieć ustawowe prawo do wycofania się z zakupu w ciągu 14 dni. Ponieważ subskrypcje i treści cyfrowe są dostarczane natychmiast po zakupie, prawo to może zostać utracone po rozpoczęciu dostawy za zgodą. W przypadku gdy prawa te mają zastosowanie, są one wykonywane za pośrednictwem magazynu, który działa jako handlowiec rekordu i rejestruje odpowiednią zgodę przy kasie; nic w tym miejscu nie ogranicza żadnych obowiązkowych praw konsumenta.</p>
+
+  <h2 id="updates">8. Aktualizacje i zmiany w aplikacji</h2>
+  <p>Możemy modyfikować, aktualizować lub przerywać aplikację (lub jakąkolwiek funkcję) w dowolnym momencie, w tym ze względów bezpieczeństwa, zgodności lub operacyjnych. Niektóre aktualizacje mogą być wymagane do dalszego stosowania.</p>
+
+  <h2 id="termination">9. Rozwiązanie</h2>
+  <p>Niniejsze warunki obowiązują do czasu ich wygaśnięcia. Możemy zawiesić lub wypowiedzieć licencję na korzystanie z aplikacji, jeśli w istotny sposób naruszysz niniejsze Warunki. Po zakończeniu musisz przestać używać aplikacji i usunąć ją ze swoich urządzeń.</p>
+  <p>Sekcje, które ze względu na swój charakter powinny przetrwać rozwiązanie umowy (w tym własność intelektualna, zrzeczenia się roszczeń, ograniczenie odpowiedzialności i prawo właściwe), będą przetrwać.</p>
+
+  <h2 id="disclaimers">10. Odwołania</h2>
+  <p>Aplikacja jest dostępna na <strong>"jak jest"</strong> oraz <strong>"jak dostępne"</strong> Podstawa. W maksymalnym zakresie dozwolonym przez prawo właściwe:</p>
+  <ul>
+    <li>nie gwarantujemy, że aplikacja będzie nieprzerwanie, bez błędów lub kompatybilna z każdym urządzeniem;</li>
+    <li>transkrypcja na urządzeniu jest zautomatyzowana i może być niedokładna, niekompletna lub zawierać błędy. Nie jest to porada zawodowa i nie powinno się powoływać na nią jako na ostateczny rekord.</li>
+  </ul>
+  <p><strong>Prawa konsumentów.</strong> Żadne z postanowień niniejszych Warunków nie wyklucza ani nie ogranicza praw, które mogą przysługiwać na mocy obowiązującego prawa, których nie można wykluczyć lub ograniczyć.</p>
+
+  <h2 id="liability">11. Ograniczenie odpowiedzialności</h2>
+  <p>W maksymalnym zakresie dozwolonym przez obowiązujące prawo, HushBook i jego twórcy nie będą odpowiedzialni za żadne pośrednie, przypadkowe, specjalne, następcze lub karne szkody, ani za jakiekolwiek straty danych, zysków, przychodów lub wartości firmy wynikające z lub związane z korzystaniem z aplikacji (lub niemożności użycia).</p>
+  <p>W maksymalnym zakresie dozwolonym przez prawo właściwe, całkowita łączna odpowiedzialność za wszystkie roszczenia związane z Aplikacją nie przekroczy kwoty, którą zapłaciłeś za funkcję Aplikacja dając podstawę do roszczenia w ciągu 3 miesięcy przed wydarzeniem, lub INR 100, w zależności od tego, która kwota jest wyższa.</p>
+
+  <h2 id="law">12. Prawo właściwe i jurysdykcja</h2>
+  <p>Niniejsze Warunki są regulowane przez prawa Indii. Z zastrzeżeniem prawa właściwego, sądy <strong>Bengaluru, Karnataka, Indie</strong> będzie mieć wyłączną jurysdykcję w odniesieniu do sporów wynikających z niniejszych Warunków.</p>
+
+  <h2 id="changes">13. Zmiany do niniejszych Warunków</h2>
+  <p>Możemy aktualizować niniejsze Warunki od czasu do czasu. Data "Last updated" będzie odzwierciedlać najnowszą wersję. Jeśli nadal korzystasz z aplikacji po opublikowaniu zaktualizowanych Warunków, zgadzasz się na zmienione Warunki.</p>
+
+  <h2 id="contact">14. Kontakt / ubolewanie</h2>
+  <p>Pytania, prośby lub skargi dotyczące niniejszych Warunków, e-mail <a href="mailto:aditya@hushbook.app">aditya@hushbook.app</a>.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="HushBook domu">
+          <span class="logo" aria-hidden="true"><span class="h">H</span></span>
+          <svg class="wordmark" viewBox="0 0 617 93" aria-hidden="true" focusable="false"><use href="#hb-wordmark"/></svg>
+        </a>
+        <p>Audiobook gracz, który pozwala czytać razem - word- poziom karaoke, transkrypcja prywatnie na telefonie.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Produkt</h4>
+        <a href="/#features">Cechy</a>
+        <a href="/#how">Jak to działa?</a>
+        <a href="/#features">Dostępność</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#finale">Pobierz aplikację</a>
+      </div>
+      <div class="foot-col">
+        <h4>Przedsiębiorstwo</h4>
+        <a href="/about">O</a>
+        <a href="mailto:aditya@hushbook.app">Kontakt</a>
+      </div>
+      <div class="foot-col">
+        <h4>Prawne</h4>
+        <a href="/privacy-policy">Prywatność</a>
+        <a href="/terms-conditions">Warunki</a>
+        <a href="/refund-policy">Wysokość refundacji</a>
+        <a href="/licenses">Licencje</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© 2026 HushBook - czytaj wraz z każdym słowem, które usłyszysz.</small>
+      <div class="foot-social">
+        <a href="https://x.com/hushbook.app" target="_blank" rel="noopener" aria-label="HushBook na X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.5h3.3l-7.2 8.2 8.5 11.3h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.7h1.8L7.4 4.4H5.5l12.2 15.8Z"/></svg></a>
+        <a href="https://www.instagram.com/hushbook.app/" target="_blank" rel="noopener" aria-label="HushBook na Instagramie"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="mailto:aditya@hushbook.app" aria-label="Email HushBook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'); if(!nav) return;
+  var btn=nav.querySelector('.nav-toggle'), menu=document.getElementById('nav-menu');
+  if(!btn||!menu) return;
+  function setOpen(o){ nav.classList.toggle('open',o); btn.setAttribute('aria-expanded',o?'true':'false'); btn.setAttribute('aria-label',o?'Close menu':'Open menu'); }
+  btn.addEventListener('click',function(){ setOpen(!nav.classList.contains('open')); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') setOpen(false); });
+  document.addEventListener('click',function(e){ if(nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>880) setOpen(false); });
+})();
+</script>
+<div class="locale-switcher" data-locale-switcher aria-label="Wybór języka"><a data-locale="en">Angielski</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch Przewodniczący</a></div>
+<script src="/assets/js/locale.js" defer></script></body>
+</html>
