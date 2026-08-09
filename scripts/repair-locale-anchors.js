@@ -1,0 +1,5 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+const labels={de:'Mitlesen',fr:'Lecture synchronisée','es-ES':'Lectura sincronizada','es-419':'Lectura sincronizada','pt-BR':'Leitura sincronizada','pt-PT':'Leitura sincronizada',it:'Lettura sincronizzata',ja:'一緒に読む',ko:'함께 읽기',nl:'Lezen en luisteren',pl:'Czytanie synchroniczne',tr:'Birlikte okuma',ru:'Чтение вместе',uk:'Читати разом',ar:'القراءة مع الاستماع',id:'Baca sambil mendengar',th:'อ่านไปพร้อมกัน',vi:'Đọc cùng lúc',sv:'Läs med',da:'Læs med'};
+for(const [locale,label] of Object.entries(labels)){const p=path.join(locale,'index.html');let h=fs.readFileSync(p,'utf8');const escaped=label.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');h=h.replace(new RegExp(`href="#${escaped}"`,'g'),'href="#read-along"').replace(new RegExp(`id="${escaped}"`,'g'),'id="read-along"').replace(new RegExp(`assets/img/mockups/${escaped}-monte-cristo\\.png`,'g'),'assets/img/mockups/read-along-monte-cristo.png');fs.writeFileSync(p,h)}
+console.log('Restored stable internal anchors and shared screenshot paths');

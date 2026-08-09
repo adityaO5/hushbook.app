@@ -1,0 +1,370 @@
+{
+  "version": 2,
+  "generator": "built-in GPT-5.6 image editor",
+  "mode": "text-localization",
+  "sourceOfTruth": "assets/img/mockups/<asset>.webp",
+  "generationOrder": [
+    "home.webp",
+    "library.webp",
+    "brain-health.webp",
+    "advanced-analytics.webp",
+    "karaoke-live.webp",
+    "player-hitchhikers.webp",
+    "card-habit-insights.webp",
+    "card-genre-radar.webp",
+    "card-goals-sheet.webp",
+    "card-add-goals.webp",
+    "card-words-per-book.webp",
+    "quote-select.webp",
+    "quotes-collection.webp",
+    "quote-card-share.webp",
+    "book-info-transcribe.webp",
+    "transcribing-chapters.webp"
+  ],
+  "entries": [
+    {
+      "locale": "fr",
+      "asset": "player-hitchhikers.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/player-hitchhikers.webp",
+      "translatedKeys": [
+        "hitchhikersTitle"
+      ],
+      "translations": {
+        "hitchhikersTitle": "Le Guide du voyageur galactique",
+        "hitchhikersAuthor": "Douglas Adams"
+      },
+      "lockedRegions": [
+        "device frame",
+        "status bar",
+        "book-cover artwork",
+        "navigation and player controls",
+        "progress and volume values",
+        "background gradient and shadows"
+      ],
+      "dimensions": [
+        1294,
+        2656
+      ],
+      "outsideTextRegionMeanAbsoluteDiff": 8.56,
+      "notes": "AI output was reviewed at native aspect ratio, then resized to the immutable master dimensions. No deterministic text overlay was used."
+    },
+    {
+      "locale": "fr",
+      "asset": "home.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/home.webp",
+      "translatedKeys": [
+        "greeting",
+        "meditationsTitle",
+        "hitchhikersTitle",
+        "listenDuration",
+        "fromLibrary"
+      ],
+      "translations": {
+        "greeting": "Bonjour, John",
+        "meditationsTitle": "Pensées",
+        "hitchhikersTitle": "Le Guide du voyageur galactique",
+        "listenDuration": "9 h d’écoute",
+        "fromLibrary": "De ma bibliothèque"
+      },
+      "dimensions": [
+        1294,
+        2656
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "library.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/library.webp",
+      "translatedKeys": [
+        "library",
+        "myCollections",
+        "libraryDescription",
+        "searchTitleAuthor",
+        "uploadAudiobook"
+      ],
+      "translations": {
+        "library": "Bibliothèque",
+        "myCollections": "Mes collections",
+        "libraryDescription": "Contient les titres importés et téléchargés du domaine public",
+        "searchTitleAuthor": "Rechercher par titre ou auteur",
+        "uploadAudiobook": "Importer un livre audio"
+      },
+      "dimensions": [
+        1294,
+        2656
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "brain-health.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/brain-health.webp",
+      "translatedKeys": [
+        "analytics",
+        "insights",
+        "platform",
+        "personal",
+        "brainHealth",
+        "level1",
+        "justStarting",
+        "whatsDrivingScore",
+        "streak",
+        "streakValue",
+        "words",
+        "wordsValue",
+        "comprehension",
+        "comprehensionValue",
+        "consistency",
+        "consistencyValue",
+        "completion",
+        "completionValue"
+      ],
+      "dimensions": [
+        1294,
+        2656
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "advanced-analytics.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/advanced-analytics.webp",
+      "translatedKeys": [
+        "startEndPerDay",
+        "dotsFrequency",
+        "yourTopCategories",
+        "visualisingTopCategories",
+        "weekdayLabels",
+        "genreLabels"
+      ],
+      "dimensions": [
+        1294,
+        2656
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "card-habit-insights.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/card-habit-insights.webp",
+      "translatedKeys": [
+        "habitInsights",
+        "usuallyListen",
+        "longestSession",
+        "averageSession",
+        "mostActiveDay"
+      ],
+      "dimensions": [
+        905,
+        760
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "card-genre-radar.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/card-genre-radar.webp",
+      "translatedKeys": [
+        "mostReadGenres",
+        "genreLabels"
+      ],
+      "dimensions": [
+        853,
+        732
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "card-goals-sheet.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/card-goals-sheet.webp",
+      "translatedKeys": [
+        "books",
+        "monthly",
+        "weekly",
+        "yearly",
+        "words",
+        "daily",
+        "words1500",
+        "autoDaily",
+        "autoMonthly",
+        "save"
+      ],
+      "dimensions": [
+        853,
+        1197
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "card-add-goals.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/card-add-goals.webp",
+      "translatedKeys": [
+        "addGoals",
+        "curate",
+        "daily",
+        "weekly",
+        "monthly"
+      ],
+      "dimensions": [
+        982,
+        995
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "card-words-per-book.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/card-words-per-book.webp",
+      "translatedKeys": [
+        "wordsPerBook",
+        "wordsNote"
+      ],
+      "dimensions": [
+        933,
+        946
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "karaoke-live.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/karaoke-live.webp",
+      "translatedKeys": [
+        "meditationsTitle",
+        "transcribing",
+        "listeningTo",
+        "narratedBy",
+        "chapterVolume",
+        "passage"
+      ],
+      "translations": {
+        "meditationsTitle": "Pensées",
+        "transcribing": "Transcription",
+        "listeningTo": "Vous écoutez",
+        "narratedBy": "Narré par",
+        "chapterVolume": "Chapitre 1, volume 1",
+        "passage": "Marcus Aurelius était le roi de Rome"
+      },
+      "dimensions": [
+        1294,
+        2656
+      ],
+      "approvedArtworkException": "The English Meditations cover lettering remains pixel-preserved from the master; only app UI and passage text were localized."
+    },
+    {
+      "locale": "fr",
+      "asset": "quote-select.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/quote-select.webp",
+      "translatedKeys": [
+        "bookTitle",
+        "transcribing",
+        "passage"
+      ],
+      "dimensions": [
+        1561,
+        3204
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "quotes-collection.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/quotes-collection.webp",
+      "translatedKeys": [
+        "bookmarked",
+        "quoteCount",
+        "bookTitles",
+        "savedPassages"
+      ],
+      "dimensions": [
+        1561,
+        3204
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "quote-card-share.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/quote-card-share.webp",
+      "translatedKeys": [
+        "customize",
+        "passage",
+        "bookTitle",
+        "share"
+      ],
+      "dimensions": [
+        1561,
+        3204
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "book-info-transcribe.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/book-info-transcribe.webp",
+      "translatedKeys": [
+        "bookInfo",
+        "bookTitle",
+        "storageStatus",
+        "released",
+        "chapterTabs",
+        "transcribe"
+      ],
+      "dimensions": [
+        1294,
+        2656
+      ]
+    },
+    {
+      "locale": "fr",
+      "asset": "transcribing-chapters.webp",
+      "status": "pilot-reviewed",
+      "output": "assets/img/mockups/locales/fr/transcribing-chapters.webp",
+      "translatedKeys": [
+        "bookInfo",
+        "bookTitle",
+        "storageStatus",
+        "released",
+        "chapterTabs",
+        "transcribing"
+      ],
+      "dimensions": [
+        1294,
+        2656
+      ]
+    }
+  ],
+  "frenchBaseline": "frozen; not regenerated",
+  "remainingLocaleJobIndex": "data/mockup-ai-jobs.json",
+  "remainingJobCount": 684,
+  "pendingLocales": [
+    "de",
+    "es-ES",
+    "es-419",
+    "pt-BR",
+    "pt-PT",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "pl",
+    "tr",
+    "ru",
+    "uk",
+    "ar",
+    "id",
+    "th",
+    "vi",
+    "sv",
+    "da"
+  ],
+  "approvedLocales": [
+    "fr"
+  ]
+}

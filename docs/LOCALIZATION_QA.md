@@ -4,9 +4,16 @@ Complete this goal for every locale before indexing or production routing.
 
 ## Screenshot policy
 
-- All locale pages use shared `/assets/img/mockups/*` assets.
-- Do not generate locale-specific screenshots. Screenshot UI and book covers may remain English.
-- Translate each page's `alt` text into target locale.
+- English masters under `/assets/img/mockups/*` remain immutable.
+- Non-English pages reference the matching generated asset under
+  `/assets/img/mockups/locales/<locale>/`.
+- Generated variants are deterministic local previews because no image-editing
+  API key is configured. They repaint only manifest-declared text regions;
+  device frames, charts, controls, illustrations, and book-cover artwork stay
+  locked. Do not publish a variant whose mask or text has not been reviewed.
+- Screenshot UI and book covers may remain English only when the exact region is
+  recorded as an approved artwork/UI exception in the mockup report.
+- Translate each page's `alt` text independently of baked screenshot text.
 
 ## Zero-English review
 
@@ -21,7 +28,9 @@ Complete this goal for every locale before indexing or production routing.
 - HushBook and product names.
 - Proper names, book titles, book-cover text, and user-created/library content.
 - App Store, Google Play, iOS, Android, file extensions, URLs, email addresses, and third-party legal terms.
-- English UI embedded inside shared screenshots.
+- English UI embedded inside a mockup region not yet declared editable in the
+  private-preview manifest, with the exact asset recorded in
+  `docs/MOCKUP_LOCALIZATION_QA.md`.
 
 Record each additional exception with page, exact text, reason, and reviewer approval in release notes. Do not add broad exception patterns.
 

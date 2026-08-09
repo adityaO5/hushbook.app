@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "masterRoot": "assets/img/mockups",
+  "outputRoot": "assets/img/mockups/locales",
+  "translationPolicy": {
+    "mode": "manifest-only",
+    "unlistedVisibleText": "hard-fail-before-promotion",
+    "sourceLanguage": "en",
+    "frenchBaseline": "frozen",
+    "approvedEnglishExceptions": [
+      "HushBook and product names",
+      "author and person names",
+      "URLs, email addresses, file extensions, and store names",
+      "book-cover artwork and lettering that cannot be safely edited",
+      "English UI visibly embedded in shared artwork until an editable region is approved"
+    ]
+  },
+  "componentLockDefaults": [
+    "device frame and screen proportions",
+    "status bar, app logo, navigation icons, and player controls",
+    "charts, plotted data, numbers, dates, durations, and progress values",
+    "gradients, shadows, lighting, textures, and decorative artwork",
+    "portraits, illustrations, and book-cover artwork"
+  ],
+  "assets": {
+    "advanced-analytics.webp": {"regions": [
+      {"id":"analytics.startEnd","key":"startEndPerDay","source":"Start/End per day","box":[155,720,620,825],"size":31,"fill":"#171717","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"analytics.frequency","key":"dotsFrequency","source":"Dots are Frequency","box":[845,720,1150,825],"size":21,"fill":"#8a8a8a","background":"#ffffff","align":"right","weight":"regular"},
+      {"id":"analytics.topCategories","key":"yourTopCategories","source":"Your Top 3 Categories","box":[155,1885,650,1990],"size":31,"fill":"#171717","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"analytics.visualising","key":"visualisingTopCategories","source":"Visualising the top 3 most used","box":[700,1885,1170,1990],"size":20,"fill":"#8a8a8a","background":"#ffffff","align":"right","weight":"regular"}
+    ]},
+    "book-info-transcribe.webp": {"regions": []},
+    "brain-health.webp": {"regions": [
+      {"id":"brain.analytics","key":"analytics","source":"Analytics","box":[100,250,470,365],"size":52,"fill":"#2b2927","background":"#fbf8f2","align":"left","weight":"regular"},
+      {"id":"brain.insights","key":"insights","source":"Insights","box":[275,380,510,470],"size":40,"fill":"#858585","background":"#fbf8f2","align":"center","weight":"regular"},
+      {"id":"brain.platform","key":"platform","source":"Platform","box":[520,380,770,470],"size":40,"fill":"#858585","background":"#fbf8f2","align":"center","weight":"regular"},
+      {"id":"brain.personal","key":"personal","source":"Personal","box":[790,380,1080,470],"size":40,"fill":"#171717","background":"#fbf8f2","align":"center","weight":"regular"},
+      {"id":"brain.health","key":"brainHealth","source":"Brain Health","box":[160,620,520,715],"size":39,"fill":"#242424","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"brain.level","key":"level1","source":"Level 1","box":[265,830,510,910],"size":30,"fill":"#8a4937","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"brain.starting","key":"justStarting","source":"Just Starting","box":[265,890,580,965],"size":26,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.driving","key":"whatsDrivingScore","source":"What's driving your score","box":[160,1640,830,1740],"size":30,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.streak","key":"streak","source":"Streak","box":[160,1735,430,1835],"size":28,"fill":"#171717","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.streakValue","key":"streakValue","source":"0 day streak","box":[465,1755,1050,1835],"size":27,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.words","key":"words","source":"Words","box":[160,1835,430,1935],"size":28,"fill":"#171717","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.wordsValue","key":"wordsValue","source":"0% of weekly target","box":[465,1855,1050,1935],"size":27,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.comprehension","key":"comprehension","source":"Comprehension","box":[160,1935,550,2035],"size":26,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.comprehensionValue","key":"comprehensionValue","source":"No data yet — rate your sessions!","box":[465,1955,1100,2045],"size":27,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.consistency","key":"consistency","source":"Consistency","box":[160,2035,500,2135],"size":28,"fill":"#171717","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.consistencyValue","key":"consistencyValue","source":"0/8 active weeks","box":[465,2055,1050,2140],"size":27,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.completion","key":"completion","source":"Completion","box":[160,2135,500,2235],"size":28,"fill":"#171717","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"brain.completionValue","key":"completionValue","source":"0 books finished (30d)","box":[465,2155,1100,2240],"size":27,"fill":"#858585","background":"#ffffff","align":"left","weight":"regular"}
+    ]},
+    "card-add-goals.webp": {"regions": [
+      {"id":"goals.addTitle","key":"addGoals","source":"Add Goals","box":[190,145,800,290],"size":84,"fill":"#050505","background":"#ffffff","align":"center","weight":"regular"},
+      {"id":"goals.curate","key":"curate","source":"Curate","box":[90,625,500,810],"size":72,"fill":"#151515","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"goals.daily","key":"daily","source":"Daily","box":[535,560,850,680],"size":58,"fill":"#ef3f4a","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"goals.weekly","key":"weekly","source":"Weekly","box":[535,640,850,755],"size":58,"fill":"#ef3f4a","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"goals.monthly","key":"monthly","source":"Monthly","box":[535,720,850,840],"size":58,"fill":"#ef3f4a","background":"#ffffff","align":"left","weight":"bold"}
+    ]},
+    "card-genre-radar.webp": {"regions": [
+      {"id":"genre.title","key":"mostReadGenres","source":"Most Read genres","box":[55,48,370,104],"size":31,"fill":"#101010","background":"#f7f4ef","align":"left","weight":"regular"},
+      {"id":"genre.hero","key":"history","source":"History","box":[55,105,360,190],"size":62,"fill":"#ee5962","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.history","key":"history","source":"History","box":[650,32,795,83],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.fiction","key":"fiction","source":"Fiction","box":[650,80,795,131],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.selfHelp","key":"selfHelp","source":"Self-help","box":[650,128,795,179],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.nonFiction","key":"nonFiction","source":"Non-fiction","box":[650,176,795,227],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.arts","key":"arts","source":"Arts","box":[650,224,795,275],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.literature","key":"literature","source":"Literature","box":[650,272,795,323],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.romance","key":"romance","source":"Romance","box":[650,320,795,371],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.memoir","key":"memoir","source":"Memoir","box":[650,368,795,419],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.thriller","key":"thrillerFantasy","source":"Thriller/Fantasy","box":[650,416,795,467],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.scifi","key":"sciFi","source":"Sci-fi","box":[650,464,795,515],"size":16,"fill":"#7c7c7c","background":"#f7f4ef","align":"left","weight":"bold"},
+      {"id":"genre.chartHistory","key":"history","source":"History","box":[397,242,480,276],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartFiction","key":"fiction","source":"Fiction","box":[505,300,650,350],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartSelfHelp","key":"selfHelp","source":"Self help","box":[530,438,700,495],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartNonFiction","key":"nonFiction","source":"Non-fiction","box":[500,565,700,620],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartArts","key":"arts","source":"Arts","box":[400,642,530,692],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartLiterature","key":"literature","source":"Literature","box":[220,640,430,705],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartRomance","key":"romance","source":"Romance","box":[95,565,270,620],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartMemoir","key":"memoir","source":"Memoir","box":[35,438,190,495],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartThriller","key":"thrillerFantasy","source":"Thriller/Fantasy","box":[35,300,270,350],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"},
+      {"id":"genre.chartSciFi","key":"sciFi","source":"Sci-fi","box":[175,228,330,280],"size":19,"fill":"#858585","background":"#f7f4ef","align":"center","weight":"bold"}
+    ]},
+    "card-goals-sheet.webp": {"regions": [
+      {"id":"sheet.books","key":"books","source":"Books","box":[84,61,220,111],"size":30,"fill":"#ef3f4a","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"sheet.monthlyBooks","key":"monthly","source":"Monthly","box":[75,140,470,240],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.weeklyBooks","key":"weekly","source":"Weekly","box":[75,280,470,380],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.yearlyBooks","key":"yearly","source":"Yearly","box":[75,420,470,520],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.words","key":"words","source":"Words","box":[84,544,220,594],"size":30,"fill":"#ef3f4a","background":"#ffffff","align":"left","weight":"bold"},
+      {"id":"sheet.dailyWords","key":"daily","source":"Daily","box":[75,625,470,725],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.monthlyWords","key":"monthly","source":"Monthly","box":[75,760,470,860],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.yearlyWords","key":"yearly","source":"Yearly","box":[75,895,470,990],"size":58,"fill":"#050505","background":"#ffffff","align":"left","weight":"regular"},
+      {"id":"sheet.dailyValue","key":"words1500","source":"1500 words","box":[555,642,775,710],"size":30,"fill":"#7a7a7a","background":"#ffffff","align":"center","weight":"regular"},
+      {"id":"sheet.dailyHint","key":"autoDaily","source":"Auto fills from Daily","box":[525,745,795,855],"size":18,"fill":"#d2d2d2","background":"#fbfbfb","align":"center","weight":"regular"},
+      {"id":"sheet.monthlyHint","key":"autoMonthly","source":"Auto fills from Monthly","box":[525,880,795,990],"size":18,"fill":"#d2d2d2","background":"#fbfbfb","align":"center","weight":"regular"},
+      {"id":"sheet.save","key":"save","source":"Save","box":[300,1050,550,1115],"size":32,"fill":"#ffffff","background":"#6e3824","align":"center","weight":"regular"}
+    ]},
+    "card-habit-insights.webp": {"regions": [
+      {"id":"habit.title","key":"habitInsights","source":"Habit Insights","box":[250,22,690,112],"size":45,"fill":"#f7f5ef","background":"#2f2f2f","align":"center","weight":"regular"},
+      {"id":"habit.usually","key":"usuallyListen","source":"You usually listen","box":[55,190,475,285],"size":34,"fill":"#f7f5ef","background":"#2f2f2f","align":"left","weight":"regular"},
+      {"id":"habit.longest","key":"longestSession","source":"Longest session this month","box":[55,300,500,430],"size":32,"fill":"#f7f5ef","background":"#2f2f2f","align":"left","weight":"regular"},
+      {"id":"habit.average","key":"averageSession","source":"Average session","box":[55,450,490,525],"size":34,"fill":"#f7f5ef","background":"#2f2f2f","align":"left","weight":"regular"},
+      {"id":"habit.active","key":"mostActiveDay","source":"Most active day","box":[55,560,490,635],"size":34,"fill":"#f7f5ef","background":"#2f2f2f","align":"left","weight":"regular"}
+    ]},
+    "card-words-per-book.webp": {"regions": [
+      {"id":"words.title","key":"wordsPerBook","source":"Words per book","box":[73,80,330,120],"size":25,"fill":"#202020","background":"#f8f8f8","align":"left","weight":"bold"},
+      {"id":"words.note","key":"wordsNote","source":"Estimates roughly via transcribed words and may vary from actual","box":[315,802,690,906],"size":18,"fill":"#666666","background":"#f8f8f8","align":"left","weight":"regular"}
+    ]},
+    "character-graph.webp": {"regions": []},
+    "character-slide.webp": {"regions": []},
+    "goals-graphs.webp": {"regions": []},
+    "home.webp": {"regions": [
+      {"id":"home.greeting","key":"greeting","source":"Howdy? John","box":[90,445,780,555],"size":54,"fill":"#171717","background":"#faf6f1","align":"left","weight":"regular"},
+      {"id":"home.library","key":"fromLibrary","source":"From my Library","box":[95,1860,800,1990],"size":48,"fill":"#171717","background":"#fbf8f2","align":"left","weight":"regular"}
+    ]},
+    "karaoke-live.webp": {"regions": []},
+    "lang-es-lobo-player.webp": {"regions": []},
+    "lang-es-lobo-read.webp": {"regions": []},
+    "lang-es-poetry-player.webp": {"regions": []},
+    "lang-fr-player.webp": {"regions": []},
+    "lang-it-player.webp": {"regions": []},
+    "lang-it-read.webp": {"regions": []},
+    "library.webp": {"regions": [
+      {"id":"library.title","key":"library","source":"Library","box":[515,180,875,325],"size":52,"fill":"#2b2927","background":"#fbf8f2","align":"center","weight":"regular"},
+      {"id":"library.collections","key":"myCollections","source":"My Collections","box":[100,360,650,475],"size":43,"fill":"#191919","background":"#fbf8f2","align":"left","weight":"bold"},
+      {"id":"library.description","key":"libraryDescription","source":"Contains both imported and downloaded by Public Domain","box":[100,440,1130,530],"size":25,"fill":"#5e5e5e","background":"#fbf8f2","align":"left","weight":"regular"},
+      {"id":"library.search","key":"searchTitleAuthor","source":"Search by Title, Author","box":[175,550,970,655],"size":31,"fill":"#858585","background":"#e9e9e7","align":"left","weight":"regular"},
+      {"id":"library.upload","key":"uploadAudiobook","source":"Upload Audiobook","box":[805,2430,1250,2545],"size":28,"fill":"#171717","background":"#fbf8f2","align":"center","weight":"bold"}
+    ]},
+    "player-born-a-crime.webp": {"regions": []},
+    "player-crime-punishment.webp": {"regions": []},
+    "player-fourth-wing.webp": {"regions": []},
+    "player-hitchhikers.webp": {"regions": [
+      {"id":"player.hitchhikersTitle","key":"hitchhikersTitle","source":"The Hitch-Hiker's Guide To The Galaxy","box":[105,1475,1160,1635],"size":45,"minSize":28,"fill":"#ffffff","background":"interpolate","align":"left","weight":"bold"},
+      {"id":"player.hitchhikersAuthor","key":"hitchhikersAuthor","source":"Douglas Adams","box":[105,1685,800,1750],"size":36,"minSize":24,"fill":"#ffffff","background":"interpolate","align":"left","weight":"regular"}
+    ]},
+    "player-lotr.webp": {"regions": []},
+    "player-love-hypothesis.webp": {"regions": []},
+    "player-martian.webp": {"regions": []},
+    "player-mexican-gothic.webp": {"regions": []},
+    "player-pride-prejudice.webp": {"regions": []},
+    "quote-card-share.webp": {"regions": []},
+    "quote-select.webp": {"regions": []},
+    "quotes-collection.webp": {"regions": []},
+    "read-along-monte-cristo.png": {"regions": []},
+    "reading-profiles.webp": {"regions": []},
+    "ready-to-play.webp": {"regions": []},
+    "transcribing-chapters.webp": {"regions": []}
+  }
+}
