@@ -5,150 +5,1784 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "cookie", "key": "hushbook_locale", "value": "de" }],
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "de"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/de",
       "permanent": false
     },
     {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "cookie", "key": "hushbook_locale", "value": "de" }],
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "de"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/de/:path*",
       "permanent": false
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "DE" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
-      "destination": "/de",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "DE" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
-      "destination": "/de/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "JP" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
-      "destination": "/ja",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "JP" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
-      "destination": "/ja/:path*",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "FR|BE|LU|MC" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "fr"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/fr",
       "permanent": false
     },
     {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "FR|BE|LU|MC" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "fr"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/fr/:path*",
       "permanent": false
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES|MX|AR|CO|CL|PE|UY" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/es-ES",
       "permanent": false
     },
     {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES|MX|AR|CO|CL|PE|UY" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/es-ES/:path*",
       "permanent": false
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "BR" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-419"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-419",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "es-419"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-419/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/pt-BR",
       "permanent": false
     },
     {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "BR" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/pt-BR/:path*",
       "permanent": false
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "IT" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-PT",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pt-PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-PT/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "it"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/it",
       "permanent": false
     },
     {
-      "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)",
-      "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "IT" }],
-      "missing": [{ "type": "cookie", "key": "hushbook_locale" }],
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "it"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
       "destination": "/it/:path*",
       "permanent": false
     },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "KR" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ko", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "KR" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ko/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "NL" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/nl", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "NL" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/nl/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "PL" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/pl", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "PL" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/pl/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "TR" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/tr", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "TR" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/tr/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "RU" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ru", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "RU" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ru/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "UA" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/uk", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "UA" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/uk/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ID" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/id", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ID" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/id/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "TH" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/th", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "TH" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/th/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "VN" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/vi", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "VN" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/vi/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "SE" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/sv", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "SE" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/sv/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "DK" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/da", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "DK" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/da/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "PT" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/pt-PT", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "PT" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/pt-PT/:path*", "permanent": false },
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "AE|SA|EG|MA|DZ|TN" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ar", "permanent": false },
-    { "source": "/:path(about|download|privacy-policy|terms-conditions|refund-policy|licenses)", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "AE|SA|EG|MA|DZ|TN" }], "missing": [{ "type": "cookie", "key": "hushbook_locale" }], "destination": "/ar/:path*", "permanent": false },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ja"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ja",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ja"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ja/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ko"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ko",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ko"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ko/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "nl"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/nl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "nl"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/nl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pl"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "pl"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "tr"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/tr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "tr"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/tr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ru"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ru",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ru"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ru/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "uk"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "uk"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/uk/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ar"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "ar"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ar/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "id"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/id",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "id"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/id/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "th"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/th",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "th"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/th/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "vi"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/vi",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "vi"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/vi/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "sv"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/sv",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "sv"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/sv/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "da"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/da",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale",
+          "value": "da"
+        }
+      ],
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/da/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DE|AT|CH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/de",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DE|AT|CH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/de/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "JP"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ja",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "JP"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ja/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "FR|BE|LU|MC"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/fr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "FR|BE|LU|MC"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/fr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-ES",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-ES/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "MX|AR|CO|CL|PE|UY|CR|EC|GT|PA|DO|PR|BO|PY|SV|HN|NI|VE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-419",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "MX|AR|CO|CL|PE|UY|CR|EC|GT|PA|DO|PR|BO|PY|SV|HN|NI|VE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/es-419/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-BR",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "BR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-BR/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-PT",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pt-PT/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "IT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/it",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "IT"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/it/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "KR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ko",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "KR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ko/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "NL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/nl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "NL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/nl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pl",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "PL"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/pl/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/tr",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TR"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/tr/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "RU"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ru",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "RU"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ru/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "UA"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "UA"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/uk/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ID"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/id",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ID"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/id/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/th",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "TH"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/th/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "VN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/vi",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "VN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/vi/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "SE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/sv",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "SE"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/sv/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DK"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/da",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DK"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/da/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "AE|SA|EG|MA|DZ|TN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "AE|SA|EG|MA|DZ|TN"
+        }
+      ],
+      "missing": [
+        {
+          "type": "cookie",
+          "key": "hushbook_locale"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
+        }
+      ],
+      "destination": "/ar/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/es",
+      "destination": "/es-ES",
+      "permanent": true
+    },
+    {
+      "source": "/es/:path*",
+      "destination": "/es-ES/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pt",
+      "destination": "/pt-PT",
+      "permanent": true
+    },
+    {
+      "source": "/pt/:path*",
+      "destination": "/pt-PT/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fr-argos",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/fr-argos/:path*",
+      "destination": "/fr/:path*",
+      "permanent": true
+    },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.hushbook.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hushbook.app"
+        }
+      ],
       "destination": "https://hushbook.app/$1",
       "permanent": true
     },
-    { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/terms", "destination": "/terms-conditions", "permanent": true }
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-conditions",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<h>.+)\\.vercel\\.app"
+        }
+      ],
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

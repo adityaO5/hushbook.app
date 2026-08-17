@@ -21,6 +21,12 @@ const defaultLocale = localeConfig.defaultLocale || 'en';
 const cookieLocales = (localeConfig.publishedLocales || [])
   .filter((code) => code !== defaultLocale);
 
+// Keep Googlebot / AI crawlers on the canonical English URLs. Geo and cookie
+// 307s on /download were reported in Search Console as "Page with redirect".
+const CRAWLER_UA =
+  '(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)';
+const missingCrawler = { type: 'header', key: 'user-agent', value: CRAWLER_UA };
+
 /** Collapse countryLocales map into value strings Vercel can match. */
 const countryGroups = new Map();
 for (const [country, locale] of Object.entries(localeConfig.countryLocales || {})) {
@@ -34,12 +40,14 @@ for (const code of cookieLocales) {
   redirects.push({
     source: '/',
     has: [{ type: 'cookie', key: 'hushbook_locale', value: code }],
+    missing: [missingCrawler],
     destination: `/${code}`,
     permanent: false,
   });
   redirects.push({
     source: PAGE_SOURCE,
     has: [{ type: 'cookie', key: 'hushbook_locale', value: code }],
+    missing: [missingCrawler],
     destination: `/${code}/:path*`,
     permanent: false,
   });
@@ -50,16 +58,29 @@ for (const [locale, countries] of countryGroups) {
   redirects.push({
     source: '/',
     has: [{ type: 'header', key: 'x-vercel-ip-country', value }],
-    missing: [{ type: 'cookie', key: 'hushbook_locale' }],
+    missing: [{ type: 'cookie', key: 'hushbook_locale' }, missingCrawler],
     destination: `/${locale}`,
     permanent: false,
   });
   redirects.push({
     source: PAGE_SOURCE,
     has: [{ type: 'header', key: 'x-vercel-ip-country', value }],
-    missing: [{ type: 'cookie', key: 'hushbook_locale' }],
+    missing: [{ type: 'cookie', key: 'hushbook_locale' }, missingCrawler],
     destination: `/${locale}/:path*`,
     permanent: false,
+  });
+}
+
+for (const [legacyLocale, publishedLocale] of Object.entries(localeConfig.legacyRedirects || {})) {
+  redirects.push({
+    source: `/${legacyLocale}`,
+    destination: `/${publishedLocale}`,
+    permanent: true,
+  });
+  redirects.push({
+    source: `/${legacyLocale}/:path*`,
+    destination: `/${publishedLocale}/:path*`,
+    permanent: true,
   });
 }
 

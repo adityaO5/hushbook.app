@@ -33,6 +33,23 @@ noscript p{color:var(--muted);margin:24px 0 0}
 <link rel="alternate" hreflang="en" href="https://hushbook.app/download">
 <link rel="alternate" hreflang="de" href="https://hushbook.app/de/download">
 <link rel="alternate" hreflang="x-default" href="https://hushbook.app/download">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HushBook",
+  "url": "https://hushbook.app/download",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audiobook Player",
+  "operatingSystem": "iOS, Android",
+  "description": "Télécharger HushBook pour iPhone ou Android.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597",
+    "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
+  ]
+}
+</script>
 </head>
 <body>
 <main>
@@ -56,6 +73,10 @@ noscript p{color:var(--muted);margin:24px 0 0}
 const APP_STORE_URL='https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597';
 const PLAY_STORE_URL='https://play.google.com/store/apps/details?id=com.hushbook.hushbook';
 
+function isSearchCrawler(userAgent){
+  return /Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot/i.test(userAgent);
+}
+
 function getStoreTarget(userAgent,platform,maxTouchPoints){
   if(/android/i.test(userAgent))return PLAY_STORE_URL;
   const appleMobile=/iPhone|iPad|iPod/i.test(userAgent);
@@ -65,7 +86,7 @@ function getStoreTarget(userAgent,platform,maxTouchPoints){
 }
 
 const target=getStoreTarget(navigator.userAgent,navigator.platform,navigator.maxTouchPoints||0);
-if(target){
+if(target && !isSearchCrawler(navigator.userAgent)){
   document.getElementById('status').textContent='Opening the right store for your device…';
   window.setTimeout(()=>location.replace(target),120);
 }

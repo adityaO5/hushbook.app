@@ -6,7 +6,7 @@
 <title>Ladda ner HushBook</title>
 <meta name="description" content="Ladda ner HushBook för iPhone eller Android.">
 <meta name="theme-color" content="#0B0A09">
-<link rel="canonical" href="https://hushbook.app/download">
+<link rel="canonical" href="https://hushbook.app/sv/download">
 <link rel="icon" href="/assets/img/default_preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,9 +30,47 @@ noscript p{color:var(--muted);margin:24px 0 0}
 @media(max-width:540px){main{padding:38px 22px}.store{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.store{transition:none}}
 </style>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta property="og:url" content="https://hushbook.app/sv/download">
 <link rel="alternate" hreflang="en" href="https://hushbook.app/download">
 <link rel="alternate" hreflang="de" href="https://hushbook.app/de/download">
+<link rel="alternate" hreflang="fr" href="https://hushbook.app/fr/download">
+<link rel="alternate" hreflang="es-ES" href="https://hushbook.app/es-ES/download">
+<link rel="alternate" hreflang="es-419" href="https://hushbook.app/es-419/download">
+<link rel="alternate" hreflang="pt-BR" href="https://hushbook.app/pt-BR/download">
+<link rel="alternate" hreflang="pt-PT" href="https://hushbook.app/pt-PT/download">
+<link rel="alternate" hreflang="it" href="https://hushbook.app/it/download">
+<link rel="alternate" hreflang="ja" href="https://hushbook.app/ja/download">
+<link rel="alternate" hreflang="ko" href="https://hushbook.app/ko/download">
+<link rel="alternate" hreflang="nl" href="https://hushbook.app/nl/download">
+<link rel="alternate" hreflang="pl" href="https://hushbook.app/pl/download">
+<link rel="alternate" hreflang="tr" href="https://hushbook.app/tr/download">
+<link rel="alternate" hreflang="ru" href="https://hushbook.app/ru/download">
+<link rel="alternate" hreflang="uk" href="https://hushbook.app/uk/download">
+<link rel="alternate" hreflang="ar" href="https://hushbook.app/ar/download">
+<link rel="alternate" hreflang="id" href="https://hushbook.app/id/download">
+<link rel="alternate" hreflang="th" href="https://hushbook.app/th/download">
+<link rel="alternate" hreflang="vi" href="https://hushbook.app/vi/download">
+<link rel="alternate" hreflang="sv" href="https://hushbook.app/sv/download">
+<link rel="alternate" hreflang="da" href="https://hushbook.app/da/download">
 <link rel="alternate" hreflang="x-default" href="https://hushbook.app/download">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HushBook",
+  "url": "https://hushbook.app/sv/download",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audiobook Player",
+  "operatingSystem": "iOS, Android",
+  "description": "Ladda ner HushBook för iPhone eller Android.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597",
+    "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
+  ]
+}
+</script>
 </head>
 <body>
 <main>
@@ -50,11 +88,15 @@ noscript p{color:var(--muted);margin:24px 0 0}
     </a>
   </div>
   <noscript><p>Automatiskt butiksval behöver JavaScript. Välj en butik ovan.</p></noscript>
-  <a class="back" href="/">Tillbaka till Hushbook</a>
+  <a class="back" href="/sv">Tillbaka till Hushbook</a>
 </main>
 <script>
 const APP_STORE_URL='https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597';
 const PLAY_STORE_URL='https://play.google.com/store/apps/details?id=com.hushbook.hushbook';
+
+function isSearchCrawler(userAgent){
+  return /Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot/i.test(userAgent);
+}
 
 function getStoreTarget(userAgent,platform,maxTouchPoints){
   if(/android/i.test(userAgent))return PLAY_STORE_URL;
@@ -65,7 +107,7 @@ function getStoreTarget(userAgent,platform,maxTouchPoints){
 }
 
 const target=getStoreTarget(navigator.userAgent,navigator.platform,navigator.maxTouchPoints||0);
-if(target){
+if(target && !isSearchCrawler(navigator.userAgent)){
   document.getElementById('status').textContent='Opening the right store for your device…';
   window.setTimeout(()=>location.replace(target),120);
 }
