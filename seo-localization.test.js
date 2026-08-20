@@ -159,15 +159,15 @@ assert.deepEqual(localeConfig.legacyRedirects, LEGACY_REDIRECTS, 'legacy locale 
 
 for (const locale of PUBLISHED) {
   const downloadHtml = readHtml(locale, 'download');
-  assert.match(
+  assert.doesNotMatch(
     downloadHtml,
-    /function isSearchCrawler/,
-    `${locale}/download must detect crawlers before auto-opening a store`,
+    /location\.replace\(target\)|isSearchCrawler|getStoreTarget/,
+    `${locale}/download must remain a stable landing page for every visitor`,
   );
-  assert.match(
+  assert.doesNotMatch(
     downloadHtml,
-    /if\(target && !isSearchCrawler\(navigator\.userAgent\)\)/,
-    `${locale}/download must not JS-redirect Googlebot to the app stores`,
+    /<noscript>|class="status"\s+id="status"/,
+    `${locale}/download must not claim an automatic store redirect`,
   );
   assert.match(
     downloadHtml,
@@ -187,6 +187,17 @@ assert.ok(
     ),
   'geo/cookie locale redirects must skip search crawlers',
 );
+for (const [source, destination] of [['/', '/nl'], ['/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)', '/nl/:path*']]) {
+  assert.ok(
+    vercel.redirects.some((rule) =>
+      rule.source === source &&
+      rule.destination === destination &&
+      rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' && String(condition.value).split('|').includes('NL')) &&
+      rule.missing?.some((condition) => condition.type === 'cookie' && condition.key === 'hushbook_locale'),
+    ),
+    `Netherlands traffic without a locale cookie must redirect from ${source} to ${destination}`,
+  );
+}
 for (const [from, to] of Object.entries(LEGACY_REDIRECTS)) {
   for (const [source, destination] of [[`/${from}`, `/${to}`], [`/${from}/:path*`, `/${to}/:path*`]]) {
     assert.ok(
