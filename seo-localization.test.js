@@ -122,6 +122,27 @@ for (const locale of PUBLISHED) {
     }
 
     if (page === 'index') {
+      const softwareSchemas = [...html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)]
+        .map((match) => {
+          try {
+            return JSON.parse(match[1]);
+          } catch {
+            return null;
+          }
+        })
+        .filter((json) => json?.['@type'] === 'SoftwareApplication');
+      assert.equal(softwareSchemas.length, 1, `${locale}/index must expose one SoftwareApplication JSON-LD block`);
+
+      const faqSchemas = [...html.matchAll(/<script\s+type="application\/ld\+json"\s+data-hushbook-faq>([\s\S]*?)<\/script>/gi)]
+        .map((match) => JSON.parse(match[1]));
+      assert.equal(faqSchemas.length, 1, `${locale}/index must expose one FAQPage JSON-LD block`);
+      assert.equal(faqSchemas[0]['@type'], 'FAQPage', `${locale}/index FAQ JSON-LD must be FAQPage`);
+
+      if (locale === localeConfig.defaultLocale) {
+        assert.match(html, /id="about-hushbook"/, 'English homepage must include long-form SEO copy');
+        assert.match(html, /Can I read and listen to an audiobook at the same time\?/, 'English homepage must include expanded FAQ copy');
+      }
+
       for (const script of html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
         let json;
         try {

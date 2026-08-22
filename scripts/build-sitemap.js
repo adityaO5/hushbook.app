@@ -7,13 +7,17 @@
  */
 const fs = require('node:fs');
 const path = require('node:path');
-const localeConfig = require('../localization.config');
+const {
+  DEFAULT_LOCALE,
+  PUBLIC_PAGES,
+  PUBLISHED_LOCALES,
+  pageFile,
+  pageUrl,
+} = require('./seo-localization');
 
 const root = path.join(__dirname, '..');
-const BASE = 'https://hushbook.app';
-const DEFAULT_LOCALE = localeConfig.defaultLocale || 'en';
-const LOCALES = localeConfig.publishedLocales || [DEFAULT_LOCALE];
-const PAGES = (localeConfig.publicPages || []).map((page) => page.replace(/\.html$/, ''));
+const LOCALES = PUBLISHED_LOCALES;
+const PAGES = PUBLIC_PAGES;
 
 const PAGE_META = {
   index: { priority: '1.0', changefreq: 'weekly' },
@@ -32,22 +36,6 @@ function escapeXml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
-}
-
-/** Clean URL for a locale + page (matches vercel cleanUrls / trailingSlash:false). */
-function pageUrl(locale, page) {
-  const isIndex = page === 'index';
-  if (locale === DEFAULT_LOCALE) {
-    return isIndex ? `${BASE}/` : `${BASE}/${page}`;
-  }
-  return isIndex ? `${BASE}/${locale}` : `${BASE}/${locale}/${page}`;
-}
-
-function pageFile(locale, page) {
-  const file = page === 'index' ? 'index.html' : `${page}.html`;
-  return locale === DEFAULT_LOCALE
-    ? path.join(root, file)
-    : path.join(root, locale, file);
 }
 
 function lastmodFor(locale, page) {

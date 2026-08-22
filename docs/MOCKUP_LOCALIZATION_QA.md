@@ -93,12 +93,13 @@ translated.
 Mockup QA passed: 20 locales × 36 assets; 7 pages checked per locale.
 ```
 
-`python scripts/verify-mockup-ai.py` checks the complete 684-job matrix. The
-release allowlist in `data/mockup-ai-release.json` currently keeps only `fr`
-on localized screenshot references; all 19 pending locales use immutable
-English masters until approval. Set `MOCKUP_ASSET_MODE=masters` for immediate
-rollback without deleting generated assets.
+`python scripts/verify-mockup-ai.py --publish` checks the complete 684-job
+matrix and currently passes. The release allowlist in
+`data/mockup-ai-release.json` includes all 20 non-English locales, and the
+localized public pages reference their WebP variants. Set
+`MOCKUP_ASSET_MODE=masters` for immediate rollback without deleting generated
+assets.
 
-Run native-language visual review before enabling production routing or
-indexing. German is the acceptance locale; also review Arabic, Japanese,
-Korean, Thai, Polish, and both Spanish/Portuguese variants at native size.
+The final pass included exact-dimension checks for all 720 outputs and
+representative visual checks across French, Danish, Arabic, and Japanese.
+Additional native-language review remains a useful follow-up for copy polish.

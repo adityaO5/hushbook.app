@@ -6,6 +6,9 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { REGIONAL_BOOKS } = require('./seo-regional-books');
+const { FAQ_ADDITIONS } = require('./faq-locale');
+const { normalizeCanonicalUrl } = require('./seo-localization');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -29,7 +32,7 @@ const PLAY = 'https://play.google.com/store/apps/details?id=com.hushbook.hushboo
 const OG_IMG = 'https://hushbook.app/assets/img/og-hushbook.webp';
 
 function metaBlock(cfg) {
-  const url = cfg.canonical;
+  const url = normalizeCanonicalUrl(cfg.canonical);
   return `<title>${cfg.title}</title>
 <meta name="description" content="${cfg.description}">
 <meta name="keywords" content="${cfg.keywords}">
@@ -577,6 +580,36 @@ pack(
 const remaining = require('./seo-locale-remaining.js');
 Object.assign(LOCALES, remaining.LOCALES);
 
+const PROJECT_PHRASE_RE = /Project[\s-]+Hail[\s-]+Mary/gi;
+const PROJECT_STRONG_RE = /<strong>[^<]*Project[\s-]+Hail[\s-]+Mary[^<]*<\/strong>/i;
+const PROJECT_KEYWORD_RE = /project[\s-]+hail[\s-]+mary[\s-]+audiobook/gi;
+
+function regionalizeSection(section, locale) {
+  const book = REGIONAL_BOOKS[locale] || REGIONAL_BOOKS.en;
+  const next = { ...section };
+  next.h3d = next.h3d.replace(PROJECT_PHRASE_RE, book.title);
+  next.p5 = next.p5.replace(PROJECT_STRONG_RE, `<strong>${book.strongTitle}</strong>`);
+  next.p5 = next.p5.replace(PROJECT_PHRASE_RE, book.title);
+  return next;
+}
+
+function regionalizeConfig(cfg, locale) {
+  const book = REGIONAL_BOOKS[locale] || REGIONAL_BOOKS.en;
+  return {
+    ...cfg,
+    meta: {
+      ...cfg.meta,
+      keywords: cfg.meta.keywords.replace(PROJECT_KEYWORD_RE, book.keyword),
+    },
+    section: regionalizeSection(cfg.section, locale),
+  };
+}
+
+function regionalizeBookMentions(html, locale) {
+  const book = REGIONAL_BOOKS[locale] || REGIONAL_BOOKS.en;
+  return html.replace(PROJECT_PHRASE_RE, book.title);
+}
+
 function stripExistingSeoSection(html) {
   return html.replace(
     /\n?<!-- ============ SEO COPY ============ -->[\s\S]*?(?=<!-- ============ FAQ ============ -->)/,
@@ -600,10 +633,11 @@ function replaceMeta(html, cfg) {
     iconHref: cfg.iconHref,
   });
 
-  // Remove existing JSON-LD SoftwareApplication block if we re-run
+  // Remove every unmarked SoftwareApplication block before inserting one.
+  // Global replacement keeps this idempotent after a partially completed run.
   let out = html.replace(
-    /\n?<script type="application\/ld\+json">[\s\S]*?<\/script>(?=\n<link rel="preconnect"|\n<link rel="icon"|\n<style)/,
-    ''
+    /\n?<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+    (full, body) => /"@type"\s*:\s*"SoftwareApplication"/.test(body) ? '' : full,
   );
 
   // Replace from <title> through first <link rel="icon"...> (inclusive of that link)
@@ -624,38 +658,111 @@ function insertSection(html, section) {
   return cleaned.replace(marker, `${sectionHtml(section)}${marker}`);
 }
 
+function faqItemsHtml(locale) {
+  const items = FAQ_ADDITIONS[locale] || FAQ_ADDITIONS.en;
+  return [
+    '      <!-- ============ FAQ ADDITIONS ============ -->',
+    ...items.flatMap(({ q, a }) => [
+      `      <div class="qa"><button type="button" aria-expanded="false">${q}</button><div class="a"><p>${a}</p></div></div>`,
+    ]),
+  ].join('\n');
+}
+
+function insertFaqAdditions(html, locale) {
+  const faqMarker = '<!-- ============ FAQ ============ -->';
+  const finaleMarker = '<!-- ============ FINALE ============ -->';
+  const faqStart = html.indexOf(faqMarker);
+  const finaleStart = html.indexOf(finaleMarker, faqStart);
+  if (faqStart < 0 || finaleStart < 0) {
+    throw new Error('FAQ/finale markers missing');
+  }
+
+  let faqBlock = html.slice(faqStart, finaleStart).replace(
+    /\n?\s*<!-- ============ FAQ ADDITIONS ============ -->[\s\S]*?(?=\n\s*<\/div>\s*\n\s*<\/div>\s*\n<\/section>)/,
+    '\n'
+  );
+  const closing = /\n\s*<\/div>\s*\n\s*<\/div>\s*\n<\/section>\s*$/;
+  const match = closing.exec(faqBlock);
+  if (!match) {
+    throw new Error('Could not find FAQ container closing tags');
+  }
+
+  const insertAt = match.index;
+  faqBlock = `${faqBlock.slice(0, insertAt)}\n${faqItemsHtml(locale)}${faqBlock.slice(insertAt)}`;
+  return `${html.slice(0, faqStart)}${faqBlock}${html.slice(finaleStart)}`;
+}
+
+function decodeHtml(value) {
+  return value
+    .replace(/<[^>]*>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .trim();
+}
+
+function ensureFaqSchema(html) {
+  const items = [];
+  const qaRe = /<div class="qa">\s*<button[^>]*>([\s\S]*?)<\/button>\s*<div class="a">\s*<p>([\s\S]*?)<\/p>/g;
+  let match;
+  while ((match = qaRe.exec(html))) {
+    items.push({
+      '@type': 'Question',
+      name: decodeHtml(match[1]),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: decodeHtml(match[2]),
+      },
+    });
+  }
+  if (!items.length) throw new Error('No FAQ items found for schema');
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items,
+  };
+  const block = `<script type="application/ld+json" data-hushbook-faq>\n${JSON.stringify(schema, null, 2)}\n</script>`;
+  const withoutExisting = html.replace(
+    /\n?<script type="application\/ld\+json" data-hushbook-faq>[\s\S]*?<\/script>/,
+    ''
+  );
+  return withoutExisting.replace('</head>', `${block}\n</head>`);
+}
+
 function processFile(filePath, cfg, label) {
   let html = fs.readFileSync(filePath, 'utf8');
+  const localizedCfg = regionalizeConfig(cfg, label);
   html = ensureCss(html);
-  html = replaceMeta(html, cfg);
-  html = insertSection(html, cfg.section);
+  html = replaceMeta(html, localizedCfg);
+  html = insertSection(html, localizedCfg.section);
+  html = insertFaqAdditions(html, label);
+  html = regionalizeBookMentions(html, label);
+  html = ensureFaqSchema(html);
   fs.writeFileSync(filePath, html, 'utf8');
   console.log('OK', label);
 }
 
 function main() {
-  // Root EN already hand-edited; still re-apply CSS safety + ensure section exists
+  // The root and locale pages share the same generation path so content cannot
+  // silently disappear when a localization merge replaces index.html.
   const enRoot = path.join(ROOT, 'index.html');
   let en = fs.readFileSync(enRoot, 'utf8');
-  en = ensureCss(en);
-  if (!en.includes('id="about-hushbook"')) {
-    en = insertSection(en, EN_SECTION);
-  }
-  // ensure meta still good — re-apply EN meta
-  en = replaceMeta(en, {
+  const enCfg = regionalizeConfig({
     canonical: 'https://hushbook.app/',
     iconHref: 'assets/img/default_preview.png',
     meta: EN_META,
     section: EN_SECTION,
-  });
-  // section already present — if stripped by replaceMeta? no. ensure once
-  if (!en.includes('id="about-hushbook"')) {
-    en = insertSection(en, EN_SECTION);
-  } else {
-    // refresh section content
-    en = stripExistingSeoSection(en);
-    en = insertSection(en, EN_SECTION);
-  }
+  }, 'en');
+  en = ensureCss(en);
+  en = replaceMeta(en, enCfg);
+  en = insertSection(en, enCfg.section);
+  en = insertFaqAdditions(en, 'en');
+  en = regionalizeBookMentions(en, 'en');
+  en = ensureFaqSchema(en);
   fs.writeFileSync(enRoot, en, 'utf8');
   console.log('OK en (root)');
 

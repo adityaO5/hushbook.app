@@ -3,21 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HushBook - Läs tillsammans med varje ord du hör</title>
-<meta name="description" content="HushBook förvandlar alla ljudböcker till karaoke på ordnivå, transkriberade privat på din telefon med HushBook Engine. Sekretess och tillgänglighet först. Gratis på iOS och Android.">
+<title>Gratis ljudboksapp med synkad text | HushBook</title>
+<meta name="description" content="Gratis ljudboksapp med synkad text — ord-för-ord-läsning på iPhone &amp; Android. Importera vilken bok som helst, privat transkribering på enheten.">
+<meta name="keywords" content="gratis ljudboksapp, ljudbok med text, bästa ljudboksappar, free audiobook app with synced texts, audiobook apps for iphone, audiobook apps for android, gråterskan ljudbok">
 <meta name="theme-color" content="#0B0A09">
-<meta property="og:type" content="Webbplats">
-<meta property="og:site_name" content="Hushbook">
-<meta property="og:title" content="HushBook - Överskrida någon ljudbok">
-<meta property="og:description" content="Alla ljudbok, förvandlas till ord-nivå karaoke - transkriberas privat på din telefon. Gratis på iOS &amp; Android.">
-<meta property="og:url" content="https://hushbook.app/">
-<meta property="og:image" content="https://hushbook.app/assets/img/default_preview.png">
-<meta name="twitter:card" content="Sammanfattning large image">
-<meta name="twitter:title" content="HushBook - Överskrida någon ljudbok">
-<meta name="twitter:description" content="Alla ljudbok, förvandlas till ord-nivå karaoke - transkriberas privat på din telefon. Gratis på iOS &amp; Android.">
-<meta name="twitter:image" content="https://hushbook.app/assets/img/default_preview.png">
-<link rel="canonical" href="https://hushbook.app/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="HushBook">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HushBook">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:title" content="Gratis ljudboksapp med synkad text | HushBook">
+<meta property="og:description" content="Ordnivå-följeläsning för vilken ljudbok som helst — gratis på iPhone &amp; Android. Synkad text, transkribering på enheten, inget konto.">
+<meta property="og:url" content="https://hushbook.app/sv">
+<meta property="og:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta property="og:image:alt" content="HushBook — gratis ljudboksapp med synkad text">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="945">
+<meta property="og:image:type" content="image/webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gratis ljudboksapp med synkad text | HushBook">
+<meta name="twitter:description" content="Ordnivå-följeläsning för vilken ljudbok som helst — gratis på iPhone &amp; Android. Synkad text, transkribering på enheten, inget konto.">
+<meta name="twitter:image" content="https://hushbook.app/assets/img/og-hushbook.webp">
+<meta name="twitter:image:alt" content="HushBook — gratis ljudboksapp med synkad text">
+<link rel="canonical" href="https://hushbook.app/sv">
 <link rel="icon" href="/assets/img/default_preview.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HushBook",
+  "url": "https://hushbook.app/sv",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audiobook Player",
+  "operatingSystem": "iOS, Android",
+  "description": "Gratis ljudboksapp med synkad text. Förvandlar vilken ljudbok som helst till ordnivå-karaoke, privat transkriberad på telefonen.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Synkad text på ordnivå",
+    "Privat transkribering på enheten",
+    "Fungerar offline efter motor-nedladdning",
+    "Gratis public domain-bibliotek",
+    "Importera MP3, M4B med mera",
+    "Tillgängliga läsprofiler"
+  ],
+  "downloadUrl": [
+    "https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597",
+    "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -315,6 +353,19 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
 
+/* seo long-form */
+.seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
+.seo-copy .sec-head{margin-bottom:40px}
+.seo-copy .prose{max-width:720px;margin:0 auto}
+.seo-copy .prose p{color:var(--muted);font-size:16.5px;line-height:1.72;margin-bottom:1.15em}
+.seo-copy .prose p:last-child{margin-bottom:0}
+.seo-copy .prose h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:2.1em 0 .75em}
+.seo-copy .prose h3:first-of-type{margin-top:0}
+.seo-copy .prose strong{color:var(--ink);font-weight:600}
+.seo-copy .prose a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.seo-copy .prose a:hover{color:var(--gold)}
+.seo-copy .prose .seo-cta{margin-top:2em;padding-top:1.4em;border-top:1px solid var(--line-soft);color:var(--ink)}
+
 /* faq */
 .faq{max-width:780px;margin:0 auto}
 .qa{border-bottom:1px solid var(--line-soft)}
@@ -395,10 +446,149 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   .lang-core .l{font-size:11px}
 }
 @media (prefers-reduced-motion:reduce){.lp img{transition:none}}
-</style>
-<link rel="alternate" hreflang="en" href="https://hushbook.app">
+</style>
+<link rel="alternate" hreflang="en" href="https://hushbook.app/">
 <link rel="alternate" hreflang="de" href="https://hushbook.app/de">
-<link rel="alternate" hreflang="x-default" href="https://hushbook.app">
+<link rel="alternate" hreflang="fr" href="https://hushbook.app/fr">
+<link rel="alternate" hreflang="es-ES" href="https://hushbook.app/es-ES">
+<link rel="alternate" hreflang="es-419" href="https://hushbook.app/es-419">
+<link rel="alternate" hreflang="pt-BR" href="https://hushbook.app/pt-BR">
+<link rel="alternate" hreflang="pt-PT" href="https://hushbook.app/pt-PT">
+<link rel="alternate" hreflang="it" href="https://hushbook.app/it">
+<link rel="alternate" hreflang="ja" href="https://hushbook.app/ja">
+<link rel="alternate" hreflang="ko" href="https://hushbook.app/ko">
+<link rel="alternate" hreflang="nl" href="https://hushbook.app/nl">
+<link rel="alternate" hreflang="pl" href="https://hushbook.app/pl">
+<link rel="alternate" hreflang="tr" href="https://hushbook.app/tr">
+<link rel="alternate" hreflang="ru" href="https://hushbook.app/ru">
+<link rel="alternate" hreflang="uk" href="https://hushbook.app/uk">
+<link rel="alternate" hreflang="ar" href="https://hushbook.app/ar">
+<link rel="alternate" hreflang="id" href="https://hushbook.app/id">
+<link rel="alternate" hreflang="th" href="https://hushbook.app/th">
+<link rel="alternate" hreflang="vi" href="https://hushbook.app/vi">
+<link rel="alternate" hreflang="sv" href="https://hushbook.app/sv">
+<link rel="alternate" hreflang="da" href="https://hushbook.app/da">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
+<script type="application/ld+json" data-hushbook-faq>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Lämnar mitt ljud någonsin min telefon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. Nej. Transkription körs helt på din enhet - det finns ingen uppladdning, inget konto och ingen server. Efter en engångsmotor nedladdning fungerar hela appen offline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Var kommer synkroniserade texter från?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HushBook genererar dem från ditt ljud med on-device HushBook Engine - det finns ingen textdatabas. Det första passet på en lång bok tar ett tag; efter det är det omedelbar varje gång du öppnar den."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vilka filer kan jag importera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA och ALAC - en fil per import. Kapitlen i M4B-filer upptäcks automatiskt, tillsammans med omslagskonst och metadata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hur mycket kostar det?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kärnlång erfarenhet och det offentliga biblioteket är gratis. Det finns en valfri Pro-uppgradering för avancerad analys - Pro hjälper till att hålla HushBook oberoende och förbättra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kommer det att tömma mitt batteri eller värma upp min telefon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Motorn är termisk medveten: den kapar sina arbetartrådar och vilar mellan bitar för att hålla telefonen sval, och den återupptar automatiskt om en lång transkription avbryts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vem är Hushbook för?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Den som läser med sina öron - och särskilt läsare med dyslexi, ADHD eller låg syn, språklärare och alla som fokuserar bättre när de kan se orden de hör."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jag läsa i mörkret?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja - nattläge byter den suddiga omslag bakgrund för en solid mörk duk, och Vision-profilen lägger till högkontrast teman som vit-på-svart och amber-on-svart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jag läsa och lyssna på en ljudbok samtidigt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. HushBook markerar varje talat ord i synk, så att du kan läsa och lyssna utan att tappa bort dig."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Har ljudböcker undertexter eller captions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De flesta spelare har inte det. HushBook skapar synkad text från ljudet på telefonen, utan separat transkription eller e-bok."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Behöver jag en Kindle eller e-bok för att läsa med?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. Du behöver varken Kindle, e-bok eller ett andra köp. Importera ljud du äger så skapar HushBook synkad text på enheten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hur skiljer sig HushBook från Audible Whispersync eller Immersion Reading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whispersync och Immersion Reading kräver vanligtvis Audible och en matchande Kindle-bok. HushBook fungerar med dina egna ljudfiler, skapar text privat på telefonen och kräver inget Amazon-konto eller molnuppladdning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hjälper det fokus och förståelse att läsa och lyssna samtidigt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Många lyssnare upplever att det hjälper att se och höra samma ord för att hålla fokus och minnas ett kapitel bättre än med bara ljud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Är HushBook bra för dyslexi eller ADHD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Ord-för-ord-markering och läsprofiler stödjer dyslexi, ADHD, nedsatt syn, språkinlärning och alla som fokuserar bättre när de ser orden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fungerar HushBook offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Efter den engångsnedladdning av HushBook Engine fungerar uppspelning, följläsning och transkribering på enheten utan internet."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -457,11 +647,11 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <p class="hero-note reveal">Gratis att ladda ner, Zero Ads.</p>
   </div>
   <div class="fan reveal" aria-hidden="true">
-    <img class="f1" src="/assets/img/mockups/brain-health.webp" alt="" loading="eager">
-    <img class="f2" src="/assets/img/mockups/home.webp" alt="" loading="eager">
-    <img class="f3" src="/assets/img/mockups/karaoke-live.webp" alt="HushBook transkriberar meditationer till levande ord-nivå karaoke" loading="eager">
-    <img class="f4" src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="eager">
-    <img class="f5" src="/assets/img/mockups/library.webp" alt="" loading="eager">
+    <img class="f1" src="/assets/img/mockups/locales/sv/brain-health.webp" alt="" loading="eager">
+    <img class="f2" src="/assets/img/mockups/locales/sv/home.webp" alt="" loading="eager">
+    <img class="f3" src="/assets/img/mockups/locales/sv/karaoke-live.webp" alt="HushBook transkriberar meditationer till levande ord-nivå karaoke" loading="eager">
+    <img class="f4" src="/assets/img/mockups/locales/sv/player-hitchhikers.webp" alt="" loading="eager">
+    <img class="f5" src="/assets/img/mockups/locales/sv/library.webp" alt="" loading="eager">
   </div>
 </section>
 
@@ -629,25 +819,25 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <span class="num">01</span>
         <h3>Välj en bok</h3>
         <p>Bläddra i gratis klassiker eller importera din egen MP3, M4B, FLAC, OGG och många fler.</p>
-        <img src="/assets/img/mockups/library.webp" alt="HushBook-bibliotek med importerade och publika huvudsakliga ljudböcker" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/library.webp" alt="HushBook-bibliotek med importerade och publika huvudsakliga ljudböcker" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">02</span>
         <h3>Tryck på ”Transkribera”</h3>
         <p>En kran per kapitel. Kapitlen i M4B-filer upptäcks automatiskt.</p>
-        <img src="/assets/img/mockups/book-info-transcribe.webp" alt="Bokinfoskärm med transkriberingsknappar för varje kapitel" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/book-info-transcribe.webp" alt="Bokinfoskärm med transkriberingsknappar för varje kapitel" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">03</span>
         <h3>Motorn fungerar</h3>
         <p>HushBook Engine transkriberar varje talat ord i synkroniserad text som rör sig med berättelsen.</p>
-        <img src="/assets/img/mockups/transcribing-chapters.webp" alt="Kapitel ett som transkriberar med en progress bar" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/transcribing-chapters.webp" alt="Kapitel ett som transkriberar med en progress bar" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">04</span>
         <h3>Läs vidare</h3>
         <p>Varje ord lyser upp med berättaren. Tryck på något ord för att hoppa där.</p>
-        <img src="/assets/img/mockups/read-along-monte-cristo.png" alt="Läsa tillsammans med Greven av Monte Cristo - varje ord som framhävs i synkronisering med berättelsen" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/read-along-monte-cristo.webp" alt="Läsa tillsammans med Greven av Monte Cristo - varje ord som framhävs i synkronisering med berättelsen" loading="lazy">
       </figure>
     </div>
   </div>
@@ -687,19 +877,19 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="gallery">
       <figure class="gcard reveal">
         <span class="num">01</span>
-        <img src="/assets/img/mockups/quote-select.webp" alt="Välja ett citat i HushBook - knacka på det första och sista ordet i läs-lång text" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/quote-select.webp" alt="Välja ett citat i HushBook - knacka på det första och sista ordet i läs-lång text" loading="lazy">
         <h3>Fånga den i två kranar</h3>
         <p>Tryck på det första ordet, tryck på det sista. Linjen du just hört är sparad - utan att lämna läsaren.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">02</span>
-        <img src="/assets/img/mockups/quotes-collection.webp" alt="Alla sparade citat i HushBook, som samlats in av boken" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/quotes-collection.webp" alt="Alla sparade citat i HushBook, som samlats in av boken" loading="lazy">
         <h3>Varje linje, på ett ställe</h3>
         <p>Dina citat samlas i bok, lagras på din telefon. Återkomma, redigera eller skicka någon vidare.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">03</span>
-        <img src="/assets/img/mockups/quote-card-share.webp" alt="Ett färdigt HushBook-kort redo att dela - linjen, författaren och boken" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/quote-card-share.webp" alt="Ett färdigt HushBook-kort redo att dela - linjen, författaren och boken" loading="lazy">
         <h3>Ett kort värt att publicera</h3>
         <p>Varje citat blir ett färdigt kort - orden, boken, författaren. Redo att dela.</p>
       </figure>
@@ -708,30 +898,30 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
     <div class="marquee-track" id="marquee-fallback">
       <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
-      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-martian.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-lotr.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-love-hypothesis.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-crime-punishment.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/sv/player-hitchhikers.webp" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -764,27 +954,27 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="lang-phones">
         <figure class="lp">
           <div class="ph">
-            <img class="front" src="/assets/img/mockups/lang-es-poetry-player.webp" alt="HushBook läser vidare till en spansk poesisamling" loading="lazy">
+            <img class="front" src="/assets/img/mockups/locales/sv/lang-es-poetry-player.webp" alt="HushBook läser vidare till en spansk poesisamling" loading="lazy">
           </div>
           <figcaption><b>Español</b> Spanska poesi</figcaption>
         </figure>
         <figure class="lp">
           <div class="ph">
-            <img class="back" src="/assets/img/mockups/lang-es-lobo-read.webp" alt="" loading="lazy">
-            <img class="front" src="/assets/img/mockups/lang-es-lobo-player.webp" alt="HushBook läser vidare till Los Motivos del Lobo av Rubén Darío på spanska" loading="lazy">
+            <img class="back" src="/assets/img/mockups/locales/sv/lang-es-lobo-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/locales/sv/lang-es-lobo-player.webp" alt="HushBook läser vidare till Los Motivos del Lobo av Rubén Darío på spanska" loading="lazy">
           </div>
           <figcaption><b>Español</b> Rubén Darío</figcaption>
         </figure>
         <figure class="lp">
           <div class="ph">
-            <img class="back" src="/assets/img/mockups/lang-it-read.webp" alt="" loading="lazy">
-            <img class="front" src="/assets/img/mockups/lang-it-player.webp" alt="HushBook läser tillsammans med en italiensk poesibok" loading="lazy">
+            <img class="back" src="/assets/img/mockups/locales/sv/lang-it-read.webp" alt="" loading="lazy">
+            <img class="front" src="/assets/img/mockups/locales/sv/lang-it-player.webp" alt="HushBook läser tillsammans med en italiensk poesibok" loading="lazy">
           </div>
           <figcaption><b>Italienska</b> På grund av esempi di poesia</figcaption>
         </figure>
         <figure class="lp">
           <div class="ph">
-            <img class="front" src="/assets/img/mockups/lang-fr-player.webp" alt="HushBook läser vidare till Épigramme av François Maynard på franska" loading="lazy">
+            <img class="front" src="/assets/img/mockups/locales/sv/lang-fr-player.webp" alt="HushBook läser vidare till Épigramme av François Maynard på franska" loading="lazy">
           </div>
           <figcaption><b>Français</b> François Maynard</figcaption>
         </figure>
@@ -804,7 +994,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split">
       <div class="split-media reveal">
-        <img src="/assets/img/mockups/reading-profiles.webp" alt="Välj din läsprofil: Förståelse, Dyslexi/ADHD eller Vision" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/reading-profiles.webp" alt="Välj din läsprofil: Förståelse, Dyslexi/ADHD eller Vision" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Läsa profiler</span>
@@ -837,8 +1027,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/home.webp" alt="HushBook hem med utvalda böcker och ditt bibliotek" loading="lazy">
-        <img src="/assets/img/mockups/library.webp" alt="Mitt samlingsbibliotek med en knapp för att ladda upp ljudbok" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/home.webp" alt="HushBook hem med utvalda böcker och ditt bibliotek" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/library.webp" alt="Mitt samlingsbibliotek med en knapp för att ladda upp ljudbok" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Ditt bibliotek</span>
@@ -861,8 +1051,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <p class="sub" style="margin-top:14px">Ord räknas från själva utskriften - riktiga ord du verkligen hörde. Varje kort kan delas som en polerad bild.</p>
       </div>
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/brain-health.webp" alt="Brain Hälsopoäng med de faktorer som driver den" loading="lazy">
-        <img src="/assets/img/mockups/goals-graphs.webp" alt="Words trend och totala böcker läs i år" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/brain-health.webp" alt="Brain Hälsopoäng med de faktorer som driver den" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/goals-graphs.webp" alt="Words trend och totala böcker läs i år" loading="lazy">
       </div>
     </div>
 
@@ -874,16 +1064,16 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 
     <div class="collage">
       <div class="cstack cstack--l reveal">
-        <figure class="ccard dark"><span class="tag tag-tl">Vanliga insikter</span><img src="/assets/img/mockups/card-habit-insights.webp" alt="Vanliga insikter: Vanlig lyssnande timme, längsta session, mest aktiv dag" loading="lazy"></figure>
-        <figure class="ccard"><span class="tag tag-bl">Genreradar</span><img src="/assets/img/mockups/card-genre-radar.webp" alt="Radardiagram över de mest lästa genrerna" loading="lazy"></figure>
+        <figure class="ccard dark"><span class="tag tag-tl">Vanliga insikter</span><img src="/assets/img/mockups/locales/sv/card-habit-insights.webp" alt="Vanliga insikter: Vanlig lyssnande timme, längsta session, mest aktiv dag" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">Genreradar</span><img src="/assets/img/mockups/locales/sv/card-genre-radar.webp" alt="Radardiagram över de mest lästa genrerna" loading="lazy"></figure>
       </div>
       <div class="collage-phone reveal">
         <span class="tag tag-c" style="top:-52px">Din dagliga rytm</span>
-        <img src="/assets/img/mockups/advanced-analytics.webp" alt="Avancerad analys: Börja och sluta lyssna per dag, och dina toppkategorier" loading="lazy">
+        <img src="/assets/img/mockups/locales/sv/advanced-analytics.webp" alt="Avancerad analys: Börja och sluta lyssna per dag, och dina toppkategorier" loading="lazy">
       </div>
       <div class="cstack cstack--r reveal">
-        <figure class="ccard"><span class="tag tag-tr">Ord per bok</span><img src="/assets/img/mockups/card-words-per-book.webp" alt="Ord per bok bar diagram" loading="lazy"></figure>
-        <figure class="ccard"><span class="tag tag-br">ärliga mål</span><img src="/assets/img/mockups/card-goals-sheet.webp" alt="Målsättningsblad för böcker och ord" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-tr">Ord per bok</span><img src="/assets/img/mockups/locales/sv/card-words-per-book.webp" alt="Ord per bok bar diagram" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">ärliga mål</span><img src="/assets/img/mockups/locales/sv/card-goals-sheet.webp" alt="Målsättningsblad för böcker och ord" loading="lazy"></figure>
       </div>
     </div>
     <p class="collage-cap reveal">Vanliga insikter · genreradar · ord per bok · ärliga mål — varje kort kan delas som en polerad bild.</p>
@@ -905,8 +1095,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media layer reveal">
-        <img class="back" src="/assets/img/mockups/character-slide.webp?v=2" alt="Karaktär detaljblad - roll, först sett, attribut och relationer" loading="lazy">
-        <img class="front" src="/assets/img/mockups/character-graph.webp" alt="Karaktärsrelation graf med dragbara noder" loading="lazy">
+        <img class="back" src="/assets/img/mockups/locales/sv/character-slide.webp?v=2" alt="Karaktär detaljblad - roll, först sett, attribut och relationer" loading="lazy">
+        <img class="front" src="/assets/img/mockups/locales/sv/character-graph.webp" alt="Karaktärsrelation graf med dragbara noder" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Läsa följeslagare</span>
@@ -932,7 +1122,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <figcaption class="lcap"><h3>Din soffa.<br><i>Ditt nästa kapitel.</i></h3><p>Plocka upp exakt där du slutade, innan flaskan kokar.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="Läsa tillsammans med Project Hail Mary i sängen på natten" loading="lazy">
+        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="Läsa tillsammans med Gråterskan i sängen på natten" loading="lazy">
         <figcaption class="lcap"><h3>Din 11 PM.<br><i>Ljus av, ord på.</i></h3><p>Rummet går mörkt. Orden fortsätter att glöda.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
@@ -940,6 +1130,37 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <figcaption class="lcap"><h3>Din lunchtimme.<br><i>Medeljord ingår.</i></h3><p>Helt offline - parken har ingen Wi-Fi, och det spelar ingen roll.</p></figcaption>
       </figure>
     </div>
+  </div>
+</section>
+
+<!-- ============ SEO COPY ============ -->
+<section class="seo-copy" id="about-hushbook" aria-labelledby="seo-title">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Den gratis ljudboksappen</span>
+      <h2 id="seo-title">Gratis ljudboksapp med synkad text</h2>
+      <p class="sub">Läs varje ord medan du hör det — följeläsaren för fokus, integritet och böcker du redan äger.</p>
+    </div>
+    <article class="prose reveal">
+      <p>Letar du efter en <strong>gratis ljudboksapp med synkad text</strong>? HushBook är för dig som vill ha mer än vanlig uppspelning. Vanliga spelare streamar bara rösten. HushBook gör lyssnandet till <strong>ljudbok med ord</strong>: varje talat ord tänds i takt med berättaren — som sångtext, men spåret är en hel bok.</p>
+
+      <h3>Varför synkad text slår att bara lyssna</h3>
+      <p>Passivt ljud är lätt att starta och lätt att tappa. Tankarna vandrar. Namn suddas ut. Du avslutar ett kapitel och minns nästan inget. Markering ord för ord förankrar uppmärksamheten vid rösten: du ser det du hör, hoppar till vilken rad som helst med ett tryck och tappar inte stället. Därför kallar många HushBook en av de <strong>bästa gratis ljudboksapparna</strong> när förståelse räknas lika högt som bekvämlighet.</p>
+
+      <h3>Bästa ljudboksappar — vad som skiljer HushBook</h3>
+      <p>Sök «<strong>bästa ljudboksappar</strong>» och du hittar butiker, abonnemang och molnkataloger. HushBook löser ett annat problem: <em>hur du läser ljud du redan har</em>. Importera egna MP3, M4B, FLAC med mera; kapitel och omslag följer om filen har dem. Tryck Transkribera — HushBook Engine på enheten bygger synkad text: ingen text-databas, ingen uppladdning, inget konto. Efter en engångsnedladdning av motorn fungerar allt offline. Den privata, filbaserade designen är ovanlig bland <strong>ljudboksappar för iPhone</strong> och <strong>Android</strong>.</p>
+
+      <h3>Gratis på iPhone och Android</h3>
+      <p>HushBook är gratis på båda plattformarna — App Store och Google Play — utan annonser i kärnan. Public domain-biblioteket (klassiker från LibriVox och Internet Archive) är gratis. Följeläsning, citat, profiler och offline också. Valfri Pro ger djupare analys. Oavsett om du behöver <strong>ljudboksappar för iPhone</strong> på pendeln eller <strong>för Android</strong> på kvällen: samma löfte — gratis att börja, privat by design, synkad text ingår.</p>
+
+      <h3>Dina böcker — från klassiker till Gråterskan</h3>
+      <p>Ta med titlarna som betyder något. Lång science fiction? Importera en <strong>Gråterskan-ljudbok</strong> du redan äger (eller annan bok du har rätt att spela), kör transkribering på telefonen och följ Ryland Grace ord för ord. Föredrar public domain-epos? Monte Cristo, Austen eller Aurelius i katalogen. HushBook är ingen piratbutik — det är en spelare och följeläs-motor för filer och gratis klassiker du väljer. Synkad text fungerar på många språk så en <strong>ljudbok med ord</strong> matchar det du hör.</p>
+
+      <h3>Integritet, tillgänglighet och vanor som stannar</h3>
+      <p>Transkribering lämnar aldrig enheten. Ingen inloggningsmur, inget moln för ditt ljud. Läsprofiler formar hela gränssnittet — förståelse, dyslexi/ADHD eller nedsatt syn — typsnitt som OpenDyslexic och Atkinson Hyperlegible, overlay, kontrast och nattläge. Serier, märken och mjuka statistik stannar lokalt. Den kombinationen — gratis kärna, synkad text, AI på enheten, tillgänglighet — gör HushBook till ett starkt svar på den <strong>bästa gratis ljudboksappen</strong> som respekterar både fokus och integritet.</p>
+
+      <p class="seo-cta"><strong>Redo att läsa med?</strong> Ladda ner HushBook gratis till <a href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">iPhone</a> eller <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Android</a>, välj en gratis klassiker eller importera en egen bok — och se varje ord tändas med rösten.</p>
+    </article>
   </div>
 </section>
 
@@ -958,6 +1179,17 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Kommer det att tömma mitt batteri eller värma upp min telefon?</button><div class="a"><p>Motorn är termisk medveten: den kapar sina arbetartrådar och vilar mellan bitar för att hålla telefonen sval, och den återupptar automatiskt om en lång transkription avbryts.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Vem är Hushbook för?</button><div class="a"><p>Den som läser med sina öron - och särskilt läsare med dyslexi, ADHD eller låg syn, språklärare och alla som fokuserar bättre när de kan se orden de hör.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Kan jag läsa i mörkret?</button><div class="a"><p>Ja - nattläge byter den suddiga omslag bakgrund för en solid mörk duk, och Vision-profilen lägger till högkontrast teman som vit-på-svart och amber-on-svart.</p></div></div>
+      <!-- ============ FAQ ADDITIONS ============ -->
+      <div class="qa"><button type="button" aria-expanded="false">Kan jag läsa och lyssna på en ljudbok samtidigt?</button><div class="a"><p>Ja. HushBook markerar varje talat ord i synk, så att du kan läsa och lyssna utan att tappa bort dig.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Har ljudböcker undertexter eller captions?</button><div class="a"><p>De flesta spelare har inte det. HushBook skapar synkad text från ljudet på telefonen, utan separat transkription eller e-bok.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Behöver jag en Kindle eller e-bok för att läsa med?</button><div class="a"><p>Nej. Du behöver varken Kindle, e-bok eller ett andra köp. Importera ljud du äger så skapar HushBook synkad text på enheten.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Hur skiljer sig HushBook från Audible Whispersync eller Immersion Reading?</button><div class="a"><p>Whispersync och Immersion Reading kräver vanligtvis Audible och en matchande Kindle-bok. HushBook fungerar med dina egna ljudfiler, skapar text privat på telefonen och kräver inget Amazon-konto eller molnuppladdning.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Hjälper det fokus och förståelse att läsa och lyssna samtidigt?</button><div class="a"><p>Många lyssnare upplever att det hjälper att se och höra samma ord för att hålla fokus och minnas ett kapitel bättre än med bara ljud.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Är HushBook bra för dyslexi eller ADHD?</button><div class="a"><p>Ja. Ord-för-ord-markering och läsprofiler stödjer dyslexi, ADHD, nedsatt syn, språkinlärning och alla som fokuserar bättre när de ser orden.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Fungerar HushBook offline?</button><div class="a"><p>Ja. Efter den engångsnedladdning av HushBook Engine fungerar uppspelning, följläsning och transkribering på enheten utan internet.</p></div></div>
+
+
+
     </div>
   </div>
 </section>
@@ -1009,11 +1241,11 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       </div>
       <div class="fcol">
         <b>Företag</b>
-        <a href="/about">Om</a>
-        <a href="/privacy-policy">sekretesspolicy</a>
-        <a href="/terms-conditions">Terms &amp; conditions</a>
-        <a href="/refund-policy">Återbetalningspolicy</a>
-        <a href="/licenses">Licens</a>
+        <a href="/sv/about">Om</a>
+        <a href="/sv/privacy-policy">sekretesspolicy</a>
+        <a href="/sv/terms-conditions">Terms &amp; conditions</a>
+        <a href="/sv/refund-policy">Återbetalningspolicy</a>
+        <a href="/sv/licenses">Licens</a>
       </div>
       <div class="fcol">
         <b>Få appen</b>
@@ -1416,18 +1648,18 @@ if(fan&&fine&&!calm){
   if (!container || !window.THREE || calm) return;
 
   const IMAGES = [
-    "/assets/img/mockups/player-martian.webp",
-    "/assets/img/mockups/player-lotr.webp",
-    "/assets/img/mockups/player-love-hypothesis.webp",
-    "/assets/img/mockups/player-crime-punishment.webp",
-    "/assets/img/mockups/player-pride-prejudice.webp",
-    "/assets/img/mockups/player-hitchhikers.webp",
-    "/assets/img/mockups/player-martian.webp",
-    "/assets/img/mockups/player-lotr.webp",
-    "/assets/img/mockups/player-love-hypothesis.webp",
-    "/assets/img/mockups/player-crime-punishment.webp",
-    "/assets/img/mockups/player-pride-prejudice.webp",
-    "/assets/img/mockups/player-hitchhikers.webp"
+    "/assets/img/mockups/locales/sv/player-martian.webp",
+    "/assets/img/mockups/locales/sv/player-lotr.webp",
+    "/assets/img/mockups/locales/sv/player-love-hypothesis.webp",
+    "/assets/img/mockups/locales/sv/player-crime-punishment.webp",
+    "/assets/img/mockups/locales/sv/player-pride-prejudice.webp",
+    "/assets/img/mockups/locales/sv/player-hitchhikers.webp",
+    "/assets/img/mockups/locales/sv/player-martian.webp",
+    "/assets/img/mockups/locales/sv/player-lotr.webp",
+    "/assets/img/mockups/locales/sv/player-love-hypothesis.webp",
+    "/assets/img/mockups/locales/sv/player-crime-punishment.webp",
+    "/assets/img/mockups/locales/sv/player-pride-prejudice.webp",
+    "/assets/img/mockups/locales/sv/player-hitchhikers.webp"
   ];
 
   const width = container.clientWidth;

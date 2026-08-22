@@ -8,8 +8,10 @@
     "start": "serve . -l 3000",
     "build:sitemap": "node scripts/build-sitemap.js",
     "build:hreflang": "node scripts/inject-hreflang.js",
+    "build:seo": "node scripts/normalize-localized-seo.js",
     "build:vercel": "node scripts/build-vercel-locales.js",
-    "test": "node localization.test.js && node blur-in-heading-reveal.test.js",
+    "normalize:download": "node scripts/normalize-download-landing-pages.js",
+    "test": "node localization.test.js && node seo-localization.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js",
     "test:locale": "node scripts/verify-localization.js de"
   },
   "devDependencies": {

@@ -32,7 +32,13 @@ assert.match(localeScript, /hushbook_locale/, 'locale selector must persist expl
 
 const config = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
 assert.ok(
-  config.redirects.some((rule) => rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' && condition.value === 'DE')),
+  config.redirects.some((rule) =>
+    rule.destination === '/de' &&
+    rule.has?.some((condition) =>
+      condition.key === 'x-vercel-ip-country' &&
+      String(condition.value).split('|').includes('DE'),
+    ),
+  ),
   'Vercel config must route first-time Germany visitors to German pages',
 );
 

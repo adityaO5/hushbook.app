@@ -44,11 +44,11 @@
 
   const currentName = names[locale];
   const secondaryName = locale === 'en' ? names.de : names.en;
-  const currentLabel = `${currentName} / ${secondaryName}`;
+  const mobileName = Array.from(currentName).slice(0, 3).join('');
   switcher.setAttribute('aria-label', selectorLabels[locale] || selectorLabels.en);
   switcher.innerHTML = `
-    <button type="button" class="locale-current" aria-expanded="false">
-      <span>${currentLabel}</span><span class="locale-chevron" aria-hidden="true">⌄</span>
+    <button type="button" class="locale-current" aria-label="${currentName} / ${secondaryName}" aria-expanded="false">
+      <span class="locale-label"><span class="locale-primary">${currentName}</span><span class="locale-short" aria-hidden="true">${mobileName}</span><span class="locale-secondary"> / ${secondaryName}</span></span><span class="locale-chevron" aria-hidden="true">⌄</span>
     </button>
     <div class="locale-menu" hidden role="menu">
       ${languages.map(([code, name]) => `<a href="#" data-locale="${code}" role="menuitem"${code === locale ? ' aria-current="true"' : ''}>${name}</a>`).join('')}
@@ -59,11 +59,14 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    .nav-inner{justify-content:flex-start}
+    .nav-inner{justify-content:flex-start;column-gap:16px}
     .nav-inner>.brand{margin-right:auto}
     .nav-links{flex:0 1 auto;min-width:0;gap:clamp(10px,1.8vw,26px)}
     .locale-switcher{position:relative;z-index:20;display:flex;flex:none;margin-left:12px;align-items:center}
     .locale-current{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(201,163,106,.42);border-radius:999px;background:rgba(11,10,9,.9);color:#f5efe6;font:600 13px system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+    .locale-label{display:inline-flex;align-items:center;min-width:0}
+    .locale-primary,.locale-short,.locale-secondary{white-space:nowrap}
+    .locale-short{display:none}
     .locale-current:hover,.locale-current:focus-visible{border-color:#e8c893;color:#e8c893}
     .locale-current:focus-visible{outline:2px solid #e8c893;outline-offset:3px}
     .locale-chevron{font-size:15px;line-height:1;transform:translateY(-1px)}
@@ -73,7 +76,7 @@
     .locale-menu a:hover,.locale-menu a:focus-visible{background:rgba(232,200,147,.14);color:#e8c893;outline:none}
     .locale-menu a[aria-current="true"]{color:#e8c893;background:rgba(232,200,147,.08)}
     @media(max-width:1100px) and (min-width:821px){.nav-links{gap:11px;font-size:13px}.nav-cta{padding:8px 12px}.locale-switcher{margin-left:8px}.locale-current{font-size:12px;padding:7px 9px}.locale-menu{min-width:280px}}
-    @media(max-width:820px){.nav-inner{position:relative;justify-content:space-between}.nav-inner>.brand{position:absolute;left:50%;margin:0;transform:translateX(-50%)}.nav-toggle{order:-1;margin-right:0}.locale-switcher{margin-left:0}.locale-current{font-size:12px;padding:7px 9px}.locale-menu{right:-4px;min-width:270px;grid-template-columns:1fr}.nav-links{order:4}}
+    @media(max-width:820px){.nav-inner{position:relative;justify-content:space-between}.nav-inner>.brand{position:static;flex:1 1 auto;min-width:0;justify-content:center;margin:0;transform:none}.nav-inner>.brand .wordmark{max-width:clamp(96px,30vw,122px)}.nav-toggle{order:-1;margin-right:0;flex:0 0 40px}.locale-switcher{order:0;margin-left:0;flex:0 0 auto;min-width:0}.locale-current{font-size:11px;padding:6px 8px;gap:5px;max-width:76px}.locale-primary{display:none}.locale-short{display:inline}.locale-secondary{display:none}.locale-chevron{font-size:13px}.locale-menu{right:-4px;min-width:270px;grid-template-columns:1fr}.nav-links{order:4}}
   `;
   document.head.append(style);
 
@@ -104,8 +107,9 @@
   // Dev-only screenshot preview. Production HTML keeps English masters until
   // a locale passes AI/OCR/component review. Local HTTP preview can inspect
   // every existing locale variant without changing production references.
-  const isLocalPreview = window.location.hostname === 'localhost'
-    || window.location.hostname === '127.0.0.1';
+  const isLocalPreview = (window.location.hostname === 'localhost'
+    || window.location.hostname === '127.0.0.1')
+    && new URLSearchParams(window.location.search).get('mockupPreview') === '1';
   if (isLocalPreview && locale !== 'en') {
     document.querySelectorAll('img[src^="/assets/img/mockups/"]').forEach((image) => {
       const source = image.getAttribute('src') || '';
@@ -114,12 +118,16 @@
       if (!match) return;
       const localizedName = match[1].replace(/\.png$/i, '.webp');
       const candidate = `/assets/img/mockups/locales/${locale}/${localizedName}`;
-      const probe = new Image();
-      probe.onload = () => {
-        image.src = candidate;
-        image.dataset.devMockupLocale = locale;
-      };
-      probe.src = candidate;
+      // Check availability without assigning a known-missing image URL. This
+      // keeps local preview consoles clean for locales whose AI mockups are
+      // still pending, while preserving the English master as a fallback.
+      fetch(candidate, { method: 'HEAD', cache: 'no-store' })
+        .then((response) => {
+          if (!response.ok) return;
+          image.src = candidate;
+          image.dataset.devMockupLocale = locale;
+        })
+        .catch(() => {});
     });
   }
 })();

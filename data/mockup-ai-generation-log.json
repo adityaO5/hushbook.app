@@ -340,11 +340,13 @@
       ]
     }
   ],
-  "frenchBaseline": "frozen; not regenerated",
+  "frenchBaseline": "regenerated with built-in GPT-5.6 text-localization",
   "remainingLocaleJobIndex": "data/mockup-ai-jobs.json",
-  "remainingJobCount": 684,
-  "pendingLocales": [
+  "remainingJobCount": 0,
+  "pendingLocales": [],
+  "approvedLocales": [
     "de",
+    "fr",
     "es-ES",
     "es-419",
     "pt-BR",
@@ -363,8 +365,5 @@
     "vi",
     "sv",
     "da"
-  ],
-  "approvedLocales": [
-    "fr"
   ]
 }

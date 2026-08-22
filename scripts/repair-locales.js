@@ -11,6 +11,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const localeConfig = require('../localization.config');
+const { normalizeLocalizedSeoHtml } = require('./seo-localization');
 
 const ROOT = process.cwd();
 const PAGES = localeConfig.publicPages;
@@ -290,12 +291,8 @@ function fixVietnameseBranding(html) {
     .replace(/content="Name"/g, 'content="HushBook"');
 }
 
-function fixLocalePaths(html, locale) {
-  // canonical / hreflang self
-  let out = html;
-  // brand home on subpages should stay locale home when possible
-  // (leave # anchors alone)
-  return out;
+function fixLocalePaths(html, locale, page) {
+  return normalizeLocalizedSeoHtml(html, locale, page);
 }
 
 function repairFile(locale, page) {
@@ -320,7 +317,7 @@ function repairFile(locale, page) {
     html = collapseSpam(html);
   }
 
-  html = fixLocalePaths(html, locale);
+  html = fixLocalePaths(html, locale, page);
 
   if (html !== before) {
     fs.writeFileSync(file, html);
