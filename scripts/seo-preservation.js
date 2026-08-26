@@ -25,12 +25,20 @@ function toPosix(relativePath) {
 
 function detectNewlineStyle(buffer) {
   const text = buffer.toString('utf8');
-  if (text.includes('\r\n')) return 'CRLF';
-  if (text.includes('\n')) return 'LF';
+  const hasCrLf = text.includes('\r\n');
+  const residual = text.replace(/\r\n/g, '');
+  const hasBareLf = residual.includes('\n');
+  const hasBareCr = residual.includes('\r');
+
+  if ((hasCrLf && hasBareLf) || (hasCrLf && hasBareCr) || (hasBareLf && hasBareCr)) return 'MIXED';
+  if (hasCrLf) return 'CRLF';
+  if (hasBareLf) return 'LF';
+  if (hasBareCr) return 'CR';
   return 'none';
 }
 
 function countOccurrences(text, token) {
+  assert.ok(typeof token === 'string' && token.length > 0, 'countOccurrences token must be non-empty string');
   let count = 0;
   let searchFrom = 0;
   while (searchFrom <= text.length) {
@@ -212,12 +220,49 @@ function assertManifestUnchanged(expectedManifest, actualManifest) {
   assert.deepEqual(actualManifest.lockedFiles, expectedManifest.lockedFiles, 'Locked file hashes changed');
 }
 
-function assertExactReplacement(originalText, range, replacementText, actualText, label = 'replacement') {
-  assert.ok(range && Number.isInteger(range.start) && Number.isInteger(range.end), `${label} range must include numeric start and end`);
-  assert.ok(range.start >= 0, `${label} start must be non-negative`);
-  assert.ok(range.end >= range.start, `${label} end must be after start`);
-  const expectedText = originalText.slice(0, range.start) + replacementText + originalText.slice(range.end);
-  assert.equal(actualText, expectedText, `${label} must only replace requested range`);
+function validateNonEmptyString(value, label) {
+  assert.equal(typeof value, 'string', `${label} must be string`);
+  assert.ok(value.trim().length > 0, `${label} must not be empty`);
+}
+
+function assertExactReplacement(source, replacement, actualText, label = 'replacement') {
+  assert.ok(source && typeof source === 'object' && !Array.isArray(source), `${label} source must be object`);
+  validateNonEmptyString(source.file, `${label} source.file`);
+  assert.equal(typeof source.text, 'string', `${label} source.text must be string`);
+  assert.ok(replacement && typeof replacement === 'object' && !Array.isArray(replacement), `${label} descriptor must be object`);
+  validateNonEmptyString(replacement.file, `${label} descriptor.file`);
+  validateNonEmptyString(replacement.oldText, `${label} descriptor.oldText`);
+  assert.ok(Object.prototype.hasOwnProperty.call(replacement, 'newText'), `${label} descriptor.newText must be present`);
+  assert.equal(typeof replacement.newText, 'string', `${label} descriptor.newText must be string`);
+  validateNonEmptyString(replacement.reason, `${label} descriptor.reason`);
+  assert.equal(typeof actualText, 'string', `${label} actualText must be string`);
+
+  const normalizedSourceFile = toPosix(source.file);
+  const normalizedReplacementFile = toPosix(replacement.file);
+  assert.equal(
+    normalizedReplacementFile,
+    normalizedSourceFile,
+    `${label} descriptor.file must match source.file`,
+  );
+
+  const occurrenceCount = countOccurrences(source.text, replacement.oldText);
+  assert.equal(
+    occurrenceCount,
+    1,
+    `${normalizedSourceFile} replacement oldText must match exactly once before write`,
+  );
+
+  const matchStart = source.text.indexOf(replacement.oldText);
+  const matchEnd = matchStart + replacement.oldText.length;
+  const expectedText = source.text.slice(0, matchStart)
+    + replacement.newText
+    + source.text.slice(matchEnd);
+
+  assert.equal(
+    actualText,
+    expectedText,
+    `${normalizedSourceFile} replacement must change only descriptor.oldText for stated reason: ${replacement.reason}`,
+  );
 }
 
 function writeBaseline(outputPath = BASELINE_PATH, rootDir = ROOT) {

@@ -3,7 +3,7 @@
   "homepages": [
     {
       "path": "ar/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 156725,
       "protectedRegionSha256": {
         "seoCopyToFaq": "740d68979f1c995ba1e40b9c2d1cf31e6420c46e6d5c249cc525b4e2a24b3f2a",
@@ -23,7 +23,7 @@
     },
     {
       "path": "da/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 131512,
       "protectedRegionSha256": {
         "seoCopyToFaq": "46d27316b21aa5d8ddf16370f226b982e8b9e8e698e31b8a0e9db0f0573c0e37",
@@ -43,7 +43,7 @@
     },
     {
       "path": "de/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 131633,
       "protectedRegionSha256": {
         "seoCopyToFaq": "163691edc95377cf94398f84b857ea5d3f1e16628ebdca538869bd384271f558",
@@ -63,7 +63,7 @@
     },
     {
       "path": "es-419/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 134022,
       "protectedRegionSha256": {
         "seoCopyToFaq": "6d64d3c216a21994bef53aa8bc6463b691a70d9040f31c3e813aaaa8ab0139d8",
@@ -83,7 +83,7 @@
     },
     {
       "path": "es-ES/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 134027,
       "protectedRegionSha256": {
         "seoCopyToFaq": "576fc9c3564184d0ed428777f213624306a22e51fb4e03d15438056201f09979",
@@ -103,7 +103,7 @@
     },
     {
       "path": "fr/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 136367,
       "protectedRegionSha256": {
         "seoCopyToFaq": "8fbc1409eaea5c10615e2ed10ff130db7ea0997968be5687192e4974a18d47c7",
@@ -123,7 +123,7 @@
     },
     {
       "path": "id/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 132607,
       "protectedRegionSha256": {
         "seoCopyToFaq": "074c123b070050c33b0e9bfcbd4063061301872d6ec94d3a0e3505858359b620",
@@ -143,7 +143,7 @@
     },
     {
       "path": "index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 131934,
       "protectedRegionSha256": {
         "seoCopyToFaq": "e47d93907e3a3b9248b45f4d92d24fa7d175f9363edd3aa924ee6e43576eb335",
@@ -163,7 +163,7 @@
     },
     {
       "path": "it/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 132970,
       "protectedRegionSha256": {
         "seoCopyToFaq": "2845b129c8e46d972681b7838f863ce1ab8451f807332cccdd22320efa1ff596",
@@ -183,7 +183,7 @@
     },
     {
       "path": "ja/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 156138,
       "protectedRegionSha256": {
         "seoCopyToFaq": "3d88053dfd86fe950a196fd489dd125412448999b7bf0015d56ac1305289034b",
@@ -203,7 +203,7 @@
     },
     {
       "path": "ko/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 150851,
       "protectedRegionSha256": {
         "seoCopyToFaq": "61dbc39c89898ff3531fdbfdc1d3defc34a4d7c8627a766943891fdd21c17977",
@@ -223,7 +223,7 @@
     },
     {
       "path": "nl/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 131628,
       "protectedRegionSha256": {
         "seoCopyToFaq": "71a44c154c81f29f69061d521303672fe5eed2d1103f8db865f14971fb15efd3",
@@ -243,7 +243,7 @@
     },
     {
       "path": "pl/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 133408,
       "protectedRegionSha256": {
         "seoCopyToFaq": "03e27f3481b1985b0aedd986cb2cb7dd634837968f2407a7497116cce75d2f22",
@@ -263,7 +263,7 @@
     },
     {
       "path": "pt-BR/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 134230,
       "protectedRegionSha256": {
         "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
@@ -283,7 +283,7 @@
     },
     {
       "path": "pt-PT/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 134239,
       "protectedRegionSha256": {
         "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
@@ -303,7 +303,7 @@
     },
     {
       "path": "ru/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 166233,
       "protectedRegionSha256": {
         "seoCopyToFaq": "ff70157d61c5dd854d379361d930390b1d891880cbc841ea37c4fd6c9b81ea9e",
@@ -323,7 +323,7 @@
     },
     {
       "path": "sv/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 131808,
       "protectedRegionSha256": {
         "seoCopyToFaq": "388642bd43078c213f54d3d567acc33f4fa2dd5473ac29ce9e9454a76a69e3e5",
@@ -343,7 +343,7 @@
     },
     {
       "path": "th/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 144275,
       "protectedRegionSha256": {
         "seoCopyToFaq": "846e5b4e8b5c1172f31a3c43612b41db3d2f67267de7679bad28da668da12f12",
@@ -363,7 +363,7 @@
     },
     {
       "path": "tr/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 135701,
       "protectedRegionSha256": {
         "seoCopyToFaq": "e537be440cd1d15e0ec929b2251ecb03eea67d5c91607f01d2fc0bba9029c55d",
@@ -383,7 +383,7 @@
     },
     {
       "path": "uk/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 142856,
       "protectedRegionSha256": {
         "seoCopyToFaq": "807a38db451235ada0994c6148b92d8058f285047660c1c935221c39393398f7",
@@ -403,7 +403,7 @@
     },
     {
       "path": "vi/index.html",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 133993,
       "protectedRegionSha256": {
         "seoCopyToFaq": "6abd8b12b96febbed38d30b54f05f92b84d5021b11bb3174a450370e15e926ee",
@@ -424,20 +424,20 @@
   ],
   "aboutFacts": {
     "path": "about.html",
-    "newlineStyle": "CRLF",
+    "newlineStyle": "MIXED",
     "byteLength": 29647,
     "sha256": "43a4132c393b64bf27a2058c294f76b47691b2af73e4337904d414ecb29812e4"
   },
   "lockedFiles": [
     {
       "path": "scripts/inject-seo-copy.js",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 89411,
       "sha256": "d0b70a8439417f302cfaa0a543c0635056a075fddaff1aaf886278ace1143b9b"
     },
     {
       "path": "robots.txt",
-      "newlineStyle": "CRLF",
+      "newlineStyle": "MIXED",
       "byteLength": 441,
       "sha256": "668a816308a4282f7a019ea2e9e9a35cff75b3fa984da9303d42a88ffb84f9c3"
     }
