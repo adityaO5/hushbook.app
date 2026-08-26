@@ -195,10 +195,12 @@ function buildManifest(rootDir = ROOT) {
   };
 }
 
-function assertHomepageUnchanged(expected, actual) {
+function assertHomepageUnchanged(expected, actual, options = {}) {
   assert.ok(actual, `${expected.path} must exist in current manifest`);
-  assert.equal(actual.newlineStyle, expected.newlineStyle, `${expected.path} newline style changed`);
-  assert.equal(actual.byteLength, expected.byteLength, `${expected.path} byte length changed`);
+  if (options.strict) {
+    assert.equal(actual.newlineStyle, expected.newlineStyle, `${expected.path} newline style changed`);
+    assert.equal(actual.byteLength, expected.byteLength, `${expected.path} byte length changed`);
+  }
   assert.deepEqual(actual.protectedRegionSha256, expected.protectedRegionSha256, `${expected.path} protected region hash changed`);
   assert.equal(actual.postHeadBodySha256, expected.postHeadBodySha256, `${expected.path} post-head body hash changed`);
   assert.deepEqual(actual.markerCounts, expected.markerCounts, `${expected.path} marker counts changed`);
@@ -207,13 +209,13 @@ function assertHomepageUnchanged(expected, actual) {
   assert.equal(actual.h1Count, expected.h1Count, `${expected.path} H1 count changed`);
 }
 
-function assertManifestUnchanged(expectedManifest, actualManifest) {
+function assertManifestUnchanged(expectedManifest, actualManifest, options = {}) {
   assert.equal(actualManifest.schemaVersion, expectedManifest.schemaVersion, 'Manifest schema version changed');
   assert.equal(actualManifest.homepages.length, expectedManifest.homepages.length, 'Published homepage count changed');
 
   const actualHomepages = new Map(actualManifest.homepages.map((entry) => [entry.path, entry]));
   for (const expectedEntry of expectedManifest.homepages) {
-    assertHomepageUnchanged(expectedEntry, actualHomepages.get(expectedEntry.path));
+    assertHomepageUnchanged(expectedEntry, actualHomepages.get(expectedEntry.path), options);
   }
 
   assert.deepEqual(actualManifest.aboutFacts, expectedManifest.aboutFacts, 'About facts section changed');
@@ -284,6 +286,7 @@ module.exports = {
   BASELINE_PATH,
   buildManifest,
   extractProtectedRegions,
+  assertHomepageUnchanged,
   assertManifestUnchanged,
   assertExactReplacement,
 };

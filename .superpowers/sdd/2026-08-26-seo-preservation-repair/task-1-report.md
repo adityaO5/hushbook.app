@@ -135,3 +135,53 @@ SEO preservation baseline passes.
 Mobile navigation overlap contract passes.
 Blur-in heading reveal contract passes.
 ```
+
+Fix round 2: head-tolerant preservation assertions with strict opt-in
+
+Date: August 26, 2026
+
+Summary
+
+- Kept `byteLength` and `newlineStyle` in the manifest for diagnostics.
+- Changed preservation assertions so default recurring-test behavior now tolerates expected head-only changes while still enforcing:
+  - protected SEO COPY / FAQ / FAQ JSON-LD hashes
+  - marker counts
+  - FAQ item count
+  - FAQ JSON-LD count
+  - H1 count
+  - post-`</head>` body hash
+- Added strict opt-in mode so callers can still require `byteLength` and `newlineStyle` equality.
+- Expanded focused tests to prove:
+  - default head-tolerant mode accepts head-only size/newline drift
+  - strict mode rejects that drift
+  - default mode still rejects protected-region drift
+  - default mode still rejects post-head body drift
+
+Files changed in fix round 2
+
+- `scripts/seo-preservation.js`
+- `seo-preservation.test.js`
+
+Covering commands and output
+
+```text
+> npm run test:seo-preservation
+
+> hushbook-app@1.0.0 test:seo-preservation
+> node seo-preservation.test.js
+
+SEO preservation baseline passes.
+```
+
+```text
+> npm test
+
+> hushbook-app@1.0.0 test
+> node localization.test.js && node seo-localization.test.js && node seo-preservation.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js
+
+German localization contract passes.
+Localized SEO indexation contract passes.
+SEO preservation baseline passes.
+Mobile navigation overlap contract passes.
+Blur-in heading reveal contract passes.
+```
