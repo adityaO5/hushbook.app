@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "routeCount": 21,
+  "routes": {
+    "download.html": {
+      "title": "Download HushBook",
+      "description": "Download HushBook for iPhone or Android.",
+      "productToken": "HushBook"
+    },
+    "de/download.html": {
+      "title": "Laden HushBook",
+      "description": "Laden HushBook for iPhone or Android.",
+      "productToken": "HushBook"
+    },
+    "fr/download.html": {
+      "title": "T�l�charger HushBook",
+      "description": "T�l�charger HushBook pour iPhone ou Android.",
+      "productToken": "HushBook"
+    },
+    "es-ES/download.html": {
+      "title": "Descargar HushBook",
+      "description": "Descargar HushBook para iPhone o Android.",
+      "productToken": "HushBook"
+    },
+    "es-419/download.html": {
+      "title": "Descargar HushBook",
+      "description": "Descargar HushBook para iPhone o Android.",
+      "productToken": "HushBook"
+    },
+    "pt-BR/download.html": {
+      "title": "Baixar HushBook",
+      "description": "Baixe HushBook para iPhone ou Android.",
+      "productToken": "HushBook"
+    },
+    "pt-PT/download.html": {
+      "title": "Baixar HushBook",
+      "description": "Baixe HushBook para iPhone ou Android.",
+      "productToken": "HushBook"
+    },
+    "it/download.html": {
+      "title": "Scarica HushBook",
+      "description": "Scarica HushBook per iPhone o Android.",
+      "productToken": "HushBook"
+    },
+    "ja/download.html": {
+      "title": "HushBookをダウンロード",
+      "description": "iPhoneまたはAndroid用のHushBookをダウンロードします。",
+      "productToken": "HushBook"
+    },
+    "ko/download.html": {
+      "title": "다운로드 HushBook",
+      "description": "다운로드 HushBook 아이폰 또는 안드로이드.",
+      "productToken": "HushBook"
+    },
+    "nl/download.html": {
+      "title": "HushBook downloaden",
+      "description": "Haal HushBook op voor iPhone of Android.",
+      "productToken": "HushBook"
+    },
+    "pl/download.html": {
+      "title": "Pobierz HushBook",
+      "description": "Pobierz HushBook dla iPhone lub Android.",
+      "productToken": "HushBook"
+    },
+    "tr/download.html": {
+      "title": "HushBook'u indir",
+      "description": "iPhone veya Android için HushBook&#x27;u indirin.",
+      "productToken": "HushBook"
+    },
+    "ru/download.html": {
+      "title": "Скачать HushBook",
+      "description": "Скачать HushBook для iPhone или Android.",
+      "productToken": "HushBook"
+    },
+    "uk/download.html": {
+      "title": "Завантажити HushBook",
+      "description": "Завантажити HushBook для iPhone або Android.",
+      "productToken": "HushBook"
+    },
+    "ar/download.html": {
+      "title": "تحميل هوش بوك",
+      "description": "تحميل هوش بوك على ايفون أو أندرويد.",
+      "productToken": "هوش بوك"
+    },
+    "id/download.html": {
+      "title": "Unduh HushBook",
+      "description": "Unduh HushBook untuk iPhone atau Android.",
+      "productToken": "HushBook"
+    },
+    "th/download.html": {
+      "title": "ดาวน์โหลด HushBook",
+      "description": "ดาวน์โหลด HushBook สําหรับไอโฟนหรือแอนดรอยด์",
+      "productToken": "HushBook"
+    },
+    "vi/download.html": {
+      "title": "Tải HushBook",
+      "description": "Tải HushBook cho iPhone hoặc Android.",
+      "productToken": "HushBook"
+    },
+    "sv/download.html": {
+      "title": "Ladda ner HushBook",
+      "description": "Ladda ner HushBook för iPhone eller Android.",
+      "productToken": "HushBook"
+    },
+    "da/download.html": {
+      "title": "Hent HushBook",
+      "description": "Hent HushBook til iPhone eller Android.",
+      "productToken": "HushBook"
+    }
+  }
+}

@@ -117,3 +117,140 @@ Concerns
 
 - The red contract currently reports a large expected failure set because it intentionally covers all audit classes before Tasks 3 through 5 repair them.
 - Some localized `og:type` values are pathologically long; the test truncates displayed values so failures remain readable while still deterministic.
+
+Fix round 1: full body baseline and explicit download metadata baseline
+
+Date: August 26, 2026
+
+Summary
+
+- Replaced the partial inline body-hash map in `seo-repair-contract.test.js` with checked-in route-keyed baseline artifact `output/seo-repair-body-baseline.json`.
+- The body baseline now covers all 147 published locale/page routes with no current-file fallback.
+- Added checked-in route-keyed download metadata artifact `output/seo-repair-download-metadata.json`.
+- Updated the contract to compare source `<title>`, source meta description, canonical, and OG/Twitter download title/description fields against explicit artifact values.
+- Added route-specific product-token sanity checks so generic download metadata such as Vietnamese `Tải về` cannot pass.
+
+Files changed in fix round 1
+
+- `seo-repair-contract.test.js`
+- `output/seo-repair-body-baseline.json`
+- `output/seo-repair-download-metadata.json`
+- `.superpowers/sdd/2026-08-26-seo-preservation-repair/task-2-report.md`
+
+Coverage change
+
+- `output/seo-repair-body-baseline.json`
+  - `schemaVersion = 1`
+  - `routeCount = 147`
+  - exact route-keyed `postHeadBodySha256` for every published locale/public-page route
+- `output/seo-repair-download-metadata.json`
+  - `schemaVersion = 1`
+  - `routeCount = 21`
+  - explicit route-keyed `title`, `description`, and `productToken` for every published download route
+
+Commands and output
+
+```text
+> npm run test:seo-repair-contract
+
+> hushbook-app@1.0.0 test:seo-repair-contract
+> node seo-repair-contract.test.js
+
+Error: SEO repair contract failures (395):
+- download.html must have exactly one og:type meta tag; found 0.
+- download.html must have exactly one twitter:card meta tag; found 0.
+- download.html must have exactly one og:site_name meta tag; found 0.
+- download.html must have exactly one og:title meta tag; found 0.
+- download.html must have exactly one og:description meta tag; found 0.
+- download.html must have exactly one og:image meta tag; found 0.
+- vi/download.html expected download title must include product token "HushBook"; found "Tải về".
+- vi/download.html expected download description must include product token "HushBook"; found "Tải về HuhBook cho iPhone hay thiêu rừng.".
+- vi/download.html source title must include product token "HushBook"; found "Tải về".
+- vi/download.html source meta description must include product token "HushBook"; found "Tải về HuhBook cho iPhone hay thiêu rừng.".
+- tr/refund-policy.html contains unapproved Notund context(s): "l-scale=1, viewport-fit=cover\"> <title>Notund Policy – HushBook</title> <meta name=\"", "k\"> <meta property=\"og:title\" content=\"Notund Policy – HushBook\"> <meta property=\"og", "yı ele alacaktır.</li> <li><strong>Notund talepleri.</strong> Abonelik talepleri".
+- ar/index.html html dir must be "rtl"; found undefined.
+...
+Node.js v22.15.0
+```
+
+```text
+> npm test
+
+> hushbook-app@1.0.0 test
+> node localization.test.js && node seo-localization.test.js && node seo-preservation.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js
+
+German localization contract passes.
+Localized SEO indexation contract passes.
+SEO preservation baseline passes.
+Mobile navigation overlap contract passes.
+Blur-in heading reveal contract passes.
+```
+
+Self-review
+
+- Verified the body baseline route keys match the 147 expected published locale/page routes exactly.
+- Verified the download metadata baseline route keys match the 21 expected published download routes exactly.
+- Verified the contract no longer falls back to hashing the current file when a route is absent from baseline.
+- Verified the download contract no longer derives expected title/description from the same file under test.
+- Verified existing `npm test` stayed green and the red contract remained outside the full test chain.
+
+Fix round 1 verification and hardening
+
+Date: August 26, 2026
+
+Summary
+
+- Kept the checked-in `output/seo-repair-body-baseline.json` as the full 147-route post-head body baseline. The contract requires its keys to match every published locale/page route exactly and validates every value as a SHA-256 hash; no current-file hash fallback remains.
+- Kept the checked-in `output/seo-repair-download-metadata.json` as the 21-route download metadata expectation artifact. The contract requires exact route coverage plus non-empty explicit `title`, `description`, and `productToken` values for every route.
+- Hardened product-name validation at artifact load time: each expected title and description must contain its route's product token. The Vietnamese expectation is now explicit approved metadata (`Tải HushBook` / `Tải HushBook cho iPhone hoặc Android.`), so generic `Tải về` cannot match the source or social metadata contract.
+- Download checks compare source `<title>` and meta description, then OG/Twitter title and description, directly to the checked-in route expectation. Canonical and image assertions remain unchanged.
+- Left `scripts/seo-preservation.js`, its homepage protected-region hashes, and its strict/tolerant behavior unchanged.
+
+Files changed
+
+- `seo-repair-contract.test.js`
+- `output/seo-repair-body-baseline.json`
+- `output/seo-repair-download-metadata.json`
+- `.superpowers/sdd/2026-08-26-seo-preservation-repair/task-2-report.md`
+
+Commands and output
+
+```text
+> npm run test:seo-repair-contract
+
+> hushbook-app@1.0.0 test:seo-repair-contract
+> node seo-repair-contract.test.js
+
+Error: SEO repair contract failures (395):
+- download.html must have exactly one og:type meta tag; found 0.
+- fr/download.html contains U+FFFD replacement characters.
+- tr/refund-policy.html contains unapproved Notund context(s): ...
+- th/download.html contains corruption token "HBTER2X".
+- vi/download.html <title> must be "Tải HushBook"; found "Tải về".
+- vi/download.html meta description must be "Tải HushBook cho iPhone hoặc Android."; found "Tải về HuhBook cho iPhone hay thiêu rừng.".
+- vi/download.html source title must include product token "HushBook"; found "Tải về".
+- ar/index.html html dir must be "rtl"; found undefined.
+Node.js v22.15.0
+```
+
+Exit code: `1` (expected red audit contract). No `post-head body hash changed` finding was emitted.
+
+```text
+> npm test
+
+> hushbook-app@1.0.0 test
+> node localization.test.js && node seo-localization.test.js && node seo-preservation.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js
+
+German localization contract passes.
+Localized SEO indexation contract passes.
+SEO preservation baseline passes.
+Mobile navigation overlap contract passes.
+Blur-in heading reveal contract passes.
+```
+
+Exit code: `0`.
+
+Review
+
+- `git diff --check` passed for Task 2 fix paths.
+- Existing unrelated dirty files were not modified or staged by this fix.
