@@ -1,0 +1,52 @@
+Task 1 report: Freeze the current content before repair
+
+Date: August 26, 2026
+
+Summary
+
+Implemented preservation tooling that freezes the current published-homepage SEO copy, FAQ, FAQ JSON-LD, About facts block, `scripts/inject-seo-copy.js`, and `robots.txt` before any repair work begins.
+
+Files changed
+
+- `scripts/seo-preservation.js`
+- `seo-preservation.test.js`
+- `output/seo-preservation-baseline.json`
+- `package.json`
+
+What the helper records
+
+- Every published locale homepage from `localization.config.js`
+- Relative path, newline style, and byte length for each homepage
+- SHA-256 for:
+  - SEO COPY marker through FAQ marker
+  - FAQ marker through FINALE marker
+  - `data-hushbook-faq` JSON-LD block
+  - post-`</head>` body content
+- Marker counts for SEO COPY, FAQ, FINALE, and FAQ JSON-LD
+- FAQ item count, FAQ JSON-LD count, and H1 count
+- Exact hash of the current About facts section in `about.html`
+- Exact hashes of the current `scripts/inject-seo-copy.js` and `robots.txt`
+
+Implementation notes
+
+- The baseline was generated from the current worktree after inspecting the existing user diff.
+- The helper hard-fails if any published homepage is missing a protected region or contains duplicate protected markers.
+- The baseline stores hashes and structural counts only. It does not store replacement source text.
+- `assertExactReplacement` was added for future repair work so later scripts can prove they changed only intended ranges.
+
+Verification
+
+- Existing `npm test` passed before the new preservation check was added.
+- `npm run test:seo-preservation` passed after generating the baseline.
+- Full `npm test` passed after wiring the preservation test into the main test chain.
+- `package.json` was normalized back to LF in the worktree after a mixed-line-ending warning during review.
+
+Scope and safety
+
+- No existing HTML, `scripts/inject-seo-copy.js`, `robots.txt`, audit outputs, or saved plan files were modified.
+- No bulk normalizer was run.
+- No unrelated user changes were staged.
+
+Concerns
+
+- None in scope for Task 1. Draft and legacy routes such as `es`, `pt`, and `fr-argos` were intentionally excluded from the manifest because the brief scoped homepage preservation to published locales only.

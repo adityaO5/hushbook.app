@@ -1,0 +1,244 @@
+'use strict';
+
+const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
+const fs = require('node:fs');
+const path = require('node:path');
+const localeConfig = require('../localization.config');
+
+const ROOT = path.join(__dirname, '..');
+const BASELINE_PATH = path.join(ROOT, 'output', 'seo-preservation-baseline.json');
+
+const SEO_COPY_MARKER = '<!-- ============ SEO COPY ============ -->';
+const FAQ_MARKER = '<!-- ============ FAQ ============ -->';
+const FINALE_MARKER = '<!-- ============ FINALE ============ -->';
+const FAQ_JSON_LD_PATTERN = /<script\s+type="application\/ld\+json"\s+data-hushbook-faq>([\s\S]*?)<\/script>/g;
+const ABOUT_FACTS_PATTERN = /<section aria-labelledby="facts-title">[\s\S]*?<\/section>/g;
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function toPosix(relativePath) {
+  return relativePath.replace(/\\/g, '/');
+}
+
+function detectNewlineStyle(buffer) {
+  const text = buffer.toString('utf8');
+  if (text.includes('\r\n')) return 'CRLF';
+  if (text.includes('\n')) return 'LF';
+  return 'none';
+}
+
+function countOccurrences(text, token) {
+  let count = 0;
+  let searchFrom = 0;
+  while (searchFrom <= text.length) {
+    const index = text.indexOf(token, searchFrom);
+    if (index === -1) break;
+    count += 1;
+    searchFrom = index + token.length;
+  }
+  return count;
+}
+
+function readWorkspaceFile(rootDir, relativePath) {
+  const absolutePath = path.join(rootDir, relativePath);
+  const buffer = fs.readFileSync(absolutePath);
+  return {
+    absolutePath,
+    relativePath: toPosix(relativePath),
+    buffer,
+    text: buffer.toString('utf8'),
+  };
+}
+
+function findUniqueRange(text, startToken, endToken, label, relativePath) {
+  const startCount = countOccurrences(text, startToken);
+  assert.equal(startCount, 1, `${relativePath} must contain exactly one ${label} start marker`);
+
+  const endCount = countOccurrences(text, endToken);
+  assert.equal(endCount, 1, `${relativePath} must contain exactly one ${label} end marker`);
+
+  const start = text.indexOf(startToken);
+  const end = text.indexOf(endToken, start + startToken.length);
+  assert.notEqual(end, -1, `${relativePath} must contain ${label} end marker after start marker`);
+  assert.ok(end > start, `${relativePath} ${label} end marker must follow start marker`);
+
+  return {
+    start,
+    end: end + endToken.length,
+    content: text.slice(start, end + endToken.length),
+  };
+}
+
+function extractSingleRegexMatch(text, pattern, label, relativePath) {
+  const matches = [...text.matchAll(pattern)];
+  assert.equal(matches.length, 1, `${relativePath} must contain exactly one ${label}`);
+  const match = matches[0];
+  return {
+    start: match.index,
+    end: match.index + match[0].length,
+    content: match[0],
+    capture: match[1],
+  };
+}
+
+function extractProtectedRegions(relativePath, html) {
+  const normalizedPath = toPosix(relativePath);
+  const seoCopyToFaq = findUniqueRange(
+    html,
+    SEO_COPY_MARKER,
+    FAQ_MARKER,
+    'SEO COPY to FAQ protected region',
+    normalizedPath,
+  );
+  const faqToFinale = findUniqueRange(
+    html,
+    FAQ_MARKER,
+    FINALE_MARKER,
+    'FAQ to FINALE protected region',
+    normalizedPath,
+  );
+  const faqJsonLd = extractSingleRegexMatch(
+    html,
+    FAQ_JSON_LD_PATTERN,
+    'data-hushbook-faq JSON-LD block',
+    normalizedPath,
+  );
+  const headClose = html.search(/<\/head>/i);
+  assert.notEqual(headClose, -1, `${normalizedPath} must contain </head>`);
+
+  return {
+    seoCopyToFaq,
+    faqToFinale,
+    faqJsonLd,
+    markerCounts: {
+      seoCopy: countOccurrences(html, SEO_COPY_MARKER),
+      faq: countOccurrences(html, FAQ_MARKER),
+      finale: countOccurrences(html, FINALE_MARKER),
+      faqJsonLd: [...html.matchAll(FAQ_JSON_LD_PATTERN)].length,
+    },
+    faqItemCount: countOccurrences(faqToFinale.content, '<div class="qa">'),
+    faqJsonLdCount: countOccurrences(html, 'data-hushbook-faq'),
+    h1Count: [...html.matchAll(/<h1\b/gi)].length,
+    postHeadBodySha256: sha256(html.slice(headClose + '</head>'.length)),
+  };
+}
+
+function buildHomepageEntry(rootDir, relativePath) {
+  const file = readWorkspaceFile(rootDir, relativePath);
+  const regions = extractProtectedRegions(file.relativePath, file.text);
+
+  return {
+    path: file.relativePath,
+    newlineStyle: detectNewlineStyle(file.buffer),
+    byteLength: file.buffer.length,
+    protectedRegionSha256: {
+      seoCopyToFaq: sha256(regions.seoCopyToFaq.content),
+      faqToFinale: sha256(regions.faqToFinale.content),
+      faqJsonLd: sha256(regions.faqJsonLd.content),
+    },
+    postHeadBodySha256: regions.postHeadBodySha256,
+    markerCounts: regions.markerCounts,
+    faqItemCount: regions.faqItemCount,
+    faqJsonLdCount: regions.faqJsonLdCount,
+    h1Count: regions.h1Count,
+  };
+}
+
+function buildManifest(rootDir = ROOT) {
+  const homepagePaths = localeConfig.publishedLocales.map((locale) => (
+    locale === localeConfig.defaultLocale ? 'index.html' : path.join(locale, 'index.html')
+  ));
+
+  const homepages = homepagePaths
+    .map((relativePath) => buildHomepageEntry(rootDir, relativePath))
+    .sort((left, right) => left.path.localeCompare(right.path));
+
+  const aboutFile = readWorkspaceFile(rootDir, 'about.html');
+  const aboutFacts = extractSingleRegexMatch(
+    aboutFile.text,
+    ABOUT_FACTS_PATTERN,
+    'About facts section',
+    aboutFile.relativePath,
+  );
+
+  const lockedFiles = ['scripts/inject-seo-copy.js', 'robots.txt'].map((relativePath) => {
+    const file = readWorkspaceFile(rootDir, relativePath);
+    return {
+      path: file.relativePath,
+      newlineStyle: detectNewlineStyle(file.buffer),
+      byteLength: file.buffer.length,
+      sha256: sha256(file.buffer),
+    };
+  });
+
+  return {
+    schemaVersion: 1,
+    homepages,
+    aboutFacts: {
+      path: aboutFile.relativePath,
+      newlineStyle: detectNewlineStyle(aboutFile.buffer),
+      byteLength: aboutFile.buffer.length,
+      sha256: sha256(aboutFacts.content),
+    },
+    lockedFiles,
+  };
+}
+
+function assertHomepageUnchanged(expected, actual) {
+  assert.ok(actual, `${expected.path} must exist in current manifest`);
+  assert.equal(actual.newlineStyle, expected.newlineStyle, `${expected.path} newline style changed`);
+  assert.equal(actual.byteLength, expected.byteLength, `${expected.path} byte length changed`);
+  assert.deepEqual(actual.protectedRegionSha256, expected.protectedRegionSha256, `${expected.path} protected region hash changed`);
+  assert.equal(actual.postHeadBodySha256, expected.postHeadBodySha256, `${expected.path} post-head body hash changed`);
+  assert.deepEqual(actual.markerCounts, expected.markerCounts, `${expected.path} marker counts changed`);
+  assert.equal(actual.faqItemCount, expected.faqItemCount, `${expected.path} FAQ item count changed`);
+  assert.equal(actual.faqJsonLdCount, expected.faqJsonLdCount, `${expected.path} FAQ JSON-LD count changed`);
+  assert.equal(actual.h1Count, expected.h1Count, `${expected.path} H1 count changed`);
+}
+
+function assertManifestUnchanged(expectedManifest, actualManifest) {
+  assert.equal(actualManifest.schemaVersion, expectedManifest.schemaVersion, 'Manifest schema version changed');
+  assert.equal(actualManifest.homepages.length, expectedManifest.homepages.length, 'Published homepage count changed');
+
+  const actualHomepages = new Map(actualManifest.homepages.map((entry) => [entry.path, entry]));
+  for (const expectedEntry of expectedManifest.homepages) {
+    assertHomepageUnchanged(expectedEntry, actualHomepages.get(expectedEntry.path));
+  }
+
+  assert.deepEqual(actualManifest.aboutFacts, expectedManifest.aboutFacts, 'About facts section changed');
+  assert.deepEqual(actualManifest.lockedFiles, expectedManifest.lockedFiles, 'Locked file hashes changed');
+}
+
+function assertExactReplacement(originalText, range, replacementText, actualText, label = 'replacement') {
+  assert.ok(range && Number.isInteger(range.start) && Number.isInteger(range.end), `${label} range must include numeric start and end`);
+  assert.ok(range.start >= 0, `${label} start must be non-negative`);
+  assert.ok(range.end >= range.start, `${label} end must be after start`);
+  const expectedText = originalText.slice(0, range.start) + replacementText + originalText.slice(range.end);
+  assert.equal(actualText, expectedText, `${label} must only replace requested range`);
+}
+
+function writeBaseline(outputPath = BASELINE_PATH, rootDir = ROOT) {
+  const manifest = buildManifest(rootDir);
+  fs.writeFileSync(outputPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+  return manifest;
+}
+
+if (require.main === module) {
+  if (process.argv.includes('--write-baseline')) {
+    writeBaseline();
+    process.stdout.write(`Wrote ${path.relative(ROOT, BASELINE_PATH)}\n`);
+  } else {
+    process.stdout.write(`${JSON.stringify(buildManifest(), null, 2)}\n`);
+  }
+}
+
+module.exports = {
+  BASELINE_PATH,
+  buildManifest,
+  extractProtectedRegions,
+  assertManifestUnchanged,
+  assertExactReplacement,
+};
