@@ -86,6 +86,16 @@ function getMetaEntries(html, attributeName, attributeValue) {
   return collectMetaTags(html).filter((entry) => entry[attributeName] === attributeValue);
 }
 
+function splitHeadBoundary(html) {
+  const headClose = html.search(/<\/head>/i);
+  assert.notEqual(headClose, -1, 'HTML must contain </head>');
+  const boundary = headClose + '</head>'.length;
+  return {
+    head: html.slice(0, boundary),
+    body: html.slice(boundary),
+  };
+}
+
 function getSingleMatch(html, pattern) {
   const globalPattern = pattern.global ? pattern : new RegExp(pattern.source, `${pattern.flags}g`);
   const matches = [...html.matchAll(globalPattern)];
@@ -192,6 +202,7 @@ for (const locale of localeConfig.publishedLocales) {
   for (const page of localeConfig.publicPages) {
     const relativePath = toPosix(locale === localeConfig.defaultLocale ? page : path.join(locale, page));
     const html = readHtml(locale, page);
+    const { head, body } = splitHeadBoundary(html);
     const expectedBodyHash = BODY_BASELINE.routes[relativePath];
     const actualBodyHash = postHeadBodySha256(html);
 
@@ -199,18 +210,24 @@ for (const locale of localeConfig.publishedLocales) {
       issues.push(`${relativePath} post-head body hash changed for a head-only repair page.`);
     }
 
-    const ogTypeEntries = getMetaEntries(html, 'property', 'og:type');
+    const ogTypeEntries = getMetaEntries(head, 'property', 'og:type');
     if (ogTypeEntries.length !== 1) {
       issues.push(`${relativePath} must have exactly one og:type meta tag; found ${ogTypeEntries.length}.`);
     } else if (ogTypeEntries[0].content !== 'website') {
       issues.push(`${relativePath} og:type must be "website"; found ${describeValue(ogTypeEntries[0].content)}.`);
     }
+    if (getMetaEntries(body, 'property', 'og:type').length !== 0) {
+      issues.push(`${relativePath} og:type meta tag must stay inside <head>.`);
+    }
 
-    const twitterCardEntries = getMetaEntries(html, 'name', 'twitter:card');
+    const twitterCardEntries = getMetaEntries(head, 'name', 'twitter:card');
     if (twitterCardEntries.length !== 1) {
       issues.push(`${relativePath} must have exactly one twitter:card meta tag; found ${twitterCardEntries.length}.`);
     } else if (twitterCardEntries[0].content !== 'summary_large_image') {
       issues.push(`${relativePath} twitter:card must be "summary_large_image"; found ${describeValue(twitterCardEntries[0].content)}.`);
+    }
+    if (getMetaEntries(body, 'name', 'twitter:card').length !== 0) {
+      issues.push(`${relativePath} twitter:card meta tag must stay inside <head>.`);
     }
 
     if (html.includes('\uFFFD')) {
@@ -234,9 +251,9 @@ for (const locale of localeConfig.publishedLocales) {
 
     if (page === DOWNLOAD_PAGE) {
       const expectedDownloadMetadata = DOWNLOAD_METADATA_BASELINE.routes[relativePath];
-      const title = getTitle(html);
-      const description = getMetaDescription(html);
-      const canonicalHref = getCanonicalHref(html);
+      const title = getTitle(head);
+      const description = getMetaDescription(head);
+      const canonicalHref = getCanonicalHref(head);
 
       if (title === null) {
         issues.push(`${relativePath} must have exactly one <title> for download social metadata.`);
@@ -274,13 +291,16 @@ for (const locale of localeConfig.publishedLocales) {
         ['name', 'twitter:description', expectedDownloadMetadata.description],
         ['name', 'twitter:image', DOWNLOAD_IMAGE_URL],
       ]) {
-        const entries = getMetaEntries(html, attributeName, attributeValue);
+        const entries = getMetaEntries(head, attributeName, attributeValue);
         if (entries.length !== 1) {
           issues.push(`${relativePath} must have exactly one ${attributeValue} meta tag; found ${entries.length}.`);
           continue;
         }
         if (entries[0].content !== expectedValue) {
           issues.push(`${relativePath} ${attributeValue} must be ${describeValue(expectedValue)}; found ${describeValue(entries[0].content)}.`);
+        }
+        if (getMetaEntries(body, attributeName, attributeValue).length !== 0) {
+          issues.push(`${relativePath} ${attributeValue} meta tag must stay inside <head>.`);
         }
       }
     }
