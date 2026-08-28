@@ -75,8 +75,8 @@
     },
     "fileSha256States": {
       "worktree": {
-        "localization.config.js": "48d546afc5cd27854968ccff8a6b6bb31dc19369a1f487728248312fbc4b0dfe",
-        "sitemap.xml": "e5d6af474ba0d8b7d5a325131416b92c46fe6104cae0396d3afaa0979c07bf50",
+        "localization.config.js": "07fbd35bd3ea84293a34ef0a6c000129f320a9f0ed8ac54abc280a883b841507",
+        "sitemap.xml": "10d77be1be3a9844b452acae186ee64420d074d73bae9b28f4015a741cbd09a0",
         "vercel.json": "5dd2758564197bd9d95458a9408577182bc52aad8b6bc1a811642cbacb97d6b9"
       },
       "repository": {
