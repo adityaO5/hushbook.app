@@ -14,8 +14,8 @@ const DOWNLOAD_IMAGE_URL = `${BASE_URL}/${DOWNLOAD_IMAGE_PATH}`;
 const DOWNLOAD_PAGE = 'download.html';
 const BODY_BASELINE_PATH = path.join(ROOT, 'output', 'seo-repair-body-baseline.json');
 const DOWNLOAD_METADATA_PATH = path.join(ROOT, 'output', 'seo-repair-download-metadata.json');
+const REPLACEMENT_MAP_PATH = path.join(ROOT, 'data', 'seo-repair-replacements.json');
 const CORRUPTION_TOKENS = ['BushBook', 'HuhBook', 'HBTER2X', 'HBOPEXIX'];
-const CONTEXTUAL_NOTUND_ALLOWLIST = Object.freeze({});
 
 function readJson(jsonPath) {
   return JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
@@ -23,6 +23,7 @@ function readJson(jsonPath) {
 
 const BODY_BASELINE = Object.freeze(readJson(BODY_BASELINE_PATH));
 const DOWNLOAD_METADATA_BASELINE = Object.freeze(readJson(DOWNLOAD_METADATA_PATH));
+const REPLACEMENT_MAP = Object.freeze(readJson(REPLACEMENT_MAP_PATH));
 
 function toPosix(relativePath) {
   return relativePath.replace(/\\/g, '/');
@@ -136,6 +137,21 @@ function extractNotundContexts(html) {
   return contexts;
 }
 
+const CONTEXTUAL_NOTUND_ALLOWLIST = Object.freeze(
+  Object.fromEntries(
+    (REPLACEMENT_MAP.blockedReviews ?? [])
+      .filter((entry) => entry.artifact === 'Notund' && entry.review?.status === 'blocked')
+      .map((entry) => {
+        const tokenIndex = entry.oldText.indexOf('Notund');
+        const fragment = entry.oldText.slice(
+          Math.max(0, tokenIndex - 20),
+          Math.min(entry.oldText.length, tokenIndex + 'Notund'.length + 40),
+        );
+        return [toPosix(entry.file), [fragment.replace(/\s+/g, ' ').trim()]];
+      }),
+  ),
+);
+
 function postHeadBodySha256(html) {
   const headClose = html.search(/<\/head>/i);
   assert.notEqual(headClose, -1, 'HTML must contain </head>');
@@ -243,7 +259,10 @@ for (const locale of localeConfig.publishedLocales) {
     const notundContexts = extractNotundContexts(html);
     if (notundContexts.length > 0) {
       const approvedContexts = CONTEXTUAL_NOTUND_ALLOWLIST[relativePath] ?? [];
-      const unknownContexts = notundContexts.filter((context) => !approvedContexts.includes(context));
+      const unknownContexts = notundContexts.filter((context) => {
+        const normalizedContext = context.replace(/\s+/g, ' ').trim();
+        return !approvedContexts.some((approvedContext) => normalizedContext.includes(approvedContext));
+      });
       if (unknownContexts.length > 0) {
         issues.push(`${relativePath} contains unapproved Notund context(s): ${unknownContexts.map((context) => JSON.stringify(context)).join(', ')}.`);
       }
