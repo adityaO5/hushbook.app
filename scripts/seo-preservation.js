@@ -235,7 +235,14 @@ function assertSingleManifestUnchanged(expectedManifest, actualManifest, options
   }
 
   assert.deepEqual(actualManifest.aboutFacts, expectedManifest.aboutFacts, 'About facts section changed');
-  assert.deepEqual(actualManifest.lockedFiles, expectedManifest.lockedFiles, 'Locked file hashes changed');
+  assert.deepEqual(
+    actualManifest.lockedFiles.map((entry) => ({ path: entry.path, sha256: entry.sha256 })),
+    expectedManifest.lockedFiles.map((entry) => ({ path: entry.path, sha256: entry.sha256 })),
+    'Locked file content hashes changed',
+  );
+  if (options.strict) {
+    assert.deepEqual(actualManifest.lockedFiles, expectedManifest.lockedFiles, 'Locked file byte metadata changed');
+  }
 }
 
 function manifestStates(manifest) {
