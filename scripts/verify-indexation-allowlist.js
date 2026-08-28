@@ -49,6 +49,13 @@ function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, file))).digest('hex');
 }
 
+function fileHashStates(evidence) {
+  if (evidence.fileSha256States && typeof evidence.fileSha256States === 'object' && !Array.isArray(evidence.fileSha256States)) {
+    return Object.entries(evidence.fileSha256States);
+  }
+  return [['default', evidence.fileSha256]];
+}
+
 function assertSameArray(actual, expected, message) {
   assert.deepEqual(actual, expected, message);
 }
@@ -88,6 +95,13 @@ function verifySchemaAndStatuses() {
   assert.equal(allowlist.publicationDecision.approvedRouteCount, 0);
 
   const evidence = allowlist.currentPublicationEvidence;
+  const expectedFiles = Object.keys(evidence.fileSha256).sort();
+  for (const [state, hashes] of fileHashStates(evidence)) {
+    assert.deepEqual(Object.keys(hashes).sort(), expectedFiles, `${state}: publication evidence hash keys`);
+    for (const [file, hash] of Object.entries(hashes)) {
+      assert.match(hash, /^[a-f0-9]{64}$/, `${state} ${file}: publication evidence hash format`);
+    }
+  }
   assertSameArray(evidence.publishedLocales, expectedLocales, 'published locale evidence');
   assert.equal(evidence.publishedLocaleCount, expectedLocales.length, 'published locale count');
   assertSameArray(evidence.publicPages, expectedPages, 'public page evidence');
@@ -131,9 +145,14 @@ function verifySchemaAndStatuses() {
 
 function verifyCurrentPublicationEvidence() {
   const evidence = allowlist.currentPublicationEvidence;
-  for (const [file, expectedHash] of Object.entries(evidence.fileSha256)) {
-    assert.equal(sha256(file), expectedHash, `${file}: publication evidence changed`);
-  }
+  const matches = fileHashStates(evidence).filter(([, hashes]) => (
+    Object.entries(hashes).every(([file, expectedHash]) => sha256(file) === expectedHash)
+  ));
+  assert.equal(
+    matches.length,
+    1,
+    `Current publication evidence must match exactly one recorded file-hash state; matched ${matches.map(([state]) => state).join(', ') || 'none'}`,
+  );
 
   const sitemap = fs.readFileSync(path.join(ROOT, evidence.sitemap.file), 'utf8');
   const blocks = [...sitemap.matchAll(/<url>[\s\S]*?<\/url>/g)].map((match) => match[0]);

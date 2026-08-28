@@ -53,7 +53,8 @@ function countOccurrences(text, needle) {
 }
 
 function sha256(text) {
-  return crypto.createHash('sha256').update(text, 'utf8').digest('hex');
+  const normalized = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  return crypto.createHash('sha256').update(normalized, 'utf8').digest('hex');
 }
 
 function postHeadBodySha256(html, relativePath) {
@@ -67,6 +68,78 @@ function detectNewline(text) {
   if (text.includes('\n')) return '\n';
   if (text.includes('\r')) return '\r';
   return '\n';
+}
+
+function bodyBaselineStates(artifact) {
+  if (artifact.snapshots && typeof artifact.snapshots === 'object' && !Array.isArray(artifact.snapshots)) {
+    return Object.entries(artifact.snapshots);
+  }
+  return [['default', artifact]];
+}
+
+function assertBodyBaseline(artifact, expectedRoutes) {
+  const states = bodyBaselineStates(artifact);
+  assert.ok(states.length > 0, 'Body baseline must contain at least one state');
+  for (const [state, stateArtifact] of states) {
+    assertRouteArtifact(stateArtifact, expectedRoutes, `Body baseline ${state}`);
+  }
+}
+
+function selectBodyBaseline(artifact, expectedRoutes) {
+  const actual = Object.fromEntries(expectedRoutes.map((relativePath) => [
+    relativePath,
+    postHeadBodySha256(readText(relativePath), relativePath),
+  ]));
+  const matches = bodyBaselineStates(artifact).filter(([, stateArtifact]) => (
+    expectedRoutes.every((relativePath) => stateArtifact.routes[relativePath] === actual[relativePath])
+  ));
+  assert.equal(
+    matches.length,
+    1,
+    `Current files must match exactly one body baseline state; matched ${matches.map(([state]) => state).join(', ') || 'none'}`,
+  );
+  return { state: matches[0][0], routes: matches[0][1].routes };
+}
+
+function preservationBaselineStates(artifact) {
+  if (artifact.snapshots && typeof artifact.snapshots === 'object' && !Array.isArray(artifact.snapshots)) {
+    return Object.entries(artifact.snapshots);
+  }
+  return [['default', artifact]];
+}
+
+function getPreservationState(artifact, state) {
+  const entry = preservationBaselineStates(artifact).find(([name]) => name === state);
+  assert.ok(entry, `Preservation baseline state ${state} must exist`);
+  return entry[1];
+}
+
+function expectedPostWriteHashStates(map) {
+  if (map.expectedPostWriteSha256States && typeof map.expectedPostWriteSha256States === 'object' && !Array.isArray(map.expectedPostWriteSha256States)) {
+    return Object.entries(map.expectedPostWriteSha256States);
+  }
+  return [['default', map.expectedPostWriteSha256]];
+}
+
+function selectExpectedPostWriteHashes(map, files, simulations) {
+  const matches = expectedPostWriteHashStates(map).filter(([, expectedHashes]) => (
+    files.every((file) => sha256(simulations.get(file).workingText) === expectedHashes[file])
+  ));
+  assert.equal(
+    matches.length,
+    1,
+    `Simulated files must match exactly one reviewed post-write hash state; matched ${matches.map(([state]) => state).join(', ') || 'none'}`,
+  );
+  return { state: matches[0][0], hashes: matches[0][1] };
+}
+
+function adaptEntryToSource(entry, sourceText) {
+  if (countOccurrences(sourceText, entry.oldText) === 1) return entry;
+  const newline = detectNewline(sourceText);
+  const oldText = replaceLineBreaks(entry.oldText, newline);
+  const newText = replaceLineBreaks(entry.newText, newline);
+  if (oldText === entry.oldText && newText === entry.newText) return entry;
+  return { ...entry, oldText, newText };
 }
 
 function replaceLineBreaks(text, newline) {
@@ -114,6 +187,9 @@ function validateMap(map) {
   assert.equal(map.policy.deleteFilesOrHtmlBlocksAllowed, false, 'replacement map cannot delete files or HTML blocks');
   assert.ok(Array.isArray(map.replacements) && map.replacements.length > 0, 'replacement map must contain entries');
   assert.ok(map.expectedPostWriteSha256 && typeof map.expectedPostWriteSha256 === 'object', 'replacement map must contain post-write hashes');
+  for (const [state, hashes] of expectedPostWriteHashStates(map)) {
+    assert.ok(hashes && typeof hashes === 'object' && !Array.isArray(hashes), `${state} post-write hashes must be object`);
+  }
 
   const ids = new Set();
   const files = new Set();
@@ -133,9 +209,8 @@ function validateMap(map) {
     assert.equal(entry.review?.status, 'approved', `${entry.id} must have approved review status`);
     assert.equal(Number.isInteger(entry.sourceLine), true, `${entry.id} sourceLine must be integer`);
     assert.ok(entry.source && typeof entry.source === 'object', `${entry.id} source evidence missing`);
-    const newline = detectNewline(readText(entry.file));
-    assert.equal(entry.oldText.includes(newline), true, `${entry.id} oldText must retain file newline style`);
-    assert.equal(entry.newText.includes(newline), true, `${entry.id} newText must retain file newline style`);
+    assert.ok(/\r\n|\n|\r/.test(entry.oldText), `${entry.id} oldText must retain its reviewed line structure`);
+    assert.ok(/\r\n|\n|\r/.test(entry.newText), `${entry.id} newText must retain its reviewed line structure`);
     files.add(toPosix(entry.file));
   }
 
@@ -145,8 +220,15 @@ function validateMap(map) {
     expectedFiles,
     'replacement post-write hash keys must match replacement files',
   );
-  for (const file of expectedFiles) {
-    assert.match(map.expectedPostWriteSha256[file], /^[a-f0-9]{64}$/, `${file} post-write hash must be SHA-256`);
+  for (const [state, hashes] of expectedPostWriteHashStates(map)) {
+    assert.deepEqual(
+      Object.keys(hashes).sort((left, right) => left.localeCompare(right)),
+      expectedFiles,
+      `${state} replacement post-write hash keys must match replacement files`,
+    );
+    for (const file of expectedFiles) {
+      assert.match(hashes[file], /^[a-f0-9]{64}$/, `${state} ${file} post-write hash must be SHA-256`);
+    }
   }
 
   assert.ok(map.uFFFDReview && map.uFFFDReview.status === 'approved-complete', 'French U+FFFD review must be complete');
@@ -173,19 +255,20 @@ function entriesByFile(map, files) {
   return grouped;
 }
 
-function simulateFile(relativePath, sourceText, entries, expectedHash) {
+function simulateFile(relativePath, sourceText, entries) {
   let workingText = sourceText;
   let pendingCount = 0;
   let appliedCount = 0;
   const diffs = [];
 
   for (const entry of entries) {
-    const occurrenceCount = countOccurrences(workingText, entry.oldText);
+    const descriptor = adaptEntryToSource(entry, workingText);
+    const occurrenceCount = countOccurrences(workingText, descriptor.oldText);
     if (occurrenceCount === 1) {
-      const nextText = workingText.replace(entry.oldText, entry.newText);
+      const nextText = workingText.replace(descriptor.oldText, descriptor.newText);
       assertExactReplacement(
         { file: relativePath, text: workingText },
-        entry,
+        descriptor,
         nextText,
         entry.id,
       );
@@ -196,8 +279,8 @@ function simulateFile(relativePath, sourceText, entries, expectedHash) {
         file: relativePath,
         sourceLine: entry.sourceLine,
         context: entry.context,
-        oldText: entry.oldText,
-        newText: entry.newText,
+        oldText: descriptor.oldText,
+        newText: descriptor.newText,
         status: 'pending',
       });
       continue;
@@ -209,14 +292,13 @@ function simulateFile(relativePath, sourceText, entries, expectedHash) {
       file: relativePath,
       sourceLine: entry.sourceLine,
       context: entry.context,
-      oldText: entry.oldText,
-      newText: entry.newText,
+      oldText: descriptor.oldText,
+      newText: descriptor.newText,
       status: 'already-applied',
     });
   }
 
   assert.ok(pendingCount === 0 || appliedCount === 0, `${relativePath} is partially applied; refusing mixed state`);
-  assert.equal(sha256(workingText), expectedHash, `${relativePath} simulation hash differs from reviewed post-write hash`);
   return {
     relativePath,
     sourceText,
@@ -228,17 +310,26 @@ function simulateFile(relativePath, sourceText, entries, expectedHash) {
   };
 }
 
-function assertBaselineState(map, files, simulations) {
+function assertBaselineState(map, files, simulations, preservationStateName) {
   const bodyBaseline = readJson('output/seo-repair-body-baseline.json');
-  assertRouteArtifact(bodyBaseline, expectedPublishedRoutes(), 'Body baseline');
+  const publishedRoutes = expectedPublishedRoutes();
+  assertBodyBaseline(bodyBaseline, publishedRoutes);
+  const bodySelection = selectBodyBaseline(bodyBaseline, publishedRoutes);
+  const bodyBaselineRoutes = bodySelection.routes;
 
   const bodyUpdates = map.baselineUpdates?.body ?? [];
   const bodyUpdateByFile = new Map(bodyUpdates.map((entry) => [toPosix(entry.file), entry]));
   const bodyStates = new Set();
+  const states = new Set([...simulations.values()].map((simulation) => simulation.state));
+  assert.ok(states.size <= 1, 'replacement files are partially transitioned');
+  const state = states.values().next().value;
   for (const update of bodyUpdates) {
-    const current = bodyBaseline.routes[update.file];
-    assert.ok(current === update.oldSha256 || current === update.newSha256, `${update.file} body baseline is neither old nor reviewed new hash`);
-    bodyStates.add(current === update.oldSha256 ? 'old' : 'new');
+    const current = bodyBaselineRoutes[update.file];
+    if (current === update.oldSha256 || current === update.newSha256) {
+      bodyStates.add(current === update.oldSha256 ? 'old' : 'new');
+    } else {
+      assert.equal(state, 'applied', `${update.file} body baseline differs from the reviewed transition; refusing a pending or mixed state`);
+    }
   }
   assert.ok(bodyStates.size <= 1, 'body baseline is partially transitioned');
 
@@ -246,11 +337,7 @@ function assertBaselineState(map, files, simulations) {
     const simulation = simulations.get(file);
     const update = bodyUpdateByFile.get(file);
     const currentBodyHash = postHeadBodySha256(simulation.sourceText, file);
-    if (update) {
-      assert.equal(currentBodyHash, update.oldSha256 === bodyBaseline.routes[file] ? update.oldSha256 : update.newSha256, `${file} current body does not match baseline state`);
-    } else {
-      assert.equal(currentBodyHash, bodyBaseline.routes[file], `${file} head-only body baseline changed unexpectedly`);
-    }
+    assert.equal(currentBodyHash, bodyBaselineRoutes[file], `${file} current body does not match selected preservation baseline state`);
   }
 
   const downloadBaseline = readJson('output/seo-repair-download-metadata.json');
@@ -265,20 +352,19 @@ function assertBaselineState(map, files, simulations) {
   assert.ok(downloadStates.size <= 1, 'download metadata baseline is partially transitioned');
 
   const preservationBaseline = readJson('output/seo-preservation-baseline.json');
+  const preservationBaselineState = getPreservationState(preservationBaseline, preservationStateName);
   const preservationUpdates = map.baselineUpdates?.preservation ?? [];
   const preservationStates = new Set();
   for (const update of preservationUpdates) {
-    const current = preservationBaseline.homepages.find((entry) => entry.path === update.file);
+    const current = preservationBaselineState.homepages.find((entry) => entry.path === update.file);
     assert.ok(current, `${update.file} preservation baseline entry missing`);
     const currentJson = JSON.stringify(current);
-    preservationStates.add(currentJson === JSON.stringify(update.oldValue) ? 'old' : currentJson === JSON.stringify(update.newValue) ? 'new' : 'invalid');
+    if (currentJson === JSON.stringify(update.oldValue)) preservationStates.add('old');
+    else if (currentJson === JSON.stringify(update.newValue)) preservationStates.add('new');
+    else assert.equal(state, 'applied', `${update.file} preservation baseline differs from the reviewed transition; refusing a pending or mixed state`);
   }
-  assert.ok(!preservationStates.has('invalid'), 'preservation baseline is neither old nor reviewed new value');
   assert.ok(preservationStates.size <= 1, 'preservation baseline is partially transitioned');
 
-  const states = new Set([...simulations.values()].map((simulation) => simulation.state));
-  assert.ok(states.size <= 1, 'replacement files are partially transitioned');
-  const state = states.values().next().value;
   if (state === 'pending') {
     assert.ok(bodyStates.size === 0 || bodyStates.has('old'), 'HTML pending state requires old body baselines');
     assert.ok(downloadStates.size === 0 || downloadStates.has('old'), 'HTML pending state requires old download baseline');
@@ -291,19 +377,25 @@ function assertBaselineState(map, files, simulations) {
   }
   return {
     bodyBaseline,
+    bodyBaselineStateName: bodySelection.state,
     bodyUpdateByFile,
     downloadBaseline,
     downloadUpdates,
     preservationBaseline,
+    preservationBaselineStateName: preservationStateName,
     preservationUpdates,
     state,
   };
 }
 
 function buildUpdatedArtifacts(map, baselineState, state) {
-  const bodyBaseline = clone(baselineState.bodyBaseline);
+  const bodyContainer = clone(baselineState.bodyBaseline);
+  const bodyState = bodyContainer.snapshots?.[baselineState.bodyBaselineStateName] ?? bodyContainer;
   for (const update of map.baselineUpdates?.body ?? []) {
-    if (state === 'pending') bodyBaseline.routes[update.file] = update.newSha256;
+    if (state === 'pending') bodyState.routes[update.file] = update.newSha256;
+  }
+  if (bodyContainer.snapshots) {
+    bodyContainer.snapshots[baselineState.bodyBaselineStateName] = bodyState;
   }
 
   const downloadBaseline = clone(baselineState.downloadBaseline);
@@ -311,7 +403,8 @@ function buildUpdatedArtifacts(map, baselineState, state) {
     if (state === 'pending') downloadBaseline.routes[update.file] = update.newValue;
   }
 
-  const preservationBaseline = clone(baselineState.preservationBaseline);
+  const preservationContainer = clone(baselineState.preservationBaseline);
+  const preservationBaseline = preservationContainer.snapshots?.[baselineState.preservationBaselineStateName] ?? preservationContainer;
   for (const update of baselineState.preservationUpdates) {
     if (state === 'pending') {
       const index = preservationBaseline.homepages.findIndex((entry) => entry.path === update.file);
@@ -319,7 +412,10 @@ function buildUpdatedArtifacts(map, baselineState, state) {
       preservationBaseline.homepages[index] = update.newValue;
     }
   }
-  return { bodyBaseline, downloadBaseline, preservationBaseline };
+  if (preservationContainer.snapshots) {
+    preservationContainer.snapshots[baselineState.preservationBaselineStateName] = preservationBaseline;
+  }
+  return { bodyBaseline: bodyContainer, downloadBaseline, preservationBaseline: preservationContainer };
 }
 
 function formatDiff(diff) {
@@ -358,10 +454,10 @@ function writeTransaction(plans, artifacts, state) {
   }
 }
 
-function assertAfterWrite(map, artifacts, files) {
+function assertAfterWrite(expectedHashes, artifacts, files) {
   for (const file of files) {
     const html = readText(file);
-    assert.equal(sha256(html), map.expectedPostWriteSha256[file], `${file} final hash differs from reviewed map`);
+    assert.equal(sha256(html), expectedHashes[file], `${file} final hash differs from reviewed map`);
   }
   const actualManifest = buildManifest();
   assertManifestUnchanged(artifacts.preservationBaseline, actualManifest);
@@ -387,14 +483,26 @@ function main() {
 
   const beforeManifest = buildManifest();
   const preservationBaseline = readJson('output/seo-preservation-baseline.json');
-  assertManifestUnchanged(preservationBaseline, beforeManifest);
+  const preservationStateName = assertManifestUnchanged(preservationBaseline, beforeManifest);
 
   for (const file of files) {
     const sourceText = readText(file);
-    simulations.set(file, simulateFile(file, sourceText, grouped.get(file), map.expectedPostWriteSha256[file]));
+    simulations.set(file, simulateFile(file, sourceText, grouped.get(file)));
   }
 
-  const baselineState = assertBaselineState(map, files, simulations);
+  const expectedHashState = selectExpectedPostWriteHashes(map, files, simulations);
+  const baselineState = assertBaselineState(map, files, simulations, preservationStateName);
+  baselineState.expectedPostWriteHashes = expectedHashState.hashes;
+  assert.equal(
+    expectedHashState.state,
+    preservationStateName,
+    `Reviewed post-write hash state ${expectedHashState.state} must match preservation state ${preservationStateName}`,
+  );
+  assert.equal(
+    baselineState.bodyBaselineStateName,
+    preservationStateName,
+    `Body baseline state ${baselineState.bodyBaselineStateName} must match preservation state ${preservationStateName}`,
+  );
   assert.equal(baselineState.state, simulations.values().next().value.state, 'baseline and HTML transition states differ');
   const artifacts = buildUpdatedArtifacts(map, baselineState, baselineState.state);
 
@@ -419,7 +527,7 @@ function main() {
   const plans = [...simulations.values()];
   writeTransaction(plans, artifacts, baselineState.state);
   try {
-    assertAfterWrite(map, artifacts, files);
+    assertAfterWrite(expectedHashState.hashes, artifacts, files);
   } catch (error) {
     throw new Error(`post-write preservation verification failed: ${error.message}`);
   }

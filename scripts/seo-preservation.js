@@ -2,6 +2,7 @@
 
 const assert = require('node:assert/strict');
 const crypto = require('node:crypto');
+const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 const localeConfig = require('../localization.config');
@@ -16,7 +17,9 @@ const FAQ_JSON_LD_PATTERN = /<script\s+type="application\/ld\+json"\s+data-hushb
 const ABOUT_FACTS_PATTERN = /<section aria-labelledby="facts-title">[\s\S]*?<\/section>/g;
 
 function sha256(value) {
-  return crypto.createHash('sha256').update(value).digest('hex');
+  const text = Buffer.isBuffer(value) ? value.toString('utf8') : String(value);
+  const normalized = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  return crypto.createHash('sha256').update(normalized, 'utf8').digest('hex');
 }
 
 function toPosix(relativePath) {
@@ -50,9 +53,9 @@ function countOccurrences(text, token) {
   return count;
 }
 
-function readWorkspaceFile(rootDir, relativePath) {
+function readWorkspaceFile(rootDir, relativePath, readBuffer = (absolutePath) => fs.readFileSync(absolutePath)) {
   const absolutePath = path.join(rootDir, relativePath);
-  const buffer = fs.readFileSync(absolutePath);
+  const buffer = readBuffer(absolutePath);
   return {
     absolutePath,
     relativePath: toPosix(relativePath),
@@ -134,8 +137,8 @@ function extractProtectedRegions(relativePath, html) {
   };
 }
 
-function buildHomepageEntry(rootDir, relativePath) {
-  const file = readWorkspaceFile(rootDir, relativePath);
+function buildHomepageEntry(rootDir, relativePath, readBuffer) {
+  const file = readWorkspaceFile(rootDir, relativePath, readBuffer);
   const regions = extractProtectedRegions(file.relativePath, file.text);
 
   return {
@@ -155,25 +158,24 @@ function buildHomepageEntry(rootDir, relativePath) {
   };
 }
 
-function buildManifest(rootDir = ROOT) {
+function buildManifest(rootDir = ROOT, readBuffer) {
   const homepagePaths = localeConfig.publishedLocales.map((locale) => (
     locale === localeConfig.defaultLocale ? 'index.html' : path.join(locale, 'index.html')
   ));
 
   const homepages = homepagePaths
-    .map((relativePath) => buildHomepageEntry(rootDir, relativePath))
+    .map((relativePath) => buildHomepageEntry(rootDir, relativePath, readBuffer))
     .sort((left, right) => left.path.localeCompare(right.path));
 
-  const aboutFile = readWorkspaceFile(rootDir, 'about.html');
-  const aboutFacts = extractSingleRegexMatch(
-    aboutFile.text,
-    ABOUT_FACTS_PATTERN,
-    'About facts section',
-    aboutFile.relativePath,
+  const aboutFile = readWorkspaceFile(rootDir, 'about.html', readBuffer);
+  const aboutFactsMatches = [...aboutFile.text.matchAll(ABOUT_FACTS_PATTERN)];
+  assert.ok(
+    aboutFactsMatches.length === 0 || aboutFactsMatches.length === 1,
+    `${aboutFile.relativePath} must contain at most one About facts section`,
   );
 
   const lockedFiles = ['scripts/inject-seo-copy.js', 'robots.txt'].map((relativePath) => {
-    const file = readWorkspaceFile(rootDir, relativePath);
+    const file = readWorkspaceFile(rootDir, relativePath, readBuffer);
     return {
       path: file.relativePath,
       newlineStyle: detectNewlineStyle(file.buffer),
@@ -185,14 +187,28 @@ function buildManifest(rootDir = ROOT) {
   return {
     schemaVersion: 1,
     homepages,
-    aboutFacts: {
-      path: aboutFile.relativePath,
-      newlineStyle: detectNewlineStyle(aboutFile.buffer),
-      byteLength: aboutFile.buffer.length,
-      sha256: sha256(aboutFacts.content),
-    },
+    aboutFacts: aboutFactsMatches.length === 1
+      ? {
+          path: aboutFile.relativePath,
+          present: true,
+          newlineStyle: detectNewlineStyle(aboutFile.buffer),
+          byteLength: aboutFile.buffer.length,
+          sha256: sha256(aboutFactsMatches[0][0]),
+        }
+      : {
+          path: aboutFile.relativePath,
+          present: false,
+        },
     lockedFiles,
   };
+}
+
+function buildManifestFromGitRevision(revision = 'HEAD', repoRoot = ROOT) {
+  const readBuffer = (absolutePath) => {
+    const relativePath = toPosix(path.relative(repoRoot, absolutePath));
+    return execFileSync('git', ['-c', `safe.directory=${toPosix(repoRoot)}`, '-C', repoRoot, 'show', `${revision}:${relativePath}`]);
+  };
+  return buildManifest(repoRoot, readBuffer);
 }
 
 function assertHomepageUnchanged(expected, actual, options = {}) {
@@ -209,7 +225,7 @@ function assertHomepageUnchanged(expected, actual, options = {}) {
   assert.equal(actual.h1Count, expected.h1Count, `${expected.path} H1 count changed`);
 }
 
-function assertManifestUnchanged(expectedManifest, actualManifest, options = {}) {
+function assertSingleManifestUnchanged(expectedManifest, actualManifest, options = {}) {
   assert.equal(actualManifest.schemaVersion, expectedManifest.schemaVersion, 'Manifest schema version changed');
   assert.equal(actualManifest.homepages.length, expectedManifest.homepages.length, 'Published homepage count changed');
 
@@ -220,6 +236,26 @@ function assertManifestUnchanged(expectedManifest, actualManifest, options = {})
 
   assert.deepEqual(actualManifest.aboutFacts, expectedManifest.aboutFacts, 'About facts section changed');
   assert.deepEqual(actualManifest.lockedFiles, expectedManifest.lockedFiles, 'Locked file hashes changed');
+}
+
+function manifestStates(manifest) {
+  if (manifest && manifest.snapshots && typeof manifest.snapshots === 'object' && !Array.isArray(manifest.snapshots)) {
+    return Object.entries(manifest.snapshots);
+  }
+  return [['default', manifest]];
+}
+
+function assertManifestUnchanged(expectedManifest, actualManifest, options = {}) {
+  const failures = [];
+  for (const [state, expectedState] of manifestStates(expectedManifest)) {
+    try {
+      assertSingleManifestUnchanged(expectedState, actualManifest, options);
+      return state;
+    } catch (error) {
+      failures.push(`${state}: ${error.message}`);
+    }
+  }
+  throw new Error(`No preservation baseline state matched current manifest:\n- ${failures.join('\n- ')}`);
 }
 
 function validateNonEmptyString(value, label) {
@@ -285,6 +321,7 @@ if (require.main === module) {
 module.exports = {
   BASELINE_PATH,
   buildManifest,
+  buildManifestFromGitRevision,
   extractProtectedRegions,
   assertHomepageUnchanged,
   assertManifestUnchanged,

@@ -9863,5 +9863,63 @@
         "reason": "approved page-specific BushBook-to-HushBook corrections change body hash only; protected SEO copy, FAQ, FAQ JSON-LD, markers, counts, newline style, and byte length remain unchanged"
       }
     ]
+  },
+  "expectedPostWriteSha256States": {
+    "worktree": {
+      "da/about.html": "1ee8b2804f8b117bd631e459d90f36bbd019782356ac6584dae5b43cd24ff35b",
+      "da/download.html": "9e4ce8e14c37c61f1994fbb25571796ccc0a681d1899325371c5c6e622f29585",
+      "da/index.html": "c271be8f74d0702a6afbb6b2b78b581f4f7c3ace73a6edbbcd2c513d99759f38",
+      "da/licenses.html": "a89b0bda8746192fd9b2e08793c06639443f07fe17ec1e5b865e158ab6c1ffd2",
+      "da/privacy-policy.html": "19dedb15ca364a20be3cd3708094ba2a3337a27438574330bd7856e766f7bd40",
+      "da/refund-policy.html": "c5e16b0e26f85026d0ea9676b4cce6ca3546e2156514a4f4f2a908f378ede30c",
+      "da/terms-conditions.html": "00aebdbc2212de4097fe378f3061a7409d1730b5a51362f8e528026f994b01ff",
+      "fr/about.html": "d357b070f766717cf86de8c294383ddda8c670e7cd5bd6d58d159b09ce5acd5d",
+      "fr/download.html": "a65ff7a097fb14c60515e4e8fd357eeeab2019fc13b3d9e43ea7faa99f5c7ef6",
+      "fr/licenses.html": "d5a051ac2cd5d4a7be07e7171682af5e05e2110c4be2dc711d5ce46a217281ae",
+      "fr/privacy-policy.html": "9bf45fd3e68bb80d3fa25a586458474f1a4870a3e24fd65a034b4e86465caf75",
+      "fr/refund-policy.html": "98166f5b7aa7a285e4f1edaafca8f3f18d3777818dafdc90ee84dd758011e0ae",
+      "fr/terms-conditions.html": "f480dfae2872e70296761ec98274023606bc40754e4f31882fa656b0e12c30ca",
+      "th/about.html": "a44e28653af8c159e6dfa77652cee2f6de9ec5c90b90871093da70c902a058a8",
+      "th/download.html": "df112670845261b67c81f6242de06f30356ae5fcd70ea67309616d4b66f0c1ee",
+      "th/licenses.html": "8b8ccdbdf150cd090df61b072fd77ac7e70c591a794d22ae4dd3fb225a09e73e",
+      "th/privacy-policy.html": "d20e66d70660adbbe91ca0adb673f7c16e2554acfed4cb77bd68948f6ec8075a",
+      "th/refund-policy.html": "2009c00c2b3b00e97f65adb94de223e42922c4f9aab7580747455a2a79837f17",
+      "th/terms-conditions.html": "ddd3d64e32a5ea83afeb96b6a459225b520d4a1f8bed457dc7f176637b394d04",
+      "tr/refund-policy.html": "c1ecf7a32bcc3faf36c8e4107e943532f0bace6ec917b82c9b2b049b3173972c",
+      "vi/about.html": "6e85401fae19fbd0993011ead9cb302716641996eece70aae340488665128917",
+      "vi/download.html": "f80b34947f5aa10d867aefa266320d4620142fe228113a969ac4b7bcffdeb046",
+      "vi/licenses.html": "145a9dd84d3579015a8bc8215b11796fcadeb64b03b50cb2614605a7afbb46e7",
+      "vi/privacy-policy.html": "fe21b62df5be28881f3a35cd0414093ab7dd41d93548073af9f073becc8c126e",
+      "vi/refund-policy.html": "ea4db8fc0befcb751f37672036b71dbff608c6fcee08ec9e9c0ea15a142d8fe0",
+      "vi/terms-conditions.html": "c138134649d5bdbde5aaaf1f84e845e6c6053f79acbcde8d14cc2d28b41ed36c"
+    },
+    "repository": {
+      "da/about.html": "1ee8b2804f8b117bd631e459d90f36bbd019782356ac6584dae5b43cd24ff35b",
+      "da/download.html": "9e4ce8e14c37c61f1994fbb25571796ccc0a681d1899325371c5c6e622f29585",
+      "da/index.html": "70086f857845a5b3620513f74ce5bcd249af4dd3bf286a9d0b3084198d9feae1",
+      "da/licenses.html": "a89b0bda8746192fd9b2e08793c06639443f07fe17ec1e5b865e158ab6c1ffd2",
+      "da/privacy-policy.html": "19dedb15ca364a20be3cd3708094ba2a3337a27438574330bd7856e766f7bd40",
+      "da/refund-policy.html": "c5e16b0e26f85026d0ea9676b4cce6ca3546e2156514a4f4f2a908f378ede30c",
+      "da/terms-conditions.html": "00aebdbc2212de4097fe378f3061a7409d1730b5a51362f8e528026f994b01ff",
+      "fr/about.html": "d357b070f766717cf86de8c294383ddda8c670e7cd5bd6d58d159b09ce5acd5d",
+      "fr/download.html": "a65ff7a097fb14c60515e4e8fd357eeeab2019fc13b3d9e43ea7faa99f5c7ef6",
+      "fr/licenses.html": "d5a051ac2cd5d4a7be07e7171682af5e05e2110c4be2dc711d5ce46a217281ae",
+      "fr/privacy-policy.html": "9bf45fd3e68bb80d3fa25a586458474f1a4870a3e24fd65a034b4e86465caf75",
+      "fr/refund-policy.html": "98166f5b7aa7a285e4f1edaafca8f3f18d3777818dafdc90ee84dd758011e0ae",
+      "fr/terms-conditions.html": "f480dfae2872e70296761ec98274023606bc40754e4f31882fa656b0e12c30ca",
+      "th/about.html": "a44e28653af8c159e6dfa77652cee2f6de9ec5c90b90871093da70c902a058a8",
+      "th/download.html": "df112670845261b67c81f6242de06f30356ae5fcd70ea67309616d4b66f0c1ee",
+      "th/licenses.html": "8b8ccdbdf150cd090df61b072fd77ac7e70c591a794d22ae4dd3fb225a09e73e",
+      "th/privacy-policy.html": "d20e66d70660adbbe91ca0adb673f7c16e2554acfed4cb77bd68948f6ec8075a",
+      "th/refund-policy.html": "2009c00c2b3b00e97f65adb94de223e42922c4f9aab7580747455a2a79837f17",
+      "th/terms-conditions.html": "ddd3d64e32a5ea83afeb96b6a459225b520d4a1f8bed457dc7f176637b394d04",
+      "tr/refund-policy.html": "c1ecf7a32bcc3faf36c8e4107e943532f0bace6ec917b82c9b2b049b3173972c",
+      "vi/about.html": "6e85401fae19fbd0993011ead9cb302716641996eece70aae340488665128917",
+      "vi/download.html": "f80b34947f5aa10d867aefa266320d4620142fe228113a969ac4b7bcffdeb046",
+      "vi/licenses.html": "145a9dd84d3579015a8bc8215b11796fcadeb64b03b50cb2614605a7afbb46e7",
+      "vi/privacy-policy.html": "fe21b62df5be28881f3a35cd0414093ab7dd41d93548073af9f073becc8c126e",
+      "vi/refund-policy.html": "ea4db8fc0befcb751f37672036b71dbff608c6fcee08ec9e9c0ea15a142d8fe0",
+      "vi/terms-conditions.html": "c138134649d5bdbde5aaaf1f84e845e6c6053f79acbcde8d14cc2d28b41ed36c"
+    }
   }
 }

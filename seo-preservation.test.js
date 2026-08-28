@@ -10,11 +10,13 @@ const {
 } = require('./scripts/seo-preservation');
 
 const baseline = JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'));
+const worktreeBaseline = baseline.snapshots?.worktree ?? baseline;
+assert.ok(baseline.snapshots?.repository, 'preservation baseline must include a committed-repository snapshot');
 const manifest = buildManifest();
 
 assertManifestUnchanged(baseline, manifest);
 
-const tolerantCandidate = structuredClone(baseline);
+const tolerantCandidate = structuredClone(worktreeBaseline);
 tolerantCandidate.homepages[0].byteLength += 17;
 tolerantCandidate.homepages[0].newlineStyle = tolerantCandidate.homepages[0].newlineStyle === 'LF' ? 'CRLF' : 'LF';
 assert.doesNotThrow(() => {
@@ -25,13 +27,13 @@ assert.throws(() => {
   assertManifestUnchanged(baseline, tolerantCandidate, { strict: true });
 }, /newline style changed|byte length changed/);
 
-const bodyDriftCandidate = structuredClone(baseline);
+const bodyDriftCandidate = structuredClone(worktreeBaseline);
 bodyDriftCandidate.homepages[0].postHeadBodySha256 = '0'.repeat(64);
 assert.throws(() => {
   assertManifestUnchanged(baseline, bodyDriftCandidate);
 }, /post-head body hash changed/);
 
-const protectedDriftCandidate = structuredClone(baseline);
+const protectedDriftCandidate = structuredClone(worktreeBaseline);
 protectedDriftCandidate.homepages[0].protectedRegionSha256 = {
   ...protectedDriftCandidate.homepages[0].protectedRegionSha256,
   faqJsonLd: 'f'.repeat(64),

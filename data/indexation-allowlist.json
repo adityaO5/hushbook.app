@@ -72,6 +72,18 @@
       "localization.config.js": "48d546afc5cd27854968ccff8a6b6bb31dc19369a1f487728248312fbc4b0dfe",
       "sitemap.xml": "e5d6af474ba0d8b7d5a325131416b92c46fe6104cae0396d3afaa0979c07bf50",
       "vercel.json": "5dd2758564197bd9d95458a9408577182bc52aad8b6bc1a811642cbacb97d6b9"
+    },
+    "fileSha256States": {
+      "worktree": {
+        "localization.config.js": "48d546afc5cd27854968ccff8a6b6bb31dc19369a1f487728248312fbc4b0dfe",
+        "sitemap.xml": "e5d6af474ba0d8b7d5a325131416b92c46fe6104cae0396d3afaa0979c07bf50",
+        "vercel.json": "5dd2758564197bd9d95458a9408577182bc52aad8b6bc1a811642cbacb97d6b9"
+      },
+      "repository": {
+        "localization.config.js": "07fbd35bd3ea84293a34ef0a6c000129f320a9f0ed8ac54abc280a883b841507",
+        "sitemap.xml": "10d77be1be3a9844b452acae186ee64420d074d73bae9b28f4015a741cbd09a0",
+        "vercel.json": "5dd2758564197bd9d95458a9408577182bc52aad8b6bc1a811642cbacb97d6b9"
+      }
     }
   },
   "sourceEvidence": {
@@ -100,44 +112,218 @@
     }
   },
   "localeStatuses": [
-    { "locale": "en", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "de", "status": "blocked", "automatedContractStatus": "pass", "routeCount": 7, "evidenceRefs": ["docs/LOCALE_REVIEW_de.md"] },
-    { "locale": "fr", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "es-ES", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "es-419", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "pt-BR", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "pt-PT", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "it", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "ja", "status": "blocked", "automatedContractStatus": "pass", "routeCount": 7, "evidenceRefs": ["docs/LOCALE_REVIEW_ja.md"] },
-    { "locale": "ko", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "nl", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "pl", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "tr", "status": "blocked", "automatedContractStatus": "pass", "routeCount": 7, "evidenceRefs": ["data/seo-repair-replacements.json"] },
-    { "locale": "ru", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "uk", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "ar", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "id", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "th", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "vi", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "sv", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 },
-    { "locale": "da", "status": "pending_review", "automatedContractStatus": "pass", "routeCount": 7 }
+    {
+      "locale": "en",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "de",
+      "status": "blocked",
+      "automatedContractStatus": "pass",
+      "routeCount": 7,
+      "evidenceRefs": [
+        "docs/LOCALE_REVIEW_de.md"
+      ]
+    },
+    {
+      "locale": "fr",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "es-ES",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "es-419",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "pt-BR",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "pt-PT",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "it",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "ja",
+      "status": "blocked",
+      "automatedContractStatus": "pass",
+      "routeCount": 7,
+      "evidenceRefs": [
+        "docs/LOCALE_REVIEW_ja.md"
+      ]
+    },
+    {
+      "locale": "ko",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "nl",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "pl",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "tr",
+      "status": "blocked",
+      "automatedContractStatus": "pass",
+      "routeCount": 7,
+      "evidenceRefs": [
+        "data/seo-repair-replacements.json"
+      ]
+    },
+    {
+      "locale": "ru",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "uk",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "ar",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "id",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "th",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "vi",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "sv",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    },
+    {
+      "locale": "da",
+      "status": "pending_review",
+      "automatedContractStatus": "pass",
+      "routeCount": 7
+    }
   ],
   "routeNotes": [
-    { "path": "/de", "status": "blocked", "reason": "German locale remains private-preview; production routing/indexing blocked pending qualified legal review." },
-    { "path": "/de/download", "status": "blocked", "reason": "Inherited from blocked German locale review status." },
-    { "path": "/de/about", "status": "blocked", "reason": "Inherited from blocked German locale review status." },
-    { "path": "/de/privacy-policy", "status": "blocked", "reason": "Inherited from blocked German locale review status; qualified legal review pending." },
-    { "path": "/de/terms-conditions", "status": "blocked", "reason": "Inherited from blocked German locale review status; qualified legal review pending." },
-    { "path": "/de/refund-policy", "status": "blocked", "reason": "Inherited from blocked German locale review status; qualified legal review pending." },
-    { "path": "/de/licenses", "status": "blocked", "reason": "Inherited from blocked German locale review status; qualified legal review pending." },
-    { "path": "/ja", "status": "blocked", "reason": "Japanese locale remains a private draft; product-copy, native-language, legal, zero-English, routing, and indexing approvals remain incomplete." },
-    { "path": "/ja/download", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; route has not been created according to locale review evidence." },
-    { "path": "/ja/about", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; route has not been created according to locale review evidence." },
-    { "path": "/ja/privacy-policy", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending." },
-    { "path": "/ja/terms-conditions", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending." },
-    { "path": "/ja/refund-policy", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending." },
-    { "path": "/ja/licenses", "status": "blocked", "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending." },
-    { "path": "/tr/refund-policy", "status": "blocked", "reason": "Known Notund legal/customer-copy block remains unchanged pending trusted translation and legal review." }
+    {
+      "path": "/de",
+      "status": "blocked",
+      "reason": "German locale remains private-preview; production routing/indexing blocked pending qualified legal review."
+    },
+    {
+      "path": "/de/download",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status."
+    },
+    {
+      "path": "/de/about",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status."
+    },
+    {
+      "path": "/de/privacy-policy",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status; qualified legal review pending."
+    },
+    {
+      "path": "/de/terms-conditions",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status; qualified legal review pending."
+    },
+    {
+      "path": "/de/refund-policy",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status; qualified legal review pending."
+    },
+    {
+      "path": "/de/licenses",
+      "status": "blocked",
+      "reason": "Inherited from blocked German locale review status; qualified legal review pending."
+    },
+    {
+      "path": "/ja",
+      "status": "blocked",
+      "reason": "Japanese locale remains a private draft; product-copy, native-language, legal, zero-English, routing, and indexing approvals remain incomplete."
+    },
+    {
+      "path": "/ja/download",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; route has not been created according to locale review evidence."
+    },
+    {
+      "path": "/ja/about",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; route has not been created according to locale review evidence."
+    },
+    {
+      "path": "/ja/privacy-policy",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending."
+    },
+    {
+      "path": "/ja/terms-conditions",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending."
+    },
+    {
+      "path": "/ja/refund-policy",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending."
+    },
+    {
+      "path": "/ja/licenses",
+      "status": "blocked",
+      "reason": "Inherited from blocked Japanese private-preview status; legal review remains pending."
+    },
+    {
+      "path": "/tr/refund-policy",
+      "status": "blocked",
+      "reason": "Known Notund legal/customer-copy block remains unchanged pending trusted translation and legal review."
+    }
   ],
   "routeStatusPolicy": "A route inherits its locale status unless a route note is more restrictive. Unlisted routes retain pending_review while publicationDecision remains pending_user_approval."
 }

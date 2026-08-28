@@ -29,8 +29,14 @@ function toPosix(relativePath) {
   return relativePath.replace(/\\/g, '/');
 }
 
+function absolutePath(relativePath) {
+  return path.join(ROOT, relativePath);
+}
+
 function sha256Buffer(buffer) {
-  return crypto.createHash('sha256').update(buffer).digest('hex');
+  const text = buffer.toString('latin1');
+  const normalized = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  return crypto.createHash('sha256').update(Buffer.from(normalized, 'latin1')).digest('hex');
 }
 
 function expectedRoutePaths() {
@@ -55,6 +61,21 @@ function assertRouteArtifact(artifact, expectedKeys, label) {
   assert.ok(artifact.routes && typeof artifact.routes === 'object' && !Array.isArray(artifact.routes), `${label} routes must be object`);
   const actualKeys = Object.keys(artifact.routes).sort((left, right) => left.localeCompare(right));
   assert.deepEqual(actualKeys, expectedKeys, `${label} route keys must match published route set`);
+}
+
+function bodyBaselineStates(artifact) {
+  if (artifact.snapshots && typeof artifact.snapshots === 'object' && !Array.isArray(artifact.snapshots)) {
+    return Object.entries(artifact.snapshots);
+  }
+  return [['default', artifact]];
+}
+
+function assertBodyBaseline(artifact, expectedKeys) {
+  const states = bodyBaselineStates(artifact);
+  assert.ok(states.length > 0, 'Body baseline must contain at least one state');
+  for (const [state, stateArtifact] of states) {
+    assertRouteArtifact(stateArtifact, expectedKeys, `Body baseline ${state}`);
+  }
 }
 
 function describeBinary(binaryValue) {
@@ -188,7 +209,7 @@ function assertBodyHash(relativePath, buffer) {
   const binaryText = buffer.toString('latin1');
   const split = splitHeadBinary(binaryText, relativePath);
   const bodyBuffer = Buffer.from(split.tailBinary, 'latin1');
-  const expectedBodyHash = BODY_BASELINE.routes[relativePath];
+  const expectedBodyHash = BODY_BASELINE_ROUTES[relativePath];
   const actualBodyHash = sha256Buffer(bodyBuffer);
   assert.equal(
     actualBodyHash,
@@ -416,7 +437,27 @@ const BODY_BASELINE = Object.freeze(readJson(BODY_BASELINE_PATH));
 const PRESERVATION_BASELINE = Object.freeze(readJson(BASELINE_PATH));
 const EXPECTED_ROUTE_PATHS = expectedRoutePaths();
 const EXPECTED_DOWNLOAD_PATHS = expectedDownloadPaths();
-assertRouteArtifact(BODY_BASELINE, EXPECTED_ROUTE_PATHS, 'Body baseline');
+assertBodyBaseline(BODY_BASELINE, EXPECTED_ROUTE_PATHS);
+const BODY_BASELINE_ROUTES = Object.fromEntries(
+  EXPECTED_ROUTE_PATHS.map((relativePath) => [
+    relativePath,
+    (() => {
+      const buffer = fs.readFileSync(absolutePath(relativePath));
+      const binaryText = buffer.toString('latin1');
+      const headClose = binaryText.search(/<\/head>/i);
+      assert.notEqual(headClose, -1, `${relativePath} must contain </head>`);
+      return sha256Buffer(Buffer.from(binaryText.slice(headClose + '</head>'.length), 'latin1'));
+    })(),
+  ]),
+);
+const matchingBodyStates = bodyBaselineStates(BODY_BASELINE).filter(([, stateArtifact]) => (
+  EXPECTED_ROUTE_PATHS.every((relativePath) => stateArtifact.routes[relativePath] === BODY_BASELINE_ROUTES[relativePath])
+));
+assert.equal(
+  matchingBodyStates.length,
+  1,
+  `Current files must match exactly one body baseline state; matched ${matchingBodyStates.map(([state]) => state).join(', ') || 'none'}`,
+);
 assert.deepEqual(EXPECTED_DOWNLOAD_PATHS.length, localeConfig.publishedLocales.length, 'Download route count must equal published locale count');
 
 function buildPlans() {

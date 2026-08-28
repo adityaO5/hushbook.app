@@ -30,7 +30,8 @@ function toPosix(relativePath) {
 }
 
 function sha256(value) {
-  return crypto.createHash('sha256').update(value).digest('hex');
+  const normalized = value.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  return crypto.createHash('sha256').update(normalized, 'utf8').digest('hex');
 }
 
 function pagePath(locale, file) {
@@ -172,14 +173,43 @@ function assertExactRouteKeys(label, artifact, expectedKeys) {
 }
 
 function assertBodyBaseline(artifact, expectedKeys) {
-  assertExactRouteKeys('Body baseline', artifact, expectedKeys);
-  for (const relativePath of expectedKeys) {
-    assert.match(
-      artifact.routes[relativePath],
-      /^[a-f0-9]{64}$/,
-      `Body baseline ${relativePath} must contain a SHA-256 hash`,
-    );
+  const states = artifact.snapshots && typeof artifact.snapshots === 'object' && !Array.isArray(artifact.snapshots)
+    ? Object.entries(artifact.snapshots)
+    : [['default', artifact]];
+  assert.ok(states.length > 0, 'Body baseline must contain at least one state');
+  for (const [state, stateArtifact] of states) {
+    assertExactRouteKeys(`Body baseline ${state}`, stateArtifact, expectedKeys);
+    for (const relativePath of expectedKeys) {
+      assert.match(
+        stateArtifact.routes[relativePath],
+        /^[a-f0-9]{64}$/,
+        `Body baseline ${state} ${relativePath} must contain a SHA-256 hash`,
+      );
+    }
   }
+}
+
+function bodyBaselineStates(artifact) {
+  if (artifact.snapshots && typeof artifact.snapshots === 'object' && !Array.isArray(artifact.snapshots)) {
+    return Object.entries(artifact.snapshots);
+  }
+  return [['default', artifact]];
+}
+
+function selectBodyBaselineRoutes(artifact, expectedKeys) {
+  const actual = Object.fromEntries(expectedKeys.map((relativePath) => [
+    relativePath,
+    postHeadBodySha256(readHtml('', relativePath)),
+  ]));
+  const matches = bodyBaselineStates(artifact).filter(([, stateArtifact]) => (
+    expectedKeys.every((relativePath) => stateArtifact.routes[relativePath] === actual[relativePath])
+  ));
+  assert.equal(
+    matches.length,
+    1,
+    `Current files must match exactly one body baseline state; matched ${matches.map(([state]) => state).join(', ') || 'none'}`,
+  );
+  return matches[0][1].routes;
 }
 
 function assertDownloadMetadataBaseline(artifact, expectedKeys) {
@@ -210,6 +240,7 @@ assert.ok(
 const EXPECTED_ROUTE_PATHS = expectedRoutePaths();
 const EXPECTED_DOWNLOAD_PATHS = expectedDownloadPaths();
 assertBodyBaseline(BODY_BASELINE, EXPECTED_ROUTE_PATHS);
+const BODY_BASELINE_ROUTES = selectBodyBaselineRoutes(BODY_BASELINE, EXPECTED_ROUTE_PATHS);
 assertDownloadMetadataBaseline(DOWNLOAD_METADATA_BASELINE, EXPECTED_DOWNLOAD_PATHS);
 
 const issues = [];
@@ -219,7 +250,7 @@ for (const locale of localeConfig.publishedLocales) {
     const relativePath = toPosix(locale === localeConfig.defaultLocale ? page : path.join(locale, page));
     const html = readHtml(locale, page);
     const { head, body } = splitHeadBoundary(html);
-    const expectedBodyHash = BODY_BASELINE.routes[relativePath];
+    const expectedBodyHash = BODY_BASELINE_ROUTES[relativePath];
     const actualBodyHash = postHeadBodySha256(html);
 
     if (actualBodyHash !== expectedBodyHash) {
