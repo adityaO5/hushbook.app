@@ -180,6 +180,7 @@ img,svg{display:block;max-width:100%}
   font-size:clamp(40px,6vw,74px);line-height:1.02;letter-spacing:-.03em;
   margin:22px 0 0;
 }
+.hero h1 .kw{display:inline-block;white-space:nowrap}
 .hero h1 .hl{font-style:italic;color:var(--amber);position:relative}
 .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.10em;background:var(--glow);filter:blur(2px);border-radius:2px}
 .hero__sub{font-size:clamp(17px,1.9vw,20px);color:var(--paper-dim);max-width:34ch;margin-top:20px}

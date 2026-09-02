@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">Dostępne na iOS i Androidzie</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Transkrybuj dowolny audiobook."><span class="kw">Transkrybuj</span> <span class="kw">dowolny</span> <span class="kw">audiobook.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Audiobook ze zsynchronizowanym tekstem."><span class="kw">Audiobook</span> <span class="kw">ze</span> <span class="kw">zsynchronizowanym</span> <span class="kw">tekstem.</span></h1>
     <p class="sub reveal">Zanurz się w galaktykę wiedzy - każde słowo świeci się w synchronizacji z narracją, zapisywane prywatnie na telefonie. Brak konta. Nie ma chmur.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Pobierz HushBook na App Store">
@@ -1150,6 +1150,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>Najlepsze aplikacje do audiobooków — co wyróżnia HushBook</h3>
       <p>Wyszukaj «<strong>najlepsze aplikacje do audiobooków</strong>» i znajdziesz sklepy, subskrypcje i chmury. HushBook rozwiązuje inny problem: <em>jak czytasz audio, które już masz</em>. Importuj własne MP3, M4B, FLAC i więcej; rozdziały i okładka przyjdą z plikiem. Dotknij Transkrybuj — silnik HushBook na urządzeniu buduje zsynchronizowany tekst: bez bazy tekstów, bez wgrywania, bez konta. Po jednorazowym pobraniu silnika wszystko działa offline. Ten prywatny, plikowy model jest rzadki wśród <strong>aplikacji audiobook na iPhone</strong> i <strong>Android</strong>.</p>
 
+      <p>Listy najlepszych audiobooków 2026 i ulubionych tytułów z 2025 pomagają wybrać thriller, fantasy, romans lub audiobooki dla dzieci. Apple Books, Audible i YouTube mogą pomóc odkryć tytuł; darmowych audiobooków szukaj w zaufanych źródłach domeny publicznej, takich jak LibriVox i Internet Archive. Subskrypcja lub bezpłatny okres próbny otwiera część katalogów, a HushBook odtwarza Twoje pliki i wolne klasyki.</p>
+
       <h3>Za darmo na iPhone i Android</h3>
       <p>HushBook jest darmowy na obu platformach — App Store i Google Play — bez reklam w rdzeniu. Biblioteka domeny publicznej (klasyka z LibriVox i Internet Archive) jest darmowa. Równoległe czytanie, cytaty, profile i offline też. Opcjonalne Pro pogłębia analitykę. Czy potrzebujesz <strong>aplikacji audiobook na iPhone</strong> w drodze, czy <strong>na Android</strong> wieczorem — ta sama obietnica: darmowy start, prywatność by design, zsynchronizowany tekst w zestawie.</p>
 
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Czy jednoczesne czytanie i słuchanie pomaga w skupieniu i zrozumieniu?</button><div class="a"><p>Wielu słuchaczy uważa, że widzenie i słyszenie tych samych słów skupia uwagę i pomaga zapamiętać rozdział lepiej niż samo audio.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Czy HushBook pomaga przy dysleksji lub ADHD?</button><div class="a"><p>Tak. Podświetlanie słowo po słowie i profile czytania wspierają dysleksję, ADHD, słaby wzrok, naukę języków i lepsze skupienie.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Czy HushBook działa offline?</button><div class="a"><p>Tak. Po jednorazowym pobraniu HushBook Engine odtwarzanie, czytanie synchroniczne i transkrypcja działają na urządzeniu bez internetu.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook na Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook na Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

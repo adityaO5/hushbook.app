@@ -1,5 +1,16 @@
 # Canonical site only — Vercel *.vercel.app hosts also send
 # X-Robots-Tag: noindex, nofollow (see vercel.json).
+# Explicitly permit AI search and assistant crawlers on public content.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# General policy also permits other compliant crawlers, including AI crawlers.
 User-agent: *
 Allow: /
 

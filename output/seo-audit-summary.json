@@ -1,0 +1,94 @@
+{
+  "auditedAt": "2026-08-26",
+  "site": "https://hushbook.app",
+  "scope": {
+    "publishedLocales": 21,
+    "publicPageTypes": 7,
+    "htmlFiles": 147
+  },
+  "liveChecks": {
+    "robotsStatus": 200,
+    "sitemapStatus": 200,
+    "sitemapUrls": 147,
+    "sitemapUniqueUrls": 147,
+    "sitemapAlternateCountPerUrl": 22,
+    "sitemapUrlStatuses": {
+      "200": 147
+    },
+    "canonicalMatches": 147,
+    "htmlHreflangSelfReferences": 147,
+    "htmlXDefaultEntries": 147,
+    "homepageJsonLdTypes": [
+      "SoftwareApplication",
+      "FAQPage"
+    ],
+    "homepageFaqQuestions": 14,
+    "mobileHorizontalOverflow": false,
+    "mobileConsoleErrors": 0
+  },
+  "findings": [
+    {
+      "id": "SEO-001",
+      "priority": "P0",
+      "impact": "High",
+      "title": "Unreviewed locale pages are indexable",
+      "affectedPages": 147
+    },
+    {
+      "id": "SEO-002",
+      "priority": "P0",
+      "impact": "High",
+      "title": "French encoding corruption",
+      "affectedPages": 6
+    },
+    {
+      "id": "SEO-003",
+      "priority": "P0",
+      "impact": "High",
+      "title": "Reserved OG/Twitter metadata values translated or corrupted",
+      "affectedOgTypePages": 73,
+      "affectedTwitterCardPages": 93
+    },
+    {
+      "id": "SEO-004",
+      "priority": "P1",
+      "impact": "Medium",
+      "title": "Download pages lack social metadata",
+      "affectedPages": 21
+    },
+    {
+      "id": "SEO-005",
+      "priority": "P1",
+      "impact": "High",
+      "title": "Brand and copy corruption in public locales",
+      "examples": [
+        "BushBook",
+        "HuhBook",
+        "Notund",
+        "HBTER2X",
+        "HBOPEXIX"
+      ]
+    },
+    {
+      "id": "SEO-006",
+      "priority": "P2",
+      "impact": "Medium",
+      "title": "Arabic pages lack dir=rtl",
+      "affectedPages": 7
+    },
+    {
+      "id": "SEO-007",
+      "priority": "P3",
+      "impact": "Low",
+      "title": "No explicit content-language metadata",
+      "affectedPages": 147
+    }
+  ],
+  "sourceChecks": {
+    "trueMissingAltAttributes": 0,
+    "decorativeEmptyAltAttributes": 651,
+    "placeholderAnchors": 0,
+    "missingLocalAssetReferences": 0,
+    "pagesWithExactlyOneH1": 147
+  }
+}

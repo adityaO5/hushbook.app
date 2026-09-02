@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">iOS ve Android’de şimdi mevcut</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Her audiobook’u transkribe et."><span class="kw">Her</span> <span class="kw">audiobook’u</span> <span class="kw">transkribe et.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Senkronize metinli sesli kitap."><span class="kw">Senkronize</span> <span class="kw">metinli</span> <span class="kw">sesli kitap.</span></h1>
     <p class="sub reveal">Dive into a galaksi of knowledge – Her kelime seslendirme ile senkronize edilir, özel olarak telefonunuzdan yazılır. Hesap yok. Bulut yok.</p>
     <div class="stores reveal" id="get" aria-label="HushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="App Store&#x27;da HushBook&#x27;u İndirin">
@@ -1150,6 +1150,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>En iyi sesli kitap uygulamaları — HushBook’u ayıran</h3>
       <p>«<strong>en iyi sesli kitap uygulamaları</strong>» aratınca mağazalar, abonelikler ve bulut katalogları çıkar. HushBook başka bir sorunu çözer: <em>zaten elinizdeki sesi nasıl okursunuz</em>. Kendi MP3, M4B, FLAC ve daha fazlasını içe aktarın; dosyada varsa bölümler ve kapak gelir. Deşifre’ye dokunun — cihazdaki HushBook Engine senkron metni üretir: söz veritabanı yok, yükleme yok, hesap yok. Motoru bir kez indirdikten sonra her şey çevrimdışı. Bu özel, dosya odaklı tasarım ana akım <strong>iPhone sesli kitap uygulamaları</strong> ve <strong>Android</strong> arasında nadirdir.</p>
 
+      <p>2026’nın en iyi sesli kitapları ve 2025’in favorileri listeleri; gerilim, fantastik, romantik veya çocuk sesli kitapları seçmek için iyi bir başlangıçtır. Apple Books, Audible ve YouTube bir kitap keşfetmenize yardımcı olabilir; ücretsiz sesli kitaplar için LibriVox ve Internet Archive gibi güvenilir kamu malı kaynakları tercih edin. Abonelik veya ücretsiz deneme bazı katalogları açar; HushBook ise kendi dosyalarınızı ve ücretsiz klasikleri oynatır.</p>
+
       <h3>iPhone ve Android’de ücretsiz</h3>
       <p>HushBook her iki platformda ücretsiz — App Store ve Google Play — çekirdekte reklam yok. Kamu malı kütüphane (LibriVox ve Internet Archive klasikleri) ücretsiz. Eşlik karaokesi, alıntılar, profiller ve çevrimdışı da ücretsiz. İsteğe bağlı Pro daha derin analiz açar. Yolda <strong>iPhone sesli kitap uygulamaları</strong> veya gece <strong>Android uygulamaları</strong> olsun — vaat aynı: ücretsiz başla, tasarım gereği özel, senkron metin dahil.</p>
 
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Aynı anda okumak ve dinlemek odaklanmaya ve anlamaya yardımcı olur mu?</button><div class="a"><p>Birçok dinleyici aynı kelimeleri görüp duymanın dikkati sabitlediğini ve bir bölümü yalnızca ses dinlemekten daha iyi hatırlattığını söyler.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBook disleksi veya DEHB için uygun mu?</button><div class="a"><p>Evet. Kelime düzeyinde vurgulama ve okuma profilleri disleksi, DEHB, düşük görme, dil öğrenimi ve daha iyi odaklanmayı destekler.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBook çevrimdışı çalışır mı?</button><div class="a"><p>Evet. HushBook Engine bir kez indirildikten sonra oynatma, eşlikli okuma ve deşifre internetsiz olarak cihazda çalışır.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

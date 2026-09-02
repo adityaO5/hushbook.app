@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">Nu tilgængelig på iOS og Android</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Transskriber enhver lydbog."><span class="kw">Transskriber</span> <span class="kw">enhver</span> <span class="kw">lydbog.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Lydbog med synkroniseret tekst."><span class="kw">Lydbog</span> <span class="kw">med</span> <span class="kw">synkroniseret</span> <span class="kw">tekst.</span></h1>
     <p class="sub reveal">Dyk ned i en galakse af viden - hvert ord lyser op i synkronisering med fortællingen, transskriberet privat på din telefon. Ingen konto. Ingen sky.</p>
     <div class="stores reveal" id="get" aria-label="Hent PushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Hent PushBook på App Store">
@@ -1150,6 +1150,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>Bedste lydbogsapps — hvad der adskiller HushBook</h3>
       <p>Søg «<strong>bedste lydbogsapps</strong>», og du finder butikker, abonnementer og skykataloger. HushBook løser et andet problem: <em>hvordan du læser lyd, du allerede har</em>. Importer egne MP3, M4B, FLAC m.m.; kapitler og cover følger, hvis filen har dem. Tryk Transskriber — HushBook Engine på enheden bygger synkroniseret tekst: ingen tekstdatabase, ingen upload, ingen konto. Efter ét motor-download virker alt offline. Det private, filbaserede design er sjældent blandt <strong>lydbogsapps til iPhone</strong> og <strong>Android</strong>.</p>
 
+      <p>Lister over bedste lydbøger 2026 eller favoritter fra 2025 hjælper med at vælge thrillere, fantasy, romance eller lydbøger til børn. Apple Books, Audible og YouTube kan hjælpe med at finde en titel; til gratis lydbøger er public-domain-kilder som LibriVox og Internet Archive et godt valg. Abonnementer og gratis prøveperioder åbner nogle kataloger, mens HushBook afspiller dine egne filer og frie klassikere.</p>
+
       <h3>Gratis på iPhone og Android</h3>
       <p>HushBook er gratis på begge platforme — App Store og Google Play — uden annoncer i kernen. Public domain-biblioteket (klassikere fra LibriVox og Internet Archive) er gratis. Følgelæsning, citater, profiler og offline også. Valgfri Pro giver dybere analyse. Uanset om du har brug for <strong>lydbogsapps til iPhone</strong> på toget eller <strong>til Android</strong> om aftenen: samme løfte — gratis at starte, privat by design, synkroniseret tekst inkluderet.</p>
 
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Hjælper det fokus og forståelse at læse og lytte samtidig?</button><div class="a"><p>Mange lyttere oplever, at det at se og høre de samme ord fastholder opmærksomheden og gør et kapitel lettere at huske end lyd alene.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Er HushBook god til ordblindhed eller ADHD?</button><div class="a"><p>Ja. Ord-for-ord-fremhævning og læseprofiler støtter ordblindhed, ADHD, nedsat syn, sprogindlæring og alle, der fokuserer bedre ved at se ordene.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Virker HushBook offline?</button><div class="a"><p>Ja. Efter den ene download af HushBook Engine fungerer afspilning, følgelæsning og transskription på enheden uden internet.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook på Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook på Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

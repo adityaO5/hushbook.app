@@ -55,7 +55,7 @@
     "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
   ]
 }
-</script>
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -468,7 +468,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <link rel="alternate" hreflang="vi" href="https://hushbook.app/vi">
 <link rel="alternate" hreflang="sv" href="https://hushbook.app/sv">
 <link rel="alternate" hreflang="da" href="https://hushbook.app/da">
-<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
 <script type="application/ld+json" data-hushbook-faq>
 {
   "@context": "https://schema.org",
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">Вже доступно на iOS та Android</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Транскрибуйте</span> <span class="kw">будь-яку</span> <span class="kw">аудіокнигу.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Аудіокнига зі синхронізованим текстом."><span class="kw">Аудіокнига</span> <span class="kw">зі</span> <span class="kw">синхронізованим</span> <span class="kw">текстом.</span></h1>
     <p class="sub reveal">Пориньте у галактику знань — кожне слово підсвічується синхронно з оповіддю та приватно транскрибується на вашому телефоні. Без акаунта. Без хмари.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
@@ -1150,6 +1150,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>Найкращі додатки для аудіокниг — чим відрізняється HushBook</h3>
       <p>Пошук «<strong>найкращі додатки для аудіокниг</strong>» дає магазини, підписки й хмарні каталоги. HushBook розв’язує іншу задачу: <em>як читати аудіо, яке вже є</em>. Імпортуйте свої MP3, M4B, FLAC тощо; розділи й обкладинка приїдуть із файлом. Натисніть «Транскрибувати» — рушій HushBook на пристрої будує синхронний текст: без бази текстів, без завантаження, без акаунта. Після одноразового завантаження рушія все працює офлайн. Такий приватний, файловий дизайн рідкісний серед <strong>додатків аудіокниг для iPhone</strong> і <strong>Android</strong>.</p>
 
+      <p>Добірки найкращих аудіокниг 2026 року й фаворитів 2025 року допомагають обрати трилер, фентезі, роман чи аудіокнигу для дітей. Apple Books, Audible і YouTube допоможуть знайти назву; безкоштовні аудіокниги шукайте в надійних джерелах суспільного надбання, як-от LibriVox та Internet Archive. Передплата або безкоштовний пробний період відкривають деякі каталоги, а HushBook відтворює ваші файли й вільну класику.</p>
+
       <h3>Безкоштовно на iPhone і Android</h3>
       <p>HushBook безкоштовний на обох платформах — App Store і Google Play — без реклами в ядрі. Бібліотека суспільного надбання (класика LibriVox та Internet Archive) безкоштовна. Синхронне читання, цитати, профілі й офлайн теж. Опційний Pro поглиблює аналітику. Чи потрібні <strong>додатки аудіокниг для iPhone</strong> в дорозі, чи <strong>для Android</strong> ввечері — обіцянка та сама: безкоштовний старт, приватність by design, синхронний текст включено.</p>
 
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Чи допомагає одночасне читання й слухання зосередитися та краще зрозуміти текст?</button><div class="a"><p>Багато слухачів вважають, що одночасне бачення й чуття слів утримує увагу та допомагає запам’ятати розділ краще, ніж саме аудіо.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Чи підходить HushBook для дислексії або СДУГ?</button><div class="a"><p>Так. Підсвічування кожного слова й профілі читання підтримують дислексію, СДУГ, слабкий зір, вивчення мов і концентрацію.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Чи працює HushBook офлайн?</button><div class="a"><p>Так. Після одноразового завантаження HushBook Engine відтворення, читання та транскрипція працюють на пристрої без інтернету.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

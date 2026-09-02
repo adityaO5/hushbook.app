@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">Disponible en iOS y Android</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Transcribe cualquier audiolibro."><span class="kw">Transcribe</span> <span class="kw">cualquier</span> <span class="kw">audiolibro.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Audiolibro con texto sincronizado."><span class="kw">Audiolibro</span> <span class="kw">con</span> <span class="kw">texto</span> <span class="kw">sincronizado.</span></h1>
     <p class="sub reveal">Sumérgete en una galaxia de conocimiento — cada palabra se ilumina en sincronía con la narración, transcrita privadamente en tu teléfono. Sin cuenta. No hay nube.</p>
     <div class="stores reveal" id="get" aria-label="Consigue HushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Descargar HushBook en la App Store">
@@ -1150,6 +1150,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>Mejores apps de audiolibros — qué hace distinto a HushBook</h3>
       <p>Busca «<strong>mejores apps de audiolibros</strong>» y verás tiendas, suscripciones y catálogos en la nube. Esas apps brillan en descubrimiento. HushBook resuelve otro problema: <em>cómo lees el audio que ya tienes</em>. Importa tus MP3, M4B, FLAC y más; capítulos y portada viajan si el archivo los trae. Toca Transcribir y el motor HushBook en el dispositivo genera texto sincronizado — sin base de letras, sin subida, sin cuenta. Tras un descarga única del motor, todo funciona sin conexión. Ese diseño privado y centrado en tus archivos es raro entre las <strong>apps de audiolibros para iPhone</strong> y <strong>apps de audiolibros para Android</strong>.</p>
 
+      <p>Las listas de los mejores audiolibros de 2026 o los favoritos de 2025 son un buen punto de partida, ya busques thriller, fantasía, romance o audiolibros para niños. Apple Books, Audible y YouTube pueden ayudarte a descubrir un título; para audiolibros gratis, busca fuentes de dominio público como LibriVox e Internet Archive. Una suscripción o prueba gratuita abre algunos catálogos, mientras HushBook reproduce tus archivos y clásicos de uso libre.</p>
+
       <h3>Gratis en iPhone y Android</h3>
       <p>HushBook es gratis en ambas plataformas — App Store y Google Play — sin anuncios en la experiencia principal. La biblioteca de dominio público (clásicos de LibriVox e Internet Archive) es gratis. La lectura sincronizada, citas, perfiles y offline también. Un Pro opcional abre analíticas más profundas. Tanto si buscas <strong>apps de audiolibros para iPhone</strong> en el trayecto como <strong>apps para Android</strong> por la noche, la promesa es la misma: gratis al empezar, privado por diseño, texto sincronizado incluido.</p>
 
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">¿Leer y escuchar a la vez ayuda al enfoque y la comprensión?</button><div class="a"><p>Muchas personas sienten que ver y oír las mismas palabras mantiene la atención y facilita recordar un capítulo más que el audio solo.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿HushBook sirve para la dislexia o el TDAH?</button><div class="a"><p>Sí. El resaltado palabra por palabra y los perfiles de lectura ayudan con dislexia, TDAH, baja visión, aprendizaje de idiomas y a cualquiera que se concentre mejor viendo las palabras.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿HushBook funciona sin conexión?</button><div class="a"><p>Sí. Después de descargar una vez HushBook Engine, la reproducción, la lectura sincronizada y la transcripción funcionan en el dispositivo sin internet.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook en Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook en Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">iOSとAndroidで提供中</span>
-    <h1 id="hero-h1" class="reveal" aria-label="あらゆる オーディオブックを 文字起こし"><span class="kw">あらゆる</span> <span class="kw">オーディオブックを</span> <span class="kw">文字起こし</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="同期テキスト付き オーディオブック"><span class="kw">同期テキスト付き</span> <span class="kw">オーディオブック</span></h1>
     <p class="sub reveal">知識の銀河に飛び込みます。すべての単語がナレーションと同期して点灯し、電話にプライベートに転送します。 いいえ。 雲無し。</p>
     <div class="stores reveal" id="get" aria-label="HushBookを入手">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="App StoreでHushBookをダウンロード">
@@ -1250,6 +1250,8 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h3>最良のオーディオブックアプリ — HushBookの違い</h3>
       <p>「<strong>best audiobook apps</strong>」で探すと、ストアやサブスク、クラウド目録が出てきます。HushBookが解くのは別の問題：<em>すでに持っている音声をどう読むか</em>。MP3・M4B・FLACなどを取り込み、章やカバーがあれば一緒に来ます。「文字起こし」をタップすると端末上のHushBook Engineが同期テキストを生成 — 歌詞DBなし、アップロードなし、アカウントなし。エンジンを一度入れればオフライン。このプライベートでファイル中心の設計は、主流の<strong>iPhone向けオーディオブックアプリ</strong>や<strong>Android向け</strong>では珍しいです。</p>
 
+      <p>2026年のおすすめオーディオブックや2025年の人気作リストは、ミステリー、ファンタジー、ロマンス、子ども向け作品を選ぶ出発点になります。Apple Books、Audible、YouTubeは作品探しに役立ちますが、無料作品はLibriVoxやInternet Archiveなど信頼できるパブリックドメインの提供元を選びましょう。サブスクリプションや無料体験で使えるカタログもあり、HushBookは所有する音声ファイルと無料の古典を再生します。</p>
+
       <h3>iPhoneとAndroidで無料</h3>
       <p>HushBookは両OSで無料 — App StoreとGoogle Play — コア体験に広告なし。パブリックドメインの名作ライブラリ（LibriVoxとInternet Archive）も無料。読み聞かせカラオケ、引用、読書プロファイル、オフラインも無料。任意のProで深い分析。通勤向け<strong>iPhoneのオーディオブックアプリ</strong>でも、就寝時の<strong>Androidアプリ</strong>でも、約束は同じ：無料で始め、設計からプライベート、同期テキスト込み。</p>
 
@@ -1287,6 +1289,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">読むことと聴くことを同時にすると集中や理解に役立ちますか？</button><div class="a"><p>同じ言葉を見ながら聴くことで注意が声に固定され、音声だけより章の内容を覚えやすいと感じる人が多くいます。</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBookはディスレクシアやADHDに向いていますか？</button><div class="a"><p>はい。単語単位のハイライトと読書プロファイルは、ディスレクシア、ADHD、ロービジョン、語学学習などをサポートします。</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBookはオフラインで使えますか？</button><div class="a"><p>はい。HushBook Engineを一度ダウンロードすれば、再生、読み聞かせ、文字起こしはインターネットなしで端末上で動きます。</p></div></div>
+
+
+
 
 
 
@@ -1329,6 +1334,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="FacebookのHushBook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="BlueskyのHushBook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

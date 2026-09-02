@@ -55,7 +55,7 @@
     "https://play.google.com/store/apps/details?id=com.hushbook.hushbook"
   ]
 }
-</script>
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -86,7 +86,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .reveal-char{display:inline-block;opacity:0;transform:translateY(22px);filter:blur(7px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),filter .6s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform,filter}
-.reveal-word{display:inline-block}
+.reveal-word{display:inline-block;white-space:nowrap}
 .reveal-char.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal-char{opacity:1;transform:none;filter:none;transition:none}}
 
@@ -468,7 +468,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <link rel="alternate" hreflang="vi" href="https://hushbook.app/vi">
 <link rel="alternate" hreflang="sv" href="https://hushbook.app/sv">
 <link rel="alternate" hreflang="da" href="https://hushbook.app/da">
-<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
+<link rel="alternate" hreflang="x-default" href="https://hushbook.app/">
 <script type="application/ld+json" data-hushbook-faq>
 {
   "@context": "https://schema.org",
@@ -632,7 +632,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge reveal">Out now on iOS &amp; Android</span>
-    <h1 id="hero-h1" class="reveal" aria-label="Transcribe Any Audiobook."><span class="kw">Transcribe</span> <span class="kw">Any</span> <span class="kw">Audiobook.</span></h1>
+    <h1 id="hero-h1" class="reveal" aria-label="Audiobook with synced text."><span class="kw">Audiobook</span> <span class="kw">with</span> <span class="kw">synced</span> <span class="kw">text.</span></h1>
     <p class="sub reveal">Dive into a galaxy of knowledge — every word lights up in sync with the narration, transcribed privately on your phone. No account. No cloud.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
       <a class="pill" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener" aria-label="Download HushBook on the App Store">
@@ -1148,13 +1148,15 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <p>Passive audio is easy to start and easy to lose. Minds drift. Names blur. You finish a chapter and realize you retained almost nothing. Word-level highlighting anchors attention to the voice: you see what you hear, seek any line with a tap, and keep place without rewinding half a chapter. That dual-channel focus is why many readers call HushBook one of the <strong>best free audiobook apps</strong> when comprehension matters as much as convenience.</p>
 
       <h3>Best audiobook apps — what actually sets HushBook apart</h3>
-      <p>Search “<strong>best audiobook apps</strong>” and you’ll find storefronts, subscriptions, and cloud libraries. Those apps excel at discovery and catalogs. HushBook solves a different problem: <em>how you read the audio you already have</em>. Import your own MP3, M4B, FLAC, and more; chapters and cover art come along when the file includes them. Tap Transcribe, and the on-device HushBook Engine builds synchronized text — no lyrics database, no upload, no account. After a one-time engine download, the whole experience works offline. That private, file-first design is rare among mainstream <strong>audiobook apps for iPhone</strong> and <strong>audiobook apps for Android</strong>.</p>
+      <p>Search “<strong>best audiobook apps</strong>” and you’ll find storefronts, subscriptions, and cloud libraries. Apple audiobooks, including Apple Books audiobooks, Audible audiobooks, and YouTube audiobooks can help you discover a title; each has its own catalogue, terms, and availability. Search phrasing varies too: someone looking for “audiobooks Apple” is usually comparing the same Apple Books catalogue. HushBook solves a different problem: <em>how you read the audio you already have</em>. Import your own MP3, M4B, FLAC, and more; chapters and cover art come along when the file includes them. Tap Transcribe, and the on-device HushBook Engine builds synchronized text — no lyrics database, no upload, no account. After a one-time engine download, the whole experience works offline. That private, file-first design is rare among mainstream <strong>audiobook apps for iPhone</strong> and <strong>audiobook apps for Android</strong>.</p>
 
-      <h3>A free audiobook app for iPhone and Android</h3>
-      <p>HushBook ships free on both platforms — App Store and Google Play — with zero ads in the core experience. The public-domain library (classics from LibriVox and the Internet Archive) is free to browse and download. The read-along karaoke, quotes, reading profiles, and offline playback are free too. An optional Pro tier unlocks deeper analytics if you want them; going Pro helps keep the app independent. Whether you need <strong>audiobook apps for iPhone</strong> for a commute or <strong>audiobook apps for Android</strong> for bed-time reading, the same product promise holds: free to start, private by design, synced text included.</p>
+      
+
+      <h3>Where to find free audiobooks on iPhone and Android</h3>
+      <p>Wondering <strong>where to find free audiobooks</strong>? Start with the public-domain library in HushBook, featuring classics from LibriVox and the Internet Archive that you can browse and download. It is a free audiobooks app for iPhone and Android, with no ads in the core experience: listen to audiobooks for free, read along, save quotes, and play offline. For free audiobooks online, check the source and rights before downloading. If you are comparing an audiobooks subscription or an audiobooks free trial, use it to discover paid catalogues; HushBook remains free for the books you already own and the public-domain titles you choose. Whether you need audiobooks iPhone users can follow word by word on a commute or an Android player for bedtime listening, the promise stays the same: private by design, synced text included.</p>
 
       <h3>Your books — from classics to a Project Hail Mary audiobook</h3>
-      <p>Bring the titles you care about. Love long-haul science fiction? Import a <strong>Project Hail Mary audiobook</strong> file you already own (or any other book you have rights to play), run transcription on your phone, and follow Ryland Grace word by word as the narration unfolds. Prefer public-domain epics? Start with Monte Cristo, Austen, or Aurelius from the built-in catalogue. HushBook is not a piracy storefront — it is a player and read-along engine for files and free classics you choose. Synced text works across languages too: the engine supports dozens of tongues so an <strong>audiobook with words</strong> can match the language you hear.</p>
+      <p>Lists of the <strong>best audiobooks 2026</strong>, best audiobooks 2025, and top audiobooks are a useful starting point, but the right pick is personal. Bring the titles you care about: thriller audiobooks for a late-night walk, fantasy audiobooks for a long trip, romance audiobooks for a quiet evening, or audiobooks for kids for a family car ride. If you buy audiobooks elsewhere, import a <strong>Project Hail Mary audiobook</strong> file you already own (or any other book you have rights to play), run transcription on your phone, and follow Ryland Grace word by word. Prefer public-domain epics? Start with Monte Cristo, Austen, or Aurelius from the built-in catalogue. HushBook is not a piracy storefront — it is a player and read-along engine for files and free classics you choose. Synced text works across languages too: the engine supports dozens of tongues so an <strong>audiobook with words</strong> can match the language you hear.</p>
 
       <h3>Privacy, accessibility, and habits that stick</h3>
       <p>Transcription never leaves the device. There is no sign-in wall and no cloud for your audio. Reading profiles reshape the whole UI for comprehension, dyslexia/ADHD, or low vision — fonts like OpenDyslexic and Atkinson Hyperlegible, overlays, contrast, and night mode included. Streaks, badges, and gentle stats stay local, so habit-building does not require a surveillance stack. That combination — free core, synced text, on-device AI, accessibility — is why HushBook ranks among the strongest answers when people search for the <strong>best free audiobook app</strong> that respects both focus and privacy.</p>
@@ -1187,6 +1189,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qa"><button type="button" aria-expanded="false">Is reading and listening at the same time better for focus and comprehension?</button><div class="a"><p>Many listeners find that seeing and hearing the same words keeps attention anchored and makes it easier to retain a chapter than audio alone.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Is HushBook good for dyslexia or ADHD?</button><div class="a"><p>Yes. Word-level highlighting and reading profiles support dyslexia, ADHD, low vision, language learning, and anyone who focuses better when they can see the words they hear.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Does HushBook work offline?</button><div class="a"><p>Yes. After the one-time HushBook Engine download, playback, read-along, and transcription run on your device without an internet connection.</p></div></div>
+
+
+
 
 
 
@@ -1229,6 +1234,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
           <a href="https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook on Bluesky">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
         </div>
       </div>

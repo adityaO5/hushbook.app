@@ -103,6 +103,12 @@ img,svg{display:block;max-width:100%}
 
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0 8px}
 @media(max-width:620px){.about-grid{grid-template-columns:1fr}}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin:20px 0 8px;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--line)}
+.fact{padding:22px 20px;background:linear-gradient(165deg,var(--surface),var(--ink-2))}
+.fact dt{color:var(--amber);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.fact dd{margin-top:6px;color:var(--paper-dim);font-size:15.5px;line-height:1.62}
+.fact dd strong{color:var(--paper)}
+@media(max-width:620px){.facts{grid-template-columns:1fr}}
 .value{border:1px solid var(--line);border-radius:var(--r-md);background:linear-gradient(165deg,var(--surface),var(--ink-2));padding:26px 24px}
 .value .vic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--amber);
   background:rgba(243,192,121,.10);border:1px solid rgba(243,192,121,.18);margin-bottom:16px}
@@ -212,6 +218,44 @@ footer{border-top:1px solid var(--line-soft);padding:64px 0 96px;background:var(
   <p class="lead">I kept losing the thread of audiobooks — drifting off, rewinding, never quite holding the
   words. So I built the player I wanted: one that shows <strong>every word as it's spoken</strong>, like
   karaoke, and lets me read along at my own pace. That's HushBook.</p>
+
+  <section aria-labelledby="facts-title">
+    <h2 id="facts-title">HushBook at a glance</h2>
+    <dl class="facts">
+      <div class="fact">
+        <dt>Core experience</dt>
+        <dd><strong>Word-level read-along.</strong> HushBook highlights synchronized text as the narrator speaks, like karaoke for audiobooks.</dd>
+      </div>
+      <div class="fact">
+        <dt>Transcription</dt>
+        <dd><strong>On-device HushBook Engine.</strong> Your audio and transcripts stay on your phone — no upload, account or cloud required.</dd>
+      </div>
+      <div class="fact">
+        <dt>Audio imports</dt>
+        <dd>Import MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA or ALAC files.</dd>
+      </div>
+      <div class="fact">
+        <dt>Offline use</dt>
+        <dd>After the one-time Engine download, playback, read-along and transcription work without an internet connection.</dd>
+      </div>
+      <div class="fact">
+        <dt>Platforms</dt>
+        <dd><strong>Free on iOS and Android</strong> through the App Store and Google Play.</dd>
+      </div>
+      <div class="fact">
+        <dt>Accessibility</dt>
+        <dd>Vision, Dyslexia and Comprehension profiles adapt fonts, caption sizes, colours and spacing to each reader.</dd>
+      </div>
+      <div class="fact">
+        <dt>Public-domain library</dt>
+        <dd>Browse and download free classics from LibriVox and the Internet Archive, in six languages.</dd>
+      </div>
+      <div class="fact">
+        <dt>Pricing</dt>
+        <dd>The core read-along experience and public-domain library are free. Optional Pro adds deeper analytics.</dd>
+      </div>
+    </dl>
+  </section>
 
   <h2>What HushBook believes</h2>
   <div class="about-grid">
