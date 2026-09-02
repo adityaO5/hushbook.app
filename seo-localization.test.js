@@ -228,4 +228,16 @@ for (const [from, to] of Object.entries(LEGACY_REDIRECTS)) {
   }
 }
 
+function contentLanguageFor(source) {
+  const rule = vercel.headers.find((entry) => entry.source === source && entry.headers?.some((header) => header.key === 'Content-Language'));
+  return rule?.headers.find((header) => header.key === 'Content-Language')?.value || null;
+}
+assert.equal(contentLanguageFor('/'), 'en', 'English homepage must send Content-Language: en');
+assert.equal(contentLanguageFor('/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)'), 'en');
+assert.equal(contentLanguageFor('/pt-BR'), 'pt-BR');
+assert.equal(contentLanguageFor('/pt-BR/:path*'), 'pt-BR');
+assert.equal(contentLanguageFor('/pt-PT'), 'pt-PT');
+assert.equal(contentLanguageFor('/es-419'), 'es-419');
+assert.equal(contentLanguageFor('/es-419/:path*'), 'es-419');
+
 console.log('Localized SEO indexation contract passes.');

@@ -93,6 +93,32 @@ redirects.push({
 redirects.push({ source: '/privacy', destination: '/privacy-policy', permanent: true });
 redirects.push({ source: '/terms', destination: '/terms-conditions', permanent: true });
 
+function contentLanguageHeaders() {
+  const rules = [];
+  for (const locale of localeConfig.publishedLocales || []) {
+    if (locale === defaultLocale) {
+      rules.push({
+        source: '/',
+        headers: [{ key: 'Content-Language', value: 'en' }],
+      });
+      rules.push({
+        source: PAGE_SOURCE,
+        headers: [{ key: 'Content-Language', value: 'en' }],
+      });
+      continue;
+    }
+    rules.push({
+      source: `/${locale}`,
+      headers: [{ key: 'Content-Language', value: locale }],
+    });
+    rules.push({
+      source: `/${locale}/:path*`,
+      headers: [{ key: 'Content-Language', value: locale }],
+    });
+  }
+  return rules;
+}
+
 const config = {
   $schema: 'https://openapi.vercel.sh/vercel.json',
   cleanUrls: true,
@@ -124,6 +150,7 @@ const config = {
         { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
       ],
     },
+    ...contentLanguageHeaders(),
   ],
 };
 

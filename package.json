@@ -11,7 +11,7 @@
     "build:seo": "node scripts/normalize-localized-seo.js",
     "build:vercel": "node scripts/build-vercel-locales.js",
     "normalize:download": "node scripts/normalize-download-landing-pages.js",
-    "test": "node localization.test.js && node seo-localization.test.js && node seo-preservation.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js",
+    "test": "node localization.test.js && node seo-localization.test.js && node tracking-params.test.js && node seo-preservation.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js",
     "test:seo-preservation": "node seo-preservation.test.js",
     "test:seo-repair-contract": "node seo-repair-contract.test.js",
     "test:locale": "node scripts/verify-localization.js de"

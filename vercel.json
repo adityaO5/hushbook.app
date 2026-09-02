@@ -1784,6 +1784,384 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "en"
+        }
+      ]
+    },
+    {
+      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "en"
+        }
+      ]
+    },
+    {
+      "source": "/de",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "de"
+        }
+      ]
+    },
+    {
+      "source": "/de/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "de"
+        }
+      ]
+    },
+    {
+      "source": "/fr",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "fr"
+        }
+      ]
+    },
+    {
+      "source": "/fr/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "fr"
+        }
+      ]
+    },
+    {
+      "source": "/es-ES",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "es-ES"
+        }
+      ]
+    },
+    {
+      "source": "/es-ES/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "es-ES"
+        }
+      ]
+    },
+    {
+      "source": "/es-419",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "es-419"
+        }
+      ]
+    },
+    {
+      "source": "/es-419/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "es-419"
+        }
+      ]
+    },
+    {
+      "source": "/pt-BR",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pt-BR"
+        }
+      ]
+    },
+    {
+      "source": "/pt-BR/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pt-BR"
+        }
+      ]
+    },
+    {
+      "source": "/pt-PT",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pt-PT"
+        }
+      ]
+    },
+    {
+      "source": "/pt-PT/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pt-PT"
+        }
+      ]
+    },
+    {
+      "source": "/it",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "it"
+        }
+      ]
+    },
+    {
+      "source": "/it/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "it"
+        }
+      ]
+    },
+    {
+      "source": "/ja",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ja"
+        }
+      ]
+    },
+    {
+      "source": "/ja/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ja"
+        }
+      ]
+    },
+    {
+      "source": "/ko",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ko"
+        }
+      ]
+    },
+    {
+      "source": "/ko/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ko"
+        }
+      ]
+    },
+    {
+      "source": "/nl",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "nl"
+        }
+      ]
+    },
+    {
+      "source": "/nl/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "nl"
+        }
+      ]
+    },
+    {
+      "source": "/pl",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pl"
+        }
+      ]
+    },
+    {
+      "source": "/pl/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "pl"
+        }
+      ]
+    },
+    {
+      "source": "/tr",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "tr"
+        }
+      ]
+    },
+    {
+      "source": "/tr/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "tr"
+        }
+      ]
+    },
+    {
+      "source": "/ru",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ru"
+        }
+      ]
+    },
+    {
+      "source": "/ru/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ru"
+        }
+      ]
+    },
+    {
+      "source": "/uk",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "uk"
+        }
+      ]
+    },
+    {
+      "source": "/uk/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "uk"
+        }
+      ]
+    },
+    {
+      "source": "/ar",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ar"
+        }
+      ]
+    },
+    {
+      "source": "/ar/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "ar"
+        }
+      ]
+    },
+    {
+      "source": "/id",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "source": "/id/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "id"
+        }
+      ]
+    },
+    {
+      "source": "/th",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "th"
+        }
+      ]
+    },
+    {
+      "source": "/th/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "th"
+        }
+      ]
+    },
+    {
+      "source": "/vi",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "vi"
+        }
+      ]
+    },
+    {
+      "source": "/vi/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "vi"
+        }
+      ]
+    },
+    {
+      "source": "/sv",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "sv"
+        }
+      ]
+    },
+    {
+      "source": "/sv/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "sv"
+        }
+      ]
+    },
+    {
+      "source": "/da",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "da"
+        }
+      ]
+    },
+    {
+      "source": "/da/:path*",
+      "headers": [
+        {
+          "key": "Content-Language",
+          "value": "da"
+        }
+      ]
     }
   ]
 }
