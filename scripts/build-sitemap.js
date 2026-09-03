@@ -11,6 +11,7 @@ const {
   DEFAULT_LOCALE,
   PUBLIC_PAGES,
   PUBLISHED_LOCALES,
+  hreflangAlternates,
   pageFile,
   pageUrl,
 } = require('./seo-localization');
@@ -49,17 +50,12 @@ function lastmodFor(locale, page) {
 }
 
 function hreflangLinks(page) {
-  const lines = [];
-  for (const locale of LOCALES) {
-    const href = pageUrl(locale, page);
-    lines.push(
-      `    <xhtml:link rel="alternate" hreflang="${escapeXml(locale)}" href="${escapeXml(href)}"/>`
-    );
-  }
-  lines.push(
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(pageUrl(DEFAULT_LOCALE, page))}"/>`
-  );
-  return lines.join('\n');
+  return hreflangAlternates(page)
+    .map(
+      ({ hreflang, href }) =>
+        `    <xhtml:link rel="alternate" hreflang="${escapeXml(hreflang)}" href="${escapeXml(href)}"/>`,
+    )
+    .join('\n');
 }
 
 const urls = [];

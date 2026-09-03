@@ -67,19 +67,68 @@ function upsertHeadTag(html, selector, attribute, value, createTag, newline) {
   return seen ? updated : insertBeforeHeadClose(updated, createTag(value), newline);
 }
 
+function languageCatchalls() {
+  const published = new Set(PUBLISHED_LOCALES);
+  const redirects = localeConfig.legacyRedirects || {};
+  const catchalls = new Map();
+  for (const locale of PUBLISHED_LOCALES) {
+    const dash = locale.indexOf('-');
+    if (dash === -1) continue;
+    const lang = locale.slice(0, dash);
+    if (published.has(lang) || catchalls.has(lang)) continue;
+    const redirected = redirects[lang];
+    const target = published.has(redirected) ? redirected : locale;
+    catchalls.set(lang, target);
+  }
+  return catchalls;
+}
+
+/**
+ * Full reciprocal hreflang cluster for a page:
+ *  - one entry per published locale (self + siblings)
+ *  - language-only catchalls when we only publish regional variants
+ *    (es → es-ES, pt → pt-PT) so unmatched Spanish/Portuguese queries
+ *    still map to a localized URL instead of English
+ *  - language-COUNTRY extras from countryLocales (de-DE, es-MX, ja-JP, …)
+ *    pointing at the same published page — never at a 301 alias
+ *  - x-default → English
+ */
+function hreflangAlternates(page) {
+  const seen = new Set();
+  const entries = [];
+  const add = (code, locale) => {
+    const key = String(code).toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    entries.push({ hreflang: code, href: pageUrl(locale, page) });
+  };
+
+  for (const locale of PUBLISHED_LOCALES) add(locale, locale);
+  for (const [lang, target] of languageCatchalls()) add(lang, target);
+  for (const [country, locale] of Object.entries(localeConfig.countryLocales || {})) {
+    const lang = String(locale).split('-')[0];
+    add(`${lang}-${country}`, locale);
+  }
+  add('x-default', DEFAULT_LOCALE);
+  return entries;
+}
+
 function buildHreflangBlock(page, newline) {
-  const lines = PUBLISHED_LOCALES.map(
-    (locale) => `<link rel="alternate" hreflang="${locale}" href="${pageUrl(locale, page)}">`,
-  );
-  lines.push(`<link rel="alternate" hreflang="x-default" href="${pageUrl(DEFAULT_LOCALE, page)}">`);
-  return lines.join(newline);
+  return hreflangAlternates(page)
+    .map(({ hreflang, href }) => `<link rel="alternate" hreflang="${hreflang}" href="${href}">`)
+    .join(newline);
 }
 
 function injectHreflang(html, page) {
   const newline = html.includes('\r\n') ? '\r\n' : '\n';
-  const alternateTag = /[ \t]*<link\b(?=[^>]*\brel\s*=\s*["']alternate["'])(?=[^>]*\bhreflang\s*=\s*["'][^"']+["'])[^>]*>[ \t]*(?:\r?\n|$)/gi;
+  const alternateTag = /[ \t]*<link\b(?=[^>]*\brel\s*=\s*["']alternate["'])(?=[^>]*\bhreflang\s*=\s*["'][^"']+["'])[^>]*>[ \t]*[\r\n]*/gi;
   const withoutAlternates = html.replace(alternateTag, '');
-  return insertBeforeHeadClose(withoutAlternates, buildHreflangBlock(page, newline), newline);
+  const block = buildHreflangBlock(page, newline);
+  const canonicalTag = /<link\b(?=[^>]*\brel\s*=\s*["']canonical["'])[^>]*>/i;
+  if (canonicalTag.test(withoutAlternates)) {
+    return withoutAlternates.replace(canonicalTag, (tag) => `${tag}${newline}${block}`);
+  }
+  return insertBeforeHeadClose(withoutAlternates, block, newline);
 }
 
 function normalizeJsonLd(html, canonical) {
@@ -226,7 +275,9 @@ module.exports = {
   normalizeCanonicalUrl,
   PUBLIC_PAGES,
   PUBLISHED_LOCALES,
+  hreflangAlternates,
   injectHreflang,
+  languageCatchalls,
   localizeInternalHref,
   normalizeLocalizedSeoHtml,
   normalizePublishedFiles,

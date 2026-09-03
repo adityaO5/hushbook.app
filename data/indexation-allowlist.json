@@ -60,7 +60,7 @@
       "file": "sitemap.xml",
       "urlCount": 147,
       "uniqueUrlCount": 147,
-      "hreflangCountPerUrl": 22,
+      "hreflangCountPerUrl": 68,
       "includesXDefault": true
     },
     "routing": {
@@ -76,8 +76,8 @@
     "fileSha256States": {
       "worktree": {
         "localization.config.js": "07fbd35bd3ea84293a34ef0a6c000129f320a9f0ed8ac54abc280a883b841507",
-        "sitemap.xml": "10d77be1be3a9844b452acae186ee64420d074d73bae9b28f4015a741cbd09a0",
-        "vercel.json": "5dd2758564197bd9d95458a9408577182bc52aad8b6bc1a811642cbacb97d6b9"
+        "sitemap.xml": "dafe4c30cd5f78b2241349e3a39851a12ae320bd1188a8c280a54de457cf9529",
+        "vercel.json": "21299d0edc754197838abdeca1937b15c34ca5a229dd620cb4e31df65e0fd92b"
       },
       "repository": {
         "localization.config.js": "07fbd35bd3ea84293a34ef0a6c000129f320a9f0ed8ac54abc280a883b841507",

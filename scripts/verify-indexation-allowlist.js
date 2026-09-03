@@ -43,7 +43,8 @@ for (const page of expectedPages) {
 }
 
 const expectedRouteByPath = new Map(expectedRoutes.map((route) => [route.path, route]));
-const expectedHreflangSet = new Set([...expectedLocales, 'x-default']);
+const expectedHreflang = seo.hreflangAlternates('index');
+const expectedHreflangSet = new Set(expectedHreflang.map((entry) => entry.hreflang));
 
 function sha256(file) {
   const text = fs.readFileSync(path.join(ROOT, file), 'utf8');
@@ -67,20 +68,19 @@ function readJson(file) {
 }
 
 function assertHreflangBlock(block, route, label) {
+  const expected = seo.hreflangAlternates(route.page);
+  const expectedHref = new Map(expected.map((entry) => [entry.hreflang, entry.href]));
   const tags = [...block.matchAll(/<xhtml:link\b[^>]*\bhreflang="([^"]+)"[^>]*\bhref="([^"]+)"[^>]*\/>/g)]
     .map((match) => ({ locale: match[1], href: match[2] }));
-  assert.equal(tags.length, expectedHreflangSet.size, `${label}: hreflang count`);
+  assert.equal(tags.length, expected.length, `${label}: hreflang count`);
   assert.equal(new Set(tags.map((tag) => tag.locale)).size, tags.length, `${label}: duplicate hreflang`);
   assertSameArray(
     tags.map((tag) => tag.locale).sort(),
-    [...expectedHreflangSet].sort(),
+    expected.map((entry) => entry.hreflang).sort(),
     `${label}: hreflang locale set`,
   );
   for (const tag of tags) {
-    const expectedUrl = tag.locale === 'x-default'
-      ? seo.pageUrl(config.defaultLocale, route.page)
-      : seo.pageUrl(tag.locale, route.page);
-    assert.equal(tag.href, expectedUrl, `${label}: ${tag.locale} href`);
+    assert.equal(tag.href, expectedHref.get(tag.locale), `${label}: ${tag.locale} href`);
   }
 }
 

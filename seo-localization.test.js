@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const localeConfig = require('./localization.config');
+const { hreflangAlternates } = require('./scripts/seo-localization');
 
 const ROOT = __dirname;
 const BASE_URL = 'https://hushbook.app';
@@ -87,16 +88,31 @@ for (const locale of PUBLISHED) {
     );
     assert.equal(ogUrl, pageUrl(locale, page), `${locale}/${page} og:url must match canonical`);
 
+    const hreflangTags = [...html.matchAll(/<link\s+rel="alternate"\s+hreflang="([^"]+)"\s+href="([^"]+)">/g)];
     const hreflang = extractHreflang(html);
-    assert.equal(hreflang.size, PUBLISHED.length + 1, `${locale}/${page} must have one alternate per published locale plus x-default`);
-    for (const alternateLocale of PUBLISHED) {
+    const expectedAlternates = hreflangAlternates(page);
+    assert.equal(hreflangTags.length, expectedAlternates.length, `${locale}/${page} must not duplicate hreflang tags`);
+    assert.equal(hreflang.size, expectedAlternates.length, `${locale}/${page} must declare the full hreflang cluster`);
+    for (const alternate of expectedAlternates) {
       assert.equal(
-        hreflang.get(alternateLocale),
-        pageUrl(alternateLocale, page),
-        `${locale}/${page} hreflang ${alternateLocale} must point to the matching localized page`,
+        hreflang.get(alternate.hreflang),
+        alternate.href,
+        `${locale}/${page} hreflang ${alternate.hreflang} must point to ${alternate.href}`,
       );
     }
-    assert.equal(hreflang.get('x-default'), pageUrl('en', page), `${locale}/${page} x-default must point to English`);
+    assert.equal(hreflang.get('es'), pageUrl('es-ES', page), `${locale}/${page} language catchall es must point at Spain Spanish, not the /es redirect`);
+    assert.equal(hreflang.get('pt'), pageUrl('pt-PT', page), `${locale}/${page} language catchall pt must point at Portugal Portuguese, not the /pt redirect`);
+    assert.equal(hreflang.get('de-DE'), pageUrl('de', page), `${locale}/${page} de-DE must point at the German page`);
+    assert.equal(hreflang.get('es-MX'), pageUrl('es-419', page), `${locale}/${page} es-MX must point at Latin American Spanish`);
+    assert.equal(hreflang.get('ja-JP'), pageUrl('ja', page), `${locale}/${page} ja-JP must point at the Japanese page`);
+    const canonicalIndex = html.search(/<link\s+rel="canonical"/i);
+    const firstHreflang = html.search(/<link\s+rel="alternate"\s+hreflang=/i);
+    const styleIndex = html.search(/<style[\s>]/i);
+    assert.ok(canonicalIndex !== -1 && firstHreflang !== -1, `${locale}/${page} must have canonical and hreflang`);
+    assert.ok(firstHreflang > canonicalIndex, `${locale}/${page} hreflang must follow canonical`);
+    if (styleIndex !== -1) {
+      assert.ok(firstHreflang < styleIndex, `${locale}/${page} hreflang must appear before inline CSS so crawlers see the cluster`);
+    }
 
     if (locale !== localeConfig.defaultLocale) {
       for (const href of extractAnchors(html)) {
