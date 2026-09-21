@@ -429,7 +429,7 @@
         "path": "about.html",
         "present": true,
         "newlineStyle": "MIXED",
-        "byteLength": 33307,
+        "byteLength": 33596,
         "sha256": "43a4132c393b64bf27a2058c294f76b47691b2af73e4337904d414ecb29812e4"
       },
       "lockedFiles": [
@@ -442,8 +442,8 @@
         {
           "path": "robots.txt",
           "newlineStyle": "MIXED",
-          "byteLength": 441,
-          "sha256": "01b51c5f4d4c5ce3c8cb075f8491956d9acd570bf12dc9f6b6880c062f23874f"
+          "byteLength": 615,
+          "sha256": "b78db532dd37a5623af7479c2205012b0347b6e25f22efbd8a2d913306c18d45"
         }
       ]
     },

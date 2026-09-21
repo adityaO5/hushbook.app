@@ -1,13 +1,9 @@
 /**
- * 301-strip tracking query params before HTML is served.
+ * Preserve valid campaign query parameters so Google Analytics can attribute
+ * the landing page. Normalize legacy links such as `/utm_source=chatgpt` to
+ * the valid `/?utm_source=chatgpt` form.
  *
- * GSC "Alternate page with proper canonical tag" is correct for
- * `/?ref=` and `/?utm_*` while those URLs 200 with a homepage canonical,
- * but they also emit the full hreflang set on a non-canonical URL.
- * A 301 to the clean path removes the duplicate from the indexation
- * report and keeps hreflang on canonical URLs only.
- *
- * Keep TRACKING_PARAMS in sync with scripts/strip-tracking-params.js.
+ * Keep TRACKING_PARAMS in sync with scripts/normalize-tracking-params.js.
  */
 
 const TRACKING_PARAMS = new Set([
@@ -40,20 +36,32 @@ export default function middleware(request) {
   if (method !== 'GET' && method !== 'HEAD') return;
 
   const url = new URL(request.url);
-  let changed = false;
-  for (const key of [...url.searchParams.keys()]) {
-    if (TRACKING_PARAMS.has(key.toLowerCase())) {
-      url.searchParams.delete(key);
-      changed = true;
-    }
-  }
-  if (!changed) return;
+  const pathParts = url.pathname.split('/');
+  const candidate = pathParts.at(-1);
+  if (!candidate || !candidate.includes('=')) return;
+
+  const campaignParams = new URLSearchParams(candidate);
+  const entries = [...campaignParams.entries()];
+  if (
+    entries.length === 0 ||
+    entries.some(([key, value]) => !TRACKING_PARAMS.has(key.toLowerCase()) || !value)
+  ) return;
+
+  pathParts.pop();
+  url.pathname = pathParts.join('/') || '/';
+  for (const [key, value] of entries) url.searchParams.append(key, value);
+
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host');
+  const protocol = request.headers.get('x-forwarded-proto') || url.protocol.replace(':', '');
+  const location = host
+    ? `${protocol}://${host}${url.pathname}${url.search}`
+    : `${url.pathname}${url.search}`;
 
   return new Response(null, {
-    status: 301,
+    status: 308,
     headers: {
-      Location: `${url.pathname}${url.search}${url.hash}`,
-      'Cache-Control': 'public, max-age=86400',
+      Location: location,
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }

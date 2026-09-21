@@ -19,6 +19,14 @@ const {
 const root = path.join(__dirname, '..');
 const LOCALES = PUBLISHED_LOCALES;
 const PAGES = PUBLIC_PAGES;
+const ENGLISH_ONLY_URLS = [
+  'alternatives',
+  'alternatives/audible-alternatives',
+  'alternatives/bookplayer-alternatives',
+  'alternatives/storytel-alternatives',
+  'alternatives/pocket-fm-alternatives',
+  'alternatives/speechify-alternatives',
+];
 
 const PAGE_META = {
   index: { priority: '1.0', changefreq: 'weekly' },
@@ -91,6 +99,31 @@ for (const page of PAGES) {
       ].join('\n')
     );
   }
+}
+
+for (const route of ENGLISH_ONLY_URLS) {
+  const resolvedFile =
+    route === 'alternatives'
+      ? path.join(root, 'alternatives', 'index.html')
+      : path.join(root, `${route}.html`);
+  if (!fs.existsSync(resolvedFile)) {
+    console.warn(`skip missing: ${path.relative(root, resolvedFile)}`);
+    continue;
+  }
+  const loc = `https://hushbook.app/${route}`;
+  const lastmod = fs.statSync(resolvedFile).mtime.toISOString().slice(0, 10);
+  urls.push(
+    [
+      '  <url>',
+      `    <loc>${escapeXml(loc)}</loc>`,
+      `    <lastmod>${lastmod}</lastmod>`,
+      '    <changefreq>monthly</changefreq>',
+      '    <priority>0.8</priority>',
+      `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(loc)}"/>`,
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc)}"/>`,
+      '  </url>',
+    ].join('\n')
+  );
 }
 
 const xml = [

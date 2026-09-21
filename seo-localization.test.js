@@ -74,6 +74,24 @@ for (const locale of PUBLISHED) {
     );
     assert.equal(canonical, pageUrl(locale, page), `${locale}/${page} must self-canonicalize without redirect slashes`);
 
+    const publishedLocaleHomes = new Set(PUBLISHED.filter((code) => code !== localeConfig.defaultLocale));
+    for (const href of extractAnchors(html)) {
+      let pathname;
+      try {
+        pathname = href.startsWith('http') ? new URL(href).pathname : href.split(/[?#]/)[0];
+      } catch {
+        continue;
+      }
+      const match = pathname.match(/^\/([A-Za-z0-9-]+)\/$/);
+      if (match && publishedLocaleHomes.has(match[1])) {
+        assert.equal(
+          pathname,
+          `/${match[1]}`,
+          `${locale}/${page} locale homepage link ${href} must omit the trailing slash; /${match[1]}/ 308s to /${match[1]}`,
+        );
+      }
+    }
+
     const robots = extractSingle(
       html,
       /<meta\s+name="robots"\s+content="([^"]+)"\s*\/?\s*>/i,
@@ -176,7 +194,22 @@ for (const locale of PUBLISHED) {
 
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert.equal(sitemapUrls.length, PUBLISHED.length * PAGES.length, 'sitemap must contain only published locale/page combinations');
+const englishOnlyUrls = [
+  'https://hushbook.app/alternatives',
+  'https://hushbook.app/alternatives/audible-alternatives',
+  'https://hushbook.app/alternatives/bookplayer-alternatives',
+  'https://hushbook.app/alternatives/storytel-alternatives',
+  'https://hushbook.app/alternatives/pocket-fm-alternatives',
+  'https://hushbook.app/alternatives/speechify-alternatives',
+];
+assert.equal(
+  sitemapUrls.length,
+  PUBLISHED.length * PAGES.length + englishOnlyUrls.length,
+  'sitemap must contain published locale/page combinations and explicit English-only pages',
+);
+for (const url of englishOnlyUrls) {
+  assert.ok(sitemapUrls.includes(url), `${url} must be in sitemap`);
+}
 for (const locale of PUBLISHED) {
   for (const page of PAGES) {
     assert.ok(sitemapUrls.includes(pageUrl(locale, page)), `${locale}/${page} must be in sitemap`);

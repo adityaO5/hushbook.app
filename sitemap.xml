@@ -10880,4 +10880,52 @@
     <xhtml:link rel="alternate" hreflang="ar-TN" href="https://hushbook.app/ar/licenses"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/licenses"/>
   </url>
+  <url>
+    <loc>https://hushbook.app/alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/alternatives/audible-alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives/audible-alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives/audible-alternatives"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/alternatives/bookplayer-alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives/bookplayer-alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives/bookplayer-alternatives"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/alternatives/storytel-alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives/storytel-alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives/storytel-alternatives"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/alternatives/pocket-fm-alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives/pocket-fm-alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives/pocket-fm-alternatives"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/alternatives/speechify-alternatives</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/alternatives/speechify-alternatives"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/alternatives/speechify-alternatives"/>
+  </url>
 </urlset>

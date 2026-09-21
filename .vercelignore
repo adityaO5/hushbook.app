@@ -5,4 +5,7 @@ research
 supabase
 *.md
 qc-*.png
-output/mockup-ai
+output
+pagespeed_*.json
+.agents
+.claude

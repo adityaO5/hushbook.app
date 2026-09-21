@@ -170,11 +170,26 @@ function verifyCurrentPublicationEvidence() {
   for (const route of expectedRoutes) {
     assert.ok(fs.existsSync(route.file), `${route.path}: published HTML file missing`);
     const html = fs.readFileSync(route.file, 'utf8');
+    const expected = seo.hreflangAlternates(route.page);
+    const expectedHref = new Map(expected.map((entry) => [entry.hreflang, entry.href]));
     const tags = [...html.matchAll(/<link\b(?=[^>]*\brel\s*=\s*["']alternate["'])(?=[^>]*\bhreflang\s*=\s*["'][^"']+["'])[^>]*>/gi)]
-      .map((match) => match[0]);
-    assert.equal(tags.length, expectedHreflangSet.size, `${route.path}: HTML hreflang count`);
-    const locales = tags.map((tag) => tag.match(/\bhreflang\s*=\s*["']([^"']+)["']/i)[1]);
-    assertSameArray([...new Set(locales)].sort(), [...expectedHreflangSet].sort(), `${route.path}: HTML hreflang locale set`);
+      .map((match) => {
+        const tag = match[0];
+        return {
+          locale: tag.match(/\bhreflang\s*=\s*["']([^"']+)["']/i)[1],
+          href: tag.match(/\bhref\s*=\s*["']([^"']+)["']/i)[1],
+        };
+      });
+    assert.equal(tags.length, expected.length, `${route.path}: HTML hreflang count`);
+    assert.equal(new Set(tags.map((tag) => tag.locale)).size, tags.length, `${route.path}: duplicate hreflang`);
+    assertSameArray(
+      tags.map((tag) => tag.locale).sort(),
+      expected.map((entry) => entry.hreflang).sort(),
+      `${route.path}: HTML hreflang locale set`,
+    );
+    for (const tag of tags) {
+      assert.equal(tag.href, expectedHref.get(tag.locale), `${route.path}: ${tag.locale} href`);
+    }
   }
 
   const vercel = readJson(evidence.routing.file);

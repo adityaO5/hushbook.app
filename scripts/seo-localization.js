@@ -115,7 +115,10 @@ function hreflangAlternates(page) {
 
 function buildHreflangBlock(page, newline) {
   return hreflangAlternates(page)
-    .map(({ hreflang, href }) => `<link rel="alternate" hreflang="${hreflang}" href="${href}">`)
+    .map(
+      ({ hreflang, href }) =>
+        `<link rel="alternate" hreflang="${escapeAttribute(hreflang)}" href="${escapeAttribute(href)}">`,
+    )
     .join(newline);
 }
 

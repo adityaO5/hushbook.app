@@ -2,7 +2,8 @@
 
 /**
  * Replace <link rel="alternate" hreflang="..."> blocks on every public page
- * with the full publishedLocales set (+ x-default).
+ * with hreflangAlternates(): published locales, language catchalls (es, pt),
+ * country-region tags from countryLocales, and x-default.
  *
  * URLs match scripts/build-sitemap.js (cleanUrls, no .html).
  * Safe to re-run.
