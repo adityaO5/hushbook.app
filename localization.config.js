@@ -26,8 +26,11 @@ module.exports = {
     'pl', 'tr', 'ru', 'uk', 'ar', 'id', 'th', 'vi', 'sv', 'da',
   ],
   publicPages: [
-    'index.html', 'download.html', 'about.html', 'privacy-policy.html',
-    'terms-conditions.html', 'refund-policy.html', 'licenses.html',
+    'index.html', 'about.html', 'refund-policy.html', 'licenses.html',
+  ],
+  // Legal documents stay English-only; locale URLs 308 to the English page.
+  englishOnlyPages: [
+    'privacy-policy.html', 'terms-conditions.html',
   ],
   /** Country -> published locale used by scripts/build-vercel-locales.js. */
   countryLocales: {

@@ -9,6 +9,7 @@ const BASE_URL = 'https://hushbook.app';
 const DEFAULT_LOCALE = localeConfig.defaultLocale || 'en';
 const PUBLISHED_LOCALES = [...(localeConfig.publishedLocales || [])];
 const PUBLIC_PAGES = (localeConfig.publicPages || []).map((page) => page.replace(/\.html$/, ''));
+const ENGLISH_ONLY_PAGES = (localeConfig.englishOnlyPages || []).map((page) => page.replace(/\.html$/, ''));
 const INDEXABLE_ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
 function normalizePage(page) {
@@ -102,6 +103,12 @@ function hreflangAlternates(page) {
     seen.add(key);
     entries.push({ hreflang: code, href: pageUrl(locale, page) });
   };
+
+  if (ENGLISH_ONLY_PAGES.includes(normalizePage(page))) {
+    add('en', DEFAULT_LOCALE);
+    add('x-default', DEFAULT_LOCALE);
+    return entries;
+  }
 
   for (const locale of PUBLISHED_LOCALES) add(locale, locale);
   for (const [lang, target] of languageCatchalls()) add(lang, target);
@@ -277,6 +284,7 @@ module.exports = {
   INDEXABLE_ROBOTS,
   normalizeCanonicalUrl,
   PUBLIC_PAGES,
+  ENGLISH_ONLY_PAGES,
   PUBLISHED_LOCALES,
   hreflangAlternates,
   injectHreflang,

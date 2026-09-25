@@ -45,14 +45,14 @@
 - The baseline records hashes and structural counts, not replacement source text.
 - seo-preservation.test.js reads the baseline and fails if protected content changes.
 
-- [ ] Run npm test and record the clean baseline result before adding new checks.
-- [ ] Implement region extraction for each published locale homepage: the SEO COPY marker through the FAQ marker, the FAQ marker through the FINALE marker, and the data-hushbook-faq JSON-LD script.
-- [ ] Record for every protected file: relative path, newline style, byte length, SHA-256 of protected regions, SHA-256 of the post-head body, marker counts, FAQ item count, JSON-LD count, and H1 count.
-- [ ] Record the exact About facts section hash and the current scripts/inject-seo-copy.js and robots.txt hashes so accidental edits fail review.
-- [ ] Generate output/seo-preservation-baseline.json from the current worktree only after inspecting the current diff.
-- [ ] Make the test assert that every protected region exists exactly once, its hash matches the baseline, and all structural counts are unchanged.
-- [ ] Add the preservation test to the npm test chain only after it passes against the generated baseline.
-- [ ] Run npm test and inspect the manifest and diff. Stop immediately if the baseline indicates a missing SEO block, missing FAQ block, or unexpected pre-existing content loss.
+- [x] Run npm test and record the clean baseline result before adding new checks.
+- [x] Implement region extraction for each published locale homepage: the SEO COPY marker through the FAQ marker, the FAQ marker through the FINALE marker, and the data-hushbook-faq JSON-LD script.
+- [x] Record for every protected file: relative path, newline style, byte length, SHA-256 of protected regions, SHA-256 of the post-head body, marker counts, FAQ item count, JSON-LD count, and H1 count.
+- [x] Record the exact About facts section hash and the current scripts/inject-seo-copy.js and robots.txt hashes so accidental edits fail review.
+- [x] Generate output/seo-preservation-baseline.json from the current worktree only after inspecting the current diff.
+- [x] Make the test assert that every protected region exists exactly once, its hash matches the baseline, and all structural counts are unchanged.
+- [x] Add the preservation test to the npm test chain only after it passes against the generated baseline.
+- [x] Run npm test and inspect the manifest and diff. Stop immediately if the baseline indicates a missing SEO block, missing FAQ block, or unexpected pre-existing content loss.
 
 ### Task 2: Add red tests for the audit contracts
 
@@ -64,13 +64,13 @@
 - The contract test consumes localization.config.js and the protected-content helpers.
 - It produces deterministic failures for invalid protocol metadata, encoding loss, brand artifacts, incomplete download metadata, and missing Arabic direction metadata.
 
-- [ ] Assert every published page has exactly one og:type with value website and exactly one twitter:card with value summary_large_image.
-- [ ] Assert every published download page has og:site_name, og:title, og:description, og:url, og:image, twitter:card, twitter:title, twitter:description, and twitter:image, with the existing HushBook image asset and page-specific title/description.
-- [ ] Assert no published HTML contains U+FFFD or the known corruption tokens BushBook, HuhBook, HBTER2X, or HBOPEXIX.
-- [ ] Treat Notund as a contextual review item rather than performing a blind global substitution; the test must reject it until a page-specific approved replacement is recorded.
-- [ ] Assert all Arabic roots use lang="ar" and dir="rtl".
-- [ ] Assert the metadata contract does not change the post-head body of pages whose repair is head-only.
-- [ ] Run the new test once and record the expected failures from the audit. Keep it out of the full npm test chain until the corresponding repairs pass.
+- [x] Assert every published page has exactly one og:type with value website and exactly one twitter:card with value summary_large_image.
+- [x] Assert every published download page has og:site_name, og:title, og:description, og:url, og:image, twitter:card, twitter:title, twitter:description, and twitter:image, with the existing HushBook image asset and page-specific title/description. (Download routes later retired; contract now skips missing download pages.)
+- [x] Assert no published HTML contains U+FFFD or the known corruption tokens BushBook, HuhBook, HBTER2X, or HBOPEXIX.
+- [x] Treat Notund as a contextual review item rather than performing a blind global substitution; the test must reject it until a page-specific approved replacement is recorded.
+- [x] Assert all Arabic roots use lang="ar" and dir="rtl".
+- [x] Assert the metadata contract does not change the post-head body of pages whose repair is head-only.
+- [x] Run the new test once and record the expected failures from the audit. Keep it out of the full npm test chain until the corresponding repairs pass.
 
 ### Task 3: Implement a dry-run, head-only metadata repair
 
@@ -83,7 +83,7 @@
 - Dry-run reports exact files, tags, old values, and new values without writing.
 - Write mode refuses to run unless all preconditions and protected-content assertions pass.
 
-- [ ] Implement a head-boundary helper that never searches or replaces inside body content.
+- [x] Implement a head-boundary helper that never searches or replaces inside body content.
 - [ ] Implement exact attribute replacement for existing og:type and twitter:card tags; preserve the surrounding tag formatting and all other attributes.
 - [ ] For download pages only, add the missing social tags immediately before the head close, using the existing localized title and description, site name HushBook, the canonical URL, and https://hushbook.app/assets/img/og-hushbook.webp.
 - [ ] Assert the download asset exists locally before adding its URL.

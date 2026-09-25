@@ -20,6 +20,8 @@ const root = path.join(__dirname, '..');
 const LOCALES = PUBLISHED_LOCALES;
 const PAGES = PUBLIC_PAGES;
 const ENGLISH_ONLY_URLS = [
+  'privacy-policy',
+  'terms-conditions',
   'alternatives',
   'alternatives/audible-alternatives',
   'alternatives/bookplayer-alternatives',
@@ -30,7 +32,6 @@ const ENGLISH_ONLY_URLS = [
 
 const PAGE_META = {
   index: { priority: '1.0', changefreq: 'weekly' },
-  download: { priority: '0.9', changefreq: 'weekly' },
   about: { priority: '0.7', changefreq: 'monthly' },
   'privacy-policy': { priority: '0.3', changefreq: 'yearly' },
   'terms-conditions': { priority: '0.3', changefreq: 'yearly' },

@@ -15,7 +15,9 @@ const path = require('node:path');
 const {
   injectHreflang,
   PUBLIC_PAGES,
+  ENGLISH_ONLY_PAGES,
   PUBLISHED_LOCALES,
+  DEFAULT_LOCALE,
   pageFile,
 } = require('./seo-localization');
 
@@ -46,6 +48,23 @@ for (const page of PAGES) {
     fs.writeFileSync(file, next);
     updated += 1;
   }
+}
+
+for (const page of ENGLISH_ONLY_PAGES) {
+  const file = pageFile(DEFAULT_LOCALE, page);
+  if (!fs.existsSync(file)) {
+    console.warn(`skip missing: ${path.relative(root, file)}`);
+    missing += 1;
+    continue;
+  }
+  const html = fs.readFileSync(file, 'utf8');
+  const next = injectHreflang(html, page);
+  if (next === html) {
+    skipped += 1;
+    continue;
+  }
+  fs.writeFileSync(file, next);
+  updated += 1;
 }
 
 console.log(

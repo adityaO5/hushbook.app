@@ -53,10 +53,14 @@ function expectedRoutePaths() {
       routes.push(toPosix(locale === localeConfig.defaultLocale ? page : path.join(locale, page)));
     }
   }
+  for (const page of localeConfig.englishOnlyPages || []) {
+    routes.push(toPosix(page));
+  }
   return routes.sort((left, right) => left.localeCompare(right));
 }
 
 function expectedDownloadPaths() {
+  if (!localeConfig.publicPages.includes(DOWNLOAD_PAGE)) return [];
   return localeConfig.publishedLocales
     .map((locale) => toPosix(locale === localeConfig.defaultLocale ? DOWNLOAD_PAGE : path.join(locale, DOWNLOAD_PAGE)))
     .sort((left, right) => left.localeCompare(right));
@@ -232,22 +236,38 @@ function assertDownloadMetadataBaseline(artifact, expectedKeys) {
   }
 }
 
-assert.ok(
-  fs.existsSync(path.join(ROOT, DOWNLOAD_IMAGE_PATH)),
-  `${DOWNLOAD_IMAGE_PATH} must exist for download social metadata contract`,
-);
+if (localeConfig.publicPages.includes(DOWNLOAD_PAGE)) {
+  assert.ok(
+    fs.existsSync(path.join(ROOT, DOWNLOAD_IMAGE_PATH)),
+    `${DOWNLOAD_IMAGE_PATH} must exist for download social metadata contract`,
+  );
+}
 
 const EXPECTED_ROUTE_PATHS = expectedRoutePaths();
 const EXPECTED_DOWNLOAD_PATHS = expectedDownloadPaths();
 assertBodyBaseline(BODY_BASELINE, EXPECTED_ROUTE_PATHS);
 const BODY_BASELINE_ROUTES = selectBodyBaselineRoutes(BODY_BASELINE, EXPECTED_ROUTE_PATHS);
-assertDownloadMetadataBaseline(DOWNLOAD_METADATA_BASELINE, EXPECTED_DOWNLOAD_PATHS);
+if (EXPECTED_DOWNLOAD_PATHS.length > 0) {
+  assertDownloadMetadataBaseline(DOWNLOAD_METADATA_BASELINE, EXPECTED_DOWNLOAD_PATHS);
+}
 
 const issues = [];
 
+const publishedPages = [];
 for (const locale of localeConfig.publishedLocales) {
   for (const page of localeConfig.publicPages) {
-    const relativePath = toPosix(locale === localeConfig.defaultLocale ? page : path.join(locale, page));
+    publishedPages.push({
+      locale,
+      page,
+      relativePath: toPosix(locale === localeConfig.defaultLocale ? page : path.join(locale, page)),
+    });
+  }
+}
+for (const page of localeConfig.englishOnlyPages || []) {
+  publishedPages.push({ locale: localeConfig.defaultLocale, page, relativePath: toPosix(page) });
+}
+
+for (const { locale, page, relativePath } of publishedPages) {
     const html = readHtml(locale, page);
     const { head, body } = splitHeadBoundary(html);
     const expectedBodyHash = BODY_BASELINE_ROUTES[relativePath];
@@ -354,7 +374,6 @@ for (const locale of localeConfig.publishedLocales) {
         }
       }
     }
-  }
 }
 
 for (const page of localeConfig.publicPages) {

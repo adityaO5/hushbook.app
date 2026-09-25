@@ -92,6 +92,10 @@ redirects.push({
 });
 redirects.push({ source: '/privacy', destination: '/privacy-policy', permanent: true });
 redirects.push({ source: '/terms', destination: '/terms-conditions', permanent: true });
+redirects.push({ source: '/download', destination: '/', permanent: true });
+redirects.push({ source: '/:locale/download', destination: '/:locale', permanent: true });
+redirects.push({ source: '/:locale/privacy-policy', destination: '/privacy-policy', permanent: true });
+redirects.push({ source: '/:locale/terms-conditions', destination: '/terms-conditions', permanent: true });
 
 function contentLanguageHeaders() {
   const rules = [];
@@ -148,6 +152,13 @@ const config = {
       source: '/assets/(.*)',
       headers: [
         { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+      ],
+    },
+    {
+      source: '/.well-known/assetlinks.json',
+      headers: [
+        { key: 'Content-Type', value: 'application/json' },
+        { key: 'Cache-Control', value: 'public, max-age=3600' },
       ],
     },
     ...contentLanguageHeaders(),

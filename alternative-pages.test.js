@@ -52,4 +52,14 @@ const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
   assert.ok(robots.includes(`User-agent: ${bot}`), `robots.txt must explicitly allow ${bot}`);
 });
 
+const audible = pages.find((page) => page.slug === 'audible-alternatives');
+assert.ok(audible.options.includes('libby'), 'Audible page must include Libby');
+assert.ok(audible.options.includes('hoopla'), 'Audible page must include Hoopla');
+assert.ok(audible.options.includes('librofm'), 'Audible page must include Libro.fm');
+const audibleHtml = fs.readFileSync(path.join(root, 'alternatives', 'audible-alternatives.html'), 'utf8');
+assert.ok(audibleHtml.includes('Libby'), 'generated Audible page must name Libby');
+assert.ok(audibleHtml.includes('Hoopla'), 'generated Audible page must name Hoopla');
+assert.ok(audibleHtml.includes('Libro.fm'), 'generated Audible page must name Libro.fm');
+assert.ok(audibleHtml.includes('<th scope="col">Criterion</th>'), 'comparison table must keep Criterion as the first column');
+
 console.log('Alternative-page SEO, AEO, hreflang, linking, and 150-title strategy contracts pass.');

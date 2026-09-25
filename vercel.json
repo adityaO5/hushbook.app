@@ -23,7 +23,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -61,7 +61,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -99,7 +99,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -137,7 +137,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -175,7 +175,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -213,7 +213,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -251,7 +251,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -289,7 +289,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -327,7 +327,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -365,7 +365,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -403,7 +403,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -441,7 +441,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -479,7 +479,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -517,7 +517,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -555,7 +555,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -593,7 +593,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -631,7 +631,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -669,7 +669,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -707,7 +707,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -745,7 +745,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "cookie",
@@ -787,7 +787,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -833,7 +833,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -879,7 +879,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -925,7 +925,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -971,7 +971,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1017,7 +1017,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1063,7 +1063,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1109,7 +1109,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1155,7 +1155,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1201,7 +1201,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1247,7 +1247,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1293,7 +1293,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1339,7 +1339,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1385,7 +1385,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1431,7 +1431,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1477,7 +1477,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1523,7 +1523,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1569,7 +1569,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1615,7 +1615,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1661,7 +1661,7 @@
       "permanent": false
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "has": [
         {
           "type": "header",
@@ -1733,6 +1733,26 @@
       "source": "/terms",
       "destination": "/terms-conditions",
       "permanent": true
+    },
+    {
+      "source": "/download",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale/download",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/:locale/privacy-policy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/:locale/terms-conditions",
+      "destination": "/terms-conditions",
+      "permanent": true
     }
   ],
   "headers": [
@@ -1786,6 +1806,19 @@
       ]
     },
     {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
       "source": "/",
       "headers": [
         {
@@ -1795,7 +1828,7 @@
       ]
     },
     {
-      "source": "/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)",
+      "source": "/:path(about|refund-policy|licenses)",
       "headers": [
         {
           "key": "Content-Language",

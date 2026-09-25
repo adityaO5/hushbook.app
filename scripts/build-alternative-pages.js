@@ -72,7 +72,7 @@ function nav() {
       <a href="/alternatives">Alternatives</a>
       <a href="/#features">Features</a>
       <a href="/about">About</a>
-      <a class="button" href="/download">Get the app</a>
+      <a class="button" href="/">Get the app</a>
     </nav>
   </div>
 </header>`;
@@ -85,7 +85,7 @@ function footer() {
     <div class="footer-grid">
       <div><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">H</span><span class="brand-name">HushBook</span></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
       <div class="footer-col"><h2>Compare</h2>${links}</div>
-      <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/download">Download</a></div>
+      <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
     </div>
     <div class="footer-bottom">© 2026 HushBook. Competitor names belong to their respective owners. No affiliation or endorsement implied.</div>
   </div>
@@ -202,7 +202,7 @@ ${nav()}
     <section aria-labelledby="related-heading"><h2 id="related-heading">Related alternative guides</h2><p>Every guide links to every other guide, giving readers and crawlers a complete comparison cluster.</p><div class="related-grid">${related}</div></section>
 
     <aside class="disclosure"><p><strong>Editorial disclosure:</strong> HushBook publishes this comparison. Competitor strengths and limits use cited public information. No competitor paid for inclusion.</p></aside>
-    <section class="cta" aria-labelledby="cta-heading"><h2 id="cta-heading">Try read-along on a book you own</h2><p>Import a compatible audiobook, create its transcript on your device, and follow every word with the original narration.</p><div class="cta-actions"><a class="button" data-campaign="${page.slug}" data-destination="google-play" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook&amp;referrer=${playReferrer}" target="_blank" rel="noopener">Get HushBook on Google Play</a><a class="button button-secondary" data-campaign="${page.slug}" data-destination="app-store" href="https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597" target="_blank" rel="noopener">Download on App Store</a></div></section>
+    <section class="cta" aria-labelledby="cta-heading"><h2 id="cta-heading">Try read-along on a book you own</h2><p>Import a compatible audiobook, create its transcript on your device, and follow every word with the original narration.</p><div class="cta-actions"><a class="button" data-campaign="${page.slug}" data-destination="google-play" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook&amp;referrer=${playReferrer}" target="_blank" rel="noopener">Get HushBook on Google Play</a><a class="button button-secondary" data-campaign="${page.slug}" data-destination="app-store" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&ct=Hushbook-landing&mt=8" target="_blank" rel="noopener">Download on App Store</a></div></section>
   </div></article>
 </main>
 ${footer()}`;

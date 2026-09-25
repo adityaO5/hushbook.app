@@ -195,6 +195,8 @@ for (const locale of PUBLISHED) {
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const englishOnlyUrls = [
+  'https://hushbook.app/privacy-policy',
+  'https://hushbook.app/terms-conditions',
   'https://hushbook.app/alternatives',
   'https://hushbook.app/alternatives/audible-alternatives',
   'https://hushbook.app/alternatives/bookplayer-alternatives',
@@ -228,21 +230,11 @@ for (const legacyLocale of Object.keys(LEGACY_REDIRECTS)) {
 assert.deepEqual(localeConfig.legacyRedirects, LEGACY_REDIRECTS, 'legacy locale mappings must be explicit and reviewable');
 
 for (const locale of PUBLISHED) {
-  const downloadHtml = readHtml(locale, 'download');
-  assert.doesNotMatch(
-    downloadHtml,
-    /location\.replace\(target\)|isSearchCrawler|getStoreTarget/,
-    `${locale}/download must remain a stable landing page for every visitor`,
-  );
-  assert.doesNotMatch(
-    downloadHtml,
-    /<noscript>|class="status"\s+id="status"/,
-    `${locale}/download must not claim an automatic store redirect`,
-  );
-  assert.match(
-    downloadHtml,
-    /application\/ld\+json/,
-    `${locale}/download must expose SoftwareApplication JSON-LD for AEO`,
+  const downloadFile = pageFile(locale, 'download');
+  assert.equal(
+    fs.existsSync(downloadFile),
+    false,
+    `${locale}/download.html must be removed`,
   );
 }
 
@@ -257,7 +249,7 @@ assert.ok(
     ),
   'geo/cookie locale redirects must skip search crawlers',
 );
-for (const [source, destination] of [['/', '/nl'], ['/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)', '/nl/:path*']]) {
+for (const [source, destination] of [['/', '/nl'], ['/:path(about|refund-policy|licenses)', '/nl/:path*']]) {
   assert.ok(
     vercel.redirects.some((rule) =>
       rule.source === source &&
@@ -282,7 +274,30 @@ function contentLanguageFor(source) {
   return rule?.headers.find((header) => header.key === 'Content-Language')?.value || null;
 }
 assert.equal(contentLanguageFor('/'), 'en', 'English homepage must send Content-Language: en');
-assert.equal(contentLanguageFor('/:path(download|about|privacy-policy|terms-conditions|refund-policy|licenses)'), 'en');
+assert.equal(contentLanguageFor('/:path(about|refund-policy|licenses)'), 'en');
+assert.ok(
+  vercel.redirects.some((rule) => rule.source === '/download' && rule.destination === '/' && rule.permanent === true),
+  'retired /download must permanently redirect to the homepage',
+);
+assert.ok(
+  vercel.redirects.some((rule) => rule.source === '/:locale/download' && rule.destination === '/:locale' && rule.permanent === true),
+  'retired locale /download routes must permanently redirect to the locale homepage',
+);
+assert.ok(
+  vercel.redirects.some((rule) => rule.source === '/:locale/privacy-policy' && rule.destination === '/privacy-policy' && rule.permanent === true),
+  'locale privacy pages must permanently redirect to the English privacy policy',
+);
+assert.ok(
+  vercel.redirects.some((rule) => rule.source === '/:locale/terms-conditions' && rule.destination === '/terms-conditions' && rule.permanent === true),
+  'locale terms pages must permanently redirect to the English terms',
+);
+
+for (const page of ['privacy-policy', 'terms-conditions']) {
+  assert.ok(fs.existsSync(pageFile('en', page)), `English ${page} must remain published`);
+  for (const locale of PUBLISHED.filter((code) => code !== localeConfig.defaultLocale)) {
+    assert.equal(fs.existsSync(pageFile(locale, page)), false, `${locale}/${page}.html must be removed`);
+  }
+}
 assert.equal(contentLanguageFor('/pt-BR'), 'pt-BR');
 assert.equal(contentLanguageFor('/pt-BR/:path*'), 'pt-BR');
 assert.equal(contentLanguageFor('/pt-PT'), 'pt-PT');

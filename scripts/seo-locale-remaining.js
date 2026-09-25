@@ -1,6 +1,6 @@
 'use strict';
 
-const APPLE = 'https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597';
+const APPLE = 'https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&ct=Hushbook-landing&mt=8';
 const PLAY = 'https://play.google.com/store/apps/details?id=com.hushbook.hushbook';
 
 function pack(code, canonical, ogLocale, title, description, keywords, ogTitle, ogDescription, ogImageAlt, schemaDescription, featureList, section) {

@@ -5,10 +5,7 @@ const localeConfig = require('./localization.config');
 
 const germanPages = [
   'index.html',
-  'download.html',
   'about.html',
-  'privacy-policy.html',
-  'terms-conditions.html',
   'refund-policy.html',
   'licenses.html',
 ];

@@ -1,5 +1,4 @@
 {
-  "schemaVersion": 1,
   "snapshots": {
     "worktree": {
       "schemaVersion": 1,
@@ -7,13 +6,13 @@
         {
           "path": "ar/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 156796,
+          "byteLength": 160581,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "740d68979f1c995ba1e40b9c2d1cf31e6420c46e6d5c249cc525b4e2a24b3f2a",
+            "seoCopyToFaq": "15aacca714dfe2c505399494051fae2706cebafd72e9941245c4f6cdc80dfb37",
             "faqToFinale": "c75e78435a30b7a9e40091d5d17c20b753113162d533f6fbbc2aee869f04c4ea",
             "faqJsonLd": "cfa443f127258aae7884580d8be0bc4bfde6ff38614eada9debcee66dda37fc9"
           },
-          "postHeadBodySha256": "a6d6c9a47500cc5392f26453546c881f52c9e5e31c01b3a77125b5bc4052fc9d",
+          "postHeadBodySha256": "9d4b042867297eaff1617ff6886b034df5cadefb142cc138a9f5ed93d06a60af",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -27,13 +26,13 @@
         {
           "path": "da/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131563,
+          "byteLength": 135348,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "46d27316b21aa5d8ddf16370f226b982e8b9e8e698e31b8a0e9db0f0573c0e37",
+            "seoCopyToFaq": "5d3b951690befe8c9b905dacd0f2dec20608ac3440da7a51e11d5ef054b047dd",
             "faqToFinale": "06e00e0336a14f388dafa83573ea2eeacdb57e9fad99099b1ae71524f1b28461",
             "faqJsonLd": "d26de7f0c3863270bfcd234c40a4ca58bcb5afea24c56f21b25e99d59c7fd410"
           },
-          "postHeadBodySha256": "59db2c52592454418f3ef833e5a3aab2dcd2cb61fdeb3ea23d5e19769acd85d7",
+          "postHeadBodySha256": "0b8a2e0ade31c3ee49893d0b383dbfea453844c534965c780842d036231424f0",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -47,13 +46,13 @@
         {
           "path": "de/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131669,
+          "byteLength": 135454,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "163691edc95377cf94398f84b857ea5d3f1e16628ebdca538869bd384271f558",
+            "seoCopyToFaq": "fecb49d37ee05e828434cb0384292653a13d9f7c9778659cf1a90313b162f2f3",
             "faqToFinale": "bc3a87df039a3db62f816bcc1940d821acf72aec0ad1b9fe5928f53236151d7e",
             "faqJsonLd": "6cb9347f7f6d2dab167ed331660427ead77dc5fffeac6e5976acc7729e60ea78"
           },
-          "postHeadBodySha256": "5baf16ecfe2995184f66721c359d3ce58d7ccbe1f9cdec6d419924bb2c6140c0",
+          "postHeadBodySha256": "57c6652669fb4915f913e97c9cbd2bc0d9e67614b833c40d92c2bb4dcb604e82",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -67,13 +66,13 @@
         {
           "path": "es-419/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134069,
+          "byteLength": 137959,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "6d64d3c216a21994bef53aa8bc6463b691a70d9040f31c3e813aaaa8ab0139d8",
+            "seoCopyToFaq": "4deda7977a0be1bcdff62e997a10f71c386b4bd80ff89f384aa18fd6a3bc6505",
             "faqToFinale": "66952c94001ee378d63d947d36212e4b82c9265b537b343c9091d017a3fcea01",
             "faqJsonLd": "335097847b99a95ce992b133f810d971093d9562f149df45e23a3e7bfe33b2b6"
           },
-          "postHeadBodySha256": "48a79126e57f963c35d04d1651689aef67b83fbad533ee29754072568a612c23",
+          "postHeadBodySha256": "a8f821a73225cbd0389b7908f4e42f80a7a7be89b36603e20d662d5388cf774a",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -87,13 +86,13 @@
         {
           "path": "es-ES/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134074,
+          "byteLength": 137924,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "576fc9c3564184d0ed428777f213624306a22e51fb4e03d15438056201f09979",
+            "seoCopyToFaq": "ab6f026981e6988710a35a8e506c008990fd88e11bda3dc7c1f7e832ce896c41",
             "faqToFinale": "66952c94001ee378d63d947d36212e4b82c9265b537b343c9091d017a3fcea01",
             "faqJsonLd": "335097847b99a95ce992b133f810d971093d9562f149df45e23a3e7bfe33b2b6"
           },
-          "postHeadBodySha256": "ff80df0b8e5176b57631666e88bd52caa81974b98b60010bce1bf1a105008b0d",
+          "postHeadBodySha256": "2f82d47e9616d4b67e4fa698346ba637e91852443a51bbca67d6123534596c92",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -107,13 +106,13 @@
         {
           "path": "fr/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 136401,
+          "byteLength": 140186,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "8fbc1409eaea5c10615e2ed10ff130db7ea0997968be5687192e4974a18d47c7",
+            "seoCopyToFaq": "ce79b688d5e055b3a0273c342269a87d73a03c2d76c512301c7fe647b32ecd62",
             "faqToFinale": "10b7b7cb0ee7503caf11200d274be943f9c3d921ff4e30d402f45a226f5867e3",
             "faqJsonLd": "90490560c5f83eb61d2b2c8b4c3bd454c355b62c14a34e81e09b036a733e3f8b"
           },
-          "postHeadBodySha256": "79bf5547143913b1ff574406a3b610de029509db0669cc06d1f27eb277a57e60",
+          "postHeadBodySha256": "93aaed05660178f1004fdf411c3f18ece569d712130d45701734357cb1144df0",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -127,13 +126,13 @@
         {
           "path": "id/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 132660,
+          "byteLength": 136445,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "074c123b070050c33b0e9bfcbd4063061301872d6ec94d3a0e3505858359b620",
+            "seoCopyToFaq": "62804a499e102f17f6df6f237caf4a3645caf226d49aea024f4188ab2a9aa6bb",
             "faqToFinale": "5eab48fff4edd8fa63d111f985baa8c710e6377bff3a913fb16faf743dcdf01e",
             "faqJsonLd": "6521341c078e5c0cc585f561632bd640c31499bf2c5916a2d57e5147686a2e02"
           },
-          "postHeadBodySha256": "ca47b64a8d856f8f5b003b99481f38ea8c2887210f9f9a9a68da54f897eca61b",
+          "postHeadBodySha256": "481998cf470d8520ff39cc55a9f35c1f4a4803ad3348bbd2162ad0ec2cc47cc5",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -146,14 +145,14 @@
         },
         {
           "path": "index.html",
-          "newlineStyle": "MIXED",
-          "byteLength": 131981,
+          "newlineStyle": "CRLF",
+          "byteLength": 136248,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "e47d93907e3a3b9248b45f4d92d24fa7d175f9363edd3aa924ee6e43576eb335",
-            "faqToFinale": "24053bc8915f417a89e7681f89c4f787e70be3d7cc828312dee68182fe954722",
-            "faqJsonLd": "4821779d94d8967632e9abc948c7f5bc58c1f1d54a7ae296b276c168ef2ca967"
+            "seoCopyToFaq": "069708436060983870f79a6bec23805faa43e00121e5d32d7fd90ee85a35605a",
+            "faqToFinale": "095a7249538f4e356d6bd6ab4c2e65100ba356718d3f13ca817524f4ba05fc1c",
+            "faqJsonLd": "57c1248b70ab83849ba16da4c45785f6495170df006779177d13c7c65c4beb36"
           },
-          "postHeadBodySha256": "07744d3e5f6d12c8d2c07feb36b4f2cab0041d757fab7c7a9ff19f34f80bfe22",
+          "postHeadBodySha256": "05dc92a6bc3710e7834786e85bdf3f5a145386e1f2a2e4dfa2f810d59d38404d",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -167,13 +166,13 @@
         {
           "path": "it/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 133021,
+          "byteLength": 136806,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "2845b129c8e46d972681b7838f863ce1ab8451f807332cccdd22320efa1ff596",
+            "seoCopyToFaq": "1a9a68fe413b76b41c3a961dcc16a59344af3cb39c6baf53d1a6c628b0204cc1",
             "faqToFinale": "61a9be0c6f5d07a69528103cef54eff1908b5d892a13086b6d41e313299c24cf",
             "faqJsonLd": "bc0da4f4d723b934c5007f11a50189a398e70832e5e7d588759331e130f4e9fe"
           },
-          "postHeadBodySha256": "7e233537985a140ee326dcd89f14507753a701783c74f3ff0528b3d442d502b3",
+          "postHeadBodySha256": "d7986816c08b02d903b5d889d318a334c44651a510aecc47f1bef285a66d1890",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -187,13 +186,13 @@
         {
           "path": "ja/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 156119,
+          "byteLength": 159904,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "3d88053dfd86fe950a196fd489dd125412448999b7bf0015d56ac1305289034b",
+            "seoCopyToFaq": "5cb2e4af57a0ae6efaac7c5ffa5c7149eee8f277ffffaa8ed075a64a98a44e5a",
             "faqToFinale": "2cecfa5fb0612ef3a467371b17b5ceb4ee4877c407c7d2dc3d5a30e2a0e6c671",
             "faqJsonLd": "c0cafd2280efb9cd3d265ac94f08b95b3081fbbb11b5f04114a4332c8f77122a"
           },
-          "postHeadBodySha256": "5df07e0fd87a74a16e026bee0f3fcca49477691548541a58c7f601103a18ed5c",
+          "postHeadBodySha256": "8b2181b5844c1c157699ab4261221bd27ff70071ca9ab70d5d54b739d90160f4",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -207,13 +206,13 @@
         {
           "path": "ko/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 150890,
+          "byteLength": 154675,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "61dbc39c89898ff3531fdbfdc1d3defc34a4d7c8627a766943891fdd21c17977",
+            "seoCopyToFaq": "21a322ad0915fdda644deacb04ff4f88162b17d8d25429d86e92e374e2919adb",
             "faqToFinale": "baf9f034fff642adfaa1764959529b34428dff35481777984956d2285498ed2d",
             "faqJsonLd": "770b88c11893a55def2ceb163b7374e0abfa89f0d4f9fb88bc7cee98a643b926"
           },
-          "postHeadBodySha256": "27343c7db4e3548ff7d7194006a1e767a7c3d01decec7e2ad4d8f5fd6110cd85",
+          "postHeadBodySha256": "4cdcdd9a6d8f3bdf41952b98358b5ad7ce5caa18835bca5d03d50298cfe1c93a",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -227,13 +226,13 @@
         {
           "path": "nl/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131697,
+          "byteLength": 135482,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "71a44c154c81f29f69061d521303672fe5eed2d1103f8db865f14971fb15efd3",
+            "seoCopyToFaq": "f45fe68122e1263fa570bec881c38c9d6ae5d5c809892c934dd67e1a9f55e386",
             "faqToFinale": "4dec4f36277998e8a0ff571dcbb857897772a42b6793585bef61a963b7f999b2",
             "faqJsonLd": "ca11342eed99cf2c3914824aace3ec2ec7f5bdb3869fe57e97e6eb03a2d78e0d"
           },
-          "postHeadBodySha256": "b80c1f9f41f5025ffb1067fab9b402690d4e4da97fa7e74a61dee01b04c6725e",
+          "postHeadBodySha256": "69fa26996294a103139bc574cff401a8a9ca63ad38fbc6bfa3a1edaa4338f90c",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -247,13 +246,13 @@
         {
           "path": "pl/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 133469,
+          "byteLength": 137254,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "03e27f3481b1985b0aedd986cb2cb7dd634837968f2407a7497116cce75d2f22",
+            "seoCopyToFaq": "ebf42f3f76d8a7e988cc9d711bd08067e1e72b07d32eff537407f54c53db6b82",
             "faqToFinale": "60f51866c2946f796cbb86d17f89e850b0d20eb933c0fd5ced88e85a8885b778",
             "faqJsonLd": "f86b5790ad44cecc75b1e7fe2da04892d9de4deef55a7bb6103df64e946933b5"
           },
-          "postHeadBodySha256": "165a72a50479cf856d9a325e770f603ef4103ff13b6f5047ba6d512b4b5bbc99",
+          "postHeadBodySha256": "21353fe3eb8d8fc618a4924db4b4d9095b6ce746985f0cc26c115c7f23b41c54",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -267,13 +266,13 @@
         {
           "path": "pt-BR/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134279,
+          "byteLength": 138131,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
+            "seoCopyToFaq": "a17af329920729e11f9a99f12aa511abb0d355b84f80635f0ce3ae3695418509",
             "faqToFinale": "58c055f3b0bb1960b3ba82acd8931eed4c22355c08404fca69cff42b729f4405",
             "faqJsonLd": "86cb48961bea3929b067f32b78ed01cb7ae78a7767f16a256f43cc41f76fe973"
           },
-          "postHeadBodySha256": "9965324dc9d7deb4073eb1c416a3a6e5a022a07ea147f5f45e4b59ef5b47716e",
+          "postHeadBodySha256": "08f69a53de53dcb4e67102f85e45e1e377bd0c809210d4572bdb976a993864c9",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -287,13 +286,13 @@
         {
           "path": "pt-PT/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134288,
+          "byteLength": 138152,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
+            "seoCopyToFaq": "a17af329920729e11f9a99f12aa511abb0d355b84f80635f0ce3ae3695418509",
             "faqToFinale": "58c055f3b0bb1960b3ba82acd8931eed4c22355c08404fca69cff42b729f4405",
             "faqJsonLd": "86cb48961bea3929b067f32b78ed01cb7ae78a7767f16a256f43cc41f76fe973"
           },
-          "postHeadBodySha256": "3e95c147cbaa0bc171d000ff8a7414388bae8636f68ee72afc927347d12b5c00",
+          "postHeadBodySha256": "b7fa670b7ed9a98098072cb6c862c97f139bd16bbcd627a1dfbee46bc098fc92",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -307,13 +306,13 @@
         {
           "path": "ru/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 166306,
+          "byteLength": 170091,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "ff70157d61c5dd854d379361d930390b1d891880cbc841ea37c4fd6c9b81ea9e",
+            "seoCopyToFaq": "c8c9ed7c518f2361cfb767c702516939f4c18281ee7b99076fea44c50534a353",
             "faqToFinale": "65e8d41c35a1e3f0d95f10787d0655a7664afbc53fcb905b77d54b258a43c826",
             "faqJsonLd": "23dfd95236b55e427845e3f05694aa9178b0ea8dbb573030f885274cf4f16f1e"
           },
-          "postHeadBodySha256": "cd8f61451736286c18cc328b95dc6301a3bd595f9d39d1b6973640fe5f87f5d6",
+          "postHeadBodySha256": "0f046719251683b52426a3c0cba673189b7947fbe66292ab047fe12d9e535d6e",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -327,13 +326,13 @@
         {
           "path": "sv/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131857,
+          "byteLength": 135642,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "388642bd43078c213f54d3d567acc33f4fa2dd5473ac29ce9e9454a76a69e3e5",
+            "seoCopyToFaq": "749b15c9b8f5e2f82b6965cdb26efac0f6d70f1cd0b4679c2ccbca8209e58825",
             "faqToFinale": "3723b0301fe39c665c2e5f48f074927c90f0daa0671b5a4c12f0a4573d29054f",
             "faqJsonLd": "8f9dec1223efd43cfa6672acdedb980593895bad965ae947cde4734a0aeda189"
           },
-          "postHeadBodySha256": "21df997a6a35273e23558a7a9e40bcceff637e0c54126a0aa237e06f9175382a",
+          "postHeadBodySha256": "b83bea68fb57f3ac257aa28536c9d757a19b4dbe79e3a4daf12f8d561fd679d0",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -347,13 +346,13 @@
         {
           "path": "th/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 144394,
+          "byteLength": 148178,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "846e5b4e8b5c1172f31a3c43612b41db3d2f67267de7679bad28da668da12f12",
+            "seoCopyToFaq": "cbfa6104224367a725ff4a801521991b1cd4eeb891a59f28e1866e4008c638e9",
             "faqToFinale": "62a39782c0f506522ab98814e46b61d6208f54f47b8e90e811bef6af2252546b",
             "faqJsonLd": "76d4b598a10866b4f87085991ca56a407cf350d5f605373c7a726e55e0ad8233"
           },
-          "postHeadBodySha256": "295a6869c9e8e82ffd54fbf0549ce8a8e59cdb777f2f03a1b142c3841ab76758",
+          "postHeadBodySha256": "2dfdfbc7e955bcba8d0dbb20bb77c1319c5ce9c4efc6056c03ef5800d0ba311f",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -367,13 +366,13 @@
         {
           "path": "tr/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 135718,
+          "byteLength": 139503,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "e537be440cd1d15e0ec929b2251ecb03eea67d5c91607f01d2fc0bba9029c55d",
+            "seoCopyToFaq": "7269184c4f0213bc587fdb9506996a2cf40116860c0f9a3be0e4a742a2a29d99",
             "faqToFinale": "63ad08ee0e2b0c828168fd939b32f8f68dbb43aabb5e98df73f37e50689ebb13",
             "faqJsonLd": "b7f35a35f133593de561a9f96a0eed097af1e6a1eb554afc284f166eaf724a30"
           },
-          "postHeadBodySha256": "b1045ef6ff2372711ae8d430594a7cc57e141bfe263134c9f563c387d7930baf",
+          "postHeadBodySha256": "fb15e491d0c78e6da0cb239167f819f9fe5804ed633a66c481ae683ec9ab38d9",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -387,13 +386,13 @@
         {
           "path": "uk/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 142954,
+          "byteLength": 146738,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "807a38db451235ada0994c6148b92d8058f285047660c1c935221c39393398f7",
+            "seoCopyToFaq": "31cb6189a25459bbf73072162c91ff8f28919b237ee5c7424f6d7e82f071740b",
             "faqToFinale": "43790dfca7340a709e8e683e32a534af58f35a618ac9f38eb5ff73ab65d32246",
             "faqJsonLd": "f4c3f6efc1522d11c5682a3ab53a5938af80c264057e62b59d9b265572774669"
           },
-          "postHeadBodySha256": "7f5aa390a2bd711af26281235b66bad6773bdb931a4cff1443cb9e7ea20c3131",
+          "postHeadBodySha256": "c9bd41d146970c9af526a171afab2f14ac18e4d23d7e768a549fce590cabc88d",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -407,13 +406,13 @@
         {
           "path": "vi/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134035,
+          "byteLength": 137819,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "6abd8b12b96febbed38d30b54f05f92b84d5021b11bb3174a450370e15e926ee",
+            "seoCopyToFaq": "7bf6d1377143e3de064a71ecd4fa219bd37dd44029e43d3404cdb22619d4091c",
             "faqToFinale": "7facd3783a0ce36e122a20a07cd47642382e9075c81526226a1586a2db30c213",
             "faqJsonLd": "7ce71643b6b36b95fa145ff5cad34dc7ab84dd642183e21828e694f7f1a9a5b2"
           },
-          "postHeadBodySha256": "5400cb6c1324f2df795d378506d5ce36876dc836671e57f2bf530f0560d192a7",
+          "postHeadBodySha256": "a33db74ea287e29ffb3f9a76bb483965768e91bb8dce4092674131a6264570c6",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -436,8 +435,8 @@
         {
           "path": "scripts/inject-seo-copy.js",
           "newlineStyle": "MIXED",
-          "byteLength": 89411,
-          "sha256": "48d5bd0dc51419cb61f473a37a7f92e39bfdf0c6fef43a8732c27a6c1a248068"
+          "byteLength": 89428,
+          "sha256": "d8337b15c66dc35fd2836e5237dd935443c7ae300f1074b6cb1cc73d006cb0e9"
         },
         {
           "path": "robots.txt",
@@ -453,13 +452,13 @@
         {
           "path": "ar/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 155265,
+          "byteLength": 160470,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "612018cfe2e806c30a681d64724de0225928191c98ebdde0d4d37448949b4e04",
-            "faqToFinale": "c4e1c87c473b48d789b231cf48048d86d2f8bf98b2a50975d80737b1643f6840",
+            "seoCopyToFaq": "740d68979f1c995ba1e40b9c2d1cf31e6420c46e6d5c249cc525b4e2a24b3f2a",
+            "faqToFinale": "c75e78435a30b7a9e40091d5d17c20b753113162d533f6fbbc2aee869f04c4ea",
             "faqJsonLd": "cfa443f127258aae7884580d8be0bc4bfde6ff38614eada9debcee66dda37fc9"
           },
-          "postHeadBodySha256": "5e03d88ce4f99bba9ee19ddbc87b52deb0dd4fb4eb4c5841909f62771f3f300f",
+          "postHeadBodySha256": "a6d6c9a47500cc5392f26453546c881f52c9e5e31c01b3a77125b5bc4052fc9d",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -473,13 +472,13 @@
         {
           "path": "da/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 130277,
+          "byteLength": 135237,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "fc9865d62dbf5ab922dc4a258ddf4afb9491f6c6efa1fc149ec64ab7b0670ba7",
-            "faqToFinale": "2de20bcea12df17eb75514d0a86caa4f3e45c56ba046a76bf5ffd5cf0a58e3c8",
+            "seoCopyToFaq": "46d27316b21aa5d8ddf16370f226b982e8b9e8e698e31b8a0e9db0f0573c0e37",
+            "faqToFinale": "06e00e0336a14f388dafa83573ea2eeacdb57e9fad99099b1ae71524f1b28461",
             "faqJsonLd": "d26de7f0c3863270bfcd234c40a4ca58bcb5afea24c56f21b25e99d59c7fd410"
           },
-          "postHeadBodySha256": "9c94830f15378d1e51d6922c1fbb37fdf80d96ccc4a408152bd57abb81cdc977",
+          "postHeadBodySha256": "59db2c52592454418f3ef833e5a3aab2dcd2cb61fdeb3ea23d5e19769acd85d7",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -493,13 +492,13 @@
         {
           "path": "de/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 130335,
+          "byteLength": 135343,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "2d49da45375e2a779d933d87d67d0eb5994943249308bd849fdad7094eff2e9e",
-            "faqToFinale": "f6d00ee2ad41f4fa0f8a4161c3a8858471dee7e3512ca8cd1e7d3a38de28c36e",
+            "seoCopyToFaq": "163691edc95377cf94398f84b857ea5d3f1e16628ebdca538869bd384271f558",
+            "faqToFinale": "bc3a87df039a3db62f816bcc1940d821acf72aec0ad1b9fe5928f53236151d7e",
             "faqJsonLd": "6cb9347f7f6d2dab167ed331660427ead77dc5fffeac6e5976acc7729e60ea78"
           },
-          "postHeadBodySha256": "fb600989f994fc4f9f8ef4313ae2cf53dd6995a1cade29578c3b99504c469449",
+          "postHeadBodySha256": "5baf16ecfe2995184f66721c359d3ce58d7ccbe1f9cdec6d419924bb2c6140c0",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -513,13 +512,13 @@
         {
           "path": "es-419/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 132749,
+          "byteLength": 137743,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "68531acad3c983cc3fa89711801c812412b09ea3d93ec0b123fe321fd4a03900",
-            "faqToFinale": "41b7852bd2ac7dc641aee9d4b7efad44776ecc77c761a9b3612cfb4b244fe14b",
+            "seoCopyToFaq": "6d64d3c216a21994bef53aa8bc6463b691a70d9040f31c3e813aaaa8ab0139d8",
+            "faqToFinale": "66952c94001ee378d63d947d36212e4b82c9265b537b343c9091d017a3fcea01",
             "faqJsonLd": "335097847b99a95ce992b133f810d971093d9562f149df45e23a3e7bfe33b2b6"
           },
-          "postHeadBodySha256": "d94722d552335d0b7c2d43b2411d8a145e58b1aa5ffa2366b3e81f9e1caa3937",
+          "postHeadBodySha256": "48a79126e57f963c35d04d1651689aef67b83fbad533ee29754072568a612c23",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -533,13 +532,13 @@
         {
           "path": "es-ES/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 132754,
+          "byteLength": 137748,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "baa113f5b77f2187deaad1fe02163700e43151f61906fc7f36d1a8a5c8ad19e0",
-            "faqToFinale": "41b7852bd2ac7dc641aee9d4b7efad44776ecc77c761a9b3612cfb4b244fe14b",
+            "seoCopyToFaq": "576fc9c3564184d0ed428777f213624306a22e51fb4e03d15438056201f09979",
+            "faqToFinale": "66952c94001ee378d63d947d36212e4b82c9265b537b343c9091d017a3fcea01",
             "faqJsonLd": "335097847b99a95ce992b133f810d971093d9562f149df45e23a3e7bfe33b2b6"
           },
-          "postHeadBodySha256": "db1066982bee5c1aaac4208bf0ab5900c570f576e6cb5386b49c99907e41886b",
+          "postHeadBodySha256": "ff80df0b8e5176b57631666e88bd52caa81974b98b60010bce1bf1a105008b0d",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -553,13 +552,13 @@
         {
           "path": "fr/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 135042,
+          "byteLength": 140075,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "bff12379306e4dec1504464339619fd4dd6d0001e24a90d911c1a9754e5accd2",
-            "faqToFinale": "e48422010cc72c366b0956ea4a8d5ac11a43d81250ad9f5c055f748c06e7b622",
+            "seoCopyToFaq": "8fbc1409eaea5c10615e2ed10ff130db7ea0997968be5687192e4974a18d47c7",
+            "faqToFinale": "10b7b7cb0ee7503caf11200d274be943f9c3d921ff4e30d402f45a226f5867e3",
             "faqJsonLd": "90490560c5f83eb61d2b2c8b4c3bd454c355b62c14a34e81e09b036a733e3f8b"
           },
-          "postHeadBodySha256": "3b69766a9cd00845663a84b3705a03baf939a278e4359a692a63510510a1c52b",
+          "postHeadBodySha256": "79bf5547143913b1ff574406a3b610de029509db0669cc06d1f27eb277a57e60",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -573,13 +572,13 @@
         {
           "path": "id/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131388,
+          "byteLength": 136334,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "1ce7125daf0982da0e0173633ff445ba21ebc0f2d35afa29d31f98ccd299a9c6",
-            "faqToFinale": "212eb2abd52b10bcf8ec73c4e728d15398afbe322c1d4fd912c5985f1bd28320",
+            "seoCopyToFaq": "074c123b070050c33b0e9bfcbd4063061301872d6ec94d3a0e3505858359b620",
+            "faqToFinale": "5eab48fff4edd8fa63d111f985baa8c710e6377bff3a913fb16faf743dcdf01e",
             "faqJsonLd": "6521341c078e5c0cc585f561632bd640c31499bf2c5916a2d57e5147686a2e02"
           },
-          "postHeadBodySha256": "97e3f6883be0970b06ce1a9b947b2d722b01240412d3a507dbfc29ce088c96ac",
+          "postHeadBodySha256": "ca47b64a8d856f8f5b003b99481f38ea8c2887210f9f9a9a68da54f897eca61b",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -592,14 +591,14 @@
         },
         {
           "path": "index.html",
-          "newlineStyle": "LF",
-          "byteLength": 128731,
+          "newlineStyle": "MIXED",
+          "byteLength": 135654,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "6d3dc2dab303dfe14ae6782ad3ab644587b8990e941e7c4a20d5130be70180e5",
-            "faqToFinale": "4c4ac6bc2945de20e14c407ed1bbd17d4026655f745ee6fa9d0f06cfaea8c8bf",
+            "seoCopyToFaq": "e47d93907e3a3b9248b45f4d92d24fa7d175f9363edd3aa924ee6e43576eb335",
+            "faqToFinale": "24053bc8915f417a89e7681f89c4f787e70be3d7cc828312dee68182fe954722",
             "faqJsonLd": "4821779d94d8967632e9abc948c7f5bc58c1f1d54a7ae296b276c168ef2ca967"
           },
-          "postHeadBodySha256": "8d42e38fbdd78a989c06315940e4dba870f4b002feb405c8f47e81743a3bd042",
+          "postHeadBodySha256": "07744d3e5f6d12c8d2c07feb36b4f2cab0041d757fab7c7a9ff19f34f80bfe22",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -613,13 +612,13 @@
         {
           "path": "it/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 131716,
+          "byteLength": 136695,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "c43d8f0fd1a9fedea95f0cc60c7a83dedcf015ae02987529f4cce401804a76b2",
-            "faqToFinale": "c5cba732aadacd871d7a8e4c147f095782eae3ec742e842eef2aae44c595a9ff",
+            "seoCopyToFaq": "2845b129c8e46d972681b7838f863ce1ab8451f807332cccdd22320efa1ff596",
+            "faqToFinale": "61a9be0c6f5d07a69528103cef54eff1908b5d892a13086b6d41e313299c24cf",
             "faqJsonLd": "bc0da4f4d723b934c5007f11a50189a398e70832e5e7d588759331e130f4e9fe"
           },
-          "postHeadBodySha256": "27d6b790cb9b0faa1f90c610699e7cc4a86432bcf3f5f8db05259f2f33b9fd7d",
+          "postHeadBodySha256": "7e233537985a140ee326dcd89f14507753a701783c74f3ff0528b3d442d502b3",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -633,13 +632,13 @@
         {
           "path": "ja/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 154775,
+          "byteLength": 159793,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "3a040cb0cfeb8d30b8eb793ca7c29620d5c48f330d823f9127fa68beded001be",
-            "faqToFinale": "3aed75d2d7c64237111fd64bf164d17096a27634ae69d4e9f8a5d9d6bf748497",
+            "seoCopyToFaq": "3d88053dfd86fe950a196fd489dd125412448999b7bf0015d56ac1305289034b",
+            "faqToFinale": "2cecfa5fb0612ef3a467371b17b5ceb4ee4877c407c7d2dc3d5a30e2a0e6c671",
             "faqJsonLd": "c0cafd2280efb9cd3d265ac94f08b95b3081fbbb11b5f04114a4332c8f77122a"
           },
-          "postHeadBodySha256": "68198a0afebec6e0768dd966522090433ddb60d651ba4ec935f7188aad868147",
+          "postHeadBodySha256": "5df07e0fd87a74a16e026bee0f3fcca49477691548541a58c7f601103a18ed5c",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -653,13 +652,13 @@
         {
           "path": "ko/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 149531,
+          "byteLength": 154564,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "1ccb15806067100276a153d7c754b315e7cbb1907ed72b82405c58538116523b",
-            "faqToFinale": "9d5dab563f260e34193ceb3436ef2674a8601c0b83ee043c3106b15f258945e6",
+            "seoCopyToFaq": "61dbc39c89898ff3531fdbfdc1d3defc34a4d7c8627a766943891fdd21c17977",
+            "faqToFinale": "baf9f034fff642adfaa1764959529b34428dff35481777984956d2285498ed2d",
             "faqJsonLd": "770b88c11893a55def2ceb163b7374e0abfa89f0d4f9fb88bc7cee98a643b926"
           },
-          "postHeadBodySha256": "72cd197ce95dce7cb5ef67613e89f74a39e18a61b496be21ebdfd6367c197cec",
+          "postHeadBodySha256": "27343c7db4e3548ff7d7194006a1e767a7c3d01decec7e2ad4d8f5fd6110cd85",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -673,13 +672,13 @@
         {
           "path": "nl/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 130348,
+          "byteLength": 135371,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "ffab9330e17b295c8061dd3fa5e95b8fd227ad07b04b9ae706d784a4e61e5c18",
-            "faqToFinale": "8fd3f4697e04241774819ea0c93e52abad32980f3349fa61d01543e947149d78",
+            "seoCopyToFaq": "71a44c154c81f29f69061d521303672fe5eed2d1103f8db865f14971fb15efd3",
+            "faqToFinale": "4dec4f36277998e8a0ff571dcbb857897772a42b6793585bef61a963b7f999b2",
             "faqJsonLd": "ca11342eed99cf2c3914824aace3ec2ec7f5bdb3869fe57e97e6eb03a2d78e0d"
           },
-          "postHeadBodySha256": "0019e87a26ad64aa0d3efd77914073d124d8db0bafb24109489c900bf6586073",
+          "postHeadBodySha256": "b80c1f9f41f5025ffb1067fab9b402690d4e4da97fa7e74a61dee01b04c6725e",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -693,13 +692,13 @@
         {
           "path": "pl/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 132164,
+          "byteLength": 137143,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "a05d8008b43564aee6fda86d1beec2a569c4b5d4d4221ab4305a7500ba75dac9",
-            "faqToFinale": "fdccdaddf996c5c4182b28fd4903aae4acdd9a539bfd49e975ecb169db2524ad",
+            "seoCopyToFaq": "03e27f3481b1985b0aedd986cb2cb7dd634837968f2407a7497116cce75d2f22",
+            "faqToFinale": "60f51866c2946f796cbb86d17f89e850b0d20eb933c0fd5ced88e85a8885b778",
             "faqJsonLd": "f86b5790ad44cecc75b1e7fe2da04892d9de4deef55a7bb6103df64e946933b5"
           },
-          "postHeadBodySha256": "cd754c120ed769f42ee62925ffc0fef6e2f13050d80a905f4e2e65690fbf9bc8",
+          "postHeadBodySha256": "165a72a50479cf856d9a325e770f603ef4103ff13b6f5047ba6d512b4b5bbc99",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -713,13 +712,13 @@
         {
           "path": "pt-BR/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 132999,
+          "byteLength": 137953,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "b7707e590ea41e9fe91e9a7bf12154f7eabf7808463a47d359985f9a012e949a",
-            "faqToFinale": "3c8a117a9d13793e77f0f8c1fbd34a77a4b88c303fc001e932e20aeef8dc8b6b",
+            "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
+            "faqToFinale": "58c055f3b0bb1960b3ba82acd8931eed4c22355c08404fca69cff42b729f4405",
             "faqJsonLd": "86cb48961bea3929b067f32b78ed01cb7ae78a7767f16a256f43cc41f76fe973"
           },
-          "postHeadBodySha256": "dd6f039cd0ba37296b43d17e8f767d356c22684a22d60cf515c4c43942c108b8",
+          "postHeadBodySha256": "9965324dc9d7deb4073eb1c416a3a6e5a022a07ea147f5f45e4b59ef5b47716e",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -733,13 +732,13 @@
         {
           "path": "pt-PT/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 133008,
+          "byteLength": 137962,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "b7707e590ea41e9fe91e9a7bf12154f7eabf7808463a47d359985f9a012e949a",
-            "faqToFinale": "3c8a117a9d13793e77f0f8c1fbd34a77a4b88c303fc001e932e20aeef8dc8b6b",
+            "seoCopyToFaq": "50510be4298a97944edbe13f997123f6201bdcadbffb77e1326a505dfb9e453b",
+            "faqToFinale": "58c055f3b0bb1960b3ba82acd8931eed4c22355c08404fca69cff42b729f4405",
             "faqJsonLd": "86cb48961bea3929b067f32b78ed01cb7ae78a7767f16a256f43cc41f76fe973"
           },
-          "postHeadBodySha256": "4cb96b7cf34d55fb72ec88ab666d117b01fc8ea360c466ab073055d7e092e608",
+          "postHeadBodySha256": "3e95c147cbaa0bc171d000ff8a7414388bae8636f68ee72afc927347d12b5c00",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -753,13 +752,13 @@
         {
           "path": "ru/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 164693,
+          "byteLength": 169980,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "07fbf5cb8e9830615300ef0326d6b0fd2876e102aa1c8a41b12186be265cf930",
-            "faqToFinale": "810c1a01ba9df9234fdc68df6daf9d675e917e335e4b3697e92de40972a78fbd",
+            "seoCopyToFaq": "ff70157d61c5dd854d379361d930390b1d891880cbc841ea37c4fd6c9b81ea9e",
+            "faqToFinale": "65e8d41c35a1e3f0d95f10787d0655a7664afbc53fcb905b77d54b258a43c826",
             "faqJsonLd": "23dfd95236b55e427845e3f05694aa9178b0ea8dbb573030f885274cf4f16f1e"
           },
-          "postHeadBodySha256": "08f6839b099f04c5b5ee730dd95193460cf49df1c0971aee40eea6f43477b3eb",
+          "postHeadBodySha256": "cd8f61451736286c18cc328b95dc6301a3bd595f9d39d1b6973640fe5f87f5d6",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -773,13 +772,13 @@
         {
           "path": "sv/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 130557,
+          "byteLength": 135531,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "769990b2c415a0c71feddf8218730be5abc5e98b1f682243673c41df9e81a3a7",
-            "faqToFinale": "44935736300e3e5fa2b2fdbd80b52f40294bf6fa1ae4a5574d60cbd7cad6a887",
+            "seoCopyToFaq": "388642bd43078c213f54d3d567acc33f4fa2dd5473ac29ce9e9454a76a69e3e5",
+            "faqToFinale": "3723b0301fe39c665c2e5f48f074927c90f0daa0671b5a4c12f0a4573d29054f",
             "faqJsonLd": "8f9dec1223efd43cfa6672acdedb980593895bad965ae947cde4734a0aeda189"
           },
-          "postHeadBodySha256": "8d325306f3f6754395f511ea4fa5a250f005bd70f39bf1382b1f30bf74d38515",
+          "postHeadBodySha256": "21df997a6a35273e23558a7a9e40bcceff637e0c54126a0aa237e06f9175382a",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -792,14 +791,14 @@
         },
         {
           "path": "th/index.html",
-          "newlineStyle": "LF",
-          "byteLength": 140868,
+          "newlineStyle": "MIXED",
+          "byteLength": 148067,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "3344181ec65a219356370ec06b78016bcd91c8ab9175e82bb895aa4b67d550e2",
-            "faqToFinale": "eaf0428bc60c032dcd02ce6d94fca1eb24bce29fbf71ccfc85630f99719f2fa6",
+            "seoCopyToFaq": "846e5b4e8b5c1172f31a3c43612b41db3d2f67267de7679bad28da668da12f12",
+            "faqToFinale": "62a39782c0f506522ab98814e46b61d6208f54f47b8e90e811bef6af2252546b",
             "faqJsonLd": "76d4b598a10866b4f87085991ca56a407cf350d5f605373c7a726e55e0ad8233"
           },
-          "postHeadBodySha256": "9a2e2fe70c6209d4d52d10546983bd708f7bda26fe01f0687ad8f33e9e402735",
+          "postHeadBodySha256": "295a6869c9e8e82ffd54fbf0549ce8a8e59cdb777f2f03a1b142c3841ab76758",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -813,13 +812,13 @@
         {
           "path": "tr/index.html",
           "newlineStyle": "MIXED",
-          "byteLength": 134401,
+          "byteLength": 139392,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "edec5720b93086375e5dec2bd4aae351853f9850864469ad6cf17c26e790902c",
-            "faqToFinale": "773a4f362b11d661857a0494a2bf02714ffe93906e726c5c7df7ca2496758363",
+            "seoCopyToFaq": "e537be440cd1d15e0ec929b2251ecb03eea67d5c91607f01d2fc0bba9029c55d",
+            "faqToFinale": "63ad08ee0e2b0c828168fd939b32f8f68dbb43aabb5e98df73f37e50689ebb13",
             "faqJsonLd": "b7f35a35f133593de561a9f96a0eed097af1e6a1eb554afc284f166eaf724a30"
           },
-          "postHeadBodySha256": "5b3eac071b9099f699d90c16907c0426bc6eec7ebaef01e050ce5aceee435e2d",
+          "postHeadBodySha256": "b1045ef6ff2372711ae8d430594a7cc57e141bfe263134c9f563c387d7930baf",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -832,14 +831,14 @@
         },
         {
           "path": "uk/index.html",
-          "newlineStyle": "LF",
-          "byteLength": 139706,
+          "newlineStyle": "MIXED",
+          "byteLength": 146627,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "86530918ae2aa432c36df512f2f13d0c177bb50d59f6a39336e31b6fb9ef5765",
-            "faqToFinale": "82c0cbd19f870dbf36a2f09ec86419de10a52029facad50614c28273fed72f59",
+            "seoCopyToFaq": "807a38db451235ada0994c6148b92d8058f285047660c1c935221c39393398f7",
+            "faqToFinale": "43790dfca7340a709e8e683e32a534af58f35a618ac9f38eb5ff73ab65d32246",
             "faqJsonLd": "f4c3f6efc1522d11c5682a3ab53a5938af80c264057e62b59d9b265572774669"
           },
-          "postHeadBodySha256": "13879324018a203b6ec719c7bca283dc65bd06dbaa91435571cd469ad7204120",
+          "postHeadBodySha256": "7f5aa390a2bd711af26281235b66bad6773bdb931a4cff1443cb9e7ea20c3131",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -852,14 +851,14 @@
         },
         {
           "path": "vi/index.html",
-          "newlineStyle": "LF",
-          "byteLength": 130970,
+          "newlineStyle": "MIXED",
+          "byteLength": 137708,
           "protectedRegionSha256": {
-            "seoCopyToFaq": "28e58d70f0e360c843922d8b76dd4e5362ea43fb9ea95e17495d9c651c942a45",
-            "faqToFinale": "fd710024c5296c98c9d03289971d7321c09bee5bc58dfb5a9aa26d8be7084d95",
+            "seoCopyToFaq": "6abd8b12b96febbed38d30b54f05f92b84d5021b11bb3174a450370e15e926ee",
+            "faqToFinale": "7facd3783a0ce36e122a20a07cd47642382e9075c81526226a1586a2db30c213",
             "faqJsonLd": "7ce71643b6b36b95fa145ff5cad34dc7ab84dd642183e21828e694f7f1a9a5b2"
           },
-          "postHeadBodySha256": "8bcdbac29664b732f90c3d802cf11f8cf7ea3d4c3ecc9035665f464412cece3e",
+          "postHeadBodySha256": "5400cb6c1324f2df795d378506d5ce36876dc836671e57f2bf530f0560d192a7",
           "markerCounts": {
             "seoCopy": 1,
             "faq": 1,
@@ -873,20 +872,23 @@
       ],
       "aboutFacts": {
         "path": "about.html",
-        "present": false
+        "present": true,
+        "newlineStyle": "LF",
+        "byteLength": 33232,
+        "sha256": "43a4132c393b64bf27a2058c294f76b47691b2af73e4337904d414ecb29812e4"
       },
       "lockedFiles": [
         {
           "path": "scripts/inject-seo-copy.js",
           "newlineStyle": "LF",
-          "byteLength": 77703,
-          "sha256": "9318c273a369c362ad6f4221df90ae8ba9ea7ea6abf2fe6cf415a1040a31a8d9"
+          "byteLength": 88645,
+          "sha256": "48d5bd0dc51419cb61f473a37a7f92e39bfdf0c6fef43a8732c27a6c1a248068"
         },
         {
           "path": "robots.txt",
           "newlineStyle": "LF",
-          "byteLength": 181,
-          "sha256": "91eb0a8b6e0a052ac28d46b95c940738e889fff32da9a6983b96ea53534712a2"
+          "byteLength": 613,
+          "sha256": "b78db532dd37a5623af7479c2205012b0347b6e25f22efbd8a2d913306c18d45"
         }
       ]
     }

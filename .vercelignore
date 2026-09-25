@@ -9,3 +9,8 @@ output
 pagespeed_*.json
 .agents
 .claude
+videos
+node_modules
+Originals
+.fr-argos
+fr-argos

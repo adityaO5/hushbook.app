@@ -27,7 +27,7 @@ const SEO_CSS = `/* seo long-form */
 
 `;
 
-const APPLE = 'https://apps.apple.com/us/app/hushbook-read-while-listening/id6783243597';
+const APPLE = 'https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&ct=Hushbook-landing&mt=8';
 const PLAY = 'https://play.google.com/store/apps/details?id=com.hushbook.hushbook';
 const OG_IMG = 'https://hushbook.app/assets/img/og-hushbook.webp';
 
