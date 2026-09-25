@@ -121,6 +121,12 @@
       "skillPath": "skills/free-tools/SKILL.md",
       "computedHash": "0266eedaea37e19e4c9e2f1cc7ef6cdc8c7ee0726c6f2b5837a061c6ac7f9376"
     },
+    "gsc-analyzer": {
+      "source": "coreyrab/gsc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsc-analyzer/SKILL.md",
+      "computedHash": "b661cf869b6de2bc581caa000714b812a1df4e554e0f35cda6e9c0f51023f355"
+    },
     "image": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
@@ -162,6 +168,12 @@
       "sourceType": "github",
       "skillPath": "skills/onboarding/SKILL.md",
       "computedHash": "38ae7da6cadf48792ac882198934ef4be52a47fb1efcf756a3d39f96fd382f09"
+    },
+    "pagespeed-insights": {
+      "source": "enderpuentes/ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "pagespeed-insights/SKILL.md",
+      "computedHash": "80a9e00c680f7341b442efae1e9d05572681dbf57db1cee0db8cc8d920b14a7c"
     },
     "paywalls": {
       "source": "coreyhaines31/marketingskills",
