@@ -40,6 +40,20 @@ for (const page of pages) {
 const hub = fs.readFileSync(path.join(root, 'alternatives', 'index.html'), 'utf8');
 pages.forEach((page) => assert.ok(hub.includes(`/alternatives/${page.slug}`), `hub must link to ${page.slug}`));
 
+const homepageFooter = fs.readFileSync(path.join(root, 'index.html'), 'utf8').split('<footer')[1];
+assert.ok(homepageFooter.includes('<b>Compare</b>'), 'homepage footer must expose a Compare column');
+pages.forEach((page) => {
+  assert.ok(
+    homepageFooter.includes(`/alternatives/${page.slug}`),
+    `homepage footer must link to ${page.slug}`,
+  );
+});
+
+const llms = fs.readFileSync(path.join(root, 'llms.txt'), 'utf8');
+pages.forEach((page) => {
+  assert.ok(llms.includes(`https://hushbook.app/alternatives/${page.slug}`), `llms.txt must list ${page.slug}`);
+});
+
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 pages.forEach((page) => assert.ok(sitemap.includes(`https://hushbook.app/alternatives/${page.slug}`), `sitemap must include ${page.slug}`));
 
@@ -48,7 +62,7 @@ const strategyRows = strategy.split('\n').filter((line) => /^\| \d+ \|/.test(lin
 assert.equal(strategyRows.length, 150, 'strategy must contain 150 numbered title rows');
 
 const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
-['OAI-SearchBot', 'GPTBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended'].forEach((bot) => {
+['OAI-SearchBot', 'GPTBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended', 'Bingbot', 'Googlebot'].forEach((bot) => {
   assert.ok(robots.includes(`User-agent: ${bot}`), `robots.txt must explicitly allow ${bot}`);
 });
 

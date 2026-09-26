@@ -25,6 +25,12 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 # General policy also permits other compliant crawlers, including AI crawlers.
 User-agent: *
 Allow: /
