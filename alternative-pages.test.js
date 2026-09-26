@@ -24,7 +24,12 @@ for (const page of pages) {
   assert.match(html, new RegExp(`<link rel="alternate" hreflang="x-default" href="${canonical}">`));
   assert.equal((html.match(/hreflang=/g) || []).length, 2, `${page.slug} must stay English-only`);
   assert.ok(html.includes(page.question), `${page.slug} must expose its 23-word question in HTML`);
-  assert.ok(html.includes('<strong>Named set:</strong>'), `${page.slug} must state its named set`);
+  assert.doesNotMatch(html, /<strong>Named set:<\/strong>/, `${page.slug} must not show Named set copy to visitors`);
+  assert.doesNotMatch(html, /<strong>Corrections:<\/strong>/, `${page.slug} must not show the corrections email line`);
+  assert.doesNotMatch(html, /Check official product source/, `${page.slug} must not link out to competitor product pages from rank cards`);
+  assert.doesNotMatch(html, /How this comparison was researched/, `${page.slug} must not show the research method section`);
+  const namedSet = page.options.map((key) => profiles[key].name).join(', ');
+  assert.ok(html.includes(`This page compares ${namedSet}`), `${page.slug} must keep named set in JSON-LD`);
   assert.ok(html.includes('Attribute-parity comparison'), `${page.slug} needs parity table`);
   assert.ok(html.includes('Evidence checked'), `${page.slug} needs dated evidence`);
   assert.ok(html.includes('"@type":"FAQPage"'), `${page.slug} needs FAQ schema`);

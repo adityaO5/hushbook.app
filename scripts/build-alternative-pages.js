@@ -117,8 +117,13 @@ const attributeRows = [
   ['Best for', 'bestFor']
 ];
 
+function namedSetLabel(page) {
+  return page.options.map((key) => profiles[key].name).join(', ');
+}
+
 function pageSchema(page) {
   const canonical = `${site}/alternatives/${page.slug}`;
+  const namedSet = namedSetLabel(page);
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -127,6 +132,8 @@ function pageSchema(page) {
         '@id': `${canonical}#article`,
         headline: page.title,
         description: page.description,
+        abstract: `This page compares ${namedSet}. ${page.baseline}`,
+        keywords: namedSet,
         datePublished: checkedDate,
         dateModified: checkedDate,
         inLanguage: 'en',
@@ -139,6 +146,7 @@ function pageSchema(page) {
         '@type': 'ItemList',
         '@id': `${canonical}#list`,
         name: page.title,
+        description: `This page compares ${namedSet}. ${page.baseline}`,
         numberOfItems: page.options.length,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
         itemListElement: page.options.map((key, index) => ({ '@type': 'ListItem', position: index + 1, name: profiles[key].name, url: profiles[key].url.startsWith('/') ? site + profiles[key].url : profiles[key].url }))
@@ -169,14 +177,12 @@ function renderComparisonTable(page) {
 function renderPage(page) {
   if (wordCount(page.question) !== 23) throw new Error(`${page.slug}: primary question must contain exactly 23 words; found ${wordCount(page.question)}`);
   const canonical = `${site}/alternatives/${page.slug}`;
-  const namedSet = page.options.map((key) => profiles[key].name).join(', ');
   const summary = page.verdicts.map(([segment, winner, reason]) => `<div class="summary-card"><span>${escapeHtml(segment)}</span><p><strong>${escapeHtml(winner)}</strong>. ${escapeHtml(reason)}</p></div>`).join('');
   const cards = page.options.map((key, index) => {
     const profile = profiles[key];
-    return `<article class="rank-card" id="${key}"><span class="rank-number" aria-hidden="true">${index + 1}</span><p class="best-for">Best for: ${escapeHtml(profile.bestFor)}</p><h3>${escapeHtml(profile.name)}</h3><p><strong>Why it stands out:</strong> ${escapeHtml(profile.strength)}</p><p><strong>Tradeoff:</strong> ${escapeHtml(profile.tradeoff)}</p><p class="verdict"><strong>Verdict:</strong> For ${escapeHtml(profile.bestFor.toLowerCase())}, the best option in this segment is ${escapeHtml(profile.name)} because it matches that job most directly. Evidence: ${escapeHtml(profile.strength)}</p><p class="source"><a href="${escapeHtml(profile.url)}"${profile.url.startsWith('/') ? '' : ' target="_blank" rel="noopener"'}>Check official product source</a></p></article>`;
+    return `<article class="rank-card" id="${key}"><span class="rank-number" aria-hidden="true">${index + 1}</span><p class="best-for">Best for: ${escapeHtml(profile.bestFor)}</p><h3>${escapeHtml(profile.name)}</h3><p><strong>Why it stands out:</strong> ${escapeHtml(profile.strength)}</p><p><strong>Tradeoff:</strong> ${escapeHtml(profile.tradeoff)}</p><p class="verdict"><strong>Verdict:</strong> For ${escapeHtml(profile.bestFor.toLowerCase())}, the best option in this segment is ${escapeHtml(profile.name)} because it matches that job most directly. Evidence: ${escapeHtml(profile.strength)}</p></article>`;
   }).join('\n');
   const faqs = page.faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('\n');
-  const sources = page.sources.map(([label, url]) => `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a></li>`).join('');
   const related = pages.filter((candidate) => candidate.slug !== page.slug).map((candidate) => `<a class="related-card" href="/alternatives/${candidate.slug}">${escapeHtml(candidate.title)}<span>Compare ${escapeHtml(candidate.competitor)} alternatives using same dated method.</span></a>`).join('\n');
   const playReferrer = encodeURIComponent(`utm_source=hushbook.app&utm_medium=alternative-page&utm_campaign=${page.slug}`);
 
@@ -188,14 +194,11 @@ ${nav()}
   <header class="hero"><div class="wrap"><span class="eyebrow">Best audiobook tools · ${checkedDate.slice(0, 4)}</span><h1>${escapeHtml(page.title)}</h1><p class="lede">${escapeHtml(page.description)}</p><div class="byline"><span>By <strong>Rakesh Aditya</strong>, HushBook creator</span><span>Evidence checked <time datetime="${checkedDate}">${checkedDate}</time></span><span>English-only page</span></div></div></header>
   <article class="article"><div class="wrap content">
     <section class="answer-box" aria-labelledby="primary-question"><p class="question" id="primary-question">${escapeHtml(page.question)}</p><p>${escapeHtml(page.directAnswer)}</p></section>
-    <p><strong>Named set:</strong> This page compares ${escapeHtml(namedSet)}. ${escapeHtml(page.baseline)}</p>
     <div class="quick-summary" aria-label="Best option by use case">${summary}</div>
 
     <section aria-labelledby="comparison-heading"><h2 id="comparison-heading">Comparison at a glance</h2><p>Every option uses the same eleven buyer attributes. “Not listed” means the checked official source did not present that capability as a standard feature; it does not prove the capability can never exist.</p>${renderComparisonTable(page)}</section>
 
     <section aria-labelledby="ranked-heading"><h2 id="ranked-heading">Five best alternatives, ranked by fit</h2><p>Ranking prioritizes match for the stated job, not brand size. Each verdict names the segment where an option wins and its reason.</p><div class="rank-list">${cards}</div></section>
-
-    <section aria-labelledby="method-heading"><h2 id="method-heading">How this comparison was researched</h2><div class="method-box"><p><strong>Basis:</strong> HushBook features were checked against the current product site and source repository. Competitor facts were checked against linked official websites, help centers, app-store listings, or maintained project documentation on ${checkedDate}. This is desk research, not a claim that every paid plan was purchased and hands-on tested.</p><p><strong>Attributes:</strong> primary job, content source, narration, read-along text, own-file playback, offline use, account model, accessibility, platforms, cost model, and best-fit user.</p><p><strong>Corrections:</strong> Product terms change. Send factual corrections to <a href="mailto:aditya@hushbook.app">aditya@hushbook.app</a>.</p></div><h3>Primary sources</h3><ul>${sources}</ul></section>
 
     <section aria-labelledby="faq-heading"><h2 id="faq-heading">Frequently asked questions</h2><div class="faq">${faqs}</div></section>
 

@@ -361,11 +361,11 @@ const pages = [
     ],
     baseline: 'Audible remains strongest for its commercial catalog, exclusives, and membership credits. Switch when your priority is a library card, an independent bookstore purchase, free public-domain recordings, or private transcription of files you already own.',
     faqs: [
-      ['What is the best free Audible alternative?', 'Libby or Hoopla can be free with a participating library card. LibriVox is free for public-domain recordings. HushBook is the better free-core player when you already own compatible audio files and want offline synchronized text.'],
-      ['Can HushBook import Audible purchases?', 'HushBook imports ordinary local audio files. Audible downloads use platform controls and DRM, so do not assume they can be imported into another player.'],
-      ['Which Audible alternative works with a library card?', 'Libby is the OverDrive library app. Hoopla is another library-licensed option with instant borrows and monthly caps that vary by library.'],
-      ['Which option supports independent bookstores?', 'Libro.fm sells audiobooks and membership credits that support a bookstore you choose. HushBook is a player for files you already have, not a storefront.'],
-      ['Does HushBook replace an audiobook store?', 'No. HushBook is a player and read-along tool for files you own, plus public-domain titles. Use Libby, Hoopla, Libro.fm, or Audible when you need a licensed catalog.']
+      ['Does HushBook include free LibriVox classics?', 'Yes. HushBook’s public-domain library already includes LibriVox and Internet Archive recordings. You can download those titles in the app and read along with word-level text.'],
+      ['Can HushBook open books I bought on Audible?', 'HushBook opens ordinary files on your phone, such as MP3 and M4B. Audible titles usually stay inside Audible’s DRM, so those downloads often cannot be opened in another app.'],
+      ['I already own audiobook files. What does HushBook do with them?', 'Import the file, tap Transcribe, and HushBook builds synchronized text on the device. Each spoken word lights up with the narrator, and it works offline after one engine download.'],
+      ['Do I need a library card to use HushBook?', 'No. HushBook plays files you already have and free public-domain titles in the app. A library card is only useful if you also want to borrow licensed books through a library service.'],
+      ['Can HushBook replace my Audible catalog for new releases?', 'HushBook does not sell a commercial store. Keep a store or membership for new paid titles, and use HushBook when you want to read along with audio you can open as a file.']
     ],
     sources: [
       ['Audible membership plans', 'https://www.audible.com/ep/memberbenefits'],
@@ -390,11 +390,11 @@ const pages = [
     ],
     baseline: 'BookPlayer is an excellent Apple-focused local-file player with chapters, speed control, sleep timer, CarPlay, VoiceOver, and optional server connections. Android support, automatic synchronized transcripts, or self-hosted household libraries create the clearest reasons to compare alternatives.',
     faqs: [
-      ['Is there a BookPlayer alternative for Android?', 'HushBook, Voice Audiobook Player, Listen Audiobook Player, Smart AudioBook Player, and Audiobookshelf clients all support Android use cases. Their main differences are transcription, server requirements, price, and playback depth.'],
-      ['Which BookPlayer alternative has synchronized transcripts?', 'HushBook automatically transcribes supported audiobook audio on-device and highlights words in sync. The other local players in this comparison do not list automatic word-level transcription as a core feature.'],
-      ['Which option is open source?', 'Voice Audiobook Player and Audiobookshelf are open source. BookPlayer itself is also GPL-licensed, while HushBook is compared here for its private read-along experience rather than open-source licensing.'],
-      ['Do I need a server for these apps?', 'Only Audiobookshelf requires a server for its central value. HushBook, Voice, Listen, and Smart AudioBook Player can work directly with files on the device.'],
-      ['Which option is best for an iPhone?', 'BookPlayer remains a strong iPhone file player. HushBook is the better iPhone option in this set when synchronized transcription and read-along accessibility matter.']
+      ['Does HushBook work on Android and iPhone?', 'Yes. HushBook is free on both, with the same local-file playback, on-device transcription, and word-level highlighting.'],
+      ['Can HushBook play the local files I already keep in BookPlayer?', 'If the file is a supported format such as MP3, M4B, or FLAC, import it into HushBook. Chapters and cover art come along when the file includes them.'],
+      ['What does HushBook add on top of a file player?', 'It transcribes the narration on your phone and highlights each word as it is spoken, so you can read along, tap a line to skip, and save quotes.'],
+      ['Do I need a home server to use HushBook?', 'No. Your books stay on the device. After one engine download, playback and transcription work offline.'],
+      ['Why pick HushBook on iPhone if I already like BookPlayer?', 'Choose HushBook when you want the words on screen with the original narrator, plus dyslexia, vision, and comprehension profiles on files you already own.']
     ],
     sources: [
       ['BookPlayer App Store listing', 'https://apps.apple.com/us/app/bookplayer/id1138219998'],
@@ -419,11 +419,11 @@ const pages = [
     ],
     baseline: 'Storytel is best for readers who value its regional audiobook and ebook catalog in one subscription. Alternatives make more sense when you need permanent local files, a different unlock model, existing Spotify billing, Audible exclusives, or free classics.',
     faqs: [
-      ['What is the best free Storytel alternative?', 'LibriVox provides free public-domain recordings. HushBook also includes free public-domain discovery and a free core player for compatible audiobook files you already own.'],
-      ['Which Storytel alternative lets me use my own files?', 'HushBook is the owned-file option in this comparison. It imports compatible local audio, preserves audiobook playback controls, and can create an on-device synchronized transcript.'],
-      ['Which service combines ebooks and audiobooks?', 'Everand and Storytel both combine ebooks and audiobooks. Everand uses plan-based unlocks plus a select unlimited catalog, while Storytel terms and availability vary by country.'],
-      ['Is Spotify a full Storytel replacement?', 'Spotify can fit casual audiobook listeners already paying for Premium, but monthly listening hours and device rules apply. Heavy readers should compare those limits with a dedicated book service.'],
-      ['Can I keep Storytel books after cancelling?', 'Access depends on Storytel plan and purchase terms in your country. Check the official local subscription page before assuming a streamed title remains available after cancellation.']
+      ['Does HushBook include free public-domain audiobooks?', 'Yes. LibriVox and Internet Archive classics are already in HushBook’s library. You can download them in the app and follow the narration word by word.'],
+      ['Can I use my own files in HushBook after I leave Storytel?', 'HushBook imports compatible audio you own. Streamed Storytel titles stay with that subscription unless you have a separate file you are allowed to keep.'],
+      ['How does HushBook help me read while I listen?', 'Every spoken word lights up with the narrator. You follow the story on screen, tap a word to jump, and stay on the line you just heard.'],
+      ['Does HushBook need an account or a cloud library?', 'No. There is no HushBook account. Transcription stays on the phone.'],
+      ['Will HushBook replace a Storytel catalog of new paid books?', 'HushBook is a player for owned files and free classics. For a large paid streaming catalog you would still use a subscription service.']
     ],
     sources: [
       ['Storytel global overview', 'https://www.storytel.com/'],
@@ -449,11 +449,11 @@ const pages = [
     ],
     baseline: 'Pocket FM is not a conventional audiobook player; it specializes in serialized audio entertainment and uses app-based purchases. Compare alternatives by deciding whether you want episodic fiction, complete commercial books, included listening hours, free classics, or your own files.',
     faqs: [
-      ['What is the best free Pocket FM alternative?', 'LibriVox is best for free public-domain audiobooks. HushBook is better when you already have compatible files and want a free core player with synchronized read-along text.'],
-      ['Which Pocket FM alternative has complete books?', 'Audible, Storytel, Spotify Audiobooks, and LibriVox offer complete audiobook titles. Catalog availability, access duration, and payment models differ, so compare the exact book and market.'],
-      ['Can HushBook play Pocket FM episodes?', 'HushBook plays compatible local audio files you can legally access as ordinary files. Do not assume protected Pocket FM content can be exported or imported.'],
-      ['Which alternative has the fewest recurring costs?', 'LibriVox is free. HushBook provides a free core experience for owned files and public-domain books, with optional Pro features rather than a catalog subscription.'],
-      ['Is Pocket FM better for audio dramas?', 'Yes, Pocket FM can be the better choice when serialized audio drama is your main goal. HushBook is better for complete owned audiobooks and private read-along transcription.']
+      ['Can HushBook play complete audiobooks I already have?', 'Yes. Import a full book file, transcribe it on the device, and read every chapter with the original narration lighting up on screen.'],
+      ['Are free classics already in HushBook?', 'Yes. LibriVox and Internet Archive titles live in the in-app library. You download those recordings inside HushBook and read along there.'],
+      ['Can I import Pocket FM episodes into HushBook?', 'HushBook opens ordinary local audio files. Protected in-app Pocket FM episodes usually cannot be exported.'],
+      ['Is the HushBook player free?', 'The core player, public-domain library, and on-device transcription are free. Pro is optional if you want extra analytics.'],
+      ['I want long-form books with text on screen. Is HushBook for that?', 'That is the main job: complete audiobooks you can open as files, with each word highlighted as the narrator speaks.']
     ],
     sources: [
       ['Pocket FM Google Play listing', 'https://play.google.com/store/apps/details?id=com.radio.pocketfm'],
@@ -479,11 +479,11 @@ const pages = [
     ],
     baseline: 'Speechify is strongest when you want to turn documents, webpages, or scans into fast AI speech across devices. HushBook solves the reverse problem: it starts with existing human narration and creates synchronized text without uploading the audiobook.',
     faqs: [
-      ['What is the main difference between HushBook and Speechify?', 'Speechify converts written material into AI speech. HushBook plays an existing audiobook recording, transcribes it on-device, and highlights each word in sync with the original narrator.'],
-      ['Which Speechify alternative works with human narration?', 'HushBook is the human-narration choice in this set because it imports audiobook audio. The other options primarily synthesize speech from text and documents.'],
-      ['Which alternative is best for students?', 'NaturalReader is strong for mixed PDFs, EPUBs, scans, OCR, annotations, and study tools. HushBook is stronger when coursework is already available as narrated audio and focus improves through read-along text.'],
-      ['Which option is best for dyslexia?', 'HushBook offers a dyslexia profile for narrated audiobooks. Voice Dream Reader and NaturalReader are also accessibility-focused text readers; test typography, voices, and controls against individual needs.'],
-      ['Can these apps work offline?', 'Offline behavior varies by app, voice, document, and plan. HushBook performs playback and transcription offline after its engine download; verify other products against current official plan terms.']
+      ['I have an audiobook file. Can HushBook show me the words?', 'Yes. Import the audio, run transcription on the phone, and each spoken word highlights in time with the original narrator.'],
+      ['Does HushBook replace the narrator with an AI voice?', 'HushBook keeps the human performance on the recording. It writes a private transcript of that audio on the device.'],
+      ['Can HushBook help if I have dyslexia?', 'HushBook includes a dyslexia reading profile. You can change fonts, spacing, and caption size while the same narrator still speaks.'],
+      ['Does HushBook work offline?', 'After the one-time engine download, playback and transcription run on the phone with no network.'],
+      ['I already have a narrated book file. Will HushBook work with it?', 'Yes. Import the file or pick a public-domain title in the library, then transcribe on the device and follow the original narrator word by word.']
     ],
     sources: [
       ['Speechify pricing', 'https://speechify.com/pricing/'],
