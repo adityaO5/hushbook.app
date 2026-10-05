@@ -194,6 +194,8 @@ for (const locale of PUBLISHED) {
 
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+// Localized copies stay live but are excluded from the sitemap.
+const SITEMAP_ENGLISH_ONLY_PAGES = ['refund-policy', 'licenses'];
 const englishOnlyUrls = [
   'https://hushbook.app/privacy-policy',
   'https://hushbook.app/terms-conditions',
@@ -203,10 +205,17 @@ const englishOnlyUrls = [
   'https://hushbook.app/alternatives/storytel-alternatives',
   'https://hushbook.app/alternatives/pocket-fm-alternatives',
   'https://hushbook.app/alternatives/speechify-alternatives',
+  'https://hushbook.app/read-along-audiobooks',
+  'https://hushbook.app/audiobook-with-text',
+  'https://hushbook.app/speechify-alternative',
+  'https://hushbook.app/whispersync-alternative',
+  'https://hushbook.app/audiobook-app-for-dyslexia',
+  'https://hushbook.app/m4b-player',
+  'https://hushbook.app/questions',
 ];
 assert.equal(
   sitemapUrls.length,
-  PUBLISHED.length * PAGES.length + englishOnlyUrls.length,
+  PUBLISHED.length * (PAGES.length - SITEMAP_ENGLISH_ONLY_PAGES.length) + SITEMAP_ENGLISH_ONLY_PAGES.length + englishOnlyUrls.length,
   'sitemap must contain published locale/page combinations and explicit English-only pages',
 );
 for (const url of englishOnlyUrls) {
@@ -214,7 +223,8 @@ for (const url of englishOnlyUrls) {
 }
 for (const locale of PUBLISHED) {
   for (const page of PAGES) {
-    assert.ok(sitemapUrls.includes(pageUrl(locale, page)), `${locale}/${page} must be in sitemap`);
+    const listed = locale === localeConfig.defaultLocale || !SITEMAP_ENGLISH_ONLY_PAGES.includes(page);
+    assert.equal(sitemapUrls.includes(pageUrl(locale, page)), listed, `${locale}/${page} sitemap listing`);
   }
 }
 for (const legacyLocale of Object.keys(LEGACY_REDIRECTS)) {
