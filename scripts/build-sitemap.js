@@ -30,6 +30,9 @@ const ENGLISH_ONLY_URLS = [
   'alternatives/speechify-alternatives',
 ];
 
+// Localized copies of these pages stay live but are kept out of the sitemap.
+const ENGLISH_ONLY_SITEMAP_PAGES = ['refund-policy', 'licenses'];
+
 const PAGE_META = {
   index: { priority: '1.0', changefreq: 'weekly' },
   about: { priority: '0.7', changefreq: 'monthly' },
@@ -71,9 +74,16 @@ const urls = [];
 
 for (const page of PAGES) {
   const meta = PAGE_META[page] || { priority: '0.5', changefreq: 'monthly' };
-  const alternates = hreflangLinks(page);
+  const englishOnly = ENGLISH_ONLY_SITEMAP_PAGES.includes(page);
+  const alternates = englishOnly
+    ? [
+        `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(pageUrl(DEFAULT_LOCALE, page))}"/>`,
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(pageUrl(DEFAULT_LOCALE, page))}"/>`,
+      ].join('\n')
+    : hreflangLinks(page);
 
   for (const locale of LOCALES) {
+    if (englishOnly && locale !== DEFAULT_LOCALE) continue;
     const file = pageFile(locale, page);
     if (!fs.existsSync(file)) {
       console.warn(`skip missing: ${path.relative(root, file)}`);
