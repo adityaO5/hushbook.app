@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HushBook Blog</title>
+    <link>https://hushbook.app/blog</link>
+    <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Guides to immersive reading and read-along audiobooks.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>What Is Immersive Reading? How to Read and Listen at the Same Time</title>
+      <link>https://hushbook.app/blog/what-is-immersive-reading</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/what-is-immersive-reading</guid>
+      <pubDate>Wed, 07 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Read-along guides</category>
+      <description>Immersive reading means following the text while you listen to the audiobook. How it differs from text-to-speech, Microsoft Immersive Reader, and Audible Read &amp; Listen, and how to try it with your own recording.</description>
+    </item>
+  </channel>
+</rss>

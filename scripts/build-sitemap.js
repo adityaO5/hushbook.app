@@ -15,6 +15,7 @@ const {
   pageFile,
   pageUrl,
 } = require('./seo-localization');
+const { posts: BLOG_POSTS } = require('../data/blog-posts');
 
 const root = path.join(__dirname, '..');
 const LOCALES = PUBLISHED_LOCALES;
@@ -28,6 +29,15 @@ const ENGLISH_ONLY_URLS = [
   'alternatives/storytel-alternatives',
   'alternatives/pocket-fm-alternatives',
   'alternatives/speechify-alternatives',
+  'read-along-audiobooks',
+  'audiobook-with-text',
+  'speechify-alternative',
+  'whispersync-alternative',
+  'audiobook-app-for-dyslexia',
+  'm4b-player',
+  'questions',
+  'blog',
+  ...BLOG_POSTS.map((post) => `blog/${post.slug}`),
 ];
 
 // Localized copies of these pages stay live but are kept out of the sitemap.
@@ -114,8 +124,8 @@ for (const page of PAGES) {
 
 for (const route of ENGLISH_ONLY_URLS) {
   const resolvedFile =
-    route === 'alternatives'
-      ? path.join(root, 'alternatives', 'index.html')
+    route === 'alternatives' || route === 'blog'
+      ? path.join(root, route, 'index.html')
       : path.join(root, `${route}.html`);
   if (!fs.existsSync(resolvedFile)) {
     console.warn(`skip missing: ${path.relative(root, resolvedFile)}`);

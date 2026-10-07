@@ -212,6 +212,8 @@ const englishOnlyUrls = [
   'https://hushbook.app/audiobook-app-for-dyslexia',
   'https://hushbook.app/m4b-player',
   'https://hushbook.app/questions',
+  'https://hushbook.app/blog',
+  ...require('./data/blog-posts').posts.map((post) => `https://hushbook.app/blog/${post.slug}`),
 ];
 assert.equal(
   sitemapUrls.length,

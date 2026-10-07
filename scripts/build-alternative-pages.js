@@ -69,6 +69,7 @@ function nav() {
       <svg class="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
     </button>
     <nav class="nav-links" id="nav-menu" aria-label="Primary navigation">
+      <a href="/blog">Blog</a>
       <a href="/alternatives">Alternatives</a>
       <a href="/#features">Features</a>
       <a href="/about">About</a>
@@ -85,7 +86,7 @@ function footer() {
     <div class="footer-grid">
       <div><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">H</span><span class="brand-name">HushBook</span></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
       <div class="footer-col"><h2>Compare</h2>${links}</div>
-      <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
+      <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
     </div>
     <div class="footer-bottom">© 2026 HushBook. Competitor names belong to their respective owners. No affiliation or endorsement implied.</div>
   </div>
