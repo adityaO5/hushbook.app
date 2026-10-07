@@ -63,7 +63,7 @@ function nav() {
   return `<a class="skip" href="#content">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="/" aria-label="HushBook home"><span class="brand-mark" aria-hidden="true">H</span><span class="brand-name">HushBook</span></a>
+    <a class="brand" href="/" aria-label="HushBook home"><img class="brand-mark" src="/assets/img/logo-tile.png" width="34" height="34" alt=""><img class="brand-name" src="/assets/img/hb-wordmark.svg" width="133" height="20" alt=""></a>
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
       <svg class="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
@@ -84,7 +84,7 @@ function footer() {
   return `<footer>
   <div class="wrap">
     <div class="footer-grid">
-      <div><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">H</span><span class="brand-name">HushBook</span></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
+      <div><a class="brand" href="/" aria-label="HushBook home"><img class="brand-mark" src="/assets/img/logo-tile.png" width="34" height="34" alt=""><img class="brand-name" src="/assets/img/hb-wordmark.svg" width="133" height="20" alt=""></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
       <div class="footer-col"><h2>Compare</h2>${links}</div>
       <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
     </div>
