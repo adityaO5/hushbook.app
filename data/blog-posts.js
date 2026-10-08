@@ -6,6 +6,45 @@
 
 const posts = [
   {
+    slug: 'can-you-read-along-with-audible',
+    title: 'Can You Read Along With Audible? How Read & Listen Works',
+    metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',
+    description: 'Yes, with Audible Read & Listen, if you own both the audiobook and the Kindle ebook. What you need, how to turn it on, what to do if you own one edition, and options for audiobooks that did not come from Audible.',
+    category: 'Read-along guides',
+    datePublished: '2026-10-08',
+    dateModified: '2026-10-08',
+    readingTime: '5 min read',
+    keywords: [
+      'can you read along with audible',
+      'how to listen and read on audible',
+      'audible listen and read',
+      'audible read and listen',
+      'how to listen and read on kindle',
+      'can you listen and read on kindle',
+      'kindle unlimited listen and read',
+      'whispersync for voice',
+      'read along with audiobook without kindle'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Yes. Audible Read & Listen highlights the Kindle text word by word while the narrator reads, and you can switch between listening and reading along at any time.',
+      'You need both editions on the same Amazon account: the audiobook in your Audible library and the Kindle ebook in your Kindle library. The title must be marked Read & Listen, formerly Whispersync for Voice-ready.',
+      'In the Audible app, filter your Library by Read & Listen, start the book, and use the toggle above the cover to switch modes.',
+      'Audible announced the current version in February 2026, starting in the US with the UK, Australia and Germany planned next. Check your country before buying.',
+      'For audiobooks that did not come from Audible, such as MP3 or M4B files you can legally import, HushBook transcribes the audio on your phone and highlights each word. It cannot open protected Audible downloads or Kindle ebooks.'
+    ],
+    faqs: [
+      ['Can you read along with Audible?', 'Yes, for eligible titles. Audible Read & Listen shows the Kindle ebook text and highlights each word as the narrator reads it. You need both the Audible audiobook and the Kindle ebook of the same title on your Amazon account.'],
+      ['How do I turn on Read & Listen in the Audible app?', 'Open your Library, use the Read & Listen filter or look for the badge next to a cover, start playing the book, and use the toggle above the cover image to switch from Listen to Read & Listen.'],
+      ['Do I have to buy the Kindle ebook to read along on Audible?', 'Yes. Audible does not bundle the two formats. If you already own the Kindle ebook, Amazon often offers the matching audiobook at a discount as an option to add Audible narration.'],
+      ['Does Read & Listen work on a Kindle e-reader?', 'Audible lists its iPhone, iPad, Android and Android tablet apps, Fire tablets running Fire OS 8 or later, and its macOS app as supported. Kindle e-readers are not on that list.'],
+      ['Is Audible Read & Listen available in my country?', 'At its February 2026 launch it started in the US, with the UK, Australia and Germany planned over the following months. Check the Audible help pages for your country.'],
+      ['Can I read along with an audiobook that is not from Audible?', 'Audible Read & Listen only covers titles in your Audible and Kindle libraries. For MP3 or M4B files you can legally import, such as LibriVox recordings, HushBook transcribes the audio on your phone and highlights each word as the narrator reads.'],
+      ['Can HushBook open Audible audiobooks or Kindle ebooks?', 'No. Protected Audible downloads and Kindle ebooks are locked to Amazon apps, so HushBook cannot import them. If your books are in Audible and Kindle, use Read & Listen.']
+    ]
+  },
+  {
     slug: 'what-is-immersive-reading',
     title: 'What Is Immersive Reading? How to Read and Listen at the Same Time',
     metaTitle: 'What Is Immersive Reading? How to Read and Listen at Once',

@@ -51,7 +51,7 @@ function formatDate(iso) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }
 
-// Minimal Markdown: headings, paragraphs, "- " lists, links, **bold**, *italic*.
+// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, links, **bold**, *italic*.
 function inline(text) {
   return escapeHtml(text)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
@@ -71,10 +71,14 @@ function parseMarkdown(source) {
   const html = [];
   let paragraph = [];
   let list = null;
+  let ordered = false;
 
   const flush = () => {
     if (paragraph.length) html.push(`<p>${inline(paragraph.join(' '))}</p>`);
-    if (list) html.push(`<ul>\n${list.map((item) => `<li>${inline(item)}</li>`).join('\n')}\n</ul>`);
+    if (list) {
+      const tag = ordered ? 'ol' : 'ul';
+      html.push(`<${tag}>\n${list.map((item) => `<li>${inline(item)}</li>`).join('\n')}\n</${tag}>`);
+    }
     paragraph = [];
     list = null;
   };
@@ -92,9 +96,11 @@ function parseMarkdown(source) {
       html.push(`<h${level} id="${id}">${inline(match[2])}</h${level}>`);
       continue;
     }
-    if ((match = line.match(/^[-*] (.+)$/))) {
-      if (paragraph.length) flush();
-      (list = list || []).push(match[1]);
+    if ((match = line.match(/^(?:([-*])|\d+\.) (.+)$/))) {
+      const isOrdered = !match[1];
+      if (paragraph.length || (list && ordered !== isOrdered)) flush();
+      ordered = isOrdered;
+      (list = list || []).push(match[2]);
       continue;
     }
     if (list) flush();

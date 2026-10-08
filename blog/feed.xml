@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Can You Read Along With Audible? How Read &amp; Listen Works</title>
+      <link>https://hushbook.app/blog/can-you-read-along-with-audible</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/can-you-read-along-with-audible</guid>
+      <pubDate>Thu, 08 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Read-along guides</category>
+      <description>Yes, with Audible Read &amp; Listen, if you own both the audiobook and the Kindle ebook. What you need, how to turn it on, what to do if you own one edition, and options for audiobooks that did not come from Audible.</description>
+    </item>
     <item>
       <title>What Is Immersive Reading? How to Read and Listen at the Same Time</title>
       <link>https://hushbook.app/blog/what-is-immersive-reading</link>

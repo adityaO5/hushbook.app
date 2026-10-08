@@ -24,7 +24,7 @@
 .prose p, .prose li { font-size: 18px; line-height: 1.75; }
 .prose p { margin: 0 0 1.15em; }
 .prose > p:first-child { color: var(--paper); font-size: 20px; }
-.prose ul { margin: 0 0 1.4em; padding-left: 22px; color: var(--paper-dim); }
+.prose ul, .prose ol { margin: 0 0 1.4em; padding-left: 22px; color: var(--paper-dim); }
 .prose li { margin: 8px 0; }
 .prose li::marker { color: var(--amber); }
 #faq-heading, #cta-heading, #related-heading { scroll-margin-top: 90px; }
