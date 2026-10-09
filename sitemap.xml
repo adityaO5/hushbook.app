@@ -3248,15 +3248,23 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/m4b-vs-mp3</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/m4b-vs-mp3"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/m4b-vs-mp3"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/can-you-read-along-with-audible</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/can-you-read-along-with-audible"/>
@@ -3264,7 +3272,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/what-is-immersive-reading</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/what-is-immersive-reading"/>

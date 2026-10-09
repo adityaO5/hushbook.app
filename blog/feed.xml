@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>M4B vs MP3: Which Audiobook Format Should You Use?</title>
+      <link>https://hushbook.app/blog/m4b-vs-mp3</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/m4b-vs-mp3</guid>
+      <pubDate>Fri, 09 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Audiobook formats</category>
+      <description>M4B keeps a whole audiobook in one file with chapters and saved position. MP3 plays on almost anything. What each format is, how they compare on quality and chapters, and when to convert.</description>
+    </item>
     <item>
       <title>Can You Read Along With Audible? How Read &amp; Listen Works</title>
       <link>https://hushbook.app/blog/can-you-read-along-with-audible</link>

@@ -6,6 +6,46 @@
 
 const posts = [
   {
+    slug: 'm4b-vs-mp3',
+    title: 'M4B vs MP3: Which Audiobook Format Should You Use?',
+    metaTitle: 'M4B vs MP3: Which Audiobook Format Should You Use?',
+    description: 'M4B keeps a whole audiobook in one file with chapters and saved position. MP3 plays on almost anything. What each format is, how they compare on quality and chapters, and when to convert.',
+    category: 'Audiobook formats',
+    datePublished: '2026-10-09',
+    dateModified: '2026-10-09',
+    readingTime: '6 min read',
+    keywords: [
+      'm4b vs mp3',
+      'mp3 vs m4b',
+      'what is m4b',
+      'what is an m4b file',
+      'm4b format',
+      'm4a vs m4b',
+      'm4b to mp3',
+      'best audiobook format',
+      'is m4b better than mp3'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'For an audiobook, M4B is usually the better file to keep, and MP3 is the one that plays everywhere.',
+      'An M4B is one MPEG-4 file, usually AAC audio, with built-in chapters, cover art and an audiobook flag that lets players remember your place. An MP3 audiobook is normally one file per chapter.',
+      'At the same bitrate AAC generally sounds better than MP3, but for a narrator\'s voice the difference is small. LibriVox says its 64 kbps and 128 kbps MP3s are barely distinguishable.',
+      'M4A and M4B are mostly the same format; the .m4b extension tells apps to treat the file as an audiobook.',
+      'Convert M4B to MP3 only if a device cannot play M4B, keep the original, and remember that conversion does not remove DRM.',
+      'HushBook imports both M4B and MP3, keeps M4B chapters and cover art, and highlights each word as the narrator reads. It cannot import files with DRM.'
+    ],
+    faqs: [
+      ['Is M4B better than MP3 for audiobooks?', 'Usually, if you listen in an audiobook app. M4B keeps the whole book in one file with named chapters, cover art and a saved position, and its AAC audio is generally more efficient. MP3 wins on compatibility with older devices and car stereos.'],
+      ['What is an M4B file?', 'An M4B is an audiobook file in the MPEG-4 container, almost always with AAC audio. It is close to an M4A file, but the .m4b extension tells players to treat it as an audiobook: remember your place, show chapters, and keep it out of the music library.'],
+      ['What is the difference between M4A and M4B?', 'Mostly the extension. Both are MPEG-4 audio, usually AAC. Players treat .m4b as an audiobook and .m4a as a music track.'],
+      ['Does M4B sound better than MP3?', 'At the same bitrate, AAC in an M4B generally sounds better than MP3. For speech the gap is small, so it is not worth re-buying or re-encoding a book for quality alone.'],
+      ['Should I convert M4B to MP3?', 'Only if a device you rely on cannot play M4B. Convert a copy, keep the original, and expect to lose the chapter list unless the converter splits the file at each chapter. Both formats are lossy, so each conversion loses a little quality.'],
+      ['Can I convert a DRM-protected M4B or Audible audiobook?', 'Files locked to a store, such as protected Apple M4B files or Audible AAX downloads, are not ordinary files you can move between apps. Use the store\'s own app for them.'],
+      ['Can HushBook play M4B and MP3 files?', 'Yes. HushBook imports M4B, MP3 and other common audio formats one file per import, keeps M4B chapters and cover art, and transcribes the recording on your phone so each word is highlighted as the narrator reads. It cannot import files with DRM.']
+    ]
+  },
+  {
     slug: 'can-you-read-along-with-audible',
     title: 'Can You Read Along With Audible? How Read & Listen Works',
     metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',

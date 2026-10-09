@@ -307,7 +307,7 @@ function renderHub() {
     '@type': 'Blog',
     '@id': `${canonical}#blog`,
     name: 'HushBook Blog',
-    description: 'Guides to immersive reading, read-along audiobooks, and following the words while you listen.',
+    description: 'Straight answers on read-along audiobooks, audiobook file formats like M4B and MP3, and staying focused while you listen.',
     url: canonical,
     inLanguage: 'en',
     publisher,
@@ -317,7 +317,7 @@ function renderHub() {
   return `${head({ title: 'HushBook Blog: Read-Along Audiobooks and Immersive Reading', description: 'Practical guides to immersive reading: how to read and listen at the same time, follow an audiobook word by word, and pick the right read-along setup.', canonical, schema, type: 'website' })}
 <body>
 ${nav()}
-<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Read along with every word you hear.</h1><p class="lede">Guides to immersive reading, read-along audiobooks, and staying with a book when your attention slips. Written by the people building HushBook.</p></div></header><section class="wrap content"><div class="hub-grid blog-grid">${cards}</div></section></main>
+<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Straight answers for people who love audiobooks.</h1><p class="lede">How to read along while you listen, which file formats to keep, and how to stay with a chapter when your attention drifts. Plain guides from Rakesh Aditya, who builds HushBook.</p></div></header><section class="wrap content"><div class="hub-grid blog-grid">${cards}</div></section></main>
 ${footer()}`;
 }
 
