@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Does Listening to an Audiobook Count as Reading?</title>
+      <link>https://hushbook.app/blog/does-listening-to-audiobooks-count-as-reading</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/does-listening-to-audiobooks-count-as-reading</guid>
+      <pubDate>Sat, 10 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Reading and listening</category>
+      <description>Yes. Studies find comprehension from listening is about the same as from reading, and the brain processes meaning the same way. Where print still has an edge, where audio wins, and how to get both.</description>
+    </item>
     <item>
       <title>M4B vs MP3: Which Audiobook Format Should You Use?</title>
       <link>https://hushbook.app/blog/m4b-vs-mp3</link>

@@ -6,6 +6,45 @@
 
 const posts = [
   {
+    slug: 'does-listening-to-audiobooks-count-as-reading',
+    title: 'Does Listening to an Audiobook Count as Reading?',
+    metaTitle: 'Does Listening to an Audiobook Count as Reading?',
+    description: 'Yes. Studies find comprehension from listening is about the same as from reading, and the brain processes meaning the same way. Where print still has an edge, where audio wins, and how to get both.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-10',
+    dateModified: '2026-10-10',
+    readingTime: '6 min read',
+    keywords: [
+      'does listening to audiobooks count as reading',
+      'do audiobooks count as reading',
+      'is listening to an audiobook reading',
+      'is listening to audiobooks cheating',
+      'audiobook vs reading comprehension',
+      'listening vs reading comprehension',
+      'audiobooks vs reading brain',
+      'are audiobooks as good as reading',
+      'reading while listening'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Yes. If you listened to the whole book, you read it, and research suggests you probably understood it about as well as a print reader.',
+      'A 2022 meta-analysis of 46 studies by Virginia Clinton-Lisell found no reliable overall difference between reading and listening comprehension. Self-paced reading came out slightly ahead, and reading did better on inferential questions.',
+      'A 2019 Journal of Neuroscience study found the brain maps meaning almost identically whether people listen to or read the same stories.',
+      'Print still helps with dense, difficult material because it is easier to slow down and go back. Audio wins on narration, reading time and access for readers with dyslexia or low vision.',
+      'Reading while listening gives a small benefit in studies and makes it easier to find your place after your mind wanders. HushBook highlights each word of an audiobook file you can legally import as the narrator reads it.'
+    ],
+    faqs: [
+      ['Does listening to an audiobook count as reading?', 'Yes. You take in the same words and story, and studies find comprehension from listening is about the same as from reading for most books. For dense, difficult material, print or reading along with the text has an edge.'],
+      ['Is listening to audiobooks cheating?', 'No. Unless a teacher specifically wants you to practise reading print, a book you listened to is a book you read. The psychologist Daniel Willingham has told audiobook listeners not to feel ashamed.'],
+      ['Do you understand as much from an audiobook as from reading?', 'Usually about the same. A 2022 meta-analysis of 46 studies found no reliable overall difference. Reading did slightly better when readers set their own pace and on questions that required inference.'],
+      ['Does your brain process audiobooks differently from reading?', 'Your eyes and ears decode words differently, but a 2019 UC Berkeley study found the brain represents the meaning almost identically whether people listen to or read the same stories.'],
+      ['Which books are better to read than to listen to?', 'Dense, technical or study material, where you need to slow down, reread and connect ideas. Stories, memoirs and most narrative non-fiction work well as audiobooks.'],
+      ['Does reading while listening help comprehension?', 'Modestly. A 2023 meta-analysis found a small overall benefit compared with reading alone, mostly when the pace was set for the reader. Seeing the words also helps you find your place after your mind wanders.'],
+      ['Can HushBook show the text of my audiobook while I listen?', 'Yes, for audio files you can legally import, such as MP3 or M4B files from LibriVox. HushBook transcribes the recording on your phone and highlights each word as the narrator reads. It cannot import protected Audible downloads.']
+    ]
+  },
+  {
     slug: 'm4b-vs-mp3',
     title: 'M4B vs MP3: Which Audiobook Format Should You Use?',
     metaTitle: 'M4B vs MP3: Which Audiobook Format Should You Use?',
