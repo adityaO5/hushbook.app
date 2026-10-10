@@ -1,72 +1,85 @@
 # Does Listening to an Audiobook Count as Reading?
 
-Short answer: yes. If you listened to the whole book, you read it. You took in the same story, the same argument and the same words, and the research says you probably understood it about as well as someone holding the print copy.
+Yes. If you listened to the whole book, you read it.
 
-There is one honest caveat. For dense, difficult material, the page still has an edge, mostly because it's easier to slow down and go back. That's a reason to pick the right format for the right book, not a reason to feel like an audiobook doesn't count.
+People still argue about this, usually with a bit of guilt on one side and a bit of snobbery on the other, and most of what you'll find online is opinion stacked on opinion. So I went to the research instead. The studies are clearer than the arguments. For most books, people who listen understand about as much as people who read.
 
-I build an audiobook app, so I'm not neutral on this. Here's what the studies actually found, and where the difference shows up.
+The one exception: hard, dense books. Print still helps there, and I'll get to why.
 
-## What the research says
+(I build an audiobook app, so you can guess which way I lean. That's why I've quoted the studies directly instead of summarising them.)
 
-The best single answer comes from a 2022 meta-analysis by Virginia Clinton-Lisell in the *Review of Educational Research*. It pooled 46 studies, with more than 4,600 participants, that compared reading with listening to the same text. Overall, comprehension was not reliably different between the two.
+## Do listeners understand as much as readers?
 
-The details are worth knowing:
+The best place to start is a 2022 meta-analysis by Virginia Clinton-Lisell, an education researcher at the University of North Dakota, published in the *Review of Educational Research*. A meta-analysis pools the results of many studies, so one odd result doesn't swing the answer. This one pooled 46 studies with 4,687 people of different ages. The headline finding:
 
-- When readers could set their own pace, reading came out slightly ahead of listening.
-- Reading also did better on inferential questions, the kind where you have to connect ideas the text doesn't spell out.
-- For plain recall of what happened, the gap was small.
+> "[T]he overall difference between reading and listening comprehension was not reliably different."
 
-A smaller experiment points the same way. In a 2016 study in *SAGE Open*, Beth Rogowsky, Barbara Calhoun and Paula Tallal gave adults a chapter of a non-fiction book as an audiobook, as e-text, or as both at once. They found no significant difference in comprehension, either straight away or two weeks later. One limit: the readers used e-text on a screen, not a paper book.
+In plain English: no meaningful gap.
 
-## What happens in your brain
+It isn't a clean tie, though. The same paper found that reading did better "when the reading condition was self-paced", so when people could read at their own speed. Reading also did better when the questions asked for inference, where you connect ideas the text doesn't spell out. On simple recall of what the text said, the two were level.
 
-A 2019 study in the *Journal of Neuroscience* by Fatma Deniz and colleagues at UC Berkeley scanned people while they listened to stories and then read the same stories. The maps of where meaning was processed across the brain were almost identical in both cases. The authors concluded that the brain represents the meaning of language the same way whether it arrives through the ears or the eyes.
+A smaller 2016 experiment in *SAGE Open*, by Beth Rogowsky, Barbara Calhoun and Paula Tallal, reached the same place. Ninety-one adults got a chapter of a non-fiction book as an audiobook, as e-text, or as both at once. They were tested straight away and again two weeks later. The authors wrote:
 
-That doesn't mean listening and reading are the same activity from start to finish. Your eyes decode letters and your ears decode sounds. But once the words are recognised, the work of understanding them looks the same.
+> "No statistically significant differences were found for any analyses pertaining to effects of the three different instructional conditions on comprehension at Time 1 or Time 2."
 
-## Where reading still has an edge
+One caveat: the readers used e-text on a tablet. Nobody in the study had a paper book.
 
-The psychologist Daniel Willingham, who has written about this question for years, puts it simply: the same mental process comprehends sentences whether you heard them or read them, but difficult texts need extra strategies, and print makes those strategies easier to use.
+## Is your brain doing something different?
 
-In practice that means:
+Less than you'd think. In 2019, Fatma Deniz and colleagues at UC Berkeley scanned people's brains while they listened to stories, and again while they read the same stories. The paper, in the *Journal of Neuroscience*, maps where meaning is processed across the brain. Their summary:
 
-- **Going back.** On the page you glance up a paragraph without thinking. With audio you have to rewind and guess how far.
-- **Your own pace.** You can slow down for a tricky sentence and speed through an easy one. A narrator keeps a steady pace.
-- **Mind-wandering.** It's easy to drift off while audio keeps playing, and you may not notice for a few minutes.
+> "[A]lthough the representation of semantic information in the human brain is quite complex, the semantic representations evoked by listening versus reading are almost identical."
 
-So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the text in front of you.
+Your eyes and ears do different work at the start. But once a word has been recognised, whether you saw it on a page or heard it from a narrator, its meaning seems to land in much the same place.
 
-## Where listening has an edge
+## So why does print still feel different?
 
-Audio has real advantages that a print-versus-audio score doesn't capture:
+Daniel Willingham, a psychologist at the University of Virginia, has written about this question for years. As Wisconsin Public Radio quoted him in 2019, once the words are identified, "the same mental process comprehends the sentences and paragraphs they form." Then the catch: "difficult texts demand additional mental strategies," and "print makes those strategies easier to use."
 
-- **A good narrator interprets the text.** Tone, accents and timing can make dialogue, sarcasm and poetry easier to follow, especially in classics with old-fashioned language.
-- **You can read more.** Commutes, chores and walks become reading time. A book you finish in audio beats a book that sits on your nightstand.
-- **It removes a barrier.** For many readers with dyslexia or low vision, listening is the difference between reading the book and not reading it at all.
+That lines up with the meta-analysis, where reading pulled ahead when people set their own pace and on questions that needed inference. It's also the bit that rings true when you think about how you read a hard book:
+
+- You slow down for a tricky sentence without deciding to.
+- You glance back up a paragraph to check who "he" is.
+- When your mind drifts, the page waits for you. Audio keeps going, and you might not notice for a few minutes.
+
+A narrator can't do any of that for you. So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the words in front of you.
+
+## What audio does better
+
+None of the comprehension tests measure this part, which is a shame, because it's half the reason people listen.
+
+A good narrator is interpreting the book for you. Dialogue, sarcasm, dialect, the rhythm of a poem. For a lot of classics, the old-fashioned language is far easier to follow when someone who understands it is reading it aloud.
+
+Audio also turns a commute, a long walk or a pile of washing-up into reading time, which matters more than any comprehension score if the alternative is not reading at all. A book you finish in your earbuds beats one that sits on your nightstand for a year.
+
+For many people with dyslexia or low vision, it's simpler than that. Listening is how they get to read the book at all.
 
 ## Is listening to an audiobook cheating?
 
-No. The idea comes from treating reading as a test of decoding print, rather than as taking in a book. Unless a teacher specifically wants you to practise reading print, the book you listened to is a book you've read. Willingham's own advice to audiobook listeners was not to feel ashamed.
+No. "Cheating" only makes sense if reading means decoding print. Most of the time it means taking in a book, and you did that.
 
-For school, follow your teacher's guidance, since some assignments are about reading skill itself. For your own reading goals and your Goodreads shelf, count it.
+There's one sensible exception. If a teacher has set a book to practise reading skills, ask before switching to audio, because the skill is the point of that assignment. Otherwise, count it. Put it on your Goodreads shelf.
 
-## Can you get the best of both?
+## Can you read and listen at the same time?
 
-Yes, by reading and listening at the same time. The evidence here is more modest than the hype: a 2023 meta-analysis by Clinton-Lisell found only a small overall benefit for reading while listening compared with reading alone, and the benefit appeared mainly when the pace was set for the reader rather than self-paced. The same review noted that struggling readers might benefit, but there are too few studies to say for sure.
+You can, and a lot of people say it helps them focus. The research is more modest than the enthusiasm, though. Clinton-Lisell also ran a 2023 meta-analysis of 30 studies comparing reading while listening with reading alone, in *Educational Research: Theory and Practice*. She found:
 
-Where it clearly helps is with the practical weaknesses of audio. If the words are on screen, you can see where you are after your mind wanders, and you can catch a name you didn't quite hear. If you'd like to try it, there's a full guide to [immersive reading](/blog/what-is-immersive-reading).
+> "[A] trivial overall benefit of reading while listening over reading only on comprehension."
 
-That's what I built HushBook for. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, then highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong, and HushBook can't import protected Audible downloads. If your books are on Audible and Kindle, [Audible's own Read & Listen](/blog/can-you-read-along-with-audible) is the place to start.
+And when people read at their own pace, there were "no reliable effects." She also noted that struggling readers might benefit, but "there are currently too few studies to afford generalizations on these claims."
 
-## The verdict
+So I won't tell you it makes you understand more. Where I think it earns its place is the practical stuff. If the words are on screen, you can see exactly where you are when your mind comes back. You can catch a character's name you didn't quite hear. If you'd like to try it, there's a fuller guide to [immersive reading](/blog/what-is-immersive-reading).
 
-Listening to an audiobook counts as reading. For most books, you'll understand and remember it about as well as if you'd read the print. For hard, dense material, use print or follow the text while you listen so you can slow down and go back. Either way, the best format is the one that gets you to the last page.
+That's what I built HushBook to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, and highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong. It can't import protected Audible downloads either. If your books live in Audible and Kindle, [Audible's own Read & Listen](/blog/can-you-read-along-with-audible) is the place to start.
 
-## Sources and further reading
+## Pick by the book
 
-- [Clinton-Lisell (2022), Review of Educational Research: reading and listening comprehension meta-analysis](https://doi.org/10.3102/00346543211060871)
-- [Clinton-Lisell (2023), Educational Research: Theory and Practice: reading while listening vs reading only](https://commons.und.edu/ehb-fac/75) ([full text, ERIC](https://files.eric.ed.gov/fulltext/EJ1403866.pdf))
-- [Rogowsky, Calhoun and Tallal (2016), SAGE Open: Does Modality Matter?](https://journals.sagepub.com/doi/10.1177/2158244016669550)
-- [Deniz et al. (2019), Journal of Neuroscience: listening vs reading in the brain (open access)](https://www.escholarship.org/content/qt20g539dw/qt20g539dw.pdf)
-- [UC Berkeley News: a map of the brain can tell what you're reading](https://news.berkeley.edu/2019/08/19/readingbrainmap)
-- [WPR: No, listening to audiobooks isn't cheating, professor says](https://wpr.org/no-listening-audiobooks-isnt-cheating-professor-says)
+Audiobook or print isn't really the choice that matters. The book is. Listen to the novel on your commute, enjoy the narrator, and count it when you're done. Read the dense stuff on paper, or with the text in front of you, so you can slow down and go back.
+
+## Sources
+
+- [Clinton-Lisell, V. (2022). Listening Ears or Reading Eyes: A Meta-Analysis of Reading and Listening Comprehension Comparisons. *Review of Educational Research*, 92(4).](https://doi.org/10.3102/00346543211060871)
+- [Rogowsky, B. A., Calhoun, B. M., & Tallal, P. (2016). Does Modality Matter? The Effects of Reading, Listening, and Dual Modality on Comprehension. *SAGE Open*, 6(3).](https://doi.org/10.1177/2158244016669550)
+- [Deniz, F., Nunez-Elizalde, A. O., Huth, A. G., & Gallant, J. L. (2019). The Representation of Semantic Information Across Human Cerebral Cortex During Listening Versus Reading Is Invariant to Stimulus Modality. *Journal of Neuroscience*, 39(39), 7722–7736.](https://doi.org/10.1523/JNEUROSCI.0675-19.2019)
+- [Clinton-Lisell, V. (2023). Does Reading while Listening to Text Improve Comprehension Compared to Reading Only? A Systematic Review and Meta-Analysis. *Educational Research: Theory and Practice*, 34(3), 133–155.](https://files.eric.ed.gov/fulltext/EJ1403866.pdf)
+- [Wisconsin Public Radio (2019). No, Listening to Audiobooks Isn't Cheating, Professor Says.](https://wpr.org/no-listening-audiobooks-isnt-cheating-professor-says)

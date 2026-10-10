@@ -51,7 +51,7 @@ function formatDate(iso) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }
 
-// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, links, **bold**, *italic*.
+// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, "> " quotes, links, **bold**, *italic*.
 function inline(text) {
   return escapeHtml(text)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
@@ -72,15 +72,18 @@ function parseMarkdown(source) {
   let paragraph = [];
   let list = null;
   let ordered = false;
+  let quote = null;
 
   const flush = () => {
     if (paragraph.length) html.push(`<p>${inline(paragraph.join(' '))}</p>`);
+    if (quote) html.push(`<blockquote><p>${inline(quote.join(' '))}</p></blockquote>`);
     if (list) {
       const tag = ordered ? 'ol' : 'ul';
       html.push(`<${tag}>\n${list.map((item) => `<li>${inline(item)}</li>`).join('\n')}\n</${tag}>`);
     }
     paragraph = [];
     list = null;
+    quote = null;
   };
 
   for (const raw of lines) {
@@ -96,6 +99,12 @@ function parseMarkdown(source) {
       html.push(`<h${level} id="${id}">${inline(match[2])}</h${level}>`);
       continue;
     }
+    if ((match = line.match(/^> ?(.*)$/))) {
+      if (!quote) flush();
+      (quote = quote || []).push(match[1]);
+      continue;
+    }
+    if (quote) flush();
     if ((match = line.match(/^(?:([-*])|\d+\.) (.+)$/))) {
       const isOrdered = !match[1];
       if (paragraph.length || (list && ordered !== isOrdered)) flush();
@@ -108,7 +117,7 @@ function parseMarkdown(source) {
   }
   flush();
 
-  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*]/g, ' ');
+  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
   return { title, headings, html: html.join('\n'), wordCount: text.trim().split(/\s+/).filter(Boolean).length };
 }
 

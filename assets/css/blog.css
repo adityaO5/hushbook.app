@@ -3,6 +3,9 @@
 .post-hero h1 { max-width: 920px; font-size: clamp(38px, 6vw, 64px); }
 .post { max-width: 760px; }
 
+.post blockquote { margin: 28px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--amber); }
+.post blockquote p { margin: 0; color: var(--paper); font-size: 19px; line-height: 1.55; font-style: italic; }
+
 .takeaways ul, .toc ol { margin: 0; padding-left: 20px; }
 .takeaways li { margin: 8px 0; color: var(--paper-dim); font-size: 16px; line-height: 1.55; }
 .takeaways li::marker { color: var(--amber); }
