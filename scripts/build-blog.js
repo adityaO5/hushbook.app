@@ -287,7 +287,7 @@ function renderPost(post) {
 ${nav()}
 <main id="content">
   <nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog">Blog</a> / <span aria-current="page">${escapeHtml(post.category)}</span></nav>
-  <header class="hero post-hero"><div class="wrap"><span class="eyebrow">${escapeHtml(post.category)}</span><h1>${escapeHtml(post.title)}</h1><p class="lede">${escapeHtml(post.description)}</p>
+  <header class="hero post-hero"><div class="wrap"><span class="eyebrow">${escapeHtml(post.category)}</span><h1>${escapeHtml(post.title)}</h1>
     <div class="byline"><span>Published <time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time></span>${post.dateModified !== post.datePublished ? `<span>Updated <time datetime="${post.dateModified}">${formatDate(post.dateModified)}</time></span>` : ''}<span>${escapeHtml(post.readingTime)}</span></div>
   </div></header>
   <article class="article"><div class="wrap content post">
