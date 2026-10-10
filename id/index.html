@@ -136,7 +136,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#0B0A09; --panel:#14110E; --panel-2:#191511; --line:rgba(201,163,106,.14);
@@ -426,7 +426,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero gl */
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
-#stage-gl canvas{width:100%;height:100%;display:block}
+#stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 1.2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
@@ -702,7 +702,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     </div>
     <p class="hero-note reveal">Bebas untuk mengunduh, Zero Ads.</p>
   </div>
-  <div class="fan reveal" aria-hidden="true">
+  <div class="fan" aria-hidden="true">
     <img class="f1" src="/assets/img/mockups/locales/id/brain-health.webp" alt="" loading="eager">
     <img class="f2" src="/assets/img/mockups/locales/id/home.webp" alt="" loading="eager">
     <img class="f3" src="/assets/img/mockups/locales/id/karaoke-live.webp" alt="HushBook mentranscribe Meditations into live word- level karaoke" loading="eager">
@@ -1174,15 +1174,15 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     </div>
     <div class="life-grid">
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/couch-home.png" alt="Browsing the HushBook home screen on the sofa" loading="lazy">
+        <img src="/assets/img/lifestyle/couch-home.webp" alt="Browsing the HushBook home screen on the sofa" loading="lazy">
         <figcaption class="lcap"><h3>Sofamu.<br><i>Bab berikutnya.</i></h3><p>Ambil persis di mana Anda tinggalkan, sebelum ketel mendidih.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="Membaca bersama dengan Proyek Salam Maria di tempat tidur di malam hari" loading="lazy">
+        <img src="/assets/img/lifestyle/bed-karaoke.webp" alt="Membaca bersama dengan Proyek Salam Maria di tempat tidur di malam hari" loading="lazy">
         <figcaption class="lcap"><h3>Anda 11 PM.<br><i>Lampu mati, kata-kata di.</i></h3><p>Ruangan menjadi gelap. Kata-kata terus bersinar.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/bench-player.png" alt="Mendengarkan The Lord of the Rings di bangku taman" loading="lazy">
+        <img src="/assets/img/lifestyle/bench-player.webp" alt="Mendengarkan The Lord of the Rings di bangku taman" loading="lazy">
         <figcaption class="lcap"><h3>Jam makan siangmu.<br><i>Termasuk Middle- bumi.</i></h3><p>Sepenuhnya offline - taman tidak memiliki Wi- Fi, dan itu tidak masalah.</p></figcaption>
       </figure>
     </div>
@@ -1333,9 +1333,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script>
 // scroll reveal + per-character heading blur-in
 const revealBlocks=document.querySelectorAll('.reveal');
@@ -1462,7 +1462,7 @@ if(fan&&fine&&!calm){
 // three.js + GSAP — The Transcription Field
 // An audiobook's waveform streams in from the left, crosses the playhead beam,
 // and crystallizes into transcript words on the right. The product, as a shader.
-(function(){
+window.addEventListener('load',()=>(window.requestIdleCallback||setTimeout)(function(){
   if(!window.THREE||!window.gsap||calm)return;
   const host=document.getElementById('stage-gl');if(!host)return;
   try{
@@ -1713,7 +1713,7 @@ if(fan&&fine&&!calm){
       renderer.render(scene,cam);
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
-})();
+},{timeout:2000}));
 
 // 3D Marquee component using Three.js
 (function() {

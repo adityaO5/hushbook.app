@@ -136,7 +136,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#0B0A09; --panel:#14110E; --panel-2:#191511; --line:rgba(201,163,106,.14);
@@ -426,7 +426,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero gl */
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
-#stage-gl canvas{width:100%;height:100%;display:block}
+#stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 1.2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
@@ -702,7 +702,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     </div>
     <p class="hero-note reveal">무료 다운로드, Zero Ads.</p>
   </div>
-  <div class="fan reveal" aria-hidden="true">
+  <div class="fan" aria-hidden="true">
     <img class="f1" src="/assets/img/mockups/locales/ko/brain-health.webp" alt="" loading="eager">
     <img class="f2" src="/assets/img/mockups/locales/ko/home.webp" alt="" loading="eager">
     <img class="f3" src="/assets/img/mockups/locales/ko/karaoke-live.webp" alt="HushBook는 단어 수준의 노래로 명상을" loading="eager">
@@ -1274,15 +1274,15 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     </div>
     <div class="life-grid">
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/couch-home.png" alt="소파에 HushBook 홈 화면을 검색" loading="lazy">
+        <img src="/assets/img/lifestyle/couch-home.webp" alt="소파에 HushBook 홈 화면을 검색" loading="lazy">
         <figcaption class="lcap"><h3>당신의 소파.<br><i>다음 장.</i></h3><p>주전자 끓기 전에 왼쪽으로 정확히 픽업하십시오.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/bed-karaoke.png" alt="밤에 침대에서 달러구트 꿈 백화점와 함께 독서" loading="lazy">
+        <img src="/assets/img/lifestyle/bed-karaoke.webp" alt="밤에 침대에서 달러구트 꿈 백화점와 함께 독서" loading="lazy">
         <figcaption class="lcap"><h3>오후 11시<br><i>빛 떨어져, 낱말에.</i></h3><p>방은 어두운 간다. 단어는 놀아.</p></figcaption>
       </figure>
       <figure class="lcard reveal">
-        <img src="/assets/img/lifestyle/bench-player.png" alt="공원 벤치에 반지의 주님을 듣고" loading="lazy">
+        <img src="/assets/img/lifestyle/bench-player.webp" alt="공원 벤치에 반지의 주님을 듣고" loading="lazy">
         <figcaption class="lcap"><h3>점심 시간.<br><i>중간에 포함.</i></h3><p>완전히 오프라인 - 공원에는 Wi-Fi가 없으며 중요하지 않습니다.</p></figcaption>
       </figure>
     </div>
@@ -1433,9 +1433,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>는
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>는
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>는
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js" defer></script>는
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>는
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>는
 <script>
 // scroll reveal + per-character heading blur-in
 const revealBlocks=document.querySelectorAll('.reveal');
@@ -1562,7 +1562,7 @@ if(fan&&fine&&!calm){
 // three.js + GSAP — The Transcription Field
 // An audiobook's waveform streams in from the left, crosses the playhead beam,
 // and crystallizes into transcript words on the right. The product, as a shader.
-(function(){
+window.addEventListener('load',()=>(window.requestIdleCallback||setTimeout)(function(){
   if(!window.THREE||!window.gsap||calm)return;
   const host=document.getElementById('stage-gl');if(!host)return;
   try{
@@ -1813,7 +1813,7 @@ if(fan&&fine&&!calm){
       renderer.render(scene,cam);
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
-})();
+},{timeout:2000}));
 
 // 3D Marquee component using Three.js
 (function() {
