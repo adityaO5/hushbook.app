@@ -425,7 +425,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero gl */
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
-#stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 1.2s ease both}@keyframes gl-in{from{opacity:0}}
+#stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
 .hero{perspective:1400px}
 .fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
@@ -1712,7 +1712,7 @@ function startHeroField(){
     })();
   }catch(err){/* WebGL unavailable — hero gradient still carries it */}
 }
-window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.requestIdleCallback||setTimeout)(()=>{const load=src=>new Promise((ok,fail)=>{const el=document.createElement('script');el.src=src;el.onload=ok;el.onerror=fail;document.head.appendChild(el)});Promise.all([load('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js'),load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js')]).then(()=>load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')).then(startHeroField).catch(()=>{});},{timeout:2000}),innerWidth<760?4000:0)});
+window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.requestIdleCallback||setTimeout)(()=>{const load=src=>new Promise((ok,fail)=>{const el=document.createElement('script');el.src=src;el.onload=ok;el.onerror=fail;document.head.appendChild(el)});Promise.all([load('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js'),load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js')]).then(()=>load('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')).then(startHeroField).catch(()=>{});},{timeout:2000}),innerWidth<760?600:0)});
 
 // 3D Marquee component using Three.js
 (function() {
