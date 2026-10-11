@@ -7,40 +7,40 @@
 const posts = [
   {
     slug: 'free-read-along-audiobooks',
-    title: 'Free Read-Along Audiobooks: Where to Find Audio With Text',
-    metaTitle: 'Free Read-Along Audiobooks: Where to Find Them (2026)',
-    description: 'Where to find free read-along audiobooks for kids and adults: LibriVox, Storynory, Lit2Go, Libby and Project Gutenberg, what is really synced with text, and how to get word-by-word highlighting.',
+    title: 'Free Read-Along Audiobooks: How to Read Along With Any Free Audiobook',
+    metaTitle: 'Free Read-Along Audiobooks: How to Read Along (2026)',
+    description: 'Free audiobooks rarely come with synced text. Find free LibriVox and public domain audiobooks, then read along word by word with HushBook, which transcribes the audio on your phone.',
     category: 'Free audiobooks',
     datePublished: '2026-10-11',
     dateModified: '2026-10-11',
-    readingTime: '5 min read',
+    readingTime: '3 min read',
     keywords: [
       'free read along audiobooks',
       'read along audio books free',
       'free audiobooks with text',
       'free audiobooks with text on screen',
-      'free read along books for kids',
-      'free audiobooks and ebooks to read along',
       'audiobooks with highlighted text',
       'librivox read along',
-      'libby read along books'
+      'read along with audiobook app',
+      'free audiobook app with text'
     ],
     // Answer-first summary for readers and AI answer engines. Every point is
     // stated in the post body; keep it that way when editing.
     takeaways: [
-      '"Read-along" means three things: audio plus text you follow yourself, books that highlight words as they are spoken, and highlighting synced to any audiobook. Free sources mostly give the first.',
-      'LibriVox recordings are public domain, with source texts mainly from Project Gutenberg and audio hosted on the Internet Archive, so a free text is available for most books but is not synced.',
-      'Storynory and Lit2Go offer free children\'s audio with text or PDFs. Libby read-alongs are free with a library card, but highlighting only appears on titles from some publishers.',
-      'Audible\'s Read & Listen, launched for US users on February 18, 2026, is a discount for owners of both editions, not a free feature.',
-      'HushBook transcribes an audiobook file you can legally import, such as a LibriVox MP3 or M4B, on your phone and highlights each word as the narrator reads. It cannot import protected Audible downloads.'
+      'Free audiobooks almost never come with synced text, so a read-along has to be created from the recording.',
+      'LibriVox recordings are public domain, with source texts mainly from Project Gutenberg and audio hosted on the Internet Archive, so they are free to use for any purpose.',
+      'HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. It transcribes the recording on your phone and highlights each word as the narrator reads. Tap any word to jump to it.',
+      'The core read-along is free to start. It also has profiles for dyslexia or ADHD and low vision.',
+      'Limits: the transcript comes from speech recognition, so unusual names can come out wrong, and HushBook cannot import protected files such as Audible downloads.'
     ],
     faqs: [
-      ['Where can I find free read-along audiobooks?', 'LibriVox, Storynory and Lit2Go offer free audio, with text or PDFs to follow. Libby offers read-along ebooks free with a library card. Project Gutenberg supplies the free text of classics.'],
-      ['Are there free audiobooks with text on screen?', 'For children, Libby read-alongs and Storynory. For adults, usually a LibriVox recording beside a Project Gutenberg text, which you follow yourself. Word-by-word highlighting needs an app that syncs the two.'],
-      ['Does Libby highlight the text in read-along books?', 'On some. OverDrive says text is highlighted as the narrator reads only for titles from some publishers. Read-alongs also offer automatic page turning and narrator speed and volume controls.'],
+      ['How do I read along with a free audiobook?', 'Download a public domain audiobook from the HushBook store, or import your own MP3 or M4B. HushBook transcribes it on your phone, then highlights each word as the narrator reads.'],
+      ['Where can I find free audiobooks to read along with?', 'LibriVox and the Internet Archive offer free public domain audiobooks, and HushBook\'s built-in store lets you browse and download them.'],
       ['Are LibriVox audiobooks really free?', 'Yes. LibriVox says all its audio is in the public domain and may be used for any purpose. The books are old, and some contain outdated or offensive language.'],
-      ['Is Audible Read & Listen free?', 'No. It launched for US users on February 18, 2026 and discounts the audiobook if you own the matching Kindle ebook.'],
-      ['Can I get highlighted text for a free audiobook?', 'Yes, with an app that transcribes the recording. HushBook does this on your phone for audio files you can legally import, such as LibriVox MP3 or M4B files, and the transcript can contain errors on unusual names.']
+      ['Is HushBook free?', 'The core read-along is free to start, so you can try it on a free LibriVox book.'],
+      ['Is this the same as text-to-speech?', 'No. Text-to-speech uses a synthetic voice to read a text. HushBook follows a human narrator and highlights each word as it is spoken.'],
+      ['Can HushBook read along with Audible audiobooks?', 'No. It cannot import protected files such as Audible downloads. It works with audio files you can legally import, such as LibriVox MP3 or M4B files.'],
+      ['Is the transcript always accurate?', 'Not always. It comes from speech recognition, so unusual names, invented words and old-fashioned spellings can come out wrong.']
     ]
   },
   {

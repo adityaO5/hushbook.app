@@ -1,76 +1,58 @@
-# Free Read-Along Audiobooks: Where to Find Audio With Text
+# Free Read-Along Audiobooks: How to Read Along With Any Free Audiobook
 
-There are good free read-along audiobooks, but "read-along" means three different things depending on where you look. Some sites give you the audio and the text side by side, and you follow along yourself. A few kids' books highlight each word as it's spoken. And for adult books, the highlighting usually doesn't exist unless you create it.
+You can read along with a free audiobook, word by word, on your phone. The books are free, the app is free to start, and the highlighting happens on your device.
 
-Here's where each kind lives, what's actually free, and how to get word-by-word highlighting on a free audiobook.
+The catch is that free audiobooks almost never come with synced text. You get a recording, and the book's text lives somewhere else. This guide covers where to find free audiobooks you can legally use, and how to turn them into a read-along with [HushBook](/).
 
-(I build an audiobook app, so that's in here too. I've kept it to one section near the end.)
+## What does read-along mean?
 
-## What does "read-along" actually mean?
+Most people want one thing: to hear the narrator and see the words, with the current word marked. That's what HushBook does. It highlights each word as it's spoken, scrolls the text as the audio plays, and lets you tap any word to jump to that point in the recording.
 
-Three things get called read-along, and it helps to know which one you want:
+It's different from text-to-speech, where a synthetic voice reads a text aloud. Here a human narrator reads, and the app finds where each word falls in the recording. There's a longer explanation in the [immersive reading guide](/blog/what-is-immersive-reading).
 
-- **Audio plus text.** You have a recording and the book's text, and you keep your place yourself. Free and easy to find.
-- **Highlighted read-along.** The app marks each word or line as the narrator says it. Common in children's picture books, rare for full-length books.
-- **Synced to any audiobook.** Highlighting for a regular audiobook recording you already have. This is the hard one, and it's mostly what's missing.
-
-Understood, the non-profit learning-differences site, makes the same point about library audiobooks. They "aren't usually synced up with text," so a child reads the printed book while listening. Free doesn't mean synced.
-
-## Where do you find free audiobooks with text?
+## Where do free audiobooks come from?
 
 ### LibriVox
 
 LibriVox is a volunteer project that records public domain books and gives the audio away. Its About page says: "All our audio is in the public domain, so you may use it for whatever purpose you wish." The source texts come mainly from Project Gutenberg, and the Internet Archive hosts the audio files.
 
-That pairing is the whole trick. For most LibriVox books, the matching text is a free Gutenberg download, so you can read along on any device. The catch is that the two aren't synced. Many of these books are also very old and, as LibriVox itself warns, may contain outdated or offensive language or ideas.
+That means thousands of classics with human narrators, free to download and keep. Many of these books are very old, and as LibriVox itself warns, may contain outdated or offensive language or ideas.
 
-### Storynory
+### Internet Archive
 
-Storynory offers free audio stories for children, mostly fairy tales and classics such as *Alice in Wonderland*. Each story comes with a text version, so a parent can have the page open while the child listens.
+The Internet Archive hosts the LibriVox audio files, so the same recordings are available there too.
 
-### Lit2Go
+### Your own files
 
-Lit2Go has free audio versions of books that are out of copyright. It offers downloadable PDFs so children can read along, and it sorts books by reading level.
+Any recording you legally own as an ordinary audio file works too, such as an MP3 or M4B. If you're unsure which format you have, [M4B vs MP3](/blog/m4b-vs-mp3) explains the difference.
 
-### Project Gutenberg
+## How do you read along with a free audiobook in HushBook?
 
-Gutenberg has more than 50,000 free classic ebooks, according to Understood. It's the text side of the equation. Pair a Gutenberg ebook with the same book's LibriVox recording and you have a free read-along, although you'll be following the words by eye.
+1. **Get the audiobook.** HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. Search for a title and download it. Or import your own MP3 or M4B.
+2. **Let it transcribe.** HushBook transcribes the recording on your phone, so the audio never leaves your device. The transcript is matched to the audio word by word.
+3. **Press play.** Each word highlights as the narrator reads it, and the text scrolls along. Tap a word to jump there. Change the speed, or keep listening with the screen locked.
 
-### Your library, through Libby
+The core read-along is free to start, so you can try it on a free LibriVox book without paying for anything.
 
-If you have a library card, Libby is free to install and use, and many libraries add read-along ebooks for children. OverDrive describes them as narrated ebooks with page turning that happens automatically, with controls for the narrator's speed and volume. On some titles the text is highlighted as the narrator reads, but only for books from some publishers. Don't assume every read-along does it.
+## Who is it useful for?
 
-In Libby, filter your search by format and choose read-along books, or search "read along" in the kids section. The adult audiobooks you borrow in Libby are separate: they play audio only.
+- **Anyone who loses their place.** When your mind wanders, the highlighted word shows you exactly where the narrator is.
+- **Language learners.** You hear a word and see how it's spelled at the same moment.
+- **Readers with dyslexia or ADHD.** HushBook has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
+- **Readers with low vision.** Another profile uses a high-contrast, hyper-legible font and large type for the highlighted line.
+- **Classics readers.** Older language is easier to follow when you can hear it and see it.
 
-## Are there free read-along audiobooks for adults?
+## What can't it do?
 
-Free audiobooks for adults are easy to find. The ones with text attached are harder.
+Two honest limits.
 
-- **Classics.** A LibriVox recording and the Gutenberg text, as above. Fine if you're happy to keep your own place.
-- **New releases.** Audible's Read & Listen launched for US users on February 18, 2026, but it's a discount, not a free feature: you need to own both the audiobook and the matching Kindle ebook. [Here's how it works](/blog/can-you-read-along-with-audible).
-- **Library audiobooks.** Free with a card, but audio only.
+- **The transcript comes from speech recognition.** Unusual names, invented words and old-fashioned spellings can come out wrong. It's good, not perfect.
+- **It can't import protected files.** Audiobooks locked to a store, such as Audible downloads, can't be moved into another app. HushBook works with files you can legally import, which is why the free public domain library is the best place to start.
 
-If you've heard of text-to-speech as a free alternative, it's a different thing. It reads a text aloud with a synthetic voice. It isn't a human narrator, and it isn't an audiobook you're following. There's a longer explanation in the [immersive reading guide](/blog/what-is-immersive-reading).
+## Pick a book and try it
 
-## How do you get word-by-word highlighting on a free audiobook?
-
-This is what I built HushBook for. You give it a recording you can legally use, for example a LibriVox MP3 or M4B, and it transcribes the audio on your phone and highlights each word as the narrator reads. You can tap a word to jump to it. If the format question is new to you, [M4B vs MP3](/blog/m4b-vs-mp3) explains what each file is.
-
-HushBook also has a store of public domain audiobooks from LibriVox and the Internet Archive, so you can find a book and read along without leaving the app. The core read-along is free to start.
-
-Two honest limits. The transcript comes from speech recognition, so unusual names and old-fashioned words can come out wrong. And it can't import protected files, such as Audible downloads, because those are locked to the store that sold them. There's a quick overview at [audiobook with text](/audiobook-with-text).
-
-## Which free option should you pick?
-
-- **Child, picture books:** Libby read-alongs through your library, or Storynory with the text open.
-- **Child, classics:** Lit2Go with the PDF, or LibriVox with the Gutenberg text.
-- **Adult, classic novel:** a LibriVox recording with synced highlighting in an app, or the Gutenberg text beside it.
-- **Adult, new release:** Audible's Read & Listen if you own both editions; otherwise there's no free way to get synced text for it.
+If you've never read along with an audiobook, start with a book you already half-know. A short classic from LibriVox is a good test, because you'll notice quickly how much easier it is to stay with the story when the words are in front of you. There's a quick overview of the idea at [audiobook with text](/audiobook-with-text).
 
 ## Sources
 
 - [LibriVox: About LibriVox](https://librivox.org/pages/about-librivox/)
-- [Understood: Where to find free audiobooks and digital text-to-speech books for your child](https://www.understood.org/en/articles/free-audiobooks-and-digital-text-to-speech-books-for-your-child)
-- [OverDrive: Read-alongs in Libby](https://resources.overdrive.com/library/libby-features/overdrive-read-alongs/)
-- [Libby by OverDrive on the App Store](https://apps.apple.com/app/libby-by-overdrive-labs/id1076402606)
-- [AOL: Audible launches Read & Listen](https://www.aol.com/articles/audible-launches-read-listen-allowing-133000665.html)
