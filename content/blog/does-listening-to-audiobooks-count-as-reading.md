@@ -70,8 +70,7 @@ And when people read at their own pace, there were "no reliable effects." She al
 
 So I won't tell you it makes you understand more. Where I think it earns its place is the practical stuff. If the words are on screen, you can see exactly where you are when your mind comes back. You can catch a character's name you didn't quite hear. If you'd like to try it, there's a fuller guide to [immersive reading](/blog/what-is-immersive-reading).
 
-That's what I built HushBook to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, and highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong. It can't import protected Audible downloads either. If your books live in Audible and Kindle, [Audible's own Read & Listen](/blog/can-you-read-along-with-audible) is the place to start.
-
+That's what I built HushBook to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, and highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong. It can't import protected Audible downloads either.
 ## Pick by the book
 
 Audiobook or print isn't really the choice that matters. The book is. Listen to the novel on your commute, enjoy the narrator, and count it when you're done. Read the dense stuff on paper, or with the text in front of you, so you can slow down and go back.

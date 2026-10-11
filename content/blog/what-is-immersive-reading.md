@@ -26,15 +26,15 @@ HushBook works from audio. The HushBook engine makes a transcript on your phone 
 
 The similar names make this confusing. Microsoft's reading tools are for digital text. In Edge, Reading mode can simplify a web page, change how the text looks and read it aloud.
 
-If you're trying to hear a web article, that may be all you need. If you've bought a recording and want to follow its narrator, you need a setup that works with the recording.
+They work on text, not on a recording. To follow a human narrator, you need a setup built around the recording, which is what HushBook does.
 
-## Check Audible's own option before buying anything else
+## What about Audible's Read & Listen?
 
 Audible announced Read & Listen inside its app in February 2026. It pairs eligible audiobook and ebook editions from your Audible and Kindle libraries and highlights the text with the narration. The announcement described a US rollout first, with other markets following.
 
-So if your books are already there, look for that option. Check your title and editions, and whether your app and region have it. You may need both formats. I'd check that before paying for another copy.
+It works inside Audible's own app, for eligible titles, and you may need both formats.
 
-Protected Audible downloads can't be imported into HushBook. An audiobook purchase doesn't automatically give you an unrestricted file to open in any app.
+HushBook is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or free public domain books. Protected Audible downloads can't be imported into HushBook, because an audiobook purchase doesn't automatically give you an unrestricted file to open in any app.
 
 ## Trying it with your own recording
 
@@ -54,7 +54,7 @@ For me, seeing the words was what made the chapter stick. That doesn't mean ever
 
 Understood describes audiobooks, text-to-speech and display adjustments as reading supports. Its expert-reviewed guide also says assistive tools alone probably won't improve reading skills. An app doesn't replace teaching or treatment for ADHD or dyslexia.
 
-What I wanted from HushBook was a way back into the book when attention slips. It's free to download, with optional Pro. If you have a recording you can import, try a passage and see whether the highlight helps you stay with it. For a book in a paid catalogue, check that catalogue's read-along features first.
+What I wanted from HushBook was a way back into the book when attention slips. It's free to download, with optional Pro. If you have a recording you can import, or want to start with a free LibriVox book from the in-app store, try a passage and see whether the highlight helps you stay with it.
 
 ## Sources and further reading
 

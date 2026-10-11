@@ -165,7 +165,7 @@ const posts = [
     slug: 'what-is-immersive-reading',
     title: 'What Is Immersive Reading? How to Read and Listen at the Same Time',
     metaTitle: 'What Is Immersive Reading? How to Read and Listen at Once',
-    description: 'Immersive reading means following the text while you listen to the audiobook. How it differs from text-to-speech, Microsoft Immersive Reader, and Audible Read & Listen, and how to try it with your own recording.',
+    description: 'Immersive reading means following the text while you listen to the audiobook. How it differs from text-to-speech and Microsoft Immersive Reader, and how to try it with HushBook on your own recording or a free public domain book.',
     category: 'Read-along guides',
     datePublished: '2026-10-07',
     dateModified: '2026-10-07',
@@ -188,7 +188,7 @@ const posts = [
       'Immersive reading means reading the words while listening to the same book, either with an app that highlights each word or with a book on your lap and headphones on.',
       'An audiobook already has a human narrator; a text-to-speech reader turns a document into computer speech. Read-along for an audiobook needs text that follows that specific recording.',
       'Microsoft Immersive Reader and Edge Reading mode work on digital text such as web pages. They are not an audiobook library.',
-      'Audible announced Read & Listen in February 2026 for eligible Audible and Kindle editions, starting in the US. Check it before buying another copy.',
+      'Audible announced Read & Listen in February 2026 for eligible Audible and Kindle editions, starting in the US, and it works inside Audible\'s own app. HushBook covers recordings you can legally import, such as MP3, M4B and free public domain books.',
       'HushBook transcribes an audiobook file you can legally import (MP3 or M4B) on your phone and highlights each word in time with the narrator, offline.'
     ],
     faqs: [
