@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Free Read-Along Audiobooks: Where to Find Audio With Text</title>
+      <link>https://hushbook.app/blog/free-read-along-audiobooks</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/free-read-along-audiobooks</guid>
+      <pubDate>Sun, 11 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Free audiobooks</category>
+      <description>Where to find free read-along audiobooks for kids and adults: LibriVox, Storynory, Lit2Go, Libby and Project Gutenberg, what is really synced with text, and how to get word-by-word highlighting.</description>
+    </item>
     <item>
       <title>Does Listening to an Audiobook Count as Reading?</title>
       <link>https://hushbook.app/blog/does-listening-to-audiobooks-count-as-reading</link>
