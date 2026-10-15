@@ -120,6 +120,9 @@ tbody th { min-width: 150px; color: var(--paper); }
 .rank-card .best-for { margin: 0 56px 12px 0; color: var(--amber); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .rank-card p { margin: 8px 0; font-size: 16px; }
 .rank-card .verdict { color: var(--paper); }
+.rank-card.top-pick { border-color: rgba(243, 192, 121, .55); }
+.why-list { margin: 16px 0 0; padding-left: 20px; }
+.why-list li { margin: 8px 0; color: var(--paper); line-height: 1.6; }
 .rank-card .source { margin-top: 14px; font-size: 14px; }
 .faq { border-top: 1px solid var(--line-soft); }
 .faq details { padding: 20px 0; border-bottom: 1px solid var(--line-soft); }

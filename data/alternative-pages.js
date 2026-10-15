@@ -16,7 +16,7 @@ const profiles = {
     accessibility: 'Vision, dyslexia, and comprehension profiles',
     platforms: 'iOS and Android',
     cost: 'Free core; optional Pro analytics',
-    bestFor: 'Owned files, private transcripts, and active read-along',
+    bestFor: 'Reading along with any audiobook you can import, privately and free to start',
     strength: 'Combines human narration with private, word-level synchronized text and audiobook-specific reading tools.',
     tradeoff: 'It is not a commercial audiobook subscription catalog, and DRM-protected purchases cannot be imported as ordinary files.'
   },
@@ -154,7 +154,8 @@ const profiles = {
     cost: 'Free',
     bestFor: 'Free classics and public-domain listening',
     strength: 'Nonprofit, ad-free source of recordings released into the public domain.',
-    tradeoff: 'Catalog is limited to public-domain works, and narration quality varies by volunteer recording.'
+    tradeoff: 'Catalog is limited to public-domain works, and narration quality varies by volunteer recording.',
+    hushbookNote: 'HushBook already includes LibriVox recordings in its in-app library, with word-by-word synced text added.'
   },
   libby: {
     name: 'Libby',
@@ -205,7 +206,8 @@ const profiles = {
     cost: 'Membership credits or a la carte purchases; prices vary',
     bestFor: 'Buying audiobooks while supporting a local bookstore',
     strength: 'Sells DRM-free audiobooks and routes membership support to independent bookshops instead of a single big-box catalog.',
-    tradeoff: 'It is a storefront, not an on-device transcription player; read-along still needs a separate app such as HushBook.'
+    tradeoff: 'It is a storefront, not an on-device transcription player; read-along still needs a separate app such as HushBook.',
+    hushbookNote: 'Its DRM-free downloads import straight into HushBook, so the two work well together.'
   },
   voice: {
     name: 'Voice Audiobook Player',
@@ -349,13 +351,19 @@ const pages = [
   {
     slug: 'audible-alternatives',
     competitor: 'Audible',
-    title: '5 Best Audible Alternatives for Library, Bookstore, and Owned Files',
-    description: 'Compare Libby, Hoopla, Libro.fm, LibriVox, and HushBook as Audible alternatives for library cards, independent stores, free classics, and private owned-file read-along.',
+    title: '5 Best Audible Alternatives in 2026, With Read-Along Ranked First',
+    description: 'HushBook is the best Audible alternative if you want to see every word as the narrator reads it, free to start and private. How it compares with Libby, Hoopla, Libro.fm, and LibriVox.',
     question: 'What are the best Audible alternatives for listeners who compare library apps, independent bookstores, free catalogs, and private read-along of owned files today?',
-    directAnswer: 'Libby and Hoopla fit library-card borrowing. Libro.fm fits buying DRM-free titles that support independent bookstores. LibriVox fits free public-domain classics. HushBook fits owned files that need private word-level transcripts; Audible DRM files cannot be imported.',
+    directAnswer: 'HushBook is the best overall Audible alternative for listeners who want to read along. It highlights every word as the narrator reads, works with your own files and free LibriVox classics, makes the transcript on your phone, and is free to start. Libby and Hoopla are best for borrowing with a library card, and Libro.fm for buying DRM-free titles. Audible DRM files cannot be imported into HushBook.',
+    hushbookVerdict: 'Audible only shows synced text when you own both the audiobook and the matching Kindle ebook. HushBook builds word-level text from the recording itself, so any audiobook you can import, plus thousands of free classics, becomes a read-along with no second purchase and no account.',
+    whyHushBook: [
+      'Synced text without buying the book twice: Audible\'s Immersion Reading needs the matching Kindle ebook, while HushBook makes the text from the audio itself.',
+      'Free to start, with a built-in library of LibriVox and Internet Archive classics, so you can read along without a subscription.',
+      'Private by design: transcription runs on your phone, nothing is uploaded, and there is no account to create.'
+    ],
     options: ['hushbook', 'libby', 'hoopla', 'librofm', 'librivox'],
     verdicts: [
-      ['Owned audiobook files with read-along', 'HushBook', 'It imports local audio and builds private word-level transcripts on the phone.'],
+      ['Best overall', 'HushBook', 'Every word highlights as the narrator reads, on any audiobook you can import, free to start.'],
       ['Library card borrowing', 'Libby', 'It uses a participating library card to borrow licensed audiobooks without a commercial membership.'],
       ['Independent bookstore purchases', 'Libro.fm', 'It sells DRM-free audiobooks and routes membership support to local bookshops.']
     ],
@@ -381,10 +389,16 @@ const pages = [
     title: '5 Best BookPlayer Alternatives for Android and iPhone',
     description: 'Compare five BookPlayer alternatives for local audiobook files, Android support, self-hosting, offline playback, and synchronized read-along text today.',
     question: 'What are the best BookPlayer alternatives for Android and iPhone listeners who need audiobook imports, synced transcripts, accessibility tools, and reliable offline playback?',
-    directAnswer: 'For listeners who want BookPlayer-style local playback plus private synchronized transcripts on iOS and Android, HushBook is the best fit. Voice and Listen are focused Android players, Audiobookshelf is best for self-hosted cross-device libraries, and Smart AudioBook Player offers mature Android controls.',
+    directAnswer: 'HushBook is the best overall BookPlayer alternative. It plays the same local files, including M4B with chapters, on both iPhone and Android, and adds what no other player here has: every word highlighted as the narrator reads, transcribed privately on your phone. Voice and Listen are plain Android players, Audiobookshelf suits self-hosted households, and Smart AudioBook Player offers mature Android controls.',
+    hushbookVerdict: 'It does everything you use a file player for, then shows you the words. One app on iPhone and Android, no server, and dyslexia, ADHD and low-vision reading profiles that plain players do not have.',
+    whyHushBook: [
+      'The only player in this list that turns your audiobook files into a synced, word-by-word read-along.',
+      'Works on both iPhone and Android, while BookPlayer is Apple-only and Voice, Listen and Smart AudioBook Player are Android-only.',
+      'Reading profiles for dyslexia and ADHD, low vision, and comprehension, plus reading streaks and stats that file players do not offer (some stats are in optional Pro).'
+    ],
     options: ['hushbook', 'voice', 'audiobookshelf', 'listen', 'smart'],
     verdicts: [
-      ['Private synchronized text', 'HushBook', 'It adds on-device word-level transcription to owned audiobook playback.'],
+      ['Best overall', 'HushBook', 'Local-file playback on iPhone and Android, plus word-level synced text made on the phone.'],
       ['Minimal open-source Android playback', 'Voice Audiobook Player', 'It is free, account-free, and focused on reliable local files.'],
       ['Cross-device self-hosting', 'Audiobookshelf', 'It syncs progress for multiple users through a server you control.']
     ],
@@ -410,10 +424,16 @@ const pages = [
     title: '5 Best Storytel Alternatives for Reading and Listening',
     description: 'Compare five Storytel alternatives for owned audiobooks, commercial catalogs, ebooks, free classics, private transcripts, and offline listening in 2026.',
     question: 'What are the best Storytel alternatives for readers who want owned files, free classics, private offline playback, synchronized text, and flexible reading tools?',
-    directAnswer: 'For owned audiobook files with private synchronized text, HushBook is the best Storytel alternative. Audible is best for commercial purchases, Everand for ebook-and-audiobook unlocks, Spotify for bundled listening hours, and LibriVox for free public-domain classics.',
+    directAnswer: 'HushBook is the best overall Storytel alternative for people who want to read and listen at the same time. Instead of switching between an ebook and an audiobook, you see each word highlight as the narrator reads. It is free to start, includes free classics, and needs no subscription. Audible is best for buying new releases, Everand for ebook-and-audiobook unlocks, and Spotify for bundled listening hours.',
+    hushbookVerdict: 'Storytel gives you ebooks and audiobooks side by side. HushBook joins them: the narrator reads and the words light up in step, on your own files or free classics, with no monthly fee to keep your library.',
+    whyHushBook: [
+      'True read-along: each word highlights as the narrator speaks, instead of separate ebook and audiobook modes.',
+      'No subscription needed for the core app, and books you import stay yours instead of disappearing when a plan ends.',
+      'Free public-domain classics from LibriVox and the Internet Archive are built in.'
+    ],
     options: ['hushbook', 'audible', 'everand', 'spotify', 'librivox'],
     verdicts: [
-      ['Owned files and read-along', 'HushBook', 'It keeps imported books local and synchronizes a transcript on-device.'],
+      ['Best overall', 'HushBook', 'Words highlight with the narrator, free to start, and your books stay on your phone.'],
       ['Commercial audiobook purchases', 'Audible', 'Its membership and credit model centers professionally narrated commercial releases.'],
       ['Ebooks and audiobooks in one plan', 'Everand', 'Its plans include unlocks for both formats plus a smaller unlimited catalog.']
     ],
@@ -440,10 +460,16 @@ const pages = [
     title: '5 Best Pocket FM Alternatives for Complete Audiobooks',
     description: 'Compare five Pocket FM alternatives for complete audiobooks, owned files, free classics, offline playback, subscription catalogs, and synchronized text.',
     question: 'What are the best Pocket FM alternatives for listeners seeking complete audiobooks, local files, free classics, offline access, synchronized text, and fewer paywalls?',
-    directAnswer: 'For complete audiobook files you own and want to read along with privately, HushBook is the best Pocket FM alternative. Audible and Storytel are better for commercial catalogs, Spotify suits listeners with included hours, and LibriVox is best for free classics.',
+    directAnswer: 'HushBook is the best overall Pocket FM alternative if you want complete books without paying per episode. It is free to start, includes free classics, plays your own audiobook files, and highlights every word as the narrator reads. Audible and Storytel are better for big commercial catalogs, and Spotify suits listeners who already pay for Premium.',
+    hushbookVerdict: 'No coins, no episode unlocks, no cliffhanger paywalls. Whole books, free classics included, with the text on screen so you can follow every word.',
+    whyHushBook: [
+      'Complete books instead of pay-per-episode serials: no coins or unlocks in the core app.',
+      'Every word highlights as the narrator reads, which no other option in this list offers for its audio.',
+      'Free classics are built in, and your own audiobook files play and transcribe offline after one engine download.'
+    ],
     options: ['hushbook', 'audible', 'storytel', 'spotify', 'librivox'],
     verdicts: [
-      ['Owned complete audiobooks', 'HushBook', 'It plays local books and adds private synchronized text without episodic unlocks.'],
+      ['Best overall', 'HushBook', 'Complete books with synced text, free to start, and no episode unlocks.'],
       ['Serialized audio drama', 'Pocket FM', 'Its discovery and release model is purpose-built for episodic fiction.'],
       ['Free classic audiobooks', 'LibriVox', 'Its volunteer recordings are free and released into the public domain.']
     ],
@@ -470,10 +496,16 @@ const pages = [
     title: '5 Best Speechify Alternatives for Accessible Reading',
     description: 'Compare five Speechify alternatives for audiobooks, PDFs, EPUBs, AI voices, accessibility, offline use, and private synchronized read-along text in 2026.',
     question: 'What are the best Speechify alternatives for readers who want human-narrated audiobooks, private on-device transcripts, synchronized text, accessibility profiles, and reliable offline listening?',
-    directAnswer: 'For existing human-narrated audiobooks that need private synchronized text, HushBook is the best Speechify alternative. NaturalReader fits mixed study documents, Voice Dream Reader prioritizes Apple accessibility, ElevenReader emphasizes natural AI voices, and Speech Central supports broad text-source workflows.',
+    directAnswer: 'HushBook is the best overall Speechify alternative for books. Instead of an AI voice reading text, you hear a real human narrator while every word highlights on screen. It is free to start, has dyslexia, ADHD and low-vision profiles, and transcribes on your phone. If you mainly need PDFs and web pages read aloud, NaturalReader, Voice Dream Reader, ElevenReader and Speech Central are text-to-speech tools like Speechify.',
+    hushbookVerdict: 'A human narrator beats a synthetic voice for books. HushBook keeps the real performance, adds word-by-word highlighting, and costs nothing to start, compared with Speechify Premium listed at $29 a month.',
+    whyHushBook: [
+      'Real human narration with synced highlighting, instead of an AI voice reading text.',
+      'Free to start, while Speechify Premium is listed at $29 a month.',
+      'Built for reading support: dyslexia and ADHD fonts and focus view, a low-vision profile, and on-device transcription with no account.'
+    ],
     options: ['hushbook', 'naturalreader', 'voicedream', 'elevenreader', 'speechcentral'],
     verdicts: [
-      ['Human-narrated audiobooks with synced text', 'HushBook', 'It preserves the narrator and transcribes the audio privately on-device.'],
+      ['Best overall', 'HushBook', 'A human narrator with every word highlighted, free to start and private.'],
       ['PDF, scan, and study-document reading', 'NaturalReader', 'It combines broad document support with OCR and study tools.'],
       ['Apple accessibility workflows', 'Voice Dream Reader', 'Its product design centers accessible typography and text-to-speech controls.']
     ],
