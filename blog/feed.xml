@@ -6,7 +6,31 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How to Focus on Audiobooks When Your Mind Keeps Wandering</title>
+      <link>https://hushbook.app/blog/how-to-focus-on-audiobooks</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/how-to-focus-on-audiobooks</guid>
+      <pubDate>Thu, 15 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Reading and listening</category>
+      <description>Listening gives your mind more room to drift than reading does, and a 2013 study shows it. Why it happens, seven fixes that work, and how reading along with the words keeps you on track.</description>
+    </item>
+    <item>
+      <title>What Speed Should You Listen to Audiobooks At?</title>
+      <link>https://hushbook.app/blog/audiobook-listening-speed</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/audiobook-listening-speed</guid>
+      <pubDate>Thu, 15 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Reading and listening</category>
+      <description>Somewhere between 1x and 2x for most books. What the UCLA study on 2x playback found, where fast listening costs you, a speed guide by book type, and how to find your own speed.</description>
+    </item>
+    <item>
+      <title>What Is an Unabridged Audiobook? Abridged vs Unabridged Explained</title>
+      <link>https://hushbook.app/blog/abridged-vs-unabridged-audiobooks</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/abridged-vs-unabridged-audiobooks</guid>
+      <pubDate>Thu, 15 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Audiobook formats</category>
+      <description>Unabridged means the complete book read word for word. Abridged means an editor cut it first. What gets cut, why abridged editions exist, how to tell which one you are buying, and which to choose.</description>
+    </item>
     <item>
       <title>Free Read-Along Audiobooks: How to Read Along With Any Free Audiobook</title>
       <link>https://hushbook.app/blog/free-read-along-audiobooks</link>

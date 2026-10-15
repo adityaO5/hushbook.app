@@ -6,6 +6,117 @@
 
 const posts = [
   {
+    slug: 'how-to-focus-on-audiobooks',
+    title: 'How to Focus on Audiobooks When Your Mind Keeps Wandering',
+    metaTitle: 'How to Focus on Audiobooks: 7 Fixes for a Wandering Mind',
+    description: 'Listening gives your mind more room to drift than reading does, and a 2013 study shows it. Why it happens, seven fixes that work, and how reading along with the words keeps you on track.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-15',
+    dateModified: '2026-10-15',
+    readingTime: '5 min read',
+    keywords: [
+      'how to focus on audiobooks',
+      'can\'t focus on audiobooks',
+      'how to concentrate on audiobooks',
+      'mind wanders listening to audiobooks',
+      'how to pay attention to audiobooks',
+      'why can\'t i focus on audiobooks',
+      'audiobooks adhd focus',
+      'how to retain audiobooks'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Mind wandering during audiobooks is normal. In a 2013 study of 211 students, listening produced more mind wandering than reading silently or aloud, along with worse memory and lower interest.',
+      'Listening involves your body less than reading, and the narrator keeps going after you drift, so you often miss a page before you notice.',
+      'What helps: a simple physical task, rewinding as soon as you notice, an easy first book, adjusting the speed, restarting after the first half hour, and not listening when exhausted.',
+      'Reading along with the text gives your eyes a job and shows exactly where the narrator is. HushBook transcribes an audiobook on your phone and highlights each word as it is spoken.',
+      'Listening is not worse for understanding overall: a 2022 meta-analysis of 46 studies found no reliable difference between reading and listening comprehension.'
+    ],
+    faqs: [
+      ['Why can\'t I focus on audiobooks?', 'Listening asks less of your body than reading, so attention slips more easily, and the narrator keeps going after you drift. A 2013 study found listening produced more mind wandering than silent reading or reading aloud.'],
+      ['Is it normal to zone out during audiobooks?', 'Yes. It is one of the most common complaints from new listeners, and minds wander in print too. You just notice it sooner on a page.'],
+      ['What should I do while listening to an audiobook?', 'Something physical that needs little thought, such as walking, cleaning, cooking or a puzzle. Avoid anything involving words, like texting or email, which competes with the narrator.'],
+      ['Does listening faster help you focus?', 'Sometimes. If a slow narrator bores you, 1.25x or 1.5x can hold your attention better. If you keep losing track, slow down instead.'],
+      ['Does reading along help with audiobook focus?', 'It can. With the text on screen your eyes have something to do, and if you drift, the highlighted word shows where the narrator is. HushBook does this for audiobook files you can legally import.'],
+      ['Are audiobooks good for ADHD?', 'Many people with ADHD find audiobooks easier than print, especially with a physical task or the text in front of them. HushBook has a dyslexia and ADHD profile with a focus view.']
+    ]
+  },
+  {
+    slug: 'audiobook-listening-speed',
+    title: 'What Speed Should You Listen to Audiobooks At?',
+    metaTitle: 'What Speed Should You Listen to Audiobooks At?',
+    description: 'Somewhere between 1x and 2x for most books. What the UCLA study on 2x playback found, where fast listening costs you, a speed guide by book type, and how to find your own speed.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-15',
+    dateModified: '2026-10-15',
+    readingTime: '4 min read',
+    keywords: [
+      'what speed should i listen to audiobooks',
+      'best audiobook speed',
+      'audiobook listening speed',
+      'is listening to audiobooks at 2x bad',
+      'audiobook speed comprehension',
+      'listening to audiobooks at 1.5x',
+      'average audiobook listening speed',
+      'does listening faster reduce comprehension'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Most people and most books land between 1x and 2x. The right speed depends on the book, the narrator and what you want from it.',
+      'A 2022 UCLA study in Applied Cognitive Psychology found that watching lectures at up to 2x did not significantly reduce comprehension, immediately or a week later.',
+      'That study used lectures and factual tests. In fiction, tone, pauses and stress carry meaning, so faster speeds can cost some of the feeling even when you keep the facts.',
+      'Rough guide: non-fiction 1.5x to 2x, plot-driven fiction 1.2x to 1.5x, literary fiction and poetry 1x to 1.25x, language learning 0.75x to 1x.',
+      'Start at 1x and go up in small steps. You have gone too far when you start rewinding. Reading along with highlighted text, as in HushBook, helps catch words at higher speeds.'
+    ],
+    faqs: [
+      ['What speed should I listen to audiobooks at?', 'Start at 1x for a chapter, then raise it in small steps until you start missing things. Most people settle between 1x and 2x, faster for non-fiction and slower for literary fiction.'],
+      ['Is listening to audiobooks at 2x bad?', 'Not for facts. A 2022 UCLA study found lectures at up to 2x did not significantly reduce comprehension. For fiction you may lose some of the narrator\'s tone and timing.'],
+      ['What is the best speed for non-fiction audiobooks?', 'Many listeners are comfortable at 1.5x to 2x. Slow down for chapters with numbers, arguments or anything you want to remember.'],
+      ['Can you get used to faster audiobook speeds?', 'Yes. Your ear adapts, so a speed that sounds rushed at first can feel normal after a few weeks. Raise it gradually.'],
+      ['Does reading along help at faster speeds?', 'It can. If a fast narrator slurs a word, you can see it on screen. HushBook highlights each word in sync at speeds from 0.5x to 3x.'],
+      ['Is listening at high speed cheating?', 'No. You heard every word. Whether a book at 2x feels the same is a matter of taste.']
+    ]
+  },
+  {
+    slug: 'abridged-vs-unabridged-audiobooks',
+    title: 'What Is an Unabridged Audiobook? Abridged vs Unabridged Explained',
+    metaTitle: 'What Is an Unabridged Audiobook? Abridged vs Unabridged',
+    description: 'Unabridged means the complete book read word for word. Abridged means an editor cut it first. What gets cut, why abridged editions exist, how to tell which one you are buying, and which to choose.',
+    category: 'Audiobook formats',
+    datePublished: '2026-10-15',
+    dateModified: '2026-10-15',
+    readingTime: '4 min read',
+    keywords: [
+      'what is an unabridged audiobook',
+      'abridged vs unabridged audiobook',
+      'unabridged audiobook meaning',
+      'what does unabridged mean',
+      'abridged audiobook meaning',
+      'how to tell if an audiobook is abridged',
+      'unabridged vs abridged',
+      'what is an abridged audiobook'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'An unabridged audiobook is the complete book read word for word. An abridged audiobook is a shortened version an editor cut before recording.',
+      'Abridged editions usually lose descriptions, side plots, minor characters and, in non-fiction, examples and technical detail. They can be many hours shorter.',
+      'Abridgment was common in the cassette and CD era, when every extra tape or disc cost money. Downloads made full-length recordings cheap, so most audiobooks today are unabridged.',
+      'To check, look for the Unabridged or Abridged label, compare the runtime to the book length, and watch for words like condensed, adapted or dramatized.',
+      'An abridged recording will not line up with a full ebook. HushBook avoids this by transcribing the audiobook itself, so the highlighted words always match what you hear.'
+    ],
+    faqs: [
+      ['What does unabridged mean on an audiobook?', 'It means the complete text of the book is read aloud, word for word, with nothing cut.'],
+      ['What is an abridged audiobook?', 'A shortened version of the book. An editor removes parts such as descriptions, subplots and minor characters before it is recorded.'],
+      ['How do I know if an audiobook is abridged?', 'Check the listing for an Abridged or Unabridged label, compare the runtime with the book\'s length, and look for words like condensed, adapted or dramatized in the description.'],
+      ['Should I buy abridged or unabridged?', 'Unabridged in almost every case, especially for school or a book club. Abridged can make sense for sampling a very long book or for young listeners.'],
+      ['Are most audiobooks unabridged now?', 'Yes. Abridged editions were common when audiobooks shipped on cassettes and CDs. With downloads, publishers mostly record the full text.'],
+      ['Can I read along with an abridged audiobook?', 'Not with a full ebook, because the text will stop matching. HushBook transcribes the recording itself, so the words on screen match whichever version you have.']
+    ]
+  },
+  {
     slug: 'free-read-along-audiobooks',
     title: 'Free Read-Along Audiobooks: How to Read Along With Any Free Audiobook',
     metaTitle: 'Free Read-Along Audiobooks: How to Read Along (2026)',

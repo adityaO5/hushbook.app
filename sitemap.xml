@@ -3248,15 +3248,39 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/how-to-focus-on-audiobooks</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-focus-on-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-focus-on-audiobooks"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/audiobook-listening-speed</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/audiobook-listening-speed"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/audiobook-listening-speed"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/abridged-vs-unabridged-audiobooks</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/abridged-vs-unabridged-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/abridged-vs-unabridged-audiobooks"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/free-read-along-audiobooks</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/free-read-along-audiobooks"/>
@@ -3264,7 +3288,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/does-listening-to-audiobooks-count-as-reading</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/does-listening-to-audiobooks-count-as-reading"/>
@@ -3272,7 +3296,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/m4b-vs-mp3</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/m4b-vs-mp3"/>
@@ -3280,7 +3304,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/can-you-read-along-with-audible</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/can-you-read-along-with-audible"/>
@@ -3288,7 +3312,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/what-is-immersive-reading</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/what-is-immersive-reading"/>
