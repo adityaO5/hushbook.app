@@ -1470,11 +1470,14 @@ function splitHeadingText(node,index){
   });
 }
 
+/* Arabic letters join contextually; per-char filtered spans break shaping,
+   so Arabic-script headings reveal as a block instead. */
+const COMPLEX_JOIN_RE=/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
 function prepareHeading(heading){
   const label=heading.textContent.replace(/\s+/g,' ').trim();
   if(!label)return;
   if(!heading.getAttribute('aria-label'))heading.setAttribute('aria-label',label);
-  splitHeadingText(heading,{value:0});
+  if(!COMPLEX_JOIN_RE.test(label))splitHeadingText(heading,{value:0});
   heading.dataset.charReveal='true';
 }
 
