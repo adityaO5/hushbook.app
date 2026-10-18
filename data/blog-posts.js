@@ -6,6 +6,43 @@
 
 const posts = [
   {
+    slug: 'why-do-i-fall-asleep-listening-to-audiobooks',
+    title: 'Why Do I Fall Asleep Listening to Audiobooks? And Is It Bad?',
+    metaTitle: 'Why Do I Fall Asleep Listening to Audiobooks? Is It Bad?',
+    description: 'A story gives your mind something to follow that is not your own worries, right when your body is primed to sleep. What a 2026 survey of 1,136 bedtime listeners found, whether the habit is bad, and how to keep your place.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-18',
+    dateModified: '2026-10-18',
+    readingTime: '7 min read',
+    keywords: [
+      'why do i fall asleep listening to audiobooks',
+      'fall asleep listening to audiobook',
+      'is it bad to fall asleep listening to audiobooks',
+      'falling asleep while listening to audiobook',
+      'does listening to an audiobook help you sleep',
+      'does listening to audiobooks while sleeping work',
+      'what happens if you listen to an audiobook while sleeping',
+      'audiobook sleep timer'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'A narrated story occupies the mental space your worries would use, at the time of day you are already primed to sleep. In a 2026 Swedish survey of 1,136 bedtime listeners, 53% listened every night and 47% did it to quiet racing thoughts.',
+      'It is not harmful as far as anyone has measured. A 2024 study of 56 intensive care patients found a recorded story improved sleep quality and lowered pulse and blood pressure.',
+      'The catch is reliance. Daily listeners were almost twice as likely as occasional listeners to say they struggle to fall asleep without an audiobook (aPR 1.93). The researchers call it an association, not proof of cause.',
+      'You do not absorb the book while asleep. Sleep studies show at most a faint implicit trace of single sounds or words, and deep sleep actively suppresses new auditory learning.',
+      'Use a sleep timer of 15 to 30 minutes or end of chapter, keep a separate bed book, and read along with the text in the morning to find the last sentence you remember. HushBook has both.'
+    ],
+    faqs: [
+      ['Why do I fall asleep listening to audiobooks?', 'A calm voice telling a story gives your mind something to follow instead of your own thoughts, your body is lying still in the dark, and if you do it nightly the narrator has become a sleep cue. Being tired at bedtime does most of the work.'],
+      ['Is it bad to fall asleep listening to audiobooks?', 'No study has found harm. A 2024 intensive care study found better sleep quality with a recorded story. The one pattern to watch is reliance: daily listeners in a 2026 survey were more likely to say they could not fall asleep without one.'],
+      ['Does listening to an audiobook help you sleep?', 'Many people say so. In the 2026 Uppsala survey, daily listeners were more likely than occasional listeners to report that audiobooks helped them fall asleep and improved their sleep. The authors caution these are self-reports, not measured sleep.'],
+      ['Does listening to audiobooks while sleeping work?', 'No. A 2017 study found the brain can pick up simple sound patterns in light sleep but suppresses them in deep sleep, and a 2019 study found only a faint implicit trace of single words. Nobody absorbs a chapter while asleep.'],
+      ['What happens if you listen to an audiobook while sleeping all night?', 'You lose your place, you may wake to a loud scene or a dead battery, and nothing you heard goes in. A sleep timer that stops the book 15 to 30 minutes in avoids all three.'],
+      ['How do I find where I fell asleep in an audiobook?', 'Rewind in 30 second steps until a scene sounds familiar, or use a player that shows the text. In HushBook you scroll back to the last sentence you remember and tap the word to jump the audio there.']
+    ]
+  },
+  {
     slug: 'how-to-focus-on-audiobooks',
     title: 'How to Focus on Audiobooks When Your Mind Keeps Wandering',
     metaTitle: 'How to Focus on Audiobooks: 7 Fixes for a Wandering Mind',

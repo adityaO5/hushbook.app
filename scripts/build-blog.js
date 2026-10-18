@@ -322,11 +322,11 @@ function renderHub() {
     publisher,
     blogPost: posts.map((post) => ({ '@type': 'BlogPosting', headline: post.title, url: `${site}/blog/${post.slug}`, datePublished: post.datePublished, dateModified: post.dateModified, author: { '@id': author['@id'], '@type': 'Person', name: author.name } }))
   };
-  const cards = posts.map((post) => `<article class="hub-card post-card"><span class="eyebrow">${escapeHtml(post.category)}</span><h2><a href="/blog/${post.slug}">${escapeHtml(post.title)}</a></h2><p>${escapeHtml(post.description)}</p><p class="post-meta"><time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time> · ${escapeHtml(post.readingTime)}</p></article>`).join('\n');
+  const rows = posts.map((post) => `<li class="post-row"><a class="post-link" href="/blog/${post.slug}"><span class="post-row-meta"><span class="eyebrow">${escapeHtml(post.category)}</span><time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time><span>${escapeHtml(post.readingTime)}</span></span><h2 class="post-row-title">${escapeHtml(post.title)}</h2><p class="post-row-desc">${escapeHtml(post.description)}</p><span class="post-row-cta" aria-hidden="true">Read the guide</span></a></li>`).join('\n');
   return `${head({ title: 'HushBook Blog: Read-Along Audiobooks and Immersive Reading', description: 'Practical guides to immersive reading: how to read and listen at the same time, follow an audiobook word by word, and pick the right read-along setup.', canonical, schema, type: 'website' })}
 <body>
 ${nav()}
-<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Straight answers for people who love audiobooks.</h1><p class="lede">How to read along while you listen, which file formats to keep, and how to stay with a chapter when your attention drifts. Plain guides from Rakesh Aditya, who builds HushBook.</p></div></header><section class="wrap content"><div class="hub-grid blog-grid">${cards}</div></section></main>
+<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Straight answers for people who love audiobooks.</h1><p class="lede">How to read along while you listen, which file formats to keep, and how to stay with a chapter when your attention drifts. Plain guides from Rakesh Aditya, who builds HushBook.</p></div></header><section class="wrap content"><ol class="post-list" aria-label="All guides, newest first">${rows}</ol></section></main>
 ${footer()}`;
 }
 

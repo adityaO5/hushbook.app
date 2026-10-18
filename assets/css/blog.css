@@ -26,10 +26,25 @@
 .prose li::marker { color: var(--amber); }
 #faq-heading, #cta-heading, #related-heading { scroll-margin-top: 90px; }
 
-.blog-grid { grid-template-columns: 1fr; max-width: 860px; }
-.post-card h2 a { color: var(--paper); text-decoration: none; }
-.post-card h2 a:hover { color: var(--amber); }
-.post-card .post-meta { margin: 0; color: var(--muted); font-size: 14px; }
+/* Blog index: stacked list of guides, whole row clickable. */
+.post-list { list-style: none; margin: 8px 0 72px; padding: 0; max-width: 860px; border-top: 1px solid var(--line); }
+.post-row { margin: 0; border-bottom: 1px solid var(--line); }
+.post-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "meta meta" "title cta" "desc cta"; gap: 8px 28px; align-items: center; padding: 26px 10px; color: inherit; text-decoration: none; border-radius: 14px; transition: background .18s ease; }
+.post-link:hover, .post-link:focus-visible { background: rgba(245, 238, 227, .04); }
+.post-link:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.post-row-meta { grid-area: meta; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+.post-row-meta .eyebrow { display: inline-block; margin: 0; }
+.post-row-meta > * + *::before { content: "\00B7"; margin-right: 10px; color: var(--muted); }
+.post-row-title { grid-area: title; margin: 0; font-size: clamp(22px, 2.8vw, 28px); line-height: 1.22; color: var(--paper); transition: color .18s ease; }
+.post-link:hover .post-row-title, .post-link:focus-visible .post-row-title { color: var(--amber); }
+.post-row-desc { grid-area: desc; margin: 0; max-width: 66ch; color: var(--paper-dim); font-size: 16px; line-height: 1.55; }
+.post-row-cta { grid-area: cta; color: var(--amber); font-size: 15px; font-weight: 750; white-space: nowrap; }
+.post-row-cta::after { content: " \2192"; }
+
+@media (max-width: 640px) {
+  .post-link { grid-template-columns: 1fr; grid-template-areas: "meta" "title" "desc" "cta"; gap: 8px; padding: 22px 4px; }
+  .post-row-title { font-size: 22px; }
+}
 
 @media (max-width: 540px) {
   .prose p, .prose li { font-size: 17px; }
