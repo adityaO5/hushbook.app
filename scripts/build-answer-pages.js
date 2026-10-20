@@ -198,8 +198,34 @@ ${GA}<meta charset="utf-8">
 function cta(slug) {
   return `<section class="cta" aria-labelledby="cta-heading"><h2 id="cta-heading">Try read-along on a book you own</h2><p>Import an audiobook, create its transcript on your device, and follow every word with the original narration.</p><div class="cta-actions"><a class="button" data-campaign="${slug}" data-destination="google-play" href="${PLAY}${slug}" target="_blank" rel="noopener">Get HushBook on Google Play</a><a class="button button-secondary" data-campaign="${slug}" data-destination="app-store" href="${APPLE}" target="_blank" rel="noopener">Download on App Store</a></div></section>`;
 }
-const org = { '@type': 'Organization', name: 'HushBook', url: 'https://hushbook.app' };
-const author = { '@type': 'Person', name: 'Rakesh Aditya', url: 'https://hushbook.app/about' };
+const org = { '@type': 'Organization', '@id': 'https://hushbook.app/#organization', name: 'HushBook', url: 'https://hushbook.app' };
+const author = { '@type': 'Person', '@id': 'https://hushbook.app/about#rakesh-aditya', name: 'Rakesh Aditya', url: 'https://hushbook.app/about' };
+// Curated topical neighbours for each guide: sibling guides plus the blog post or
+// comparison that covers the same question in depth.
+const LABELS = {
+  '/read-along-audiobooks': 'Read-along audiobooks',
+  '/audiobook-with-text': 'Audiobook with text',
+  '/speechify-alternative': 'Free alternative to Speechify',
+  '/whispersync-alternative': 'Whispersync alternative',
+  '/audiobook-app-for-dyslexia': 'Audiobook app for dyslexia',
+  '/m4b-player': 'M4B player',
+  '/blog/what-is-immersive-reading': 'What is immersive reading?',
+  '/blog/free-read-along-audiobooks': 'Free read-along audiobooks',
+  '/blog/can-you-read-along-with-audible': 'Can you read along with Audible?',
+  '/blog/how-to-focus-on-audiobooks': 'How to focus on audiobooks',
+  '/blog/audiobook-listening-speed': 'Best audiobook listening speed',
+  '/blog/m4b-vs-mp3': 'M4B vs MP3',
+  '/alternatives/speechify-alternatives': '5 best Speechify alternatives',
+  '/alternatives/bookplayer-alternatives': '5 best BookPlayer alternatives'
+};
+const RELATED = {
+  'read-along-audiobooks': ['/audiobook-with-text', '/blog/what-is-immersive-reading', '/blog/free-read-along-audiobooks', '/audiobook-app-for-dyslexia'],
+  'audiobook-with-text': ['/read-along-audiobooks', '/blog/can-you-read-along-with-audible', '/whispersync-alternative', '/m4b-player'],
+  'speechify-alternative': ['/alternatives/speechify-alternatives', '/read-along-audiobooks', '/audiobook-app-for-dyslexia', '/blog/what-is-immersive-reading'],
+  'whispersync-alternative': ['/blog/can-you-read-along-with-audible', '/audiobook-with-text', '/read-along-audiobooks', '/m4b-player'],
+  'audiobook-app-for-dyslexia': ['/blog/how-to-focus-on-audiobooks', '/read-along-audiobooks', '/blog/audiobook-listening-speed', '/speechify-alternative'],
+  'm4b-player': ['/blog/m4b-vs-mp3', '/alternatives/bookplayer-alternatives', '/audiobook-with-text', '/read-along-audiobooks']
+};
 const strip = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
 
 function build(p) {
@@ -209,7 +235,7 @@ function build(p) {
     { '@type': 'FAQPage', '@id': url + '#faq', mainEntity: [...p.sections.map(s => [s[0], strip(s[1])]), ...p.faq].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hushbook.app' }, { '@type': 'ListItem', position: 2, name: p.crumb, item: url }] }
   ]};
-  const related = pages.filter(x => x.slug !== p.slug).slice(0, 4).map(x => `<a class="related-card" href="/${x.slug}">${esc(x.crumb)}</a>`).join('');
+  const related = (RELATED[p.slug] || pages.filter(x => x.slug !== p.slug).slice(0, 4).map(x => '/' + x.slug)).map(href => `<a class="related-card" href="${href}">${esc(LABELS[href])}</a>`).join('');
   return head(p, url, jsonld) + `  <div class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / ${esc(p.crumb)}</div>
   <header class="hero"><div class="wrap"><span class="eyebrow">HushBook guide</span><h1>${esc(p.title)}</h1><p class="lede">${esc(p.desc)}</p><div class="byline"><span>By <strong>Rakesh Aditya</strong>, HushBook creator</span><span>Updated <time datetime="${DATE}">${DATE}</time></span></div></div></header>
   <article class="article"><div class="wrap content">
@@ -227,7 +253,7 @@ ${p.sections.map((s, i) => `    <section aria-labelledby="h-${i}"><h2 id="h-${i}
 const AUD = 'Audible does not show subtitles for the narration. It offers Read & Listen (formerly Whispersync for Voice), where Immersion Reading highlights Kindle ebook text while the audiobook plays. That needs both the Audible and Kindle versions of the title in your library.';
 const qa = [
  ['Can you read and listen to a book at the same time?','Yes. Apps such as HushBook play the audiobook and highlight each spoken word on screen, so you read and listen together. HushBook builds the word-level text from the audio on your phone, so no ebook is needed. See <a href="/read-along-audiobooks">read-along audiobooks</a>.','Yes. Apps such as HushBook play the audiobook and highlight each spoken word on screen, so you read and listen together. HushBook builds the word-level text from the audio on your phone, so no ebook is needed.'],
- ['Does Audible have subtitles?',AUD.replace('&','&amp;') + ' See <a href="https://www.audible.com/ep/read-listen" rel="noopener">Audible\'s page</a>. HushBook shows a synced transcript for audiobook files you own, with no ebook needed.',AUD + ' HushBook shows a synced transcript for audiobook files you own, with no ebook needed.'],
+ ['Does Audible have subtitles?',AUD.replace('&','&amp;') + ' See <a href="https://www.audible.com/ep/read-listen" rel="noopener">Audible\'s page</a> and <a href="/blog/can-you-read-along-with-audible">how Read &amp; Listen works</a>. HushBook shows a synced transcript for audiobook files you own, with no ebook needed.',AUD + ' HushBook shows a synced transcript for audiobook files you own, with no ebook needed.'],
  ['Is there an audiobook app that shows the text?','Yes. HushBook shows the text with the current word highlighted. It is on iPhone and Android. See <a href="/audiobook-with-text">audiobook with text</a>.','Yes. HushBook shows the text with the current word highlighted. It is on iPhone and Android.'],
  ['Do I need the ebook to see the text?','No. HushBook creates the text from the audiobook. If you do own the ebook, you can pair an EPUB, PDF or TXT with it (beta).','No. HushBook creates the text from the audiobook. If you do own the ebook, you can pair an EPUB, PDF or TXT with it (beta).'],
  ['Is the audio uploaded anywhere?','No. HushBook transcribes on your device and has no account.','No. HushBook transcribes on your device and has no account.'],

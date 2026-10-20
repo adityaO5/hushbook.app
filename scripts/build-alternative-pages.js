@@ -86,6 +86,7 @@ function footer() {
     <div class="footer-grid">
       <div><a class="brand" href="/" aria-label="HushBook home"><img class="brand-mark" src="/assets/img/default_preview.png" width="34" height="34" alt=""><img class="brand-name" src="/assets/img/hb-wordmark.svg" width="133" height="20" alt=""></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
       <div class="footer-col"><h2>Compare</h2>${links}</div>
+      <div class="footer-col"><h2>Guides</h2><a href="/read-along-audiobooks">Read-along audiobooks</a><a href="/audiobook-with-text">Audiobook with text</a><a href="/m4b-player">M4B player</a><a href="/audiobook-app-for-dyslexia">Audiobook app for dyslexia</a><a href="/whispersync-alternative">Whispersync alternative</a><a href="/questions">Common questions</a></div>
       <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">All alternatives</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
     </div>
     <div class="footer-bottom">© 2026 HushBook. Competitor names belong to their respective owners. No affiliation or endorsement implied.</div>
@@ -139,8 +140,8 @@ function pageSchema(page) {
         dateModified: checkedDate,
         inLanguage: 'en',
         mainEntityOfPage: canonical,
-        author: { '@type': 'Person', name: 'Rakesh Aditya', url: `${site}/about` },
-        publisher: { '@type': 'Organization', name: 'HushBook', url: site },
+        author: { '@type': 'Person', '@id': `${site}/about#rakesh-aditya`, name: 'Rakesh Aditya', url: `${site}/about` },
+        publisher: { '@type': 'Organization', '@id': `${site}/#organization`, name: 'HushBook', url: site },
         about: page.options.map((key) => ({ '@type': 'SoftwareApplication', name: profiles[key].name, url: profiles[key].url.startsWith('/') ? site + profiles[key].url : profiles[key].url }))
       },
       {

@@ -17,7 +17,8 @@
     "test:seo-preservation": "node seo-preservation.test.js",
     "test:seo-repair-contract": "node seo-repair-contract.test.js",
     "test:locale": "node scripts/verify-localization.js de",
-    "build:blog": "node scripts/build-blog.js && node scripts/build-sitemap.js && node scripts/inject-gtag.js"
+    "build:blog": "node scripts/build-blog.js && node scripts/build-sitemap.js && node scripts/inject-gtag.js",
+    "indexnow": "node scripts/indexnow-ping.js"
   },
   "devDependencies": {
     "serve": "^14.2.4"

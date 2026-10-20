@@ -27,7 +27,7 @@ const publisher = {
   '@id': `${site}/#organization`,
   name: 'HushBook',
   url: site,
-  logo: { '@type': 'ImageObject', url: `${site}/assets/img/logo.png`, width: 192, height: 189 }
+  logo: { '@type': 'ImageObject', url: `${site}/assets/img/default_preview.png`, width: 256, height: 256 }
 };
 
 function escapeHtml(value) {
@@ -187,6 +187,7 @@ function footer() {
       <div><a class="brand" href="/" aria-label="HushBook home"><img class="brand-mark" src="/assets/img/default_preview.png" width="34" height="34" alt=""><img class="brand-name" src="/assets/img/hb-wordmark.svg" width="133" height="20" alt=""></a><p class="footer-copy">Read while listening with private, word-level audiobook transcripts created on your device.</p></div>
       <div class="footer-col"><h2>Blog</h2><a href="/blog">All posts</a>
         ${recent}</div>
+      <div class="footer-col"><h2>Guides</h2><a href="/read-along-audiobooks">Read-along audiobooks</a><a href="/audiobook-with-text">Audiobook with text</a><a href="/m4b-player">M4B player</a><a href="/audiobook-app-for-dyslexia">Audiobook app for dyslexia</a><a href="/whispersync-alternative">Whispersync alternative</a><a href="/questions">Common questions</a></div>
       <div class="footer-col"><h2>HushBook</h2><a href="/alternatives">Compare apps</a><a href="/about">About</a><a href="/privacy-policy">Privacy</a><a href="/">Get the app</a></div>
     </div>
     <div class="footer-bottom">© 2026 HushBook. Product names belong to their respective owners. No affiliation or endorsement implied.</div>
@@ -282,7 +283,7 @@ function renderPost(post) {
     ''
   ].join('\n');
 
-  return `${head({ title: `${post.metaTitle} | HushBook`, description: post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra })}
+  return `${head({ title: (`${post.metaTitle} | HushBook`.length <= 60 ? `${post.metaTitle} | HushBook` : post.metaTitle), description: post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra })}
 <body>
 ${nav()}
 <main id="content">

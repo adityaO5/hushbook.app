@@ -144,7 +144,7 @@ tbody th { min-width: 150px; color: var(--paper); }
 .hub-card a { color: var(--amber); font-weight: 750; text-underline-offset: 3px; }
 
 footer { padding: 58px 0 76px; border-top: 1px solid var(--line-soft); background: var(--ink-2); }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 42px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 42px; }
 .footer-copy { max-width: 38ch; color: var(--muted); font-size: 14px; }
 .footer-col h2 { margin: 0 0 14px; color: var(--muted); font-family: var(--font-body); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
 .footer-col a { display: block; margin: 9px 0; color: var(--paper-dim); font-size: 14px; text-decoration: none; }

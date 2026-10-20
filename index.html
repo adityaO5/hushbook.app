@@ -109,8 +109,53 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hushbook.app/#organization",
+      "name": "HushBook",
+      "url": "https://hushbook.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hushbook.app/assets/img/default_preview.png",
+        "width": 256,
+        "height": 256
+      },
+      "description": "HushBook makes a free iOS and Android audiobook player that transcribes audiobooks on the phone and highlights each word as the narrator reads it.",
+      "email": "aditya@hushbook.app",
+      "founder": {
+        "@id": "https://hushbook.app/about#rakesh-aditya"
+      },
+      "sameAs": [
+        "https://apps.apple.com/us/app/hushbook-audiobook-read-along/id6783243597",
+        "https://play.google.com/store/apps/details?id=com.hushbook.hushbook",
+        "https://www.instagram.com/hushbook.app/",
+        "https://x.com/hushbookapp",
+        "https://www.facebook.com/people/HushBook-Read-while-you-listen/61592526586151/",
+        "https://bsky.app/profile/hushbook.bsky.social",
+        "https://www.reddit.com/r/HushBookApp/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hushbook.app/#website",
+      "url": "https://hushbook.app/",
+      "name": "HushBook",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://hushbook.app/#organization"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": "https://hushbook.app/#app",
   "name": "HushBook",
+  "publisher": { "@id": "https://hushbook.app/#organization" },
   "url": "https://hushbook.app/",
   "applicationCategory": "MultimediaApplication",
   "applicationSubCategory": "Audiobook Player",
@@ -1332,6 +1377,16 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <a href="/alternatives/storytel-alternatives">Storytel alternatives</a>
         <a href="/alternatives/pocket-fm-alternatives">Pocket FM alternatives</a>
         <a href="/alternatives/speechify-alternatives">Speechify alternatives</a>
+      </div>
+      <div class="fcol">
+        <b>Guides</b>
+        <a href="/read-along-audiobooks">Read-along audiobooks</a>
+        <a href="/audiobook-with-text">Audiobook with text</a>
+        <a href="/m4b-player">M4B player</a>
+        <a href="/audiobook-app-for-dyslexia">Audiobook app for dyslexia</a>
+        <a href="/whispersync-alternative">Whispersync alternative</a>
+        <a href="/speechify-alternative">Free Speechify alternative</a>
+        <a href="/questions">Common questions</a>
       </div>
       <div class="fcol">
         <b>Get the app</b>
