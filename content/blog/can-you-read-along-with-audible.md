@@ -4,7 +4,7 @@ Yes, for many books. Audible calls the feature Read & Listen. The Kindle text si
 
 There's a catch, and it's the reason most people searching this end up confused. You need both editions of the book: the Audible audiobook and the Kindle ebook. Owning one isn't enough.
 
-I build a read-along app, so I have an obvious interest here. But if your books are already on Audible and Kindle, Audible's own feature is the first thing to try. Here's how it works and what to do when it doesn't cover your book.
+I build [HushBook](/), a read-along app for audiobook files you own, so I have an obvious interest here. But if your books are already on Audible and Kindle, Audible's own feature is the first thing to try. Here's how it works and what to do when it doesn't cover your book.
 
 ## What you need
 

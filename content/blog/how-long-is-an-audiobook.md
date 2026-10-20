@@ -56,7 +56,7 @@ Divide the length by the speed.
 
 So *Pride and Prejudice* drops from 13 hours 25 minutes to just under 9 hours at 1.5x, and the King James Bible from about 101 hours to about 67.
 
-Faster is not always better. A 2022 UCLA study found lectures at up to 2x did not hurt comprehension, but fiction carries meaning in tone and timing that speed can flatten. We cover that in [what speed to listen to audiobooks at](/blog/audiobook-listening-speed).
+Faster is not always better. A 2022 UCLA study found lectures at up to 2x did not hurt comprehension, but fiction carries meaning in tone and timing that speed can flatten. If you do speed up, having the words on screen helps you keep up with a fast narrator. We cover that in [what speed to listen to audiobooks at](/blog/audiobook-listening-speed).
 
 ## Why the same book can have different lengths
 

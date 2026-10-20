@@ -4,7 +4,7 @@ Short answer: for an audiobook, M4B is usually the better file to keep, and MP3 
 
 An M4B is a single file that holds the whole book, with chapter markers, cover art, and a place-saving flag that tells audiobook apps to remember where you stopped. An MP3 audiobook is normally a folder of separate files, one per chapter or part. Both play fine on a modern phone. The real differences are how tidy your library is, how chapters work, and which devices you need to support.
 
-I build an audiobook app that imports both, so I see a lot of each. Here's what actually matters when you choose.
+I build [HushBook](/), an audiobook app that imports both and shows the words as the narrator reads them, so I see a lot of each. Here's what actually matters when you choose.
 
 ## What is an M4B file?
 

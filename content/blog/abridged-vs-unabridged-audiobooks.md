@@ -2,7 +2,7 @@
 
 An unabridged audiobook is the complete book, read word for word. An abridged audiobook is a shortened version, where an editor has cut parts of the text before it was recorded.
 
-If you just want the whole book, choose unabridged. That's what most audiobooks are today. But abridged editions still turn up, especially for older titles, and they're easy to buy by mistake.
+If you just want the whole book, choose unabridged. That's what most audiobooks are today. But abridged editions still turn up, especially for older titles, and they're easy to buy by mistake. If you like to read along with the text, it matters even more, for a reason we cover below.
 
 ## What gets cut in an abridged audiobook?
 

@@ -31,7 +31,7 @@ To see what each speed saves over a whole book, from a 3-hour novella to a 100-h
 
 Start at 1x for the first chapter. Narrators vary a lot. Some read so slowly that 1.3x sounds natural, and others are already brisk at normal speed.
 
-Then go up in small steps, about 0.1x or 0.25x at a time. You've gone too far when you start rewinding to catch things. That's the real signal, more than any number.
+Then go up in small steps, about 0.1x or 0.25x at a time. You've gone too far when you start rewinding to catch things. That's the real signal, more than any number. Having the words on screen pushes that point further, because a missed word is right there to read.
 
 You'll also adapt. A speed that sounds frantic in week one can feel normal by week four, because your ear gets used to it. It's fine to creep up over time.
 

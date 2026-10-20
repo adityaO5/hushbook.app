@@ -42,7 +42,7 @@ That lines up with the meta-analysis, where reading pulled ahead when people set
 - You glance back up a paragraph to check who "he" is.
 - When your mind drifts, the page waits for you. Audio keeps going, and you might not notice for a few minutes.
 
-A narrator can't do any of that for you. So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the words in front of you.
+A narrator can't do any of that for you. So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the words in front of you. Apps that show the text as the narrator reads it, like [HushBook](/), give you some of that back: you can see where you are, glance back a line, and pick up where your mind left off.
 
 ## What audio does better
 

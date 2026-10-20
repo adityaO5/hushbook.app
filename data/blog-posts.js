@@ -7,6 +7,7 @@
 const posts = [
   {
     slug: 'are-audiobooks-good-for-dyslexia',
+    cta: { heading: 'Read along at your own settings', text: 'HushBook highlights each word as it is read, with a Dyslexia and ADHD profile for font, spacing and size. A reading aid that works with your own audiobook files and free classics.' },
     title: 'Are Audiobooks Good for Dyslexia? What the Research Says',
     metaTitle: 'Are Audiobooks Good for Dyslexia? What the Research Says',
     metaDescription: 'Yes, alongside reading instruction. What 22 studies found on read-aloud tools, why reading along helps, kids vs adults, and whether dyslexia fonts work.',
@@ -45,6 +46,7 @@ const posts = [
   },
   {
     slug: 'how-long-is-an-audiobook',
+    cta: { heading: 'Listen faster without missing words', text: 'HushBook keeps the text in sync from 0.5x to 3x, so speeding up does not mean losing the thread. It works with your own audiobook files and free classics.' },
     title: 'How Long Is an Audiobook? Hours for a 300-Page Book, and at 1.5x',
     metaTitle: 'How Long Is an Audiobook? 300 Pages, 1.5x and 10 Classics',
     metaDescription: 'A 300-page book runs about 8 to 10.5 hours. We counted the words in 10 classics and timed their LibriVox audiobooks: narrators read about 151 words a minute.',
@@ -83,6 +85,7 @@ const posts = [
   },
   {
     slug: 'how-to-play-m4b-files',
+    cta: { heading: 'An M4B player that shows the words', text: 'HushBook plays M4B files with chapters and cover art on iPhone and Android, and highlights every word as the narrator reads it.' },
     title: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
     metaTitle: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
     metaDescription: 'Voice or VLC on Android, BookPlayer or HushBook on iPhone, VLC on Windows, Apple Books on Mac. How to open M4B audiobooks, and why some will not play.',
@@ -121,6 +124,7 @@ const posts = [
   },
   {
     slug: 'learn-english-with-audiobooks',
+    cta: { heading: 'Hear it, see it, tap to hear it again', text: 'HushBook highlights every word as the narrator says it. Tap any word to replay it, or slow down to 0.75x. Free LibriVox classics are built in.' },
     title: 'How to Learn English With Audiobooks (and Why Reading Along Helps)',
     metaTitle: 'How to Learn English With Audiobooks: The Read-Along Method',
     metaDescription: 'Read the text while you listen. Learners pick up far more new words that way than from audio alone. A daily routine, free audiobooks, and picks by level.',
@@ -159,6 +163,7 @@ const posts = [
   },
   {
     slug: 'why-do-i-fall-asleep-listening-to-audiobooks',
+    cta: { heading: 'Find the sentence you fell asleep on', text: 'HushBook shows every word as the narrator reads it, so in the morning you can scroll back, tap the last line you remember and carry on from there. It works with your own audiobook files and free classics.' },
     title: 'Why Do I Fall Asleep Listening to Audiobooks? And Is It Bad?',
     metaTitle: 'Why Do I Fall Asleep Listening to Audiobooks? Is It Bad?',
     description: 'A story gives your mind something to follow that is not your own worries, right when your body is primed to sleep. What a 2026 survey of 1,136 bedtime listeners found, whether the habit is bad, and how to keep your place.',
@@ -196,6 +201,7 @@ const posts = [
   },
   {
     slug: 'how-to-focus-on-audiobooks',
+    cta: { heading: 'Give your eyes something to follow', text: 'HushBook highlights each word as it is spoken, so when your mind drifts, you can see exactly where the narrator is. It works with your own audiobook files and free classics.' },
     title: 'How to Focus on Audiobooks When Your Mind Keeps Wandering',
     metaTitle: 'How to Focus on Audiobooks: 7 Fixes for a Wandering Mind',
     description: 'Listening gives your mind more room to drift than reading does, and a 2013 study shows it. Why it happens, seven fixes that work, and how reading along with the words keeps you on track.',
@@ -233,6 +239,7 @@ const posts = [
   },
   {
     slug: 'audiobook-listening-speed',
+    cta: { heading: 'Keep up at any speed', text: 'HushBook highlights each word in sync from 0.5x to 3x, so a fast narrator never leaves you behind. Import an MP3 or M4B you own, or pick a free classic.' },
     title: 'What Speed Should You Listen to Audiobooks At?',
     metaTitle: 'What Speed Should You Listen to Audiobooks At?',
     description: 'Somewhere between 1x and 2x for most books. What the UCLA study on 2x playback found, where fast listening costs you, a speed guide by book type, and how to find your own speed.',
@@ -270,6 +277,7 @@ const posts = [
   },
   {
     slug: 'abridged-vs-unabridged-audiobooks',
+    cta: { heading: 'Text that always matches your recording', text: 'HushBook makes the text from the audio itself, so abridged or unabridged, the words on screen are the words you hear. The transcript is made privately on your phone.' },
     title: 'What Is an Unabridged Audiobook? Abridged vs Unabridged Explained',
     metaTitle: 'What Is an Unabridged Audiobook? Abridged vs Unabridged',
     description: 'Unabridged means the complete book read word for word. Abridged means an editor cut it first. What gets cut, why abridged editions exist, how to tell which one you are buying, and which to choose.',
@@ -307,6 +315,7 @@ const posts = [
   },
   {
     slug: 'free-read-along-audiobooks',
+    cta: { heading: 'Read along with a free classic tonight', text: 'Pick any LibriVox or Internet Archive book inside HushBook and follow every word as it is read. The transcript is made on your phone, with no account.' },
     title: 'Free Read-Along Audiobooks: How to Read Along With Any Free Audiobook',
     metaTitle: 'Free Read-Along Audiobooks: How to Read Along (2026)',
     description: 'Free audiobooks rarely come with synced text. Find free LibriVox and public domain audiobooks, then read along word by word with HushBook, which transcribes the audio on your phone.',
@@ -345,6 +354,7 @@ const posts = [
   },
   {
     slug: 'does-listening-to-audiobooks-count-as-reading',
+    cta: { heading: 'Listen, and keep the words in view', text: 'HushBook shows each word as the narrator reads it, so you can glance back, catch a name, or find your place when your mind wanders. It works with your own audiobook files and free classics.' },
     title: 'Does Listening to an Audiobook Count as Reading?',
     metaTitle: 'Does Listening to an Audiobook Count as Reading?',
     description: 'Yes. Studies find comprehension from listening is about the same as from reading, and the brain processes meaning the same way. Where print still has an edge, where audio wins, and how to get both.',
@@ -384,6 +394,7 @@ const posts = [
   },
   {
     slug: 'm4b-vs-mp3',
+    cta: { heading: 'Play your M4B and MP3 files, with the words on screen', text: 'HushBook imports audiobook files with chapters and cover art, then highlights every word as the narrator reads it. The transcript is made privately on your phone.' },
     title: 'M4B vs MP3: Which Audiobook Format Should You Use?',
     metaTitle: 'M4B vs MP3: Which Audiobook Format Should You Use?',
     description: 'M4B keeps a whole audiobook in one file with chapters and saved position. MP3 plays on almost anything. What each format is, how they compare on quality and chapters, and when to convert.',
@@ -424,6 +435,7 @@ const posts = [
   },
   {
     slug: 'can-you-read-along-with-audible',
+    cta: { heading: 'Read along where Audible cannot', text: 'For LibriVox recordings and DRM-free files you own, HushBook makes word-by-word text on your phone. No ebook needed.' },
     title: 'Can You Read Along With Audible? How Read & Listen Works',
     metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',
     metaDescription: 'Yes, if you own both the Audible audiobook and its Kindle ebook. What you need, how to turn on Read & Listen, and what to do if you own only one.',
@@ -464,6 +476,7 @@ const posts = [
   },
   {
     slug: 'what-is-immersive-reading',
+    cta: { heading: 'Try immersive reading with any audiobook', text: 'HushBook transcribes your audiobook on your phone and highlights each word as it is spoken. Start with a free classic or a file you own.' },
     title: 'What Is Immersive Reading? How to Read and Listen at the Same Time',
     metaTitle: 'What Is Immersive Reading? Meaning and How It Works',
     metaDescription: 'Immersive reading means reading a book\'s text while listening to its audiobook, often word by word. What it means, and how it differs from Immersive Reader.',

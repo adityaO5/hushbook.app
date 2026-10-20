@@ -28,7 +28,7 @@ So the honest summary is: audiobooks give dyslexic readers access to books, help
 
 It is what experts advise. The Yale Center for Dyslexia and Creativity tells teachers to "recommend that students read along with the audiobook version or to follow the words alongside the reader." The British Dyslexia Association notes that "some audio book apps will highlight the text on screen as it is being read, which can help your child identify words."
 
-Reading along keeps the printed words in front of the reader, so they still see the spelling of each word they hear. That is the idea behind the fluency gains in the Esteves and Whitten study. Listening alone gives access to the story. Reading along adds practice with print.
+Reading along keeps the printed words in front of the reader, so they still see the spelling of each word they hear. Most audiobooks do not come with text, which is the gap apps like [HushBook](/) fill by making word-by-word text from the recording itself. That is the idea behind the fluency gains in the Esteves and Whitten study. Listening alone gives access to the story. Reading along adds practice with print.
 
 ## Is listening to audiobooks cheating?
 

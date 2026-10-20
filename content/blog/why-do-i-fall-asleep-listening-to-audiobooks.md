@@ -52,7 +52,7 @@ In a 2017 study in *Nature Communications*, Thomas Andrillon and colleagues play
 
 A 2019 study in *Current Biology* by Marc Züst and colleagues went a step further and played made-up foreign words with their meanings during deep sleep. On waking, people could guess whether a sleep-played word referred to something large or small slightly better than chance, but only when the word had landed on the peak of a slow wave, and they had no conscious memory of hearing it.
 
-That is the ceiling: a faint, implicit trace of a single word under laboratory timing. Nobody has shown a sleeping listener absorbing a chapter. Whatever played after you dozed off is gone. You will have to rewind.
+That is the ceiling: a faint, implicit trace of a single word under laboratory timing. Nobody has shown a sleeping listener absorbing a chapter. Whatever played after you dozed off is gone. You will have to rewind, or scroll back through the text if your player shows it, which we come to below.
 
 ## How to listen at bedtime without losing the book
 

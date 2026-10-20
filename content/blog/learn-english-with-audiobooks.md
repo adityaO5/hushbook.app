@@ -37,7 +37,7 @@ Three things happen when you read and listen at once:
 
 1. **Pick an easy book.** Read the first page. If you know almost every word and can follow the story, it is the right level. The Extensive Reading Foundation suggests knowing about 98% of the words for comfortable reading, and choosing audiobooks one or two levels below your reading level, because listening usually lags behind reading.
 2. **First listen, eyes on the text.** Play a chapter or 10 minutes and follow every word. Do not stop to look things up. Aim to understand the story, not every word.
-3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word.
+3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word. In a read-along app like [HushBook](/), that is one tap on the sentence instead of scrubbing back.
 4. **Shadow a few lines.** Pause and say a sentence out loud, copying the narrator's rhythm and stress. This trains your speaking as well as your ear.
 5. **Note five words.** Only words you saw more than once, or that you need. A short list you review beats a long list you never open.
 6. **Listen again without the text.** Once a chapter feels easy, play it again with the screen off. If you can follow it, you are ready for the next one.
