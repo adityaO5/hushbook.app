@@ -6,6 +6,120 @@
 
 const posts = [
   {
+    slug: 'are-audiobooks-good-for-dyslexia',
+    title: 'Are Audiobooks Good for Dyslexia? What the Research Says',
+    metaTitle: 'Are Audiobooks Good for Dyslexia? What the Research Says',
+    metaDescription: 'Yes, alongside reading instruction. What 22 studies found on read-aloud tools, why reading along helps, kids vs adults, and whether dyslexia fonts work.',
+    description: 'Yes, as a companion to reading, not a replacement. Read-aloud tools modestly improve comprehension, and experts recommend following the words while listening. What the studies show for kids and adults, and whether dyslexia fonts help.',
+    category: 'Accessibility',
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    readingTime: '7 min read',
+    keywords: [
+      'are audiobooks good for dyslexia',
+      'audiobooks for dyslexia',
+      'are audiobooks good for kids with dyslexia',
+      'audiobooks for adults with dyslexia',
+      'benefits of audiobooks for dyslexia',
+      'does reading along help dyslexia',
+      'is listening to audiobooks cheating dyslexia',
+      'do dyslexia fonts help'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Audiobooks let dyslexic readers take in books at the level of their thinking, not their decoding. They work best alongside structured reading instruction, not instead of it.',
+      'A 2018 meta-analysis of 22 studies found read-aloud tools improved reading comprehension for students with reading disabilities, with a small-to-moderate effect (d = 0.35).',
+      'Small trials link audiobooks and reading along with better motivation, well-being and fluency. In the largest trial, of 149 students, reading gains did not differ from usual teaching.',
+      'Yale and the British Dyslexia Association recommend following the words while listening, which keeps practice with print in the picture.',
+      'Dyslexia fonts such as OpenDyslexic showed no improvement in reading speed or accuracy in studies. Wider letter spacing looks more promising.'
+    ],
+    faqs: [
+      ['Are audiobooks good for dyslexia?', 'Yes, as a companion to reading instruction. They let dyslexic readers take in books their decoding would block, and studies link them to better comprehension, motivation and well-being. They do not fix decoding on their own.'],
+      ['Does reading along with audiobooks help dyslexic readers?', 'It is what dyslexia experts at Yale and the British Dyslexia Association recommend. Seeing each word as it is spoken keeps print practice going, and one small study found reading fluency rose from 84 to 101 words correct per minute over eight weeks.'],
+      ['Is listening to audiobooks cheating if you have dyslexia?', 'No. Listening is a different way into the same book, and for understanding a story the two come out about the same. For many dyslexic readers the alternative is not reading the book at all.'],
+      ['Are audiobooks good for kids with dyslexia?', 'Yes, next to reading lessons, not in place of them. Use audiobooks for books a child wants or needs to read but cannot yet decode, and keep the text visible when possible.'],
+      ['Do dyslexia fonts like OpenDyslexic help?', 'Studies found no improvement in reading speed or accuracy from OpenDyslexic or Dyslexie. Use whichever font feels comfortable. Wider letter spacing helped accuracy in some studies.'],
+      ['Can audiobooks replace reading instruction for dyslexia?', 'No. In a trial of 149 students with severe reading difficulties, reading apps did not add reading gains over usual teaching. Audiobooks give access to books, and structured instruction builds reading skill.']
+    ]
+  },
+  {
+    slug: 'how-long-is-an-audiobook',
+    title: 'How Long Is an Audiobook? Hours for a 300-Page Book, and at 1.5x',
+    metaTitle: 'How Long Is an Audiobook? 300 Pages, 1.5x and 10 Classics',
+    metaDescription: 'A 300-page book runs about 8 to 10.5 hours. We counted the words in 10 classics and timed their LibriVox audiobooks: narrators read about 151 words a minute.',
+    description: 'A 300-page book runs about 8 to 10.5 hours. We counted the words in ten classics and compared them with their LibriVox recordings, from Alice at 2 hours 47 minutes to the King James Bible at 101 hours, plus 1.5x and 2x times.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    readingTime: '6 min read',
+    keywords: [
+      'how long is an audiobook',
+      'how long is an audiobook for a 300 page book',
+      'how many hours is an audiobook',
+      'average audiobook length',
+      'how long does it take to listen to an audiobook',
+      'how long is an audiobook at 1.5 speed',
+      'audiobook narrator words per minute',
+      'how long is the bible audiobook'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'A 300-page book usually runs about 8 to 10.5 hours as an audiobook. Most novels take 7 to 13 hours, and long classics 25 to 100.',
+      'Divide the word count by 9,300, the number of words ACX says most narrators read in an hour. Pages are a rougher guide: a paperback page holds about 250 to 330 words.',
+      'Across ten LibriVox recordings we measured, narrators read a median of 151 words a minute, ranging from 131 to 179, so one narrator can take 15% more or less time than the formula predicts.',
+      'At 1.5x an hour of audio takes 40 minutes and a 10-hour book takes 6 hours 40 minutes. At 2x it takes half the time.',
+      'There is no official average audiobook length. Audible, ACX and the Audio Publishers Association do not publish one.'
+    ],
+    faqs: [
+      ['How long is an audiobook for a 300-page book?', 'About 8 to 10.5 hours at normal speed. A 300-page paperback holds roughly 75,000 to 99,000 words, and narrators read about 9,300 words an hour.'],
+      ['How long is the average audiobook?', 'There is no official figure. A typical novel of 70,000 to 120,000 words runs about 7.5 to 13 hours. Short books take 2 to 5 hours and long classics 25 hours or more.'],
+      ['How many words per minute do audiobook narrators read?', 'About 155, according to ACX, which says most narrators read 9,300 words an hour. Across ten LibriVox recordings we measured, the median was 151 words a minute.'],
+      ['How long does it take to listen to an hour at 1.5x speed?', '40 minutes. At 1.25x it takes 48 minutes and at 2x 30 minutes. Divide the length by the speed.'],
+      ['How long is the Bible as an audiobook?', 'The complete King James Version runs about 100 hours 45 minutes in its solo LibriVox recording, or about 67 hours at 1.5x. It is about 790,000 words.'],
+      ['How long is The Odyssey audiobook?', 'About 11 hours for Samuel Butler\'s prose translation on LibriVox, which is about 119,000 words. Other translations and readers vary.']
+    ]
+  },
+  {
+    slug: 'how-to-play-m4b-files',
+    title: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
+    metaTitle: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
+    metaDescription: 'Voice or VLC on Android, BookPlayer or HushBook on iPhone, VLC on Windows, Apple Books on Mac. How to open M4B audiobooks, and why some will not play.',
+    description: 'Open M4B audiobooks in a player that keeps chapters and your place: Voice, VLC or Smart AudioBook Player on Android, BookPlayer or HushBook on iPhone, VLC on Windows, Apple Books on Mac. Plus why some M4B files will not play.',
+    category: 'Audiobook formats',
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    readingTime: '5 min read',
+    keywords: [
+      'how to play m4b files',
+      'how to open m4b files',
+      'how to play m4b files on android',
+      'how to play m4b files on iphone',
+      'how to play m4b files on windows 11',
+      'how to open m4b in books iphone',
+      'how to play m4b files on mac',
+      'm4b player'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'M4B is an audiobook in the same AAC and MPEG-4 format as M4A, with chapter markers and bookmarking. Play it in an audiobook player, not a music player.',
+      'Android: Voice, VLC or Smart AudioBook Player. Google Play Books only accepts PDF and EPUB uploads.',
+      'iPhone: the Books app has no import button for audio files. Use BookPlayer or HushBook, or import into Books on a Mac and sync.',
+      'Windows: VLC is the reliable free choice, with chapters under Playback. Microsoft\'s out-of-the-box format list includes M4A but not M4B. Mac: Apple Books, File then Import, or VLC.',
+      'If an M4B will not play anywhere, it is probably DRM-protected. iTunes purchases play only on authorised devices, and Audible downloads are AAX, not M4B.'
+    ],
+    faqs: [
+      ['How do I open an M4B file?', 'Open it in an audiobook player. Voice or VLC on Android, BookPlayer or HushBook on iPhone, VLC on Windows, and Apple Books or VLC on Mac all play M4B with chapters.'],
+      ['Can Windows Media Player play M4B files?', 'Microsoft lists M4A among the audio formats Windows supports out of the box, but not M4B, so do not rely on it. VLC is free, recognises M4B and lets you jump between chapters.'],
+      ['How do I play M4B files on iPhone without a computer?', 'Use an app that imports from the Files app, such as BookPlayer or HushBook. The iPhone Books app has no import option for audio files.'],
+      ['What app plays M4B files on Android?', 'Voice is free and open source and handles M4B with chapters. VLC for Android and Smart AudioBook Player also work. HushBook plays M4B and adds synced text.'],
+      ['Why won\'t my M4B file play?', 'Usually because it is DRM-protected. M4B files bought from the iTunes Store play only on authorised devices. If it is not protected, check the copy finished and that you are using an audiobook player.'],
+      ['Does an M4B file have chapters?', 'It can. The format supports a chapter track, but chapters only appear if whoever made the file added chapter markers.']
+    ]
+  },
+  {
     slug: 'learn-english-with-audiobooks',
     title: 'How to Learn English With Audiobooks (and Why Reading Along Helps)',
     metaTitle: 'How to Learn English With Audiobooks: The Read-Along Method',

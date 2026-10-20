@@ -23,7 +23,9 @@ So a reasonable reading of the evidence: fast listening is fine for information.
 - **Thrillers and plot-driven fiction:** 1.2x to 1.5x. You keep the momentum and don't lose much of the narrator's performance.
 - **Literary fiction and poetry:** 1x to 1.25x. Much of what you're there for is the sound of the language.
 - **Full-cast productions, comedy, memoirs read by the author:** close to 1x. Timing is part of the content.
-- **Books in a language you're learning:** 0.75x to 1x. Slower is better while you're still matching sounds to words.
+- **Books in a language you're learning:** 0.75x to 1x. Slower is better while you're still matching sounds to words. We have a full guide to [learning English with audiobooks](/blog/learn-english-with-audiobooks).
+
+To see what each speed saves over a whole book, from a 3-hour novella to a 100-hour Bible, see [how long is an audiobook](/blog/how-long-is-an-audiobook).
 
 ## How to find your speed
 

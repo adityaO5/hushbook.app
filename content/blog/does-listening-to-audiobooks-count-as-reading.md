@@ -52,7 +52,7 @@ A good narrator is interpreting the book for you. Dialogue, sarcasm, dialect, th
 
 Audio also turns a commute, a long walk or a pile of washing-up into reading time, which matters more than any comprehension score if the alternative is not reading at all. A book you finish in your earbuds beats one that sits on your nightstand for a year.
 
-For many people with dyslexia or low vision, it's simpler than that. Listening is how they get to read the book at all.
+For many people with dyslexia or low vision, it's simpler than that. Listening is how they get to read the book at all. We look at the research in [are audiobooks good for dyslexia](/blog/are-audiobooks-good-for-dyslexia).
 
 ## Is listening to an audiobook cheating?
 

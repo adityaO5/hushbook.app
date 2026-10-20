@@ -3255,6 +3255,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/are-audiobooks-good-for-dyslexia</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/are-audiobooks-good-for-dyslexia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/are-audiobooks-good-for-dyslexia"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/how-long-is-an-audiobook</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-long-is-an-audiobook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-long-is-an-audiobook"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/how-to-play-m4b-files</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-play-m4b-files"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-play-m4b-files"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/learn-english-with-audiobooks</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>

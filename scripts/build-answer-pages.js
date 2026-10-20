@@ -216,15 +216,17 @@ const LABELS = {
   '/blog/audiobook-listening-speed': 'Best audiobook listening speed',
   '/blog/m4b-vs-mp3': 'M4B vs MP3',
   '/alternatives/speechify-alternatives': '5 best Speechify alternatives',
-  '/alternatives/bookplayer-alternatives': '5 best BookPlayer alternatives'
+  '/alternatives/bookplayer-alternatives': '5 best BookPlayer alternatives',
+  '/blog/how-to-play-m4b-files': 'How to play M4B files',
+  '/blog/are-audiobooks-good-for-dyslexia': 'Are audiobooks good for dyslexia?'
 };
 const RELATED = {
   'read-along-audiobooks': ['/audiobook-with-text', '/blog/what-is-immersive-reading', '/blog/free-read-along-audiobooks', '/audiobook-app-for-dyslexia'],
   'audiobook-with-text': ['/read-along-audiobooks', '/blog/can-you-read-along-with-audible', '/whispersync-alternative', '/m4b-player'],
   'speechify-alternative': ['/alternatives/speechify-alternatives', '/read-along-audiobooks', '/audiobook-app-for-dyslexia', '/blog/what-is-immersive-reading'],
   'whispersync-alternative': ['/blog/can-you-read-along-with-audible', '/audiobook-with-text', '/read-along-audiobooks', '/m4b-player'],
-  'audiobook-app-for-dyslexia': ['/blog/how-to-focus-on-audiobooks', '/read-along-audiobooks', '/blog/audiobook-listening-speed', '/speechify-alternative'],
-  'm4b-player': ['/blog/m4b-vs-mp3', '/alternatives/bookplayer-alternatives', '/audiobook-with-text', '/read-along-audiobooks']
+  'audiobook-app-for-dyslexia': ['/blog/are-audiobooks-good-for-dyslexia', '/blog/how-to-focus-on-audiobooks', '/read-along-audiobooks', '/speechify-alternative'],
+  'm4b-player': ['/blog/how-to-play-m4b-files', '/blog/m4b-vs-mp3', '/alternatives/bookplayer-alternatives', '/audiobook-with-text']
 };
 const strip = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
 

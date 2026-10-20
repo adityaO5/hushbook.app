@@ -58,7 +58,7 @@ Mostly the label. Both are MPEG-4 audio, usually AAC. The `.m4b` extension tells
 
 ## Should you convert M4B to MP3?
 
-Only if a device you rely on can't play M4B. In that case, convert a copy and keep the original. Expect to lose the built-in chapter list unless your converter splits the file at each chapter.
+Only if a device you rely on can't play M4B, and first check our guide to [playing M4B files](/blog/how-to-play-m4b-files) on iPhone, Android, Windows and Mac. In that case, convert a copy and keep the original. Expect to lose the built-in chapter list unless your converter splits the file at each chapter.
 
 Two things conversion won't fix:
 
