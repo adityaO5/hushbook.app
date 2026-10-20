@@ -6,6 +6,44 @@
 
 const posts = [
   {
+    slug: 'learn-english-with-audiobooks',
+    title: 'How to Learn English With Audiobooks (and Why Reading Along Helps)',
+    metaTitle: 'How to Learn English With Audiobooks: The Read-Along Method',
+    metaDescription: 'Read the text while you listen. Learners pick up far more new words that way than from audio alone. A daily routine, free audiobooks, and picks by level.',
+    description: 'Listen while you read the same words. Learners who read along could translate about eight times as many new words as those who only listened. What the research says, a daily routine, free English audiobooks, and books for each level.',
+    category: 'Language learning',
+    datePublished: '2026-10-20',
+    dateModified: '2026-10-20',
+    readingTime: '8 min read',
+    keywords: [
+      'learn english with audiobooks',
+      'learn english with audiobooks free',
+      'audiobooks for english learners',
+      'best audiobooks for english learners',
+      'english audiobooks with text',
+      'can you learn a language by listening to audiobooks',
+      'reading while listening',
+      'audiobooks for intermediate english learners'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Reading while listening beats listening alone. In a 2008 study, learners could translate 16% of new words after reading while listening, 15% after reading, and 2% after only listening.',
+      'Listening alone works once you know most of the words. A 2013 study found learners understood spoken stories well at 95% of words known, roughly the 2,000 to 3,000 most common word families.',
+      'For new words, reading along and silent reading come out about equal. The audio\'s main value is training your ear, setting a steady pace and making longer books manageable.',
+      'Pick easy books: graded readers at first, then audiobooks one or two levels below your reading level. Listen 20 to 30 minutes a day, and finish many easy books rather than struggle through one hard one.',
+      'Free sources include LibriVox, the Internet Archive and the British Council audio series. HushBook transcribes any audiobook on your phone and highlights each word, with tap-to-replay and 0.5x to 3x speed.'
+    ],
+    faqs: [
+      ['Can you learn English just by listening to audiobooks?', 'Not at first. Listening works once you understand most of what you hear, about 90 to 95% of the words. Before that, read along with the text. In one study, learners who only listened could translate just 2% of a story\'s new words.'],
+      ['What is the best audiobook for learning English?', 'One slightly below your level. Beginners should start with graded readers, which almost always come with audio. At intermediate level, The Wonderful Wizard of Oz and the Sherlock Holmes stories are free on LibriVox and easy to follow.'],
+      ['Is reading while listening better than just reading?', 'For new words, about the same. Studies find the two roughly equal. Reading along helps most with listening: you learn how words sound and where they begin and end, and the narrator keeps you at a steady pace.'],
+      ['What speed should English learners listen to audiobooks at?', 'Start at 0.75x or 0.8x if you lose the thread, and move up to 1x as the words separate. Narrators read about 155 words per minute. Treat a slow speed as a stepping stone, because the research on whether it helps comprehension is mixed.'],
+      ['Where can I find free English audiobooks with text?', 'LibriVox and the Internet Archive have free public domain audiobooks, and the British Council has free audio series for learners. To see each word highlighted as it is read, HushBook transcribes LibriVox recordings and your own audiobook files on your phone.'],
+      ['Do audiobooks help with English pronunciation?', 'They help you hear it. Reading along ties each sound to its spelling, and shadowing, saying a sentence out loud after the narrator, lets you practise rhythm and stress. The studies on reading while listening measured vocabulary and listening, not pronunciation.']
+    ]
+  },
+  {
     slug: 'why-do-i-fall-asleep-listening-to-audiobooks',
     title: 'Why Do I Fall Asleep Listening to Audiobooks? And Is It Bad?',
     metaTitle: 'Why Do I Fall Asleep Listening to Audiobooks? Is It Bad?',
@@ -274,6 +312,7 @@ const posts = [
     slug: 'can-you-read-along-with-audible',
     title: 'Can You Read Along With Audible? How Read & Listen Works',
     metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',
+    metaDescription: 'Yes, if you own both the Audible audiobook and its Kindle ebook. What you need, how to turn on Read & Listen, and what to do if you own only one.',
     description: 'Yes, with Audible Read & Listen, if you own both the audiobook and the Kindle ebook. What you need, how to turn it on, what to do if you own one edition, and options for audiobooks that did not come from Audible.',
     category: 'Read-along guides',
     datePublished: '2026-10-08',
@@ -312,11 +351,12 @@ const posts = [
   {
     slug: 'what-is-immersive-reading',
     title: 'What Is Immersive Reading? How to Read and Listen at the Same Time',
-    metaTitle: 'What Is Immersive Reading? How to Read and Listen at Once',
+    metaTitle: 'What Is Immersive Reading? Meaning and How It Works',
+    metaDescription: 'Immersive reading means reading a book\'s text while listening to its audiobook, often word by word. What it means, and how it differs from Immersive Reader.',
     description: 'Immersive reading means following the text while you listen to the audiobook. How it differs from text-to-speech and Microsoft Immersive Reader, and how to try it with HushBook on your own recording or a free public domain book.',
     category: 'Read-along guides',
     datePublished: '2026-10-07',
-    dateModified: '2026-10-07',
+    dateModified: '2026-10-20',
     readingTime: '6 min read',
     keywords: [
       'immersive reading',

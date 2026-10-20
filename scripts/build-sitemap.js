@@ -5,6 +5,7 @@
  *
  * Usage: node scripts/build-sitemap.js
  */
+const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 const {
@@ -61,14 +62,44 @@ function escapeXml(value) {
     .replace(/'/g, '&apos;');
 }
 
-function lastmodFor(locale, page) {
-  const file = pageFile(locale, page);
+// lastmod must reflect real content changes. Every build rewrites every HTML
+// file, so file mtime always reads "today" and Google learns to ignore it.
+// Order: blog post dateModified -> page JSON-LD dateModified -> last git
+// commit that touched the file (today if it has uncommitted content changes).
+const TODAY = new Date().toISOString().slice(0, 10);
+const POST_DATES = new Map(BLOG_POSTS.map((post) => [`blog/${post.slug}`, post.dateModified || post.datePublished]));
+
+function gitDate(file) {
+  const rel = path.relative(root, file);
   try {
-    const stat = fs.statSync(file);
-    return stat.mtime.toISOString().slice(0, 10);
+    execFileSync('git', ['diff', '--ignore-cr-at-eol', '--quiet', '--', rel], { cwd: root, stdio: 'ignore' });
   } catch {
-    return new Date().toISOString().slice(0, 10);
+    return TODAY; // uncommitted content change: it ships with the next commit
   }
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', rel], { cwd: root, encoding: 'utf8' }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out;
+  } catch {
+    // fall through
+  }
+  return null;
+}
+
+function realLastmod(file, route) {
+  if (route && POST_DATES.has(route)) return POST_DATES.get(route);
+  if (route === 'blog') return [...POST_DATES.values()].sort().at(-1);
+  try {
+    const html = fs.readFileSync(file, 'utf8');
+    const m = html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+    if (m) return m[1];
+  } catch {
+    return TODAY;
+  }
+  return gitDate(file) || fs.statSync(file).mtime.toISOString().slice(0, 10);
+}
+
+function lastmodFor(locale, page) {
+  return realLastmod(pageFile(locale, page), null);
 }
 
 function hreflangLinks(page) {
@@ -132,7 +163,7 @@ for (const route of ENGLISH_ONLY_URLS) {
     continue;
   }
   const loc = `https://hushbook.app/${route}`;
-  const lastmod = fs.statSync(resolvedFile).mtime.toISOString().slice(0, 10);
+  const lastmod = realLastmod(resolvedFile, route);
   urls.push(
     [
       '  <url>',

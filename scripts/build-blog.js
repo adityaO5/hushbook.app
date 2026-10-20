@@ -283,7 +283,7 @@ function renderPost(post) {
     ''
   ].join('\n');
 
-  return `${head({ title: (`${post.metaTitle} | HushBook`.length <= 60 ? `${post.metaTitle} | HushBook` : post.metaTitle), description: post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra })}
+  return `${head({ title: (`${post.metaTitle} | HushBook`.length <= 60 ? `${post.metaTitle} | HushBook` : post.metaTitle), description: post.metaDescription || post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra })}
 <body>
 ${nav()}
 <main id="content">

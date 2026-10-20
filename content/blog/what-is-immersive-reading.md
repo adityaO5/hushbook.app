@@ -1,5 +1,7 @@
 # What Is Immersive Reading? How to Read and Listen at the Same Time
 
+Immersive reading means reading a book's words while you listen to the same book read aloud, often with each word highlighted as the narrator says it. You see the text and hear the voice together, so your eyes and ears follow the same sentence.
+
 I used to buy books and leave them unfinished. Paperbacks, ebooks, audiobooks. Somewhere around chapter four I would lose the thread and move on to something else.
 
 Reading the paperback while its audiobook played was what finally held my attention. I could see where I was. When my mind wandered, there was a sentence to come back to instead of another rewind.

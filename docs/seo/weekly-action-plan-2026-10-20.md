@@ -2,7 +2,7 @@
 
 Format follows the Rerun "Weekly SEO Action Plan" template: the five highest-impact actions, each with page, target query, change, and reason, ranked by expected impact. Next plan: 2026-10-27, ideally with Search Console data.
 
-**Evidence:** live Google results loaded in a browser (hl=en, gl=us, signed out, one snapshot, blue links only), live Bing results, Google autocomplete, local Lighthouse mobile runs, a crawl of the repo's English pages, HTTP header checks, and an off-site footprint sweep. No Search Console data yet.
+**Evidence:** live Google results loaded in a browser (hl=en, gl=us, signed out, one snapshot, blue links only), live Bing results, Google autocomplete, local Lighthouse mobile runs, a crawl of the repo's English pages, HTTP header checks, and an off-site footprint sweep. Search Console (90 days, 2026-07-21 to 2026-10-18) connected the same day; see the next section.
 
 ## Where things stand
 
@@ -12,6 +12,36 @@ Format follows the Rerun "Weekly SEO Action Plan" template: the five highest-imp
 - **Technical base is strong.** Canonicals, hreflang, single-hop 308 redirects, real 404s, sitemap, Article/FAQ/Breadcrumb schema, `llms.txt`, and AI crawlers allowed in `robots.txt`.
 - **Internal links were starving money pages.** Home linked to zero answer pages and zero blog posts. Fixed this week.
 - **Off-site footprint is mostly self-submitted.** None of the third-party pages likely to be cited for the six core read-along questions mention HushBook. Spokt, a competitor, owns much of the "read along with your own audiobook" answer space with its own guides.
+
+## Search Console data (connected 2026-10-20)
+
+Pulled with read-only service-account impersonation on `sc-domain:hushbook.app`.
+
+| Metric | Value |
+|---|---|
+| 90-day clicks / impressions | 222 / 5,317 |
+| Last full week (from Oct 12) | 62 clicks / 3,465 impressions, up from 532 impressions the week before |
+| Brand query "hushbook" | 111 clicks, position 1.1 |
+| Key URLs indexed (URL Inspection) | 23 of 25 |
+
+**Not indexed:** `/blog` and `/blog/m4b-vs-mp3` are "Discovered, currently not indexed". Use URL Inspection, then Request indexing, for both.
+
+**Biggest leak: page-one rankings with no clicks.**
+
+| Page | Impressions | Clicks | Avg position | Main queries |
+|---|---|---|---|---|
+| `/blog/can-you-read-along-with-audible` | 1,010 | 6 | 7.0 | "how to read along with audible", "can you read along with audible (on iphone)" |
+| `/blog/what-is-immersive-reading` | 838 | 0 | 7.9 | "immersive reading", "what is immersive reading", "immersive reading meaning", "immersive reader meaning" |
+| `/alternatives/pocket-fm-alternatives` | 343 | 17 | 5.9 | "pocket fm alternative free", "pocket fm competitors", German "pocket fm kostenlose alternative" |
+| `/whispersync-alternative` | 164 | 4 | 6.8 | "whispersync" (49 impressions, position 9.4) |
+
+**Fix shipped to the working tree (awaiting deploy):**
+- `what-is-immersive-reading`: title now "What Is Immersive Reading? Meaning and How It Works". The meta description is 156 characters and leads with the definition. The post now opens with a one-sentence definition, before the personal story. `dateModified` set to 2026-10-20.
+- `can-you-read-along-with-audible`: meta description cut from 216 to 145 characters, so Google stops truncating it.
+- The blog builder gained an optional `metaDescription` field, so search snippets can stay short while the blog index keeps the longer text.
+- Sitemap `lastmod` now uses real content dates (post `dateModified`, then page JSON-LD, then the last git commit). Before, every build stamped every URL with that day's date, which teaches Google to ignore `lastmod`.
+
+**Revised priority order:** ship the snippet fixes above, then actions 1 (Bing), 5 (Whispersync, now backed by 49 "whispersync" impressions), 3 (Reddit and listings), 2 (focus post), 4 (read-along table). Add "Pocket FM alternatives (free and paid)" title testing to next week, since "free" dominates that page's queries; check the alternatives title contract first.
 
 ## Top 5 actions this week
 
@@ -70,7 +100,7 @@ Format follows the Rerun "Weekly SEO Action Plan" template: the five highest-imp
 - **`/blog/audiobook-listening-speed` (about #17).** Put a table under the intro with columns for speed (1x to 2x), effective words per minute at a cited 150 to 160 wpm narration rate, and hours for a 10-hour book. Add the FAQs "How long does it take to listen to a 300-page audiobook?" and "How much faster is 1.5x?" (10 h becomes 6 h 40 m). Absorbs the "narrator words per minute" topic.
 - **`/blog/can-you-read-along-with-audible` (about #14).** Add H2s that match autocomplete: "Can you read along with Audible on iPhone?" and "…on Kindle Paperwhite?" Add the FAQ "Does Audible have text to follow along?"
 - **`/blog/what-is-immersive-reading`.** Move the one-sentence definition to the first line. The AI Overview and Reader's Digest both define it in sentence one; the post defines it in paragraph 3.
-- **New post: "Learn English with audiobooks" (GO).** Google's #1 is digitalbook.io, a small site. Target "learn english with audiobooks" plus "…app" and "…free". Secondary targets: "can you learn a language by listening to audiobooks" and "read while listening method". Strong product fit: tap a word to replay, 0.75x speed, word-level text, a catalog in 6 languages.
+- **PUBLISHED 2026-10-20: `/blog/learn-english-with-audiobooks`.** Was: "Learn English with audiobooks" (GO). Google's #1 is digitalbook.io, a small site. Target "learn english with audiobooks" plus "…app" and "…free". Secondary targets: "can you learn a language by listening to audiobooks" and "read while listening method". Strong product fit: tap a word to replay, 0.75x speed, word-level text, a catalog in 6 languages.
 - **New post: "Does Audible have subtitles?"** Answer "No" first. Audible Captions was announced in 2019 for a September launch and sued by seven publishers through the Association of American Publishers. The case settled in January 2020, and a February 2020 consent injunction required publisher permission, so Captions never launched beyond a public-domain pilot. Then cover Read & Listen and HushBook. Sources: [Publishers Weekly](https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/82370-in-final-settlement-audible-agrees-to-limit-its-captions-program.html), [Publishing Perspectives](https://publishingperspectives.com/2020/02/copyright-coup-as-association-american-publishers-succeeds-in-audible-captions-case/), [Jane Friedman](https://janefriedman.com/audible-and-book-publishers-settle-the-captions-dispute/).
 - **`/blog/abridged-vs-unabridged-audiobooks`.** The thinnest post at about 659 words. Add "how much gets cut" figures (others quote 35 to 75%) and named examples.
 - **`/blog/m4b-vs-mp3`.** Add "How to play an M4B on iPhone, Android, Windows and Mac". People Also Ask and the top results are about conversion and playback.
@@ -123,9 +153,20 @@ Tests: 7 of 9 pass. `seo-preservation` and `seo-repair-contract` fail identicall
 - **Possible cannibalization.** `/speechify-alternative` and `/alternatives/speechify-alternatives` both target "speechify alternative". They cross-link. Watch Search Console for the two swapping places, and merge if they do.
 - **Wikidata item** with the website, App Store ID and Play ID. Notability is borderline; revisit after press coverage.
 
-## What Search Console access unlocks
+## Weekly data pull
 
-1. **Performance export** (Search results → last 3 months → Export) with Queries and Pages. Real positions and impressions let each week target queries already sitting on page 2.
-2. **Pages report export** (Indexing → Pages): exact reasons for any excluded URL.
-3. **Ongoing weekly runs:** a Google Cloud service account with the Search Console API enabled, added as a restricted user on the `hushbook.app` property, connected through a Search Console MCP server.
-4. **Bing Webmaster Tools** via the Search Console import: the coverage numbers behind action 1.
+Search Console is connected with no key file: the `hushbook-seo-reader@hushbook-seo.iam.gserviceaccount.com` service account is a Restricted user on the property, and the owner's Google login impersonates it (Application Default Credentials).
+
+```
+python -I %USERPROFILE%\hushbook-seo\gsc_pull.py %USERPROFILE%\hushbook-seo\gsc\<date> 90
+```
+
+This writes sites, queries × pages, pages, queries, daily totals and URL Inspection results for 25 key URLs. Data stays outside the repo. If the sign-in ever expires, re-run:
+
+```
+gcloud auth application-default login --impersonate-service-account=hushbook-seo-reader@hushbook-seo.iam.gserviceaccount.com
+```
+
+(The portable gcloud is at `%LOCALAPPDATA%\Google\cloud-sdk-portable\google-cloud-sdk\bin\gcloud.cmd`.)
+
+Still to do: verify Bing Webmaster Tools through the Search Console import.
