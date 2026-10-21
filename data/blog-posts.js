@@ -6,6 +6,123 @@
 
 const posts = [
   {
+    slug: 'how-to-retain-information-from-audiobooks',
+    cta: { heading: 'See the sentence you missed', text: 'HushBook highlights each word as the narrator reads it, so you can follow dense chapters, tap back to the line you drifted on, and save key quotes in two taps.' },
+    title: 'How to Retain Information From Audiobooks: 8 Habits Backed by Research',
+    metaTitle: 'How to Retain Information From Audiobooks (8 Habits)',
+    metaDescription: 'Test yourself after each chapter, space sessions out and read along on dense books. What studies show about remembering audiobooks vs reading.',
+    description: 'Audiobooks are not a weaker way to learn, but listening lets your mind drift. Recall after each chapter, spaced sessions, reading along on dense books and the right speed help you remember more, with the studies behind each habit.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-21',
+    dateModified: '2026-10-21',
+    readingTime: '8 min read',
+    keywords: [
+      'how to retain information from audiobooks',
+      'how to retain information when listening to audiobooks',
+      'do you retain information from audiobooks',
+      'how to remember audiobooks better',
+      'how to learn from audiobooks',
+      'audiobooks vs reading retention',
+      'how to remember what you listen to',
+      'do you retain audiobooks'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'A 2022 meta-analysis of 46 studies found no reliable overall difference in comprehension between listening and reading. Print kept an edge on inference questions and when readers set their own pace.',
+      'Recalling beats relistening. In a 2006 study, students who recalled a passage kept 56% of it a week later, against 42% for those who studied it again.',
+      'Listening invites mind wandering: in a 2013 study of 211 students, minds wandered at about half of check-ins while listening versus about a third while reading silently.',
+      'Spacing sessions helps. A review of 317 experiments found an average benefit of about 15% when memory was tested a month or more later.',
+      'Seeing the words while listening beat listening alone in a meta-analysis of 57 studies, especially for readers new to a topic.'
+    ],
+    faqs: [
+      ['Do you retain information from audiobooks as well as reading?', 'For most books, about as well. A 2022 meta-analysis of 46 studies found no reliable overall difference. Reading did better on inference questions and when readers controlled their own pace.'],
+      ['How do you retain information when listening to audiobooks?', 'Pause after each chapter and recall the three key points, space your listening over several days, rewind as soon as you drift, and read along with the text when the book is dense.'],
+      ['Why do I forget audiobooks so quickly?', 'Mostly mind wandering. Listening gives your mind more room to drift than reading, and the narrator keeps going while you are away. A 2013 study found students drifted at about half of check-ins while listening.'],
+      ['Is it better to relisten or test yourself?', 'Test yourself. In a 2006 study, students who recalled a passage remembered 56% a week later versus 42% for those who restudied it, even though restudying felt more effective.'],
+      ['Does listening at 2x speed hurt retention?', 'Not much up to 2x in one study. UCLA researchers found lecture comprehension was similar from 1x to 2x and dropped at 2.5x. If you cannot summarize the last chapter, slow down.'],
+      ['Does reading along with an audiobook help you remember?', 'Compared with listening alone, yes. A meta-analysis of 57 studies found spoken plus written text beat spoken text alone. It adds little over reading the text at your own pace.']
+    ]
+  },
+  {
+    slug: 'are-audiobooks-good-for-adhd',
+    cta: { heading: 'Give your eyes something to follow', text: 'HushBook highlights each word as the narrator reads it, with a Dyslexia and ADHD profile and tap-to-rewind on any word. A reading aid for your own audiobook files and free classics.' },
+    title: 'Are Audiobooks Good for ADHD? What the Research Actually Shows',
+    metaTitle: 'Are Audiobooks Good for ADHD? What the Research Shows',
+    metaDescription: 'Often, yes, but evidence is thin. Small studies link read-aloud tools to less distraction in ADHD. Why listening alone can still drift, and tips.',
+    description: 'For many people with ADHD, audiobooks make books easier to start and finish, and small studies link read-aloud tools to less distraction and fatigue. But listening does not bypass attention problems. The evidence, and tips that help.',
+    category: 'Accessibility',
+    datePublished: '2026-10-21',
+    dateModified: '2026-10-21',
+    readingTime: '7 min read',
+    keywords: [
+      'are audiobooks good for adhd',
+      'audiobooks for adhd',
+      'are audiobooks better for adhd',
+      'audiobooks for adhd adults',
+      'are audiobooks good for kids with adhd',
+      'audiobooks for adhd kids',
+      'adhd audiobooks',
+      'reading while listening adhd'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Audiobooks help many people with ADHD start and finish books, but no study shows they treat ADHD, and the direct evidence comes from small studies.',
+      'In a 2002 study of 20 college students with attention disorders, software that read text aloud on screen cut distraction, stress and fatigue and sped up reading, without changing comprehension.',
+      'A 2021 review of 68 studies found read-aloud was the one school accommodation with ADHD-specific benefits, from two small randomized trials in children.',
+      'Listening does not bypass attention problems: boys with ADHD struggled with inferences in spoken passages, and listening alone produces more mind wandering than reading in general readers.',
+      'Practical habits include moving while listening, checking comprehension at faster speeds, short sessions with recall, and keeping the text in view for hard books.'
+    ],
+    faqs: [
+      ['Are audiobooks good for ADHD?', 'For many people, yes, as one tool among several. Small studies link read-aloud tools to less distraction and fatigue, but no study shows audiobooks treat ADHD, and listening alone still lets the mind wander.'],
+      ['Are audiobooks better than reading for ADHD?', 'Not automatically. Audio removes decoding and keeps the book moving, but it also removes the eye and hand activity that anchors attention. Many ADHD listeners do best combining audio with movement or the text.'],
+      ['Are audiobooks good for kids with ADHD?', 'They can help, alongside reading practice and proven ADHD treatment. Two small randomized trials found that reading test questions aloud gave children with ADHD a specific boost.'],
+      ['What speed should I listen to audiobooks with ADHD?', 'No study has tested speed in ADHD. Many listeners prefer 1.25x to 1.5x. In the general population, comprehension of lecture videos held up to 2x. Check you can still summarize each chapter.'],
+      ['Does reading along with an audiobook help ADHD?', 'It helps some people keep their place and notice when they drift, but it has not been tested with audio in ADHD. A 2025 study found highlighting words in place did not improve comprehension without audio.'],
+      ['Can audiobooks replace ADHD treatment?', 'No. A 2021 review advises using accommodations such as read-aloud alongside evidence-based ADHD treatment, not instead of it. Audiobooks are a reading aid, not a therapy.']
+    ]
+  },
+  {
+    slug: 'how-to-listen-to-audiobooks-for-free',
+    cta: { heading: 'Free classics, with the words on screen', text: 'HushBook has LibriVox and Internet Archive audiobooks built in and highlights each word as the narrator reads it. Free to download, no account needed.' },
+    title: 'How to Listen to Audiobooks for Free (Legally): 9 Ways That Work',
+    metaTitle: 'How to Listen to Audiobooks for Free (Legally): 9 Ways',
+    metaDescription: 'Use your library card in Libby or Hoopla, or no card at all: LibriVox, Audible free listens, Spotify Premium hours and trials. Limits for each.',
+    description: 'Your library card unlocks free audiobooks in Libby and Hoopla. Without one, LibriVox has 21,000+ public domain titles and Audible has free listens. What each option gives you, the catch, and free services for print disabilities.',
+    category: 'Free audiobooks',
+    datePublished: '2026-10-21',
+    dateModified: '2026-10-21',
+    readingTime: '8 min read',
+    keywords: [
+      'how to listen to audiobooks for free',
+      'how to listen to audiobooks for free with library card',
+      'how to listen to audiobooks for free without library card',
+      'how to listen to audiobooks for free on spotify',
+      'how to listen to audiobooks for free on audible',
+      'how to listen to audiobooks for free online',
+      'free audiobooks',
+      'is librivox free'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Your public library is the best free source: Libby and Hoopla lend audiobooks with a library card, with loans usually 7 to 21 days and waiting lists for popular titles.',
+      'Without a card, LibriVox has more than 21,000 free public domain audiobooks read by volunteers, and Audible has free listens that only need an Amazon account.',
+      'Spotify includes 15 hours of audiobooks a month only on Premium in the US, UK, Canada and Australia. The free tier includes none.',
+      'Audible trials last 30 days and turn into a paid plan unless you cancel. Prime members get two free audiobooks on their first trial.',
+      'People with a print disability can use free services such as NLS Talking Books and Bookshare in the US, RNIB in the UK and CELA in Canada.'
+    ],
+    faqs: [
+      ['How can I listen to audiobooks for free?', 'Borrow them from your public library in Libby or Hoopla, download public domain audiobooks from LibriVox, use Audible free listens, or use the hours included with Spotify Premium.'],
+      ['How do I listen to audiobooks for free without a library card?', 'Use LibriVox for free public domain classics, Audible free listens with an Amazon account, or Apple Books free titles. Some libraries also sell nonresident cards, such as Queens Public Library for $50 a year.'],
+      ['Can you listen to audiobooks for free on Spotify?', 'Not on the free tier. Spotify Premium includes 15 hours of audiobooks a month in the US, UK, Canada and Australia, and 12 hours in some newer markets. Unused hours do not roll over.'],
+      ['Can you get Audible books for free?', 'Audible has a page of free listens that needs only an Amazon account, and a 30-day trial. Prime members get two free audiobooks on their first trial. Trials turn into paid plans unless you cancel.'],
+      ['Is LibriVox free and legal?', 'Yes. LibriVox records books whose US copyright has expired and states that all its recordings are in the public domain. Some works may still be under copyright outside the US.'],
+      ['Are audiobooks on YouTube legal?', 'Public domain readings are. Full uploads of modern, in-copyright audiobooks are usually unauthorized and often taken down. Borrow those from your library instead.']
+    ]
+  },
+  {
     slug: 'are-audiobooks-good-for-dyslexia',
     cta: { heading: 'Read along at your own settings', text: 'HushBook highlights each word as it is read, with a Dyslexia and ADHD profile for font, spacing and size. A reading aid that works with your own audiobook files and free classics.' },
     title: 'Are Audiobooks Good for Dyslexia? What the Research Says',

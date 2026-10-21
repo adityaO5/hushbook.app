@@ -3248,11 +3248,35 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/how-to-retain-information-from-audiobooks</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-retain-information-from-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-retain-information-from-audiobooks"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/are-audiobooks-good-for-adhd</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/are-audiobooks-good-for-adhd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/are-audiobooks-good-for-adhd"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/how-to-listen-to-audiobooks-for-free</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-listen-to-audiobooks-for-free"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-listen-to-audiobooks-for-free"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/are-audiobooks-good-for-dyslexia</loc>

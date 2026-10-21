@@ -2,7 +2,7 @@
 
 You can read along with a free audiobook, word by word, on your phone. The books are free, the app is free to start, and the highlighting happens on your device.
 
-The catch is that free audiobooks almost never come with synced text. You get a recording, and the book's text lives somewhere else. This guide covers where to find free audiobooks you can legally use, and how to turn them into a read-along with [HushBook](/).
+The catch is that free audiobooks almost never come with synced text. You get a recording, and the book's text lives somewhere else. This guide covers where to find free audiobooks you can legally use, and how to turn them into a read-along with [HushBook](/). For every free option, including library apps and Spotify, see [how to listen to audiobooks for free](/blog/how-to-listen-to-audiobooks-for-free).
 
 ## What does read-along mean?
 

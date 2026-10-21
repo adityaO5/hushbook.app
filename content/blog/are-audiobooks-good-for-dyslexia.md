@@ -60,7 +60,7 @@ The practical advice: use whatever font feels comfortable, and try wider letter 
 
 Most audiobooks come without text. [HushBook](/) transcribes an audiobook on your phone and highlights each word as the narrator says it, so you can read along with any audiobook file you own or with free LibriVox classics built into the app.
 
-It has a Dyslexia and ADHD reading profile that sets up the text for easier reading, with font, spacing and size controls you can change while the narrator keeps going. Fonts include OpenDyslexic for readers who like it. As the research above shows, the font is a matter of comfort, while spacing and size are worth experimenting with. You can tap any word to jump the audio back to it, and slow the narration down from 0.5x.
+It has a Dyslexia and ADHD reading profile that sets up the text for easier reading, with font, spacing and size controls you can change while the narrator keeps going. Fonts include OpenDyslexic for readers who like it. As the research above shows, the font is a matter of comfort, while spacing and size are worth experimenting with. You can tap any word to jump the audio back to it, and slow the narration down from 0.5x. If attention is the bigger struggle, see [are audiobooks good for ADHD](/blog/are-audiobooks-good-for-adhd).
 
 Honest limits. HushBook is a reading aid, not a medical or therapy tool, and it does not replace reading instruction. The text comes from speech recognition, so unusual names can come out wrong. And it cannot import protected files such as Audible downloads. There is more on the reading profiles on our [audiobook app for dyslexia](/audiobook-app-for-dyslexia) page.
 

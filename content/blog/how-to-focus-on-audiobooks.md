@@ -68,6 +68,8 @@ Some people really do follow a story better on paper, and that's fine. Mind wand
 
 But before giving up on audio, try one easy book, at a speed that feels right, while walking, with the text in front of you. If that still doesn't work, you've learned something useful about how you read.
 
+Once you can stay with a book, the next step is keeping what you heard. We cover that in [how to retain information from audiobooks](/blog/how-to-retain-information-from-audiobooks).
+
 ## Sources
 
 - [Varao Sousa, Carriere and Smilek (2013), "The way we encounter reading material influences how frequently we mind wander", Frontiers in Psychology](https://pmc.ncbi.nlm.nih.gov/articles/PMC3842750/)
