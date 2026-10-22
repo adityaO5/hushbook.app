@@ -61,7 +61,7 @@ You will drift. Everyone does. Go back to the last thing you remember instead of
 
 ## Are audiobooks good for kids with ADHD?
 
-They can be a useful part of the mix. The read-aloud test studies were done with children, and audiobooks let a child with ADHD keep up with class novels and books their friends are reading. But they are not a substitute for reading practice, especially if the child also has dyslexia, or for proven ADHD treatment. Talk to your child's school about read-aloud accommodations if reading tests are a struggle.
+They can be a useful part of the mix. The read-aloud test studies were done with children, and audiobooks let a child with ADHD keep up with class novels and books their friends are reading. But they are not a substitute for reading practice, especially if the child also has dyslexia, or for proven ADHD treatment. Talk to your child's school about read-aloud accommodations if reading tests are a struggle. For what the research says about audiobooks and children in general, see [are audiobooks good for kids](/blog/are-audiobooks-good-for-kids).
 
 ## What the evidence does not show
 

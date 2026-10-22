@@ -3248,11 +3248,19 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/are-audiobooks-good-for-kids</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/are-audiobooks-good-for-kids"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/are-audiobooks-good-for-kids"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/how-to-retain-information-from-audiobooks</loc>

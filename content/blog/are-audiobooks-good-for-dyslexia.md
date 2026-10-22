@@ -36,7 +36,7 @@ No. Listening is a different way into the same book, and for understanding a sto
 
 ## Audiobooks for kids with dyslexia
 
-For children who are still learning to read, audiobooks belong next to reading lessons, not in place of them. Understood.org puts it simply: using assistive technology "doesn't keep people from learning to read," but these "tools alone will probably not improve reading skills."
+For children who are still learning to read, audiobooks belong next to reading lessons, not in place of them, and that holds for [all young readers](/blog/are-audiobooks-good-for-kids), not only those with dyslexia. Understood.org puts it simply: using assistive technology "doesn't keep people from learning to read," but these "tools alone will probably not improve reading skills."
 
 A sensible split:
 

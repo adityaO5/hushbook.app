@@ -58,7 +58,7 @@ For many people with dyslexia or low vision, it's simpler than that. Listening i
 
 No. "Cheating" only makes sense if reading means decoding print. Most of the time it means taking in a book, and you did that.
 
-There's one sensible exception. If a teacher has set a book to practise reading skills, ask before switching to audio, because the skill is the point of that assignment. Otherwise, count it. Put it on your Goodreads shelf.
+There's one sensible exception. If a teacher has set a book to practise reading skills, ask before switching to audio, because the skill is the point of that assignment. Otherwise, count it. Put it on your Goodreads shelf. If you're asking for a child, we cover the research on [audiobooks for kids](/blog/are-audiobooks-good-for-kids) separately.
 
 ## Can you read and listen at the same time?
 
