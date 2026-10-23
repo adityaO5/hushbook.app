@@ -47,7 +47,7 @@ For audiobooks, that means a chapter a day often beats a six-hour binge if you w
 
 For hard non-fiction, having the words in front of you helps. A 2012 meta-analysis by Adesope and Nesbit, covering 57 studies, found that people who got spoken and written text together learned more than people who only heard it. The advantage held for readers new to the topic and for material that moved at a fixed pace, which is exactly what an audiobook is.
 
-Be realistic about the size of the effect. Compared with reading at your own pace, adding audio makes little difference, as a 2023 meta-analysis of 30 studies by Clinton-Lisell found. Reading along mostly helps compared with listening alone, because it brings back the two things listening lacks: something for your eyes to do, and a way to see exactly where you are.
+Be realistic about the size of the effect. Compared with reading at your own pace, adding audio makes little difference, as a 2023 meta-analysis of 30 studies by Clinton-Lisell found. Reading along mostly helps compared with listening alone, because it brings back the two things listening lacks: something for your eyes to do, and a way to see exactly where you are. We look at [when reading along helps and when it gets in the way](/blog/does-reading-along-with-an-audiobook-help) in more detail.
 
 That is the problem we built [HushBook](/) for. It highlights each word of an audiobook as the narrator says it, so in a dense chapter you can follow the text instead of trusting your ears alone.
 

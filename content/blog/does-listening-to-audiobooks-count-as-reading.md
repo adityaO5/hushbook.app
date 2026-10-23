@@ -68,7 +68,7 @@ You can, and a lot of people say it helps them focus. The research is more modes
 
 And when people read at their own pace, there were "no reliable effects." She also noted that struggling readers might benefit, but "there are currently too few studies to afford generalizations on these claims."
 
-So I won't tell you it makes you understand more. Where I think it earns its place is the practical stuff. If the words are on screen, you can see exactly where you are when your mind comes back. You can catch a character's name you didn't quite hear. If you'd like to try it, there's a fuller guide to [immersive reading](/blog/what-is-immersive-reading).
+So I won't tell you it makes you understand more. Where I think it earns its place is the practical stuff. If the words are on screen, you can see exactly where you are when your mind comes back. You can catch a character's name you didn't quite hear. If you'd like to try it, there's a fuller guide to [immersive reading](/blog/what-is-immersive-reading). For when reading along helps and when it gets in the way, see [does reading along with an audiobook help](/blog/does-reading-along-with-an-audiobook-help).
 
 That's what I built HushBook to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, and highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong. It can't import protected Audible downloads either.
 ## Pick by the book

@@ -52,7 +52,7 @@ Our [M4B guide](/m4b-player) covers the file side. You can also follow the same 
 
 ## Does it help with attention?
 
-For me, seeing the words was what made the chapter stick. That doesn't mean everyone needs audio and text together. You might find it distracting. Give yourself permission to turn one off.
+For me, seeing the words was what made the chapter stick. That doesn't mean everyone needs audio and text together. You might find it distracting. Give yourself permission to turn one off. We go through [what the research says about reading along](/blog/does-reading-along-with-an-audiobook-help) in a separate guide.
 
 Understood describes audiobooks, text-to-speech and display adjustments as reading supports. Its expert-reviewed guide also says assistive tools alone probably won't improve reading skills. An app doesn't replace teaching or treatment for ADHD or dyslexia.
 
