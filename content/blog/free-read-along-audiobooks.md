@@ -16,7 +16,7 @@ It's different from text-to-speech, where a synthetic voice reads a text aloud. 
 
 LibriVox is a volunteer project that records public domain books and gives the audio away. Its About page says: "All our audio is in the public domain, so you may use it for whatever purpose you wish." The source texts come mainly from Project Gutenberg, and the Internet Archive hosts the audio files.
 
-That means thousands of classics with human narrators, free to download and keep. Many of these books are very old, and as LibriVox itself warns, may contain outdated or offensive language or ideas.
+That means thousands of classics with human narrators, free to download and keep. Many of these books are very old, and as LibriVox itself warns, may contain outdated or offensive language or ideas. For safety, copyright outside the US and whether the narrators are AI, see [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
 
 ### Internet Archive
 

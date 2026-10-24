@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Is LibriVox Safe, Legal and Free? What to Know Before You Download</title>
+      <link>https://hushbook.app/blog/is-librivox-safe-and-legal</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/is-librivox-safe-and-legal</guid>
+      <pubDate>Sat, 24 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Free audiobooks</category>
+      <description>Yes. LibriVox is a free, ad-free volunteer project, and every book it records is public domain in the US. Outside the US, check the book first. What to know about safety, copyright, AI narration, quality and unofficial apps.</description>
+    </item>
     <item>
       <title>Does Reading Along With an Audiobook Help? What the Research Says</title>
       <link>https://hushbook.app/blog/does-reading-along-with-an-audiobook-help</link>

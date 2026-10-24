@@ -46,7 +46,7 @@ It is legal and free. LibriVox states: "All LibriVox Recordings are in the Publi
 Two honest caveats:
 
 - **Narration quality varies.** Readers are volunteers. Some books are read by one excellent narrator, others pass between many readers with different microphones. Listen to a sample chapter first.
-- **Public domain depends on your country.** LibriVox follows US copyright law. Its wiki warns a work "may be in the public domain in the US, but still be under copyright in other countries."
+- **Public domain depends on your country.** LibriVox follows US copyright law. Its wiki warns a work "may be in the public domain in the US, but still be under copyright in other countries." We show how to check, with a current example, in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
 
 Classics are also where people most often lose the thread: old prose, long sentences, unfamiliar names. Having the words on screen as the narrator reads helps a lot here. [HushBook](/) has LibriVox and Internet Archive titles built in and shows each word highlighted as it is spoken, so you can follow along for free. We explain how in [free read-along audiobooks](/blog/free-read-along-audiobooks).
 
