@@ -13,7 +13,7 @@ How it works:
 - Sign in with your library card, search, and borrow.
 - Loan periods "vary by library and by format," usually 7, 14 or 21 days. You can pick the length when you borrow, if your library allows it.
 - Popular books have a waiting list, because your library buys a limited number of copies. You place a hold and Libby shows your place in line.
-- Audiobooks play inside Libby. You cannot export them as audio files.
+- Audiobooks play inside Libby. You cannot export them as audio files, and Libby shows no text while they play. Our guide to [whether Libby can read to you](/blog/can-libby-read-to-you) covers read-alongs, screen readers and a way to follow along.
 
 Libby works on iPhone, Android, newer Fire tablets and in a web browser at libbyapp.com.
 

@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Can Libby Read to You? Read Aloud, Read-Alongs and Audiobooks</title>
+      <link>https://hushbook.app/blog/can-libby-read-to-you</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/can-libby-read-to-you</guid>
+      <pubDate>Sun, 25 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Read-along guides</category>
+      <description>Not by itself: Libby has no read-aloud button. It lends audiobooks and narrated read-alongs for kids, and works with VoiceOver and TalkBack. How to set up each one, and how to read along with a Libby audiobook anyway.</description>
+    </item>
     <item>
       <title>Is LibriVox Safe, Legal and Free? What to Know Before You Download</title>
       <link>https://hushbook.app/blog/is-librivox-safe-and-legal</link>

@@ -47,7 +47,7 @@ That third one is the reason I made HushBook. It works from audio files you can 
 
 I won't oversell it. HushBook can't open protected Audible downloads, and it can't pair a Kindle ebook either, because both are locked to Amazon's apps. A transcript made by speech recognition also isn't the publisher's proofread text. Names and noisy recordings can come out wrong. If your books live in Audible and Kindle, use Read & Listen.
 
-There's more on [how HushBook compares to Whispersync](/whispersync-alternative), and on [getting text for an audiobook](/audiobook-with-text).
+There's more on [how HushBook compares to Whispersync](/whispersync-alternative), on [getting text for an audiobook](/audiobook-with-text) and, for library books, on [whether Libby can read to you](/blog/can-libby-read-to-you).
 
 ## Is reading along worth it?
 
