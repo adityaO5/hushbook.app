@@ -16,6 +16,7 @@ from urllib.parse import unquote, urlsplit
 
 PAGES = {
     "about": "about.html",
+    "desktop": "desktop.html",
     "download": "download.html",
     "privacy-policy": "privacy-policy.html",
     "terms-conditions": "terms-conditions.html",
