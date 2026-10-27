@@ -7,6 +7,7 @@
 const posts = [
   {
     slug: 'can-you-read-along-with-spotify-audiobooks',
+    hero: 'read-along-card',
     cta: { heading: 'See every word as the narrator reads it', text: 'Spotify leaves the text in your book. HushBook highlights each word on screen, in free public domain classics and audio files you own. Reading along is free.' },
     title: 'Can You Read Along With Spotify Audiobooks? Page Match, Recaps and Transcripts',
     metaTitle: 'Can You Read Along With Spotify Audiobooks?',
@@ -205,6 +206,7 @@ const posts = [
   },
   {
     slug: 'are-audiobooks-good-for-kids',
+    hero: 'companions-arc',
     cta: { heading: 'Let them see the words they hear', text: 'HushBook highlights each word as the narrator reads it, and you can tap any word to jump back to it. Free classics are built in, or use audiobook files you own. A reading aid to use together.' },
     title: 'Are Audiobooks Good for Kids? What the Research Says',
     metaTitle: 'Are Audiobooks Good for Kids? What the Research Says',
@@ -441,6 +443,7 @@ const posts = [
   },
   {
     slug: 'how-to-play-m4b-files',
+    hero: 'read-along-card',
     cta: { heading: 'An M4B player that shows the words', text: 'HushBook plays M4B files with chapters and cover art on iPhone and Android, and highlights every word as the narrator reads it.' },
     title: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
     metaTitle: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
@@ -791,6 +794,7 @@ const posts = [
   },
   {
     slug: 'can-you-read-along-with-audible',
+    hero: 'read-along-card',
     cta: { heading: 'Read along where Audible cannot', text: 'For LibriVox recordings and DRM-free files you own, HushBook makes word-by-word text on your phone. No ebook needed.' },
     title: 'Can You Read Along With Audible? How Read & Listen Works',
     metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',
@@ -832,6 +836,7 @@ const posts = [
   },
   {
     slug: 'what-is-immersive-reading',
+    hero: 'read-along-card',
     cta: { heading: 'Try immersive reading with any audiobook', text: 'HushBook transcribes your audiobook on your phone and highlights each word as it is spoken. Start with a free classic or a file you own.' },
     title: 'What Is Immersive Reading? How to Read and Listen at the Same Time',
     metaTitle: 'What Is Immersive Reading? Meaning and How It Works',

@@ -71,8 +71,6 @@ Page Match keeps your place, but it can't put the words in front of you or show 
 
 That's what **HushBook** does. It transcribes an audiobook **on your phone** and highlights each word as the narrator reads it. Choose the Page reading mode and the text sits on a book page that turns as the narration moves on. Start with the *free public domain audiobooks* from LibriVox and the Internet Archive built into the app, thousands of classics read by volunteers, or import your own files: MP3, M4B, AAC, OGG, FLAC or WAV.
 
-[[embed:read-along-card]]
-
 A few details:
 
 - **What's free.** Transcription, word highlighting and the free catalogue cost nothing. Pro adds unlimited e-book syncs and extras such as reading insights, goals and a dictionary.

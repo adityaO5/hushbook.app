@@ -102,12 +102,6 @@ function parseMarkdown(source) {
     let match;
     if (!line) { flush(); continue; }
     if ((match = line.match(/^# (.+)$/))) { flush(); title = match[1]; continue; }
-    // [[embed:name]] on its own line inserts content/blog/embeds/<name>.html
-    if ((match = line.match(/^\[\[embed:([a-z0-9-]+)\]\]$/))) {
-      flush();
-      html.push(fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${match[1]}.html`), 'utf8').trim());
-      continue;
-    }
     if ((match = line.match(/^(#{2,3}) (.+)$/))) {
       flush();
       const level = match[1].length;
@@ -134,7 +128,7 @@ function parseMarkdown(source) {
   }
   flush();
 
-  const text = source.replace(/^\[\[embed:[^\]]+\]\]$/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
+  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
   return { title, headings, html: html.join('\n'), wordCount: text.trim().split(/\s+/).filter(Boolean).length };
 }
 
@@ -293,6 +287,8 @@ function renderPost(post) {
   // Optional demo beside the article (post.aside -> content/blog/embeds/<name>.html):
   // text left, demo sticky on the right; stacked above the text on narrow screens.
   const aside = post.aside ? fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${post.aside}.html`), 'utf8').trim() : '';
+  // Optional demo at the top of the article, above the takeaways (post.hero, same embeds folder).
+  const hero = post.hero ? fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${post.hero}.html`), 'utf8').trim() : '';
   const extra = [
     `<meta property="article:published_time" content="${post.datePublished}">`,
     `<meta property="article:modified_time" content="${post.dateModified}">`,
@@ -312,7 +308,7 @@ ${nav()}
   ${aside ? '<div class="wrap post-layout">\n  <header class="hero post-hero">' : '<header class="hero post-hero"><div class="wrap">'}<span class="eyebrow">${escapeHtml(post.category)}</span><h1>${escapeHtml(post.title)}</h1>
     <div class="byline"><span>Published <time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time></span>${post.dateModified !== post.datePublished ? `<span>Updated <time datetime="${post.dateModified}">${formatDate(post.dateModified)}</time></span>` : ''}<span>${escapeHtml(post.readingTime)}</span></div>
   ${aside ? '</header>' : '</div></header>'}
-  <article class="article">${aside ? '<div class="content post">' : '<div class="wrap content post">'}
+  <article class="article">${aside ? '<div class="content post">' : '<div class="wrap content post">'}${hero ? `\n    ${hero}` : ''}
     <section class="answer-box takeaways" aria-labelledby="takeaways-heading"><p class="question" id="takeaways-heading">Key takeaways</p><ul>
 ${takeaways}
 </ul></section>

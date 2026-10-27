@@ -84,6 +84,8 @@ Most audiobooks come without text. **[HushBook](/)** transcribes an audiobook on
 
 **HushBook** is a reading aid to use alongside reading together and reading lessons, and younger kids get the most from it *with you beside them*. It works with audiobook files you own, such as MP3 and M4B, as well as the free classics built into the app.
 
+Kids can also pick a reading companion in **HushBook**: one of *14 animals*, each with its own reading habit, like a bear who "settles in for long books" or a fox who "guesses the ending". Their companion **greets them on the Home screen**, and choosing one is free.
+
 ## Sources
 
 - [Olson, Ozernov-Palchik, Arechiga and Gabrieli (2026), "Remote Text-Supplemented Audiobook Intervention Supports Children's Explicit and Incidental Vocabulary Learning", Developmental Science](https://doi.org/10.1111/desc.70159)
