@@ -30,6 +30,17 @@ const publisher = {
   logo: { '@type': 'ImageObject', url: `${site}/assets/img/default_preview.png`, width: 256, height: 256 }
 };
 
+// Inline so it ships with the page: /assets/css is cached as immutable for a year.
+const ASIDE_STYLE = `<style>
+.post-layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-areas:"hero aside" "body aside";column-gap:56px;align-items:start}
+.post-layout>.post-hero{grid-area:hero}
+.post-layout>.article{grid-area:body}
+.post-layout .post{max-width:760px;margin:0}
+.post-aside{grid-area:aside;position:sticky;top:84px;margin-top:24px}
+.post-aside iframe{display:block;width:100%;height:min(820px,calc(100vh - 100px));min-height:560px;border:0;background:transparent}
+@media (max-width:1023px){.post-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "aside" "body"}.post-layout .post{margin-inline:auto}.post-aside{position:static;width:100%;max-width:420px;margin:0 auto 8px}.post-aside iframe{height:640px;min-height:0}}
+</style>`;
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -273,6 +284,9 @@ function renderPost(post) {
     '<a class="related-card" href="/alternatives/speechify-alternatives">Speechify alternatives: audiobooks vs text-to-speech<span>When a human-narrated audiobook fits better than an AI reader, and the other way round.</span></a>',
     '<a class="related-card" href="/alternatives/audible-alternatives">Best Audible alternatives<span>Libby, Hoopla, Libro.fm, LibriVox and HushBook compared on the same attributes.</span></a>'
   ].slice(0, 4).join('\n');
+  // Optional demo beside the article (post.aside -> content/blog/embeds/<name>.html):
+  // text left, demo sticky on the right; stacked above the text on narrow screens.
+  const aside = post.aside ? fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${post.aside}.html`), 'utf8').trim() : '';
   const extra = [
     `<meta property="article:published_time" content="${post.datePublished}">`,
     `<meta property="article:modified_time" content="${post.dateModified}">`,
@@ -280,6 +294,7 @@ function renderPost(post) {
     `<meta property="article:section" content="${escapeHtml(post.category)}">`,
     ...post.keywords.slice(0, 6).map((keyword) => `<meta property="article:tag" content="${escapeHtml(keyword)}">`),
     `<meta name="author" content="Rakesh Aditya">`,
+    ...(aside ? [ASIDE_STYLE] : []),
     ''
   ].join('\n');
 
@@ -288,10 +303,10 @@ function renderPost(post) {
 ${nav()}
 <main id="content">
   <nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog">Blog</a> / <span aria-current="page">${escapeHtml(post.category)}</span></nav>
-  <header class="hero post-hero"><div class="wrap"><span class="eyebrow">${escapeHtml(post.category)}</span><h1>${escapeHtml(post.title)}</h1>
+  ${aside ? '<div class="wrap post-layout">\n  <header class="hero post-hero">' : '<header class="hero post-hero"><div class="wrap">'}<span class="eyebrow">${escapeHtml(post.category)}</span><h1>${escapeHtml(post.title)}</h1>
     <div class="byline"><span>Published <time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time></span>${post.dateModified !== post.datePublished ? `<span>Updated <time datetime="${post.dateModified}">${formatDate(post.dateModified)}</time></span>` : ''}<span>${escapeHtml(post.readingTime)}</span></div>
-  </div></header>
-  <article class="article"><div class="wrap content post">
+  ${aside ? '</header>' : '</div></header>'}
+  <article class="article">${aside ? '<div class="content post">' : '<div class="wrap content post">'}
     <section class="answer-box takeaways" aria-labelledby="takeaways-heading"><p class="question" id="takeaways-heading">Key takeaways</p><ul>
 ${takeaways}
 </ul></section>
@@ -305,7 +320,7 @@ ${parsed.html}
     <section aria-labelledby="faq-heading"><h2 id="faq-heading">Frequently asked questions</h2><div class="faq">${faqs}</div></section>
     ${cta(post)}
     <section aria-labelledby="related-heading"><h2 id="related-heading">Keep reading</h2><div class="related-grid">${related}</div></section>
-  </div></article>
+  </div></article>${aside ? `\n  <aside class="post-aside">${aside}</aside>\n  </div>` : ''}
 </main>
 ${footer()}`;
 }

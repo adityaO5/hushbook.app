@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 25 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How to Keep Track of Characters in a Book or Audiobook</title>
+      <link>https://hushbook.app/blog/how-to-keep-track-of-characters-in-a-book</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/how-to-keep-track-of-characters-in-a-book</guid>
+      <pubDate>Tue, 27 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Reading and listening</category>
+      <description>Keep a running cast list: each new name, a few words on who they are, and one tie to someone you know. Methods for print, ebooks and audiobooks, why listening makes it harder, and how to handle War and Peace.</description>
+    </item>
     <item>
       <title>Can Libby Read to You? Read Aloud, Read-Alongs and Audiobooks</title>
       <link>https://hushbook.app/blog/can-libby-read-to-you</link>

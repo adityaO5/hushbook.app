@@ -24,6 +24,8 @@ const TAG = `<!-- Google tag (gtag.js) -->
 const SKIP_DIRS = new Set([
   'node_modules',
   'videos',
+  'demos', // iframe embeds: the host page already counts the view
+  'embeds', // blog body partials, not pages
   'research',
   'output',
   '.worktrees',

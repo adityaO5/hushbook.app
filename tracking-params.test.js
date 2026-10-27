@@ -56,6 +56,8 @@ assert.equal(sitemap.includes('utm_source'), false, 'sitemap must not list utm U
 const htmlSkipDirs = new Set([
   'node_modules',
   'videos',
+  'demos', // iframe embeds: the host page already counts the view
+  'embeds', // blog body partials, not pages
   'research',
   'output',
   '.worktrees',

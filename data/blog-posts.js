@@ -6,6 +6,46 @@
 
 const posts = [
   {
+    slug: 'how-to-keep-track-of-characters-in-a-book',
+    aside: 'character-map',
+    cta: { heading: 'Map every character as you meet them', text: 'Add a name the moment you hear it, link who is tied to whom, and share the cast as text. The character map in HushBook is free, for free classics and audiobook files you own.' },
+    title: 'How to Keep Track of Characters in a Book or Audiobook',
+    metaTitle: 'How to Keep Track of Characters in a Book or Audiobook',
+    metaDescription: 'Keep a running cast list: a name, a role and one tie to someone you know. Methods for print, ebooks and audiobooks, where you can\'t flip back.',
+    description: 'Keep a running cast list: each new name, a few words on who they are, and one tie to someone you know. Methods for print, ebooks and audiobooks, why listening makes it harder, and how to handle War and Peace.',
+    category: 'Reading and listening',
+    datePublished: '2026-10-27',
+    dateModified: '2026-10-27',
+    readingTime: '9 min read',
+    keywords: [
+      'how to keep track of characters in a book',
+      'how to keep track of characters when reading a book',
+      'how to keep track of characters in a novel',
+      'how to remember characters in a book',
+      'app to keep track of book characters',
+      'how to keep track of characters in an audiobook',
+      'how to keep track of characters in war and peace',
+      'how to keep track of game of thrones characters'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'The simplest method is a running cast list. For each new character, write the name, a few words on who they are, and one tie to someone already on the list.',
+      'Listening is harder than reading. You can\'t glance back, and in a 2013 study of 211 students, listening produced more mind wandering and worse memory for a passage than reading it aloud or silently.',
+      'When you listen, pause to note each new name with the chapter and time, and read along when names are hard to catch, so you can see the spelling.',
+      'In War and Peace one person can have several names: Pierre is also "Monsieur Pierre", "Peter Kirílovich" and "Count Bezúkhov". Sort the cast by family and file every name under one entry.',
+      'Kindle X-Ray explains characters in English-language Kindle books that include it. HushBook\'s free character map lets you add characters as you meet them, link their relationships and share the cast as text. You add each character yourself.'
+    ],
+    faqs: [
+      ['How do you keep track of characters in a book?', 'Keep a running cast list. When a new character appears, write their name and any other names they go by, a few words on who they are, and one tie to someone already on the list. Check it when a name comes back that you can\'t place, and read it over before each session.'],
+      ['Why is it hard to keep track of characters in an audiobook?', 'You can\'t glance back at an earlier page, your mind tends to wander more when listening than when reading, and you never see how a name is spelled. Pausing to note each new name with the chapter and time helps, and reading along shows you the spelling.'],
+      ['How do you remember characters in a book?', 'Write the list yourself instead of relying only on one someone else made. Studies of the generation effect find people remember what they produce better than what they only read. Before each session, cover the roles on your list and try to say who each person is.'],
+      ['Is there an app to keep track of book characters?', 'Kindle X-Ray explains characters in English-language Kindle books that include it. HushBook has a free character map for audiobooks: you add each character, give them a face, link relationships such as Mentor of or Rivals, and share the cast as text.'],
+      ['How do you keep track of characters in War and Peace?', 'Sort the cast by family (the Rostovs, Bolkonskis, Bezukhovs and Kuragins) and put every name a person goes by on one line. In the Maude translation, Pierre is also "Monsieur Pierre", "Peter Kirílovich" and "Count Bezúkhov".'],
+      ['What is a character map?', 'A diagram of a book\'s cast. Each character is a point, and the lines between them show how they are tied, such as family, rivals or mentor. It is a cast list that also shows who matters to whom.']
+    ]
+  },
+  {
     slug: 'can-libby-read-to-you',
     cta: { heading: 'Read along with a whole audiobook', text: 'HushBook highlights each word as the narrator reads it, in free public domain classics or audio files you own. Free to download, no ads, no account.' },
     title: 'Can Libby Read to You? Read Aloud, Read-Alongs and Audiobooks',
