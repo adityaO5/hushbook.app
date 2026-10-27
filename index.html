@@ -197,7 +197,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08}
 h1{font-size:clamp(44px,7.4vw,92px)}
-h2{font-size:clamp(32px,4.6vw,56px)}
+h2{font-size:clamp(28px,3.9vw,48px)}
 h3{font-size:clamp(21px,2.4vw,26px)}
 .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .sub{color:var(--muted);font-size:clamp(17px,1.6vw,20px);max-width:640px}
@@ -239,7 +239,9 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .dir-badges img{height:40px;width:auto;display:block;border:0}
 @media (min-width:641px){.dir-badges{max-width:240px}}
 @media (max-width:640px){.dir-badges{gap:8px}.dir-badges img{height:30px}}
-.hero h1{margin:0 auto 20px;max-width:16ch}
+@font-face{font-family:"Kthonic Velvet Serif";src:url(/assets/fonts/KthonicVelvetSerif-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+.hero h1{margin:0 auto 20px;max-width:16ch;font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,56px);letter-spacing:-.03em}
+h2{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
 .hero .sub{margin:0 auto 34px;max-width:560px}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
@@ -267,10 +269,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .band{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
 .band h2{max-width:21ch;margin:0 auto 26px}
 .band h2 em{font-style:italic;color:var(--gold)}
-.karaoke-line{font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);line-height:1.5;max-width:760px;margin:0 auto 40px;color:var(--dim)}
-.karaoke-line .w{transition:color .25s}
-.karaoke-line .w.on{color:var(--gold-hi)}
-.karaoke-line .w.done{color:var(--ink)}
+.readalong{display:block;width:100%;max-width:544px;height:330px;margin:0 auto 40px;border:0;background:transparent}
 .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--muted)}
 .chip b{color:var(--ink);font-weight:700}
@@ -371,7 +370,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 /* moment */
 .moment{padding:130px 0;text-align:center;background:radial-gradient(900px 460px at 50% 50%,rgba(201,163,106,.12),transparent 70%)}
 .moment p{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
-.moment h2{font-size:clamp(36px,6vw,72px);font-style:italic;max-width:16ch;margin:0 auto}
+.moment h2{font-size:clamp(31px,5.1vw,61px);font-style:italic;max-width:16ch;margin:0 auto}
 .moment h2 span{color:var(--gold)}
 
 /* light sections */
@@ -458,7 +457,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* lifestyle */
 .lifestyle{padding:120px 0 40px}
-.lifestyle .big{font-size:clamp(44px,7.4vw,100px);line-height:1.02;max-width:12ch;margin-bottom:18px}
+.lifestyle .big{font-size:clamp(37px,6.3vw,85px);line-height:1.02;max-width:12ch;margin-bottom:18px}
 .lifestyle .big i{font-style:italic;color:var(--gold)}
 .life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px);margin-top:70px}
 .lcard{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4}
@@ -469,6 +468,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .lcap{position:absolute;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(18px,2.4vw,28px);z-index:2}
 .lcap h3{font-size:clamp(24px,2.4vw,33px);font-weight:600;line-height:1.12;margin-bottom:8px}
 .lcap h3 i{font-style:italic;color:var(--gold-hi)}
+.review-title,.step h3,.gcard h3,.lcap h3{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
 .lcap p{font-size:14px;color:rgba(245,239,230,.78)}
 @media (max-width:780px){.life-grid{grid-template-columns:1fr;max-width:430px;margin-inline:auto}.lcard:nth-child(2){transform:none}}
 
@@ -764,7 +764,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="band center">
   <div class="wrap">
     <h2 class="reveal">Listening alone is easy to lose. <em>Reading along</em> is hard to forget.</h2>
-    <p class="karaoke-line reveal" id="karaoke-line" aria-label="You have power over your mind, not outside events. Realize this, and you will find strength. — Marcus Aurelius"></p>
+    <iframe class="readalong reveal" id="readalong" src="/demos/read-along-card?theme=dark&amp;preview=1" title="Read-along in HushBook: each word lights up as the narrator reads it" loading="lazy"></iframe>
     <div class="trust reveal" role="list">
       <span class="chip" role="listitem"><b>100% on-device</b> transcription</span>
       <span class="chip" role="listitem"><b>Word-level</b> sync at 60 fps</span>
@@ -1448,6 +1448,30 @@ function prepareHeading(heading){
   heading.dataset.charReveal='true';
 }
 
+// per-letter spans block the font's kerning; measure each pair on a canvas and restore it as a margin
+const kernCtx=document.createElement('canvas').getContext('2d');
+kernCtx.fontKerning='normal';
+const kernCache=new Map();
+function pairKern(font,a,b){
+  const key=font+'|'+a+b;
+  if(!kernCache.has(key)){
+    kernCtx.font=font;
+    kernCache.set(key,(kernCtx.measureText(a+b).width-kernCtx.measureText(a).width-kernCtx.measureText(b).width)/100);
+  }
+  return kernCache.get(key);
+}
+
+function kernHeading(heading){
+  heading.querySelectorAll('.reveal-word').forEach(word=>{
+    const chars=word.querySelectorAll('.reveal-char');
+    for(let i=0;i<chars.length-1;i++){
+      const style=getComputedStyle(chars[i]);
+      const kern=pairKern(`${style.fontStyle} ${style.fontWeight} 100px ${style.fontFamily}`,chars[i].textContent,chars[i+1].textContent);
+      if(kern)chars[i].style.marginRight=kern+'em';
+    }
+  });
+}
+
 function revealHeading(heading){
   heading.querySelectorAll('.reveal-char').forEach(character=>character.classList.add('in'));
 }
@@ -1461,6 +1485,7 @@ if(reduceMotion){
   revealBlocks.forEach(block=>block.classList.add('in'));
 }else{
   revealHeadings.forEach(prepareHeading);
+  document.fonts.ready.then(()=>revealHeadings.forEach(kernHeading));
   const revealIO=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(!entry.isIntersecting)return;
     revealHeadingTree(entry.target);
@@ -1484,20 +1509,11 @@ document.querySelector('.nav-toggle').addEventListener('click',()=>{
 });
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 
-// karaoke demo line
-const QUOTE="You have power over your mind — not outside events. Realize this, and you will find strength.";
-const line=document.getElementById('karaoke-line');
-const words=QUOTE.split(' ');
-line.innerHTML=words.map(w=>`<span class="w">${w}</span>`).join(' ')+' <span class="w" style="font-style:italic">— Marcus Aurelius</span>';
-const spans=line.querySelectorAll('.w');
-let wi=0;
-function step(){
-  if(wi>0)spans[wi-1].classList.replace('on','done');
-  if(wi<spans.length){spans[wi].classList.add('on');wi++;setTimeout(step,wi===1?600:340)}
-  else setTimeout(()=>{spans.forEach(s=>s.classList.remove('on','done'));wi=0;step()},3800);
-}
-// start when visible
-new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){step();o.disconnect()}},{threshold:.4}).observe(line);
+// read-along card: the frame reports its height
+const readalong=document.getElementById('readalong');
+addEventListener('message',e=>{
+  if(e.origin===location.origin&&e.source===readalong.contentWindow&&e.data&&e.data.hbHeight)readalong.style.height=e.data.hbHeight+'px';
+});
 
 // faq
 document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{

@@ -13,5 +13,6 @@ assert.match(page, /\.life-head h2\{[^}]*color:var\(--gold-hi\)/, 'reading-life 
 assert.match(page, /\.reveal-char\{[^}]*filter:blur\(/, 'characters must start blurred');
 assert.match(page, /\.reveal-char\.in\{[^}]*filter:none/, 'characters must finish sharp');
 assert.match(page, /@media \(prefers-reduced-motion:reduce\)[\s\S]*\.reveal-char/, 'reduced motion must show characters without animation');
+assert.match(page, /fontKerning='normal'[\s\S]*document\.fonts\.ready\.then\(\(\)=>revealHeadings\.forEach\(kernHeading\)\)/, 'split headings must restore the font kerning');
 
 console.log('Blur-in heading reveal contract passes.');
