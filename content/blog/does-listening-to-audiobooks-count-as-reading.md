@@ -42,7 +42,7 @@ That lines up with the meta-analysis, where reading pulled ahead when people set
 - You glance back up a paragraph to check who "he" is.
 - When your mind drifts, the page waits for you. Audio keeps going, and you might not notice for a few minutes.
 
-A narrator can't do any of that for you. So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the words in front of you. Apps that show the text as the narrator reads it, like [HushBook](/), give you some of that back: you can see where you are, glance back a line, and pick up where your mind left off.
+A narrator can't do any of that for you. So a thriller or a memoir is a great listen. A textbook chapter you'll be tested on is probably better on paper, or with the words in front of you. Apps that show the text as the narrator reads it, like **[HushBook](/)**, give you some of that back: *you can see where you are*, glance back a line, and pick up where your mind left off.
 
 ## What audio does better
 
@@ -70,7 +70,7 @@ And when people read at their own pace, there were "no reliable effects." She al
 
 So I won't tell you it makes you understand more. Where I think it earns its place is the practical stuff. If the words are on screen, you can see exactly where you are when your mind comes back. You can catch a character's name you didn't quite hear. If you'd like to try it, there's a fuller guide to [immersive reading](/blog/what-is-immersive-reading). For when reading along helps and when it gets in the way, see [does reading along with an audiobook help](/blog/does-reading-along-with-an-audiobook-help).
 
-That's what I built HushBook to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, on your phone, and highlights each word as the narrator reads it. The transcript comes from speech recognition, so unusual names can come out wrong. It can't import protected Audible downloads either.
+That's what I built **HushBook** to do. It transcribes an audiobook file you can legally import, such as an MP3 or M4B from LibriVox, **on your phone**, and highlights each word *as the narrator reads it*.
 ## Pick by the book
 
 Audiobook or print isn't really the choice that matters. The book is. Listen to the novel on your commute, enjoy the narrator, and count it when you're done. Read the dense stuff on paper, or with the text in front of you, so you can slow down and go back.

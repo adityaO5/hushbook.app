@@ -6,6 +6,47 @@
 
 const posts = [
   {
+    slug: 'can-you-read-along-with-spotify-audiobooks',
+    cta: { heading: 'See every word as the narrator reads it', text: 'Spotify leaves the text in your book. HushBook highlights each word on screen, in free public domain classics and audio files you own. Reading along is free.' },
+    title: 'Can You Read Along With Spotify Audiobooks? Page Match, Recaps and Transcripts',
+    metaTitle: 'Can You Read Along With Spotify Audiobooks?',
+    metaDescription: 'Not on screen. Spotify shows no text while an audiobook plays. Page Match finds your place in a print or e-book, and only podcasts have transcripts.',
+    description: 'Not on screen: Spotify shows no text while an audiobook plays. What Page Match, Recaps and Follow-Along do, how to read along with your own copy of the book, which Spotify podcasts have transcripts, and a word-by-word option.',
+    category: 'Read-along guides',
+    datePublished: '2026-10-27',
+    dateModified: '2026-10-27',
+    readingTime: '8 min read',
+    keywords: [
+      'can you read along with spotify audiobooks',
+      'can you read along with audiobooks on spotify',
+      'does spotify audiobooks have text',
+      'does spotify audiobooks have transcripts',
+      'spotify audiobooks transcript',
+      'how to read along on spotify audiobooks',
+      'spotify page match',
+      'spotify audiobook recaps',
+      'spotify podcast transcripts'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'Not on screen. Spotify does not show a book\'s text while an audiobook plays. Its help pages and newsroom posts describe no transcript, synced text or word highlighting for audiobooks.',
+      'Page Match, launched in February 2026, lets you scan a page of your own print book or e-book in the Spotify mobile app to jump to that spot in the audiobook, or to find your place in the book after listening.',
+      'Page Match works on iOS and Android. It started with most English-language titles, and in April 2026 Spotify said it was adding more than 30 more languages. Premium and Audiobooks+ members use it within their listening hours; free users can use it with audiobooks they bought.',
+      'Recaps are short spoken summaries of the part of a book you have heard, launched in beta in November 2025. Spotify\'s read-along transcripts are for podcasts, on many episodes but not every show.',
+      'For word-by-word highlighting, HushBook transcribes free public domain audiobooks and files you import, such as MP3 and M4B, on your phone. For a book you hear on Spotify, Page Match with your own copy is the way to read along.'
+    ],
+    faqs: [
+      ['Can you read along with Spotify audiobooks?', 'Not on screen. Spotify does not show the book\'s text while an audiobook plays. You can read along with your own print or e-book copy, and Page Match lets you scan a page to jump to that spot in the audiobook.'],
+      ['Do Spotify audiobooks have transcripts?', 'No. Spotify\'s help pages and newsroom posts describe no transcript, synced text or word highlighting for audiobooks. Transcripts on Spotify are a podcast feature.'],
+      ['How does Spotify Page Match work?', 'Open the audiobook in the Spotify mobile app, tap Page Match, choose Scan to listen and scan the page you are reading. Spotify finds that moment in the audiobook. Choose Scan to read instead, and it tells you whether to flip forward or back to where you stopped listening.'],
+      ['Do you need Premium for Page Match?', 'No. Premium subscribers and Audiobooks+ members use Page Match within their monthly audiobook listening hours, and free users can use it with audiobooks they have bought on Spotify. It works on supported titles in the iOS and Android apps.'],
+      ['What are Spotify audiobook Recaps?', 'Short spoken summaries of the part of a book you have already heard. Spotify launched them in beta in November 2025 on iOS for a limited selection of English-language titles, and brought them to Android in April 2026.'],
+      ['Do Spotify podcasts have transcripts?', 'Many do. Spotify adds auto-generated, time-synced transcripts to many podcast episodes, shown in the Now Playing view so you can read along. Creators can turn them off, and they are not available to all shows.'],
+      ['Which audiobooks can HushBook show word by word?', 'Free public domain audiobooks from LibriVox and the Internet Archive, built into the app, and audio files you import, such as MP3 and M4B. Spotify audiobooks play only inside Spotify, where Page Match is the way to read along.']
+    ]
+  },
+  {
     slug: 'how-to-keep-track-of-characters-in-a-book',
     aside: 'character-map',
     cta: { heading: 'Map every character as you meet them', text: 'Add a name the moment you hear it, link who is tied to whom, and share the cast as text. The character map in HushBook is free, for free classics and audiobook files you own.' },
@@ -34,7 +75,7 @@ const posts = [
       'Listening is harder than reading. You can\'t glance back, and in a 2013 study of 211 students, listening produced more mind wandering and worse memory for a passage than reading it aloud or silently.',
       'When you listen, pause to note each new name with the chapter and time, and read along when names are hard to catch, so you can see the spelling.',
       'In War and Peace one person can have several names: Pierre is also "Monsieur Pierre", "Peter Kirílovich" and "Count Bezúkhov". Sort the cast by family and file every name under one entry.',
-      'Kindle X-Ray explains characters in English-language Kindle books that include it. HushBook\'s free character map lets you add characters as you meet them, link their relationships and share the cast as text. You add each character yourself.'
+      'Kindle X-Ray explains characters in English-language Kindle books that include it. HushBook\'s free character map lets you add characters as you meet them, so the map follows your reading, then link their relationships and share the cast as text.'
     ],
     faqs: [
       ['How do you keep track of characters in a book?', 'Keep a running cast list. When a new character appears, write their name and any other names they go by, a few words on who they are, and one tie to someone already on the list. Check it when a name comes back that you can\'t place, and read it over before each session.'],
@@ -465,7 +506,7 @@ const posts = [
       'Listening alone works once you know most of the words. A 2013 study found learners understood spoken stories well at 95% of words known, roughly the 2,000 to 3,000 most common word families.',
       'For new words, reading along and silent reading come out about equal. The audio\'s main value is training your ear, setting a steady pace and making longer books manageable.',
       'Pick easy books: graded readers at first, then audiobooks one or two levels below your reading level. Listen 20 to 30 minutes a day, and finish many easy books rather than struggle through one hard one.',
-      'Free sources include LibriVox, the Internet Archive and the British Council audio series. HushBook transcribes any audiobook on your phone and highlights each word, with tap-to-replay and 0.5x to 3x speed.'
+      'Free sources include LibriVox, the Internet Archive and the British Council audio series. HushBook transcribes LibriVox recordings and audiobook files you own on your phone and highlights each word, with tap-to-replay and 0.5x to 3x speed.'
     ],
     faqs: [
       ['Can you learn English just by listening to audiobooks?', 'Not at first. Listening works once you understand most of what you hear, about 90 to 95% of the words. Before that, read along with the text. In one study, learners who only listened could translate just 2% of a story\'s new words.'],
@@ -655,7 +696,7 @@ const posts = [
       'LibriVox recordings are public domain, with source texts mainly from Project Gutenberg and audio hosted on the Internet Archive, so they are free to use for any purpose.',
       'HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. It transcribes the recording on your phone and highlights each word as the narrator reads. Tap any word to jump to it.',
       'The core read-along is free to start. It also has profiles for dyslexia or ADHD and low vision.',
-      'Limits: the transcript comes from speech recognition, so unusual names can come out wrong, and HushBook cannot import protected files such as Audible downloads.'
+      'HushBook also works with recordings you own as ordinary audio files, such as MP3 or M4B, and the transcript is made on your phone, so the audio never leaves your device.'
     ],
     faqs: [
       ['How do I read along with a free audiobook?', 'Download a public domain audiobook from the HushBook store, or import your own MP3 or M4B. HushBook transcribes it on your phone, then highlights each word as the narrator reads.'],
@@ -663,8 +704,8 @@ const posts = [
       ['Are LibriVox audiobooks really free?', 'Yes. LibriVox says all its audio is in the public domain and may be used for any purpose. The books are old, and some contain outdated or offensive language.'],
       ['Is HushBook free?', 'The core read-along is free to start, so you can try it on a free LibriVox book.'],
       ['Is this the same as text-to-speech?', 'No. Text-to-speech uses a synthetic voice to read a text. HushBook follows a human narrator and highlights each word as it is spoken.'],
-      ['Can HushBook read along with Audible audiobooks?', 'No. It cannot import protected files such as Audible downloads. It works with audio files you can legally import, such as LibriVox MP3 or M4B files.'],
-      ['Is the transcript always accurate?', 'Not always. It comes from speech recognition, so unusual names, invented words and old-fashioned spellings can come out wrong.']
+      ['Which audiobooks can HushBook read along with?', 'Free public domain audiobooks from its built-in LibriVox and Internet Archive store, and audio files you can legally import, such as MP3 or M4B files.'],
+      ['How is the transcript made?', 'HushBook transcribes the recording on your phone and matches the transcript to the audio word by word, so each word highlights as the narrator reads it. The audio never leaves your device.']
     ]
   },
   {
@@ -704,7 +745,7 @@ const posts = [
       ['Does your brain process audiobooks differently from reading?', 'Your eyes and ears decode words differently, but a 2019 UC Berkeley study found the brain represents the meaning almost identically whether people listen to or read the same stories.'],
       ['Which books are better to read than to listen to?', 'Dense, technical or study material, where you need to slow down, reread and connect ideas. Stories, memoirs and most narrative non-fiction work well as audiobooks.'],
       ['Does reading while listening help comprehension?', 'Modestly. A 2023 meta-analysis found a small overall benefit compared with reading alone, mostly when the pace was set for the reader. Seeing the words also helps you find your place after your mind wanders.'],
-      ['Can HushBook show the text of my audiobook while I listen?', 'Yes, for audio files you can legally import, such as MP3 or M4B files from LibriVox. HushBook transcribes the recording on your phone and highlights each word as the narrator reads. It cannot import protected Audible downloads.']
+      ['Can HushBook show the text of my audiobook while I listen?', 'Yes, for audio files you can legally import, such as MP3 or M4B files from LibriVox. HushBook transcribes the recording on your phone and highlights each word as the narrator reads.']
     ]
   },
   {
@@ -736,7 +777,7 @@ const posts = [
       'At the same bitrate AAC generally sounds better than MP3, but for a narrator\'s voice the difference is small. LibriVox says its 64 kbps and 128 kbps MP3s are barely distinguishable.',
       'M4A and M4B are mostly the same format; the .m4b extension tells apps to treat the file as an audiobook.',
       'Convert M4B to MP3 only if a device cannot play M4B, keep the original, and remember that conversion does not remove DRM.',
-      'HushBook imports both M4B and MP3, keeps M4B chapters and cover art, and highlights each word as the narrator reads. It cannot import files with DRM.'
+      'HushBook imports both M4B and MP3, keeps M4B chapters and cover art, and transcribes the recording on your phone so each word is highlighted as the narrator reads.'
     ],
     faqs: [
       ['Is M4B better than MP3 for audiobooks?', 'Usually, if you listen in an audiobook app. M4B keeps the whole book in one file with named chapters, cover art and a saved position, and its AAC audio is generally more efficient. MP3 wins on compatibility with older devices and car stereos.'],
@@ -745,7 +786,7 @@ const posts = [
       ['Does M4B sound better than MP3?', 'At the same bitrate, AAC in an M4B generally sounds better than MP3. For speech the gap is small, so it is not worth re-buying or re-encoding a book for quality alone.'],
       ['Should I convert M4B to MP3?', 'Only if a device you rely on cannot play M4B. Convert a copy, keep the original, and expect to lose the chapter list unless the converter splits the file at each chapter. Both formats are lossy, so each conversion loses a little quality.'],
       ['Can I convert a DRM-protected M4B or Audible audiobook?', 'Files locked to a store, such as protected Apple M4B files or Audible AAX downloads, are not ordinary files you can move between apps. Use the store\'s own app for them.'],
-      ['Can HushBook play M4B and MP3 files?', 'Yes. HushBook imports M4B, MP3 and other common audio formats one file per import, keeps M4B chapters and cover art, and transcribes the recording on your phone so each word is highlighted as the narrator reads. It cannot import files with DRM.']
+      ['Can HushBook play M4B and MP3 files?', 'Yes. HushBook imports M4B, MP3 and other common audio formats, keeps M4B chapters and cover art, and transcribes the recording on your phone so each word is highlighted as the narrator reads.']
     ]
   },
   {
@@ -777,7 +818,7 @@ const posts = [
       'You need both editions on the same Amazon account: the audiobook in your Audible library and the Kindle ebook in your Kindle library. The title must be marked Read & Listen, formerly Whispersync for Voice-ready.',
       'In the Audible app, filter your Library by Read & Listen, start the book, and use the toggle above the cover to switch modes.',
       'Audible announced the current version in February 2026, starting in the US with the UK, Australia and Germany planned next. Check your country before buying.',
-      'For audiobooks that did not come from Audible, such as MP3 or M4B files you can legally import, HushBook transcribes the audio on your phone and highlights each word. It cannot open protected Audible downloads or Kindle ebooks.'
+      'For audiobooks that did not come from Audible, such as MP3 or M4B files you can legally import, HushBook transcribes the audio on your phone and highlights each word. A DRM-free EPUB, PDF or TXT of the same book can be paired with the audio so the book\'s own text is highlighted.'
     ],
     faqs: [
       ['Can you read along with Audible?', 'Yes, for eligible titles. Audible Read & Listen shows the Kindle ebook text and highlights each word as the narrator reads it. You need both the Audible audiobook and the Kindle ebook of the same title on your Amazon account.'],
@@ -786,7 +827,7 @@ const posts = [
       ['Does Read & Listen work on a Kindle e-reader?', 'Audible lists its iPhone, iPad, Android and Android tablet apps, Fire tablets running Fire OS 8 or later, and its macOS app as supported. Kindle e-readers are not on that list.'],
       ['Is Audible Read & Listen available in my country?', 'At its February 2026 launch it started in the US, with the UK, Australia and Germany planned over the following months. Check the Audible help pages for your country.'],
       ['Can I read along with an audiobook that is not from Audible?', 'Audible Read & Listen only covers titles in your Audible and Kindle libraries. For MP3 or M4B files you can legally import, such as LibriVox recordings, HushBook transcribes the audio on your phone and highlights each word as the narrator reads.'],
-      ['Can HushBook open Audible audiobooks or Kindle ebooks?', 'No. Protected Audible downloads and Kindle ebooks are locked to Amazon apps, so HushBook cannot import them. If your books are in Audible and Kindle, use Read & Listen.']
+      ['Which books does HushBook work with?', 'HushBook works with audio files you can legally import, such as MP3 and M4B, and free LibriVox recordings, and it can pair a DRM-free EPUB, PDF or TXT with the audio. Audible downloads and Kindle ebooks are locked to Amazon apps, where Read & Listen covers them.']
     ]
   },
   {
@@ -826,9 +867,9 @@ const posts = [
       ['How do I read and listen to a book at the same time?', 'Start with what you already have: play the audiobook and follow a matching edition of the text for a few pages. Check that both editions match, since abridged recordings or different introductions will not line up. If you keep losing your place, a read-along app that highlights the current word gives you a point to return to.'],
       ['Is Microsoft Immersive Reader the same as reading along with an audiobook?', 'No. Microsoft Immersive Reader and Reading mode in Edge are tools for digital text. They can simplify a web page, change how text looks, and read it aloud with a computer voice. They do not follow a recorded audiobook narrator.'],
       ['Does Audible have a read-along feature?', 'Audible announced Read & Listen in February 2026. It pairs eligible audiobook and ebook editions from your Audible and Kindle libraries and highlights the text with the narration. The announcement described a US rollout first, and you may need both formats.'],
-      ['Can HushBook play Audible audiobooks?', 'No. Protected Audible downloads cannot be imported into HushBook. HushBook works with audio files you can legally import, such as MP3 or M4B files and public-domain recordings from LibriVox.'],
-      ['Does reading while listening help with ADHD or dyslexia?', 'Some readers find that seeing the words helps them stay with a chapter, and Understood describes audiobooks and text-to-speech as reading supports. Its expert-reviewed guide also says assistive tools alone probably will not improve reading skills, and an app does not replace teaching or treatment for ADHD or dyslexia.'],
-      ['Do I need the ebook to use HushBook read-along?', 'No. HushBook creates a transcript from the audio on your phone, so you do not need to buy the ebook. The transcript comes from speech recognition, so names or noisy recordings can contain mistakes.']
+      ['Which audiobooks can HushBook play?', 'HushBook works with audio files you can legally import, such as MP3 or M4B files, and with public-domain recordings from LibriVox in its in-app store.'],
+      ['Does reading while listening help with ADHD or dyslexia?', 'Some readers find that seeing the words helps them stay with a chapter, and Understood describes audiobooks and text-to-speech as reading supports. Its expert-reviewed guide also says assistive tools alone probably will not improve reading skills, so a read-along app works best alongside teaching and treatment for ADHD or dyslexia.'],
+      ['Do I need the ebook to use HushBook read-along?', 'No. HushBook creates a transcript from the audio on your phone, so you do not need to buy the ebook, and it highlights each word in time with the narrator.']
     ]
   }
 ];

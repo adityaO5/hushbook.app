@@ -28,7 +28,7 @@ So the honest summary is: audiobooks give dyslexic readers access to books, help
 
 It is what experts advise. The Yale Center for Dyslexia and Creativity tells teachers to "recommend that students read along with the audiobook version or to follow the words alongside the reader." The British Dyslexia Association notes that "some audio book apps will highlight the text on screen as it is being read, which can help your child identify words."
 
-Reading along keeps the printed words in front of the reader, so they still see the spelling of each word they hear. Most audiobooks do not come with text, which is the gap apps like [HushBook](/) fill by making word-by-word text from the recording itself. That is the idea behind the fluency gains in the Esteves and Whitten study. Listening alone gives access to the story. Reading along adds practice with print.
+Reading along keeps the printed words in front of the reader, so they still see the spelling of each word they hear. Most audiobooks do not come with text, which is the gap apps like **[HushBook](/)** fill by making *word-by-word text* from the recording itself. That is the idea behind the fluency gains in the Esteves and Whitten study. Listening alone gives access to the story. Reading along adds practice with print.
 
 ## Is listening to audiobooks cheating?
 
@@ -58,11 +58,11 @@ The practical advice: use whatever font feels comfortable, and try wider letter 
 
 ## How HushBook helps
 
-Most audiobooks come without text. [HushBook](/) transcribes an audiobook on your phone and highlights each word as the narrator says it, so you can read along with any audiobook file you own or with free LibriVox classics built into the app.
+Most audiobooks come without text. **[HushBook](/)** transcribes an audiobook **on your phone** and highlights each word as the narrator says it, so you can read along with any audiobook file you own, such as MP3 and M4B, or with *free LibriVox classics* built into the app.
 
-It has a Dyslexia and ADHD reading profile that sets up the text for easier reading, with font, spacing and size controls you can change while the narrator keeps going. Fonts include OpenDyslexic for readers who like it. As the research above shows, the font is a matter of comfort, while spacing and size are worth experimenting with. You can tap any word to jump the audio back to it, and slow the narration down from 0.5x. If attention is the bigger struggle, see [are audiobooks good for ADHD](/blog/are-audiobooks-good-for-adhd).
+It has a **Dyslexia and ADHD reading profile** that sets up the text for easier reading, with font, spacing and size controls you can change *while the narrator keeps going*. Fonts include OpenDyslexic for readers who like it. As the research above shows, the font is a matter of comfort, while spacing and size are worth experimenting with. You can tap any word to jump the audio back to it, and slow the narration down from 0.5x. If attention is the bigger struggle, see [are audiobooks good for ADHD](/blog/are-audiobooks-good-for-adhd).
 
-Honest limits. HushBook is a reading aid, not a medical or therapy tool, and it does not replace reading instruction. The text comes from speech recognition, so unusual names can come out wrong. And it cannot import protected files such as Audible downloads. There is more on the reading profiles on our [audiobook app for dyslexia](/audiobook-app-for-dyslexia) page.
+**HushBook** is a reading aid that sits alongside structured reading instruction and turns listening time into *print time*. There is more on the reading profiles on our [audiobook app for dyslexia](/audiobook-app-for-dyslexia) page.
 
 ## Sources
 

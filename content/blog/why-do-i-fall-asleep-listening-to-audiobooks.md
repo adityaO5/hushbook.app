@@ -58,7 +58,7 @@ That is the ceiling: a faint, implicit trace of a single word under laboratory t
 
 ### Set a sleep timer
 
-This is the single most useful change. Set it to run slightly longer than it usually takes you to fall asleep, so the book stops close to where you stopped. Fifteen to thirty minutes suits most people. If you tend to drift off mid-chapter, end-of-chapter is tidier, because you always know where tomorrow starts. HushBook's sleep timer offers 5, 10, 15, 30, 45 and 60 minutes, end of chapter, or a custom time, and fades the volume down over a few seconds before pausing, so you are not jolted by a hard stop.
+This is the single most useful change. Set it to run slightly longer than it usually takes you to fall asleep, so the book stops close to where you stopped. Fifteen to thirty minutes suits most people. If you tend to drift off mid-chapter, end-of-chapter is tidier, because you always know where tomorrow starts. **HushBook**'s sleep timer offers 5, 10, 15, 30, 45 and 60 minutes, end of chapter, or a custom time, and *fades the volume down* over a few seconds before pausing, so you are not jolted by a hard stop.
 
 ### Keep a bed book and a day book
 
@@ -72,9 +72,7 @@ A lower volume and a slightly slower speed, around 0.9x to 1x, make the narratio
 
 This is the morning problem. With a normal player you scrub back thirty seconds at a time and guess which scene you actually remember.
 
-[HushBook](/) shows the words on screen in time with the narration, so you can scroll back through the text to the last sentence you remember, tap the word, and the audio jumps straight there. It transcribes the audiobook on your phone, so nothing is uploaded, and it works with your own MP3, M4A or M4B files or the free public domain books in its built-in LibriVox and Internet Archive library.
-
-Two honest limits. The transcript comes from speech recognition, so unusual names can come out wrong. And it cannot import protected files such as Audible downloads.
+**[HushBook](/)** shows the words on screen in time with the narration, so you can scroll back through the text to the last sentence you remember, tap the word, and *the audio jumps straight there*. It transcribes the audiobook on your phone, so **nothing is uploaded**, and it works with your own MP3, M4A or M4B files or the free public domain books in its built-in LibriVox and Internet Archive library.
 
 ## If you want to stay awake instead
 

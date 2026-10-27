@@ -73,7 +73,7 @@ Divide the book's length by the time you listen each day.
 - **An hour a day:** a 10-hour book takes 10 days, or under 7 days at 1.5x.
 - **A 40-minute commute both ways:** a 10-hour book takes about 7 or 8 working days at normal speed.
 
-If you keep losing track at higher speeds, reading the text along with the audio helps. [HushBook](/) transcribes an audiobook on your phone and highlights each word as the narrator says it, from 0.5x to 3x, so a fast-talking narrator does not lose you. It works with your own MP3, M4A or M4B files and the free LibriVox library built into the app. It cannot import protected files such as Audible downloads.
+If you keep losing track at higher speeds, reading the text along with the audio helps. **[HushBook](/)** transcribes an audiobook on your phone and highlights each word as the narrator says it, **from 0.5x to 3x**, so you keep pace with a fast-talking narrator. It works with your own MP3, M4A or M4B files and the *free LibriVox library* built into the app.
 
 ## Sources
 

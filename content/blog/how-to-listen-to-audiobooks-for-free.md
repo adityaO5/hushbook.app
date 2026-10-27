@@ -48,7 +48,7 @@ Two honest caveats:
 - **Narration quality varies.** Readers are volunteers. Some books are read by one excellent narrator, others pass between many readers with different microphones. Listen to a sample chapter first.
 - **Public domain depends on your country.** LibriVox follows US copyright law. Its wiki warns a work "may be in the public domain in the US, but still be under copyright in other countries." We show how to check, with a current example, in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
 
-Classics are also where people most often lose the thread: old prose, long sentences, unfamiliar names. Having the words on screen as the narrator reads helps a lot here. [HushBook](/) has LibriVox and Internet Archive titles built in and shows each word highlighted as it is spoken, so you can follow along for free. We explain how in [free read-along audiobooks](/blog/free-read-along-audiobooks).
+Classics are also where people most often lose the thread: old prose, long sentences, unfamiliar names. Having the words on screen as the narrator reads helps a lot here. **[HushBook](/)** has LibriVox and Internet Archive titles built in and shows each word highlighted as it is spoken, so you can follow along **for free**. We explain how in [free read-along audiobooks](/blog/free-read-along-audiobooks).
 
 ## 5. Audible's free listens, trial and Prime offer
 
@@ -119,9 +119,9 @@ Some are. Public domain readings, including many LibriVox recordings, are fine t
 
 Most free audiobooks are audio only. You get the narrator's voice, but no text to follow, which makes it easy to drift or lose a name you did not catch.
 
-[HushBook](/) fixes that for free public domain books. It has a built-in store of LibriVox and Internet Archive audiobooks. Download one, and HushBook transcribes it on your phone and highlights each word as the narrator says it. Tap any word to jump the audio back to that spot.
+**[HushBook](/)** fixes that for free public domain books. It has a built-in store of LibriVox and Internet Archive audiobooks. Download one, and **HushBook** transcribes it **on your phone** and highlights each word as the narrator says it. Tap any word to jump the audio back to that spot.
 
-Honest limits. The text comes from speech recognition, so unusual names can be wrong. HushBook cannot import library loans from Libby or Hoopla, or Audible downloads, because those are copy-protected. It works with free public domain titles and with audio files you own, such as MP3 and M4B. If you have M4B files, [how to play M4B files](/blog/how-to-play-m4b-files) covers your other options too.
+**HushBook** works with free public domain titles and with *audio files you own*, such as MP3 and M4B. If you have M4B files, [how to play M4B files](/blog/how-to-play-m4b-files) covers your other options too.
 
 ## Sources
 

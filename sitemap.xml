@@ -1709,6 +1709,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/can-you-read-along-with-spotify-audiobooks</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/can-you-read-along-with-spotify-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/can-you-read-along-with-spotify-audiobooks"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/how-to-keep-track-of-characters-in-a-book</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>

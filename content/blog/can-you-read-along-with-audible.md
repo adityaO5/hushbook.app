@@ -4,7 +4,7 @@ Yes, for many books. Audible calls the feature Read & Listen. The Kindle text si
 
 There's a catch, and it's the reason most people searching this end up confused. You need both editions of the book: the Audible audiobook and the Kindle ebook. Owning one isn't enough.
 
-I build [HushBook](/), a read-along app for audiobook files you own, so I have an obvious interest here. But if your books are already on Audible and Kindle, Audible's own feature is the first thing to try. Here's how it works and what to do when it doesn't cover your book.
+I build **[HushBook](/)**, a read-along app for audiobook files you own, so I have an obvious interest here. But if your books are already on Audible and Kindle, Audible's own feature is the first thing to try. Here's how Read & Listen works, and how to read along with the books it leaves out.
 
 ## What you need
 
@@ -43,11 +43,11 @@ There are three situations where Audible's feature can't help:
 - The feature isn't live in your country yet.
 - Your audiobook didn't come from Audible. It might be a LibriVox recording, a file from a store like Libro.fm that sells audiobooks without DRM, or an old CD you ripped.
 
-That third one is the reason I made HushBook. It works from audio files you can legally import, such as MP3 and M4B. The app transcribes the recording on your phone and highlights each word as the narrator says it. You don't need the ebook for that. If you do have a DRM-free EPUB, PDF or TXT of the same book, you can pair it with the audio so the real book text is highlighted. That pairing is labelled beta in the app.
+That third one is the reason I made **HushBook**. It works from audio files you can legally import, such as MP3 and M4B. The app transcribes the recording **on your phone** and highlights each word as the narrator says it. You don't need the ebook for that. If you do have a DRM-free EPUB, PDF or TXT of the same book, you can pair it with the audio so *the real book text* is highlighted.
 
-I won't oversell it. HushBook can't open protected Audible downloads, and it can't pair a Kindle ebook either, because both are locked to Amazon's apps. A transcript made by speech recognition also isn't the publisher's proofread text. Names and noisy recordings can come out wrong. If your books live in Audible and Kindle, use Read & Listen.
+Audible downloads and Kindle ebooks are locked to Amazon's apps, so the two tools split the work neatly: Read & Listen for the books in your Audible and Kindle libraries, and **HushBook** for your own MP3 and M4B files, DRM-free EPUB, PDF or TXT e-books, and *free LibriVox classics*.
 
-There's more on [how HushBook compares to Whispersync](/whispersync-alternative), on [getting text for an audiobook](/audiobook-with-text) and, for library books, on [whether Libby can read to you](/blog/can-libby-read-to-you).
+There's more on [how **HushBook** compares to Whispersync](/whispersync-alternative), on [getting text for an audiobook](/audiobook-with-text) and, for library books, on [whether Libby can read to you](/blog/can-libby-read-to-you).
 
 ## Is reading along worth it?
 

@@ -29,7 +29,7 @@ Not automatically. Listening removes the work of decoding and keeps the book mov
 
 In a 2013 study of 211 students in the general population, listening produced more mind wandering and worse memory than reading silently or aloud. A 2003 study of 77 boys found that those with ADHD understood the facts in spoken passages as well as other boys, but had more trouble with inferences and with noticing when they had lost track. In other words, attention problems follow you into audio.
 
-That is why many ADHD listeners do best when they combine listening with something that anchors attention: movement, the text in front of them, or a speed that keeps the story moving. When your mind drifts on audio, the narrator keeps going, and finding your place again is half the battle. Seeing the words highlighted as they are read makes that easier, which is what [HushBook](/) does for any audiobook file you own.
+That is why many ADHD listeners do best when they combine listening with something that anchors attention: movement, the text in front of them, or a speed that keeps the story moving. When your mind drifts on audio, the narrator keeps going, and finding your place again is half the battle. Seeing the words highlighted as they are read makes that easier, which is what **[HushBook](/)** does for any audiobook file you own.
 
 ## Tips for listening to audiobooks with ADHD
 
@@ -73,13 +73,13 @@ They can be a useful part of the mix. The read-aloud test studies were done with
 
 ## How HushBook can help
 
-[HushBook](/) turns an audiobook into a word-by-word read-along. It transcribes the recording on your phone and highlights each word as the narrator says it, so your eyes have something to follow and you can see where you are when your mind comes back.
+**[HushBook](/)** turns an audiobook into a **word-by-word read-along**. It transcribes the recording *on your phone* and highlights each word as the narrator says it, so your eyes have something to follow and you can see where you are when your mind comes back.
 
 - **A Dyslexia and ADHD reading profile** sets up fonts, spacing and colors for easier reading, and you can change them while the narrator keeps going.
 - **Tap any word** to jump the audio straight back to it, or use the 30-second rewind.
 - **Change the speed** and the text stays in sync.
 
-Honest limits. HushBook is a reading aid, not a medical or therapy tool, and it does not treat ADHD. As the 2025 study above shows, a moving highlight helps some readers more than others, so try it on a book you like before relying on it. The text comes from speech recognition, so unusual names can come out wrong, and it cannot import copy-protected files such as Audible downloads. There is more on the reading profiles on our [audiobook app for dyslexia and ADHD](/audiobook-app-for-dyslexia) page.
+**HushBook** is a reading aid that works alongside the habits above and proven ADHD treatment. It plays audiobook files you own, such as MP3 and M4B, and the **free classics** from LibriVox and the Internet Archive built into the app. Start with a book you like and *set the profile to suit you*. There is more on the reading profiles on our [audiobook app for dyslexia and ADHD](/audiobook-app-for-dyslexia) page.
 
 ## Sources
 

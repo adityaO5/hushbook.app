@@ -2,11 +2,11 @@
 
 You can read along with a free audiobook, word by word, on your phone. The books are free, the app is free to start, and the highlighting happens on your device.
 
-The catch is that free audiobooks almost never come with synced text. You get a recording, and the book's text lives somewhere else. This guide covers where to find free audiobooks you can legally use, and how to turn them into a read-along with [HushBook](/). For every free option, including library apps and Spotify, see [how to listen to audiobooks for free](/blog/how-to-listen-to-audiobooks-for-free).
+The catch is that free audiobooks almost never come with synced text. You get a recording, and the book's text lives somewhere else. This guide covers where to find free audiobooks you can legally use, and how to turn them into a read-along with **[HushBook](/)**. For every free option, including library apps and Spotify, see [how to listen to audiobooks for free](/blog/how-to-listen-to-audiobooks-for-free).
 
 ## What does read-along mean?
 
-Most people want one thing: to hear the narrator and see the words, with the current word marked. That's what HushBook does. It highlights each word as it's spoken, scrolls the text as the audio plays, and lets you tap any word to jump to that point in the recording.
+Most people want one thing: to hear the narrator and see the words, with the current word marked. That's what **HushBook** does. It **highlights each word as it's spoken**, scrolls the text as the audio plays, and lets you tap any word to jump to that point in the recording.
 
 It's different from text-to-speech, where a synthetic voice reads a text aloud. Here a human narrator reads, and the app finds where each word falls in the recording. There's a longer explanation in the [immersive reading guide](/blog/what-is-immersive-reading).
 
@@ -28,26 +28,19 @@ Any recording you legally own as an ordinary audio file works too, such as an MP
 
 ## How do you read along with a free audiobook in HushBook?
 
-1. **Get the audiobook.** HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. Search for a title and download it. Or import your own MP3 or M4B.
-2. **Let it transcribe.** HushBook transcribes the recording on your phone, so the audio never leaves your device. The transcript is matched to the audio word by word.
+1. **Get the audiobook.** **HushBook** has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. Search for a title and download it. Or import your own MP3 or M4B.
+2. **Let it transcribe.** **HushBook** transcribes the recording on your phone, so *the audio never leaves your device*. The transcript is matched to the audio word by word.
 3. **Press play.** Each word highlights as the narrator reads it, and the text scrolls along. Tap a word to jump there. Change the speed, or keep listening with the screen locked.
 
-The core read-along is free to start, so you can try it on a free LibriVox book without paying for anything.
+The core read-along is **free to start**, so you can try it on a free LibriVox book without paying for anything.
 
 ## Who is it useful for?
 
 - **Anyone who loses their place.** When your mind wanders, the highlighted word shows you exactly where the narrator is.
 - **Language learners.** You hear a word and see how it's spelled at the same moment.
-- **Readers with dyslexia or ADHD.** HushBook has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
+- **Readers with dyslexia or ADHD.** **HushBook** has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
 - **Readers with low vision.** Another profile uses a high-contrast, hyper-legible font and large type for the highlighted line.
 - **Classics readers.** Older language is easier to follow when you can hear it and see it.
-
-## What can't it do?
-
-Two honest limits.
-
-- **The transcript comes from speech recognition.** Unusual names, invented words and old-fashioned spellings can come out wrong. It's good, not perfect.
-- **It can't import protected files.** Audiobooks locked to a store, such as Audible downloads, can't be moved into another app. HushBook works with files you can legally import, which is why the free public domain library is the best place to start.
 
 ## Pick a book and try it
 

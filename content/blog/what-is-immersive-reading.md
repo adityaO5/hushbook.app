@@ -6,7 +6,7 @@ I used to buy books and leave them unfinished. Paperbacks, ebooks, audiobooks. S
 
 Reading the paperback while its audiobook played was what finally held my attention. I could see where I was. When my mind wandered, there was a sentence to come back to instead of another rewind.
 
-That is immersive reading: reading the words while listening to them. Sometimes an app highlights each word for you. Sometimes it's a book on your lap and headphones. I built HushBook around the first version, so this guide comes from the person making one of these apps.
+That is immersive reading: reading the words while listening to them. Sometimes an app highlights each word for you. Sometimes it's a book on your lap and headphones. I built **HushBook** around the first version, so this guide comes from the person making one of these apps.
 
 ## Start with what you already have
 
@@ -20,15 +20,15 @@ Check your edition, though. A recording might have a different introduction or l
 
 With an audiobook, somebody has recorded the narration already. Their pauses and delivery are part of the book. The missing bit, for read-along, is text that follows that particular recording.
 
-A text-to-speech reader goes the other way. Give it a document or ebook and a computer voice reads the words. I would use that for a PDF with no recording. Trying to import the PDF into an audiobook app won't make a narrator appear.
+A text-to-speech reader goes the other way. Give it a document or ebook and a computer voice reads the words. I would use that for a PDF with no recording.
 
-HushBook works from audio. The HushBook engine makes a transcript on your phone and highlights the words in time with the recording. It doesn't read a PDF aloud. You can see [how audiobook text works here](/audiobook-with-text).
+**HushBook** works from audio. The **HushBook** engine makes a transcript **on your phone** and highlights the words *in time with the recording*. You can see [how audiobook text works here](/audiobook-with-text).
 
 ## Microsoft Immersive Reader isn't an audiobook library
 
 The similar names make this confusing. Microsoft's reading tools are for digital text. In Edge, Reading mode can simplify a web page, change how the text looks and read it aloud.
 
-They work on text, not on a recording. To follow a human narrator, you need a setup built around the recording, which is what HushBook does.
+They work on text, not on a recording. To follow a human narrator, you need a setup built around the recording, which is what **HushBook** does.
 
 ## What about Audible's Read & Listen?
 
@@ -36,15 +36,15 @@ Audible announced Read & Listen inside its app in February 2026. It pairs eligib
 
 It works inside Audible's own app, for eligible titles, and you may need both formats.
 
-HushBook is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or free public domain books. Protected Audible downloads can't be imported into HushBook, because an audiobook purchase doesn't automatically give you an unrestricted file to open in any app.
+**HushBook** is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or *free public domain books*.
 
 ## Trying it with your own recording
 
 For a first attempt, pick a short recording you can legally download. A public-domain title from LibriVox is one option. Public-domain rules aren't identical everywhere, so check the rights in your country.
 
-In HushBook, download the engine while you're online, then import the audio file. MP3 and M4B are supported. Let the on-device transcription run. A longer recording takes more work, and the time also depends on your phone. You don't need to buy the ebook for the generated transcript.
+In **HushBook**, download the engine while you're online, then import the audio file. MP3 and M4B are supported. Let the on-device transcription run, and start listening as soon as the first chapter is ready. **You don't need to buy the ebook** for the generated transcript.
 
-Then check a passage. Listen to the words and look at what was transcribed. Speech recognition makes mistakes, particularly with names or a noisy recording. This isn't the publisher's proofread text. If a word looks odd, trust the recording and check the book.
+Then press play and follow a passage. Each word lights up as the narrator says it, and you can *tap any word* to jump the audio there.
 
 You can adjust playback speed and text size. I wouldn't start by pushing the speed up. Find a pace where following the sentence doesn't feel like chasing it. Once the engine, recording and transcript are on the phone, you can use them offline.
 
@@ -54,9 +54,9 @@ Our [M4B guide](/m4b-player) covers the file side. You can also follow the same 
 
 For me, seeing the words was what made the chapter stick. That doesn't mean everyone needs audio and text together. You might find it distracting. Give yourself permission to turn one off. We go through [what the research says about reading along](/blog/does-reading-along-with-an-audiobook-help) in a separate guide.
 
-Understood describes audiobooks, text-to-speech and display adjustments as reading supports. Its expert-reviewed guide also says assistive tools alone probably won't improve reading skills. An app doesn't replace teaching or treatment for ADHD or dyslexia.
+Understood describes audiobooks, text-to-speech and display adjustments as reading supports. Its expert-reviewed guide also says assistive tools alone probably won't improve reading skills. **HushBook** is a reading aid in that spirit, made to sit alongside teaching and treatment for ADHD or dyslexia.
 
-What I wanted from HushBook was a way back into the book when attention slips. It's free to download, with optional Pro. If you have a recording you can import, or want to start with a free LibriVox book from the in-app store, try a passage and see whether the highlight helps you stay with it.
+What I wanted from **HushBook** was *a way back into the book* when attention slips. It's **free to download**, with optional Pro. If you have a recording you can import, or want to start with a free LibriVox book from the in-app store, try a passage and see whether the highlight helps you stay with it.
 
 ## Sources and further reading
 

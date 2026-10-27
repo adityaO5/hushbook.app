@@ -49,7 +49,7 @@ For hard non-fiction, having the words in front of you helps. A 2012 meta-analys
 
 Be realistic about the size of the effect. Compared with reading at your own pace, adding audio makes little difference, as a 2023 meta-analysis of 30 studies by Clinton-Lisell found. Reading along mostly helps compared with listening alone, because it brings back the two things listening lacks: something for your eyes to do, and a way to see exactly where you are. We look at [when reading along helps and when it gets in the way](/blog/does-reading-along-with-an-audiobook-help) in more detail.
 
-That is the problem we built [HushBook](/) for. It highlights each word of an audiobook as the narrator says it, so in a dense chapter you can follow the text instead of trusting your ears alone.
+That is the problem we built **[HushBook](/)** for. It highlights each word of an audiobook as the narrator says it, so in a dense chapter *you can follow the text* instead of trusting your ears alone.
 
 ## 4. Rewind the moment you drift
 
@@ -73,7 +73,7 @@ Walking, washing up and folding laundry are fine for stories. For a book you wan
 
 Notes help, but how you take them matters less than the popular advice suggests. The well-known 2014 finding that handwritten notes beat laptop notes did not hold up: two direct replications, by Morehead, Dunlosky and Rawson in 2019 and by Urry and colleagues in 2021, found no reliable difference in test scores.
 
-What does seem to matter is putting ideas in your own words, which is a form of retrieval. So jot a sentence after each chapter in your own words, and save the exact quotes you want to keep. In HushBook you can save a quote with two taps on the read-along text, without stopping the book.
+What does seem to matter is putting ideas in your own words, which is a form of retrieval. So jot a sentence after each chapter in your own words, and save the exact quotes you want to keep. In **HushBook** you can save a quote with **two taps** on the read-along text, without stopping the book.
 
 ## 8. Teach it or use it
 
@@ -96,14 +96,14 @@ The fastest way to find out what you retained is to explain it to someone. Telli
 
 ## How HushBook helps you remember what you hear
 
-[HushBook](/) turns an audiobook into a word-by-word read-along. It transcribes the recording on your phone and highlights each word as the narrator says it.
+**[HushBook](/)** turns an audiobook into a **word-by-word read-along**. It transcribes the recording *on your phone* and highlights each word as the narrator says it.
 
 - **See where you are.** When you drift, the highlight shows exactly where the narrator is now.
 - **Go back precisely.** Tap any word to jump the audio to that spot, or use the 30-second rewind.
 - **Keep the lines that matter.** Save a quote with two taps and find it later, grouped by book.
 - **Set your speed.** Slow down for hard chapters while the text stays in sync.
 
-Honest limits. The text comes from speech recognition, so unusual names and terms can come out wrong. HushBook cannot import copy-protected files such as Audible downloads. It works with audiobook files you own and with free public domain classics from its built-in LibriVox store.
+**HushBook** works with audiobook files you own, such as MP3 and M4B, and with **free** public domain classics from its built-in LibriVox store.
 
 ## Sources
 

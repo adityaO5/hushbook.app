@@ -41,9 +41,9 @@ And if your mind keeps wandering, speed isn't always the fix. Sometimes it's the
 
 Seeing the words gives you a second channel. If a fast narrator slurs a name or you miss a word, it's right there on screen.
 
-That's how [HushBook](/) works. It transcribes your audiobook on your phone and highlights each word as the narrator reads it, at whatever speed you choose. You can pick a preset from 0.5x to 3x, or set your own speed in 0.05x steps. The highlighting stays in sync, so you can push the speed up and still see exactly where the narrator is.
+That's how **[HushBook](/)** works. It transcribes your audiobook on your phone and highlights each word as the narrator reads it, **at whatever speed you choose**. You can pick a preset from 0.5x to 3x, or set your own speed in 0.05x steps. The highlighting *stays in sync*, so you can push the speed up and still see exactly where the narrator is.
 
-It works with audiobook files you can legally import, such as MP3 and M4B, and with free public domain books from the built-in LibriVox and Internet Archive store. It can't import protected files, such as Audible downloads, and since the text comes from speech recognition, unusual names can come out wrong.
+It works with audiobook files you can legally import, such as MP3 and M4B, and with **free** public domain books from the built-in LibriVox and Internet Archive store.
 
 ## Is it "cheating" to listen fast?
 

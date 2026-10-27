@@ -51,7 +51,7 @@ For a skilled adult reader, treat the highlight as a bookmark, not a pacer. Let 
 
 It gives your attention somewhere to land, which listening alone does not. In a 2013 study in *Frontiers in Psychology*, Varao Sousa, Carriere and Smilek had 211 students read one passage aloud, read one silently and listen to one, and asked at random moments whether their minds had wandered. Listening produced the most mind wandering, the worst memory for the passage and the least interest in it.
 
-No study we found has measured mind wandering while reading along. The practical case is simpler. With your eyes on the words, a drift shows up as a lost place on the page, and you can see exactly which sentence you missed instead of rewinding by guesswork. Most audiobooks give you no text to look at, which is where an app that highlights each word as it is spoken, such as HushBook, fills the gap. For more on attention, see [how to focus on audiobooks](/blog/how-to-focus-on-audiobooks).
+No study we found has measured mind wandering while reading along. The practical case is simpler. With your eyes on the words, a drift shows up as a lost place on the page, and you can see exactly which sentence you missed instead of rewinding by guesswork. Most audiobooks give you no text to look at, which is where an app that highlights each word as it is spoken, such as **HushBook**, fills the gap. For more on attention, see [how to focus on audiobooks](/blog/how-to-focus-on-audiobooks).
 
 ## Does reading while listening make you a better reader?
 
@@ -91,9 +91,9 @@ It is less useful if you read much faster than the narrator and the book is easy
 
 ## Reading along with HushBook
 
-Most audiobooks come without the text. [HushBook](/) transcribes an audiobook on your phone and highlights each word as the narrator says it. Tap any word to jump the audio there, change the playback speed to match your reading, and adjust the font, text size and spacing. It has thousands of free public domain classics from LibriVox and the Internet Archive built in, and you can import your own files, such as MP3 and M4B. Transcription runs on the device, it works offline after a one-time engine download, and there is no account.
+Most audiobooks come without the text. **[HushBook](/)** transcribes an audiobook on your phone and highlights each word as the narrator says it. Tap any word to jump the audio there, change the playback speed to match your reading, and adjust the font, text size and spacing. It has **thousands of free public domain classics** from LibriVox and the Internet Archive built in, and you can import your own files, such as MP3 and M4B. Transcription runs on the device, it works offline after a one-time engine download, and *there is no account*.
 
-Honest limits. The text comes from speech recognition, not the publisher, so unusual names can come out wrong. It cannot import protected files such as Audible downloads. And as the research shows, reading along will not make you understand an easy book better than reading it yourself. It helps most when the book, the language or your attention makes listening alone hard.
+As the research shows, reading along helps most when the book, the language or your attention makes listening alone hard.
 
 ## Sources
 

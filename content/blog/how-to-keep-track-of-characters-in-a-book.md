@@ -2,7 +2,7 @@
 
 Keep a running cast list. Each time a new name appears, write one line: who they are, and how they connect to someone already on the list. "Ophelia, Polonius's daughter" is far more useful than "Ophelia". Keep the list where you can glance at it, check it whenever a name comes back that you can't place, and read it over before each session. That is the whole method. The rest of this guide covers how to do it on paper, in an ebook and while listening.
 
-Listening is the hard case. In print you can flip back to the page where someone first appeared. An audiobook keeps going, and you may not even know how the name is spelled. [HushBook](/) has a character map built for that moment: add someone as soon as you hear them, and if the book is playing, it notes the chapter and time. Below are methods for each format, what research says about why they work, and how to handle a cast the size of *War and Peace*.
+Listening is the hard case. In print you can flip back to the page where someone first appeared. An audiobook keeps going, and you may not even know how the name is spelled. **[HushBook](/)** has a *character map* built for that moment: add someone as soon as you hear them, and if the book is playing, it notes the chapter and time. Below are methods for each format, what research says about why they work, and how to handle a cast the size of *War and Peace*.
 
 ## How do you keep track of characters in a book?
 
@@ -47,17 +47,17 @@ What helps when you listen:
 
 ## Is there an app to keep track of book characters?
 
-Yes. Kindle's X-Ray covers Kindle books that include it, and any notes app will hold a list. A character map goes one step further: each character is a point, and lines between them show how they are tied. For audiobooks, and for a map rather than a list, HushBook has a character map on each book's Characters tab. It is free, not part of Pro.
+Yes. Kindle's X-Ray covers Kindle books that include it, and any notes app will hold a list. A character map goes one step further: each character is a point, and lines between them show how they are tied. For audiobooks, and for a map rather than a list, **HushBook** has a character map on each book's Characters tab, for the free LibriVox classics and the audio files you import, such as MP3 or M4B. It is **free**, with no Pro upgrade needed.
 
-Here is how adding a character works. Tap +, and a tray asks "Who did you just meet?" Type the name and the character gets a hand-drawn ink face. Tap Shuffle look to try another, and turn on Hero of the story for your main character. Add them, and they drop onto a dotted map. Link two characters and pick how they are tied, such as "Mentor of", and an ink line draws between them with the tie written on it. Each new character also gets a card that says "Meet" and their name, with Share and Add another buttons.
+Here is how adding a character works. You add each character as you meet them, so *the map follows your reading*. Tap +, and a tray asks "Who did you just meet?" Type the name and the character gets a hand-drawn ink face. Tap Shuffle look to try another, and turn on Hero of the story for your main character. Add them, and they drop onto a dotted map. Link two characters and pick how they are tied, such as "Mentor of", and an ink line draws between them with the tie written on it. Each new character also gets a card that says "Meet" and their name, with Share and Add another buttons.
 
 A few details make it work for listening:
 
-- **First heard.** If the book is playing when you add someone, HushBook records where you met them as chapter and time, for example "Ch. 3 · 1:12:40". Rewind to just before that point to hear their introduction again.
+- **First heard.** If the book is playing when you add someone, **HushBook** records where you met them as chapter and time, for example "Ch. 3 · 1:12:40". Rewind to just before that point to hear their introduction again.
 - **Typed ties.** Pick from Good friends, Family, Siblings, Rivals, Allies, Sweethearts, Mentor of, Parent of, Employer of, Protects, Secret or Not sure, or write your own. One-way ties read correctly from the other side: Mentor of becomes Student of.
 - **The cast list.** A Cast button lists everyone on the map, with a search box once you have eight or more.
 - **Sharing.** Share the map as an image, or the cast summary as text: names, roles and relationships. That suits a book club, or a friend about to start the same book.
-- **The words on screen.** HushBook transcribes the audiobook on your phone and highlights each word as the narrator reads it, so you can see how a new name is spelled.
+- **The words on screen.** **HushBook** transcribes the audiobook on your phone and highlights each word as the narrator reads it, so you can see how a new name is spelled.
 
 ## How do you remember characters in a book?
 
@@ -87,7 +87,7 @@ What works for this book:
 Long fantasy series such as *A Game of Thrones* and *The Wheel of Time* add two problems: you may wait months or years between books, and characters can switch sides.
 
 - **Group by house or faction.** Treat them like the families in *War and Peace*. Allegiance is often the first thing you need to know about a stranger.
-- **Record suspicions, not just facts.** Note a tie you suspect but can't confirm, and mark it as unconfirmed. In HushBook, the Secret and Not sure ties exist for this.
+- **Record suspicions, not just facts.** Note a tie you suspect but can't confirm, and mark it as unconfirmed. In **HushBook**, the Secret and Not sure ties exist for this.
 - **Reread your own list before the next book.** Fan wikis and summaries are written by people who have read further than you, so they can spoil what is coming. Your own notes only hold what you have reached.
 - **Note whose chapter it was.** In books that switch narrators chapter by chapter, the narrator who met a character tells you where to look for them again.
 
@@ -96,9 +96,6 @@ Long fantasy series such as *A Game of Thrones* and *The Wheel of Time* add two 
 - No study we found tests character lists or maps with readers of real novels. The research here covers how readers build a picture of a story, why rereading helps, mind wandering while listening, and memory for word lists. The step from those findings to a cast list is ours.
 - The rereading study measured reading on a screen. It did not test audiobooks.
 - We did not test Kindle X-Ray. Everything said about it comes from Amazon's help for authors, checked in October 2026.
-- HushBook does not find characters for you. You add each one yourself, and the first-heard time is recorded only when that book is playing in HushBook.
-- The map belongs to a book in your HushBook library: a free public domain audiobook from LibriVox, or an audio file you import, such as MP3 or M4B. For a paper or Kindle book, use the paper methods above.
-- The read-along text comes from speech recognition, not the publisher, so an unusual name can come out wrong.
 
 ## Sources
 

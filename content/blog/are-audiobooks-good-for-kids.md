@@ -24,7 +24,7 @@ Not much, unless something draws their eyes there. In two eye-tracking studies p
 
 Highlighting does a similar job. In a 2020 study in *Computers & Education*, Liao and colleagues tracked the eyes of 61 children aged 4 and 5 using digital storybooks. With a plain layout, children spent a little over 19% of their time on the print. When each word lit up in sync with the narration, that rose to about 38%. After four weeks, both the highlighted version and an adult talking about the print improved the children's print awareness.
 
-This is the catch with most audiobooks: the child hears the story but has nothing to read. An app that lights up each word as the narrator says it, such as HushBook, puts the print back in front of them while they listen.
+This is the catch with most audiobooks: the child hears the story but has nothing to read. An app that lights up each word as the narrator says it, such as **HushBook**, *puts the print back in front of them* while they listen.
 
 ## Are audiobooks as good as reading to your child?
 
@@ -80,9 +80,9 @@ Children who listen also tend to enjoy reading more, but these surveys cannot sh
 
 ## Reading along with HushBook
 
-Most audiobooks come without text. [HushBook](/) transcribes an audiobook on your phone and highlights each word as the narrator says it, so a child can [read along](/blog/what-is-immersive-reading) instead of only listening. Tap any word to jump the audio back to it, and slow the narration down for a new reader. It has LibriVox and Internet Archive classics built in, including children's classics such as *Alice's Adventures in Wonderland*, and it works offline with no account.
+Most audiobooks come without text. **[HushBook](/)** transcribes an audiobook on your phone and *highlights each word as the narrator says it*, so a child can [read along](/blog/what-is-immersive-reading) instead of only listening. Tap any word to jump the audio back to it, and slow the narration down for a new reader. It has LibriVox and Internet Archive classics built in, including children's classics such as *Alice's Adventures in Wonderland*, and it **works offline with no account**.
 
-Honest limits. HushBook was built for older readers, not as a children's app, so younger kids will get the most from it with you beside them. It is a reading aid, not reading instruction or therapy. The text comes from speech recognition, so unusual names can come out wrong. And it cannot import protected files such as Audible downloads.
+**HushBook** is a reading aid to use alongside reading together and reading lessons, and younger kids get the most from it *with you beside them*. It works with audiobook files you own, such as MP3 and M4B, as well as the free classics built into the app.
 
 ## Sources
 

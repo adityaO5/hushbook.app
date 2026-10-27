@@ -35,9 +35,9 @@ Abridged editions make sense in a few situations: a long non-fiction book where 
 
 Abridgment causes a specific problem if you like to follow the text while you listen. Pair an abridged recording with a full ebook and the two stop matching within a few pages. Whole paragraphs get skipped and you lose your place.
 
-[HushBook](/) avoids this by making the text from the recording itself. It transcribes the audiobook on your phone, then highlights each word as the narrator reads it. Whatever version you have, abridged or unabridged, the words on screen match what you hear, because they came from the same audio. Tap any word to jump to that moment.
+**[HushBook](/)** avoids this by making the text from the recording itself. It transcribes the audiobook **on your phone**, then highlights each word as the narrator reads it. Whatever version you have, abridged or unabridged, *the words on screen match what you hear*, because they came from the same audio. Tap any word to jump to that moment.
 
-It works with audiobook files you can legally import, such as MP3 and M4B, and with free public domain recordings from its built-in LibriVox and Internet Archive store. LibriVox volunteers generally record complete texts, which makes those a good place to start. Two limits: the transcript comes from speech recognition, so unusual names can come out wrong, and HushBook can't import protected files, such as Audible downloads.
+It works with audiobook files you can legally import, such as MP3 and M4B, and with **free** public domain recordings from its built-in LibriVox and Internet Archive store. LibriVox volunteers generally record complete texts, which makes those a good place to start.
 
 If you'd rather use an ebook and an audiobook together, edition matching matters a lot. [Can you read along with Audible?](/blog/can-you-read-along-with-audible) covers how Amazon handles it.
 

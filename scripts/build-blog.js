@@ -102,6 +102,12 @@ function parseMarkdown(source) {
     let match;
     if (!line) { flush(); continue; }
     if ((match = line.match(/^# (.+)$/))) { flush(); title = match[1]; continue; }
+    // [[embed:name]] on its own line inserts content/blog/embeds/<name>.html
+    if ((match = line.match(/^\[\[embed:([a-z0-9-]+)\]\]$/))) {
+      flush();
+      html.push(fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${match[1]}.html`), 'utf8').trim());
+      continue;
+    }
     if ((match = line.match(/^(#{2,3}) (.+)$/))) {
       flush();
       const level = match[1].length;
@@ -128,7 +134,7 @@ function parseMarkdown(source) {
   }
   flush();
 
-  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
+  const text = source.replace(/^\[\[embed:[^\]]+\]\]$/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
   return { title, headings, html: html.join('\n'), wordCount: text.trim().split(/\s+/).filter(Boolean).length };
 }
 

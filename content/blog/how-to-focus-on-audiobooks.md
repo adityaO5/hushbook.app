@@ -26,7 +26,7 @@ The word that matters is *simple*. Answering email while listening doesn't work.
 
 ### 2. Rewind the moment you notice
 
-Don't keep going and hope the plot fills itself in. Go back to the last thing you clearly remember. Thirty seconds is often enough. Most players have a button for it, and HushBook's rewind button jumps back 30 seconds.
+Don't keep going and hope the plot fills itself in. Go back to the last thing you clearly remember. Thirty seconds is often enough. Most players have a button for it, and **HushBook**'s rewind button jumps back 30 seconds.
 
 ### 3. Start with a book that's easy to follow
 
@@ -52,15 +52,13 @@ When the words are on screen, your eyes have a job, so you're less likely to dri
 
 ## How to read along with an audiobook in HushBook
 
-[HushBook](/) turns an audiobook file into a word-by-word read-along.
+**[HushBook](/)** turns an audiobook file into a *word-by-word read-along*.
 
 1. **Add a book.** Import your own MP3, M4A or M4B file, or download a free public domain audiobook from the built-in LibriVox and Internet Archive store.
-2. **Let it transcribe.** HushBook transcribes the recording on your phone and matches every word to the audio. Nothing is uploaded.
+2. **Let it transcribe.** **HushBook** transcribes the recording on your phone and matches every word to the audio. *Nothing is uploaded.*
 3. **Listen and read.** Each word highlights as the narrator says it, and the text scrolls along. If you lose your place, tap any word to jump the audio straight back to it.
 
-There's a reading profile for dyslexia and ADHD with dyslexia-friendly fonts and a focus view, and another for low vision with large, high-contrast text. If attention is the main thing you struggle with, [audiobooks for dyslexia and ADHD](/audiobook-app-for-dyslexia) goes into more detail.
-
-Two honest limits. The transcript comes from speech recognition, so unusual names can come out wrong. And HushBook can't import protected files, such as Audible downloads. It works with audio files you can legally import.
+There's a reading profile for dyslexia and ADHD with dyslexia-friendly fonts and a **focus view**, and another for low vision with large, high-contrast text. If attention is the main thing you struggle with, [audiobooks for dyslexia and ADHD](/audiobook-app-for-dyslexia) goes into more detail.
 
 ## What if nothing works?
 

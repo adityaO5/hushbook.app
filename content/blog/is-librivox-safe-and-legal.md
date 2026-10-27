@@ -101,9 +101,7 @@ If LibriVox does not have the book you want, our guide to [listening to audioboo
 
 ## Reading along with LibriVox in HushBook
 
-HushBook is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can pick a solo recording. Download a book and [HushBook](/) transcribes it on your phone, then highlights each word as the volunteer reads it. Tap any word to jump the audio there. It is free to download, with no ads and no account. The read-along and the free library cost nothing, and an optional Pro upgrade adds advanced analytics. After a one-time engine download, it works offline.
-
-Honest limits. HushBook downloads LibriVox audio from the Internet Archive, so when archive.org is down, so are its LibriVox downloads; the app tells you which library did not answer. The text comes from speech recognition, not the published edition, so unusual names can come out wrong. It cannot fix an uneven reader, and it cannot tell you whether a book is public domain where you live.
+**HushBook** is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can *pick a solo recording*. Download a book and **[HushBook](/)** transcribes it on your phone, then highlights each word as the volunteer reads it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing, and an optional Pro upgrade adds advanced analytics. After a one-time engine download, it works offline.
 
 ## Sources
 

@@ -4,7 +4,7 @@ Short answer: for an audiobook, M4B is usually the better file to keep, and MP3 
 
 An M4B is a single file that holds the whole book, with chapter markers, cover art, and a place-saving flag that tells audiobook apps to remember where you stopped. An MP3 audiobook is normally a folder of separate files, one per chapter or part. Both play fine on a modern phone. The real differences are how tidy your library is, how chapters work, and which devices you need to support.
 
-I build [HushBook](/), an audiobook app that imports both and shows the words as the narrator reads them, so I see a lot of each. Here's what actually matters when you choose.
+I build **[HushBook](/)**, an audiobook app that imports both and *shows the words as the narrator reads them*, so I see a lot of each. Here's what actually matters when you choose.
 
 ## What is an M4B file?
 
@@ -71,11 +71,9 @@ LibriVox, the volunteer project that records public-domain books, offers each ch
 
 ## Reading along with either format
 
-This is the part I work on. HushBook imports M4B and MP3, along with AAC, FLAC, OGG, OPUS, WAV and a few others, one file per import. With an M4B, the chapters and cover art come in with the book. Then the app transcribes the recording on your phone and highlights each word as the narrator says it, so you can read along.
+This is the part I work on. **HushBook** imports M4B and MP3, along with AAC, FLAC, OGG, OPUS, WAV and a few others. With an M4B, *the chapters and cover art come in with the book*. Then the app transcribes the recording **on your phone** and highlights each word as the narrator says it, so you can read along.
 
-The format doesn't change the transcript much. Narration quality does: a clean studio recording transcribes better than a noisy one, whichever container it's in. A transcript made by speech recognition also isn't the publisher's proofread text, so unusual names can come out wrong.
-
-HushBook can't import M4B files with DRM, or Audible's protected downloads. There's more detail on the [M4B player page](/m4b-player), and on [getting text for an audiobook](/audiobook-with-text). If you're curious about reading and listening at the same time, start with [what immersive reading is](/blog/what-is-immersive-reading).
+The format makes little difference to the transcript, so there's no reason to convert a file for reading along. There's more detail on the [M4B player page](/m4b-player), and on [getting text for an audiobook](/audiobook-with-text). If you're curious about reading and listening at the same time, start with [what immersive reading is](/blog/what-is-immersive-reading).
 
 ## The verdict
 

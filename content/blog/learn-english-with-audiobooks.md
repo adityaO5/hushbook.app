@@ -37,7 +37,7 @@ Three things happen when you read and listen at once:
 
 1. **Pick an easy book.** Read the first page. If you know almost every word and can follow the story, it is the right level. The Extensive Reading Foundation suggests knowing about 98% of the words for comfortable reading, and choosing audiobooks one or two levels below your reading level, because listening usually lags behind reading.
 2. **First listen, eyes on the text.** Play a chapter or 10 minutes and follow every word. Do not stop to look things up. Aim to understand the story, not every word.
-3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word. In a read-along app like [HushBook](/), that is one tap on the sentence instead of scrubbing back.
+3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word. In a read-along app like **[HushBook](/)**, that is **one tap** on the sentence instead of scrubbing back.
 4. **Shadow a few lines.** Pause and say a sentence out loud, copying the narrator's rhythm and stress. This trains your speaking as well as your ear.
 5. **Note five words.** Only words you saw more than once, or that you need. A short list you review beats a long list you never open.
 6. **Listen again without the text.** Once a chapter feels easy, play it again with the screen off. If you can follow it, you are ready for the next one.
@@ -81,9 +81,9 @@ These are public domain classics with free LibriVox recordings, ordered roughly 
 
 If a book feels like hard work after three chapters, drop it and pick an easier one. Finishing books is what builds the habit.
 
-## How to read along with any audiobook in HushBook
+## How to read along with an audiobook in HushBook
 
-Most audiobooks come without text, and free LibriVox recordings never include a synced transcript. [HushBook](/) fills that gap. It transcribes an audiobook on your phone and highlights each word as the narrator says it, so you always see exactly what you hear.
+Most audiobooks come without text, and free LibriVox recordings never include a synced transcript. **[HushBook](/)** fills that gap. It transcribes an audiobook **on your phone** and highlights each word as the narrator says it, so *you always see exactly what you hear*.
 
 For English learners it helps in a few specific ways:
 
@@ -92,7 +92,7 @@ For English learners it helps in a few specific ways:
 - **Free books built in.** Browse and download LibriVox and Internet Archive titles inside the app, or import an MP3, M4A or M4B file you own.
 - **Private.** The transcript is made on your phone. Your audio is never uploaded and there is no account.
 
-Two honest limits. The text comes from speech recognition, so unusual names and old words can come out wrong now and then. And HushBook cannot import protected files such as Audible downloads. For those, Audible's own Read & Listen works if you also own the Kindle ebook, which we explain in [can you read along with Audible](/blog/can-you-read-along-with-audible).
+For books you buy on Audible, Audible's own Read & Listen works if you also own the Kindle ebook, which we explain in [can you read along with Audible](/blog/can-you-read-along-with-audible).
 
 ## Sources
 

@@ -1,6 +1,6 @@
 # How to Play M4B Files on iPhone, Android, Windows and Mac
 
-Open it in a player made for audiobooks. On Android, use Voice, VLC or Smart AudioBook Player. On iPhone, use BookPlayer or HushBook, or import it into Apple Books on a Mac and sync it across. On Windows, use VLC. On a Mac, use Apple Books or VLC. All of these keep your chapters, and most remember where you stopped.
+Open it in a player made for audiobooks. On Android, use Voice, VLC or Smart AudioBook Player. On iPhone, use BookPlayer or **HushBook**, or import it into Apple Books on a Mac and sync it across. On Windows, use VLC. On a Mac, use Apple Books or VLC. All of these keep your chapters, and most remember where you stopped.
 
 If the file still will not play in any of them, it is almost certainly protected by DRM, the copy protection on store purchases, rather than a problem with M4B itself. More on that at the end.
 
@@ -17,7 +17,7 @@ Android has no built-in audiobook player, and Google Play Books only lets you up
 - **Voice.** Free and open source. Its developer lists support for "local M4B, MP3, M4A, OGG, OGA, and OPUS audiobooks" with chapter navigation. A good first choice if you want something simple.
 - **VLC for Android.** Free. It added chapter selection for audiobooks in version 3.3.1 and chapter navigation in the audio player in 3.6.0.
 - **Smart AudioBook Player.** A long-running audiobook player with M4B chapter support. The full version is free for the first 30 days, then it drops to a basic version unless you upgrade.
-- **HushBook.** Plays M4B with chapters and cover art, and adds word-by-word text you can read along with. More below.
+- **HushBook.** Plays M4B with chapters and cover art, and adds *word-by-word text* you can read along with. More below.
 
 To get the file onto your phone, copy it over USB into a folder such as Audiobooks, or download it from cloud storage. Then open the folder from your player.
 
@@ -54,9 +54,9 @@ Put the M4B in iCloud Drive or On My iPhone first, then import it from the app.
 
 ## Read along with your M4B files in HushBook
 
-[HushBook](/) plays M4B files on iPhone, iPad and Android, with chapters, cover art and saved position. Then it does something other players do not: it transcribes the audiobook on your phone and highlights each word as the narrator says it, so you can read along. Tap any word to jump the audio there.
+**[HushBook](/)** plays M4B files on iPhone, iPad and Android, with chapters, cover art and saved position. Then it does something other players do not: it transcribes the audiobook on your phone and **highlights each word as the narrator says it**, so you can read along. Tap any word to jump the audio there.
 
-The transcript is made on the device, so the audio is never uploaded, and there is no account. Listening can start while the rest of the book transcribes. It also plays MP3, M4A, FLAC, OGG, OPUS and more. Like every player above, it cannot open DRM-protected files such as Audible downloads. The [M4B player](/m4b-player) page has the details.
+The transcript is made on the device, so *the audio is never uploaded*, and there is **no account**. Listening can start while the rest of the book transcribes. It also plays MP3, M4A, FLAC, OGG, OPUS and more. The [M4B player](/m4b-player) page has the details.
 
 ## Sources
 
