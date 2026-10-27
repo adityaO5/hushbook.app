@@ -25,12 +25,15 @@ module.exports = {
     'de', 'fr', 'es-ES', 'es-419', 'pt-BR', 'pt-PT', 'it', 'ja', 'ko', 'nl',
     'pl', 'tr', 'ru', 'uk', 'ar', 'id', 'th', 'vi', 'sv', 'da',
   ],
+  // Only the homepage is translated. Add a page here only when Search Console
+  // shows its localized versions earning real impressions and clicks.
   publicPages: [
-    'index.html', 'about.html', 'refund-policy.html', 'licenses.html',
+    'index.html',
   ],
-  // Legal documents stay English-only; locale URLs 308 to the English page.
+  // About and legal pages stay English-only; locale URLs 308 to the English page.
   englishOnlyPages: [
-    'privacy-policy.html', 'terms-conditions.html',
+    'about.html', 'privacy-policy.html', 'terms-conditions.html',
+    'refund-policy.html', 'licenses.html',
   ],
   /** Country -> published locale used by scripts/build-vercel-locales.js. */
   countryLocales: {

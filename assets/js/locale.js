@@ -96,7 +96,8 @@
 
   switcher.querySelectorAll('[data-locale]').forEach((link) => {
     const nextLocale = link.dataset.locale;
-    const destination = nextLocale === 'en' ? englishPath : `/${nextLocale}${englishPath === '/' ? '' : englishPath}`;
+    // Only the homepage is translated; other pages switch to the locale homepage.
+    const destination = nextLocale === 'en' ? englishPath : `/${nextLocale}`;
     link.href = `${destination || '/'}${window.location.search}${window.location.hash}`;
     link.addEventListener('click', () => {
       const secure = window.location.protocol === 'https:' ? '; Secure' : '';

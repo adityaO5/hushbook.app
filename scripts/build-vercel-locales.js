@@ -11,11 +11,12 @@ const path = require('node:path');
 const localeConfig = require('../localization.config');
 
 const root = path.join(__dirname, '..');
-const PUBLIC_PAGES = localeConfig.publicPages
-  .map((page) => page.replace(/\.html$/, ''))
-  .filter((page) => page !== 'index')
-  .join('|');
-const PAGE_SOURCE = `/:path(${PUBLIC_PAGES})`;
+const pageNames = (pages) => (pages || []).map((page) => page.replace(/\.html$/, ''));
+const LOCALIZED_SUBPAGES = pageNames(localeConfig.publicPages).filter((page) => page !== 'index');
+const ENGLISH_ONLY_PAGES = pageNames(localeConfig.englishOnlyPages);
+// Null when only the homepage is translated: no subpage geo/cookie redirects.
+const PAGE_SOURCE = LOCALIZED_SUBPAGES.length ? `/:path(${LOCALIZED_SUBPAGES.join('|')})` : null;
+const ENGLISH_PAGE_SOURCE = `/:path(${[...LOCALIZED_SUBPAGES, ...ENGLISH_ONLY_PAGES].join('|')})`;
 
 const defaultLocale = localeConfig.defaultLocale || 'en';
 const cookieLocales = (localeConfig.publishedLocales || [])
@@ -44,6 +45,7 @@ for (const code of cookieLocales) {
     destination: `/${code}`,
     permanent: false,
   });
+  if (!PAGE_SOURCE) continue;
   redirects.push({
     source: PAGE_SOURCE,
     has: [{ type: 'cookie', key: 'hushbook_locale', value: code }],
@@ -62,6 +64,7 @@ for (const [locale, countries] of countryGroups) {
     destination: `/${locale}`,
     permanent: false,
   });
+  if (!PAGE_SOURCE) continue;
   redirects.push({
     source: PAGE_SOURCE,
     has: [{ type: 'header', key: 'x-vercel-ip-country', value }],
@@ -94,8 +97,9 @@ redirects.push({ source: '/privacy', destination: '/privacy-policy', permanent: 
 redirects.push({ source: '/terms', destination: '/terms-conditions', permanent: true });
 redirects.push({ source: '/download', destination: '/', permanent: true });
 redirects.push({ source: '/:locale/download', destination: '/:locale', permanent: true });
-redirects.push({ source: '/:locale/privacy-policy', destination: '/privacy-policy', permanent: true });
-redirects.push({ source: '/:locale/terms-conditions', destination: '/terms-conditions', permanent: true });
+for (const page of ENGLISH_ONLY_PAGES) {
+  redirects.push({ source: `/:locale/${page}`, destination: `/${page}`, permanent: true });
+}
 
 function contentLanguageHeaders() {
   const rules = [];
@@ -106,7 +110,7 @@ function contentLanguageHeaders() {
         headers: [{ key: 'Content-Language', value: 'en' }],
       });
       rules.push({
-        source: PAGE_SOURCE,
+        source: ENGLISH_PAGE_SOURCE,
         headers: [{ key: 'Content-Language', value: 'en' }],
       });
       continue;

@@ -194,11 +194,10 @@ for (const locale of PUBLISHED) {
 
 const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-// Localized copies stay live but are excluded from the sitemap.
-const SITEMAP_ENGLISH_ONLY_PAGES = ['refund-policy', 'licenses'];
+const ENGLISH_ONLY_PAGES = localeConfig.englishOnlyPages.map((file) => file.replace(/\.html$/, ''));
+assert.deepEqual(PAGES, ['index'], 'only the homepage is translated');
 const englishOnlyUrls = [
-  'https://hushbook.app/privacy-policy',
-  'https://hushbook.app/terms-conditions',
+  ...ENGLISH_ONLY_PAGES.map((page) => pageUrl('en', page)),
   'https://hushbook.app/alternatives',
   'https://hushbook.app/alternatives/audible-alternatives',
   'https://hushbook.app/alternatives/bookplayer-alternatives',
@@ -217,7 +216,7 @@ const englishOnlyUrls = [
 ];
 assert.equal(
   sitemapUrls.length,
-  PUBLISHED.length * (PAGES.length - SITEMAP_ENGLISH_ONLY_PAGES.length) + SITEMAP_ENGLISH_ONLY_PAGES.length + englishOnlyUrls.length,
+  PUBLISHED.length * PAGES.length + englishOnlyUrls.length,
   'sitemap must contain published locale/page combinations and explicit English-only pages',
 );
 for (const url of englishOnlyUrls) {
@@ -225,8 +224,7 @@ for (const url of englishOnlyUrls) {
 }
 for (const locale of PUBLISHED) {
   for (const page of PAGES) {
-    const listed = locale === localeConfig.defaultLocale || !SITEMAP_ENGLISH_ONLY_PAGES.includes(page);
-    assert.equal(sitemapUrls.includes(pageUrl(locale, page)), listed, `${locale}/${page} sitemap listing`);
+    assert.ok(sitemapUrls.includes(pageUrl(locale, page)), `${locale}/${page} sitemap listing`);
   }
 }
 for (const legacyLocale of Object.keys(LEGACY_REDIRECTS)) {
@@ -261,7 +259,14 @@ assert.ok(
     ),
   'geo/cookie locale redirects must skip search crawlers',
 );
-for (const [source, destination] of [['/', '/nl'], ['/:path(about|refund-policy|licenses)', '/nl/:path*']]) {
+assert.ok(
+  !vercel.redirects.some((rule) =>
+    rule.source !== '/' &&
+    rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' || condition.key === 'hushbook_locale'),
+  ),
+  'geo/cookie locale redirects must only apply to the homepage',
+);
+for (const [source, destination] of [['/', '/nl']]) {
   assert.ok(
     vercel.redirects.some((rule) =>
       rule.source === source &&
@@ -286,7 +291,7 @@ function contentLanguageFor(source) {
   return rule?.headers.find((header) => header.key === 'Content-Language')?.value || null;
 }
 assert.equal(contentLanguageFor('/'), 'en', 'English homepage must send Content-Language: en');
-assert.equal(contentLanguageFor('/:path(about|refund-policy|licenses)'), 'en');
+assert.equal(contentLanguageFor(`/:path(${ENGLISH_ONLY_PAGES.join('|')})`), 'en');
 assert.ok(
   vercel.redirects.some((rule) => rule.source === '/download' && rule.destination === '/' && rule.permanent === true),
   'retired /download must permanently redirect to the homepage',
@@ -295,18 +300,18 @@ assert.ok(
   vercel.redirects.some((rule) => rule.source === '/:locale/download' && rule.destination === '/:locale' && rule.permanent === true),
   'retired locale /download routes must permanently redirect to the locale homepage',
 );
-assert.ok(
-  vercel.redirects.some((rule) => rule.source === '/:locale/privacy-policy' && rule.destination === '/privacy-policy' && rule.permanent === true),
-  'locale privacy pages must permanently redirect to the English privacy policy',
-);
-assert.ok(
-  vercel.redirects.some((rule) => rule.source === '/:locale/terms-conditions' && rule.destination === '/terms-conditions' && rule.permanent === true),
-  'locale terms pages must permanently redirect to the English terms',
-);
-
-for (const page of ['privacy-policy', 'terms-conditions']) {
+for (const page of ENGLISH_ONLY_PAGES) {
+  assert.ok(
+    vercel.redirects.some((rule) => rule.source === `/:locale/${page}` && rule.destination === `/${page}` && rule.permanent === true),
+    `locale ${page} pages must permanently redirect to the English page`,
+  );
   assert.ok(fs.existsSync(pageFile('en', page)), `English ${page} must remain published`);
-  for (const locale of PUBLISHED.filter((code) => code !== localeConfig.defaultLocale)) {
+  assert.deepEqual(
+    hreflangAlternates(page).map((alternate) => alternate.hreflang),
+    ['en', 'x-default'],
+    `English-only ${page} must not declare translated alternates`,
+  );
+  for (const locale of [...PUBLISHED.filter((code) => code !== localeConfig.defaultLocale), ...localeConfig.draftLocales]) {
     assert.equal(fs.existsSync(pageFile(locale, page)), false, `${locale}/${page}.html must be removed`);
   }
 }

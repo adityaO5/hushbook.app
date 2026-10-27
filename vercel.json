@@ -23,25 +23,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "de"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/de/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -58,25 +39,6 @@
         }
       ],
       "destination": "/fr",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "fr"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/fr/:path*",
       "permanent": false
     },
     {
@@ -99,25 +61,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "es-ES"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/es-ES/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -134,25 +77,6 @@
         }
       ],
       "destination": "/es-419",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "es-419"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/es-419/:path*",
       "permanent": false
     },
     {
@@ -175,25 +99,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "pt-BR"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pt-BR/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -210,25 +115,6 @@
         }
       ],
       "destination": "/pt-PT",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "pt-PT"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pt-PT/:path*",
       "permanent": false
     },
     {
@@ -251,25 +137,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "it"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/it/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -286,25 +153,6 @@
         }
       ],
       "destination": "/ja",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "ja"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ja/:path*",
       "permanent": false
     },
     {
@@ -327,25 +175,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "ko"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ko/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -362,25 +191,6 @@
         }
       ],
       "destination": "/nl",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "nl"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/nl/:path*",
       "permanent": false
     },
     {
@@ -403,25 +213,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "pl"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pl/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -438,25 +229,6 @@
         }
       ],
       "destination": "/tr",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "tr"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/tr/:path*",
       "permanent": false
     },
     {
@@ -479,25 +251,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "ru"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ru/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -514,25 +267,6 @@
         }
       ],
       "destination": "/uk",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "uk"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/uk/:path*",
       "permanent": false
     },
     {
@@ -555,25 +289,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "ar"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ar/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -590,25 +305,6 @@
         }
       ],
       "destination": "/id",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "id"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/id/:path*",
       "permanent": false
     },
     {
@@ -631,25 +327,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "th"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/th/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -666,25 +343,6 @@
         }
       ],
       "destination": "/vi",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "vi"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/vi/:path*",
       "permanent": false
     },
     {
@@ -707,25 +365,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "sv"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/sv/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -742,25 +381,6 @@
         }
       ],
       "destination": "/da",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale",
-          "value": "da"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/da/:path*",
       "permanent": false
     },
     {
@@ -787,29 +407,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "DE|AT|CH"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/de/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -830,29 +427,6 @@
         }
       ],
       "destination": "/ja",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "JP"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ja/:path*",
       "permanent": false
     },
     {
@@ -879,29 +453,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "FR|BE|LU|MC"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/fr/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -922,29 +473,6 @@
         }
       ],
       "destination": "/es-ES",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "ES"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/es-ES/:path*",
       "permanent": false
     },
     {
@@ -971,29 +499,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "MX|AR|CO|CL|PE|UY|CR|EC|GT|PA|DO|PR|BO|PY|SV|HN|NI|VE"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/es-419/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1014,29 +519,6 @@
         }
       ],
       "destination": "/pt-BR",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "BR"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pt-BR/:path*",
       "permanent": false
     },
     {
@@ -1063,29 +545,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "PT"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pt-PT/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1106,29 +565,6 @@
         }
       ],
       "destination": "/it",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "IT"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/it/:path*",
       "permanent": false
     },
     {
@@ -1155,29 +591,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "KR"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ko/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1198,29 +611,6 @@
         }
       ],
       "destination": "/nl",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "NL"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/nl/:path*",
       "permanent": false
     },
     {
@@ -1247,29 +637,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "PL"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/pl/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1290,29 +657,6 @@
         }
       ],
       "destination": "/tr",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "TR"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/tr/:path*",
       "permanent": false
     },
     {
@@ -1339,29 +683,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "RU"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ru/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1382,29 +703,6 @@
         }
       ],
       "destination": "/uk",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "UA"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/uk/:path*",
       "permanent": false
     },
     {
@@ -1431,29 +729,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "ID"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/id/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1474,29 +749,6 @@
         }
       ],
       "destination": "/th",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "TH"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/th/:path*",
       "permanent": false
     },
     {
@@ -1523,29 +775,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "VN"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/vi/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1566,29 +795,6 @@
         }
       ],
       "destination": "/sv",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "SE"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/sv/:path*",
       "permanent": false
     },
     {
@@ -1615,29 +821,6 @@
       "permanent": false
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "DK"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/da/:path*",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -1658,29 +841,6 @@
         }
       ],
       "destination": "/ar",
-      "permanent": false
-    },
-    {
-      "source": "/:path(about|refund-policy|licenses)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "AE|SA|EG|MA|DZ|TN"
-        }
-      ],
-      "missing": [
-        {
-          "type": "cookie",
-          "key": "hushbook_locale"
-        },
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i)(Googlebot|Google-InspectionTool|GoogleOther|bingbot|BingPreview|DuckDuckBot|Slurp|YandexBot|Baiduspider|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|GPTBot|ChatGPT-User|ClaudeBot|PerplexityBot|OAI-SearchBot|Bytespider|Amazonbot)"
-        }
-      ],
-      "destination": "/ar/:path*",
       "permanent": false
     },
     {
@@ -1745,6 +905,11 @@
       "permanent": true
     },
     {
+      "source": "/:locale/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
       "source": "/:locale/privacy-policy",
       "destination": "/privacy-policy",
       "permanent": true
@@ -1752,6 +917,16 @@
     {
       "source": "/:locale/terms-conditions",
       "destination": "/terms-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/:locale/refund-policy",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/:locale/licenses",
+      "destination": "/licenses",
       "permanent": true
     }
   ],
@@ -1815,7 +990,7 @@
       ]
     },
     {
-      "source": "/:path(about|refund-policy|licenses)",
+      "source": "/:path(about|privacy-policy|terms-conditions|refund-policy|licenses)",
       "headers": [
         {
           "key": "Content-Language",

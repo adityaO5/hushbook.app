@@ -10,6 +10,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {
   DEFAULT_LOCALE,
+  ENGLISH_ONLY_PAGES,
   PUBLIC_PAGES,
   PUBLISHED_LOCALES,
   hreflangAlternates,
@@ -22,8 +23,7 @@ const root = path.join(__dirname, '..');
 const LOCALES = PUBLISHED_LOCALES;
 const PAGES = PUBLIC_PAGES;
 const ENGLISH_ONLY_URLS = [
-  'privacy-policy',
-  'terms-conditions',
+  ...ENGLISH_ONLY_PAGES,
   'alternatives',
   'alternatives/audible-alternatives',
   'alternatives/bookplayer-alternatives',
@@ -40,9 +40,6 @@ const ENGLISH_ONLY_URLS = [
   'blog',
   ...BLOG_POSTS.map((post) => `blog/${post.slug}`),
 ];
-
-// Localized copies of these pages stay live but are kept out of the sitemap.
-const ENGLISH_ONLY_SITEMAP_PAGES = ['refund-policy', 'licenses'];
 
 const PAGE_META = {
   index: { priority: '1.0', changefreq: 'weekly' },
@@ -115,16 +112,9 @@ const urls = [];
 
 for (const page of PAGES) {
   const meta = PAGE_META[page] || { priority: '0.5', changefreq: 'monthly' };
-  const englishOnly = ENGLISH_ONLY_SITEMAP_PAGES.includes(page);
-  const alternates = englishOnly
-    ? [
-        `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(pageUrl(DEFAULT_LOCALE, page))}"/>`,
-        `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(pageUrl(DEFAULT_LOCALE, page))}"/>`,
-      ].join('\n')
-    : hreflangLinks(page);
+  const alternates = hreflangLinks(page);
 
   for (const locale of LOCALES) {
-    if (englishOnly && locale !== DEFAULT_LOCALE) continue;
     const file = pageFile(locale, page);
     if (!fs.existsSync(file)) {
       console.warn(`skip missing: ${path.relative(root, file)}`);
@@ -164,13 +154,14 @@ for (const route of ENGLISH_ONLY_URLS) {
   }
   const loc = `https://hushbook.app/${route}`;
   const lastmod = realLastmod(resolvedFile, route);
+  const meta = PAGE_META[route] || { priority: '0.8', changefreq: 'monthly' };
   urls.push(
     [
       '  <url>',
       `    <loc>${escapeXml(loc)}</loc>`,
       `    <lastmod>${lastmod}</lastmod>`,
-      '    <changefreq>monthly</changefreq>',
-      '    <priority>0.8</priority>',
+      `    <changefreq>${meta.changefreq}</changefreq>`,
+      `    <priority>${meta.priority}</priority>`,
       `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(loc)}"/>`,
       `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(loc)}"/>`,
       '  </url>',

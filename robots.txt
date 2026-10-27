@@ -36,5 +36,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://hushbook.app/sitemap.xml
-# Temporary: retired URLs that now redirect (remove after ~2026-12-01).
+# Temporary: retired URLs that now redirect (remove after ~2027-01-15).
 Sitemap: https://hushbook.app/sitemap-retired.xml
