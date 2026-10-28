@@ -131,7 +131,7 @@ const pages = [
  sections: [
   ['Can HushBook play M4B files?','<p>Yes. Import the file and HushBook recognises it as an M4B audiobook. Chapters, cover art and metadata come along when the file includes them.</p>'],
   ['What does it add on top of playback?','<p>The app listens to the recording on your phone and writes a transcript with a time for every word. Playback then highlights each word as the narrator reads it. The audio is not uploaded.</p>'],
-  ['Which other formats work?','<p>M4B, MP3, AAC, WAV, FLAC, OGG, OPUS, AIFF, MKA and ALAC. One file per import.</p>'],
+  ['Which other formats work?','<p>M4B, MP3, AAC, WAV, FLAC, OGG, OPUS, AIFF, MKA and ALAC. Select several files at once and they import as one book, one chapter per file.</p>'],
   ['What will not import?','<p>M4B files with DRM, such as many store purchases, cannot be imported as ordinary files. HushBook is a player for files you own, not a store, so there is no catalogue of new releases. It does include 20k+ public-domain titles.</p>'],
   ['How long does the text take?','<p>Transcription time grows with the length of the book. Listening can begin about ten minutes in while the rest finishes.</p>']
  ],

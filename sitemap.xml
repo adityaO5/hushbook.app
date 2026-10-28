@@ -1702,11 +1702,19 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/how-to-put-audiobooks-on-iphone</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-put-audiobooks-on-iphone"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-put-audiobooks-on-iphone"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/can-you-read-along-with-spotify-audiobooks</loc>

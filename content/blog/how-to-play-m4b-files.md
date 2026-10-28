@@ -30,7 +30,7 @@ This is the awkward one. The Books app on iPhone and iPad has no import button f
 - **BookPlayer.** Free and open source. It plays "M4B/M4A/MP3" with chapters, and imports from the Files app, other apps and AirDrop.
 - **HushBook.** Tap Import audiobook in the Library and pick the file from Files. Chapters and cover art come along when the file has them.
 
-Put the M4B in iCloud Drive or On My iPhone first, then import it from the app.
+Put the M4B in iCloud Drive or On My iPhone first, then import it from the app. Our guide to [putting audiobooks on iPhone](/blog/how-to-put-audiobooks-on-iphone) shows how to get the file there from a PC or Mac.
 
 **Or go through a Mac.** Apple's supported route is to import the audiobook into Books on a Mac, then sync it. Connect the iPhone, select it in the Finder sidebar, open the Audiobooks tab, tick "Sync audiobooks onto" your device, and click Apply.
 

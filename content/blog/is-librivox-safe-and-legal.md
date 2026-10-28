@@ -11,7 +11,7 @@ Yes. LibriVox's About page sets out its principles: it is "a non-commercial, non
 What keeps the risk low:
 
 - **No account to listen.** LibriVox's help page explains how to play any chapter in your browser or download it, and none of the steps involves signing in. You only need an account to post on the volunteer forum.
-- **Files come from a known host.** The Internet Archive hosts LibriVox's audio. Each book comes as MP3 chapters at 64 or 128 kbps, as a zip of the whole book, and for most books as a single M4B file. If you are not sure which to pick, see [M4B vs MP3](/blog/m4b-vs-mp3).
+- **Files come from a known host.** The Internet Archive hosts LibriVox's audio. Each book comes as MP3 chapters at 64 or 128 kbps, as a zip of the whole book, and for most books as a single M4B file. If you are not sure which to pick, see [M4B vs MP3](/blog/m4b-vs-mp3), and to get the file onto your phone, see [how to put audiobooks on iPhone](/blog/how-to-put-audiobooks-on-iphone).
 - **No payment.** LibriVox audiobooks "are free for anyone to listen to," says its homepage. If a site asks you to pay or to install a downloader to get a LibriVox book, you are not on LibriVox.
 
 The place to be careful is unofficial copies. In a September 2026 update, LibriVox wrote: "Our only official outlet is the LibriVox.org web site." Every app that offers LibriVox books is made by someone else. LibriVox welcomes those apps, but each one sets its own ads, prices and privacy rules, so judge the app on its own.

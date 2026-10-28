@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 27 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How to Put Audiobooks on iPhone: From a PC, a Mac or Without iTunes</title>
+      <link>https://hushbook.app/blog/how-to-put-audiobooks-on-iphone</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/how-to-put-audiobooks-on-iphone</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Audiobook formats</category>
+      <description>Audiobooks from Apple Books, Audible or Libby download in their own app. For your own MP3 or M4B files: iCloud Drive or a USB drive from a PC, Finder sync or AirDrop from a Mac, or Safari on the phone. Plus where audiobooks go.</description>
+    </item>
     <item>
       <title>Can You Read Along With Spotify Audiobooks? Page Match, Recaps and Transcripts</title>
       <link>https://hushbook.app/blog/can-you-read-along-with-spotify-audiobooks</link>
