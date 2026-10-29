@@ -40,7 +40,7 @@ The core read-along is **free to start**, so you can try it on a free LibriVox b
 - **Language learners.** You hear a word and see how it's spelled at the same moment.
 - **Readers with dyslexia or ADHD.** **HushBook** has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
 - **Readers with low vision.** Another profile uses a high-contrast, hyper-legible font and large type for the highlighted line.
-- **Classics readers.** Older language is easier to follow when you can hear it and see it.
+- **Classics readers.** Older language is easier to follow when you can hear it and see it. Our guide to [reading classics without getting bored](/blog/how-to-read-classics-without-getting-bored) has more ways in.
 
 ## Pick a book and try it
 

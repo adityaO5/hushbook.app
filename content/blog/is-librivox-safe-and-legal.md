@@ -87,7 +87,7 @@ Is LibriVox still available? Yes. It added 62 works to the catalog last month an
 
 ## LibriVox vs Libby and Audible
 
-- **LibriVox** is for classics: public domain books, volunteer readers, free files you can keep, no account.
+- **LibriVox** is for classics: public domain books, volunteer readers, free files you can keep, no account. New to classics? Start with [how to read classics without getting bored](/blog/how-to-read-classics-without-getting-bored).
 - **Libby** lends current ebooks and audiobooks from your public library. As its help pages put it: "All you need is a library card."
 - **Audible** is a paid store and subscription for current audiobooks.
 
