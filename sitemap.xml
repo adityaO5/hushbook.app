@@ -4,7 +4,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hushbook.app/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/"/>
@@ -1558,7 +1558,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/about</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/about"/>
@@ -1574,7 +1574,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/terms-conditions</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/terms-conditions"/>
@@ -1582,7 +1582,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/refund-policy</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/refund-policy"/>
@@ -1590,7 +1590,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/licenses</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/licenses"/>

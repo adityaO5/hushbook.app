@@ -7,7 +7,6 @@
 const posts = [
   {
     slug: 'how-to-read-classics-without-getting-bored',
-    hero: 'read-along-card',
     cta: { heading: 'Free classics, every word lit up', text: 'HushBook has thousands of free public domain classics from LibriVox and the Internet Archive built in. Download one and each word lights up as the narrator reads it. Free to download, no ads, no account.' },
     title: 'How to Read Classics Without Getting Bored: Why They Feel Hard and Where to Start',
     metaTitle: 'How to Read Classics Without Getting Bored',
@@ -47,7 +46,6 @@ const posts = [
   },
   {
     slug: 'how-to-put-audiobooks-on-iphone',
-    hero: 'read-along-card',
     cta: { heading: 'Play the audiobooks you own, word by word', text: 'HushBook imports MP3 and M4B files from the Files app, keeps chapters and covers, and highlights each word as the narrator reads it. Free to download, no ads, no account.' },
     title: 'How to Put Audiobooks on iPhone: From a PC, a Mac or Without iTunes',
     metaTitle: 'How to Put Audiobooks on iPhone From a PC or Mac',
@@ -89,7 +87,6 @@ const posts = [
   },
   {
     slug: 'can-you-read-along-with-spotify-audiobooks',
-    hero: 'read-along-card',
     cta: { heading: 'See every word as the narrator reads it', text: 'Spotify leaves the text in your book. HushBook highlights each word on screen, in free public domain classics and audio files you own. Reading along is free.' },
     title: 'Can You Read Along With Spotify Audiobooks? Page Match, Recaps and Transcripts',
     metaTitle: 'Can You Read Along With Spotify Audiobooks?',
@@ -525,7 +522,6 @@ const posts = [
   },
   {
     slug: 'how-to-play-m4b-files',
-    hero: 'read-along-card',
     cta: { heading: 'An M4B player that shows the words', text: 'HushBook plays M4B files with chapters and cover art on iPhone and Android, and highlights every word as the narrator reads it.' },
     title: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
     metaTitle: 'How to Play M4B Files on iPhone, Android, Windows and Mac',
@@ -876,7 +872,6 @@ const posts = [
   },
   {
     slug: 'can-you-read-along-with-audible',
-    hero: 'read-along-card',
     cta: { heading: 'Read along where Audible cannot', text: 'For LibriVox recordings and DRM-free files you own, HushBook makes word-by-word text on your phone. No ebook needed.' },
     title: 'Can You Read Along With Audible? How Read & Listen Works',
     metaTitle: 'Can You Read Along With Audible? How Read & Listen Works',
