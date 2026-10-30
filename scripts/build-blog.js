@@ -31,6 +31,10 @@ const publisher = {
 };
 
 // Inline so it ships with the page: /assets/css is cached as immutable for a year.
+const MEDIA_STYLE = `<style>
+.post-media{margin:28px 0;display:flex;justify-content:center}
+.post-media video,.post-media img{display:block;width:min(100%,320px);border:1px solid var(--line);border-radius:28px;background:#fff}
+</style>`;
 const ASIDE_STYLE = `<style>
 .post-layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-areas:"hero aside" "body aside";column-gap:56px;align-items:start}
 .post-layout>.post-hero{grid-area:hero}
@@ -62,7 +66,7 @@ function formatDate(iso) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }
 
-// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, "> " quotes, links, **bold**, *italic*.
+// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, "> " quotes, "| a | b |" tables, "![alt](src)" media on its own line, links, **bold**, *italic*.
 function inline(text) {
   return escapeHtml(text)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
@@ -75,6 +79,21 @@ function inline(text) {
     .replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
 }
 
+// "![alt](/assets/video/x.mp4)" renders a silent looping clip (with /assets/video/x.webm
+// and /assets/img/x-poster.webp when those files exist); any other src renders an image.
+function media(alt, src) {
+  const label = escapeHtml(alt);
+  if (/\.(mp4|webm)$/i.test(src)) {
+    const base = src.replace(/\.(mp4|webm)$/i, '');
+    const name = path.basename(base);
+    const webm = fs.existsSync(path.join(root, `${base}.webm`)) ? `<source src="${base}.webm" type="video/webm">` : '';
+    const mp4 = fs.existsSync(path.join(root, `${base}.mp4`)) ? `<source src="${base}.mp4" type="video/mp4">` : '';
+    const poster = fs.existsSync(path.join(root, 'assets', 'img', `${name}-poster.webp`)) ? ` poster="/assets/img/${name}-poster.webp"` : '';
+    return `<figure class="post-media"><video autoplay muted loop playsinline preload="metadata"${poster} aria-label="${label}">${webm}${mp4}</video></figure><script>if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('.post-media video').forEach(function(v){v.removeAttribute('autoplay');v.pause();})</script>`;
+  }
+  return `<figure class="post-media"><img src="${src}" alt="${label}" loading="lazy" decoding="async"></figure>`;
+}
+
 function parseMarkdown(source) {
   const lines = source.replace(/\r\n/g, '\n').split('\n');
   let title = '';
@@ -84,6 +103,17 @@ function parseMarkdown(source) {
   let list = null;
   let ordered = false;
   let quote = null;
+  let table = null;
+
+  // GitHub-style pipe table: header row, "|---|---|" separator, body rows. The
+  // first column becomes a row header so the table reads well to screen readers
+  // and answer engines. Styles come from alternatives.css (.table-wrap, table).
+  const cells = (row) => row.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+  const renderTable = ({ header, rows }) => {
+    const head = header.map((cell) => `<th scope="col">${inline(cell)}</th>`).join('');
+    const body = rows.map((row) => row.map((cell, index) => (index === 0 ? `<th scope="row">${inline(cell)}</th>` : `<td>${inline(cell)}</td>`)).join('')).join('</tr>\n<tr>');
+    return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead>${rows.length ? `<tbody><tr>${body}</tr></tbody>` : ''}</table></div>`;
+  };
 
   const flush = () => {
     if (paragraph.length) html.push(`<p>${inline(paragraph.join(' '))}</p>`);
@@ -92,15 +122,25 @@ function parseMarkdown(source) {
       const tag = ordered ? 'ol' : 'ul';
       html.push(`<${tag}>\n${list.map((item) => `<li>${inline(item)}</li>`).join('\n')}\n</${tag}>`);
     }
+    if (table) html.push(renderTable(table));
     paragraph = [];
     list = null;
     quote = null;
+    table = null;
   };
 
   for (const raw of lines) {
     const line = raw.trim();
     let match;
     if (!line) { flush(); continue; }
+    if ((match = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/))) { flush(); html.push(media(match[1], match[2])); continue; }
+    if (line.startsWith('|')) {
+      if (!table) { flush(); table = { header: cells(line), rows: [] }; continue; }
+      if (/^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?$/.test(line)) continue;
+      table.rows.push(cells(line));
+      continue;
+    }
+    if (table) flush();
     if ((match = line.match(/^# (.+)$/))) { flush(); title = match[1]; continue; }
     if ((match = line.match(/^(#{2,3}) (.+)$/))) {
       flush();
@@ -128,7 +168,7 @@ function parseMarkdown(source) {
   }
   flush();
 
-  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#*>]/g, ' ');
+  const text = source.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/^\|?\s*:?-{3,}[-:|\s]*$/gm, ' ').replace(/[#*>|]/g, ' ');
   return { title, headings, html: html.join('\n'), wordCount: text.trim().split(/\s+/).filter(Boolean).length };
 }
 
@@ -245,6 +285,23 @@ function postSchema(post, parsed) {
         ],
         speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.post-hero h1', '.takeaways'] }
       },
+      // Ranked comparison posts list the apps they compare (post.compared:
+      // [{ name, url, bestFor }]) so answer engines can read the ranking directly.
+      ...(post.compared ? [{
+        '@type': 'ItemList',
+        '@id': `${canonical}#list`,
+        name: post.title,
+        itemListOrder: 'https://schema.org/ItemListOrderAscending',
+        numberOfItems: post.compared.length,
+        itemListElement: post.compared.map((app, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: app.name,
+          url: app.url,
+          description: app.bestFor,
+          item: { '@type': 'SoftwareApplication', name: app.name, url: app.url, applicationCategory: 'BookApplication' }
+        }))
+      }] : []),
       {
         '@type': 'FAQPage',
         '@id': `${canonical}#faq`,
@@ -264,7 +321,7 @@ function postSchema(post, parsed) {
 
 function cta(post) {
   const playReferrer = encodeURIComponent(`utm_source=hushbook.app&utm_medium=blog&utm_campaign=${post.slug}`);
-  return `<section class="cta" aria-labelledby="cta-heading"><h2 id="cta-heading">${escapeHtml((post.cta && post.cta.heading) || 'Try read-along on a recording you own')}</h2><p>${escapeHtml((post.cta && post.cta.text) || 'Import an MP3 or M4B audiobook, let HushBook create the transcript on your phone, and follow every word with the narrator. Free to download, with optional Pro.')}</p><div class="cta-actions"><a class="button" data-campaign="${post.slug}" data-destination="google-play" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook&amp;referrer=${playReferrer}" target="_blank" rel="noopener">Get HushBook on Google Play</a><a class="button button-secondary" data-campaign="${post.slug}" data-destination="app-store" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=blog-${post.slug}&amp;mt=8" target="_blank" rel="noopener">Download on App Store</a></div></section>`;
+  return `<section class="cta" aria-labelledby="cta-heading"><h2 id="cta-heading">${escapeHtml((post.cta && post.cta.heading) || 'Try read-along on a recording you own')}</h2><p>${escapeHtml((post.cta && post.cta.text) || 'Import an MP3 or M4B audiobook, let HushBook create the transcript on your phone, and follow every word with the narrator. Free to download, no ads, no account.')}</p><div class="cta-actions"><a class="button" data-campaign="${post.slug}" data-destination="google-play" href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook&amp;referrer=${playReferrer}" target="_blank" rel="noopener">Get HushBook on Google Play</a><a class="button button-secondary" data-campaign="${post.slug}" data-destination="app-store" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=blog-${post.slug}&amp;mt=8" target="_blank" rel="noopener">Download on App Store</a></div></section>`;
 }
 
 function renderPost(post) {
@@ -297,6 +354,7 @@ function renderPost(post) {
     ...post.keywords.slice(0, 6).map((keyword) => `<meta property="article:tag" content="${escapeHtml(keyword)}">`),
     `<meta name="author" content="Rakesh Aditya">`,
     ...(aside ? [ASIDE_STYLE] : []),
+    ...(parsed.html.includes('class="post-media"') ? [MEDIA_STYLE] : []),
     ''
   ].join('\n');
 
@@ -344,7 +402,7 @@ function renderHub() {
   return `${head({ title: 'HushBook Blog: Read-Along Audiobooks and Immersive Reading', description: 'Practical guides to immersive reading: how to read and listen at the same time, follow an audiobook word by word, and pick the right read-along setup.', canonical, schema, type: 'website' })}
 <body>
 ${nav()}
-<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Straight answers for people who love audiobooks.</h1><p class="lede">How to read along while you listen, which file formats to keep, and how to stay with a chapter when your attention drifts. Plain guides from Rakesh Aditya, who builds HushBook.</p></div></header><section class="wrap content"><ol class="post-list" aria-label="All guides, newest first">${rows}</ol></section></main>
+<main id="content"><nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Blog</span></nav><header class="hero hub-hero"><div class="wrap"><span class="eyebrow">The HushBook blog</span><h1>Straight answers for people who love audiobooks.</h1></div></header><section class="wrap content"><ol class="post-list" aria-label="All guides, newest first">${rows}</ol></section></main>
 ${footer()}`;
 }
 
