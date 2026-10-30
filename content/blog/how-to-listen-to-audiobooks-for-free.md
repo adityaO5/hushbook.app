@@ -41,7 +41,7 @@ You have a few routes.
 
 LibriVox is a volunteer project that records books whose copyright has expired. Its homepage lists more than 21,000 completed projects, and its catalogue spans 49 languages and almost 15,000 volunteer readers. That covers most of the classics: Austen, Dickens, Doyle, Twain, Shelley, Homer.
 
-It is legal and free. LibriVox states: "All LibriVox Recordings are in the Public Domain." Downloads come as MP3 files, with M4B versions on many Internet Archive pages, and there is no DRM, so the files are yours to keep and play in any app. If you are not sure which format to grab, see [M4B vs MP3](/blog/m4b-vs-mp3).
+It is legal and free. LibriVox states: "All LibriVox Recordings are in the Public Domain." Downloads come as MP3 files, with M4B versions on many Internet Archive pages, and there is no DRM, so the files are yours to keep and play in any app. If you are not sure which format to grab, see [M4B vs MP3](/blog/m4b-vs-mp3). To pick an app for LibriVox on your phone, see [the best LibriVox app](/blog/best-librivox-app).
 
 Two honest caveats:
 

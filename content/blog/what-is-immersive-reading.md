@@ -36,7 +36,7 @@ Audible announced Read & Listen inside its app in February 2026. It pairs eligib
 
 It works inside Audible's own app, for eligible titles, and you may need both formats.
 
-**HushBook** is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or *free public domain books*.
+**HushBook** is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or *free public domain books*. We compare the [best immersive reading apps](/blog/best-apps-to-read-and-listen-at-the-same-time) side by side, with prices.
 
 ## Trying it with your own recording
 
@@ -56,7 +56,7 @@ For me, seeing the words was what made the chapter stick. That doesn't mean ever
 
 Understood describes audiobooks, text-to-speech and display adjustments as reading supports. Its expert-reviewed guide also says assistive tools alone probably won't improve reading skills. **HushBook** is a reading aid in that spirit, made to sit alongside teaching and treatment for ADHD or dyslexia.
 
-What I wanted from **HushBook** was *a way back into the book* when attention slips. It's **free to download**, with optional Pro. If you have a recording you can import, or want to start with a free LibriVox book from the in-app store, try a passage and see whether the highlight helps you stay with it.
+What I wanted from **HushBook** was *a way back into the book* when attention slips. It's **free to download**. If you have a recording you can import, or want to start with a free LibriVox book from the in-app store, try a passage and see whether the highlight helps you stay with it.
 
 ## Sources and further reading
 

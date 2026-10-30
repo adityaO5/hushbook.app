@@ -46,7 +46,7 @@ A sensible split:
 
 ## Audiobooks for adults with dyslexia
 
-Adults have different goals: work documents, books for pleasure, study. Audiobooks make long books manageable. Reading along helps when you need to keep the text, quote it, or check a name you did not catch. And adjusting the speed lets you slow down for dense material and speed up for light reading.
+Adults have different goals: work documents, books for pleasure, study. Audiobooks make long books manageable. Reading along helps when you need to keep the text, quote it, or check a name you did not catch. And adjusting the speed lets you slow down for dense material and speed up for light reading. We compare seven apps, including Learning Ally and Bookshare, in our guide to the [best audiobook apps for dyslexia](/blog/best-audiobook-apps-for-dyslexia).
 
 ## Do dyslexia fonts help?
 

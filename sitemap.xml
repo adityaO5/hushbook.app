@@ -1702,11 +1702,35 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-audiobook-apps-for-dyslexia</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-audiobook-apps-for-dyslexia"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-audiobook-apps-for-dyslexia"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-librivox-app</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-librivox-app"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-librivox-app"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-apps-to-read-and-listen-at-the-same-time</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-apps-to-read-and-listen-at-the-same-time"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-apps-to-read-and-listen-at-the-same-time"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/how-to-read-classics-without-getting-bored</loc>
@@ -1886,7 +1910,7 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog/can-you-read-along-with-audible</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/can-you-read-along-with-audible"/>

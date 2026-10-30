@@ -49,7 +49,7 @@ A 2024 meta-analysis of 13 studies found white or pink noise gave a small boost 
 
 ### Keep the text in view for hard books
 
-For dense non-fiction or a book with many characters, following the words gives your eyes a job and shows you exactly where you drifted. One caution from the research: a 2025 study of 76 university students found that showing one word at a time in the center of the screen improved comprehension for students with ADHD, while highlighting words one by one in their normal place on the page did not. That study used no audio, so it does not test reading along with an audiobook, but it is a reminder that what helps varies from person to person.
+For dense non-fiction or a book with many characters, following the words gives your eyes a job and shows you exactly where you drifted. One caution from the research: a 2025 study of 76 university students found that showing one word at a time in the center of the screen improved comprehension for students with ADHD, while highlighting words one by one in their normal place on the page did not. That study used no audio, so it does not test reading along with an audiobook, but it is a reminder that what helps varies from person to person. For apps that show the words as they are read, see our comparison of the [best audiobook apps for dyslexia](/blog/best-audiobook-apps-for-dyslexia).
 
 ### Short sessions and quick check-ins
 

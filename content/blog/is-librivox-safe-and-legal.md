@@ -14,7 +14,7 @@ What keeps the risk low:
 - **Files come from a known host.** The Internet Archive hosts LibriVox's audio. Each book comes as MP3 chapters at 64 or 128 kbps, as a zip of the whole book, and for most books as a single M4B file. If you are not sure which to pick, see [M4B vs MP3](/blog/m4b-vs-mp3), and to get the file onto your phone, see [how to put audiobooks on iPhone](/blog/how-to-put-audiobooks-on-iphone).
 - **No payment.** LibriVox audiobooks "are free for anyone to listen to," says its homepage. If a site asks you to pay or to install a downloader to get a LibriVox book, you are not on LibriVox.
 
-The place to be careful is unofficial copies. In a September 2026 update, LibriVox wrote: "Our only official outlet is the LibriVox.org web site." Every app that offers LibriVox books is made by someone else. LibriVox welcomes those apps, but each one sets its own ads, prices and privacy rules, so judge the app on its own.
+The place to be careful is unofficial copies. In a September 2026 update, LibriVox wrote: "Our only official outlet is the LibriVox.org web site." Every app that offers LibriVox books is made by someone else. LibriVox welcomes those apps, but each one sets its own ads, prices and privacy rules, so judge the app on its own. We compare them in [which LibriVox app to use](/blog/best-librivox-app).
 
 ## Is LibriVox legal?
 
@@ -101,7 +101,7 @@ If LibriVox does not have the book you want, our guide to [listening to audioboo
 
 ## Reading along with LibriVox in HushBook
 
-**HushBook** is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can *pick a solo recording*. Download a book and **[HushBook](/)** transcribes it on your phone, then highlights each word as the volunteer reads it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing, and an optional Pro upgrade adds advanced analytics. After a one-time engine download, it works offline.
+**HushBook** is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can *pick a solo recording*. Download a book and **[HushBook](/)** transcribes it on your phone, then highlights each word as the volunteer reads it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing. After a one-time engine download, it works offline.
 
 ## Sources
 

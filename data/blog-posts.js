@@ -6,6 +6,160 @@
 
 const posts = [
   {
+    slug: 'best-audiobook-apps-for-dyslexia',
+    cta: { heading: 'Follow a human narrator, word by word', text: 'HushBook highlights every word as the narrator speaks, with a Dyslexia & ADHD profile, OpenDyslexic and Lexend fonts, and speeds from 0.5x to 3x. Works with audiobooks you own and free classics. Free to download, no account, no ads.' },
+    title: 'Best Audiobook Apps for Dyslexia in 2026: 7 Apps for Adults and Students Compared',
+    metaTitle: 'Best Audiobook Apps for Dyslexia in 2026: 7 Compared',
+    metaDescription: 'HushBook highlights every word a human narrator reads, no eligibility form. Learning Ally, Bookshare, Voice Dream, Speechify, Audible and Libby compared.',
+    description: 'HushBook is best for adults who want to follow a human narrator word by word, with no eligibility form. Learning Ally covers students who qualify. Seven apps compared on voices, highlighting, eligibility and price, checked October 30, 2026.',
+    category: 'Accessibility',
+    datePublished: '2026-10-30',
+    dateModified: '2026-10-30',
+    readingTime: '11 min read',
+    keywords: [
+      'best audiobook app for dyslexia',
+      'best audiobook apps for dyslexia',
+      'best reading app for dyslexia',
+      'dyslexia app for adults',
+      'best dyslexia apps for adults',
+      'dyslexia apps for adults free',
+      'reading apps for dyslexia adults',
+      'best text to speech app for dyslexia',
+      'learning ally vs bookshare'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'HushBook is the best audiobook app for adults with dyslexia: it highlights every word as a human narrator reads it, on audiobooks you already own and on free built-in classics, with no account and no eligibility form.',
+      'Learning Ally covers students who qualify, with 80,000+ human-narrated titles. It costs adults $135 a year and must receive proof of eligibility within 30 days of registration.',
+      'Bookshare has over 1 million titles, mostly read by device text-to-speech. It is free for qualified US students and $79.99 a year for US adults, and you can read it in Bookshare Reader or Dolphin EasyReader.',
+      'Speechify and Voice Dream Reader read PDFs and documents in synthetic voices. Audible highlights the text only when you own both the audiobook and the Kindle ebook, and Libby is free with a library card.',
+      'A 2018 meta-analysis of 22 studies found read-aloud tools modestly improved reading comprehension for students with reading disabilities, and the type of voice did not significantly change the results. Dyslexia fonts showed no measurable benefit in studies.'
+    ],
+    faqs: [
+      ['What is the best audiobook app for dyslexia?', 'HushBook is the best audiobook app for adults with dyslexia because it highlights every word as a human narrator reads it, on audiobooks you already own and on free built-in classics, with no account or eligibility form. Learning Ally covers students who qualify for its human-read textbook library.'],
+      ['What is the best dyslexia app for adults?', 'For reading books, HushBook, because it needs no proof of disability and works with the MP3 and M4B audiobooks you own. Learning Ally ($135 a year) and Bookshare ($79.99 a year for US adults) serve adults who can document a print disability. Speechify and Voice Dream Reader suit PDFs and work documents.'],
+      ['Is there a free app for dyslexia?', 'Yes. HushBook is free to download, with read-along free for every book and free classics built in. Libby is free with a library card, Bookshare is free for qualified US students, Dolphin EasyReader is a free app for up to five titles at a time, and Speechify has a free plan with 10 robotic sounding voices.'],
+      ['Is Learning Ally free?', 'Not for adults. As of October 30, 2026, an individual adult membership costs $135 a year, and Learning Ally must receive proof of eligibility within 30 days of registration. It offers a financial assistance form for people who cannot afford the fee, and students can get access through a school account.'],
+      ['Who qualifies for Bookshare?', 'People with a qualifying print disability, including dyslexia, low vision or a physical disability that makes it hard to hold a book. A professional with appropriate expertise must confirm it, and an IEP or 504 plan is not required. It is free for qualified US students and $79.99 a year for US adults.'],
+      ['Is text-to-speech or a human narrator better for dyslexia?', 'Research does not pick a winner. A 2018 meta-analysis of 22 studies found read-aloud tools modestly improved comprehension for students with reading disabilities, and whether the voice was synthetic, a live reader or a recording did not significantly change the results. Use human-narrated audiobooks for books and text-to-speech for PDFs and documents.'],
+      ['Which audiobook apps highlight words as the narrator reads?', 'With a human narrator: HushBook, for any audiobook file you import and its built-in classics; Learning Ally, on its VOICEtext titles; and Audible, when you own both the audiobook and the Kindle ebook. Speechify, Voice Dream Reader, Bookshare Reader and Dolphin EasyReader highlight text as a synthetic voice reads it.'],
+      ['Do dyslexia fonts like OpenDyslexic help?', 'Not measurably in studies so far. OpenDyslexic gave students with dyslexia no improvement in reading rate or accuracy, and 170 children with dyslexia read no faster or more accurately in the Dyslexie font. Extra letter spacing has better evidence, so use whichever font feels comfortable and try wider spacing.']
+    ],
+    compared: [
+      { name: 'HushBook', url: 'https://hushbook.app/', bestFor: 'Best for adults with dyslexia who want to follow a human narrator word by word, free to start' },
+      { name: 'Learning Ally', url: 'https://learningally.org/', bestFor: 'Human-read textbooks, for students who qualify' },
+      { name: 'Bookshare with Dolphin EasyReader', url: 'https://www.bookshare.org/', bestFor: 'A text-to-speech library, for readers who qualify' },
+      { name: 'Voice Dream Reader', url: 'https://www.voicedream.com/', bestFor: 'Documents read aloud on Apple devices' },
+      { name: 'Speechify', url: 'https://speechify.com/', bestFor: 'PDFs and web pages in AI voices' },
+      { name: 'Audible Read & Listen with Kindle', url: 'https://www.audible.com/', bestFor: 'Highlighted text, if you buy both editions' },
+      { name: 'Libby', url: 'https://libbyapp.com/', bestFor: 'Library audiobooks, with a library card' }
+    ]
+  },
+  {
+    slug: 'best-librivox-app',
+    cta: { heading: 'Free LibriVox classics, every word lit up', text: 'HushBook has LibriVox and Internet Archive audiobooks built in. Download one and each word lights up as the volunteer reads it. Free to download, no ads, no account.' },
+    title: 'What Is the Best LibriVox App? 7 Apps for iPhone and Android Compared',
+    metaTitle: 'Best LibriVox App for iPhone and Android: 7 Apps Compared',
+    metaDescription: 'HushBook plays free LibriVox audiobooks with every word highlighted, no ads and no account. 7 apps compared on price, ads, text and offline downloads.',
+    description: 'HushBook is the best free LibriVox app for reading along: every word lights up as the narrator reads, with no ads. There is no official LibriVox app. Seven apps compared on price, ads, offline downloads and text, checked October 30, 2026.',
+    category: 'Free audiobooks',
+    datePublished: '2026-10-30',
+    dateModified: '2026-10-30',
+    readingTime: '10 min read',
+    keywords: [
+      'best librivox app',
+      'librivox app',
+      'librivox app for iphone',
+      'librivox app for android',
+      'is the librivox app free',
+      'official librivox app',
+      'librivox app with text',
+      'librivox player',
+      'is bookdesign the same as librivox'
+    ],
+    // Ranked comparison (builds ItemList schema). Order matches the post.
+    compared: [
+      { name: 'HushBook', url: 'https://hushbook.app/', bestFor: 'Best free LibriVox app for reading along with the text' },
+      { name: 'LibriVox Audiobooks by BookDesign', url: 'https://librivox.app/', bestFor: 'A large catalogue, with ads' },
+      { name: 'LibriVox! by Krishna Sangeeth KS', url: 'https://apps.apple.com/us/app/librivox/id6744654703', bestFor: 'An ad-free player, iPhone only' },
+      { name: 'Fabuly: Classic Audiobooks', url: 'https://fabuly.io/', bestFor: 'Curated classics, synced text on selected books' },
+      { name: 'Lex', url: 'https://lex-books.com/', bestFor: 'Reading and listening in a browser, with AI narration mixed in' },
+      { name: 'Smart AudioBook Player', url: 'https://play.google.com/store/apps/details?id=ak.alizandro.smartaudiobookplayer', bestFor: 'A player for downloaded LibriVox files on Android' },
+      { name: 'BookPlayer', url: 'https://apps.apple.com/us/app/bookplayer/id1138219998', bestFor: 'A player for downloaded LibriVox files on iPhone' }
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'HushBook is the best free LibriVox app for reading along: the same free LibriVox recordings play with every word lit up as the narrator reads, with no ads and no account.',
+      'There is no official LibriVox app. LibriVox says its only official outlet is the LibriVox.org website, and BookDesign says its LibriVox Audiobooks app is not affiliated with the LibriVox project.',
+      'LibriVox Audiobooks by BookDesign has a large catalogue to browse, with CarPlay and Android Auto, but its free version has ads. On iPhone, Lifetime Ad-Free costs $24.99, and a separate Ad-Free app costs $4.99.',
+      'LibriVox! is a free iPhone app with no ads and no tracking. Fabuly and Lex also show text: Fabuly on selected books, Lex across a catalogue that mixes human and AI narration.',
+      'You can skip apps: librivox.org plays every chapter in a phone browser and offers MP3 zips and M4B files for players such as Smart AudioBook Player or BookPlayer.'
+    ],
+    faqs: [
+      ['What is the best LibriVox app?', 'HushBook is the best free LibriVox app for reading along: download any LibriVox book from its built-in catalogue and every word lights up as the volunteer reads. For a large catalogue in audio only, with ads in the free version, LibriVox Audiobooks by BookDesign covers that case, and LibriVox! is a free iPhone app with no ads and no tracking.'],
+      ['Is there an official LibriVox app?', 'No. LibriVox wrote in September 2026 that its only official outlet is the LibriVox.org website. Every LibriVox app is made by a third party using LibriVox\'s public catalogue, which LibriVox welcomes. BookDesign says its LibriVox Audiobooks app is not affiliated with the LibriVox project.'],
+      ['Is the LibriVox app free?', 'LibriVox itself is free and ad-free, and each app sets its own terms. HushBook is free to download, with no ads and no account. BookDesign\'s LibriVox Audiobooks is free with ads, with in-app purchases on iPhone up to $24.99 for Lifetime Ad-Free. LibriVox! is free with optional tips.'],
+      ['Is BookDesign the same as LibriVox?', 'No. BookDesign LLC makes the LibriVox Audiobooks app, and its own About page says the app is not affiliated with the LibriVox project. The recordings it plays are LibriVox\'s public domain audio, but the ads, prices and privacy rules are BookDesign\'s own.'],
+      ['Which LibriVox app shows the text while you listen?', 'HushBook highlights every word as the narrator reads, on any LibriVox book you download from its catalogue. Fabuly shows synchronized text on selected titles, and Lex lists text-to-audio sync for a catalogue that mixes human and AI narration. The other apps compared here play the audio only.'],
+      ['Can I listen to LibriVox without an app?', 'Yes. Open librivox.org in Safari or Chrome, find a book and tap a chapter\'s play button. Each book page also offers a zip of the whole book and, for most books, an M4B file you can play in an audiobook app such as HushBook, BookPlayer or Smart AudioBook Player.'],
+      ['Why does my LibriVox app keep losing my place?', 'Store reviews of BookDesign\'s LibriVox app blame bugs after updates, books playing on after the listener falls asleep, and switching between books. A sleep timer, a bookmark when you stop and an app that saves progress for each book all help. HushBook keeps every word on screen, so you can see exactly where the narrator is.']
+    ]
+  },
+  {
+    slug: 'best-apps-to-read-and-listen-at-the-same-time',
+    cta: { heading: 'Read along with the audiobooks you own', text: 'HushBook highlights every word as the narrator speaks, in your own MP3 and M4B files and in free public-domain classics. No Kindle ebook needed. Free to download, no ads, no account.' },
+    title: 'Best Apps to Read and Listen to a Book at the Same Time: 7 Options Compared',
+    metaTitle: 'Best Apps to Read and Listen at the Same Time (2026)',
+    metaDescription: 'HushBook is best for reading along with any audiobook you own, free. We compare Audible, Storytel, Speechify, ElevenReader, Storyteller and Libby.',
+    description: 'HushBook is the best app to read and listen at the same time for audiobooks you own, free. Audible Read & Listen covers books bought from Amazon in both editions. Seven apps compared on text, voice, own files, platforms and price.',
+    category: 'Read-along guides',
+    datePublished: '2026-10-30',
+    dateModified: '2026-10-30',
+    readingTime: '10 min read',
+    keywords: [
+      'best app to read and listen to books at the same time',
+      'app to read and listen to books at the same time',
+      'is there an app where you can read and listen to books at the same time',
+      'apps to read and listen to books for free',
+      'best immersive reading app',
+      'immersive reading app',
+      'read along audiobook app',
+      'read along app for adults',
+      'app that highlights words as an audiobook plays',
+      'immersion reading kindle audible'
+    ],
+    // Ranked comparison: builds the ItemList schema. Order matches the post.
+    compared: [
+      { name: 'HushBook', url: 'https://hushbook.app/', bestFor: 'Reading along with any audiobook you own, free' },
+      { name: 'Audible Read & Listen', url: 'https://www.audible.com/ep/read-listen', bestFor: 'Kindle text on books bought from Amazon' },
+      { name: 'Storytel Synced Listening', url: 'https://www.storytel.com/se/c/app-features', bestFor: 'Synced text on some titles, in six European markets' },
+      { name: 'Speechify', url: 'https://speechify.com/', bestFor: 'AI voices reading your documents' },
+      { name: 'ElevenReader', url: 'https://elevenreader.io/', bestFor: 'AI voices reading your ebooks and files' },
+      { name: 'Storyteller', url: 'https://storyteller-platform.dev/', bestFor: 'A self-hosted server, for people who own both editions' },
+      { name: 'Libby read-alongs', url: 'https://libbyapp.com/', bestFor: 'Narrated picture books for young readers' }
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'HushBook is the best app to read and listen to a book at the same time because it highlights every word as the narrator speaks in any audiobook you own, free. If you buy from Amazon and own both the audiobook and its Kindle ebook, Audible Read & Listen covers that case.',
+      'Audible Read & Listen now covers more than 800,000 English and German titles and is live in the US, UK, Germany and Australia, but Audible\'s help pages still say you need both the audiobook and the Kindle ebook.',
+      'Storytel Synced Listening is advertised in Sweden, Denmark, Finland, Iceland, the Netherlands and Bulgaria, from 99 kr a month in Sweden. In North America, Storytel operates under the Audiobooks.com brand.',
+      'Speechify and ElevenReader highlight words as AI voices read your text, not an audiobook recording. Speechify Premium is $29 a month; ElevenReader gives 10 free hours of text to audio a month, and Ultra is $11 a month.',
+      'Free ways to read and listen: HushBook (free to download, no account, no ads, free classics built in), Libby read-alongs for kids with a library card, and Storyteller if you run your own server.'
+    ],
+    faqs: [
+      ['What app can I use to read and listen to books at the same time?', 'HushBook, if you want to use audiobooks you already own. It highlights every word as the narrator speaks and transcribes the audio on your phone, so no Kindle ebook is needed. If your books are on Audible and Kindle, Audible Read & Listen covers that case, but it needs both editions on one Amazon account.'],
+      ['Is there a free app to read and listen to books at the same time?', 'Yes. HushBook is free to download, with no account and no ads, and has free public-domain classics from LibriVox and the Internet Archive built in. Libby read-alongs are free with a library card but are aimed at developing readers. Storyteller is free and open source if you run its server yourself.'],
+      ['Do you need the Kindle ebook to use Audible Read & Listen?', 'Yes. Audible\'s help pages, checked on October 30, 2026, say you need both the audiobook and the Kindle ebook for the same title, in your Audible and Kindle libraries on one Amazon account. Its Read & Listen page adds that if you only have the audiobook, the toggle will not appear.'],
+      ['Can you see the words in an audiobook?', 'Only if the app supplies the text, because an audiobook file holds sound, not words. HushBook transcribes the recording on your phone and highlights each word as the narrator says it. Audible shows the words when you also own the Kindle ebook, and Storytel shows synced text on thousands of titles in six European markets.'],
+      ['What is the best immersive reading app?', 'HushBook, for audiobooks you already own: it highlights each word as the narrator speaks and needs no Kindle ebook. If you buy from Amazon and own both editions, Audible or the Kindle app covers that case with Read & Listen. Storyteller does the same for people who host their own server and own both the ebook and the audiobook.'],
+      ['Is Storytel Synced Listening available in the US?', 'We found no sign of it. Storytel advertises Synced Listening on its pages for Sweden, Denmark, Finland, Iceland, the Netherlands and Bulgaria, and Storytel Group says that in North America it operates under the Audiobooks.com brand. In the US, look at HushBook or Audible Read & Listen instead.'],
+      ['Are Speechify and ElevenReader audiobook apps?', 'They are mainly text-to-speech readers. Both read text you bring, such as PDFs, documents and ebooks, in AI voices and highlight the words as they go. ElevenReader Ultra also includes 20 hours a month of premium titles. Speechify Premium costs $29 a month and ElevenReader Ultra $11 a month.']
+    ]
+  },
+  {
     slug: 'how-to-read-classics-without-getting-bored',
     cta: { heading: 'Free classics, every word lit up', text: 'HushBook has thousands of free public domain classics from LibriVox and the Internet Archive built in. Download one and each word lights up as the narrator reads it. Free to download, no ads, no account.' },
     title: 'How to Read Classics Without Getting Bored: Why They Feel Hard and Where to Start',
@@ -879,7 +1033,7 @@ const posts = [
     description: 'Yes, with Audible Read & Listen, if you own both the audiobook and the Kindle ebook. What you need, how to turn it on, what to do if you own one edition, and options for audiobooks that did not come from Audible.',
     category: 'Read-along guides',
     datePublished: '2026-10-08',
-    dateModified: '2026-10-08',
+    dateModified: '2026-10-30',
     readingTime: '5 min read',
     keywords: [
       'can you read along with audible',

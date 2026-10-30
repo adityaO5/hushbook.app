@@ -103,7 +103,7 @@ Libby's reader can also make the text itself easier: it offers the OpenDyslexic 
 
 ## Reading along with HushBook
 
-Libby is how you borrow current books free from your library. The gap it leaves is reading along with a whole audiobook as an adult. **[HushBook](/)** fills that gap. It has a built-in catalogue of free public domain audiobooks from LibriVox and the Internet Archive, in six languages, and you can import audio files you own, such as MP3 and M4B. **HushBook** transcribes the recording on your phone and highlights each word as the narrator says it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing, and an optional Pro upgrade adds advanced analytics. After a one-time engine download, it *works offline*.
+Libby is how you borrow current books free from your library. The gap it leaves is reading along with a whole audiobook as an adult. **[HushBook](/)** fills that gap. It has a built-in catalogue of free public domain audiobooks from LibriVox and the Internet Archive, in six languages, and you can import audio files you own, such as MP3 and M4B. **HushBook** transcribes the recording on your phone and highlights each word as the narrator says it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing. After a one-time engine download, it *works offline*.
 
 Libby audiobooks stay inside Libby, so the two work side by side: borrow current books in Libby, and use **HushBook** to read along *word by word with a recorded narrator*, in the free classics built into the app and the audio files you own.
 
