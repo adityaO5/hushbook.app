@@ -231,17 +231,15 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 }
 
 /* ============ HERO ============ */
-.hero{padding:150px 0 0;text-align:center;position:relative}
+.hero{padding:212px 0 0;text-align:center;position:relative}
 .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;max-width:100%;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
-.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(201,163,106,.07);color:var(--gold-hi);font-size:13px;font-weight:600;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:26px}
-.badge .dot{width:7px;height:7px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
 .dir-badges{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .dir-badges img{height:40px;width:auto;display:block;border:0}
 @media (min-width:641px){.dir-badges{max-width:240px}}
 @media (max-width:640px){.dir-badges{gap:8px}.dir-badges img{height:30px}}
-@font-face{font-family:"Kthonic Velvet Serif";src:url(/assets/fonts/KthonicVelvetSerif-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
-.hero h1{margin:0 auto 20px;max-width:16ch;font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,56px);letter-spacing:-.03em}
-h2{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
+@font-face{font-family:"Hushwrite Velvet Serif";src:url(/assets/fonts/HushwriteVelvetSerif-Regular.woff) format("woff");font-weight:400;font-display:swap}
+.hero h1{margin:0 auto 20px;max-width:16ch;font-family:"Hushwrite Velvet Serif",var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,56px);letter-spacing:-.03em}
+h2{font-family:"Hushwrite Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
 .hero .sub{margin:0 auto 34px;max-width:560px}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
@@ -349,6 +347,12 @@ h2{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacin
 .qr-ring img{width:70%;height:70%}
 .qr-pane small{color:var(--dim);font-size:13.5px}
 @media (max-width:880px){.privacy-card{grid-template-columns:1fr;gap:44px}}
+
+/* desktop */
+.desk h2 em{font-style:italic;color:var(--gold-hi)}
+.desk .split-media img{width:100%;max-width:660px;height:auto;border-radius:0;filter:none}
+@media (min-width:881px){.desk .split{grid-template-columns:1.25fr .75fr}}
+@media (min-width:821px) and (max-width:900px){.nav-desktop{display:none}}
 
 /* gallery */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);align-items:end}
@@ -468,7 +472,7 @@ h2{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacin
 .lcap{position:absolute;left:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,30px);bottom:clamp(18px,2.4vw,28px);z-index:2}
 .lcap h3{font-size:clamp(24px,2.4vw,33px);font-weight:600;line-height:1.12;margin-bottom:8px}
 .lcap h3 i{font-style:italic;color:var(--gold-hi)}
-.review-title,.step h3,.gcard h3,.lcap h3{font-family:"Kthonic Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
+.review-title,.step h3,.gcard h3,.lcap h3{font-family:"Hushwrite Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
 .lcap p{font-size:14px;color:rgba(245,239,230,.78)}
 @media (max-width:780px){.life-grid{grid-template-columns:1fr;max-width:430px;margin-inline:auto}.lcard:nth-child(2){transform:none}}
 
@@ -724,6 +728,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <a href="#accessibility">Accessibility</a>
       <a href="#life">Analytics</a>
       <a href="#faq">FAQ</a>
+      <a class="nav-desktop" href="/desktop">Desktop</a>
       <a href="/blog">Blog</a>
       <a class="nav-cta" href="#get">Download</a>
     </nav>
@@ -736,7 +741,6 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="hero">
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="badge reveal">Out now on iOS &amp; Android</span>
     <h1 id="hero-h1" class="reveal" aria-label="Reclaim your ability to focus"><span class="kw">Reclaim</span> <span class="kw">your</span> <span class="kw">ability</span> <span class="kw">to</span> <span class="kw">focus</span></h1>
     <p class="sub reveal">Read while you listen to your audiobook, build a habit that lasts</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
@@ -966,6 +970,25 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <div class="qr-pane">
         <div class="qr-ring"><img src="assets/img/qr-hushbook-download-v2.svg" alt="Scan to download HushBook for iPhone or Android"></div>
         <small>Scan with your iPhone or Android camera<br>to get HushBook.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESKTOP ============ -->
+<section class="sec desk" id="desktop" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-media reveal">
+        <img src="/assets/img/mockups/desktop-home-1200.webp" srcset="/assets/img/mockups/desktop-home-1200.webp 1200w, /assets/img/mockups/desktop-home.webp 2000w" sizes="(max-width:880px) calc(100vw - 48px), 660px" width="1200" height="625" alt="HushBook on a laptop: the home screen with a Continue listening shelf and the player bar" loading="lazy" decoding="async">
+      </div>
+      <div class="reveal">
+        <h2>Read along on your <em>PC</em>, too.</h2>
+        <p class="sub">Transcribe books on your PC's graphics card, free and unlimited. With Pro, your phone and PC stay in step.</p>
+        <a class="pill" href="/desktop">
+          <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6v2h3v2H7v-2h3v-2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v10h16V5H4Z"/></svg>
+          <span><b>See HushBook for your computer</b></span>
+        </a>
       </div>
     </div>
   </div>
@@ -1398,6 +1421,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
         <b>Get the app</b>
         <a href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=Hushbook-landing&amp;mt=8" target="_blank" rel="noopener">App Store</a>
         <a href="https://play.google.com/store/apps/details?id=com.hushbook.hushbook" target="_blank" rel="noopener">Google Play</a>
+        <a href="/desktop">Windows</a>
       </div>
     </div>
     <div class="foot-base">
