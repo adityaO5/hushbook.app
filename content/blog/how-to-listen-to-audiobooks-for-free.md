@@ -115,6 +115,8 @@ Some are. Public domain readings, including many LibriVox recordings, are fine t
 - **You want one specific new book right now:** an Audible trial, cancelled before it renews.
 - **You have a print disability:** NLS, Bookshare, RNIB or CELA.
 
+If you are new to audiobooks, [how to get into audiobooks](/blog/how-to-get-into-audiobooks) covers choosing a first book, finding your speed and building the habit.
+
 ## Read along with free audiobooks in HushBook
 
 Most free audiobooks are audio only. You get the narrator's voice, but no text to follow, which makes it easy to drift or lose a name you did not catch.

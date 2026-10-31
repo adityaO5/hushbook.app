@@ -30,7 +30,7 @@ Don't keep going and hope the plot fills itself in. Go back to the last thing yo
 
 ### 3. Start with a book that's easy to follow
 
-A dense history with forty named characters is a hard first audiobook. Memoirs, comedy, thrillers and books you've already read in print are easier, because the story carries you and you don't have to hold as much in your head.
+A dense history with forty named characters is a hard first audiobook. Memoirs, comedy, thrillers and books you've already read in print are easier, because the story carries you and you don't have to hold as much in your head. If you are new to listening, [how to get into audiobooks](/blog/how-to-get-into-audiobooks) covers choosing a first book and building the habit.
 
 ### 4. Slow down, or speed up
 
