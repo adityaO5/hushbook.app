@@ -254,6 +254,30 @@ h2 em{font-style:italic;color:var(--gold-hi)}
 .hero .sub.shimmer{background:linear-gradient(100deg,var(--text-muted) 0 30%,var(--gold-hi) 42%,#FFF8EC 50%,var(--gold-hi) 58%,var(--text-muted) 70% 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:text-shimmer 3.2s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.speed-gpu,.hero .sub.shimmer{animation:none;background:none}.speed-gpu{color:var(--cream-muted)}.hero .sub.shimmer{color:var(--text-muted)}.speed-swap{transition:none}}
 @media(max-width:600px){.speed-card{flex-direction:column}}
+
+/* download help: opens after a Download for Windows click */
+.dl-help{position:fixed;right:24px;bottom:24px;z-index:150;width:min(420px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain;
+  background:var(--cream);color:var(--cream-muted);border:1px solid rgba(28,21,13,.08);border-radius:22px;padding:26px 26px 24px;font-size:15px;line-height:1.55;
+  box-shadow:0 28px 70px rgba(0,0,0,.55),0 2px 8px rgba(0,0,0,.25);animation:dl-in-x .42s cubic-bezier(.2,.7,.2,1) both}
+.dl-help[hidden]{display:none}
+.dl-help h2{font-size:24px;color:var(--cream-ink);padding-right:40px;margin-bottom:10px}
+.dl-help h2:focus{outline:none}
+.dl-help b,.dl-help strong{color:var(--cream-ink)}
+.dl-help b{font-weight:600}
+.dl-help strong{display:block;font-weight:700}
+.dl-help ol{list-style:none;counter-reset:dl;display:grid;gap:16px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(28,21,13,.08)}
+.dl-help ol>li{counter-increment:dl;display:grid;grid-template-columns:26px 1fr;gap:12px}
+.dl-help ol>li::before{content:counter(dl);width:26px;height:26px;border-radius:50%;background:rgba(111,56,37,.1);color:var(--brown);display:grid;place-items:center;font-size:13px;font-weight:700}
+.dl-help ul{list-style:none;display:grid;gap:8px;margin-top:8px;font-size:14.5px}
+.dl-help-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:0;background:transparent;color:var(--cream-ink);display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.dl-help-x:hover{background:rgba(28,21,13,.07)}
+.dl-help-x:focus-visible{outline-color:var(--brown);border-radius:50%}
+.dl-help-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@keyframes dl-in-x{from{transform:translateX(calc(100% + 32px));opacity:0}}
+@keyframes dl-in-y{from{transform:translateY(100%)}}
+@media(max-width:600px){
+  .dl-help{left:0;right:0;bottom:0;width:auto;max-height:85vh;border-radius:22px 22px 0 0;border-bottom:0;padding:24px 20px calc(22px + env(safe-area-inset-bottom));animation-name:dl-in-y}
+}
 </style>
 </head>
 <body>
@@ -483,6 +507,23 @@ h2 em{font-style:italic;color:var(--gold-hi)}
   </div>
 </footer>
 
+<div class="dl-help" id="dl-help" role="dialog" aria-labelledby="dl-help-title" hidden>
+  <button class="dl-help-x" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <h2 id="dl-help-title" tabindex="-1">Your browser may warn you about this file.</h2>
+  <p>The installer isn't code-signed yet, so Edge, Chrome and Windows treat it as unfamiliar until enough people have installed it. It comes only from downloads.hushbook.app.</p>
+  <ol>
+    <li><div><strong>Keep the download.</strong>
+      <ul>
+        <li><b>Edge:</b> in the downloads list, hover the file, click <b>&hellip;</b> (More actions), then <b>Keep</b>, <b>Show more</b>, <b>Keep anyway</b>.</li>
+        <li><b>Chrome:</b> open the download bubble, hover the file and click <b>Keep</b> (or <b>&#8942;</b>, then <b>Keep</b>).</li>
+        <li><b>Firefox:</b> usually lets it through. If it says the file may harm your computer, right-click it and choose <b>Allow download</b>.</li>
+      </ul></div>
+    </li>
+    <li><div><strong>Run it.</strong> When Windows says "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</div></li>
+    <li><div><strong>Install it.</strong> No admin password needed. It installs under your own Windows user.</div></li>
+  </ol>
+</div>
+
 <script>
 (function(){
   var nav=document.getElementById('nav'); if(!nav) return;
@@ -522,6 +563,24 @@ h2 em{font-style:italic;color:var(--gold-hi)}
       els.forEach(function(e){e.classList.remove("is-out");});
     },340);
   },2800);
+})();
+</script>
+<script>
+(function(){
+  // Download help: shown after a Download for Windows click. The link keeps its
+  // default navigation, so the download starts as usual.
+  var panel=document.getElementById("dl-help");if(!panel)return;
+  var title=document.getElementById("dl-help-title"),closeBtn=panel.querySelector(".dl-help-x"),opener=null;
+  function open(e){opener=e.currentTarget;panel.hidden=false;title.focus({preventScroll:true});}
+  function close(){
+    if(panel.hidden)return;
+    var a=document.activeElement,back=panel.contains(a)||a===document.body||a===null;
+    panel.hidden=true;
+    if(back&&opener)opener.focus();
+  }
+  document.querySelectorAll('.pill[href*="HushBook-Setup.exe"]').forEach(function(a){a.addEventListener("click",open);});
+  closeBtn.addEventListener("click",close);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
 })();
 </script>
 </body>
