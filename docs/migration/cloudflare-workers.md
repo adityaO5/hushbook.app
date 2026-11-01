@@ -53,3 +53,16 @@ Vercel files (`vercel.json`, `middleware.js`, `.vercel/`, `.vercelignore`, `scri
 - Bots: "Block AI bots" must be off (ClaudeBot, GPTBot, PerplexityBot must keep crawling the blog).
 - Speed: Rocket Loader, Auto Minify, Email Address Obfuscation off (they rewrite HTML).
 - These apply already today because the zone is proxied, so they are not migration regressions.
+
+## Status: cut over 2026-11-01
+
+- Commit `9c232aa` added the stack; `014a4af` enabled the route. CI run deploys from GitHub Actions on push to `main` (Linux checkout, LF bytes).
+- Staging `https://hushbook.hushbook.workers.dev` (noindex) and production were both diffed against `snapshots/prod-before.json`. Same seven expected differences on both: real crawler user agents are now exempt from the cookie redirect (Vercel's anchored regex only matched a bare `Googlebot`), `Content-Language` also appears on three locale 308s, `/es/index.html` reaches `/es-ES` in two hops either way, and `robots.txt` has an edited comment. Every other body hash is identical. Warnings only: Content-Type no longer carries `; charset=utf-8` (pages declare `<meta charset>`), and `robots.txt` browser cache dropped from 4 h to revalidate.
+- IndexNow pinged for `/`, `/blog`, `/sitemap.xml` and the newest post.
+
+## Follow-ups
+
+1. Cloudflare dashboard, zone hushbook.app: turn off Email Address Obfuscation (Scrape Shield), confirm Rocket Loader and Auto Minify are off. Workers & Pages, `hushbook` worker, Settings, Domains & Routes: set the route's request-limit failure mode to "fail open" so Vercel answers if the free plan's daily Worker requests ever run out.
+2. After one week of clean Search Console crawl stats: delete `vercel.json`, `middleware.js`, `.vercel/`, `.vercelignore`, `scripts/build-vercel-locales.js`, `scripts/vercel-parity.js`, the `build:vercel` npm script, and the `vercel.json` entry in `data/indexation-allowlist.json`; then disconnect the Vercel project (Vercel dashboard, hushbook project, Settings, Git) so pushes stop deploying there.
+3. GitHub Actions: `actions/checkout@v4`, `actions/setup-node@v4` and `cloudflare/wrangler-action@v3` still target the Node 20 runtime; bump to the current majors when convenient.
+4. Rollback at any time: remove the `routes` entry in `wrangler.jsonc`, push. Vercel still serves the same site underneath until step 2 is done.
