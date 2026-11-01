@@ -58,6 +58,7 @@ Vercel files (`vercel.json`, `middleware.js`, `.vercel/`, `.vercelignore`, `scri
 
 - Commit `9c232aa` added the stack; `014a4af` enabled the route. CI run deploys from GitHub Actions on push to `main` (Linux checkout, LF bytes).
 - Staging `https://hushbook.hushbook.workers.dev` (noindex) and production were both diffed against `snapshots/prod-before.json`. Same seven expected differences on both: real crawler user agents are now exempt from the cookie redirect (Vercel's anchored regex only matched a bare `Googlebot`), `Content-Language` also appears on three locale 308s, `/es/index.html` reaches `/es-ES` in two hops either way, and `robots.txt` has an edited comment. Every other body hash is identical. Warnings only: Content-Type no longer carries `; charset=utf-8` (pages declare `<meta charset>`), and `robots.txt` browser cache dropped from 4 h to revalidate.
+- workers.dev and version preview URLs were switched off after verification (, ) so no second hostname serves the site. For a future staging check, set  temporarily, deploy, snapshot, then switch it back.
 - IndexNow pinged for `/`, `/blog`, `/sitemap.xml` and the newest post.
 
 ## Follow-ups

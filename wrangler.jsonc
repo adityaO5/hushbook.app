@@ -4,7 +4,9 @@
   "main": "src/worker.mjs",
   // Newest date the runtime bundled with wrangler 4.94 supports, so local dev matches production.
   "compatibility_date": "2026-05-21",
-  "workers_dev": true,
+  // No public staging host: hushbook.app is the only hostname Google should ever see.
+  "workers_dev": false,
+  "preview_urls": false,
   // Cutover (docs/migration/cloudflare-workers.md):
   // Production: this route captures hushbook.app before it reaches Vercel. Remove it to roll back.
   "routes": [{ "pattern": "hushbook.app/*", "zone_name": "hushbook.app" }],
