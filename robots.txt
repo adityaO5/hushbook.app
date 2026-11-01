@@ -1,4 +1,4 @@
-# Canonical site only — *.workers.dev hosts also send
+# Canonical site only - *.workers.dev hosts also send
 # X-Robots-Tag: noindex, nofollow (see _headers and src/worker.mjs).
 # Explicitly permit AI search and assistant crawlers on public content.
 User-agent: OAI-SearchBot

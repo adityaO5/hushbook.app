@@ -6,7 +6,8 @@
   "compatibility_date": "2026-05-21",
   "workers_dev": true,
   // Cutover (docs/migration/cloudflare-workers.md):
-  // "routes": [{ "pattern": "hushbook.app/*", "zone_name": "hushbook.app" }],
+  // Production: this route captures hushbook.app before it reaches Vercel. Remove it to roll back.
+  "routes": [{ "pattern": "hushbook.app/*", "zone_name": "hushbook.app" }],
   "observability": { "enabled": true },
   "assets": {
     // The repo root is the site; .assetsignore keeps source, tooling and secrets out.
