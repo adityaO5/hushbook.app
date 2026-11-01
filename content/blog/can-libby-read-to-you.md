@@ -39,7 +39,7 @@ For how listening fits alongside reading together, see our guide to whether [aud
 
 ## Can you read along with a Libby audiobook?
 
-Not inside Libby. Libby lists its audiobook player's features as speed from 0.6x to 3x, a sleep timer, skipping forward and back, and bookmarks, notes and highlights. None of them shows the book's text, and Libby's help center has no article on syncing an audiobook with its ebook.
+Not inside Libby. Libby lists its audiobook player's features as speed from 0.6x to 3x, a sleep timer, skipping forward and back, and bookmarks, notes and highlights (see [how to take notes on audiobooks](/blog/how-to-take-notes-on-audiobooks) for how those work). None of them shows the book's text, and Libby's help center has no article on syncing an audiobook with its ebook.
 
 You can't move the audio to another app to get the text there, either. Libby's help says its audiobooks "can't be transferred to MP3 players or iPods." You listen in the Libby app or in a web browser at libbyapp.com.
 

@@ -73,7 +73,7 @@ Walking, washing up and folding laundry are fine for stories. For a book you wan
 
 Notes help, but how you take them matters less than the popular advice suggests. The well-known 2014 finding that handwritten notes beat laptop notes did not hold up: two direct replications, by Morehead, Dunlosky and Rawson in 2019 and by Urry and colleagues in 2021, found no reliable difference in test scores.
 
-What does seem to matter is putting ideas in your own words, which is a form of retrieval. So jot a sentence after each chapter in your own words, and save the exact quotes you want to keep. In **HushBook** you can save a quote with **two taps** on the read-along text, without stopping the book.
+What does seem to matter is putting ideas in your own words, which is a form of retrieval. So jot a sentence after each chapter in your own words, and save the exact quotes you want to keep. Our guide to [taking notes on audiobooks](/blog/how-to-take-notes-on-audiobooks) covers clips and bookmarks in each app and the research on what to do with them. In **HushBook** you can save a quote with **two taps** on the read-along text, without stopping the book.
 
 ## 8. Teach it or use it
 
