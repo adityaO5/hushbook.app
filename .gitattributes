@@ -1,0 +1,2 @@
+# Ship LF everywhere: Cloudflare serves these bytes as-is and the Windows checkout must match git and CI.
+* text=auto eol=lf

@@ -61,7 +61,7 @@
       "includesXDefault": true
     },
     "routing": {
-      "file": "vercel.json",
+      "file": "src/locale-rules.json",
       "currentConfigUnchanged": true,
       "publishedLocaleDestinationsPresent": true
     },

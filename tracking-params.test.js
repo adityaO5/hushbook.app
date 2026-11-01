@@ -7,22 +7,26 @@ const {
 } = require('./scripts/normalize-tracking-params');
 
 const ROOT = __dirname;
-const middlewareSrc = fs.readFileSync(path.join(ROOT, 'middleware.js'), 'utf8');
-const listed = [...middlewareSrc.matchAll(/'([a-z0-9_]+)'/gi)].map((match) => match[1]);
-const middlewareParams = [...new Set(listed.filter((name) => TRACKING_PARAMS.includes(name)))];
+const trackingSrc = fs.readFileSync(path.join(ROOT, 'src/tracking.mjs'), 'utf8');
+const workerSrc = fs.readFileSync(path.join(ROOT, 'src/worker.mjs'), 'utf8');
+const listed = [...trackingSrc.matchAll(/'([a-z0-9_]+)'/gi)].map((match) => match[1]);
+const workerParams = listed.filter((name) => TRACKING_PARAMS.includes(name));
 
 assert.deepEqual(
-  [...middlewareParams].sort(),
-  [...TRACKING_PARAMS].sort(),
-  'middleware.js TRACKING_PARAMS must stay in sync with scripts/normalize-tracking-params.js',
+  workerParams,
+  [...TRACKING_PARAMS],
+  'src/tracking.mjs TRACKING_PARAMS must stay in sync with scripts/normalize-tracking-params.js',
 );
-assert.match(middlewareSrc, /status:\s*308/, 'malformed tracking links must redirect to valid query URLs');
-assert.match(middlewareSrc, /export default function middleware/, 'Vercel must see an Edge middleware default export');
-assert.doesNotMatch(
-  middlewareSrc,
-  /searchParams\.delete/,
-  'middleware must preserve valid tracking query parameters for analytics attribution',
-);
+assert.match(trackingSrc, /status:\s*308/, 'malformed tracking links must redirect to valid query URLs');
+assert.match(workerSrc, /normalizeTrackingRequest\(request\)/, 'the Worker must normalize tracking links');
+assert.match(workerSrc, /export default \{\s*async fetch\(/, 'Cloudflare must see a Worker default export with fetch');
+for (const [name, src] of [['src/tracking.mjs', trackingSrc], ['src/worker.mjs', workerSrc]]) {
+  assert.doesNotMatch(
+    src,
+    /searchParams\.delete/,
+    `${name} must preserve valid tracking query parameters for analytics attribution`,
+  );
+}
 
 assert.deepEqual(
   normalizeTrackingParams('https://hushbook.app/?ref=chatgpt.com'),

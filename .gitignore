@@ -19,6 +19,7 @@ Thumbs.db
 desktop.ini
 
 .vercel
+.wrangler/
 
 # Secrets
 .env

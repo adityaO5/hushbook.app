@@ -11,19 +11,23 @@
     "build:alternatives": "node scripts/build-alternative-pages.js && node scripts/build-alternative-strategy.js",
     "build:seo": "node scripts/normalize-localized-seo.js",
     "build:vercel": "node scripts/build-vercel-locales.js",
+    "build:cf": "node scripts/build-cloudflare-config.js",
     "build:analytics": "node scripts/inject-gtag.js",
     "normalize:download": "node scripts/normalize-download-landing-pages.js",
-    "test": "node localization.test.js && node seo-localization.test.js && node tracking-params.test.js && node seo-preservation.test.js && node seo-repair-contract.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js && node alternative-pages.test.js && node blog-pages.test.js",
+    "test": "node localization.test.js && node seo-localization.test.js && node tracking-params.test.js && node seo-preservation.test.js && node seo-repair-contract.test.js && node mobile-nav.test.js && node blur-in-heading-reveal.test.js && node alternative-pages.test.js && node blog-pages.test.js && node worker.test.js",
     "test:seo-preservation": "node seo-preservation.test.js",
     "test:seo-repair-contract": "node seo-repair-contract.test.js",
     "test:locale": "node scripts/verify-localization.js de",
     "build:blog": "node scripts/build-blog.js && node scripts/build-sitemap.js && node scripts/inject-gtag.js",
-    "indexnow": "node scripts/indexnow-ping.js"
+    "indexnow": "node scripts/indexnow-ping.js",
+    "dev:cf": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "wrangler": "^4.156.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   }
 }

@@ -1,8 +1,10 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { pathToFileURL } = require('node:url');
 const localeConfig = require('./localization.config');
 const { hreflangAlternates } = require('./scripts/seo-localization');
+const { parseRedirects, parseHeaders } = require('./scripts/build-cloudflare-config');
 
 const ROOT = __dirname;
 const BASE_URL = 'https://hushbook.app';
@@ -248,61 +250,31 @@ for (const locale of PUBLISHED) {
   );
 }
 
-const vercel = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
-assert.ok(
-  vercel.redirects
-    .filter((rule) =>
-      rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' || condition.key === 'hushbook_locale'),
-    )
-    .every((rule) =>
-      rule.missing?.some((condition) => condition.key === 'user-agent' && /Googlebot/i.test(String(condition.value))),
-    ),
-  'geo/cookie locale redirects must skip search crawlers',
-);
-assert.ok(
-  !vercel.redirects.some((rule) =>
-    rule.source !== '/' &&
-    rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' || condition.key === 'hushbook_locale'),
-  ),
-  'geo/cookie locale redirects must only apply to the homepage',
-);
-for (const [source, destination] of [['/', '/nl']]) {
-  assert.ok(
-    vercel.redirects.some((rule) =>
-      rule.source === source &&
-      rule.destination === destination &&
-      rule.has?.some((condition) => condition.key === 'x-vercel-ip-country' && String(condition.value).split('|').includes('NL')) &&
-      rule.missing?.some((condition) => condition.type === 'cookie' && condition.key === 'hushbook_locale'),
-    ),
-    `Netherlands traffic without a locale cookie must redirect from ${source} to ${destination}`,
-  );
-}
+const localeRules = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/locale-rules.json'), 'utf8'));
+const redirects = parseRedirects(fs.readFileSync(path.join(ROOT, '_redirects'), 'utf8'));
+const headerRules = parseHeaders(fs.readFileSync(path.join(ROOT, '_headers'), 'utf8'));
+const hasPermanentRedirect = (source, destination) =>
+  redirects.some((rule) => rule.source === source && rule.destination === destination && rule.status === 308);
+
 for (const [from, to] of Object.entries(LEGACY_REDIRECTS)) {
-  for (const [source, destination] of [[`/${from}`, `/${to}`], [`/${from}/:path*`, `/${to}/:path*`]]) {
-    assert.ok(
-      vercel.redirects.some((rule) => rule.source === source && rule.destination === destination && rule.permanent === true),
-      `Vercel must permanently redirect ${source} to ${destination}`,
-    );
+  for (const [source, destination] of [[`/${from}`, `/${to}`], [`/${from}/*`, `/${to}/:splat`]]) {
+    assert.ok(hasPermanentRedirect(source, destination), `_redirects must permanently redirect ${source} to ${destination}`);
   }
 }
 
 function contentLanguageFor(source) {
-  const rule = vercel.headers.find((entry) => entry.source === source && entry.headers?.some((header) => header.key === 'Content-Language'));
-  return rule?.headers.find((header) => header.key === 'Content-Language')?.value || null;
+  return headerRules.get(source)?.['content-language'] || null;
 }
 assert.equal(contentLanguageFor('/'), 'en', 'English homepage must send Content-Language: en');
-assert.equal(contentLanguageFor(`/:path(${ENGLISH_ONLY_PAGES.join('|')})`), 'en');
+assert.ok(hasPermanentRedirect('/download', '/'), 'retired /download must permanently redirect to the homepage');
 assert.ok(
-  vercel.redirects.some((rule) => rule.source === '/download' && rule.destination === '/' && rule.permanent === true),
-  'retired /download must permanently redirect to the homepage',
-);
-assert.ok(
-  vercel.redirects.some((rule) => rule.source === '/:locale/download' && rule.destination === '/:locale' && rule.permanent === true),
+  hasPermanentRedirect('/:locale/download', '/:locale'),
   'retired locale /download routes must permanently redirect to the locale homepage',
 );
 for (const page of ENGLISH_ONLY_PAGES) {
+  assert.equal(contentLanguageFor(`/${page}`), 'en', `English-only /${page} must send Content-Language: en`);
   assert.ok(
-    vercel.redirects.some((rule) => rule.source === `/:locale/${page}` && rule.destination === `/${page}` && rule.permanent === true),
+    hasPermanentRedirect(`/:locale/${page}`, `/${page}`),
     `locale ${page} pages must permanently redirect to the English page`,
   );
   assert.ok(fs.existsSync(pageFile('en', page)), `English ${page} must remain published`);
@@ -316,9 +288,39 @@ for (const page of ENGLISH_ONLY_PAGES) {
   }
 }
 assert.equal(contentLanguageFor('/pt-BR'), 'pt-BR');
-assert.equal(contentLanguageFor('/pt-BR/:path*'), 'pt-BR');
+assert.equal(contentLanguageFor('/pt-BR/*'), 'pt-BR');
 assert.equal(contentLanguageFor('/pt-PT'), 'pt-PT');
 assert.equal(contentLanguageFor('/es-419'), 'es-419');
-assert.equal(contentLanguageFor('/es-419/:path*'), 'es-419');
+assert.equal(contentLanguageFor('/es-419/*'), 'es-419');
 
-console.log('Localized SEO indexation contract passes.');
+async function checkLocaleRouting() {
+  const { localeRedirect } = await import(pathToFileURL(path.join(ROOT, 'src/routing.mjs')).href);
+  const browser = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
+  const googlebot = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+  const route = (conditions, pathname = '/') =>
+    localeRedirect({ pathname, userAgent: browser, ...conditions }, localeRules);
+
+  const crawlerRedirects = [
+    ...localeRules.cookieLocales.map((locale) => route({ cookieHeader: `hushbook_locale=${locale}`, userAgent: googlebot })),
+    ...Object.keys(localeRules.countryLocales).map((country) => route({ country, userAgent: googlebot })),
+  ].filter(Boolean);
+  assert.deepEqual(crawlerRedirects, [], 'geo/cookie locale redirects must skip search crawlers');
+  for (const pathname of ['/nl', '/blog', ...ENGLISH_ONLY_PAGES.map((page) => `/${page}`)]) {
+    assert.equal(route({ country: 'NL' }, pathname), null, 'geo/cookie locale redirects must only apply to the homepage');
+    assert.equal(route({ cookieHeader: 'hushbook_locale=nl' }, pathname), null, 'geo/cookie locale redirects must only apply to the homepage');
+  }
+  assert.deepEqual(
+    route({ country: 'NL' }),
+    { status: 307, location: '/nl' },
+    'Netherlands traffic without a locale cookie must redirect from / to /nl',
+  );
+  assert.equal(route({ country: 'NL', cookieHeader: 'hushbook_locale=en' }), null, 'a locale cookie must suppress Netherlands geo routing');
+}
+
+checkLocaleRouting().then(
+  () => console.log('Localized SEO indexation contract passes.'),
+  (error) => {
+    console.error(error);
+    process.exitCode = 1;
+  },
+);

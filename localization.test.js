@@ -24,16 +24,11 @@ assert.ok(localeConfig.plannedLocales.includes('de'), 'German must remain in loc
 const localeScript = fs.readFileSync('assets/js/locale.js', 'utf8');
 assert.match(localeScript, /hushbook_locale/, 'locale selector must persist explicit choice');
 
-const config = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
-assert.ok(
-  config.redirects.some((rule) =>
-    rule.destination === '/de' &&
-    rule.has?.some((condition) =>
-      condition.key === 'x-vercel-ip-country' &&
-      String(condition.value).split('|').includes('DE'),
-    ),
-  ),
-  'Vercel config must route first-time Germany visitors to German pages',
+const localeRules = JSON.parse(fs.readFileSync('src/locale-rules.json', 'utf8'));
+assert.equal(
+  localeRules.countryLocales.DE,
+  'de',
+  'Cloudflare locale rules must route first-time Germany visitors to German pages',
 );
 
 console.log('German localization contract passes.');

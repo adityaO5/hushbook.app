@@ -208,10 +208,10 @@ function verifyCurrentPublicationEvidence() {
     }
   }
 
-  const vercel = readJson(evidence.routing.file);
-  const destinations = (vercel.redirects || []).map((redirect) => String(redirect.destination || ''));
+  const localeRules = readJson(evidence.routing.file);
+  const geoLocales = new Set(Object.values(localeRules.countryLocales || {}));
   for (const locale of expectedLocales.filter((entry) => entry !== config.defaultLocale)) {
-    assert.ok(destinations.some((destination) => destination.includes(`/${locale}`)), `vercel routing missing ${locale}`);
+    assert.ok(geoLocales.has(locale), `locale routing missing ${locale}`);
   }
 }
 

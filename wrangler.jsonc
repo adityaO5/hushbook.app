@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hushbook",
+  "main": "src/worker.mjs",
+  // Newest date the runtime bundled with wrangler 4.94 supports, so local dev matches production.
+  "compatibility_date": "2026-05-21",
+  "workers_dev": true,
+  // Cutover (docs/migration/cloudflare-workers.md):
+  // "routes": [{ "pattern": "hushbook.app/*", "zone_name": "hushbook.app" }],
+  "observability": { "enabled": true },
+  "assets": {
+    // The repo root is the site; .assetsignore keeps source, tooling and secrets out.
+    "directory": "./",
+    "binding": "ASSETS",
+    // Clean URLs: /about serves about.html; /about.html and /about/ redirect to /about.
+    "html_handling": "drop-trailing-slash",
+    // Paths with no asset get the nearest 404.html with status 404.
+    "not_found_handling": "404-page",
+    // The Worker runs only here: / (locale redirects) and /*=* (/utm_source=x links). Every other path, 404s included, never reaches it.
+    "run_worker_first": ["/", "/*=*", "!/assets/*"]
+  }
+}

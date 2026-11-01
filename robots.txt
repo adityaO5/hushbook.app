@@ -1,5 +1,5 @@
-# Canonical site only — Vercel *.vercel.app hosts also send
-# X-Robots-Tag: noindex, nofollow (see vercel.json).
+# Canonical site only — *.workers.dev hosts also send
+# X-Robots-Tag: noindex, nofollow (see _headers and src/worker.mjs).
 # Explicitly permit AI search and assistant crawlers on public content.
 User-agent: OAI-SearchBot
 Allow: /

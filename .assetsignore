@@ -1,0 +1,45 @@
+# What wrangler must not upload. It walks the whole assets directory (the repo
+# root), tracked or not, so secrets and local tool folders are listed too.
+# Gitignore syntax. _headers, _redirects and this file are never uploaded.
+
+# Every root dotfile and dot folder: .git, .github, .env, .vercel, .wrangler,
+# .worktrees, .claude, .agents, .playwright-mcp, .lazyweb, .fr-argos ...
+/.*
+!/.well-known/
+
+# Source, tooling and research
+/node_modules/
+/content/
+/scripts/
+/src/
+/docs/
+/data/
+/research/
+/supabase/
+/output/
+/videos/
+/Originals/
+
+# Legacy locale drafts (_redirects sends these paths elsewhere)
+/es/
+/pt/
+/fr-argos/
+
+# Config and lockfiles
+/package.json
+/package-lock.json
+/skills-lock.json
+/localization.config.js
+/vercel.json
+/middleware.js
+/wrangler.jsonc
+
+# Notes, tests, QC output
+*.md
+*.test.js
+*.log
+qc-*.png
+pagespeed_*.json
+.DS_Store
+Thumbs.db
+desktop.ini
