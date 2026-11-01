@@ -1709,6 +1709,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/how-to-go-on-an-information-diet</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/how-to-go-on-an-information-diet"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/how-to-go-on-an-information-diet"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/how-to-take-notes-on-audiobooks</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>

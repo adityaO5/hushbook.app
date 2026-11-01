@@ -22,7 +22,7 @@ None of this means audiobooks are worse for understanding. A 2022 meta-analysis 
 
 Walking, washing up, folding laundry, a jigsaw puzzle. Physical tasks that don't need much thought give your restless attention somewhere to go, so it doesn't wander off into your own head.
 
-The word that matters is *simple*. Answering email while listening doesn't work. Anything that uses words, like reading, texting or writing, competes with the narrator for the same mental space.
+The word that matters is *simple*. Answering email while listening doesn't work. Anything that uses words, like reading, texting or writing, competes with the narrator for the same mental space. So does a feed. If the phone keeps winning that fight, [go on an information diet](/blog/how-to-go-on-an-information-diet) first.
 
 ### 2. Rewind the moment you notice
 

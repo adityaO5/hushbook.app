@@ -55,7 +55,7 @@ At the start, 15 or 20 minutes is plenty. A short session ends while you are sti
 
 ### 6. Tie listening to something you already do
 
-The easiest way to build a habit is to attach it to a routine you already have: the commute, the dishes, a daily walk, folding laundry.
+The easiest way to build a habit is to attach it to a routine you already have: the commute, the dishes, a daily walk, folding laundry. If the routine you already have is scrolling in the evening, [an information diet](/blog/how-to-go-on-an-information-diet) hands that slot to the book.
 
 Expect it to take a while. In a 2010 study by Lally and colleagues, 96 volunteers each tried to build one new daily habit and tracked it for 12 weeks. The time until it felt automatic ranged from 18 to 254 days, with a median of 66 days, and missing a single day did not materially set people back. A 2024 review of 20 studies with 2,601 people found typical times of about two months. So if listening still feels deliberate after two weeks, you are on schedule.
 

@@ -34,6 +34,11 @@ const publisher = {
 const MEDIA_STYLE = `<style>
 .post-media{margin:28px 0;display:flex;justify-content:center}
 .post-media video,.post-media img{display:block;width:min(100%,320px);border:1px solid var(--line);border-radius:28px;background:#fff}
+.post-media-wide video,.post-media-wide img{width:100%;border-radius:16px}
+</style>`;
+// Essay layout: a drop cap opens the first paragraph, since there is no takeaways box above it.
+const ESSAY_STYLE = `<style>
+.prose>p:first-child::first-letter{float:left;margin:0 .14em 0 0;padding-top:.08em;font-family:var(--font-display);font-size:4.9em;font-weight:520;line-height:.8;color:var(--amber)}
 </style>`;
 const ASIDE_STYLE = `<style>
 .post-layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-areas:"hero aside" "body aside";column-gap:56px;align-items:start}
@@ -66,7 +71,7 @@ function formatDate(iso) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }
 
-// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, "> " quotes, "| a | b |" tables, "![alt](src)" media on its own line, links, **bold**, *italic*.
+// Minimal Markdown: headings, paragraphs, "- " and "1. " lists, "> " quotes, "| a | b |" tables, "![alt](src)" media on its own line (add "wide" as the title, `![alt](src "wide")`, for a full-width editorial image), links, **bold**, *italic*.
 function inline(text) {
   return escapeHtml(text)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
@@ -81,8 +86,9 @@ function inline(text) {
 
 // "![alt](/assets/video/x.mp4)" renders a silent looping clip (with /assets/video/x.webm
 // and /assets/img/x-poster.webp when those files exist); any other src renders an image.
-function media(alt, src) {
+function media(alt, src, title) {
   const label = escapeHtml(alt);
+  const figureClass = title === 'wide' ? 'post-media post-media-wide' : 'post-media';
   if (/\.(mp4|webm)$/i.test(src)) {
     const base = src.replace(/\.(mp4|webm)$/i, '');
     const name = path.basename(base);
@@ -91,7 +97,7 @@ function media(alt, src) {
     const poster = fs.existsSync(path.join(root, 'assets', 'img', `${name}-poster.webp`)) ? ` poster="/assets/img/${name}-poster.webp"` : '';
     return `<figure class="post-media"><video autoplay muted loop playsinline preload="metadata"${poster} aria-label="${label}">${webm}${mp4}</video></figure><script>if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('.post-media video').forEach(function(v){v.removeAttribute('autoplay');v.pause();})</script>`;
   }
-  return `<figure class="post-media"><img src="${src}" alt="${label}" loading="lazy" decoding="async"></figure>`;
+  return `<figure class="${figureClass}"><img src="${src}" alt="${label}" loading="lazy" decoding="async"></figure>`;
 }
 
 function parseMarkdown(source) {
@@ -133,7 +139,7 @@ function parseMarkdown(source) {
     const line = raw.trim();
     let match;
     if (!line) { flush(); continue; }
-    if ((match = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/))) { flush(); html.push(media(match[1], match[2])); continue; }
+    if ((match = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/))) { flush(); html.push(media(match[1], match[2], match[3])); continue; }
     if (line.startsWith('|')) {
       if (!table) { flush(); table = { header: cells(line), rows: [] }; continue; }
       if (/^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?$/.test(line)) continue;
@@ -283,7 +289,7 @@ function postSchema(post, parsed) {
           { '@type': 'Thing', name: 'Immersive reading' },
           { '@type': 'SoftwareApplication', name: 'HushBook', applicationCategory: 'BookApplication', operatingSystem: 'iOS, Android', url: site }
         ],
-        speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.post-hero h1', '.takeaways'] }
+        speakable: { '@type': 'SpeakableSpecification', cssSelector: post.layout === 'essay' ? ['.post-hero h1'] : ['.post-hero h1', '.takeaways'] }
       },
       // Ranked comparison posts list the apps they compare (post.compared:
       // [{ name, url, bestFor }]) so answer engines can read the ranking directly.
@@ -329,6 +335,9 @@ function renderPost(post) {
   const parsed = parseMarkdown(source);
   if (parsed.title !== post.title) throw new Error(`${post.slug}: markdown H1 "${parsed.title}" must match data title "${post.title}"`);
   const canonical = `${site}/blog/${post.slug}`;
+  // post.layout === 'essay' drops the "Key takeaways" box and the "In this guide" contents
+  // from the page; the takeaways still feed the schema abstract and the tests.
+  const essay = post.layout === 'essay';
   const takeaways = post.takeaways.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n');
   const toc = parsed.headings.map(({ id, text }) => `<li><a href="#${id}">${escapeHtml(text)}</a></li>`).join('\n');
   const faqs = post.faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('\n');
@@ -354,6 +363,7 @@ function renderPost(post) {
     ...post.keywords.slice(0, 6).map((keyword) => `<meta property="article:tag" content="${escapeHtml(keyword)}">`),
     `<meta name="author" content="Rakesh Aditya">`,
     ...(aside ? [ASIDE_STYLE] : []),
+    ...(essay ? [ESSAY_STYLE] : []),
     ...(parsed.html.includes('class="post-media"') ? [MEDIA_STYLE] : []),
     ''
   ].join('\n');
@@ -367,14 +377,14 @@ ${nav()}
     <div class="byline"><span>Published <time datetime="${post.datePublished}">${formatDate(post.datePublished)}</time></span>${post.dateModified !== post.datePublished ? `<span>Updated <time datetime="${post.dateModified}">${formatDate(post.dateModified)}</time></span>` : ''}<span>${escapeHtml(post.readingTime)}</span></div>
   ${aside ? '</header>' : '</div></header>'}
   <article class="article">${aside ? '<div class="content post">' : '<div class="wrap content post">'}${hero ? `\n    ${hero}` : ''}
-    <section class="answer-box takeaways" aria-labelledby="takeaways-heading"><p class="question" id="takeaways-heading">Key takeaways</p><ul>
+${essay ? '' : `    <section class="answer-box takeaways" aria-labelledby="takeaways-heading"><p class="question" id="takeaways-heading">Key takeaways</p><ul>
 ${takeaways}
 </ul></section>
     <nav class="toc" aria-labelledby="toc-heading"><p id="toc-heading">In this guide</p><ol>
 ${toc}
 <li><a href="#faq-heading">Frequently asked questions</a></li>
 </ol></nav>
-    <div class="prose">
+`}    <div class="prose">
 ${parsed.html}
     </div>
     <section aria-labelledby="faq-heading"><h2 id="faq-heading">Frequently asked questions</h2><div class="faq">${faqs}</div></section>

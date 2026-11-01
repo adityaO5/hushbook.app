@@ -3,8 +3,50 @@
 // Blog post registry. Body copy lives in content/blog/<slug>.md; the first
 // "# " heading in that file is the on-page H1. Newest posts go first.
 // Run `npm run build:blog` after adding or editing a post.
+// Optional layout: 'essay' hides the Key takeaways box and the In this guide contents
+// on that post (takeaways still feed the schema abstract).
 
 const posts = [
+  {
+    slug: 'how-to-go-on-an-information-diet',
+    layout: 'essay',
+    cta: { heading: 'Give your attention one story', text: 'HushBook shows the words while the audiobook plays and highlights each one as the narrator says it, so your eyes and ears stay on the same sentence. Free public domain classics are built in, or use audio files you own. No account, no ads.' },
+    title: 'The Information Diet: How to Swap Scrolling for Audiobooks',
+    metaTitle: 'The Information Diet: How to Swap Scrolling for Audiobooks',
+    metaDescription: 'An information diet means you choose what goes into your head. Notifications off, grayscale on, no dopamine stacking, and audiobooks instead of the feed.',
+    description: 'An information diet means you choose what goes into your head instead of a feed choosing for you. Notifications off, grayscale on, one dopamine thing at a time, your own sources, and the hours you win back go to audiobooks.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-01',
+    dateModified: '2026-11-01',
+    readingTime: '8 min read',
+    keywords: [
+      'information diet',
+      'how to go on an information diet',
+      'how to stop doomscrolling',
+      'replace scrolling with reading',
+      'dopamine stacking',
+      'grayscale phone less addictive',
+      'audiobooks instead of social media',
+      'one thing at a time dopamine'
+    ],
+    // Answer-first summary for readers and AI answer engines. Every point is
+    // stated in the post body; keep it that way when editing.
+    takeaways: [
+      'An information diet means you choose what goes into your head: notifications off, a phone in grayscale, one dopamine thing at a time and sources you picked instead of the algorithm.',
+      'Dopamine stacking is doing two dopamine things at once, so an audiobook plus a feed or a game counts, but an audiobook plus a walk, the dishes or a drive you know by heart does not.',
+      'Build a reading list the way you would build an RSS feed: write down the next five books you will listen to, starting with your library\'s app and free public domain recordings.',
+      'Not every silence needs a narrator, so lie down in the dark or sit and do nothing for 10 to 15 minutes with the headphones out.',
+      'For a book you are stuck on there are two options: fix it with a slower speed, the words on screen or skipping the preface, or leave it with no guilt.'
+    ],
+    faqs: [
+      ['What is an information diet?', 'An information diet means you choose what goes into your head instead of letting a feed choose for you. Garbage in, garbage out. In practice it means notifications off, a duller phone, one dopamine thing at a time and sources you picked yourself. The hours you win back go to books, and for most people that means audiobooks.'],
+      ['What is dopamine stacking?', 'Dopamine stacking is doing more than one dopamine thing at once, like music and scrolling or TV and food. Over time you build a tolerance and need hours of content to feel satisfied. The rule is one dopamine thing at a time, and an audiobook plus a feed or a game counts as stacking.'],
+      ['Does grayscale mode make your phone less addictive?', 'It makes the feed dull, and that is the point. Coloured icons are sweets, grey ones are cardboard. A book in grey is the same book, because words do not need colour. On iPhone it is Settings, Accessibility, Display and Text Size, Colour Filters, Grayscale, and Android keeps it under Accessibility or Digital Wellbeing.'],
+      ['Is listening to an audiobook while walking multitasking?', 'Not in the way that matters. A walk, the dishes or a drive you know by heart keep your hands busy and leave your mind free, so the book gets all of your attention. An audiobook plus a feed or a game is different. That is stacking, and you will remember neither.'],
+      ['How do I stop doomscrolling?', 'Turn every notification off except close family and the people who matter, put the phone in grayscale and do one dopamine thing at a time. Swap the algorithm for sources you picked: an RSS reader for news and a written list of the next five books you will listen to. Then give the gaps in your day to an audiobook instead of the feed.'],
+      ['How do I start reading again after years?', 'Be honest about where you are: open your screen time report and count the books you finished this year. Not having finished a book since school is a fact about the past, and the next book is the only one that matters. If a book is not working, fix it with a slower speed or the words on screen, or leave it with no guilt. Start today, not when you are ready.']
+    ]
+  },
   {
     slug: 'how-to-take-notes-on-audiobooks',
     cta: { heading: 'Mark the line the moment you hear it', text: 'HushBook shows every word as the narrator reads it. Tap Mark, pick the words, and keep them as a quote, a highlight or a note while the audio waits. Works with audiobook files you own and free classics. No account, no ads.' },
