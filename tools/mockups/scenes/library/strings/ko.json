@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "내 책",
+  "librarySelect": "선택",
+  "libraryChipAll": "전체",
+  "libraryChipInProgress": "듣는 중",
+  "libraryChipNotStarted": "시작 전",
+  "libraryChipFinished": "완성된",
+  "librarySortRecentlyPlayed": "최근 재생순",
+  "libraryShowAsList": "목록으로 보기",
+  "durationHoursMinutes": "{hours}시간 {minutes}분",
+  "durationMinutes": "{minutes}분",
+  "timeLeft": "{duration} 남음",
+  "navHome": "홈",
+  "navLibrary": "라이브러리",
+  "navAnalytics": "분석",
+  "navProfile": "프로필"
+}

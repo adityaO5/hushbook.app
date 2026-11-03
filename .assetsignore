@@ -43,3 +43,6 @@ pagespeed_*.json
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Mockup generator sources (tools/mockups)
+/tools/

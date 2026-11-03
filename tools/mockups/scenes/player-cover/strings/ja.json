@@ -1,0 +1,13 @@
+{
+  "readAlong": "テキストで読む",
+  "minutesLeftInChapter": "この章の残り{minutes}分",
+  "minuteLeftInChapter": "この章の残り1分",
+  "underMinuteLeftInChapter": "この章の残り1分未満",
+  "sleepInMinutes": "{minutes}分後に停止",
+  "pillSpeed": "速度",
+  "pillSleep": "タイマー",
+  "sleepOff": "オフ",
+  "pillSleepMinutes": "{minutes}分",
+  "chapters": "チャプター",
+  "chaptersOf": "{current}/{total}"
+}

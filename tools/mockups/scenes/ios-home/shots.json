@@ -1,0 +1,3 @@
+[
+  { "id": "home", "t": 0.4, "crop": "phone", "out": "home", "vars": { "hero": "hitchhikers" } }
+]

@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Sách của bạn",
+  "librarySelect": "Chọn",
+  "libraryChipAll": "Tất cả",
+  "libraryChipInProgress": "Đang nghe",
+  "libraryChipNotStarted": "Chưa bắt đầu",
+  "libraryChipFinished": "Hoàn thành",
+  "librarySortRecentlyPlayed": "Nghe gần đây",
+  "libraryShowAsList": "Xem dạng danh sách",
+  "durationHoursMinutes": "{hours} giờ {minutes} phút",
+  "durationMinutes": "{minutes} phút",
+  "timeLeft": "Còn {duration}",
+  "navHome": "Trang chủ",
+  "navLibrary": "Thư viện",
+  "navAnalytics": "Phân tích",
+  "navProfile": "Hồ sơ"
+}

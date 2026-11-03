@@ -190,7 +190,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero{padding:212px 0 0;text-align:center;position:relative}
 .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;max-width:100%;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
 .hero h1{margin:0 auto 20px;max-width:16ch}
-.hero .sub{margin:0 auto 34px;max-width:560px}
+.hero .sub{margin:0 auto 34px;max-width:560px;text-wrap:balance}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
@@ -204,13 +204,73 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero phone fan */
 .fan{margin-top:64px;position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,26px);padding:0 12px;mask-image:linear-gradient(to bottom,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent)}
-.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
 .fan .f1{transform:translateY(46px) rotate(-4deg)}
 .fan .f2{transform:translateY(18px) rotate(-2deg)}
 .fan .f3{width:clamp(150px,20vw,268px);z-index:2}
 .fan .f4{transform:translateY(18px) rotate(2deg)}
 .fan .f5{transform:translateY(46px) rotate(4deg)}
-.fan img:hover{transform:translateY(-8px)}
+/* hra:css:start */
+/* hero live read-along (assets/js/hero-read-along.js): the centre phone's reader as a 393 x 852 stage,
+   scaled into the frame's screen; it fades in over the static .hra-shot once fonts and frame are in */
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin-ext.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:HRAInter;src:url(/assets/fonts/hra-inter-600-clock.woff) format("woff");font-weight:600;font-display:swap;unicode-range:U+0030-003A}
+.fan .hra{position:relative;flex:none;width:clamp(150px,20vw,268px);z-index:2}
+.fan .hra img{width:100%;transform:none}
+.hra-live{position:absolute;left:0;top:0;width:100%;height:100%;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .6s ease,visibility 0s .6s}
+.hra-live.hra-on{visibility:visible;opacity:1;transition:opacity .6s ease}
+.fan .hra-frame{position:absolute;left:0;top:0;filter:none}
+/* frame-iphone 4317 x 8796: screen x 199..4111, y 168..8653, corners clipped at a 400-unit radius */
+.hra-screen{position:absolute;left:4.6097%;top:1.91%;width:90.6416%;height:96.4757%;border-radius:10.2223%/4.7136%;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.hra-live{display:none}}
+.hra-stage{--hra-ink:#F2F0EA;--hra-ink-rgb:242,240,234;--hra-far-a:.65;--hra-near-a:.89;--hra-secondary:#C7C4BE;--hra-rubric:#E46A4F;--hra-dock:#232427;--hra-dock-hairline:rgba(242,240,234,.14);
+  position:absolute;left:0;top:0;width:393px;height:852px;overflow:hidden;transform-origin:0 0;color:var(--hra-ink);
+  background:#141416 linear-gradient(to bottom,rgb(31,21,23) 0%,rgb(32,21,24) 45%,rgb(28,21,23) 100%);
+  font:16px/normal HRANews,serif;letter-spacing:.25px;text-align:left;font-optical-sizing:none;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;text-size-adjust:none}
+.hra-stage svg{display:block}
+.hra-pager{position:absolute;left:0;top:0;width:393px;height:852px}
+.hra-pbox{position:absolute;left:28px;top:107px;width:337px}
+.hra-blk{padding:4px 0 28px;text-align:center}
+.hra-label{font-variation-settings:"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;font-feature-settings:"case","kern";color:var(--hra-rubric);white-space:nowrap}
+.hra-rule{width:36px;height:1px;margin:16px auto 0;background:rgba(242,240,234,.22)}
+.hra-narrow{width:265px}
+.hra-ln{font-size:23px;line-height:34.5px;font-variation-settings:"wght" 400;white-space:normal;font-kerning:normal;color:rgba(var(--hra-ink-rgb),var(--hra-far-a))}
+.hra-tx{position:relative;top:2.702px}
+.hra-meas{position:absolute;left:0;top:0;visibility:hidden}
+.hra-cap{font-size:49.45px;color:var(--hra-rubric)!important;font-variation-settings:"wght" 450}
+.hra-f{position:relative}
+.hra-w.hra-sp,.hra-wipe{color:var(--hra-ink)}
+.hra-wipe{position:absolute;left:0;top:0;white-space:nowrap;line-height:normal}
+.hra-wipe .hra-cap{line-height:0!important}
+.hra-f::after{content:"";position:absolute;left:0;right:0;top:100%;height:2px;background:var(--hra-rubric);opacity:0}
+.hra-now .hra-f::after{opacity:var(--hra-now-a,1)}
+.hra-xf .hra-ln,.hra-xf .hra-w{transition:color .4s ease}
+.hra-xf .hra-f::after{transition:opacity .4s ease}
+.hra-pnum{position:absolute;left:28px;width:265px;top:802px;text-align:center;font-size:14px;line-height:1.3;font-variant-numeric:lining-nums tabular-nums;color:var(--hra-secondary);white-space:nowrap}
+.hra-head{position:absolute;left:0;top:59px;width:393px;height:48px}
+.hra-hb{position:absolute;top:0;width:48px;height:48px;display:grid;place-items:center}
+.hra-back{left:4px}
+.hra-back span{padding:0 0 6px 9px;font-size:36px;line-height:1;font-variation-settings:"wght" 380}
+.hra-title{position:absolute;left:100px;width:193px;top:0;height:48px;display:grid;place-items:center;text-align:center;white-space:nowrap;font-size:11px;letter-spacing:.935px;line-height:1.3;font-feature-settings:"case","kern";font-variation-settings:"wght" 500;color:var(--hra-secondary)}
+.hra-title b{font-weight:normal;font-variation-settings:"wght" 700;color:var(--hra-rubric)}
+.hra-aa{left:293px}
+.hra-aa span{font-size:19px;letter-spacing:-.19px;line-height:1.43;font-variation-settings:"wght" 450}
+.hra-mark{left:341px}
+.hra-mark svg{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round}
+.hra-host{position:absolute;left:-10000px;top:0;visibility:hidden}
+.hra-lamp{position:absolute;left:309px;top:738px;width:64px;height:64px}
+.hra-disc{position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 18px 51.8px rgba(0,0,0,.5),0 2px 10.2px rgba(0,0,0,.35)}
+.hra-rings{position:absolute;left:-1px;top:-1px;fill:none;stroke-width:3px}
+.hra-rings circle{stroke:rgba(242,240,234,.2)}
+.hra-rings path{stroke:var(--hra-rubric);stroke-linecap:round}
+.hra-core{position:absolute;left:11px;top:11px;width:42px;height:42px;border-radius:50%;background:var(--hra-rubric);color:#141416;display:grid;place-items:center}
+.hra-handle{position:absolute;left:321px;top:708px;width:40px;height:26px;border-radius:13px;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 4px 14.9px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--hra-secondary)}
+.hra-sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:#fff}
+.hra-sbtime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HRAInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+.hra-sbicons{position:absolute;left:293px;top:23px}
+.hra-home{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:#fff}
+/* hra:css:end */
 @media (max-width:680px){.fan .f1,.fan .f5{display:none}}
 
 /* ============ VALUE BAND ============ */
@@ -315,7 +375,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
 /* shift exactly one 6-card set: (img 190 + gap 30) × 6 = 1320px. needs 4 copies in markup so 3 sets always cover the viewport */
-@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 6))}}
+@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 11))}}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
 /* moment */
@@ -426,8 +486,6 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
 #stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
-.hero{perspective:1400px}
-.fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
 
 /* seo long-form */
 .seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
@@ -533,7 +591,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "¿Mi audio sale alguna vez de mi teléfono?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. La transcripción se ejecuta por completo en tu dispositivo: no hay subidas, ni cuenta, ni servidor. Tras una única descarga del motor, toda la app funciona sin conexión."
+        "text": "A ningún servidor. La transcripción se hace en tu teléfono o, si lo eliges, en tu propia computadora a través del Wi-Fi de tu casa. No hay subidas ni cuenta, y tras una única descarga del motor, toda la app funciona sin conexión."
       }
     },
     {
@@ -549,7 +607,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "¿Qué archivos puedo importar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA y ALAC: un archivo por importación. Los capítulos de los archivos M4B se detectan automáticamente, junto con las portadas y los metadatos."
+        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA y ALAC. Elige un archivo o varios: varios se convierten en un solo libro, con un capítulo por archivo. Los capítulos de los archivos M4B se detectan automáticamente, junto con las portadas y los metadatos."
       }
     },
     {
@@ -679,7 +737,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <h1 id="hero-h1" class="reveal" aria-label="Recupera tu capacidad de concentración"><span class="kw">Recupera</span> <span class="kw">tu</span> <span class="kw">capacidad</span> <span class="kw">de</span> <span class="kw">concentración</span></h1>
-    <p class="sub reveal">Lee mientras escuchas tu audiolibro y crea un hábito que dure</p>
+    <p class="sub reveal">Cada palabra de tu audiolibro se ilumina cuando el narrador la lee.</p>
     <div class="stores reveal" id="get" aria-label="Conseguir HushBook">
       <a class="pill" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=Hushbook-landing&amp;mt=8" target="_blank" rel="noopener" aria-label="Descargar HushBook en el App Store">
         <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -693,9 +751,28 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <p class="hero-note reveal">🌟 Gratis para descargar, cero anuncios.</p>
   </div>
   <div class="fan" aria-hidden="true">
-    <img class="f1" src="/assets/img/mockups/locales/es-419/brain-health.webp" alt="" loading="lazy">
+    <img class="f1" src="/assets/img/mockups/locales/es-419/brain.webp" alt="" loading="lazy">
     <img class="f2" src="/assets/img/mockups/locales/es-419/home.webp" alt="" loading="eager">
-    <img class="f3" src="/assets/img/mockups/locales/es-419/karaoke-live.webp" alt="HushBook transcribiendo Meditaciones en karaoke palabra a palabra en directo" loading="eager" fetchpriority="high">
+    <div class="hra">
+      <img class="f3 hra-shot" src="/assets/img/mockups/locales/es-419/read-along.webp" alt="Chapter 1 of The Hitchhiker's Guide to the Galaxy in the HushBook read-along, the narrated word filled in and underlined in red" loading="eager" fetchpriority="high">
+      <script type="application/json" id="hra-text">
+      {
+        "chapterLabel": "Capítulo {numeral}",
+        "chapterNumeral": "I",
+        "aaButton": "Aa",
+        "chapterSeconds": 724,
+        "startSeconds": 14.45,
+        "breaths": ["ninety-two million miles", "little blue green planet"],
+        "paragraphs": [
+          "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.",
+          "Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.",
+          "This planet has, or rather had, a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn't the small green pieces of paper that were unhappy.",
+          "And so the problem remained; lots of the people were mean, and most of them were miserable, even the ones with digital watches."
+        ]
+      }
+      </script>
+      <div class="hra-live"><div class="hra-screen"></div><img class="hra-frame" data-src="/assets/img/mockups/frame-iphone.webp" alt=""></div>
+    </div>
     <img class="f4" src="/assets/img/mockups/locales/es-419/player-hitchhikers.webp" alt="" loading="eager">
     <img class="f5" src="/assets/img/mockups/locales/es-419/library.webp" alt="" loading="lazy">
   </div>
@@ -851,33 +928,33 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">Cómo funciona</span>
-      <h2>Del archivo de audio a la lectura sincronizada, en tres toques.</h2>
-      <p class="sub">Elige un libro, toca Transcribir y el HushBook Engine se pone manos a la obra, capítulo a capítulo, directamente en tu teléfono.</p>
+      <h2>Así se convierte un audiolibro en lectura sincronizada.</h2>
+      <p class="sub">Agrega un libro y elige dónde se transcribe: en tu teléfono o en tu computadora, a través del Wi-Fi de tu casa.</p>
     </div>
     <div class="steps">
       <figure class="step reveal">
         <span class="num">01</span>
-        <h3>Elige un libro</h3>
-        <p>Explora clásicos gratis o importa tus propios MP3, M4B, FLAC, OGG y muchos más.</p>
-        <img src="/assets/img/mockups/locales/es-419/library.webp" alt="Biblioteca de HushBook con audiolibros importados y de dominio público" loading="lazy">
+        <h3>Agrega un libro</h3>
+        <p>Descarga un clásico gratis desde «Descubrir» o importa un archivo de audiolibro que ya tengas.</p>
+        <img src="/assets/img/mockups/locales/es-419/discover.webp" alt="«Descubrir» en HushBook: un clásico destacado con «Descargar» y «Escuchar una muestra», y debajo una fila de audiolibros gratis" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">02</span>
-        <h3>Toca Transcribir</h3>
-        <p>Un toque por capítulo. Los capítulos de los archivos M4B se detectan automáticamente.</p>
-        <img src="/assets/img/mockups/locales/es-419/book-info-transcribe.webp" alt="Pantalla de información del libro con botones de Transcribir para cada capítulo" loading="lazy">
+        <h3>Teléfono o PC</h3>
+        <p>«Transcribir libro» funciona en tu teléfono. Con Pro, «Transcribir en mi PC» lo envía a tu computadora por el Wi-Fi de tu casa. Es más rápido y tu teléfono no se calienta.</p>
+        <img src="/assets/img/mockups/locales/es-419/step-transcribe.webp" alt="Página del libro Project Hail Mary con el menú «Opciones» abierto, que muestra «Transcribir libro» y «Transcribir en mi PC»" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">03</span>
-        <h3>El motor trabaja</h3>
-        <p>El HushBook Engine transcribe cada palabra pronunciada en un texto sincronizado que avanza con la narración.</p>
-        <img src="/assets/img/mockups/locales/es-419/transcribing-chapters.webp" alt="Capítulo uno transcribiéndose con una barra de progreso" loading="lazy">
+        <h3>Sigue escuchando</h3>
+        <p>La página del libro lleva la cuenta: «En tu computadora: transcribiendo, 64%» y los minutos que faltan. En el teléfono, cada capítulo se puede leer en cuanto termina.</p>
+        <img src="/assets/img/mockups/locales/es-419/step-transcribing.webp" alt="La tarjeta de la página del libro con «En tu computadora: transcribiendo, 64%» y el tiempo restante debajo" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">04</span>
         <h3>Lee a la vez</h3>
-        <p>Cada palabra se ilumina con el narrador. Toca cualquier palabra para saltar hasta ella.</p>
-        <img src="/assets/img/mockups/locales/es-419/read-along-monte-cristo.webp" alt="Leyendo El conde de Montecristo: cada palabra resaltada al ritmo de la narración" loading="lazy">
+        <p>Las palabras se rellenan a medida que el narrador las lee, con un subrayado rojo en la actual. Mantén presionada cualquier línea para reproducir desde ahí.</p>
+        <img src="/assets/img/mockups/locales/es-419/read-along-paper.webp" alt="Capítulo 1 de Guía del autoestopista galáctico en la lectura sincronizada con el aspecto de papel cálido, la palabra narrada rellena y subrayada" loading="lazy">
       </figure>
     </div>
   </div>
@@ -889,10 +966,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="privacy-card reveal">
       <div>
         <span class="eyebrow">El HushBook Engine</span>
-        <h2>Transcrito en tu teléfono. Nunca en la nube.</h2>
+        <h2>Transcrito en tu teléfono o PC. Nunca en la nube.</h2>
         <p class="sub">La conversión de voz a texto que da vida a HushBook se ejecuta de forma nativa en tu dispositivo. Tus audiolibros nunca se suben: no hay ningún servidor al que subirlos.</p>
         <ul class="plist">
-          <li><span class="tick">✓</span><span><b>Nada sale de tu teléfono.</b> Audio, transcripciones, notas, puntuaciones: todo se guarda localmente.</span></li>
+          <li><span class="tick">✓</span><span><b>Nada va a un servidor.</b> Audio, transcripciones, notas y puntuaciones se quedan en tu teléfono o en tu propia computadora.</span></li>
           <li><span class="tick">✓</span><span><b>Sin cuenta, sin registro.</b> Abre la app y empieza a leer.</span></li>
           <li><span class="tick">✓</span><span><b>Totalmente sin conexión</b> tras una única descarga del motor: en un vuelo, en un túnel, en cualquier parte.</span></li>
           <li><span class="tick">✓</span><span><b>Cuida la temperatura.</b> Los libros largos se transcriben por partes, reanudan tras un fallo y mantienen tu teléfono fresco.</span></li>
@@ -911,57 +988,66 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">Citas</span>
-      <h2>Guarda la frase. Comparte la tarjeta.</h2>
-      <p class="sub">Atrapa una cita en el momento en que la oyes: dos toques en la lectura sincronizada, tuya para guardarla o publicarla.</p>
+      <h2>Guarda la frase que te dejó pensando.</h2>
+      <p class="sub">Elige palabras en la lectura sincronizada y guárdalas. Cada marca recuerda en qué punto del audio está, para que puedas volver a oírla.</p>
     </div>
     <div class="gallery">
       <figure class="gcard reveal">
         <span class="num">01</span>
-        <img src="/assets/img/mockups/locales/es-419/quote-select.webp" alt="Selección de una cita en HushBook: tocando la primera y la última palabra de la letra sincronizada" loading="lazy">
-        <h3>Atrápala en dos toques</h3>
-        <p>Toca la primera palabra, toca la última. La frase que acabas de oír queda guardada, sin salir de la lectura sincronizada.</p>
+        <img src="/assets/img/mockups/locales/es-419/quote-mark.webp" alt="La primera frase de 1984 seleccionada en la lectura sincronizada, con «Resaltar», «Nota» y «Cita» flotando encima" loading="lazy">
+        <h3>Elige las palabras</h3>
+        <p>Toca «Marcar» y luego la primera y la última palabra. Elige «Resaltar», «Nota» o «Cita». Si eliges «Nota», el audio espera mientras escribes.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">02</span>
-        <img src="/assets/img/mockups/locales/es-419/quotes-collection.webp" alt="Todas las citas guardadas en HushBook, ordenadas por libro" loading="lazy">
-        <h3>Cada frase, en un solo lugar</h3>
-        <p>Tus citas se reúnen por libro, guardadas en tu teléfono. Revísalas, edítalas o reenvía cualquiera.</p>
+        <img src="/assets/img/mockups/locales/es-419/quote-index.webp" alt="Citas y notas: 24 pasajes de 6 libros, una cita de 1984 con la nota del lector debajo" loading="lazy">
+        <h3>Tu cuaderno de citas</h3>
+        <p>«Citas y notas» guarda cada marca, agrupada por libro, con tus notas debajo. Presiona reproducir en cualquier línea para oírla en la voz del narrador.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">03</span>
-        <img src="/assets/img/mockups/locales/es-419/quote-card-share.webp" alt="Una tarjeta de cita de HushBook terminada y lista para compartir: la frase, el autor y el libro" loading="lazy">
-        <h3>Una tarjeta que da gusto publicar</h3>
-        <p>Cada cita se convierte en una tarjeta acabada: las palabras, el libro, el autor. Lista para compartir.</p>
+        <img src="/assets/img/mockups/locales/es-419/quote-card.webp" alt="Personalizar: la cita de 1984 en una tarjeta con colores de atardecer y la nota del lector, opciones de fuente y fondo debajo, y un botón Compartir" loading="lazy">
+        <h3>Compártela como tarjeta</h3>
+        <p>«Personalizar» pone la cita en una tarjeta con la portada del libro. Elige entre 16 fondos y tres fuentes. «Incluir mi nota» agrega tu nota debajo.</p>
       </figure>
     </div>
   </div>
   <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
     <div class="marquee-track" id="marquee-fallback">
-      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
-      <img src="/assets/img/mockups/locales/es-419/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/es-419/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/es-419/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/es-419/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/es-419/player-pride-prejudice.webp" alt="" loading="lazy">
+      <!-- 3 copies of the 11-card set; keyframe shifts one set (2420px), 2 sets stay on screen so it never runs out -->
       <img src="/assets/img/mockups/locales/es-419/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/es-419/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/es-419/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/es-419/player-born-a-crime.webp" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -1056,14 +1142,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/es-419/home.webp" alt="Inicio de HushBook con libros destacados y tu biblioteca" loading="lazy">
-        <img src="/assets/img/mockups/locales/es-419/library.webp" alt="Cuadrícula de la biblioteca Mis colecciones con una tarjeta para subir un audiolibro" loading="lazy">
+        <img src="/assets/img/mockups/locales/es-419/home.webp" alt="Inicio de HushBook con la racha y las palabras de hoy, Guía del autoestopista galáctico lista para continuar y tus libros debajo" loading="lazy">
+        <img src="/assets/img/mockups/locales/es-419/library.webp" alt="Biblioteca de HushBook: tus libros en una cuadrícula de portadas, con el tiempo restante bajo cada una" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Tu biblioteca</span>
-        <h2>Miles de clásicos, gratis — <em>o trae los tuyos.</em></h2>
-        <p class="sub">Un catálogo integrado de audiolibros de dominio público de LibriVox e Internet Archive, en seis idiomas. Descarga uno y la transcripción empieza sola: estarás leyendo en minutos.</p>
-        <p class="sub">¿Ya tienes tus libros? Importa MP3, M4A, M4B, AAC, WAV, FLAC, OGG y muchos más. Los capítulos, las portadas y los metadatos llegan automáticamente.</p>
+        <h2>Miles de clásicos gratis, <em>o tus propios libros.</em></h2>
+        <p class="sub">«Descubrir» busca en LibriVox e Internet Archive a la vez, en inglés, alemán, francés, español, italiano o portugués. Descarga un libro y se pone solo en cola para transcribirse.</p>
+        <p class="sub">O importa tus propios MP3, M4A, M4B, FLAC, OGG y diez formatos más. Las marcas de capítulo se conservan, y varios archivos elegidos juntos se convierten en un solo libro.</p>
       </div>
     </div>
   </div>
@@ -1075,34 +1161,37 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="split">
       <div class="life-head reveal">
         <span class="eyebrow">Tu vida de lectura</span>
-        <h2>Mira cómo se ilumina tu cerebro lector.</h2>
-        <p class="sub" style="margin-top:18px">Una suite de analíticas privada, calculada por completo en tu dispositivo. Una puntuación cerebral de 0 a 100 crece con tus rachas, palabras leídas, comprensión y constancia, a lo largo de ocho niveles, de «Primeros pasos» a «Salud cerebral plena».</p>
-        <p class="sub" style="margin-top:14px">Las palabras se cuentan a partir de la transcripción real: palabras reales que oíste de verdad. Cada tarjeta se comparte como una imagen pulida.</p>
+        <h2>Tus hábitos de lectura, dibujados como un cerebro.</h2>
+        <p class="sub" style="margin-top:18px">«Compromiso de lectura» convierte seis hábitos en una sola puntuación, de 0 a 100, con cinco niveles de «Primeras páginas» a «De principio a fin».</p>
+        <p class="sub" style="margin-top:14px">Toca un hábito para ver cómo se cuenta y qué lo haría subir. Todo se calcula en tu teléfono, y la puntuación viene con Pro.</p>
       </div>
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/es-419/brain-health.webp" alt="Puntuación de salud cerebral con los factores que la impulsan" loading="lazy">
-        <img src="/assets/img/mockups/locales/es-419/goals-graphs.webp" alt="Tendencia de palabras y total de libros leídos este año" loading="lazy">
+        <img src="/assets/img/mockups/locales/es-419/brain.webp" alt="Puntuación de compromiso de lectura de 58, nivel 3 de 5, «Encontrando tu ritmo», junto a un cerebro en aguada de tinta cuyas regiones representan seis hábitos" loading="lazy">
+        <img src="/assets/img/mockups/locales/es-419/analytics.webp" alt="Estadísticas de HushBook: la tarjeta de racha «Impulso» sobre la pestaña «Esta semana», que se abre en «Tiempo de escucha»" loading="lazy">
       </div>
     </div>
 
     <div class="sec-head center reveal" style="margin:130px auto 0">
       <span class="eyebrow">Analíticas avanzadas · Pro</span>
-      <h2>Analíticas avanzadas, a tu servicio.</h2>
-      <p class="sub">Ve más allá de las rachas: cuándo empiezas, cuándo paras, a qué vuelves y cuántas palabras oíste de verdad. Cada cifra se calcula a partir de tus transcripciones, en tu dispositivo.</p>
+      <h2>Adónde va tu tiempo de escucha.</h2>
+      <p class="sub">Pro abre tres pestañas más de tarjetas. Responden con frases claras, como «La mayor parte de tu escucha empieza entre las 21 y las 22».</p>
     </div>
 
     <div class="collage">
       <div class="cstack cstack--l reveal">
-        <figure class="ccard dark"><span class="tag tag-tl">Hábitos de escucha</span><img src="/assets/img/mockups/locales/es-419/card-habit-insights.webp" alt="Hábitos de escucha: hora habitual de escucha, sesión más larga, día más activo" loading="lazy">ure>
-        <figure class="ccard"><span class="tag tag-bl">Radar de géneros</span><img src="/assets/img/mockups/locales/es-419/card-genre-radar.webp" alt="Gráfico de radar de los géneros más leídos" loading="lazy">zy"></figure>
+        <figure class="ccard"><span class="tag tag-tl">Tu hora habitual</span><img src="/assets/img/mockups/locales/es-419/card-habits.webp" alt="Tarjeta «Hábitos»: la mayor parte de la escucha empieza entre las 21 y las 22, y una sesión suele durar unos 24 minutos" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">A lo que vuelves</span><img src="/assets/img/mockups/locales/es-419/card-genres.webp" alt="«Lo que escuchas»: la fantasía ocupa la mayor parte de los últimos 30 días, con los demás géneros en barras" loading="lazy"></figure>
       </div>
-      <div class="collage-phone reveal">         <span class="tag tag-c" style="top:-52px">Tu ritmo diario</span>         <img src="/assets/img/mockups/locales/es-419/advanced-analytics.webp" alt="Analíticas avanzadas: inicio y fin de escucha por día y tus categorías principales" loading="lazy">        </div>
+      <div class="collage-phone reveal">
+        <span class="tag tag-c" style="top:-52px">Cada día de escucha</span>
+        <img src="/assets/img/mockups/locales/es-419/analytics-calendar.webp" alt="La pestaña «Libros» de Estadísticas: un calendario de escucha de octubre con la portada del libro escuchado cada día" loading="lazy">
+      </div>
       <div class="cstack cstack--r reveal">
-        <figure class="ccard"><span class="tag tag-tr">Palabras por libro</span><img src="/assets/img/mockups/locales/es-419/card-words-per-book.webp" alt="Gráfico de barras de palabras por libro" loading="lazy">/figure>
-        <figure class="ccard"><span class="tag tag-br">Objetivos honestos</span><img src="/assets/img/mockups/locales/es-419/card-goals-sheet.webp" alt="Hoja de definición de objetivos de libros y palabras" loading="lazy">abras" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-tr">Tus mejores marcas</span><img src="/assets/img/mockups/locales/es-419/card-records.webp" alt="«Tus récords»: sesión más larga, más en un día, racha más larga y final más rápido" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">Tus propias metas</span><img src="/assets/img/mockups/locales/es-419/card-goals.webp" alt="Tarjeta «Metas»: una meta diaria de 5000 palabras y cuántos días se cumplió" loading="lazy"></figure>
       </div>
     </div>
-    <p class="collage-cap reveal">Hábitos de escucha · radar de géneros · palabras por libro · objetivos honestos: cada tarjeta se comparte como una imagen pulida.</p>
+    <p class="collage-cap reveal">Calculado en tu teléfono a partir de lo que escuchaste. El calendario, los géneros y el «Resumen del mes» se comparten como imágenes.</p>
 
     <div class="medals reveal" aria-label="Insignias coleccionables">
       <img src="/assets/img/streak_7_front.webp" alt="Insignia: racha de 7 días" loading="lazy">
@@ -1121,14 +1210,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media layer reveal">
-        <img class="back" src="/assets/img/mockups/locales/es-419/character-slide.webp?v=2" alt="Ficha detallada de un personaje: rol, primera aparición, atributos y relaciones" loading="lazy">
-        <img class="front" src="/assets/img/mockups/locales/es-419/character-graph.webp" alt="Grafo de relaciones entre personajes con nodos arrastrables" loading="lazy">
+        <img class="back" src="/assets/img/mockups/locales/es-419/characters-sheet.webp" alt="Ficha de Winston Smith: papel, primera aparición en el Cap. 1 · 0:09, una descripción, atributos y sus relaciones" loading="lazy">
+        <img class="front" src="/assets/img/mockups/locales/es-419/characters-map.webp" alt="Mapa de personajes de 1984: Winston Smith como Héroe, unido a Julia, O'Brien, Big Brother y otros cuatro" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Compañeros de lectura</span>
-        <h2>Mapea a los personajes mientras lees.</h2>
-        <p class="sub" style="margin-top:18px">Las novelas extensas se vuelven confusas. Arrastra personajes a un lienzo, traza las líneas entre ellos y etiqueta a cada uno con tus propias palabras: aliado, rival, hermano, admira. Tu mapa vive con el libro.</p>
-        <p class="sub" style="margin-top:14px">Y cuando una frase te detiene en seco: toca la primera palabra, toca la última, y queda guardada como cita, lista para compartir en tarjeta.</p>
+        <h2>Ten claro quién es quién.</h2>
+        <p class="sub" style="margin-top:18px">Agrega un personaje mientras escuchas y el mapa anota dónde lo oíste por primera vez, al segundo. Dale una cara y un papel.</p>
+        <p class="sub" style="margin-top:14px">Une a dos personajes y elige el vínculo, de «Hermanos» a «Secreto», o escribe el tuyo. Arrastra las caras hasta que el mapa se entienda bien.</p>
       </div>
     </div>
   </div>
@@ -1171,7 +1260,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <p>¿Buscas una <strong>app de audiolibros gratis con textos sincronizados</strong>? HushBook está hecha para quienes quieren más que una simple reproducción. Los reproductores normales emiten la narración y dejan tus ojos sin nada que seguir. HushBook convierte la escucha en un <strong>audiolibro con palabras</strong>: cada palabra pronunciada se ilumina al ritmo del narrador, y lees como las letras avanzan en una app de música, solo que esta vez la pista es un libro entero.</p>
 
       <h3>Por qué el texto sincronizado supera a la escucha a solas</h3>
-      <p>El audio pasivo es fácil de empezar y fácil de perder. La mente divaga. Los nombres se difuminan. Terminas un capítulo y te das cuenta de que apenas has retenido nada. El resaltado palabra a palabra ancla la atención a la voz: ves lo que oyes, saltas a cualquier frase con un toque y mantienes el hilo sin rebobinar medio capítulo. Esa concentración por dos canales es la razón por la que muchos lectores consideran HushBook una de las <strong>mejores apps de audiolibros gratis</strong> cuando la comprensión importa tanto como la comodidad.</p>
+      <p>El audio pasivo es fácil de empezar y fácil de perder. La mente divaga. Los nombres se difuminan. Terminas un capítulo y te das cuenta de que apenas has retenido nada. El resaltado palabra a palabra ancla la atención a la voz: ves lo que oyes, mantienes presionada cualquier línea para reproducir desde ahí y sigues el hilo sin rebobinar medio capítulo. Esa concentración por dos canales es la razón por la que muchos lectores consideran HushBook una de las <strong>mejores apps de audiolibros gratis</strong> cuando la comprensión importa tanto como la comodidad.</p>
 
       <h3>Mejores apps de audiolibros: lo que distingue de verdad a HushBook</h3>
       <p>Busca «<strong>mejores apps de audiolibros</strong>» y encontrarás tiendas, suscripciones y bibliotecas en la nube. Los audiolibros de Apple, incluidos los de Apple Books, Audible y YouTube, pueden ayudarte a descubrir un título; cada uno tiene su catálogo, sus condiciones y su disponibilidad. HushBook resuelve otro problema: <em>cómo lees el audio que ya tienes</em>. Importa tus propios MP3, M4B, FLAC y más; los capítulos y las portadas llegan cuando el archivo los incluye. Toca Transcribir y el HushBook Engine, en el dispositivo, construye un texto sincronizado: sin base de datos de letras, sin subidas, sin cuenta. Tras una única descarga del motor, toda la experiencia funciona sin conexión. Ese diseño privado, centrado en tus archivos, es raro entre las <strong>apps de audiolibros para iPhone</strong> y las <strong>apps de audiolibros para Android</strong> mayoritarias.</p>
@@ -1200,9 +1289,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h2>Respuestas.</h2>
     </div>
     <div class="faq reveal">
-      <div class="qa"><button type="button" aria-expanded="false">¿Mi audio sale alguna vez de mi teléfono?</button><div class="a"><p>No. La transcripción se ejecuta por completo en tu dispositivo: no hay subidas, ni cuenta, ni servidor. Tras una única descarga del motor, toda la app funciona sin conexión.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Mi audio sale alguna vez de mi teléfono?</button><div class="a"><p>A ningún servidor. La transcripción se hace en tu teléfono o, si lo eliges, en tu propia computadora a través del Wi-Fi de tu casa. No hay subidas ni cuenta, y tras una única descarga del motor, toda la app funciona sin conexión.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿De dónde vienen las letras sincronizadas?</button><div class="a"><p>HushBook las genera a partir de tu audio con el HushBook Engine en el dispositivo: no hay ninguna base de datos de letras. La primera pasada sobre un libro largo lleva un rato; después, es instantáneo cada vez que lo abres.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">¿Qué archivos puedo importar?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA y ALAC: un archivo por importación. Los capítulos de los archivos M4B se detectan automáticamente, junto con las portadas y los metadatos.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Qué archivos puedo importar?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA y ALAC. Elige un archivo o varios: varios se convierten en un solo libro, con un capítulo por archivo. Los capítulos de los archivos M4B se detectan automáticamente, junto con las portadas y los metadatos.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿Cuánto cuesta?</button><div class="a"><p>La experiencia básica de lectura sincronizada y la biblioteca de dominio público son gratis. Hay una mejora Pro opcional para analíticas avanzadas: pasar a Pro ayuda a que HushBook siga siendo independiente y mejorando.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿Agotará mi batería o calentará mi teléfono?</button><div class="a"><p>El motor vigila la temperatura: limita sus hilos de trabajo y descansa entre partes para mantener tu teléfono fresco, y reanuda automáticamente si una transcripción larga se interrumpe.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">¿Para quién es HushBook?</button><div class="a"><p>Para cualquiera que lea con los oídos, y especialmente para lectores con dislexia, TDAH o baja visión, para quienes aprenden idiomas y para todos los que se concentran mejor cuando ven las palabras que oyen.</p></div></div>
@@ -1383,19 +1472,6 @@ if(reviewSet){
   reviewClone.setAttribute('aria-hidden','true');
   reviewClone.querySelectorAll('[tabindex]').forEach(el=>el.removeAttribute('tabindex'));
   reviewSet.after(reviewClone);
-}
-
-// hero fan 3D tilt
-const fan=document.querySelector('.fan');
-if(fan&&fine&&!calm){
-  const hero=document.querySelector('.hero');
-  hero.addEventListener('pointermove',e=>{
-    const r=hero.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    fan.style.setProperty('--rx',(-y*5)+'deg');
-    fan.style.setProperty('--ry',(x*7)+'deg');
-  });
-  hero.addEventListener('pointerleave',()=>{fan.style.setProperty('--rx','0deg');fan.style.setProperty('--ry','0deg')});
 }
 
 // three.js + GSAP — The Transcription Field
@@ -1661,18 +1737,17 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
   if (!container || !window.THREE || calm) return;
 
   const IMAGES = [
-    "/assets/img/mockups/locales/es-419/player-martian.webp",
-    "/assets/img/mockups/locales/es-419/player-lotr.webp",
-    "/assets/img/mockups/locales/es-419/player-love-hypothesis.webp",
-    "/assets/img/mockups/locales/es-419/player-crime-punishment.webp",
-    "/assets/img/mockups/locales/es-419/player-pride-prejudice.webp",
     "/assets/img/mockups/locales/es-419/player-hitchhikers.webp",
     "/assets/img/mockups/locales/es-419/player-martian.webp",
     "/assets/img/mockups/locales/es-419/player-lotr.webp",
     "/assets/img/mockups/locales/es-419/player-love-hypothesis.webp",
     "/assets/img/mockups/locales/es-419/player-crime-punishment.webp",
     "/assets/img/mockups/locales/es-419/player-pride-prejudice.webp",
-    "/assets/img/mockups/locales/es-419/player-hitchhikers.webp"
+    "/assets/img/mockups/locales/es-419/player-project-hail-mary.webp",
+    "/assets/img/mockups/locales/es-419/player-fourth-wing.webp",
+    "/assets/img/mockups/locales/es-419/player-dune.webp",
+    "/assets/img/mockups/locales/es-419/player-mexican-gothic.webp",
+    "/assets/img/mockups/locales/es-419/player-born-a-crime.webp"
   ];
 
   const width = container.clientWidth;
@@ -1856,7 +1931,9 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
 })();
 </script>
 <div class="locale-switcher" data-locale-switcher aria-label="Selector de idioma"><a data-locale="en">Inglés</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch</a></div>
-<script src="/assets/js/locale.js" defer></script></body>
+<script src="/assets/js/locale.js" defer></script><!-- hra:script -->
+<script defer src="/assets/js/hero-read-along.js"></script>
+</body>
 </html>
 
 

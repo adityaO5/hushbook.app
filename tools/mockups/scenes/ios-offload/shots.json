@@ -1,0 +1,4 @@
+[
+  { "id": "step-transcribe", "t": 2.1, "crop": "phone", "out": "step-transcribe" },
+  { "id": "step-transcribing", "t": 7.15, "crop": "phone", "out": "step-transcribing" }
+]

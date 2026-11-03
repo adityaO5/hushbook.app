@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* HushBook iPhone app, light theme. Source: D:\hushbook (main).
+         HbColors.light (lib/theme/hb_colors.dart), EngagementInk + driverColors
+         (features/analytics/engagement/engagement_driver_ui.dart), BrainScoreCard
+         (features/analytics/widgets/brain_score_card.dart), DockTokens (home/dock). */
+      :root{
+        --canvas:#FAF9F5;
+        --bg:#FBF8F2; --textBody:#2F2F2F; --segSel:#2F2F2F; --segText:#858585; --hairline:#F2F2F7; --accent:#6F3825;
+        --ink:#2A1A14; --text:#2F2F2F; --soft:#4E423C; --muted:#6B6B6B; --cream:#FBF8F2;
+        --divider:#F0EDE7; --border:#E9D9C7; --track:#E8E2D9;
+        --score:#64210A; --level:#925540; --dockLabel:#3A3734;
+        /* ScreenUtil on a 393 x 852 iPhone 16 against the 390 x 844 design: .w, .h, and .sp / .r (minTextAdapt). */
+        --W:1.007692px; --H:1.009479px; --S:1.007692px;
+      }
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Medium.ttf');font-weight:500}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Bold.ttf');font-weight:700}
+      @font-face{font-family:HBPlayfair;src:url('../../assets/fonts/PlayfairDisplay-Variable.ttf');font-weight:400 900}
+      @font-face{font-family:HBHush;src:url('../../assets/fonts/HushFont-Regular.otf');font-weight:400}
+      @font-face{font-family:HBMaterial;src:url('../../assets/fonts/MaterialIcons-Regular.otf');font-weight:400}
+      @font-face{font-family:HBCupertino;src:url('../../assets/fonts/CupertinoIcons.ttf');font-weight:400}
+
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:var(--canvas)}
+      #root{width:100%;height:100%;position:relative;background:var(--canvas)}
+      #app{position:absolute;inset:0;overflow:hidden}
+      img{display:block}
+      svg{display:block;flex:none}
+
+      /* The phone: frame-iphone.png at 1960 px tall (scale 1960/8796), centred. Its screen rect
+         (x 199..4111, y 168..8653) lands at 1483.367, 137.435, 871.928 x 1890.929; the 393 x 852
+         stage is zoomed 871.928 / 393 = 2.218646 to fill it, clipped at the 89.13 px corner. */
+      .frame{position:absolute;left:1439.024px;top:100px;width:961.951px;height:1960px;pointer-events:none}
+      .screen{position:absolute;left:1483.367px;top:137.435px;width:871.928px;height:1890.929px;border-radius:89.13px;overflow:hidden}
+      .stage{width:393px;height:852px;zoom:2.218646;position:relative;overflow:hidden;background:var(--bg);
+             font-family:HBInter,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.2104}
+
+      /* Icon fonts: Flutter Icon(size) = the glyph at fontSize = size in a size x size box. */
+      .mi,.ci{display:block;flex:none;text-align:center;font-style:normal;font-weight:400;white-space:nowrap}
+      .mi{font-family:HBMaterial}
+      .ci{font-family:HBCupertino}
+
+      /* _AnalyticsAppBar: padding 16 16 16 0, title, bell IconButton, 4, CompanionAvatar 52. */
+      #appbar{position:absolute;left:0;top:59px;width:393px;padding:calc(16*var(--H)) calc(16*var(--W)) 0;display:flex;align-items:center;height:calc(52px + 16*var(--H))}
+      #appbar .ttl{flex:1;min-width:0;font-family:HBPlayfair,serif;font-weight:500;font-size:calc(23*var(--S));color:var(--textBody);white-space:nowrap}
+      .ibtn{width:48px;height:48px;display:grid;place-items:center;flex:none}
+      .avatar{position:relative;flex:none;width:52px;height:52px;margin-left:calc(4*var(--W));border-radius:50%;overflow:hidden;background:#F7F4EE}
+      .avatar img{position:absolute;left:0;top:0;width:100%;height:100%}
+
+      /* NestedScrollView body: the tab pages' gradient under the pinned tab bar. */
+      #body{position:absolute;left:0;top:calc(59px + 16*var(--H) + 52px);width:393px;bottom:0;overflow:hidden;background:#FFB08A}
+      #tabsBg{position:absolute;left:0;top:0;width:393px;height:auto}
+      #list{position:absolute;left:calc(16*var(--W));top:0;width:calc(393px - 32*var(--W))}
+      #tabbar{position:absolute;left:0;top:0;width:393px;height:calc(48*var(--H));background:var(--bg);z-index:3}
+      #tabbar .row{display:flex;padding:0 calc(16*var(--W))}
+      #tabbar .tab{flex:1;height:calc(47*var(--H));display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+      #tabbar .tab span{font-size:calc(16*var(--S));letter-spacing:-.32px;color:var(--segText);white-space:nowrap}
+      #tabbar .tab.on span{font-weight:600;color:var(--segSel)}
+      #tabbar .tab i{display:block;margin-top:calc(8*var(--H));height:2px;width:0}
+      #tabbar .tab.on i{width:calc(64*var(--W));background:var(--segSel)}
+      #tabbar .hair{height:.5px;background:var(--hairline)}
+
+      /* BrainScoreCard */
+      .card{position:relative;background:#fff;border:1px solid var(--border);border-radius:calc(24*var(--S));
+            box-shadow:0 4px 9.55px rgba(0,0,0,.145);padding:calc(20*var(--H)) calc(12*var(--W)) calc(16*var(--H)) calc(14*var(--W));
+            display:flex;flex-direction:column}
+      .inset{padding:0 calc(6*var(--W))}
+      .hdr{display:flex;align-items:flex-start}
+      .hdr .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:calc(4*var(--H))}
+      .hdr .t{font-size:calc(19*var(--S));font-weight:600;line-height:1.3;color:var(--text)}
+      .hdr .s{font-size:calc(13*var(--S));line-height:1.45;color:var(--muted)}
+      .hdr .ibtn{margin-left:calc(4*var(--W))}
+      .scoreline{display:flex;flex-wrap:wrap;align-items:flex-end;column-gap:calc(14*var(--W));row-gap:calc(8*var(--H))}
+      .score{font-family:HBHush;font-size:calc(68*var(--S));line-height:.9;letter-spacing:0;color:var(--score);white-space:nowrap}
+      .lvl{padding-bottom:calc(4*var(--H));font-size:calc(15*var(--S));font-weight:600;line-height:1.35;color:var(--text);white-space:nowrap}
+      .lvl .cap{color:var(--level)}
+      .next{font-size:calc(14*var(--S));line-height:1.5;color:var(--text)}
+      .brain{position:relative;width:100%;aspect-ratio:400/300}
+      .brain svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+      .tracked{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:calc(10*var(--W));row-gap:calc(4*var(--H))}
+      .tdots{display:flex;gap:calc(5*var(--W))}
+      .tdot{width:calc(9*var(--S));height:calc(9*var(--S));border-radius:50%;border:1px solid rgba(42,26,20,.18)}
+      .tracked span{font-size:calc(13*var(--S));line-height:1.4;color:var(--muted);text-align:center}
+      .dhead{border-top:1px solid var(--divider);padding-top:calc(16*var(--H));font-size:calc(15*var(--S));font-weight:600;line-height:1.3;color:var(--text)}
+      .foot{margin-top:calc(12*var(--H));padding-top:calc(12*var(--H));border-top:1px solid var(--divider);font-size:calc(12*var(--S));line-height:1.45;color:var(--muted)}
+
+      /* EngagementDriverRow: Material(radius 14) > InkWell > minHeight 48, padding 10 / 6. */
+      .drow{position:relative;border-radius:calc(14*var(--S));overflow:hidden;min-height:48px}
+      .drow .ink{position:absolute;inset:0;opacity:0}
+      .drow .rip{position:absolute;border-radius:50%;opacity:0;width:0;height:0}
+      .drow .in{position:relative;display:flex;align-items:center;padding:calc(10*var(--H)) calc(6*var(--W))}
+      .drow .lhs{flex:1;min-width:0;display:flex;align-items:flex-start}
+      .ddot{flex:none;margin-top:calc(5*var(--H));width:calc(12*var(--S));height:calc(12*var(--S));border-radius:50%;border:1px solid rgba(42,26,20,.18)}
+      .dbody{flex:1;min-width:0;margin-left:calc(12*var(--W));display:flex;flex-direction:column}
+      .dtop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;column-gap:calc(10*var(--W));row-gap:calc(4*var(--H))}
+      .dlab{display:flex;flex-wrap:wrap;align-items:center;column-gap:calc(6*var(--W));row-gap:calc(4*var(--H))}
+      .dlab b{font-weight:500;font-size:calc(14*var(--S));line-height:1.3;color:var(--text);white-space:nowrap}
+      .opt{padding:calc(2*var(--H)) calc(7*var(--W));border-radius:999px;border:1px solid var(--border);font-size:calc(12*var(--S));font-weight:500;line-height:1.2;color:var(--muted);white-space:nowrap}
+      .chip{padding:calc(3*var(--H)) calc(8*var(--W));border-radius:999px;font-size:calc(12*var(--S));font-weight:600;line-height:1.2;white-space:nowrap}
+      .dbar{margin-top:calc(7*var(--H));height:calc(8*var(--H));border-radius:999px;background:var(--track);overflow:hidden}
+      .dbar i{display:block;height:100%;border-radius:999px}
+      .dhint{margin-top:calc(7*var(--H));font-size:calc(12*var(--S));line-height:1.4;color:var(--muted)}
+      .chev{margin-left:calc(12*var(--W));color:var(--muted);font-size:calc(20*var(--S));line-height:calc(20*var(--S));width:calc(20*var(--S));height:calc(20*var(--S))}
+
+      /* NavDock (light, nothing playing): Analytics active. */
+      #dock{position:absolute;left:16px;top:770px;width:361px;height:64px;border-radius:32px;overflow:hidden;z-index:5;
+            box-shadow:0 12px 35.6px rgba(0,0,0,.15),0 2px 7.9px rgba(0,0,0,.06);
+            background:linear-gradient(to bottom,rgba(248,245,239,.95),rgba(248,245,239,.90));
+            -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+      #dock .edge{position:absolute;inset:0;border:1px solid rgba(255,255,255,.70);border-radius:32px}
+      #capsule{position:absolute;top:6px;bottom:6px;left:180.5px;width:87.25px;border-radius:26px;background:rgba(111,56,37,.13)}
+      .dockRow{position:absolute;inset:6px;display:flex}
+      .dtab{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--dockLabel)}
+      .dtab.on{color:var(--accent)}
+      .dtab .ci{font-size:22px;line-height:22px;width:22px;height:22px}
+      .dtab span{margin-top:2px;font-weight:500;font-size:11px;line-height:13.2px}
+      .dtab.on span{font-weight:600}
+
+      /* Status bar + home indicator. */
+      #statusBar{position:absolute;left:0;top:0;width:393px;height:54px;z-index:20;color:#000}
+      #sbTime{position:absolute;left:0;width:132px;top:21px;text-align:center;font:600 17px/20px HBInter;letter-spacing:-.2px}
+      #sbIcons{position:absolute;right:0;width:132px;top:21px;height:20px;display:flex;align-items:center;justify-content:center;gap:6px}
+      #homeIndicator{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:3px;background:#000;z-index:20}
+
+      /* showModalBottomSheet: black54 barrier; EngagementSheetFrame at most 65 % of the screen. */
+      #barrier{position:absolute;inset:0;background:#000;opacity:0;z-index:8;visibility:hidden}
+      #sheet{position:absolute;left:0;right:0;bottom:0;z-index:9;background:#fff;border-radius:calc(24*var(--S)) calc(24*var(--S)) 0 0;
+             overflow:hidden;visibility:hidden;display:flex;flex-direction:column}
+      .stop{position:relative;flex:none;height:52px;background:#F3EFF9}
+      .handle{position:absolute;left:176.5px;top:9px;width:40px;height:5px;border-radius:3px;background:rgba(42,26,20,.28)}
+      .xbtn{position:absolute;right:6px;top:2px;width:48px;height:48px;display:grid;place-items:center}
+      .xbtn .disc{position:relative;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.75);display:grid;place-items:center;overflow:hidden}
+      .xbtn .press{position:absolute;inset:0;background:var(--ink);opacity:0}
+      .xbtn .mi{position:relative;font-size:24px;line-height:24px;width:24px;height:24px;color:var(--ink)}
+      .sview{position:relative;flex:1;min-height:0;overflow:hidden}
+      .scontent{position:absolute;left:0;top:0;width:393px}
+      .shead{background:#F3EFF9;padding:0 calc(18*var(--W)) calc(14*var(--H))}
+      .shrow{display:flex;align-items:flex-start}
+      .thumb{flex:none;position:relative;width:calc(76*var(--W));aspect-ratio:400/300}
+      .thumb svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+      .shtext{flex:1;min-width:0;margin-left:calc(14*var(--W))}
+      .rname{font-size:calc(12*var(--S));font-weight:600;line-height:1.3;color:#6E4BAA}
+      .slabel{margin-top:calc(2*var(--H));font-size:calc(21*var(--S));font-weight:600;line-height:1.25;color:var(--ink)}
+      .meta{margin-top:calc(4*var(--H));font-size:calc(13*var(--S));line-height:1.45;color:var(--soft)}
+      .wline{margin-top:calc(10*var(--H));font-size:calc(13*var(--S));font-weight:600;line-height:1.4;color:#6E4BAA}
+      .sbody{padding:0 calc(20*var(--W)) calc(20*var(--H))}
+      .sec{padding-top:calc(18*var(--H))}
+      .sec h3{font-size:calc(15*var(--S));font-weight:600;line-height:1.35;color:var(--ink)}
+      .sec h3 small{font-size:calc(13*var(--S));font-weight:400;color:var(--muted)}
+      .sec .gap{height:calc(6*var(--H))}
+      .ptext{font-size:calc(14*var(--S));line-height:1.6;color:var(--text)}
+      .grid{display:flex;flex-direction:column;gap:calc(8*var(--W))}
+      .grid .r{display:flex;gap:calc(8*var(--W))}
+      .stat{flex:1;min-width:0;padding:calc(10*var(--H)) calc(12*var(--W));background:var(--cream);border:1px solid var(--divider);
+            border-radius:calc(12*var(--S));display:flex;flex-direction:column;gap:calc(2*var(--H))}
+      .stat b{font-size:calc(16*var(--S));font-weight:600;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums}
+      .stat span{font-size:calc(12*var(--S));line-height:1.45;color:var(--muted)}
+      .chart{padding-top:calc(4*var(--H))}
+      .bars{display:flex;align-items:flex-end}
+      .bcol{flex:1;display:flex;flex-direction:column;align-items:center}
+      .bcol b{font-size:calc(12*var(--S));font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+      .bcol i{display:block;margin-top:calc(4*var(--H));width:46%;background:#9070C6;border-radius:calc(4*var(--S)) calc(4*var(--S)) 0 0}
+      .base{height:1px;background:var(--track)}
+      .weeks{display:flex;margin-top:calc(6*var(--H))}
+      .weeks span{flex:1;text-align:center;font-size:calc(12*var(--S));line-height:1.3;color:var(--muted)}
+      .raise{margin-top:calc(18*var(--H));padding:calc(12*var(--H)) calc(14*var(--W)) calc(14*var(--H));background:#F3EFF9;border-radius:calc(14*var(--S))}
+      .raise h3{font-size:calc(15*var(--S));font-weight:600;line-height:1.35;color:#6E4BAA}
+      .raise p{margin-top:calc(6*var(--H))}
+      .priv{margin-top:calc(16*var(--H));padding-top:calc(12*var(--H));border-top:1px solid var(--divider);display:flex;align-items:flex-start}
+      .priv .mi{margin-top:calc(1*var(--H));font-size:calc(16*var(--S));line-height:calc(16*var(--S));width:calc(16*var(--S));height:calc(16*var(--S));color:var(--muted)}
+      .priv span{flex:1;margin-left:calc(8*var(--W));font-size:calc(12*var(--S));line-height:1.45;color:var(--muted)}
+      .safe{flex:none;height:34px}
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="14" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="14" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div class="screen">
+          <div class="stage" id="stage">
+
+            <div id="appbar">
+              <div class="ttl" data-t="analyticsTitle">Analytics</div>
+              <div class="ibtn"><i class="mi" style="font-size:calc(24*var(--S));line-height:calc(24*var(--S));color:var(--textBody)">&#xf237;</i></div>
+              <div class="avatar">
+                <img src="assets/companion/cat_base.svg" alt="" />
+                <img src="assets/companion/cat_eyes_open.svg" alt="" />
+                <img src="assets/companion/cat_mouth_rest.svg" alt="" />
+                <img src="assets/companion/cat_prop.svg" alt="" />
+              </div>
+            </div>
+
+            <div id="body" data-layout-allow-overflow>
+              <img id="tabsBg" src="assets/tabs_gradient_bg.jpg" alt="" />
+              <div id="list">
+                <div class="card" id="card">
+                  <div class="inset" data-scroll>
+                    <div class="hdr">
+                      <div class="col">
+                        <div class="t" data-t="analyticsReadingEngagement">Reading engagement</div>
+                        <div class="s" data-t="engagementCardSubtitle">How your listening and reading habits have looked lately.</div>
+                      </div>
+                      <div class="ibtn"><i class="mi" style="font-size:calc(22*var(--S));line-height:calc(22*var(--S));color:var(--muted)">&#xf815;</i></div>
+                    </div>
+                  </div>
+                  <div class="inset" style="margin-top:calc(16*var(--H))" data-scroll>
+                    <div class="scoreline">
+                      <div class="score" id="score">0</div>
+                      <div class="lvl" id="lvl"><span class="cap">Level 3 of 5 · </span>Finding your rhythm</div>
+                    </div>
+                  </div>
+                  <div class="inset" style="margin-top:calc(12*var(--H))" data-scroll>
+                    <div class="next" id="next">2 points to Deep in the story. Easiest gain: Read-along.</div>
+                  </div>
+                  <div class="brain" id="brain" style="margin-top:calc(10*var(--H))"></div>
+                  <div class="inset" style="margin-top:calc(4*var(--H))" data-scroll>
+                    <div class="tracked">
+                      <div class="tdots" id="tdots"></div>
+                      <span id="trackedCount">6 of 6 drivers tracked</span>
+                    </div>
+                  </div>
+                  <div class="inset" style="margin-top:calc(18*var(--H))" data-scroll>
+                    <div class="dhead" data-t="engagementDriversHeader">What makes up your score</div>
+                  </div>
+                  <div id="rows" style="margin-top:calc(6*var(--H))"></div>
+                  <div class="inset" data-scroll>
+                    <div class="foot" data-t="engagementCardFooter">A habit snapshot, not a health measure. The brain picture is an illustration.</div>
+                  </div>
+                </div>
+              </div>
+              <div id="tabbar" data-layout-allow-occlusion data-layout-allow-overlap>
+                <div class="row">
+                  <div class="tab on"><span data-t="analyticsTabThisWeek">This week</span><i></i></div>
+                  <div class="tab"><span data-t="analyticsTabHabits" data-layout-ignore>Habits</span><i></i></div>
+                  <div class="tab"><span data-t="analyticsTabBooks" data-layout-ignore>Books</span><i></i></div>
+                </div>
+                <div class="hair"></div>
+              </div>
+            </div>
+
+            <div id="dock" data-layout-allow-occlusion data-layout-allow-overlap>
+              <div id="capsule"></div>
+              <div class="dockRow">
+                <div class="dtab"><i class="ci">&#xf6ca;</i><span data-t="navHome">Home</span></div>
+                <div class="dtab"><i class="ci">&#xf3e8;</i><span data-t="navLibrary">Library</span></div>
+                <div class="dtab on"><i class="ci">&#xf8b7;</i><span data-t="navAnalytics">Analytics</span></div>
+                <div class="dtab"><i class="ci">&#xf47e;</i><span data-t="navProfile">Profile</span></div>
+              </div>
+              <div class="edge"></div>
+            </div>
+
+            <div id="barrier" data-layout-allow-occlusion data-layout-allow-overlap></div>
+            <div id="sheet" data-layout-allow-occlusion data-layout-allow-overlap>
+              <div class="stop">
+                <div class="handle"></div>
+                <div class="xbtn"><div class="disc"><div class="press" id="xpress"></div><i class="mi">&#xf647;</i></div></div>
+              </div>
+              <div class="sview" id="sview" data-layout-allow-overflow>
+                <div class="scontent" id="scontent">
+                  <div class="shead">
+                    <div class="shrow" data-sscroll>
+                      <div class="thumb" id="thumb"></div>
+                      <div class="shtext">
+                        <div class="rname" data-t="engagementRegionOccipital">Occipital region</div>
+                        <div class="slabel" data-t="engagementDriverReadAlong">Read-along</div>
+                        <div class="meta" data-t="engagementMetaphorReadAlong">On the picture, the back stands for seeing the words.</div>
+                      </div>
+                    </div>
+                    <div class="wline" id="wline" data-sscroll>Carries 20% of your score. This bar is 50% full.</div>
+                  </div>
+                  <div class="sbody">
+                    <div class="sec" data-sscroll>
+                      <h3 data-t="engagementSheetHowTracked">How it’s tracked</h3><div class="gap"></div>
+                      <p class="ptext" data-t="engagementTrackedReadAlong">We compare the time you spent in lyrics view while audio played with your total listening over the last 14 days. Listening with the screen off still counts everywhere else. Until you try read-along, this driver is left out of your score.</p>
+                    </div>
+                    <div class="sec" data-sscroll>
+                      <h3 data-t="engagementSheetYourNumbers">Your numbers</h3><div class="gap"></div>
+                      <div class="grid" id="grid"></div>
+                    </div>
+                    <div class="sec" data-sscroll>
+                      <h3><span data-t="engagementSheetLastFourWeeks">Last 4 weeks</span><small>  <span data-t="engagementSheetTrendSubtitle">How full this bar was</span></small></h3><div class="gap"></div>
+                      <div class="chart">
+                        <div class="bars" id="bars"></div>
+                        <div class="base"></div>
+                        <div class="weeks"><span data-t="engagementTrendWeeksAgo3">3 weeks ago</span><span data-t="engagementTrendWeeksAgo2">2 weeks ago</span><span data-t="engagementTrendLastWeek">Last week</span><span data-t="engagementTrendThisWeek">This week</span></div>
+                      </div>
+                    </div>
+                    <div class="raise" data-sscroll>
+                      <h3 data-t="engagementSheetHowToRaise">How to raise it</h3>
+                      <p class="ptext" data-t="engagementRaiseReadAlong">Open the lyrics view and follow the highlighted words as the narrator reads.</p>
+                    </div>
+                    <div class="priv" data-sscroll>
+                      <i class="mi">&#xf888;</i>
+                      <span data-t="engagementPrivacy">Stays on your device. Worked out from your listening on this phone.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="safe"></div>
+            </div>
+
+            <div id="statusBar" data-layout-allow-occlusion>
+              <div id="sbTime">9:41</div>
+              <div id="sbIcons">
+                <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1" fill="#000" /><rect x="4.9" y="5.2" width="3.2" height="6.8" rx="1" fill="#000" /><rect x="9.8" y="2.8" width="3.2" height="9.2" rx="1" fill="#000" /><rect x="14.7" y="0" width="3.2" height="12" rx="1" fill="#000" /></svg>
+                <svg width="17" height="12" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.3 2.5.2.2.5.2.7 0l1.2-1.2c.2-.2.2-.5 0-.7A11.6 11.6 0 0 0 8.5 0C5.4 0 2.4 1.2.3 3c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0a9.1 9.1 0 0 1 6.3-2.6Z" fill="#000" /><path d="M8.5 6c1.3 0 2.6.5 3.6 1.4.2.2.5.2.7 0L14 6.2c.2-.2.2-.5 0-.7a8.1 8.1 0 0 0-11 0c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0 1-.9 2.3-1.4 3.6-1.4Z" fill="#000" /><path d="M10.9 9.3c.2-.2.2-.5 0-.7a3.5 3.5 0 0 0-4.8 0c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0Z" fill="#000" /></svg>
+                <svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.6" fill="none" stroke="#000" stroke-opacity=".38" /><rect x="2" y="2" width="20" height="9" rx="2.2" fill="#000" /><path d="M25 4.3v4.4c.9-.3 1.5-1.2 1.5-2.2s-.6-1.9-1.5-2.2Z" fill="#000" fill-opacity=".45" /></svg>
+              </div>
+            </div>
+            <div id="homeIndicator" data-layout-allow-occlusion></div>
+          </div>
+        </div>
+        <img class="frame" id="frame" src="../../assets/frame-iphone.png" alt="" data-layout-allow-occlusion />
+      </div>
+    </div>
+
+    <script>
+// Generated from D:hushbooklibeaturesanalyticsrainrain_geometry_data.dart (read-only copy).
+// Line art: Openclipart "Human Brain" by spacefem (CC0).
+window.BRAIN = {"kBrainViewBox":"0 0 400 300","kBrainOutline":["M94.3,188.5c-6.4,-7.5-20.3,-1.7-28.3,-8.9-10.1,-5.4-22.8,-12.8-22.9,-25.7-5,-5.3-11.3,-9.6-10.9,-18.5 3.7,-10.3-5.5,-19.7-.8,-28.9 2.2,-6.7 4.4,-16.6 8.1,-22.8 5.5,-8.1 13.3,-14.1 17.6,-23 6.2,-8.5 15.1,-14.3 24.1,-19.4 7.5,-1.1 10.2,-10.1 17.8,-12.7 9.3,-5.7 20.2,-7.3 30.3,-10.8 8.8,-.3 19.9,-4.9 29.6,-6.3 14.5,1.5 27.9,-6.9 42.5,-3.8 10.8,4.2 20.6,1 31.9,3.3 19.1,2.8 38,8.1 55.3,16.7 8.7,5.5 16.2,13 22.3,21.1 1.8,10.1 19.1,9.1 21.9,21.3 1.4,12.9 10.3,18.8 18.1,28.1 1.8,8.2 11.7,14.4 11.9,24.2 1.7,7 6.8,12.4 5.4,20-1.5,11.9 3.8,23.5 .8,35.3-2,11.5-11.2,19.4-17.1,29-4.3,7.2-16.1,6.3-21.5,5.1","M330.4,211.8c-1.3,16.4-11.5,37.7-28.2,40.9-15.5,1.9-33,3.7-49.2,6.4","M253,259.1c-1.1,10.2 7.5,20.3 7.2,30.8-2.8,3.1-10.1,3.2-14.5,3 0,0 0,0 0,0-10.2,-2.8-10.9,-14.4-16.9,-22-4.6,-8.6-12.9,-14.2-16.2,-23.6-6.7,-9.2-17.6,-14.7-22.7,-25.3","M189.9,222c-5.9,-9.7-20.1,3.9-29.5,-1.3-9.6,1.2-18,3.4-27.2,0-3.6,.1-12.9,-4.6-16.9,-6.8-4.2,-2.2-7.6,-4.1-11.6,-7-8.4,-3.1-6.5,-15.1-10.4,-18.4"],"kBrainFissures":["M217.6,10.1c-4.1,.6-7.4,3.3-11.1,5.5","M207.7,48.3c-.1,.2-.3,.3-.4,.4-3.1,2.5-4.5,8.8-6.8,12.7-2.2,3.8-5.3,5.2-6.7,10-2.2,7.7-3.4,16.3-3.4,25","M186.1,108c6.1,4 7.6,8.5 7.6,13.4","M90,184.2c0,0-.2,-11.8 3.8,-16.2 4,-4.4 19.6,-30.5 37.4,-29.8 17.7,.7 22.8,1.9 34.1,-6.1 4.9,-3.4 11.1,-4.9 17.3,-5.1 6.1,-.3 6.6,-7.9 23.1,-5.9 8.8,1.1 5.7,3.1 15.2,6.1","M336.5,81.2c0,2.2-.7,6.5-1.6,8.4","M326.5,103.5c.4,.8 .8,1.5 1.2,2.2 2.1,4.6-.1,7.2 .1,10.3","M327.7,117.5c.1,.4 0,.7 0,1.1-.4,6.2-8.9,11-3.4,17.6","M324.6,155.3c-8,2.7-17.1,3.1-22.2,.5","M288.3,138.7c0,0 9.8,8.6 13.7,16.6 3.9,8.1 4.8,17.3 3.8,28.6","M190,221.7c1.8,-4.7-.7,-6.9-3.5,-11.1","M186.6,210.1c4.8,.1 11,1.1 13.1,-1 .7,-.6 1.4,-1.1 2.4,-1.4 9.2,-3.6 31.2,6.6 37.8,3.3 28.3,-14.2 62.9,2.9 90.5,.8","M202.1,207.7c-2.7,14.5 3.1,15.8 9.8,22.4 1,1.1-2.4,7-.7,8.7 10.7,10.7 23.3,16.6 41.8,20.3"],"kBrainRegionOrder":["frontal","parietal","occipital","temporal","cerebellum","brainstem"],"kBrainRegionFill":{"frontal":"M30.1,111.3l.4,-2.8 1.3,-3.4 3.7,-12.2 1.7,-4.5 1.6,-3.5 1.2,-1.9 2.3,-3.1 7.7,-8.9 3,-3.6 2.2,-3.3 1.9,-3.4 .4,-.6 2.5,-3 2.8,-2.8 2.3,-2.1 3,-2.5 5.8,-4 7.3,-4.4 2.1,-.6 1.3,-.5 1.2,-.8 2.2,-1.8 5.8,-5.8 1.8,-1.4 1.3,-.8 2.1,-1 4.2,-2.3 5,-2.1 5.3,-1.7 11.3,-3.3 4.5,-1.4 3.6,-.4 4.5,-.8 14.4,-3.7 5.5,-1.2 1.6,-.2 2.3,.2 3.1,-.1 4.6,-.4 4.5,-.8 12,-2.5 6,-.8 3.8,-.1 3.9,.3 2.3,.4 2.4,.8 2.3,.6 4.6,.7 4.6,.3 2.3,0-2.3,.5-2.1,.9-2,1.1-4.7,3-1.3,6.5-.2,3.4 0,1 .3,1.8 .6,1.9 1.8,4.6 .7,2.7 .1,2.1-.1,2.3-.7,6.4-1.3,1.3-1.6,2.4-3.3,7.4-1,2-1.3,1.9-3.6,4.5-.8,1.3-.7,1.5-1.6,6-1.1,6.2-.8,7.1-.2,6.5-2.8,6.1-1.5,5.5 1.6,1.1 2,1.8 1.1,1.3 1.2,1.9 .6,1.2 .7,2 .3,2.1 .1,2 0,.3-2.1,.8-2.1,1.1-3.4,2.3-1.6,.7-1.4,.3-3.8,.3-3.1,.5-3.1,.7-2.3,.8-3.5,1.7-4.8,3.1-2.7,1.5-2.5,1.2-3.1,1-3.8,.7-4.2,.3-4.9,-.1-10.1,-.4-2.5,.1-1.7,.2-2.4,.6-1.6,.6-2.3,1-3.1,1.7-2.9,2.1-3.5,2.9-3.2,3.1-3.1,3.3-2.7,3.3-9.4,12.2-1.1,2.6-1,3.9-.5,3.8-.2,4.6 .8,1.7-1,-.5-2.7,-.8-2.9,-.4-9.3,-.8-2.9,-.6-2.2,-.8-2,-1-1.8,-1.4-7.5,-4.3-3.3,-2.2-2.6,-2-2.4,-2.1-1.6,-1.7-1.9,-2.4-1.2,-2-1,-2-.8,-2.2-.4,-2.3-.2,-2.5-6.3,-6.4-1.4,-1.8-1.2,-1.8-1.3,-2.8-.4,-1.5-.2,-1.6-.1,-2.6 .4,-1.5 .3,-1.5 .2,-1.6-.1,-2.2-.5,-3.7-1.6,-6.5-.6,-2.8-.2,-2.2z","parietal":"M186.1,108l1.5,-5.5 2.8,-6.1 .2,-6.5 .8,-7.1 1.1,-6.2 1.6,-6 .7,-1.5 .8,-1.3 3.6,-4.5 1.3,-1.9 1,-2 3.3,-7.4 1.6,-2.4 1.3,-1.3 .7,-6.4 .1,-2.3-.1,-2.1-.7,-2.7-1.8,-4.6-.6,-1.9-.3,-1.8 0,-1 .2,-3.4 1.3,-6.5 4.7,-3 2,-1.1 2.1,-.9 2.3,-.5 7.7,0 5.5,.5 10.3,1.7 7.8,1.6 8.5,2.1 7.6,2.2 8.3,2.9 8.1,3.3 7.2,3.3 3.3,2.2 3.2,2.4 3.6,3.1 2.9,2.7 3.3,3.5 3.1,3.5 2.9,3.7 .3,1.3 .8,1.7 .7,1 1.4,1.4 1.5,1.2 1.7,1.1 8.4,4.5 1.8,1.2 1.6,1.5 1.9,2.2 1.1,1.9 .7,2.3 .6,3.4 .8,3 1.2,2.8 1.1,1.9-.4,3.9-.5,2.5-.5,1.4-.2,.6-4.6,7.4-3.8,6.5 .9,1.7 .7,1.5 .2,.8 .3,1.7-.1,2.2-.7,3.3-.2,4.6-.3,1.4-.8,1.9-3.2,5.6-.6,1.9-.2,1.3 .1,1.3 .4,1.3 .8,1.4 .5,.8 1.7,3.1 .8,2.2 .2,1 0,2.7-.5,3.7-.5,2.6-1.4,3.8-2.5,.7-3.4,.8-3.4,.5-2.5,.2-3.2,0-2.2,-.2-2.7,-.6-2.3,-.9-.1,.2-1.2,-2.4-1.1,-1.7-3,-4.2-3.9,-4.3-4.8,-4.7-2.7,1.3-2,.8-2.6,.4-2.6,.3-2.9,.1-3.5,-.2-4.2,-.5-4.8,-.7-8.9,-1.8-8.6,-2.5-11.5,-3.7-13.1,-5-4.4,-1.7-1.6,-.9-3.2,-1.9-1.4,-.6-1.2,-.4-2.4,-.4-3.7,-.4-3.4,-.1-3,.3-2.4,.5-.5,.1 0,-.3-.1,-2-.3,-2.1-.7,-2-.6,-1.2-1.2,-1.9-1.1,-1.3-2,-1.8z","occipital":"M302.3,156l.1,-.2 2.3,.9 2.7,.6 2.2,.2 3.2,0 2.5,-.2 3.4,-.5 3.4,-.8 2.5,-.7 1.4,-3.8 .5,-2.6 .5,-3.7 0,-2.7-.2,-1-.8,-2.2-1.7,-3.1-.5,-.8-.8,-1.4-.4,-1.3-.1,-1.3 .2,-1.3 .6,-1.9 3.2,-5.6 .8,-1.9 .3,-1.4 .2,-4.6 .7,-3.3 .1,-2.2-.3,-1.7-.2,-.8-.7,-1.5-.9,-1.7 3.8,-6.5 4.6,-7.4 .2,-.6 .5,-1.4 .5,-2.5 .4,-3.9 .4,.7 1.6,2.4 2.4,2.9 10,11 .9,2.7 1.3,2.5 1.7,2.5 3.6,5.1 1.6,2.6 1.1,2 .9,2.2 .5,2.2 .3,2.4 .4,1.5 1,2.8 3,6.8 1,3.6 .2,2.9-.5,4.8 .1,4.6 .3,3.8 1.2,9.2 .4,4.6 .1,3.8-.3,3-.3,2.3-.9,3.9-.7,2.2-1.1,2.8-1.1,2.1-1.5,2.6-3.1,4.5-6.6,8.7-3,4.5-1,1.2-1.9,1.5-1.4,.8-2.3,.8-1.6,.4-2.5,.4-2.5,.1-2.4,0-2.9,-.3-2.5,-.5-3.6,.2-3.6,0-4.4,-.3-4.5,-.4-7.6,-1-1.6,-.3 .5,-3.5 1.7,-8.6 .3,-1.9 0,-2-.6,-4.2-1.2,-5.9 .3,-4.5 0,-4.2-.1,-4.1-.3,-3.1-.7,-3.7-.7,-2.9-.9,-2.7z","temporal":"M90,184.2l.2,-4.6 .5,-3.8 1,-3.9 1.1,-2.6 9.4,-12.2 2.7,-3.3 3.1,-3.3 3.2,-3.1 3.5,-2.9 2.9,-2.1 3.1,-1.7 2.3,-1 1.6,-.6 2.4,-.6 1.7,-.2 2.5,-.1 10.1,.4 4.9,.1 4.2,-.3 3.8,-.7 3.1,-1 2.5,-1.2 2.7,-1.5 4.8,-3.1 3.5,-1.7 2.3,-.8 3.1,-.7 3.1,-.5 3.8,-.3 1.4,-.3 1.6,-.7 3.4,-2.3 2.1,-1.1 2.6,-.9 2.4,-.5 3,-.3 3.4,.1 3.7,.4 2.4,.4 1.2,.4 1.4,.6 3.2,1.9 1.6,.9 4.4,1.7 13.1,5 11.5,3.7 8.6,2.5 8.9,1.8 4.8,.7 4.2,.5 3.5,.2 2.9,-.1 2.6,-.3 2.6,-.4 2,-.8 2.7,-1.3 4.8,4.7 3.9,4.3 3,4.2 1.1,1.7 1.2,2.4 1.1,2.7 .9,2.7 .7,2.9 .7,3.7 .3,3.1 .1,4.1 0,4.2-.3,4.5 1.2,5.9 .6,4.2 0,2-.3,1.9-1.7,8.6-.5,3.5-21.3,-3.4-7.1,-.8-6.4,-.4-4.7,-.1-3.9,.2-3.9,.3-3.8,.6-3.8,.8-3,.8-3.7,1.3-4,1.9-1,.2-1.6,.2-2.6,0-3.7,-.6-14,-2.9-6.1,-1-2.4,-.2-2.2,0-2,.3-1.8,.5-1.3,.6-1.9,1.4-1.8,.5-2.9,.2-7.6,-.3-.1,.5 2.8,4.1 .7,1.2 .4,1.3 .2,2.1-.6,2.4 0,.5-.5,-.8-.9,-1-.9,-.8-1.1,-.6-1.1,-.3-1.2,-.2-1.9,0-3.4,.5-8.1,2.2-3.7,.7-2.1,0-1.4,-.1-2.1,-.5-1.2,-.6-11.8,1.6-3.9,.2-3,0-3.8,-.5-2.3,-.5-2.4,-.8-1.1,-.1-1.9,-.4-4,-1.5-5.1,-2.3-10.7,-5.7-3.1,-2-2.6,-1.8-2.3,-1.2-1.1,-1-1.4,-1.8-1.1,-2.1-1,-3-1.5,-5.8-.7,-1.8-.9,-1.4-1.4,-1.3-1.1,-.9-1.4,-.7z","cerebellum":"M201.4,214.1l.2,-3 .5,-3.4 1.8,-.5 2,-.3 2.2,0 2.4,.2 6.1,1 14,2.9 3.7,.6 2.6,0 1.6,-.2 1,-.2 4,-1.9 3.7,-1.3 3,-.8 3.8,-.8 3.8,-.6 3.9,-.3 3.9,-.2 4.7,.1 6.4,.4 7.1,.8 22.9,3.7 7.6,1 4.5,.4 4.4,.3 3.6,0 3.6,-.2 2.5,.5-2.5,-.5-.4,3-.5,3.1-1.3,5.4-1.9,5.4-2.4,5.3-2.9,4.9-3,3.9-2.1,2.3-1.7,1.6-1.8,1.4-1.9,1.3-1.9,1.1-2.1,.9-2.1,.8-2.2,.5-30.3,3.7-10.3,1.4-8.6,1.3-6.2,-1.4-5,-1.3-5.5,-1.8-5.1,-2.1-5.4,-2.6-4.4,-2.7-4.1,-3-4.5,-3.9-1.6,-1.5-.3,-.5-.2,-.6 .1,-1.4 1.2,-4.8 0,-1-.7,-.9-4.7,-4.3-1.8,-1.7-1.5,-2-1.1,-2.3-.6,-2.7z","brainstem":"M186.5,210.6l.1,-.5 7.6,.3 2.9,-.2 1.8,-.5 1.9,-1.4 1.3,-.6-.5,3.4-.2,3 .2,2.5 .6,2.7 1.1,2.3 1.5,2 1.8,1.7 4.7,4.3 .7,.9 0,1-1.2,4.8-.1,1.4 .2,.6 .3,.5 1.6,1.5 4.5,3.9 4.1,3 4.4,2.7 5.4,2.6 5.1,2.1 5.5,1.8 5,1.3 6.2,1.4-.1,1.5 .1,2.1 .6,3.7 1.1,3.6 3.2,8.8 1.2,3.7 .8,3.7 .2,2.2 .1,1.5-1,.8-1.2,.7-1.3,.5-1.5,.5-4.1,.5-5.4,0-2.3,-.8-1.9,-1.1-1.6,-1.4-1.5,-1.6-1.2,-1.7-1.2,-1.9-4,-8.3-1.8,-3.3-4.3,-6.5-7.4,-9-2.3,-3.1-2,-3.3-1.6,-3.6-1.9,-2.4-2.7,-2.9-9,-8.4-3.3,-3.3-2,-2.3-1.4,-1.9-2.3,-3.9 0,-.5 .6,-2.4-.2,-2.1-.4,-1.3-.7,-1.2z"},"kBrainRegionGyri":{"frontal":["M62.1,87.1c0,0-16.2,3.6-21.2,10-1.9,2.4-8.6,12.4-1.3,21.4-2.4,3.7-4.8,4.9-4.8,4.9","M50,123.8c-3.6,-.4-6.6,-3.2-10.5,-5.1","M70.5,157.5c-9.4,1.3-25.4,-8.2-23.3,-25.5 .7,-5.3 3.2,-8.7 5.6,-14","M70.8,157.1c-7.8,6.1-20.5,-6-27.6,-3.2","M66.7,65.6c-5.8,-1-10.4,.7-14.4,2.6","M70.8,157.1c-7.9,6.1-6.7,5.2-13.8,8.2","M53.4,79.3c10.4,-8.1 18.6,-18.1 22.2,-31.2","M95.3,164.4c0,0-15.6,.4-21,-4.2-5.5,-4.6-10.1,-9.8-8.9,-13.4 1.2,-3.5 4.7,-10.7 3.8,-14.9-1,-4.1-5.2,-17.3-5.2,-17.3","M92.4,170c-6.9,-1.4-6.4,-1.3-9.9,-6.6","M85.8,84.1c.4,6.7 5.5,9.7 10.3,13.5","M77.8,124.8c0,0 15.7,8.3 18.8,10.8 3.1,2.5 8,10.2 14,12.4","M60.2,101.1c0,0 1.8,-9.1 3.9,-16.1 2.2,-7 8.5,-24.7 15.2,-26.7 6.6,-1.9 9.1,.5 10.1,-1.5 1,-1.9 .4,-6.6 8.6,-9.7 9.3,-3.5 44.3,-9.2 53.9,.2","M136.4,94.7c-3.9,-15.9-30.3,-12.5-34.1,-7.2-3.8,5.2-6.2,12.1-10,16.4-5.1,5.7-18.6,6.9-18.6,6.9","M106.4,66.2c-1,8.3-2.2,14.2 1.4,18.2","M89,42.2c0,0 4.5,-7 16.1,-11.7 15.4,-6.1 26.6,.4 38.4,-13.5","M114.8,43.2c2.9,-4.9 1.1,-8.1 .4,-11.5","M111.4,92.3c0,0 6.2,9.9 7,14.4 .7,4.4 2.3,13.9 4.1,18.6 1.6,4.2 3.7,11.7 4.2,13.3","M112.3,51.3c6.9,3.5 18.1,12.1 25.4,14.7","M128.2,18.7c-2.9,2.6-2,3.7-.4,7.2","M137.2,111.5c-1,-16.8-1.4,-36.8-.4,-41.6 2.3,-11.3 9.2,-16.6 20,-27.1","M151.2,23.8c.5,1.9 .8,3.6 .8,5.6","M153.2,16.3c.6,3-.5,6.2 1.5,8.1","M148.6,44.5c0,0-.2,-6.9 4.7,-13.1 4.9,-6.3 10.8,-9.3 10.8,-9.3","M168.3,14.4c-8.7,1.6-16.6,10.7-14.5,16.5","M156.5,111.5c8,7.3 11.8,10.8 9.4,20.2","M163.5,95c-2.5,-12.7-2.7,-21 4,-28.1 6.6,-7.2 13,-11.7 13.8,-14.4 1.6,-5.5 8.1,-20.2 15.7,-24","M185.7,25.9c-.6,-7.6-11.5,-12.8-17.3,-14.5","M177.2,64.1c5.2,4.4 14.1,3.9 15.6,11.1","M187.6,37.6c-4.3,-12.8 4.5,-22.7 18.9,-21.6","M196.9,40.1c6,4.9 7.5,1.7 10.9,8.1"],"parietal":["M212.1,122.8c0,0 4.4,-2.7 8.2,-7.6 3.8,-4.8 8.9,-17.2 8.9,-17.2","M206.5,16c.5,0 .9,0 1.4,.1 13.2,1.6 24,-1.9 34.8,3 2.3,1.2 2.5,4.8 2.5,8.2","M207.7,48.3c12.6,-10 31.4,-8 49.7,7.2","M214.2,87.3c2.8,-3.5 15.5,-11.6 22.7,-8.5 14.7,6.4 11.5,16.4 11.2,25.3","M222.7,60.3c-7,19.2 3.1,12.3 18.1,13.6 5.3,.4 9.8,11.2 14.8,-.8 1.8,-4.2-3.8,-11.9-19.5,-21","M212.3,45.4c-.3,-8.9 6.4,-17.4 14,-20.2 7.6,-2.7 13.2,2.5 21.8,5.1 7.4,2.3 19.7,2.8 24.7,6.4 4.9,3.4 2.5,9.7-.5,15.1","M243.1,27.8c9.6,-.5 18.7,1.4 28,1.4","M270.8,108.6c-3.1,12.3-8.8,22.3-15.4,30","M268.7,116.8c3,4.1 14.7,5.3 14.7,5.3","M258.8,74.2c7.6,-3.5 13.5,-5.3 22.6,-2.5 7.4,2.3 13.1,19.4 13.1,19.4","M305,56.9c1.5,-19.2-39.7,-40.4-57.4,-42.9","M250.4,49.7c30.4,-8.3 37.1,19.4 55.8,30.3","M294.8,101.8c1.6,4.7 7.1,12 6.6,16.1-.5,2.4-2.6,6.3-8.1,16.4-1.1,2.2-2.8,3.6-4.6,4.7","M301.4,117.9c.7,-.5 3,-1.4 4.4,-2","M331.7,88.3c3.5,-33.1-38,-25.8-48,-49.1","M321.8,67c-8.1,2.9-13,-1.5-14.5,-8.4","M295.7,71.2c14.8,-3.1 26.9,3.4 29.6,16.8","M314.8,104.3c-.5,-3.3 .9,-9.3-.5,-12.1","M314.1,90c3,1.9 9,8 12.3,13.4","M307.3,100.2c14.7,8.1 20,11.7 20.4,17.1","M319,81.4c.1,2.8-.6,7.4 1.2,8.7 2,1.5 4.1,5.6 5.8,6.5","M325,83.8c2.3,2.3 6.1,4.1 9.7,6.1"],"occipital":["M323,155.8c4.7,4.8 6.3,16.5 7.8,22.9","M324.6,155.3c2.7,-.9 5.2,-2 7.4,-3.3","M347.9,167.3c-1.7,3-3.6,8.8-8,12.4-4.7,3.9-11.9,5.7-13.5,9.7-1.5,3.9 6.7,7.9 7.6,10.8","M331,114.7c4.2,1.6 10,10.6 9.8,15.8-.2,5.1-.5,16-.3,18.7","M354.9,192.6c-3,2.4-5.8,8.8-10,11.9-5.2,3.8-10.5,4.5-14.5,7.3","M340.8,179.1c3.4,1.3 6.3,4.3 8.3,6.2","M348.7,109.9c2.3,-1.3 3.4,-6 3.4,-8.3","M340.1,141.7c8.7,.2 19,13.4 23.3,23.6","M334.7,89.9c4.3,2.4 8.3,5 9.1,8.7 .7,3.4 2.7,6.6 6.5,13.4 3.9,7.1 4.2,12.6 5.3,15.3 2.1,5.2 6.2,15.4 7.5,26.8 1,8.8 1,25.5-3.8,30.8-4.7,5.3-11,25.2-11,25.2","M357.7,132.5c1.6,-3.3 5.1,-6.3 5.1,-10.1"],"temporal":["M111.8,210.4c7.9,1.4 15.7,1.9 23.8,-2.7","M149.9,215.8c-6.2,-5-11,-6.7-18.7,-9.3-7.8,-2.7-11.4,-12.6-7.6,-20.2 3.9,-7.6 4.5,-10.1 4.5,-10.1","M145.8,158.1c.8,4.9 5.1,10.4 5.1,10.4","M143.9,171.9c5.8,6.2 7,14.9 7,14.9","M155.3,137.5c2.6,5.2 3.5,9.3 1.3,12.6","M158.6,218.9c2.2,1.7 4.4,2.6 6.5,3","M186.6,210.1c-1.6,0-3.1,.1-4.1,.4-11.4,3.8-22.3,7.8-32.1,11.6","M186.7,210.7c-8.6,-.5-10.3,7.6-16.4,10.6","M175.6,163c3.9,3.1 4.7,7.6 4.7,7.6","M178.3,145.5c-1.2,5.8 .7,11.1 3.6,13.5","M180.7,218.7c3.1,-1.3 6,-2.7 8.8,-3.5","M255.4,138.6c-11.8,13.8-26.4,20.6-33.6,20.9-7.2,.4-6.7,-4.9-12.6,-3.3-2.3,.6-7.1,2.3-11,2.7-6.1,.6-11.7,-.1-15.2,.1-5.7,.2-11.9,7-16.9,8.7-4.4,1.6-12.7,-.8-17,1.5-8.1,4.3-14.1,6.3-16,6.7-9,2.1-18.7,-3.9-18.7,-3.9","M151.1,202.9c0,0 11.3,-8.6 14.1,-8.7 3.2,-.1 11.8,1.1 15.7,.4 8.1,-1.6 10.5,-6.5 18.5,-8.4 2.6,-.6 12.7,2.5 21.6,.1 4.4,-1.2 13.8,-1.8 18.5,-2 4.3,-.2 19.3,5.8 25.2,5 5.7,-.8 13.6,-7.6 24.7,-11.8","M232.8,159.8c3.8,-3.6 13.1,-11.8 13.1,-11.8","M288.7,139c-3.8,2.2-8,2.9-8.7,5-2.9,9-5.7,16.9-11.6,21.3-5.9,4.4-4.7,5.1-11.5,9.5","M280.1,182c9.3,9.3 17.6,14 24.8,21.2"],"cerebellum":["M201.8,209.5c5.6,-.2 18.8,2.4 24.1,1.8","M201.5,211.9c5.2,3.2 14.5,4.8 22.9,3.2 3.3,-.7 6.5,-2.4 10.6,-3.5","M201.5,215.3c6.9,4.2 17.3,5.3 25.6,1.5 1.9,-.9 6,-2.3 8.5,-3","M237.6,214c-2.6,3.3-10.2,6.3-14.9,7.1-8.3,1.4-14.9,-1.4-20.6,-2.7","M211.9,230.1c8.3,.9 14.2,-3.7 20.3,-6.5","M241.3,216.8c-8.8,6.9-28,7.4-36.8,6.4","M215.2,230.2c11,24 40.4,16.7 61.4,13.6","M222.1,238.4c12.8,7.6 31.8,9.8 46.7,6.6","M220.6,238.3c13.5,1.2 39.5,.4 49.3,6.4","M269.3,232.8c-13.2,4.1-33.6,2.6-45.5,2.6","M232.4,252.8c13.3,2.2 25.1,3.9 35.6,4.1","M211.9,230.1c9.5,20.3 26.4,20.4 47.9,20.4 5.4,0 14.3,.4 19.3,-1.2 5.4,-1.8 13.1,.1 19.3,1","M236.7,212.9c9.5,1.2 25.7,2.5 29.6,10.4","M223.1,228.5c9.8,1.7 24.2,3.8 37.2,4.4 9.4,.4 17.3,-.7 25.9,-1.3","M233.5,220.7c14.5,0 27.9,3.1 42.5,3.1","M238.7,211.4c12.7,-.1 27,3.9 32.7,12.3","M281.7,225.2c-15.5,4-32.1,1-46.5,-1.8","M236.1,227.1c14.9,3.5 31.8,1.8 46.4,2.4","M291.9,253.4c-11,-.2-17.8,1.1-29.1,.9-9.3,-.2-23.5,-2.6-32.3,-2.2","M249.1,207.5c10.7,2.3 19.1,9.4 26.9,16.3","M251.5,206.9c1.8,.5 12.2,1.7 16.5,4 11.6,6.3 22.3,17.3 23.1,19.7","M289.5,248.9c-6.3,-2.6-13.3,-5-19.2,-7.7-4,-1.8-6.8,-4.2-11.2,-4.9","M258.5,205.7c2.4,1.7 11.2,2.9 17,6.4 10.1,6.2 18.3,15.5 20.5,19.4","M302.7,247.3c-15.5,-1.8-21.8,-9.1-36.8,-11.3","M266.9,205.3c2.8,1.2 8.6,2.1 13,5 9.6,6.6 19.1,17.2 21,21.3","M279.4,236c9.1,4.8 17.4,6.4 28.1,7.1","M280.8,206.3c7.4,5.2 20.6,18 23.8,25.1","M309.9,240.5c-5.6,.8-9.9,-1.5-14.2,-2.9-4.4,-1.5-8.7,-2.1-14.8,-3.3","M286.3,207c7.8,5 19.9,16.2 23.8,23.5","M286.3,228c5.2,5.5 23,4 30.8,.4","M301.8,248c1.4,2.1 2.3,3.1 2.7,4.2","M304.7,245.4c1.9,2 4.4,3.1 4.6,4.8","M300.9,231.6c4.2,2.2 10.8,2.1 13.8,1.5","M300,209.2c7.1,3 12.8,14.2 14.8,20.1","M304.7,235.4c3,1.1 5.1,1.1 8,1.4","M289.6,254.2c11.4,-3.7 20.5,-11.5 27.8,-25.9 2,-4.1 1.6,-13.7-.2,-16.7","M307.5,243.1c2.9,1.5 4.1,3.3 4.8,5.2","M309.9,240.5c3.2,1.2 3.9,3.3 4.7,5.7","M312.7,236.8c3.4,1.5 6,2.3 5.7,5.4","M314.2,234c3.6,1.2 7.9,.8 7.7,3.5","M317.5,228.9c3.7,.4 6.1,1.6 7.1,3.6","M318,214.4c3.2,1.4 4.8,3.5 11.5,2.8","M318.6,224.1c2.6,.2 7,.1 8,3.5","M318.5,219.7c3.5,1.2 6.8,1.2 10.2,1.1"],"brainstem":["M202.9,221.7c-8.4,-.9-10.8,-11.1-1.4,-11.8","M214.6,251.6c1.6,-5-1.3,-9.1-3.3,-12.6","M228.8,252c3.5,6.8 9.8,15.4 14.3,20.8"]},"kBrainRegionWeights":{"frontal":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"parietal":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"occipital":[1,1,1,1,1,1,1,1,1,1],"temporal":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"cerebellum":[0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,1,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,1,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3],"brainstem":[1,1,1]},"kBrainRegionLabel":{"frontal":[131,79],"parietal":[260,79],"occipital":[335,182],"temporal":[202,165],"cerebellum":[259,232],"brainstem":[242,269]},"kBrainRegionAreaQuantiles":{"frontal":[1.0000883357539738,7.963659074682814,11.167736872138722,13.65656275835595,16.114040620769128,17.763390802672262,19.40095684360381,21.00718178472517,22.43219155044757,23.772631919802212,25.083017246614485,26.3078254889843,27.597405875339216,28.706379535326903,29.623703703090385,30.70959027598801,31.85526267820555,32.67380315872103,33.62829660559122,34.63065158788496,35.43385052953225,36.32137991373007,37.221575257575886,38.01893657444375,38.95508470145488,39.654781921744295,40.409909881524406,41.194349136378975,42.007612824341955,42.80167702372566,43.39800192612609,44.17503232044454,44.822159509625514,45.65748883040384,46.190877471017934,47.04197260659458,47.580508350745845,48.28728895486078,48.96084012084535,49.59650951668512,50.19519600832411,50.8289031712869,51.521224317346295,51.986916888486704,52.71472826712169,53.203512587619635,53.764978222661966,54.411815179113894,54.98312560588427,55.55641579769384,56.10900030018271,56.691137643046176,57.25689157095229,57.789759084269726,58.314327830867036,58.86786899396802,59.30960308482478,60.00385282593046,60.506800381763604,61.23770221538748,61.921127274483126,62.68691034514486,63.47285386748511,64.31697155399618,65.08367763803919,66.02600632349268,66.9414959542866,67.90729066013036,68.74378393516729,69.81682924500396,70.62032569514732,71.66779544987847,72.64950277693713,73.73895461088772,74.67522784334464,75.90652224081876,77.03461498942035,78.24319185408874,79.4871456458184,80.56100702352018,81.94907005474656,83.14587457612039,84.44035959808306,85.77440619212662,87.11942391229228,88.48281961515445,89.95169732188087,91.38739600298506,92.98079020141266,94.5426796566233,96.22066697474514,98.17340144631298,99.83483366104502,101.738129681452,103.87939567428732,105.76911703541715,108.122931123297,110.36424564688808,112.76889773446925,115.41422784909702,120.94421985874739],"parietal":[0.9055324897557342,6.842517263095866,9.798974154752683,12.050730478141151,13.755722688849986,15.401941927556015,16.900289754246913,18.16645326378317,19.442739016896855,20.68864315320527,21.92761209515236,22.978679662013583,23.900211880755027,24.948340884834828,25.915631754861337,26.788424922980514,27.648142047564214,28.439764463037488,29.22362517426342,30.153278499011165,30.88073734119701,31.749326396615587,32.31129304089022,33.16655552895031,33.86472782595108,34.59508476514943,35.16277051184971,35.97805462792865,36.48040189007236,37.18091188791052,37.783863931730004,38.43461442837656,39.06430236173989,39.67895873522494,40.309051944388784,40.87077768058714,41.49723444628691,42.01452136910132,42.58191744237799,43.15113587989611,43.621318988439306,44.22239838102388,44.73946291594797,45.2683172601068,45.91317870077011,46.260345094633415,46.900100506998555,47.37108719582975,47.84579657624373,48.36961958660916,48.90827715275749,49.25465050520415,49.82388788983308,50.28340189727573,50.74268755241638,51.209575181662,51.71479061107591,52.1116115004796,52.63857339685432,53.06994962018181,53.460447547515244,53.98536523447961,54.41709877524175,54.8271824247105,55.23422607125576,55.760375463379496,56.10009502668067,56.51919443043743,56.991405683064215,57.37264395536743,57.782526713946254,58.17232430160864,58.64827577637023,59.100090706460655,59.6390840613062,60.11671994175849,60.62358935478806,61.18512280032207,61.72536305119572,62.34116209298767,63.062035163852705,63.59261564235653,64.32123102976753,64.97091872932747,65.62331439718167,66.35978105342247,67.21324881387872,67.93246116221842,68.82165835658745,69.61048294627635,70.4557960725064,71.43123166595338,72.53150663699456,73.53923620249101,74.79318564734352,76.14473422774185,77.94113562381388,80.46377665958998,84.78691348683294,90.16884591360677,99.9546677742308],"occipital":[0.8063961264944133,4.364650851623208,5.835781148000363,7.257682574586065,8.35836771419143,9.406376857841252,10.238784536987602,11.021513554904798,11.84423466628438,12.596575416073417,13.274594152294739,13.844841372257807,14.49961294964068,15.093915996302954,15.693875737061422,16.281823745466912,16.669898146209913,17.29169782801345,17.72811718628455,18.195753773254015,18.742451444210985,19.15762016679036,19.59584490410643,20.07759012677474,20.503580070536927,20.875608297320046,21.319367909313563,21.712918086296007,22.110905839359997,22.44150531812191,22.879564975384152,23.326035861869702,23.60476654654164,23.971113114968976,24.368080574487195,24.755204211491954,25.09199760004136,25.390887139145516,25.826846635520567,26.103238007543244,26.421880891593318,26.7502020437378,27.091939977132384,27.3747972186042,27.716889405317026,27.985438348828957,28.32764571102285,28.688244753165232,29.01942277592684,29.30835410622627,29.734283759153445,30.21915910410015,30.474937373454114,31.038164925449244,31.631941421167944,32.216777966229415,32.756186890351536,33.348403769748394,33.92192367145767,34.65720638482457,35.390884640409794,36.0189939626305,36.770788508077906,37.53793824807045,38.394045480075505,39.44269904079818,40.58039475874188,41.50376275776292,42.815374063041155,43.66406117268218,45.20570935735759,46.2209923423466,47.39612286055501,48.38975097396348,49.59622925046993,50.83274438455935,51.82667653524957,53.25232507400071,54.07764537949993,55.29933089440662,56.30816713704966,57.60558627955506,59.010351844489804,60.10508736499957,61.45264434011373,63.27432162153894,64.436320773839,65.84557151688108,67.49260489225848,69.27234323953837,70.85231846276282,72.3053463895285,73.72020845450795,75.514734349095,77.5079416848657,79.45619697420365,81.4511703906924,83.66420224102355,87.25199580960714,89.63658013254052,100.26187601754235],"temporal":[1.2934305804677666,7.199225406635889,10.138957093692586,12.601525738883335,14.327110745538567,15.869116120803694,17.401104877212227,19.036585581352995,20.151422357194832,21.340618222160042,22.790831185018003,23.623713150520004,24.840479615141074,25.657289370132986,26.87911239921464,27.492341596443758,28.51782078481676,29.333468625646745,30.192915918322036,31.16264139199154,31.82055113264444,32.80933375751177,33.46060626544092,34.25297216760797,35.113449485016446,35.58506003680111,36.45352166750647,37.13637325488131,37.6901508936385,38.42834448596653,39.12940350332297,39.73921628944514,40.3718916756594,41.053150854573445,41.54382791066775,42.32743993736054,42.92530461328204,43.48908373457343,44.21877886229717,45.11324984191786,45.65892749432595,46.79061011665016,47.286562911702795,48.16783796303999,49.10305711995806,49.82986178741044,50.808033694109845,51.5517009408327,52.4909554501796,53.319931786832086,54.16626930336456,55.09097136330441,55.85992122784056,56.867065584689385,57.678405412664965,58.57996390960705,59.430791951667835,60.48979356678634,61.30981604703423,62.28152724921423,63.259529364673014,64.0601847048875,65.12885731716723,66.13826432984862,67.12895424347633,67.89597298966532,69.07911362509647,70.10920341918555,71.05599436174826,72.05848938434657,73.05446142938021,74.02925637597984,75.0686379526946,76.14921771216237,77.17401665363514,78.11980131934735,79.16962072951691,80.10708158635961,81.16544120779207,82.21686062877167,83.23976959340628,84.25138869966916,85.30268151931239,86.33340192452631,87.29574717238657,88.5375261893011,89.43600198436724,90.64292920042729,91.62979336439882,92.95337971037176,93.81773849032989,95.12221458106993,96.25512675961856,97.43339315817204,99.00702798587672,100.41874296777962,101.5779494920923,103.22556407633445,105.22127674038852,107.54571038873681,113.6337972735775],"cerebellum":[0.6751810473801949,4.11026580333744,5.860072692917099,6.992453578279777,8.269150082055225,9.130790532880226,10.033123745048705,10.72677008691445,11.536988761419352,12.192762197842935,12.809936779179871,13.50049723525342,14.091536786224657,14.707993442577328,15.222777967773045,15.767357291891972,16.328653858464694,16.759908386226645,17.34785453440112,17.787038005503938,18.294868333425264,18.62262064849722,19.096775290032387,19.5409412909559,19.98177111929593,20.400270056362555,20.72907566542308,21.108373063598577,21.56853963905728,21.968734670901995,22.317683064263136,22.689245861145817,22.975778799399357,23.454413122801064,23.753903314390197,24.106531807673985,24.503726554387807,24.737902174943088,25.082371579969223,25.456179754795496,25.75405640291552,26.14637512993001,26.520135063432065,26.743976766271434,27.20185276342675,27.512695672319694,27.87048354164633,28.35696762016002,28.922882635632185,29.287738122122416,29.71417897143957,30.300329754249752,30.687044497851986,31.15522147270258,31.70783752884033,32.13830904869205,32.68171850480341,33.298558590611194,33.62900581409444,34.25472563506326,34.73318269030789,35.38309191782837,35.732900061294934,36.38779454848825,36.90634919828782,37.471240571070275,38.08505765411225,38.72141158519232,39.297907824566785,39.81044637945066,40.557954715885316,40.95591633483065,41.560457953987694,42.24956297519749,42.75955394331326,43.43290075486436,44.076087336735,44.745805743709354,45.397672487676104,46.046731159784066,46.73791018906679,47.41925829697279,48.01980243698808,48.82032873072885,49.58762131627325,50.49145675157293,51.40092639905546,52.02271594158584,53.159219772213476,53.741487882616035,54.800419673574275,55.657411864218986,56.7510878484792,57.681364134116336,58.75060357746355,59.895753435473125,61.443417686244246,63.42252457795474,65.42183579988573,67.83731408263996,76.47057583194017],"brainstem":[0.5458985503116416,2.328433254065618,3.3428145380541388,3.9270346851840516,4.477813399910703,4.904162807699175,5.504362381532702,5.877516279011472,6.239167945568831,6.674218876396313,6.868362907988053,7.325898839149439,7.708540809948314,7.924164939781185,8.302241664334616,8.502823367989738,8.684561095336862,8.988458710638735,9.469360791597873,9.528504079489988,9.793670720637058,10.138658194892328,10.328602241842848,10.478722272376883,10.64995781299807,10.80705278939903,11.166020968554603,11.502086994421159,11.637078732166358,11.823858103918845,12.105585388986558,12.279755290430561,12.4722262679441,12.626226729258375,12.958240088232028,13.292103831606234,13.635101253172401,13.884969931291078,14.00582659349587,14.651963154137437,14.837896702938599,15.101351358220226,15.634347824178297,15.8520274652324,16.145588384143856,16.566014363370225,16.738075712789573,17.633128385315338,17.787927674405715,17.955789343548464,18.433763057542194,19.29153126548217,19.46893891242329,19.787217266237686,20.159622291845864,20.531292388480928,21.134805990834195,21.755671345559122,21.94388222583449,22.17107187482813,22.905894967675923,23.284880062061223,23.762524346809226,24.580187946892842,24.948153658134476,25.603836198483904,26.14018430876076,27.405511185036666,28.793437504285066,30.24999245145641,31.76573693955753,34.45017925831965,36.13777036732847,38.72584737276837,41.75752931794398,45.763746198980826,47.350536150944684,48.68593704720833,50.03195848628481,51.48737396285145,52.85899425624668,54.31230138190709,55.67608177125171,57.07736925786881,58.50386726711065,59.9057800650964,60.15359750526056,61.480290186360605,62.970879751147535,64.30165227432109,65.61502645456666,66.98754881792199,68.39102058482153,68.8909348757822,69.92198870348776,71.21943625473371,72.0812993478645,72.95777759682554,74.2484835661164,75.77409660085992,80.5655589387265]},"kBrainRegionPuddleRotationDeg":{"frontal":65.75159157626331,"parietal":289.1804184950888,"occipital":84.8976653907448,"temporal":76.89819468185306,"cerebellum":147.73662155494094,"brainstem":68.35173681378365},"kBrainRegionPuddle":{"frontal":"M0.9432,0.0000L0.9146,0.0599L0.8927,0.1175L0.8785,0.1747L0.8699,0.2331L0.8630,0.2929L0.8536,0.3536L0.8389,0.4137L0.8184,0.4725L0.7933,0.5300L0.7659,0.5877L0.7384,0.6476L0.7110,0.7110L0.6824,0.7781L0.6495,0.8464L0.6088,0.9112L0.5582,0.9668L0.4970,1.0078L0.4272,1.0313L0.3522,1.0374L0.2760,1.0299L0.2018,1.0147L0.1314,0.9982L0.0646,0.9854L0.0000,0.9783L-0.0639,0.9756L-0.1282,0.9737L-0.1925,0.9677L-0.2557,0.9542L-0.3162,0.9316L-0.3732,0.9010L-0.4268,0.8655L-0.4785,0.8288L-0.5301,0.7934L-0.5832,0.7600L-0.6377,0.7271L-0.6917,0.6917L-0.7421,0.6508L-0.7851,0.6024L-0.8182,0.5467L-0.8413,0.4857L-0.8570,0.4226L-0.8701,0.3604L-0.8862,0.3008L-0.9095,0.2437L-0.9416,0.1873L-0.9805,0.1291L-1.0211,0.0669L-1.0568,0.0000L-1.0811,-0.0709L-1.0902,-0.1435L-1.0831,-0.2154L-1.0619,-0.2845L-1.0309,-0.3499L-0.9942,-0.4118L-0.9548,-0.4709L-0.9137,-0.5275L-0.8697,-0.5811L-0.8208,-0.6298L-0.7653,-0.6711L-0.7032,-0.7032L-0.6363,-0.7255L-0.5681,-0.7403L-0.5023,-0.7517L-0.4418,-0.7653L-0.3876,-0.7859L-0.3382,-0.8165L-0.2907,-0.8564L-0.2417,-0.9019L-0.1883,-0.9469L-0.1296,-0.9847L-0.0662,-1.0103L-0.0000,-1.0217L0.0669,-1.0201L0.1329,-1.0092L0.1977,-0.9938L0.2620,-0.9777L0.3267,-0.9623L0.3922,-0.9468L0.4578,-0.9282L0.5215,-0.9033L0.5810,-0.8695L0.6343,-0.8267L0.6810,-0.7765L0.7225,-0.7225L0.7616,-0.6679L0.8016,-0.6151L0.8448,-0.5645L0.8908,-0.5143L0.9368,-0.4620L0.9776,-0.4050L1.0077,-0.3421L1.0223,-0.2739L1.0199,-0.2029L1.0023,-0.1320L0.9746,-0.0639Z","parietal":"M1.1198,0.0000L1.0957,0.0718L1.0559,0.1390L1.0068,0.2003L0.9557,0.2561L0.9088,0.3085L0.8695,0.3602L0.8380,0.4132L0.8113,0.4684L0.7850,0.5246L0.7551,0.5794L0.7189,0.6304L0.6761,0.6761L0.6283,0.7165L0.5782,0.7535L0.5278,0.7900L0.4782,0.8282L0.4285,0.8689L0.3771,0.9104L0.3221,0.9488L0.2625,0.9797L0.1988,0.9992L0.1324,1.0057L0.0656,1.0009L0.0000,0.9890L-0.0640,0.9758L-0.1272,0.9665L-0.1917,0.9640L-0.2593,0.9676L-0.3305,0.9736L-0.4044,0.9762L-0.4781,0.9695L-0.5480,0.9492L-0.6108,0.9141L-0.6644,0.8658L-0.7088,0.8083L-0.7460,0.7460L-0.7784,0.6827L-0.8083,0.6202L-0.8363,0.5588L-0.8612,0.4972L-0.8807,0.4343L-0.8921,0.3695L-0.8945,0.3036L-0.8890,0.2382L-0.8796,0.1750L-0.8718,0.1148L-0.8708,0.0571L-0.8802,0.0000L-0.9001,-0.0590L-0.9270,-0.1220L-0.9547,-0.1899L-0.9761,-0.2616L-0.9851,-0.3344L-0.9782,-0.4052L-0.9558,-0.4713L-0.9208,-0.5316L-0.8779,-0.5866L-0.8316,-0.6381L-0.7848,-0.6883L-0.7382,-0.7382L-0.6904,-0.7872L-0.6393,-0.8332L-0.5833,-0.8730L-0.5218,-0.9038L-0.4561,-0.9248L-0.3883,-0.9374L-0.3208,-0.9450L-0.2551,-0.9521L-0.1914,-0.9624L-0.1286,-0.9772L-0.0652,-0.9949L-0.0000,-1.0110L0.0668,-1.0199L0.1338,-1.0164L0.1984,-0.9976L0.2584,-0.9642L0.3124,-0.9202L0.3610,-0.8715L0.4065,-0.8242L0.4520,-0.7828L0.5004,-0.7489L0.5532,-0.7209L0.6099,-0.6954L0.6682,-0.6682L0.7253,-0.6360L0.7784,-0.5973L0.8266,-0.5523L0.8708,-0.5028L0.9131,-0.4503L0.9556,-0.3958L0.9994,-0.3392L1.0428,-0.2794L1.0819,-0.2152L1.1111,-0.1463L1.1249,-0.0737Z","occipital":"M0.9387,0.0000L0.9330,0.0612L0.9332,0.1229L0.9373,0.1864L0.9411,0.2522L0.9401,0.3191L0.9311,0.3857L0.9131,0.4503L0.8875,0.5124L0.8571,0.5727L0.8244,0.6326L0.7911,0.6938L0.7565,0.7565L0.7183,0.8190L0.6733,0.8775L0.6193,0.9268L0.5554,0.9620L0.4832,0.9798L0.4061,0.9805L0.3284,0.9675L0.2537,0.9469L0.1841,0.9258L0.1198,0.9098L0.0591,0.9021L0.0000,0.9022L-0.0594,0.9070L-0.1200,0.9118L-0.1814,0.9122L-0.2427,0.9058L-0.3031,0.8928L-0.3625,0.8751L-0.4220,0.8556L-0.4831,0.8367L-0.5469,0.8185L-0.6133,0.7993L-0.6802,0.7756L-0.7438,0.7438L-0.7998,0.7014L-0.8447,0.6481L-0.8771,0.5861L-0.8985,0.5188L-0.9131,0.4503L-0.9262,0.3836L-0.9425,0.3199L-0.9648,0.2585L-0.9923,0.1974L-1.0214,0.1345L-1.0462,0.0686L-1.0613,0.0000L-1.0627,-0.0697L-1.0497,-0.1382L-1.0243,-0.2037L-0.9908,-0.2655L-0.9538,-0.3238L-0.9167,-0.3797L-0.8806,-0.4343L-0.8445,-0.4876L-0.8059,-0.5385L-0.7623,-0.5849L-0.7126,-0.6249L-0.6577,-0.6577L-0.6004,-0.6847L-0.5442,-0.7092L-0.4919,-0.7361L-0.4446,-0.7701L-0.4014,-0.8139L-0.3592,-0.8672L-0.3144,-0.9263L-0.2639,-0.9849L-0.2060,-1.0358L-0.1413,-1.0731L-0.0717,-1.0937L-0.0000,-1.0978L0.0714,-1.0887L0.1410,-1.0711L0.2087,-1.0494L0.2749,-1.0260L0.3398,-1.0011L0.4029,-0.9727L0.4626,-0.9381L0.5169,-0.8954L0.5642,-0.8444L0.6042,-0.7874L0.6385,-0.7281L0.6704,-0.6704L0.7039,-0.6173L0.7420,-0.5694L0.7858,-0.5251L0.8335,-0.4812L0.8806,-0.4343L0.9216,-0.3817L0.9513,-0.3229L0.9670,-0.2591L0.9692,-0.1928L0.9615,-0.1266L0.9495,-0.0622Z","temporal":"M0.9217,0.0000L0.9094,0.0596L0.8934,0.1176L0.8776,0.1746L0.8661,0.2321L0.8614,0.2924L0.8635,0.3577L0.8693,0.4287L0.8733,0.5042L0.8694,0.5809L0.8524,0.6540L0.8199,0.7191L0.7728,0.7728L0.7144,0.8146L0.6495,0.8465L0.5828,0.8723L0.5173,0.8961L0.4541,0.9208L0.3922,0.9469L0.3302,0.9727L0.2665,0.9946L0.2007,1.0089L0.1334,1.0136L0.0661,1.0087L0.0000,0.9970L-0.0644,0.9825L-0.1276,0.9689L-0.1906,0.9583L-0.2546,0.9501L-0.3194,0.9410L-0.3837,0.9264L-0.4449,0.9021L-0.4997,0.8656L-0.5462,0.8175L-0.5841,0.7612L-0.6155,0.7018L-0.6445,0.6445L-0.6760,0.5929L-0.7139,0.5478L-0.7599,0.5078L-0.8127,0.4692L-0.8684,0.4282L-0.9220,0.3819L-0.9690,0.3289L-1.0063,0.2696L-1.0338,0.2056L-1.0532,0.1387L-1.0673,0.0700L-1.0783,0.0000L-1.0864,-0.0712L-1.0895,-0.1434L-1.0839,-0.2156L-1.0658,-0.2856L-1.0324,-0.3505L-0.9842,-0.4077L-0.9244,-0.4559L-0.8587,-0.4958L-0.7936,-0.5303L-0.7343,-0.5635L-0.6837,-0.5996L-0.6414,-0.6414L-0.6043,-0.6891L-0.5680,-0.7402L-0.5283,-0.7907L-0.4827,-0.8360L-0.4305,-0.8730L-0.3731,-0.9008L-0.3127,-0.9211L-0.2511,-0.9373L-0.1895,-0.9527L-0.1276,-0.9693L-0.0647,-0.9870L-0.0000,-1.0030L0.0664,-1.0132L0.1335,-1.0140L0.1996,-1.0032L0.2631,-0.9818L0.3235,-0.9529L0.3816,-0.9213L0.4397,-0.8917L0.5003,-0.8665L0.5649,-0.8454L0.6334,-0.8255L0.7032,-0.8018L0.7697,-0.7697L0.8276,-0.7258L0.8728,-0.6697L0.9030,-0.6034L0.9194,-0.5308L0.9254,-0.4563L0.9257,-0.3834L0.9249,-0.3140L0.9256,-0.2480L0.9278,-0.1846L0.9297,-0.1224L0.9284,-0.0609Z","cerebellum":"M1.0439,0.0000L1.0752,0.0705L1.0978,0.1445L1.1053,0.2199L1.0938,0.2931L1.0628,0.3608L1.0154,0.4206L0.9574,0.4721L0.8952,0.5169L0.8343,0.5575L0.7775,0.5966L0.7251,0.6359L0.6753,0.6753L0.6254,0.7131L0.5733,0.7472L0.5184,0.7758L0.4614,0.7992L0.4041,0.8195L0.3480,0.8401L0.2935,0.8647L0.2399,0.8955L0.1854,0.9319L0.1278,0.9704L0.0659,1.0053L0.0000,1.0303L-0.0682,1.0407L-0.1362,1.0348L-0.2018,1.0143L-0.2636,0.9839L-0.3224,0.9498L-0.3799,0.9171L-0.4384,0.8891L-0.4997,0.8655L-0.5638,0.8438L-0.6288,0.8195L-0.6917,0.7887L-0.7488,0.7488L-0.7980,0.6998L-0.8385,0.6434L-0.8719,0.5826L-0.9008,0.5201L-0.9278,0.4575L-0.9538,0.3951L-0.9778,0.3319L-0.9966,0.2670L-1.0059,0.2001L-1.0024,0.1320L-0.9851,0.0646L-0.9561,0.0000L-0.9206,-0.0603L-0.8851,-0.1165L-0.8563,-0.1703L-0.8380,-0.2246L-0.8311,-0.2821L-0.8323,-0.3448L-0.8363,-0.4124L-0.8368,-0.4831L-0.8287,-0.5537L-0.8092,-0.6209L-0.7786,-0.6828L-0.7389,-0.7389L-0.6933,-0.7906L-0.6442,-0.8395L-0.5927,-0.8871L-0.5386,-0.9328L-0.4805,-0.9743L-0.4174,-1.0077L-0.3493,-1.0291L-0.2777,-1.0363L-0.2048,-1.0297L-0.1333,-1.0125L-0.0649,-0.9904L-0.0000,-0.9697L0.0626,-0.9550L0.1248,-0.9481L0.1884,-0.9473L0.2540,-0.9479L0.3205,-0.9441L0.3855,-0.9306L0.4461,-0.9047L0.5003,-0.8665L0.5473,-0.8191L0.5887,-0.7672L0.6270,-0.7150L0.6654,-0.6654L0.7057,-0.6189L0.7482,-0.5741L0.7910,-0.5285L0.8312,-0.4799L0.8660,-0.4270L0.8939,-0.3703L0.9160,-0.3110L0.9353,-0.2506L0.9557,-0.1901L0.9805,-0.1291L1.0106,-0.0662Z","brainstem":"M1.0269,0.0000L1.0598,0.0695L1.0796,0.1421L1.0818,0.2152L1.0652,0.2854L1.0320,0.3503L0.9876,0.4091L0.9383,0.4627L0.8894,0.5135L0.8439,0.5639L0.8021,0.6155L0.7616,0.6679L0.7192,0.7192L0.6721,0.7664L0.6188,0.8065L0.5602,0.8383L0.4981,0.8627L0.4351,0.8822L0.3730,0.9005L0.3123,0.9201L0.2524,0.9419L0.1918,0.9641L0.1293,0.9825L0.0651,0.9925L0.0000,0.9903L-0.0639,0.9748L-0.1248,0.9482L-0.1821,0.9154L-0.2365,0.8827L-0.2905,0.8558L-0.3469,0.8376L-0.4083,0.8280L-0.4754,0.8235L-0.5470,0.8186L-0.6198,0.8078L-0.6900,0.7868L-0.7540,0.7540L-0.8102,0.7105L-0.8585,0.6588L-0.9007,0.6019L-0.9389,0.5421L-0.9742,0.4804L-1.0058,0.4166L-1.0310,0.3500L-1.0462,0.2803L-1.0479,0.2084L-1.0347,0.1362L-1.0082,0.0661L-0.9731,0.0000L-0.9359,-0.0613L-0.9032,-0.1189L-0.8797,-0.1750L-0.8667,-0.2322L-0.8619,-0.2926L-0.8601,-0.3563L-0.8555,-0.4219L-0.8427,-0.4865L-0.8190,-0.5472L-0.7846,-0.6020L-0.7420,-0.6508L-0.6950,-0.6950L-0.6466,-0.7373L-0.5987,-0.7802L-0.5510,-0.8246L-0.5019,-0.8694L-0.4495,-0.9115L-0.3924,-0.9473L-0.3305,-0.9737L-0.2652,-0.9899L-0.1984,-0.9975L-0.1317,-1.0004L-0.0658,-1.0032L-0.0000,-1.0097L0.0669,-1.0209L0.1362,-1.0347L0.2081,-1.0461L0.2811,-1.0491L0.3524,-1.0381L0.4184,-1.0102L0.4762,-0.9657L0.5246,-0.9086L0.5642,-0.8443L0.5977,-0.7790L0.6287,-0.7169L0.6602,-0.6602L0.6935,-0.6082L0.7282,-0.5588L0.7622,-0.5093L0.7931,-0.4579L0.8196,-0.4042L0.8420,-0.3488L0.8628,-0.2929L0.8856,-0.2373L0.9137,-0.1817L0.9482,-0.1248L0.9875,-0.0647Z"},"kBrainRegionGyriRank":{"frontal":[26,11,18,14,19,2,0,25,3,17,8,22,16,23,9,5,12,27,7,6,1,10,28,21,24,13,4,29,15,20],"parietal":[19,4,16,17,2,5,9,6,12,18,0,14,8,15,1,10,3,21,7,11,20,13],"occipital":[7,8,4,2,9,3,6,1,0,5],"temporal":[1,5,12,11,14,8,15,6,10,7,3,13,2,4,0,9],"cerebellum":[18,17,24,35,8,19,3,2,26,11,15,14,29,23,22,9,12,5,41,16,21,28,10,0,4,25,6,20,13,32,43,30,27,7,31,1,42,33,38,34,40,39,36,37],"brainstem":[2,0,1]},"kInkWashSizes":{"card":{"outline":2.15,"ghost":0.8,"fissure":1.5,"gyri":1,"nib":2.5,"poolWide":4.4,"poolThin":1.3,"dot":1.4,"dotGap":4.6,"inset":4.8,"hatch":0.7,"hatchGap":5.2,"misreg":[1.1,0.9]},"thumb":{"outline":3.4,"ghost":0,"fissure":2.5,"gyri":1.55,"nib":0,"poolWide":6.5,"poolThin":2,"dot":2.6,"dotGap":8.5,"inset":7.5,"hatch":1.2,"hatchGap":9.5,"misreg":[1.6,1.3]}},"kInkWashDetail":{"1":0.3,"2":0.47,"3":0.64,"4":0.82,"5":1},"kInkWashGyriWidth":{"1":0.94,"2":0.98,"3":1.02,"4":1.06,"5":1.26},"kInkWashGyriOpacity":{"1":0.7,"2":0.76,"3":0.82,"4":0.87,"5":0.95},"kInkWashTimeline":{"outlineDur":0.82,"fisStart":0.76,"fisTotal":0.42,"gyriStart":1,"gyriGap":0.11,"gyriSpread":0.34,"foliaDur":0.36,"washStart":1.38,"washGap":0.08,"washDur":0.62,"TOTAL":2.4},"kInkWashStops":[[0,0.7,0],[0.5,0.8,0],[0.84,0.94,0.05],[1,1,0.13]],"kInkWashFocal":[-0.18,-0.14],"kInkWashWobble":0.14};
+    </script>
+    <script>
+      // ── Beats (s) ──────────────────────────────────────────────────────────────────────────
+      // 0     This week, scrolled so Reading engagement sits under the tab bar; the brain is blank.
+      // 0.4   InkWashBrain intro (InkWashSpec.timeline, 2.4 s): the pen draws the silhouette, the
+      //       fissures, the gyri; from 1.78 the washes pool region by region; the score counts up.
+      // 2.8   The level line lands, then the next-step line (3.0); the strongest wash breathes.
+      // 5.0   The page scrolls the driver rows into view.
+      // 6.0   Read-along pressed (InkWell highlight and ripple; the brain focuses its region).
+      // 6.1   Its sheet rises (0.3 s); 7.5 to 8.4 the sheet scrolls to its end.
+      // 9.6   Close pressed; 9.7 the sheet goes (0.2 s) and the brain lets go of the focus.
+      // 10.05 The page scrolls to the end of the card (the footer disclaimer); hold to 14.
+      // Shot variables (hbVar): none. The brain shot (t 5.36) is the moment the page scroll has put the
+      // score at the top and the first driver rows above the dock, before Read-along is pressed (6.0).
+      const DUR = 14;
+      const T_INTRO = 0.4;
+      const T_SCROLL1 = 5.0, SCROLL1_LEN = 0.7;
+      const T_PRESS = 6.0, T_TAP = 6.1, RISE = 0.3;
+      const T_SSCROLL = 7.5, SSCROLL_LEN = 0.9;
+      const T_XPRESS = 9.6, T_CLOSE = 9.7, EXIT = 0.2;
+      const T_SCROLL2 = 10.05, SCROLL2_LEN = 0.9;     // set past DUR to end on the brain instead
+      const SHEET_MAX = 852 * 0.65;
+
+      const clamp = x => Math.max(0, Math.min(1, x));
+      const easeOut = x => 1 - Math.pow(1 - x, 3);
+      const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+      // ── The reader (invented inputs; the model's own curves turn them into the drivers) ──────
+      // engagement_model.dart EngagementCurves + computeEngagement, ported.
+      const INPUTS = { words7d: 17700, weeklyTarget: 21000, readAlongShare: 0.252, bookEquivalents30d: 0.86,
+                       effectiveDays28: 9.0, streakDays: 16, reflectionDays30: 1 };
+      const LISTENED_MS_14D = 265 * 60000;              // 4 hr 25 min in the last 14 days
+      const READ_ALONG_TREND = [0.31, 0.38, 0.46];       // 3, 2 and 1 weeks ago; this week is today's value
+      const pw = (b, e) => Math.pow(b, e);
+      const cl = (x, a, b) => Math.max(a, Math.min(b, x));
+      const VALUES = {
+        listening: pw(cl(INPUTS.words7d / INPUTS.weeklyTarget, 0, 1.25) / 1.25, 0.7),
+        readAlong: pw(cl(INPUTS.readAlongShare, 0, 0.6) / 0.6, 0.8),
+        progress: pw(cl(INPUTS.bookEquivalents30d, 0, 1.5) / 1.5, 0.75),
+        rhythm: pw(cl(INPUTS.effectiveDays28, 0, 20) / 20, 0.8),
+        streak: Math.sqrt(cl(INPUTS.streakDays, 0, 60) / 60),
+        reflection: pw(cl(INPUTS.reflectionDays30, 0, 8) / 8, 0.6),
+      };
+      const WEIGHT = { listening: 25, readAlong: 20, progress: 20, rhythm: 15, streak: 10, reflection: 10 };
+      const DRIVERS = ['listening', 'readAlong', 'progress', 'rhythm', 'streak', 'reflection'];
+      const SCORE = Math.round(DRIVERS.reduce((s, d) => s + WEIGHT[d] * VALUES[d], 0));   // all six tracked
+
+      // ── Strings: the app's .arb keys and wording (D:\hushbook\lib\l10n\app_en.arb), so a locale's file can take
+      // its values straight from app_<lc>.arb. fmt() reads what those values hold: an ICU plural on one argument
+      // (=N, then the locale's plural category, then other), anywhere in the string, '' for an apostrophe,
+      // {name} placeholders.
+      function fmt(key, fallback, args) {
+        let s = hbT(key, fallback);
+        const re = /\{\s*(\w+)\s*,\s*plural\s*,/;
+        for (let m = re.exec(s); m; m = re.exec(s)) {
+          const n = args[m[1]], forms = {};
+          let i = m.index + m[0].length, end = s.length;
+          for (;;) {
+            const open = s.indexOf('{', i), close = s.indexOf('}', i);
+            if (close >= 0 && (open < 0 || close < open)) { end = close + 1; break; }   // the block's own brace
+            if (open < 0) break;
+            const sel = s.slice(i, open).trim();
+            let depth = 0, k = open;
+            for (; k < s.length; k++) { if (s[k] === '{') depth++; else if (s[k] === '}' && --depth === 0) break; }
+            forms[sel] = s.slice(open + 1, k);
+            i = k + 1;
+          }
+          let cat = 'other';
+          try { cat = new Intl.PluralRules(window.__HB_LOCALE).select(n); } catch (e) { /* unknown locale: other */ }
+          s = s.slice(0, m.index) + (forms['=' + n] ?? forms[cat] ?? forms.other ?? '') + s.slice(end);
+        }
+        return s.replace(/''/g, "'").replace(/\{(\w+)\}/g, (all, k) => (args && k in args ? String(args[k]) : all));
+      }
+      const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      // engagement_driver_ui.dart driverColors + kDriverWashColors; driverLabel
+      const DC = {
+        listening:  { base: '#EF7A85', bar: '#D6495A', tint: '#FCEAEB', deep: '#B3233A', label: fmt('engagementDriverListening', 'Listening') },
+        readAlong:  { base: '#B39BD8', bar: '#9070C6', tint: '#F3EFF9', deep: '#6E4BAA', label: fmt('engagementDriverReadAlong', 'Read-along') },
+        progress:   { base: '#F0A94B', bar: '#B26F14', tint: '#FDF1E2', deep: '#8E560F', label: fmt('engagementDriverProgress', 'Book progress') },
+        rhythm:     { base: '#5DB3DE', bar: '#2C86B5', tint: '#E5F3FA', deep: '#1D6890', label: fmt('engagementDriverRhythm', 'Rhythm') },
+        streak:     { base: '#E8794A', bar: '#D25A25', tint: '#FBEAE2', deep: '#A9461A', label: fmt('engagementDriverStreak', 'Streak') },
+        reflection: { base: '#5FBFA6', bar: '#378B75', tint: '#E5F5F1', deep: '#2B6E5C', label: fmt('engagementDriverReflection', 'Reflection') },
+      };
+      const status = v => v <= 1e-9 ? fmt('engagementStatusNotStarted', 'Not started')
+                        : v <= 0.30 + 1e-9 ? fmt('engagementStatusStarting', 'Starting')
+                        : v <= 0.55 + 1e-9 ? fmt('engagementStatusBuilding', 'Building')
+                        : v <= 0.80 + 1e-9 ? fmt('engagementStatusSteady', 'Steady')
+                        : v <= 0.97 + 1e-9 ? fmt('engagementStatusStrong', 'Strong') : fmt('engagementStatusFull', 'Full');
+      // NumberFormat.compact (3 significant digits): 17,700 -> "17.7K", 21,000 -> "21K".
+      const compact = n => {
+        const k = n / 1000, digits = Math.max(0, 3 - String(Math.floor(k)).length);
+        return String(+k.toFixed(digits)) + 'K';
+      };
+      const shownBooks = b => Math.round(b * 10) / 10;
+      // engagement_driver_ui.dart listenedText
+      const listened = ms => {
+        const m = ms <= 0 ? 0 : Math.max(1, Math.round(ms / 60000)), h = Math.floor(m / 60);
+        if (m < 60) return fmt('storeMinutesShort', '{count} min', { count: m });
+        return m % 60 === 0 ? fmt('storeHoursShort', '{count} hr', { count: h })
+                            : fmt('storeHoursMinutesShort', '{hours} hr {minutes} min', { hours: h, minutes: m % 60 });
+      };
+      const HINT = {
+        listening: fmt('engagementHintListening', '{words} of {target} words in the last 7 days',
+                       { words: compact(INPUTS.words7d), target: compact(INPUTS.weeklyTarget) }),
+        readAlong: fmt('engagementHintReadAlong', 'Lyrics on for {percent}% of your listening',
+                       { percent: Math.max(1, Math.round(INPUTS.readAlongShare * 100)) }),
+        progress: fmt('engagementHintProgress', '{books, plural, one{{books} book} other{{books} books}} of progress in the last 30 days',
+                      { books: shownBooks(INPUTS.bookEquivalents30d) }),
+        rhythm: fmt('engagementHintRhythm', '{count, plural, one{{count} day} other{{count} days}} of listening in the last 28',
+                    { count: Math.max(1, Math.round(INPUTS.effectiveDays28)) }),
+        streak: fmt('engagementHintStreak', '{count, plural, one{{count} day in a row} other{{count} days in a row}}',
+                    { count: INPUTS.streakDays }),
+        reflection: fmt('engagementHintReflection', '{count, plural, one{Reflected on {count} day in the last 30} other{Reflected on {count} days in the last 30}}',
+                        { count: INPUTS.reflectionDays30 }),
+      };
+
+      // ── The card's static parts ─────────────────────────────────────────────────────────────
+      const tdots = document.getElementById('tdots');
+      const rowsEl = document.getElementById('rows');
+      const rowEls = {};
+      for (const d of DRIVERS) {
+        const c = DC[d];
+        const dot = document.createElement('div');
+        dot.className = 'tdot';
+        dot.style.background = c.base;
+        tdots.appendChild(dot);
+
+        const row = document.createElement('div');
+        row.className = 'drow';
+        row.setAttribute('data-scroll', '');
+        row.innerHTML =
+          '<div class="ink" style="background:' + c.tint + '"></div>' +
+          '<div class="rip" style="background:' + c.base + '"></div>' +
+          '<div class="in"><div class="lhs"><div class="ddot" style="background:' + c.base + '"></div>' +
+          '<div class="dbody"><div class="dtop"><div class="dlab"><b>' + esc(c.label) + '</b>' +
+          (d === 'reflection' ? '<span class="opt">' + esc(fmt('engagementOptional', 'Optional')) + '</span>' : '') + '</div>' +
+          '<span class="chip" style="background:' + c.tint + ';color:' + c.deep + '">' + esc(status(VALUES[d])) + '</span></div>' +
+          '<div class="dbar"><i style="width:' + (VALUES[d] * 100) + '%;background:' + c.bar + '"></i></div>' +
+          '<div class="dhint">' + esc(HINT[d]) + '</div></div></div>' +
+          '<i class="mi chev">&#xe15f;</i></div>';
+        rowsEl.appendChild(row);
+        rowEls[d] = row;
+      }
+
+      // The Read-along sheet's numbers and trend (engagement_driver_sheet.dart _yourNumbers, DriverTrendChart).
+      const pct = Math.max(1, Math.round(INPUTS.readAlongShare * 100));
+      const stats = [
+        [pct + '%', fmt('engagementNumLyricsOn', 'Lyrics on')],
+        [listened(LISTENED_MS_14D), fmt('engagementNumListened14Days', 'Listened, last 14 days')],
+        [listened(Math.round(LISTENED_MS_14D * INPUTS.readAlongShare)), fmt('engagementNumWithLyricsOn', 'With lyrics on')],
+      ];
+      const grid = document.getElementById('grid');
+      for (let i = 0; i < stats.length; i += 2) {
+        const r = document.createElement('div');
+        r.className = 'r';
+        for (const s of stats.slice(i, i + 2)) r.innerHTML += '<div class="stat"><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>';
+        grid.appendChild(r);
+      }
+      const trend = [...READ_ALONG_TREND, VALUES.readAlong];
+      const BAR_MAX = 66 * 1.009479;
+      document.getElementById('bars').innerHTML = trend.map(v =>
+        '<div class="bcol"><b>' + Math.round(v * 100) + '%</b><i style="height:' + Math.max(3, Math.min(BAR_MAX, BAR_MAX * v)) + 'px"></i></div>').join('');
+      document.getElementById('wline').textContent = fmt('engagementSheetWeight',
+        'Carries {weight}% of your score. This bar is {percent}% full.',
+        { weight: WEIGHT.readAlong, percent: Math.round(VALUES.readAlong * 100) });
+
+      // Level line and next step from the score (brain_score_card.dart _levelLine, _nextStep).
+      const LEVELS = [[1, 0, fmt('engagementLevel1Name', 'First pages')], [2, 20, fmt('engagementLevel2Name', 'Settling in')],
+                      [3, 40, fmt('engagementLevel3Name', 'Finding your rhythm')], [4, 60, fmt('engagementLevel4Name', 'Deep in the story')],
+                      [5, 80, fmt('engagementLevel5Name', 'Cover to cover')]];
+      const level = LEVELS.filter(l => SCORE >= l[1]).pop();
+      const easiest = DRIVERS.reduce((best, d) => WEIGHT[d] * (1 - VALUES[d]) > WEIGHT[best] * (1 - VALUES[best]) ? d : best, DRIVERS[0]);
+      // "Level n of 5 · {name}" from one string: the name in ink, the rest in the level colour.
+      const lvlLine = fmt('engagementLevelLine', 'Level {level} of {total} · {name}', { level: level[0], total: LEVELS.length, name: level[2] });
+      const at = lvlLine.indexOf(level[2]);
+      document.getElementById('lvl').innerHTML = at < 0 ? '<span class="cap">' + esc(lvlLine) + '</span>'
+        : (at > 0 ? '<span class="cap">' + esc(lvlLine.slice(0, at)) + '</span>' : '') + esc(level[2]) +
+          (at + level[2].length < lvlLine.length ? '<span class="cap">' + esc(lvlLine.slice(at + level[2].length)) + '</span>' : '');
+      if (level[0] < 5) {
+        const pts = LEVELS[level[0]][1] - SCORE;
+        document.getElementById('next').textContent = fmt('engagementNextLevel',
+          '{points, plural, one{{points} point to {level}. Easiest gain: {driver}.} other{{points} points to {level}. Easiest gain: {driver}.}}',
+          { points: pts, level: LEVELS[level[0]][2], driver: DC[easiest].label });
+      }
+      document.getElementById('trackedCount').textContent = fmt('engagementTrackedCount', '{count} of {total} drivers tracked',
+        { count: DRIVERS.length, total: DRIVERS.length });
+
+      // ── The ink-and-wash brain: ink_wash_painter.dart as SVG ───────────────────────────────
+      const B = window.BRAIN;
+      const NS = 'http://www.w3.org/2000/svg';
+      const INK = '#2A1A14';
+      const REGION_DRIVER = { temporal: 'listening', occipital: 'readAlong', frontal: 'progress', cerebellum: 'rhythm', brainstem: 'streak', parietal: 'reflection' };
+      const ORDER = B.kBrainRegionOrder;
+      const TL = B.kInkWashTimeline;
+      const STAGE = level[0];
+      const E = {
+        power1In: p => p * p,
+        power1InOut: p => p < 0.5 ? 2 * p * p : 1 - (2 - 2 * p) * (2 - 2 * p) / 2,
+        power2Out: p => 1 - (1 - p) * (1 - p) * (1 - p),
+      };
+      const hex = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+      // _InkCache._mix: per channel round(a x (1 - t) + b x t).
+      const mix = (a, b, t) => {
+        const A = hex(a), Bc = hex(b);
+        return '#' + A.map((x, i) => Math.round(x * (1 - t) + Bc[i] * t).toString(16).padStart(2, '0')).join('');
+      };
+      // InkWashSpec.puddleRadius
+      const puddleRadius = (q, v) => {
+        const f = v * 100, i = Math.min(99, Math.floor(f));
+        const r = q[i] + (q[i + 1] - q[i]) * (f - i);
+        const t = Math.max(0, Math.min(1, (v - 0.7) / 0.3));
+        return Math.max(r, q[2]) * (1 + (1 / (1 - B.kInkWashWobble) - 1 + 0.02) * t * t * (3 - 2 * t));
+      };
+      // _Timing.at
+      const inkedAt = (tm, s) => s < tm.start ? 0 : tm.dur <= 0 ? 1 : E.power1InOut(Math.min(1, (s - tm.start) / tm.dur));
+      const el = (tag, attrs, parent) => {
+        const n = document.createElementNS(NS, tag);
+        for (const k in attrs) n.setAttribute(k, attrs[k]);
+        if (parent) parent.appendChild(n);
+        return n;
+      };
+      // A stroke drawn from its start: head(share) as a dash of share x length.
+      function trim(o, share) {
+        if (share <= 0) { if (o.vis !== 0) { o.el.setAttribute('visibility', 'hidden'); o.vis = 0; } return; }
+        if (o.vis !== 1) { o.el.setAttribute('visibility', 'visible'); o.vis = 1; }
+        const dash = share >= 1 ? 'none' : (o.len * share).toFixed(3) + ' ' + (o.len * 2).toFixed(1);
+        if (o.dash !== dash) { o.el.setAttribute('stroke-dasharray', dash); o.dash = dash; }
+      }
+
+      function buildBrain(host, prefix, sizeKey) {
+        const S = B.kInkWashSizes[sizeKey];
+        const svg = el('svg', { viewBox: B.kBrainViewBox, 'aria-hidden': 'true' });
+        const defs = el('defs', {}, svg);
+        const stroke = { fill: 'none', stroke: INK, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
+        const gWash = el('g', { transform: 'translate(' + S.misreg[0] + ' ' + S.misreg[1] + ')' }, svg);
+        const gGyri = el('g', stroke, svg);
+        const gFis = el('g', stroke, svg);
+        const gGhost = S.ghost > 0 ? el('g', Object.assign({}, stroke, { 'stroke-opacity': 0.3, 'stroke-width': S.ghost, transform: 'translate(0.9 0.7)' }), svg) : null;
+        const gOut = el('g', stroke, svg);
+        host.appendChild(svg);
+
+        const R = {};
+        ORDER.forEach((r, ri) => {
+          const col = DC[REGION_DRIVER[r]].base;
+          const fill = B.kBrainRegionFill[r];
+          const puddle = B.kBrainRegionPuddle[r];
+          const [lx, ly] = B.kBrainRegionLabel[r];
+          const dark = mix(col, INK, 0.32);
+          const grad = el('radialGradient', { id: prefix + 'g' + r, gradientUnits: 'userSpaceOnUse', cx: lx, cy: ly, r: 1, fx: lx, fy: ly, spreadMethod: 'pad' }, defs);
+          const stops = B.kInkWashStops.map(([o, a, dk]) => el('stop', { offset: o, 'stop-color': mix(col, INK, dk), 'stop-opacity': a }, grad));
+          el('path', { d: fill }, el('clipPath', { id: prefix + 'c' + r }, defs));
+          const pclip = el('path', { d: puddle, transform: 'scale(0)' }, el('clipPath', { id: prefix + 'p' + r }, defs));
+          const inRegion = el('g', { 'clip-path': 'url(#' + prefix + 'c' + r + ')' }, gWash);
+          const inPuddle = el('g', { 'clip-path': 'url(#' + prefix + 'p' + r + ')' }, inRegion);
+          const wash = el('path', { d: fill, fill: 'url(#' + prefix + 'g' + r + ')' }, inPuddle);
+          const pool = el('path', { d: fill, fill: 'none', stroke: dark, 'stroke-width': S.poolWide, 'stroke-linejoin': 'round' }, inPuddle);
+          const rim = el('g', { fill: 'none', stroke: dark, 'stroke-linejoin': 'round', transform: 'scale(0)' }, inRegion);
+          const edgeWide = el('path', { d: puddle }, rim);
+          const edgeThin = el('path', { d: puddle }, rim);
+
+          // _InkCache.plan: the first max(1, round(n x detail)) of the seeded rank, majors spread over gyriSpread.
+          const gyri = B.kBrainRegionGyri[r], weights = B.kBrainRegionWeights[r], rank = B.kBrainRegionGyriRank[r];
+          const k = Math.max(1, Math.round(gyri.length * B.kInkWashDetail[STAGE]));
+          const active = rank.slice(0, k).sort((a, b) => a - b);
+          const gg = el('g', {}, gGyri);
+          const t0 = TL.gyriStart + ri * TL.gyriGap;
+          const majorIdx = active.filter(i => weights[i] >= 1);
+          const majorsG = el('g', {}, gg);
+          const majors = majorIdx.map((i, j) => {
+            const p = el('path', { d: gyri[i], visibility: 'hidden' }, majorsG);
+            return { el: p, w: weights[i], idx: i, j };
+          });
+          const fine = new Map();
+          for (const i of active) if (weights[i] < 1) { if (!fine.has(weights[i])) fine.set(weights[i], []); fine.get(weights[i]).push(i); }
+          const folia = [...fine.entries()].map(([w, idxs]) => {
+            const g = el('g', {}, gg);
+            const strokes = idxs.map(i => ({ el: el('path', { d: gyri[i], visibility: 'hidden' }, g) }));
+            const merged = { el: el('path', { d: idxs.map(i => gyri[i]).join(' '), visibility: 'hidden' }, g) };
+            return { w, g, strokes, merged };
+          });
+          R[r] = { col, lx, ly, q: B.kBrainRegionAreaQuantiles[r], rot: B.kBrainRegionPuddleRotationDeg[r], grad, stops, pclip, wash, pool, rim,
+                   edgeWide, edgeThin, gg, majorsG, majors, majorCount: majorIdx.length, t0, folia, foliaTiming: { start: t0 + TL.gyriSpread * 0.25, dur: TL.foliaDur } };
+        });
+
+        const fis = B.kBrainFissures.map(d => ({ el: el('path', { d, visibility: 'hidden' }, gFis) }));
+        const out = B.kBrainOutline.map(d => ({ el: el('path', { d, visibility: 'hidden' }, gOut) }));
+        const ghost = gGhost ? B.kBrainOutline.map(d => ({ el: el('path', { d, visibility: 'hidden' }, gGhost) })) : [];
+        let nib = null;
+        if (S.nib > 0) {
+          nib = el('g', { visibility: 'hidden' }, svg);
+          el('circle', { r: S.nib * 2.3, fill: INK, 'fill-opacity': 0.1 }, nib);
+          el('circle', { r: S.nib, fill: INK }, nib);
+        }
+
+        // Lengths and the intro schedule (_InkCache: silhouette length-proportional from 0.001 s,
+        // the ghost 0.05 s behind; fissures from fisStart, overlapping by 10 %; gyri per region).
+        const lenOf = o => { o.len = o.el.getTotalLength(); return o; };
+        out.forEach(lenOf); fis.forEach(lenOf); ghost.forEach(lenOf);
+        const outTotal = out.reduce((s, o) => s + o.len, 0);
+        let t = 0.001;
+        out.forEach((o, i) => {
+          const dur = TL.outlineDur * o.len / outTotal;
+          o.tm = { start: t, dur };
+          if (ghost[i]) ghost[i].tm = { start: t + 0.05, dur };
+          t += dur;
+        });
+        const fisTotal = fis.reduce((s, o) => s + o.len, 0);
+        t = TL.fisStart;
+        fis.forEach(o => { const dur = Math.max(0.05, TL.fisTotal * o.len / fisTotal); o.tm = { start: t, dur }; t += dur * 0.9; });
+        const pen = [...out, ...fis];
+        const penEnd = pen.reduce((m, o) => Math.max(m, o.tm.start + o.tm.dur), 0);
+        for (const r of ORDER) {
+          const E2 = R[r];
+          E2.majors.forEach(m => {
+            lenOf(m);
+            m.tm = { start: E2.t0 + TL.gyriSpread * m.j / Math.max(1, E2.majorCount), dur: Math.min(0.34, Math.max(0.14, 0.1 + m.len / 700)) };
+          });
+          E2.folia.forEach(f => f.strokes.forEach(lenOf));
+        }
+        const ink = { op: B.kInkWashGyriOpacity[STAGE], w: B.kInkWashGyriWidth[STAGE] };
+        gOut.setAttribute('stroke-width', S.outline * (STAGE === 5 ? 1.12 : 1));
+        gFis.setAttribute('stroke-width', S.fissure * (STAGE === 5 ? 1.1 : 1));
+
+        // One frame: seconds of intro, and per region { value, dim, boost, breath } (all tracked).
+        function paint(seconds, regions) {
+          const done = seconds >= TL.TOTAL;
+          ORDER.forEach((r, i) => {
+            const X = R[r], st = regions[r];
+            // _bloom
+            let b = 1;
+            if (!done) { const p = (seconds - (TL.washStart + i * TL.washGap)) / TL.washDur; b = p <= 0 ? 0 : E.power2Out(Math.min(1, p)); }
+            const v = Math.max(0, Math.min(1, st.value));
+            let a = 0, rad = 0.05;
+            if (b > 0) {
+              rad = Math.max(0.05, puddleRadius(X.q, v) * b);
+              a = v <= 0.0005 ? 0 : (0.2 + 0.68 * v) * Math.min(1, v / 0.04);
+              if (a > 0) a += (Math.max(a, 0.92) - a) * st.boost;
+              a *= Math.min(1, b * 1.8) * st.dim * st.breath;
+            }
+            if (a <= 0) {
+              X.pclip.setAttribute('transform', 'scale(0)');
+              X.rim.setAttribute('transform', 'scale(0)');
+            } else {
+              const tf = 'translate(' + X.lx + ' ' + X.ly + ') rotate(' + X.rot.toFixed(4) + ') scale(' + rad.toFixed(5) + ')';
+              X.pclip.setAttribute('transform', tf);
+              X.rim.setAttribute('transform', tf);
+              X.grad.setAttribute('r', rad.toFixed(4));
+              X.grad.setAttribute('fx', (X.lx + B.kInkWashFocal[0] * rad).toFixed(4));
+              X.grad.setAttribute('fy', (X.ly + B.kInkWashFocal[1] * rad).toFixed(4));
+              const washAlpha = Math.min(1, a);
+              B.kInkWashStops.forEach(([o, al], si) => X.stops[si].setAttribute('stop-opacity', (al * washAlpha).toFixed(4)));
+              X.pool.setAttribute('stroke-opacity', Math.min(1, a * 0.45).toFixed(4));
+              X.edgeWide.setAttribute('stroke-width', (S.poolWide / rad).toFixed(5));
+              X.edgeThin.setAttribute('stroke-width', (S.poolThin / rad).toFixed(5));
+              X.edgeWide.setAttribute('stroke-opacity', Math.min(1, a * 0.22).toFixed(4));
+              X.edgeThin.setAttribute('stroke-opacity', Math.min(1, a * 0.5).toFixed(4));
+            }
+
+            // Gyri: share and weight grow with the stage; the focus inks its region fuller and wider.
+            const op = Math.min(1, ink.op * st.dim + (1 - ink.op) * st.boost);
+            const width = S.gyri * ink.w * (1 + 0.22 * st.boost);
+            const started = done || seconds >= TL.gyriStart + i * TL.gyriGap;
+            X.gg.setAttribute('display', started && op > 0 ? 'inline' : 'none');
+            X.gg.setAttribute('stroke-opacity', op.toFixed(4));
+            X.majorsG.setAttribute('stroke-width', width.toFixed(4));
+            for (const m of X.majors) trim(m, done ? 1 : inkedAt(m.tm, seconds));
+            const fs = done ? 1 : inkedAt(X.foliaTiming, seconds);
+            for (const f of X.folia) {
+              f.g.setAttribute('stroke-width', (width * f.w).toFixed(4));
+              trim(f.merged, fs >= 1 ? 1 : 0);
+              for (const s of f.strokes) trim(s, fs >= 1 ? 0 : fs);
+            }
+          });
+          for (const o of fis) trim(o, done ? 1 : inkedAt(o.tm, seconds));
+          for (const o of ghost) trim(o, done ? 1 : inkedAt(o.tm, seconds));
+          for (const o of out) trim(o, done ? 1 : inkedAt(o.tm, seconds));
+          // _InkCache.nibAt: the later of two overlapping pen strokes holds the nib.
+          if (nib) {
+            let cur = null;
+            if (!done && seconds > 0 && seconds < penEnd) for (const o of pen) if (seconds >= o.tm.start && seconds <= o.tm.start + o.tm.dur) cur = o;
+            if (cur) {
+              const p = cur.el.getPointAtLength(cur.len * inkedAt(cur.tm, seconds));
+              nib.setAttribute('transform', 'translate(' + p.x.toFixed(3) + ' ' + p.y.toFixed(3) + ')');
+              nib.setAttribute('visibility', 'visible');
+            } else nib.setAttribute('visibility', 'hidden');
+          }
+        }
+        return { paint };
+      }
+
+      // ── Focus lens and idle breath (ink_wash_brain.dart) ────────────────────────────────────
+      // Focus = the open sheet's driver, else the pressed row's: Read-along from the press until
+      // the sheet's pop. Each change eases dim/boost over 350 ms (power2Out) from where they are.
+      const FOCUS = [{ t: T_PRESS, region: 'occipital' }, { t: T_CLOSE, region: null }];
+      const lensTarget = (region, r) => ({ dim: region && r !== region ? 0.35 : 1, boost: r === region ? 1 : 0 });
+      const lerpLens = (a, b, k) => ({ dim: a.dim + (b.dim - a.dim) * k, boost: a.boost + (b.boost - a.boost) * k });
+      function lensAt(t, r) {
+        let from = lensTarget(null, r), to = from, start = -1;
+        for (const f of FOCUS) {
+          if (t < f.t) break;
+          from = lerpLens(from, to, start < 0 ? 1 : E.power2Out(Math.min(1, (f.t - start) / 0.35)));
+          to = lensTarget(f.region, r);
+          start = f.t;
+        }
+        return lerpLens(from, to, start < 0 ? 1 : E.power2Out(Math.min(1, (t - start) / 0.35)));
+      }
+      // The idle cycle starts when the intro ends and restarts on each focus change: the focused
+      // region (else the strongest wash) breathes 1 ± 5 % over 5 s. The re-trace would come 5.5 s
+      // into a cycle; every cycle in this film is cut short before it.
+      const INTRO_END = T_INTRO + TL.TOTAL;
+      const STRONGEST = ORDER.reduce((best, r) => VALUES[REGION_DRIVER[r]] > VALUES[REGION_DRIVER[best]] ? r : best, ORDER[0]);
+      function breathAt(t) {
+        if (t < INTRO_END) return null;
+        let start = INTRO_END, region = STRONGEST;
+        for (const f of FOCUS) if (t >= f.t) { start = f.t; region = f.region || STRONGEST; }
+        const u = (t - start) / 5;
+        return { region, k: u < 1 ? 1 + 0.05 * Math.sin(u * 2 * Math.PI) : 1 };
+      }
+
+      const cardBrain = buildBrain(document.getElementById('brain'), 'cb', 'card');
+      const thumbBrain = buildBrain(document.getElementById('thumb'), 'tb', 'thumb');
+
+      // ── Everything visible is a function of t ───────────────────────────────────────────────
+      const stage = document.getElementById('stage');
+      const list = document.getElementById('list');
+      const card = document.getElementById('card');
+      const scoreEl = document.getElementById('score');
+      const lvlEl = document.getElementById('lvl');
+      const nextEl = document.getElementById('next');
+      const sheet = document.getElementById('sheet');
+      const barrier = document.getElementById('barrier');
+      const scontent = document.getElementById('scontent');
+      const sview = document.getElementById('sview');
+      const xpress = document.getElementById('xpress');
+      const raRow = rowEls.readAlong;
+      const raInk = raRow.querySelector('.ink');
+      const raRip = raRow.querySelector('.rip');
+      const scrollers = Array.from(document.querySelectorAll('[data-scroll]'));
+      const sscrollers = Array.from(document.querySelectorAll('[data-sscroll]'));
+      // Text leaves (elements holding their own text). Behind the black54 barrier, or behind the
+      // frosted dock, they are covered on purpose, so the audits skip them while covered.
+      const textLeaves = root => Array.from(root.querySelectorAll('*')).filter(e =>
+        !e.closest('svg') && Array.from(e.childNodes).some(n => n.nodeType === 3 && n.textContent.trim()) && !e.hasAttribute('data-layout-ignore'));
+      const underBarrier = ['appbar', 'body', 'dock', 'statusBar'].flatMap(id => textLeaves(document.getElementById(id)));
+      const listText = textLeaves(document.getElementById('list'));
+      const ignoreState = new Map();
+      const setIgnore = (e, on) => {
+        if (ignoreState.get(e) === on) return;
+        ignoreState.set(e, on);
+        if (on) e.setAttribute('data-layout-ignore', ''); else e.removeAttribute('data-layout-ignore');
+      };
+      const DOCK_TOP = 770;
+      let Y0 = 0, Y1 = 0, Y2 = 0, SHEET_H = SHEET_MAX, SSCROLL = 0, TABBAR_BOTTOM = 0, RIP = { x: 0, y: 0, r: 0 };
+
+      function lands(elm, t0, t) {
+        const u = clamp((t - t0) / 0.35);
+        elm.style.opacity = easeOut(u).toFixed(3);
+        elm.style.transform = 'translateY(' + ((1 - easeOut(u)) * 6).toFixed(3) + 'px)';
+        elm.style.visibility = u > 0 ? '' : 'hidden';
+      }
+
+      function render(t) {
+        // Page scroll: card under the tab bar, then the rows, then the card's end.
+        let y = Y0;
+        y += (Y1 - Y0) * easeInOut(clamp((t - T_SCROLL1) / SCROLL1_LEN));
+        y += (Y2 - Y1) * easeInOut(clamp((t - T_SCROLL2) / SCROLL2_LEN));
+        list.style.transform = 'translateY(' + y.toFixed(3) + 'px)';
+
+        // The brain.
+        const seconds = Math.max(0, Math.min(TL.TOTAL, t - T_INTRO));
+        const br = breathAt(t);
+        const regions = {};
+        for (const r of ORDER) {
+          const l = lensAt(t, r);
+          regions[r] = { value: VALUES[REGION_DRIVER[r]], dim: l.dim, boost: l.boost, breath: br && br.region === r ? br.k : 1 };
+        }
+        cardBrain.paint(seconds, regions);
+
+        // The score counts up while the washes pool; the level line and the next step land after.
+        const c = easeOut(clamp((t - (T_INTRO + TL.washStart)) / (TL.TOTAL - TL.washStart)));
+        scoreEl.textContent = String(Math.round(SCORE * c));
+        lands(lvlEl, INTRO_END, t);
+        lands(nextEl, INTRO_END + 0.2, t);
+
+        // Read-along: InkWell highlight (200 ms fade) and InkRipple from the press; selected tint while open.
+        const hl = t < T_PRESS ? 0 : t < T_TAP ? clamp((t - T_PRESS) / 0.2) : t < T_CLOSE ? 1 : 0;
+        raInk.style.opacity = hl.toFixed(3);
+        if (t >= T_PRESS && t < T_TAP + 0.6) {
+          const rr = t < T_TAP ? RIP.r * Math.min(0.35, (t - T_PRESS) / 0.3)
+                               : RIP.r * (0.35 + 0.65 * easeOut(clamp((t - T_TAP) / 0.225)));
+          const al = t < T_TAP ? 0.18 * clamp((t - T_PRESS) / 0.075) : 0.18 * (1 - clamp((t - T_TAP) / 0.375));
+          raRip.style.left = (RIP.x - rr) + 'px';
+          raRip.style.top = (RIP.y - rr) + 'px';
+          raRip.style.width = raRip.style.height = (2 * rr) + 'px';
+          raRip.style.opacity = al.toFixed(3);
+        } else raRip.style.opacity = 0;
+
+        // The sheet: rises 0.3 s after the tap, scrolls to its end, goes 0.2 s after Close.
+        let shown = 0;
+        if (t >= T_TAP && t < T_CLOSE) shown = easeOut(clamp((t - T_TAP) / RISE));
+        else if (t >= T_CLOSE) shown = easeOut(clamp(1 - (t - T_CLOSE) / EXIT));
+        sheet.style.transform = 'translateY(' + ((1 - shown) * (SHEET_H + 2)).toFixed(3) + 'px)';
+        sheet.style.visibility = shown > 0 ? 'visible' : 'hidden';
+        barrier.style.opacity = (0.54 * shown).toFixed(4);
+        barrier.style.visibility = shown > 0 ? 'visible' : 'hidden';
+        const ss = SSCROLL * easeInOut(clamp((t - T_SSCROLL) / SSCROLL_LEN));
+        scontent.style.transform = 'translateY(' + (-ss).toFixed(3) + 'px)';
+        xpress.style.opacity = t >= T_XPRESS && t < T_CLOSE + EXIT ? (0.1 * clamp((t - T_XPRESS) / 0.05)).toFixed(3) : 0;
+
+        // Text the viewports clip away entirely is hidden, so nothing off screen counts as on it.
+        const z = stage.getBoundingClientRect().width / 393;
+        const sr = stage.getBoundingClientRect();
+        const top = sr.top + TABBAR_BOTTOM * z;
+        for (const e of scrollers) {
+          const r = e.getBoundingClientRect();
+          e.style.visibility = (r.bottom <= top + 0.5 || r.top >= sr.bottom - 0.5) ? 'hidden' : '';
+        }
+        const dockTop = sr.top + DOCK_TOP * z;
+        const covered = new Set();
+        if (shown > 0) for (const e of underBarrier) covered.add(e);
+        for (const e of listText) {
+          const r = e.getBoundingClientRect();
+          if ((r.top + r.bottom) / 2 >= dockTop) covered.add(e);
+        }
+        for (const e of underBarrier) setIgnore(e, covered.has(e));
+        for (const e of listText) setIgnore(e, covered.has(e));
+        if (shown > 0) {
+          const vr = sview.getBoundingClientRect();
+          for (const e of sscrollers) {
+            const r = e.getBoundingClientRect();
+            e.style.visibility = (r.bottom <= vr.top + 0.5 || r.top >= vr.bottom - 0.5) ? 'hidden' : '';
+          }
+        }
+      }
+
+      document.fonts.ready.then(() => {
+        // The locale's strings first, so what gets measured is what gets drawn.
+        hbLocaleSetup();
+        hbApplyStrings();
+        document.querySelectorAll('[data-t]').forEach(e => { e.textContent = e.textContent.replace(/''/g, "'"); });
+        // Measure once, in logical px. Body coordinates: the card's top sits one grid gap (16)
+        // under the pinned tab bar; then the Read-along row ends 16 above the dock; then the card
+        // ends where the list's end padding and NavDockSpacer(extra: 32) leave it at full scroll.
+        render(0);
+        const z = stage.getBoundingClientRect().width / 393;
+        const body = document.getElementById('body').getBoundingClientRect();
+        const tabbar = document.getElementById('tabbar').getBoundingClientRect();
+        const bodyTop = (body.top - stage.getBoundingClientRect().top) / z;
+        const tabH = tabbar.height / z;
+        TABBAR_BOTTOM = bodyTop + tabH;
+        const cr = card.getBoundingClientRect();
+        const cardH = cr.height / z;
+        const rr = raRow.getBoundingClientRect();
+        const rowBottomInCard = (rr.bottom - cr.top) / z;
+        Y0 = tabH + 16 * 1.009479;
+        // The rows scroll in until the next-step line sits just under the tab bar (the score has
+        // gone under it), never leaving the Read-along row behind the dock.
+        const nextTopInCard = (nextEl.getBoundingClientRect().top - cr.top) / z;
+        Y1 = Math.min((770 - 16) - bodyTop - rowBottomInCard, TABBAR_BOTTOM + 12 - bodyTop - nextTopInCard);
+        Y2 = (770 - 32 - 12 * 1.009479) - bodyTop - cardH;
+        // The ripple: from a point 40 % across the row, out to its farthest corner + 5.
+        const rw = rr.width / z, rh = rr.height / z;
+        RIP = { x: rw * 0.4, y: rh / 2, r: Math.hypot(rw * 0.6, rh / 2) + 5 };
+        // The sheet: content height, capped at 65 % of the screen; it scrolls to its end.
+        sheet.style.visibility = 'visible';
+        const contentH = scontent.getBoundingClientRect().height / z;
+        SHEET_H = Math.min(SHEET_MAX, 52 + contentH + 34);
+        sheet.style.height = SHEET_H + 'px';
+        SSCROLL = Math.max(0, contentH - (SHEET_H - 52 - 34));
+        // The tab background: BoxFit.cover, alignment topCenter, over the body.
+        const bh = body.height / z;
+        const scale = Math.max(393 / 430, bh / 2796);
+        const bg = document.getElementById('tabsBg');
+        bg.style.width = (430 * scale) + 'px';
+        bg.style.height = (2796 * scale) + 'px';
+        bg.style.left = ((393 - 430 * scale) / 2) + 'px';
+        thumbBrain.paint(TL.TOTAL, Object.fromEntries(ORDER.map(r => {
+          const l = lensTarget('occipital', r);
+          return [r, { value: VALUES[REGION_DRIVER[r]], dim: l.dim, boost: l.boost, breath: 1 }];
+        })));
+        render(0);
+
+        const tl = gsap.timeline({ paused: true });
+        const clockProxy = { t: 0 };
+        tl.to(clockProxy, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clockProxy.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

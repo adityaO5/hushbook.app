@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Peta karakter",
+  "castCount": "Pemeran · {count}",
+  "roleHero": "Pahlawan",
+  "roleVillain": "Penjahat",
+  "roleRival": "Saingan",
+  "roleMentor": "Mentor",
+  "roleFriend": "Teman",
+  "roleLoveInterest": "Pujaan hati",
+  "relationMentorOf": "mentor dari",
+  "relationStudentOf": "murid dari",
+  "relationEmployerOf": "majikan dari",
+  "relationEmployeeOf": "karyawan dari",
+  "sectionRole": "Peran",
+  "sectionFirstHeard": "Pertama kali terdengar",
+  "firstHeardLabel": "Bab {chapter} · {time}",
+  "sectionDescription": "Deskripsi",
+  "sectionAttributes": "Atribut",
+  "sectionRelationships": "Relasi",
+  "deleteCharacter": "Hapus karakter"
+}

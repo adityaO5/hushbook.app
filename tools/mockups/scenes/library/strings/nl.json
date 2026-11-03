@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Jouw boeken",
+  "librarySelect": "Selecteren",
+  "libraryChipAll": "Alle",
+  "libraryChipInProgress": "Bezig",
+  "libraryChipNotStarted": "Niet begonnen",
+  "libraryChipFinished": "Afgerond",
+  "librarySortRecentlyPlayed": "Onlangs beluisterd",
+  "libraryShowAsList": "Als lijst tonen",
+  "durationHoursMinutes": "{hours} u {minutes} min",
+  "durationMinutes": "{minutes} min",
+  "timeLeft": "Nog {duration}",
+  "navHome": "Start",
+  "navLibrary": "Bibliotheek",
+  "navAnalytics": "Analyses",
+  "navProfile": "Profiel"
+}

@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Mapa de personajes",
+  "castCount": "Reparto · {count}",
+  "roleHero": "Héroe",
+  "roleVillain": "Villano",
+  "roleRival": "Rival",
+  "roleMentor": "Mentor",
+  "roleFriend": "Amigo",
+  "roleLoveInterest": "Interés amoroso",
+  "relationMentorOf": "mentor de",
+  "relationStudentOf": "estudiante de",
+  "relationEmployerOf": "empleador de",
+  "relationEmployeeOf": "empleado de",
+  "sectionRole": "Papel",
+  "sectionFirstHeard": "Primera aparición",
+  "firstHeardLabel": "Cap. {chapter} · {time}",
+  "sectionDescription": "Descripción",
+  "sectionAttributes": "Atributos",
+  "sectionRelationships": "Relaciones",
+  "deleteCharacter": "Eliminar personaje"
+}

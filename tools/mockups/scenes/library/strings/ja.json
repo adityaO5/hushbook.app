@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "あなたの本",
+  "librarySelect": "選択",
+  "libraryChipAll": "すべて",
+  "libraryChipInProgress": "途中",
+  "libraryChipNotStarted": "未再生",
+  "libraryChipFinished": "終了した",
+  "librarySortRecentlyPlayed": "最近再生した順",
+  "libraryShowAsList": "リストで表示",
+  "durationHoursMinutes": "{hours}時間{minutes}分",
+  "durationMinutes": "{minutes}分",
+  "timeLeft": "残り{duration}",
+  "navHome": "ホーム",
+  "navLibrary": "ライブラリ",
+  "navAnalytics": "分析",
+  "navProfile": "プロフィール"
+}

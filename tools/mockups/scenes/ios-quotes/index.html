@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* RTL: English book content keeps its own direction */
+      [dir="rtl"] .pbox, [dir="rtl"] .passage, [dir="rtl"] .noteTx { direction: ltr; text-align: left; }
+      [dir="rtl"] .miniCard, [dir="rtl"] .qtext, [dir="rtl"] #qnt { unicode-bidi: plaintext; }
+
+      /* HushBook iPhone: Mark a passage in read-along, keep it as a quote, add a note, then Quotes & notes and the
+         quote card (D:\hushbook lib/features/player/marks, quote_capture_controller.dart, features/library/bookmarks).
+         Ported from D:\hushbook-demo-video\showcase\ios\ios-quotes for the site's mockup generator: UI strings come
+         from strings/<locale>.json under the app's own .arb keys (ICU plurals and '' escapes are read as the app does).
+         Labels the app sets in folioCaps are stored as the app writes them and capitalised here (text-transform). */
+      @font-face{font-family:HBNews;src:url('../../assets/fonts/Newsreader-Variable.ttf');font-weight:200 800}
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Bold.ttf');font-weight:700}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Medium.ttf');font-weight:500}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Bold.ttf');font-weight:700 800}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Italic.ttf');font-weight:400;font-style:italic}
+      @font-face{font-family:HBPlayfair;src:url('../../assets/fonts/PlayfairDisplay-Variable.ttf');font-weight:400 900}
+      @font-face{font-family:HBPlayfair;src:url('../../assets/fonts/PlayfairDisplay-Italic.ttf');font-weight:400 900;font-style:italic}
+      @font-face{font-family:HBPagella;src:url('../../assets/fonts/TeXGyrePagella-Italic.otf');font-weight:400;font-style:italic}
+      @font-face{font-family:HBEwert;src:url('../../assets/fonts/Ewert-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBLexend;src:url('../../assets/fonts/Lexend-Variable.ttf');font-weight:100 900}
+
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:#FAF9F5}
+      #root{position:relative;width:3840px;height:2160px;background:#FAF9F5}
+      #app{position:absolute;inset:0;overflow:hidden}
+      svg{display:block;flex:none}
+      #frame{position:absolute;pointer-events:none;z-index:2}
+      /* The frame's transparent screen rect has square corners that reach past the device outline:
+         clip the stage to a 400-unit radius (89.13 px at this size), as ios-offload does. */
+      #screen{position:absolute;z-index:1;overflow:hidden}
+      .stage{position:relative;width:393px;height:852px;overflow:hidden;background:#141416;
+             font-family:HBAtk,sans-serif;-webkit-font-smoothing:antialiased;font-optical-sizing:none}
+      .route{position:absolute;left:0;top:0;width:393px;height:852px;overflow:hidden}
+      .hid{visibility:hidden}
+      .barrier{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+      .press{position:absolute;inset:0;opacity:0;pointer-events:none}
+      .center{position:absolute;left:0;width:393px;display:flex;justify-content:center}
+
+      /* ── Player, read-along (Lamplight + Folio), the default ambient look ───────────────────── */
+      #rp{background:var(--page);color:var(--ink);letter-spacing:.25px}
+      #reader{position:absolute;inset:0;overflow:hidden;z-index:0}
+      #pager{position:absolute;left:0;top:0;width:393px;height:852px}
+      .page{position:absolute;top:0;width:393px;height:852px}
+      .pbox{position:absolute;left:28px;top:107px;width:337px}
+      .blk{padding:4px 0 28px;text-align:center}
+      .blkLabel{font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;
+                font-feature-settings:"case","kern";color:var(--rubricText);white-space:nowrap;text-transform:uppercase}
+      .rule{width:36px;height:1px;margin:16px auto 0;background:var(--hairline)}
+      .narrowCol{width:265px}
+      .ln{font-family:var(--lfont);font-size:23px;line-height:34.5px;font-variation-settings:var(--lvar);white-space:normal;font-kerning:normal;color:var(--far)}
+      .tx{position:relative}
+      .cap{font-size:49.45px;color:var(--capc,var(--rubric)) !important;font-variation-settings:var(--capvar)}
+      .w{position:relative}
+      .w.sp,.wipe{color:var(--spoken)}
+      .wipe{position:absolute;left:0;top:0;white-space:nowrap;line-height:normal}
+      .w.now::after{content:"";position:absolute;left:0;right:0;top:100%;height:2px;background:var(--rubric);opacity:var(--nowA,1)}
+      .off{visibility:hidden}
+      #pnum{position:absolute;left:28px;width:265px;top:802px;text-align:center;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;
+            font-size:14px;line-height:1.3;font-variant-numeric:lining-nums tabular-nums;color:var(--secondary);white-space:nowrap}
+      #meas{position:absolute;left:0;top:0;visibility:hidden}
+      .mkLayer{position:absolute;left:0;top:0;width:393px;height:0;pointer-events:none}
+      .mkLayer i{position:absolute;display:block}
+      .page{z-index:1}
+      #mkOver{z-index:2}
+
+      /* Running head (chrome/running_head.dart): 48 tall under the status bar. */
+      #head{position:absolute;left:0;top:59px;width:393px;height:48px;color:var(--ink)}
+      .hb{position:absolute;top:0;width:48px;height:48px;display:grid;place-items:center}
+      #hBack{left:4px}
+      #hBack span{padding:0 0 6px 9px;font-family:HBNews,serif;font-size:36px;line-height:1;font-variation-settings:"opsz" 18,"wght" 380;letter-spacing:.25px}
+      #hTitle{position:absolute;left:100px;width:193px;top:0;height:48px;display:grid;place-items:center;text-align:center;white-space:nowrap;
+              font-family:HBNews,serif;font-size:11px;letter-spacing:.935px;line-height:1.3;font-feature-settings:"case","kern";
+              font-variation-settings:"opsz" 18,"wght" 500;color:var(--secondary);text-transform:uppercase}
+      #hTitle b{font-weight:normal;font-variation-settings:"opsz" 18,"wght" 700;color:var(--rubric)}
+      #hAa{left:293px}
+      #hAa span{font-family:HBNews,serif;font-size:19px;letter-spacing:-.19px;line-height:1.43;font-variation-settings:"opsz" 18,"wght" 450}
+      #hMark{left:341px;display:block}
+      #hMarkInk{position:absolute;inset:0;border-radius:24px;background:rgba(188,188,188,.4);opacity:0}
+      #hPen{position:absolute;left:12px;top:12px}
+      #hX{position:absolute;left:12px;top:12px;width:24px;height:24px}
+      #hX b{position:absolute;left:0;width:24px;top:-6px;text-align:center;font-weight:normal;font-family:HBNews,serif;font-size:32px;line-height:32px;
+            font-variation-settings:"opsz" 18,"wght" 300;letter-spacing:0;color:var(--ink)}
+      #hBadge{position:absolute;left:370px;top:62px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--badge);
+              font-weight:700;font-size:11px;line-height:16px;text-align:center;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:0}
+
+      /* Lamp and its handle (chrome/lamp.dart) while reading. */
+      #lamp{position:absolute;left:309px;top:738px;width:64px;height:64px}
+      #lampDisc{position:absolute;inset:0;border-radius:50%;background:var(--dock);border:1px solid var(--dockHairline);box-shadow:var(--dockShadow)}
+      #lampRings{position:absolute;left:-1px;top:-1px}
+      #lampCore{position:absolute;left:11px;top:11px;width:42px;height:42px;border-radius:50%;background:var(--rubric);color:var(--glyph)}
+      #lampCore svg{position:absolute;left:10px;top:10px}
+      #handle{position:absolute;left:321px;top:708px;width:40px;height:26px;border-radius:13px;background:var(--dock);border:1px solid var(--dockHairline);
+              box-shadow:0 4px 14.9px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--secondary)}
+
+      /* MarkPickHint (mark_toolbar_layer.dart): under the head, 4 dp down, on the dock's card; wraps past 320 dp. */
+      #mkHintRow{top:111px}
+      #mkHint{min-height:40px;max-width:320px;padding:8px 16px;border-radius:20px;background:var(--dock);border:1px solid var(--dockHairline);
+              display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;line-height:18.2px;color:var(--ink)}
+
+      /* MarkToolbar (widgets/mark_toolbar.dart): a 48 dp pill, three segments of at least 88 dp. */
+      #mkBar{position:absolute;height:48px;border-radius:24px;background:var(--mkSurface);border:1px solid var(--mkSurfaceHairline);display:flex;overflow:hidden}
+      .seg{position:relative;min-width:88px;padding:0 14px;display:flex;align-items:center;justify-content:center;flex:none}
+      .seg .press{background:var(--mkPress)}
+      .lb{position:relative;font-weight:400;font-size:14px;line-height:16.8px;color:var(--ink);white-space:nowrap}
+      .seg .lb{margin-left:8px}
+      .dv{width:1px;align-self:stretch;background:var(--mkDivider);flex:none}
+      .qg{position:relative;width:20px;height:20px;flex:none}
+      .qg b{position:absolute;left:-10px;width:40px;top:5px;text-align:center;font-weight:normal;font-family:HBNews,serif;font-size:34px;line-height:34px;
+            font-variation-settings:"opsz" 18,"wght" 420;letter-spacing:0;color:var(--ink)}
+
+      /* MarkPopover (widgets/mark_popover.dart). */
+      #mkPop{position:absolute;padding:6px;border-radius:20px;background:var(--mkSurface);border:1px solid var(--mkSurfaceHairline);overflow:hidden}
+      .popRow{display:flex;align-items:stretch}
+      .popPlay{width:48px;flex:none;display:flex;align-items:center;justify-content:center}
+      .playc{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--secondary);display:grid;place-items:center;color:var(--ink)}
+      .popGrid{flex:1;display:flex;flex-direction:column}
+      .popPair{display:flex}
+      .pa{position:relative;flex:1 1 0;min-width:0;min-height:56px;padding:4px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;color:var(--ink)}
+      .pa.rowa{flex:none;min-width:56px;min-height:52px}
+      .pa .press{border-radius:14px;background:var(--mkPress)}
+      .pa .lb{margin-top:3px;font-weight:700;font-size:12px;line-height:14.4px;text-align:center}
+      .popDiv{padding:10px 2px;display:flex}
+      .popDiv i{width:1px;background:var(--mkDivider)}
+
+      /* Read-along toast (chrome/read_along_cards.dart): pinned 8 dp under the head. */
+      .toastRow{top:115px}
+      .toast{display:flex;align-items:center;padding:2px 4px 2px 18px;border-radius:26px;background:var(--dock);border:1px solid var(--dockHairline);
+             box-shadow:0 8px 28.7px rgba(0,0,0,.18)}
+      .toast .msg{font-weight:700;font-size:15px;line-height:19.5px;color:var(--ink);white-space:nowrap}
+      .toast .act{margin-left:4px;min-width:48px;min-height:48px;padding:0 12px;display:flex;align-items:center;justify-content:center;
+                  font-weight:700;font-size:15px;line-height:19.5px;color:var(--ink);text-decoration:underline;text-decoration-thickness:1.5px;
+                  text-underline-offset:2px;white-space:nowrap}
+
+      /* The note sheet (widgets/mark_note_sheet.dart on folio/folio_sheet.dart). */
+      #nScrim{position:absolute;inset:0;background:var(--scrim);opacity:0}
+      #nSheet{position:absolute;left:0;width:393px;background:var(--sheet);border-radius:18px 18px 0 0;border-top:1px solid var(--hairline);padding-top:6px}
+      .nsHead{min-height:60px;padding:6px 6px 6px 22px;display:flex;align-items:center}
+      .nsTitle{flex:1;font-family:HBNews,serif;font-size:12px;letter-spacing:1.44px;line-height:15px;font-variation-settings:"opsz" 18,"wght" 500;
+               font-feature-settings:"case","kern";color:var(--rubric);text-transform:uppercase}
+      .nsX{width:48px;height:48px;margin-left:8px;position:relative}
+      .nsX b{position:absolute;left:0;width:48px;top:10px;text-align:center;font-weight:normal;font-family:HBNews,serif;font-size:28px;line-height:28px;
+             font-variation-settings:"opsz" 18,"wght" 300;letter-spacing:0;color:var(--secondary)}
+      .nsBody{padding:2px 12px 0}
+      .nsScroll{padding:2px 10px 16px}
+      .nsPassage{border-left:3px solid var(--mkRule);padding:1px 0 1px 12px;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;
+                 font-size:16px;line-height:23.2px;color:var(--secondary);letter-spacing:.25px}
+      .nsPassage span{position:relative;top:1.69px}
+      .nsField{margin-top:14px;min-height:127.5px;padding:12px 14px;border-radius:16px;background:var(--button);border:1px solid var(--rubric);
+               font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;font-size:23px;line-height:34.5px;color:var(--ink);letter-spacing:.25px;
+               overflow-wrap:break-word}
+      .nsField .ft{position:relative;top:2.7px}
+      #nsHintTxt{color:var(--secondary)}
+      #nsCaret{display:inline-block;width:2px;height:27px;margin:0 -2px -5px 0;border-radius:2px;background:var(--rubric);vertical-align:baseline}
+      .nsFoot{padding:12px 4px 4px 10px;display:flex;align-items:center}
+      .nsCap{flex:1;font-size:12px;line-height:15.6px;color:var(--secondary)}
+      .nsSave{position:relative;margin-left:8px;min-width:104px;min-height:48px;padding:8px 24px;border-radius:24px;background:var(--rubric);overflow:hidden;
+              display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;line-height:19.2px;color:var(--glyph)}
+      .nsSave .press{background:rgba(188,188,188,.4)}
+
+      /* iOS keyboard (system; light, as TextField's keyboardAppearance follows the app's light theme). */
+      #kb{position:absolute;left:0;top:561px;width:393px;height:291px;background:#D1D4DA;font-family:HBInter,sans-serif;letter-spacing:0}
+      .key{position:absolute;height:42px;border-radius:5px;background:#FFFFFF;box-shadow:0 1px 0 rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;
+           font-size:22.5px;line-height:27px;color:#000;font-weight:400}
+      .key.fn{background:#ABB1BB;font-size:16px;line-height:19px}
+      .key.fn.on{background:#FFFFFF}
+      .kbIcon{position:absolute;color:#4F545C}
+
+      /* ── Quotes & notes (library/bookmarks, L1 "The Commonplace Index"), light ───────────────── */
+      #rq{background:#FBF8F2;color:#2B2622;font-family:HBInter,sans-serif;letter-spacing:0}
+      .qnHead{position:absolute;left:0;top:59px;width:393px;height:56px;padding:0 6px;display:flex;align-items:center}
+      .qnBack{width:48px;height:48px;display:grid;place-items:center;color:#2B2622}
+      .qnTitle{flex:1;text-align:center;padding:6px 0;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 600;font-size:14px;
+               letter-spacing:2.24px;line-height:17.5px;color:#2B2622;white-space:nowrap;text-transform:uppercase}
+      .qnTitle span{position:relative;top:.82px}
+      #qnList{position:absolute;left:16px;top:115px;width:361px}
+      .hero{padding:10px 0 6px}
+      .heroCount{font-family:HBNews,serif;font-variation-settings:"opsz" 72,"wght" 400;font-size:36px;line-height:38.88px;color:#2B2622;white-space:nowrap}
+      .heroCount span{position:relative;top:.68px}
+      .heroLine{margin-top:6px;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;font-size:18px;line-height:24.3px;color:#6B635A;white-space:nowrap}
+      .heroLine span{position:relative;top:1.48px}
+      .search{padding-top:14px}
+      .searchRow{min-height:48px;border-bottom:1.5px solid #CBBDA7;display:flex;align-items:center;color:#6B635A}
+      .searchRow span{margin-left:8px;padding:12px 0;font-size:16px;line-height:20px;color:#6B635A;white-space:nowrap}
+      .tabs{padding-top:6px;display:flex;flex-wrap:wrap;column-gap:20px}
+      .tab{position:relative;min-height:48px;min-width:48px;display:inline-flex;flex-direction:column;justify-content:center}
+      .tab .tl{margin-top:6px;font-size:15px;line-height:18px;font-weight:500;color:#6B635A;white-space:nowrap}
+      .tab .tl b{font-weight:400;font-variant-numeric:tabular-nums}
+      .tab.on .tl{font-weight:600;color:#2B2622}
+      .tab i{display:block;margin:8px 0 4px;height:2.5px;border-radius:2px;background:#A8452A;opacity:0}
+      .tab.on i{opacity:1}
+      .bh{padding-top:8px}
+      .bh.next{margin-top:14px;padding-top:18px;border-top:1px solid #CBBDA7}
+      .bhIn{min-height:76px;padding:6px 0;display:flex;align-items:center}
+      .cov{position:relative;width:40px;height:60px;border-radius:2px 6px 6px 2px;overflow:hidden;flex:none}
+      .cov img{display:block;width:100%;height:100%;object-fit:cover}
+      .bhCol{flex:1;min-width:0;margin-left:14px}
+      .leader{display:flex;align-items:flex-end}
+      .ldTitle{font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 500;font-size:19px;line-height:23.18px;color:#2B2622;white-space:nowrap;flex:none}
+      .ldTitle span{position:relative;top:.98px}
+      .ldDots{flex:1;height:2px;margin:0 4px 5.4px;background:radial-gradient(circle at 1px 1px,#CBBDA7 .95px,rgba(203,189,167,0) 1.2px) 0 0/4px 2px repeat-x}
+      .ldCount{font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 500;font-size:18px;line-height:18px;font-variant-numeric:tabular-nums;color:#2B2622}
+      .ldChev{color:#6B635A}
+      .bhAuthor{margin-top:3px;font-size:13.5px;line-height:18.225px;color:#6B635A;white-space:nowrap}
+      .ent{position:relative}
+      .sepLine{margin-left:26px;height:1px;background:#E3DFD8}
+      .entRow{position:relative;display:flex;padding:15px 0 3px}
+      .entRow .press{border-radius:12px;background:rgba(43,38,34,.059)}
+      .gut{width:26px;flex:none;position:relative}
+      .hang{position:absolute;left:-3px;top:0;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;font-size:46px;line-height:39.56px;color:#A8452A}
+      .hang span{position:relative;top:-1.51px}
+      .ebody{flex:1;min-width:0;position:relative}
+      .pRow{display:flex;align-items:flex-start}
+      .passage{position:relative;flex:1;min-width:0;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;font-size:17px;line-height:25.5px;color:#2B2622}
+      .passage .pt{position:relative;top:2px}
+      .passage.band{color:#2B2622}
+      .bandLayer{position:absolute;left:0;top:0;width:0;height:0}
+      .bandLayer i{position:absolute;display:block;background:#EFDAA5}
+      .mini{position:relative;margin:3px 0 0 14px;width:48px;height:58.909px;flex:none}
+      .miniCard{position:absolute;inset:0;border-radius:8px;overflow:hidden;padding:3.36px 5.28px 4.32px;display:flex;flex-direction:column}
+      .miniQ1{font-family:HBPlayfair,serif;font-weight:600;font-size:16.32px;line-height:14.688px;color:#C9A36A;letter-spacing:0;height:14.688px}
+      .miniQ1 span{position:relative;top:-2.2px}
+      .miniQ2{flex:1;min-height:0;overflow:hidden;font-family:HBPlayfair,serif;font-style:italic;font-size:7.68px;line-height:8.832px;color:#F5E9D0;letter-spacing:0;
+              -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 22.08px,rgba(0,0,0,0) 26.496px);mask-image:linear-gradient(to bottom,#000 0,#000 22.08px,rgba(0,0,0,0) 26.496px)}
+      .miniQ2 div{height:26.496px;overflow:hidden}
+      .miniBadge{position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:#FFFDF8;border:1px solid #CBBDA7;display:grid;place-items:center;color:#6F3825}
+      .noteBlk{position:relative;margin-top:7px;padding-left:16px}
+      .noteBlk svg{position:absolute;left:0;top:0;overflow:visible}
+      .noteLbl{padding-bottom:2px;font-weight:600;font-size:12px;line-height:15.6px;letter-spacing:.84px;color:#A8452A;text-transform:uppercase}
+      .noteTx{font-family:HBPagella,serif;font-style:italic;font-size:17.5px;line-height:25.375px;color:#2B2622}
+      .noteTx span{position:relative;top:1.75px}
+      .meta{padding-top:4px;display:flex;align-items:center}
+      .metaTx{flex:1;min-width:0;padding:6px 0;font-weight:600;font-size:12px;line-height:16.8px;letter-spacing:.84px;color:#6B635A;text-transform:uppercase}
+      .metaTx span{position:relative;top:.83px}
+      .metaTx b{font-weight:700;color:#4A4038}
+      .metaAct{display:flex;transform:translateX(10px)}
+      .rb{width:48px;height:48px;display:grid;place-items:center}
+
+      /* ── Quote editor (library/bookmarks/quote_editor_screen.dart), light ─────────────────────── */
+      #re{background:#FBF8F2;font-family:HBInter,sans-serif;letter-spacing:.25px;color:#2F2F2F}
+      #edCol{position:absolute;left:0;top:59px;width:393px;height:759px;display:flex;flex-direction:column}
+      .edHead{padding:8px 16px 4px 8px;display:flex;align-items:center;flex:none}
+      .edX{width:44px;height:44px;display:grid;place-items:center;color:#090A0A}
+      .edTitle{flex:1;text-align:center;font-family:HBPlayfair,serif;font-weight:600;font-size:20px;line-height:26.66px;color:#2F2F2F;white-space:nowrap}
+      #edPrev{position:relative;flex:1;min-height:0}
+      #qcardWrap{position:absolute;overflow:hidden}
+      .edFontLbl{flex:none;padding:4px 16px 2px;font-weight:600;font-size:11px;letter-spacing:1.1px;line-height:13.31px;color:#858585}
+      .edFonts{flex:none;height:48px;display:flex;padding:0 16px}
+      .chip{height:48px;min-width:104px;padding:0 16px;margin-right:8px;border-radius:24px;border:1px solid #E8E0D4;display:flex;align-items:center;justify-content:center;
+            font-size:14px;line-height:18px;color:#2F2F2F;white-space:nowrap}
+      .chip.on{background:rgba(111,56,37,.12);border:2px solid #6F3825;font-weight:600}
+      .edBgs{flex:none;height:56px;position:relative}
+      .sw{position:absolute;top:4px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border-style:solid}
+      .sw svg{visibility:hidden}
+      .sw.on svg{visibility:visible}
+      .edSw{flex:none;padding:0 8px}
+      .tile{height:56px;padding:0 16px;display:flex;align-items:center}
+      .tileT{flex:1;font-weight:500;font-size:16px;line-height:19.36px;letter-spacing:.5px;color:#2F2F2F;white-space:nowrap}
+      .ios{position:relative;width:51px;height:31px;border-radius:15.5px;flex:none}
+      .ios i{position:absolute;top:2px;height:27px;border-radius:13.5px;box-shadow:0 3px 8px rgba(0,0,0,.15),0 3px 1px rgba(0,0,0,.06)}
+      .edShare{flex:none;padding:10px 16px 12px}
+      .shareBtn{height:50px;border-radius:48px;background:#6F3825;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+      .shareBtn span{margin-left:8px;font-weight:600;font-size:16px;line-height:19.36px;letter-spacing:.1px;color:#FFFFFF}
+
+      /* QuoteShareCard (quote_share_card.dart): a fixed 1080 x 1350 card, scaled to fit the preview. */
+      #qcard{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:0 0;overflow:hidden;letter-spacing:0;font-family:HBInter,sans-serif}
+      .qfill{position:absolute;inset:0}
+      .qm{position:absolute;font-family:HBPlayfair,serif;font-weight:600;font-size:360px;line-height:288px;white-space:nowrap}
+      .qm span{position:relative;top:-59.8px}
+      #qm1{left:70px;top:40px}
+      #qm2{right:60px;bottom:230px}
+      .qbox{position:absolute;left:96px;right:96px;top:310px;bottom:310px;display:flex;align-items:center}
+      .qcol{width:888px}
+      .qtext{font-family:HBPlayfair,serif;font-style:italic;font-weight:400}
+      .qnote{padding-right:210px;margin-top:44px}
+      .qrule{width:72px;height:4px;border-radius:2px}
+      .qhead{margin-top:22px;font-weight:600;font-size:22px;line-height:26.4px;letter-spacing:3px;white-space:nowrap}
+      .qnt{margin-top:10px;font-style:italic;font-weight:400}
+      .qby{position:absolute;left:96px;bottom:90px;width:700px}
+      .qauth{font-weight:600;font-size:40px;line-height:48.4px;white-space:nowrap}
+      .qbook{margin-top:6px;font-style:italic;font-size:34px;line-height:41.14px;white-space:nowrap}
+      .qbrand{position:absolute;right:80px;top:70px;display:flex;flex-direction:column;align-items:center}
+      .qH{font-family:HBEwert,serif;font-size:96px;line-height:76.8px;height:76.8px}
+      .qH span{position:relative;top:-11px}
+      .qHB{margin-top:8px;font-weight:600;font-size:24px;line-height:29.04px;letter-spacing:3px}
+      .qcov{position:absolute;right:80px;bottom:72px;width:176px;height:264px;border-radius:4px 16px 16px 4px;overflow:hidden}
+
+      /* DefaultCoverArt -> CoverTemplateArtwork (Ember Grid, CoverTemplateCatalog.fallbackFor("1984")). */
+      .ca{position:absolute;inset:0;background:url('assets/ember_grid.jpg') center/cover no-repeat}
+      .caScrim{position:absolute;inset:0}
+      .caCopy{position:absolute;display:flex;align-items:center;justify-content:center;overflow:visible}
+      .caCol{display:flex;flex-direction:column;align-items:center;flex:none;transform-origin:50% 50%;font-family:HBInter,sans-serif;letter-spacing:0;color:#FFFFFF;text-align:center}
+      .caT{font-weight:800;font-size:17px;line-height:18.36px;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.35)}
+      .caA{margin-top:5px;font-weight:500;font-size:10.5px;line-height:11.55px;white-space:nowrap;color:rgba(255,255,255,.88)}
+
+      /* iOS status bar and home indicator, drawn over every route. */
+      #sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:var(--sb);z-index:20}
+      #sbTime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HBInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+      #sbIcons{position:absolute;left:293px;top:23px}
+      #homeBar{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:var(--sb);z-index:20}
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-pause" viewBox="0 0 512 512"><path d="M128 405H213V107H128V405ZM299 107V405H384V107H299Z" fill="currentColor"/></symbol>
+        <symbol id="i-playArrow" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+        <symbol id="i-chevronUp" viewBox="0 0 512 512"><path d="M76 325 242 156Q249 149 256 149Q264 149 271 156L437 325Q442 329 442 339Q442 347 436.5 353Q431 359 423 359Q414 359 409 353L256 197L104 353Q99 359 90 359Q82 359 76 353Q70 347 70 339Q70 330 76 325Z" fill="currentColor"/></symbol>
+        <!-- assets/images/ic_mark.svg, the marker pen -->
+        <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.3 11.4 3.8 16.9V20h8.7l2.8-2.8"/><path d="M20.8 12.4l-4.4 4.4a1.8 1.8 0 0 1-2.5 0l-5.2-5.2a1.8 1.8 0 0 1 0-2.5l4.4-4.4"/></g></symbol>
+        <!-- CupertinoIcons.pencil_ellipsis_rectangle (markNoteIcon on iOS) -->
+        <symbol id="c-noteIcon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.6 5.6H4.4a2.4 2.4 0 0 0-2.4 2.4v9a2.4 2.4 0 0 0 2.4 2.4h14.2a2.4 2.4 0 0 0 2.4-2.4v-4.6"/><path d="M20.9 3.4a1.5 1.5 0 0 1 2.1 2.1l-7.3 7.3-2.9.8.8-2.9Z"/></g><g fill="currentColor"><circle cx="6.6" cy="12.6" r="1.15"/><circle cx="10" cy="12.6" r="1.15"/><circle cx="13.4" cy="12.6" r="1.15"/></g></symbol>
+        <symbol id="c-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M8.6 9H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1.6"/><path d="M12 14.6V2.8M8.4 6.3 12 2.7l3.6 3.6"/></g></symbol>
+        <symbol id="c-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3.8 6.2h16.4M9.3 6.2V4.4c0-.7.5-1.2 1.2-1.2h3c.7 0 1.2.5 1.2 1.2v1.8"/><path d="M5.8 6.2l.9 13.2c.1 1 .9 1.8 1.9 1.8h6.8c1 0 1.8-.8 1.9-1.8l.9-13.2"/><path d="M10 10v7.4M14 10v7.4"/></g></symbol>
+        <symbol id="c-playFill" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.6v14.8c0 .9.9 1.4 1.7 1l12-7.4c.7-.4.7-1.5 0-1.9l-12-7.4C7.9 3.2 7 3.7 7 4.6Z"/></symbol>
+        <symbol id="c-ellipsis" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></g></symbol>
+        <!-- Material rounded -->
+        <symbol id="m-back" viewBox="0 0 24 24"><path fill="currentColor" d="M16.88 2.88a1.25 1.25 0 0 0-1.77 0L6.7 11.29a1 1 0 0 0 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77Z"/></symbol>
+        <symbol id="m-close" viewBox="0 0 24 24"><path fill="currentColor" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4Z"/></symbol>
+        <symbol id="m-check" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17 5.53 12.7a1 1 0 0 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a1 1 0 0 0-1.41-1.41L9 16.17Z"/></symbol>
+        <symbol id="m-search" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/></symbol>
+        <symbol id="m-chevR" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 6.71a1 1 0 0 0 0 1.41L13.17 12l-3.88 3.88a1 1 0 1 0 1.41 1.41l4.59-4.59a1 1 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01Z"/></symbol>
+        <symbol id="m-playCircle" viewBox="0 0 24 24"><path fill="currentColor" d="M10.8 15.9l4.67-3.5c.27-.2.27-.6 0-.8L10.8 8.1a.5.5 0 0 0-.8.4v7c0 .41.47.65.8.4ZM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Z"/></symbol>
+        <symbol id="m-edit" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1c-.1.1-.15.22-.15.36ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/></symbol>
+        <symbol id="m-iosShare" viewBox="0 0 24 24"><path fill="currentColor" d="M16 5.71 14.58 7.13 13 5.54V16h-2V5.54L9.42 7.13 8 5.71l4-4 4 4ZM20 10.5V21c0 1.1-.9 2-2 2H6c-1.11 0-2-.9-2-2V10.5c0-1.11.89-2 2-2h3v2H6V21h12V10.5h-3v-2h3c1.1 0 2 .89 2 2Z"/></symbol>
+        <!-- iOS keyboard glyphs -->
+        <symbol id="k-shift" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3.6 3.4 12.4h4.9v7.4h7.4v-7.4h4.9Z"/></symbol>
+        <symbol id="k-shiftOn" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3.6 3.4 12.4h4.9v7.4h7.4v-7.4h4.9Z"/></symbol>
+        <symbol id="k-delete" viewBox="0 0 26 20"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M8.6 2.4h13.2c1.2 0 2.1.9 2.1 2.1v11c0 1.2-.9 2.1-2.1 2.1H8.6L1.8 10Z"/><path d="M12.4 6.6l6.8 6.8M19.2 6.6l-6.8 6.8"/></g></symbol>
+        <symbol id="k-face" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9.6"/><path d="M7.6 14.2c1 1.9 2.6 2.9 4.4 2.9s3.4-1 4.4-2.9"/></g><g fill="currentColor"><ellipse cx="9" cy="9.6" rx="1.2" ry="1.6"/><ellipse cx="15" cy="9.6" rx="1.2" ry="1.6"/></g></symbol>
+        <symbol id="k-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="8.6" y="2.4" width="6.8" height="12.2" rx="3.4"/><path d="M5.4 11.2c0 3.8 3 6.6 6.6 6.6s6.6-2.8 6.6-6.6M12 17.8v3.6"/></g></symbol>
+      </defs>
+    </svg>
+
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="22" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div id="screen">
+          <div class="stage" id="stage">
+
+            <!-- ── Player: read-along ── -->
+            <div class="route" id="rp">
+              <div id="reader">
+                <div id="pager"></div>
+                <div id="pnum">1 / 1</div>
+              </div>
+
+              <div id="head">
+                <div class="hb" id="hBack"><span>‹</span></div>
+                <div id="hTitle"><span id="hTitleTx">Chapter <b>I</b></span></div>
+                <div class="hb" id="hAa"><span>Aa</span></div>
+                <div class="hb" id="hMark">
+                  <div id="hMarkInk"></div>
+                  <svg id="hPen" width="24" height="24"><use href="#i-pen"/></svg>
+                  <div id="hX"><b>×</b></div>
+                </div>
+              </div>
+              <div id="hBadge">1</div>
+
+              <div id="handle"><svg width="18" height="18"><use href="#i-chevronUp"/></svg></div>
+              <div id="lamp">
+                <div id="lampDisc"></div>
+                <svg id="lampRings" width="66" height="66" viewBox="0 0 66 66">
+                  <circle cx="33" cy="33" r="30" fill="none" stroke-width="3" id="ringTrack"/>
+                  <path id="ringArc" fill="none" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <div id="lampCore">
+                  <svg id="lampPause" width="22" height="22"><use href="#i-pause"/></svg>
+                  <svg id="lampPlay" width="22" height="22"><use href="#i-playArrow"/></svg>
+                </div>
+              </div>
+
+              <div class="center" id="mkHintRow" data-layout-allow-occlusion><div id="mkHint"><span id="mkHintTx" data-t="markHintStart">Tap a word to start</span></div></div>
+
+              <div id="mkBar" data-layout-allow-overlap data-layout-allow-occlusion>
+                <div class="seg" id="segHl"><div class="press"></div><svg width="20" height="20" viewBox="0 0 24 24" style="position:relative;color:var(--ink)"><use href="#i-pen"/><path d="M15.2 21h5.6" stroke="var(--mkRule)" stroke-width="3" stroke-linecap="round"/></svg><span class="lb" data-t="markHighlight">Highlight</span></div>
+                <i class="dv"></i>
+                <div class="seg" id="segNote"><div class="press"></div><svg width="20" height="20" style="position:relative;color:var(--ink)"><use href="#c-noteIcon"/></svg><span class="lb" data-t="markNote">Note</span></div>
+                <i class="dv"></i>
+                <div class="seg" id="segQuote"><div class="press"></div><div class="qg"><b>“</b></div><span class="lb" data-t="markQuote">Quote</span></div>
+              </div>
+
+              <div class="center toastRow" id="toastQRow" data-layout-allow-overlap data-layout-allow-occlusion><div class="toast"><span class="msg" data-t="quoteSaved">Quote saved</span><span class="act" data-t="share">Share</span></div></div>
+              <div class="center toastRow" id="toastNRow" data-layout-allow-overlap data-layout-allow-occlusion><div class="toast"><span class="msg" data-t="markNoteSaved">Note saved</span><span class="act" data-t="undo">Undo</span></div></div>
+
+              <div id="mkPop" data-layout-allow-overlap data-layout-allow-occlusion></div>
+
+              <div id="nScrim"></div>
+              <div id="nSheet" data-layout-allow-overlap data-layout-allow-occlusion>
+                <div class="nsHead"><div class="nsTitle" data-t="markNoteHeading">Note</div><div class="nsX"><b>×</b></div></div>
+                <div class="nsBody"><div class="nsScroll">
+                  <div class="nsPassage"><span id="nsPassageTx"></span></div>
+                  <div class="nsField"><span class="ft"><span id="nsText"></span><i id="nsCaret"></i><span id="nsHintTxt" data-t="markNoteHint">Write a note…</span></span></div>
+                </div></div>
+                <div class="nsFoot"><div class="nsCap" data-layout-ignore data-t="markAudioPaused">Audio paused</div><div class="nsSave" id="nsSave"><div class="press"></div><span style="position:relative" data-t="save">Save</span></div></div>
+              </div>
+              <div id="kb" data-layout-allow-overlap data-layout-allow-occlusion></div>
+              <div class="barrier" id="barP"></div>
+            </div>
+
+            <!-- ── Quotes & notes ── -->
+            <div class="route hid" id="rq">
+              <div class="qnHead">
+                <div class="qnBack"><svg width="22" height="22"><use href="#m-back"/></svg></div>
+                <div class="qnTitle"><span data-t="quotesAndNotesTitle">Quotes &amp; notes</span></div>
+                <div style="width:48px;flex:none"></div>
+              </div>
+              <div id="qnList">
+                <div class="hero"><div class="heroCount"><span id="heroCount"></span></div><div class="heroLine"><span id="heroLine"></span></div></div>
+                <div class="search"><div class="searchRow"><svg width="20" height="20"><use href="#m-search"/></svg><span data-t="marksSearchHint">Search quotes and notes</span></div></div>
+                <div class="tabs" id="qnTabs"></div>
+
+                <div class="bh qv">
+                  <div class="bhIn">
+                    <div class="cov" id="cov1984"></div>
+                    <div class="bhCol">
+                      <div class="leader"><div class="ldTitle" id="ldT1"><span>1984</span></div><div class="ldDots"></div><div class="ldCount">1</div><svg class="ldChev" width="20" height="20"><use href="#m-chevR"/></svg></div>
+                      <div class="bhAuthor">George Orwell</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ent qv" id="ent1">
+                  <div class="entRow">
+                    <div class="press" id="ent1Press"></div>
+                    <div class="gut"><div class="hang"><span>“</span></div></div>
+                    <div class="ebody">
+                      <div class="pRow">
+                        <div class="passage"><span class="pt" id="ent1Passage"></span></div>
+                        <div class="mini">
+                          <div class="miniCard" id="miniCard"><div class="miniQ1"><span>”</span></div><div class="miniQ2"><div id="miniQuote"></div></div></div>
+                          <div class="miniBadge"><svg width="11" height="11"><use href="#m-edit"/></svg></div>
+                        </div>
+                      </div>
+                      <div class="noteBlk" id="ent1Note">
+                        <svg width="8" height="10"><path id="ent1Ink" fill="none" stroke="#A8452A" stroke-width="2" stroke-linecap="round"/></svg>
+                        <div class="noteLbl" data-t="markMyNote">My note</div>
+                        <div class="noteTx"><span id="ent1NoteTx"></span></div>
+                      </div>
+                      <div class="meta">
+                        <div class="metaTx"><span id="ent1Meta"></span></div>
+                        <div class="metaAct">
+                          <div class="rb" style="color:#A8452A"><svg width="26" height="26"><use href="#m-playCircle"/></svg></div>
+                          <div class="rb" style="color:#2B2622"><svg width="22" height="22"><use href="#c-ellipsis"/></svg></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bh next qv">
+                  <div class="bhIn">
+                    <div class="cov"><img src="../../assets/covers/prideandprejudice.jpg" alt=""></div>
+                    <div class="bhCol">
+                      <div class="leader"><div class="ldTitle" id="ldT2"><span>Pride and Prejudice</span></div><div class="ldDots"></div><div class="ldCount">3</div><svg class="ldChev" width="20" height="20"><use href="#m-chevR"/></svg></div>
+                      <div class="bhAuthor">Jane Austen</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ent qv" id="ent2">
+                  <div class="entRow">
+                    <div class="gut"></div>
+                    <div class="ebody">
+                      <div class="pRow">
+                        <div class="passage band"><div class="bandLayer" id="ent2Band"></div><span class="pt" id="ent2Passage"></span></div>
+                      </div>
+                      <div class="meta">
+                        <div class="metaTx"><span id="ent2Meta"></span></div>
+                        <div class="metaAct">
+                          <div class="rb" style="color:#A8452A"><svg width="26" height="26"><use href="#m-playCircle"/></svg></div>
+                          <div class="rb" style="color:#2B2622"><svg width="22" height="22"><use href="#c-ellipsis"/></svg></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="barrier" id="barQ"></div>
+            </div>
+
+            <!-- ── Quote editor ── -->
+            <div class="route hid" id="re">
+              <div id="edCol">
+                <div class="edHead"><div class="edX"><svg width="24" height="24"><use href="#m-close"/></svg></div><div class="edTitle" data-t="customize">Customize</div><div style="width:44px;flex:none"></div></div>
+                <div id="edPrev">
+                  <div id="qcardWrap">
+                    <div id="qcard">
+                      <div class="qfill" id="qfill"></div>
+                      <div class="qm" id="qm1"><span>”</span></div>
+                      <div class="qm" id="qm2" data-layout-ignore><span>”</span></div>
+                      <div class="qbox"><div class="qcol">
+                        <div class="qtext" id="qtext"></div>
+                        <div class="qnote" id="qnote"><div class="qrule" id="qrule"></div><div class="qhead" id="qhead"></div><div class="qnt" id="qnt"></div></div>
+                      </div></div>
+                      <div class="qby"><div class="qauth" id="qauth"></div><div class="qbook" id="qbook"></div></div>
+                      <div class="qbrand" id="qbrand"><div class="qH"><span>H</span></div><div class="qHB">HUSHBOOK</div></div>
+                      <div class="qcov" id="qcov"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="edFontLbl" data-layout-ignore data-t="lyricsAppearanceFont">FONT</div>
+                <div class="edFonts">
+                  <div class="chip on" style="font-family:HBPlayfair,serif;font-style:italic">Playfair</div>
+                  <div class="chip" style="font-family:HBNews,serif;font-variation-settings:'opsz' 18,'wght' 400">Newsreader</div>
+                  <div class="chip" style="font-family:HBLexend,sans-serif">Lexend</div>
+                </div>
+                <div class="edBgs" id="edBgs"></div>
+                <div class="edSw"><div class="tile"><span class="tileT" data-t="quoteIncludeMyNote">Include my note</span><div class="ios" id="sw"><i id="swThumb"></i></div></div></div>
+                <div class="edShare"><div class="shareBtn"><svg width="20" height="20"><use href="#m-iosShare"/></svg><span data-t="share">Share</span></div></div>
+              </div>
+            </div>
+
+            <div id="sbar">
+              <div id="sbTime">9:41</div>
+              <svg id="sbIcons" width="76" height="13" viewBox="0 0 76 13"><g id="sbG" fill="currentColor"></g></svg>
+            </div>
+            <div id="homeBar"></div>
+          </div>
+        </div>
+        <img id="frame" src="../../assets/frame-iphone.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      // Shot variables (hbVar): none. The three shots (quote-mark, quote-index, quote-card) differ by t alone.
+
+      // ── Strings: the app's .arb keys and wording (D:\hushbook\lib\l10n\app_en.arb), so a locale's file can take
+      // its values straight from app_<lc>.arb. fmt() reads what those values hold: an ICU plural on one argument
+      // (=N, then the locale's plural category, then other), '' for an apostrophe, {name} placeholders.
+      function fmt(key, fallback, args) {
+        let s = hbT(key, fallback);
+        const m = /^\{\s*(\w+)\s*,\s*plural\s*,/.exec(s);
+        if (m) {
+          const n = args[m[1]], forms = {};
+          let i = m[0].length;
+          for (;;) {
+            const open = s.indexOf('{', i);
+            if (open < 0) break;
+            const sel = s.slice(i, open).trim();
+            let depth = 0, k = open;
+            for (; k < s.length; k++) { if (s[k] === '{') depth++; else if (s[k] === '}' && --depth === 0) break; }
+            forms[sel] = s.slice(open + 1, k);
+            i = k + 1;
+          }
+          let cat = 'other';
+          try { cat = new Intl.PluralRules(window.__HB_LOCALE).select(n); } catch (e) { /* unknown locale: other */ }
+          s = forms['=' + n] ?? forms[cat] ?? forms.other ?? '';
+        }
+        return s.replace(/''/g, "'").replace(/\{(\w+)\}/g, (all, k) => (args && k in args ? String(args[k]) : all));
+      }
+
+      // ── The excerpt: 1984, chapter 1 (showcase/read-along/chapter1.js). The transcript's words are
+      // the narrator's, so its opening is in sentence case (the e-book sets "IT WAS A BRIGHT" in caps).
+      const CHAPTER = [
+"It was a bright cold day in April, and the clocks were striking thirteen. Winston Smith, his chin nuzzled into his breast in an effort to escape the vile wind, slipped quickly through the glass doors of Victory Mansions, though not quickly enough to prevent a swirl of gritty dust from entering along with him.",
+"The hallway smelt of boiled cabbage and old rag mats. At one end of it a colored poster, too large for indoor display, had been tacked to the wall. It depicted simply an enormous face, more than a meter wide: the face of a man of about forty-five, with a heavy black mustache and ruggedly handsome features. Winston made for the stairs. It was no use trying the lift. Even at the best of times it was seldom working, and at present the electric current was cut off during daylight hours. It was part of the economy drive in preparation for Hate Week. The flat was seven flights up, and Winston, who was thirty-nine and had a varicose ulcer above his right ankle, went slowly, resting several times on the way. On each landing, opposite the lift shaft, the poster with the enormous face gazed from the wall. It was one of those pictures which are so contrived that the eyes follow you about when you move. BIG BROTHER IS WATCHING YOU, the caption beneath it ran.",
+"Inside the flat a fruity voice was reading out a list of figures which had something to do with the production of pig iron. The voice came from an oblong metal plaque like a dulled mirror which formed part of the surface of the right-hand wall. Winston turned a switch and the voice sank somewhat, though the words were still distinguishable. The instrument (the telescreen, it was called) could be dimmed, but there was no way of shutting it off completely. He moved over to the window: a smallish, frail figure, the meagerness of his body merely emphasized by the blue overalls which were the uniform of the Party. His hair was very fair, his face naturally sanguine, his skin roughened by coarse soap and blunt razor blades and the cold of the winter that had just ended.",
+"Outside, even through the shut window pane, the world looked cold. Down in the street little eddies of wind were whirling dust and torn paper into spirals, and though the sun was shining and the sky a harsh blue, there seemed to be no color in anything, except the posters that were plastered everywhere. The black-mustachio’d face gazed down from every commanding corner. There was one on the house front immediately opposite. BIG BROTHER IS WATCHING YOU, the caption said, while the dark eyes looked deep into Winston’s own. Down at street level another poster, torn at one corner, flapped fitfully in the wind, alternately covering and uncovering the single word INGSOC. In the far distance a helicopter skimmed down between the roofs, hovered for an instant like a bluebottle, and darted away again with a curving flight. It was the Police Patrol, snooping into people’s windows. The patrols did not matter, however. Only the Thought Police mattered.",
+"Behind Winston’s back the voice from the telescreen was still babbling away about pig iron and the overfulfillment of the Ninth Three-Year Plan. The telescreen received and transmitted simultaneously. Any sound that Winston made, above the level of a very low whisper, would be picked up by it; moreover, so long as he remained within the field of vision which the metal plaque commanded, he could be seen as well as heard. There was of course no way of knowing whether you were being watched at any given moment. How often, or on what system, the Thought Police plugged in on any individual wire was guesswork. It was even conceivable that they watched everybody all the time. But at any rate they could plug in your wire whenever they wanted to. You had to live—did live, from habit that became instinct—in the assumption that every sound you made was overheard, and, except in darkness, every movement scrutinized."
+      ];
+      const QUOTE = 'It was a bright cold day in April, and the clocks were striking thirteen.';
+      const NOTE = 'Orwell sets the whole world in one sentence.';
+      const READER = 'Adi';                       // userProfile name: "Adi's note" on the card
+      const BOOK = { title: '1984', author: 'George Orwell' };
+      const MARK_LO = 0, MARK_HI = 13;           // "It" .. "thirteen.": 14 words, under kQuoteMaxWords (100) and kQuoteMaxChars (600)
+      const TAP_WORD = 10;                        // "clocks": the tap that opens the saved mark's popover
+      // Invented library around the new quote (Quotes & notes): 24 passages from 6 books since July.
+      const LIB = { passages: 24, books: 6, since: 'July',
+                    tabs: [['marksFilterAll', 'All', 24], ['marksFilterQuotes', 'Quotes', 9], ['marksFilterHighlights', 'Highlights', 11], ['marksFilterNotes', 'Notes', 6]] };
+      const PP = 'It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.';
+
+      // ── Beats (seconds of film time) ────────────────────────────────────────────
+      const DUR = 22, PRESS = 0.1, PUSH = 0.35, RISE = 0.3, FALL = 0.25;
+      const T_MARK = 2.4;              // Mark pressed in the running head
+      const T_PICK1 = 3.4;             // "It" tapped
+      const T_PICK2 = 4.4;             // "thirteen." tapped
+      const T_QUOTE = 5.4;             // Quote pressed
+      const T_POP = 7.2;               // the saved mark tapped: its popover
+      const T_ADD = 8.0;               // Add note pressed
+      const T_TYPE = 8.45;             // the first character of the note
+      const T_SAVE = 11.3;             // Save pressed
+      const T_QN = 12.6;               // push to Quotes & notes
+      const T_CARD = 14.4;             // the quote's Customize card pressed
+      const T_BG = 16.4;               // a second background picked
+      const T_NOTE = 18.0;             // Include my note pressed
+      const T_MODE = T_MARK + PRESS, T_SAVED = T_QUOTE + PRESS, T_SHEET = T_ADD + PRESS, T_NOTED = T_SAVE + PRESS;
+      const T_ED = T_CARD + PRESS, T_SWITCH = T_NOTE + PRESS;
+      const START = 0.80;              // chapter position at film time 0: "It was a" spoken, "bright" being said
+      const CHAPTER_LEN = 58 * 60 + 19;
+      const BG2 = 'sunset';
+
+      // The note types in from t, one character every 60 to 64 ms.
+      const TYPE_AT = [];
+      { let at = T_TYPE; for (let i = 0; i < NOTE.length; i++) { TYPE_AT.push(at); at += 0.060 + 0.004 * ((i * 0.6180339887) % 1); } }
+      const typedCount = t => { let n = 0; while (n < TYPE_AT.length && TYPE_AT[n] <= t) n++; return n; };
+
+      // Audio pauses only while the note sheet is up (player_screen.dart _openNoteFor).
+      const audioT = t => t < T_SHEET ? t : t < T_NOTED ? T_SHEET : t - (T_NOTED - T_SHEET);
+
+      // ── Colour helpers ──────────────────────────────────────────────────────────
+      const hex = h => { const n = parseInt(h.slice(1, 7), 16); return [(n >> 16) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]; };
+      const rgba = (h, a) => { const c = hex(h); return 'rgba(' + Math.round(c[0] * 255) + ',' + Math.round(c[1] * 255) + ',' + Math.round(c[2] * 255) + ',' + (+a.toFixed(4)) + ')'; };
+      const toHex = c => '#' + c.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255).toString(16).padStart(2, '0')).join('').toUpperCase();
+      const lin = c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      const lum = c => 0.2126 * lin(c[0]) + 0.7152 * lin(c[1]) + 0.0722 * lin(c[2]);
+      const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+      function lowestAlpha(ink, bg, want) {        // folio_tokens.dart lowestAlphaFor
+        const f = hex(ink), b = hex(bg);
+        for (let step = 40; step <= 100; step++) {
+          const a = step / 100;
+          if (ratio(f.map((v, i) => a * v + (1 - a) * b[i]), b) >= want) return a;
+        }
+        return 1;
+      }
+      function ramp(stops, behind, want) {         // MarkTokens._ramp: 5 % steps along the stops
+        const b = hex(behind);
+        for (let i = 0; i < stops.length - 1; i++) {
+          const p = hex(stops[i]), q = hex(stops[i + 1]);
+          for (let s = 0; s <= 20; s++) { const c = p.map((v, k) => v + (q[k] - v) * s / 20); if (ratio(c, b) >= want) return toHex(c); }
+        }
+        return stops[stops.length - 1];
+      }
+
+      // ── Folio tokens, ambient (folio_tokens.dart) and its mark tokens (mark_tokens.dart) ──
+      const INK = '#F2F0EA', PAGE = '#141416', BACKDROP = '#25272A', SECONDARY = '#C7C4BE', RUBRIC = '#E46A4F', RUBRIC_INNER = '#F4A792';
+      const DOCK = '#232427', SHEET = '#1C1C1F';
+      const nearA = lowestAlpha(INK, BACKDROP, 10.5), farA = lowestAlpha(INK, BACKDROP, 6.3);
+      const BAND = '#4A3D25', PENDING = '#514225', MK_RULE = '#8C6C34';     // ambient bands are opaque
+      const farOnBandA = lowestAlpha(INK, BAND, 6.3), nearOnBandA = lowestAlpha(INK, BAND, 10.5);
+      const farOnPendA = lowestAlpha(INK, PENDING, 6.3), nearOnPendA = lowestAlpha(INK, PENDING, 10.5);
+      const CAP_ON_BAND = ramp([RUBRIC, RUBRIC_INNER, INK], BAND, 4.5), CAP_ON_PENDING = ramp([RUBRIC, RUBRIC_INNER, INK], PENDING, 4.5);
+      const TOK = {
+        page: PAGE, ink: INK, secondary: SECONDARY, rubric: RUBRIC, rubricText: RUBRIC, spoken: INK, glyph: '#141416',
+        far: rgba(INK, farA), dock: DOCK, dockHairline: rgba(INK, .14), hairline: rgba(INK, .22), track: rgba(INK, .20),
+        dockShadow: '0 18px 51.8px rgba(0,0,0,.5),0 2px 10.2px rgba(0,0,0,.35)', badge: rgba(INK, .12),
+        mkSurface: 'rgba(30,32,36,.94)', mkSurfaceHairline: rgba(INK, .14), mkDivider: rgba(INK, .12), mkPress: rgba(INK, .10), mkRule: MK_RULE,
+        button: rgba(INK, .08), sheet: SHEET, scrim: 'rgba(0,0,0,.5)',
+        lfont: 'HBNews,serif', lvar: '"opsz" 18,"wght" 400', capvar: '"opsz" 18,"wght" 450',
+      };
+      const MK = { hairline: rgba(INK, .40), dots: rgba(INK, .75), outline: rgba(INK, .45), handle: rgba(INK, .70) };
+
+      // ── Words and the narrator's pace (showcase/read-along word-timing formula) ──
+      const words = [];
+      CHAPTER.forEach(p => p.split(' ').forEach(w => words.push({ text: w, end: /[.!?]["’”)]*$/.test(w) })));
+      const alnum = w => w.text.replace(/[^A-Za-z0-9]/g, '').length;
+      const dur = words.map(w => 0.19 + 0.028 * alnum(w) + (w.end ? 0.42 : /[,;:—]["’”]*$/.test(w.text) ? 0.17 : 0));
+      const wStart = [], wEnd = [];
+      { let t = 0; words.forEach((w, i) => { wStart.push(t); wEnd.push(t + 0.19 + 0.028 * alnum(w)); t += dur[i]; }); }
+
+      // ── Reader lines: AlignmentPipeline.regroup with AlignmentConfig.reader ─────
+      const CFG = { gapMs: 1400, maxWords: 24, minWords: 6, softCutMinWords: 14, maxChars: 180 };
+      const ms = s => Math.round(s * 1000);
+      function regroup() {
+        const n = words.length, breaks = new Array(n).fill(false);
+        let runWords = 0, runChars = 0;
+        for (let i = 0; i < n; i++) {
+          const text = words[i].text.trim();
+          runWords++; runChars += text.length + 1;
+          const last = text.slice(-1);
+          const strong = last === '.' || last === '!' || last === '?';
+          const soft = last === ',' || last === ';' || last === ':';
+          let br = false;
+          if (i + 1 < n && ms(wStart[i + 1]) - ms(wEnd[i]) >= CFG.gapMs) br = true;
+          if (strong) br = true;
+          if (soft && runWords >= CFG.softCutMinWords) br = true;
+          if (runChars >= CFG.maxChars && runWords >= CFG.softCutMinWords) br = true;
+          if (br) { breaks[i] = true; runWords = 0; runChars = 0; }
+        }
+        const segs = []; let cur = [];
+        for (let i = 0; i < n; i++) { cur.push(i); if (breaks[i]) { segs.push(cur); cur = []; } }
+        if (cur.length) segs.push(cur);
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+        const best = seg => {
+          const max = CFG.maxWords, mid = seg.length >> 1;
+          let lo = clamp(mid - (max >> 1), 1, seg.length - 2), hi = clamp(mid + (max >> 1), 1, seg.length - 2);
+          if (hi > max - 1) hi = max - 1;
+          if (lo > hi) { lo = hi - (max >> 1); if (lo < 1) lo = 1; }
+          let bi = mid > hi ? hi : mid, bs = -1;
+          for (let i = lo; i <= hi; i++) {
+            const gap = ms(wStart[seg[i + 1]]) - ms(wEnd[seg[i]]);
+            const last = words[seg[i]].text.trim().slice(-1);
+            const score = gap + ((last === ',' || last === ';' || last === ':') ? 200 : 0);
+            if (score > bs) { bs = score; bi = i; }
+          }
+          return bi;
+        };
+        const out = [];
+        for (const seg of segs) {
+          if (seg.length <= CFG.maxWords) { out.push(seg); continue; }
+          let rest = seg;
+          while (rest.length > CFG.maxWords) { const c = best(rest); out.push(rest.slice(0, c + 1)); rest = rest.slice(c + 1); }
+          if (rest.length) out.push(rest);
+        }
+        const merged = [];
+        for (const seg of out) {
+          if (merged.length && seg.length < CFG.minWords && merged[merged.length - 1].length + seg.length <= CFG.maxWords) merged[merged.length - 1].push(...seg);
+          else merged.push(seg.slice());
+        }
+        if (merged.length >= 2 && merged[merged.length - 1].length < CFG.minWords && merged[merged.length - 2].length + merged[merged.length - 1].length <= CFG.maxWords)
+          merged[merged.length - 2].push(...merged.pop());
+        return merged;
+      }
+      const LINES = regroup();
+
+      // ── Reader geometry on a 393 x 852 iPhone (safe area 59 / 34) ───────────────
+      const SAFE_TOP = 59, SAFE_BOTTOM = 34, HEAD_H = 48, HEAD_BOTTOM = SAFE_TOP + HEAD_H;
+      const TEXT_TOP = SAFE_TOP + HEAD_H, TEXT_BOTTOM = SAFE_BOTTOM + 16, SIDE = 28;
+      const PAGE_W = 393 - 2 * SIDE, PAGE_H = 852 - TEXT_TOP - TEXT_BOTTOM;
+      const LAMP = { x: 393 - 20 - 64, y: 852 - SAFE_BOTTOM - 16 - 64, s: 64 };
+      const NOTCH_TOP = (852 - (SAFE_BOTTOM + 16 + 64 + 4 + 48 + 4 + 48)) - TEXT_TOP;
+      const NOTCH_W = Math.max(1, LAMP.x - 16 - SIDE);
+      const LINE_PAD = 10, FONT_PX = 23, LINE_H = 23 * 1.5, CAP_ROW = 0.78 * 23 * 2.15;
+      const BLOCK_H = 4 + 15 + 16 + 1 + 28;
+      const NEWS = { A: 1470 / 2000, D: 530 / 2000 };
+
+      const stage = document.getElementById('stage');
+      const pager = document.getElementById('pager');
+      const $ = id => document.getElementById(id);
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      // "Chapter I" (playerChapterRoman), the numeral bold in the running head; capitalised by the CSS.
+      const chapterHTML = bold => fmt('playerChapterRoman', 'Chapter {numeral}', {}).split('{numeral}').map(esc).join(bold ? '<b>I</b>' : 'I');
+      function wordHTML(i, cap) {
+        const t = words[i].text;
+        return cap ? '<span class="cap">' + esc(t.slice(0, 1)) + '</span>' + esc(t.slice(1)) : esc(t);
+      }
+      function textHTML(idx, dropCap, indent) {
+        return (indent && !dropCap ? '\u2003' : '') + idx.map((i, k) => '<span class="w" data-i="' + i + '">' + wordHTML(i, dropCap && k === 0) + '</span>').join(' ');
+      }
+
+      // ── Measuring and paginating (lyrics_page_layout.dart paginateLyricsLines) ──
+      let meas = null, zoomZ = 1, capLH = 0, SHIFT = 0;
+      function measure(idx, dropCap, width) {
+        meas.style.width = width + 'px';
+        meas.innerHTML = '<div class="tx">' + textHTML(idx, dropCap, true) + '</div>';
+        return meas.getBoundingClientRect().height / zoomZ + 2 * LINE_PAD;
+      }
+      function largestPrefix(ws, maxH, m, dropCap) {
+        if (maxH <= 0 || ws.length < 2) return null;
+        const h = c => m(ws.slice(0, c), dropCap);
+        const fh = h(1);
+        if (fh > maxH) return null;
+        let lo = 1, loH = fh, hi = ws.length - 1;
+        while (lo < hi) { const mid = (lo + hi + 1) >> 1; const mh = h(mid); if (mh <= maxH) { lo = mid; loH = mh; } else hi = mid - 1; }
+        return { count: lo, h: loH };
+      }
+      function paginate() {
+        const wide = (l, d) => measure(l, d, PAGE_W), narrowM = (l, d) => measure(l, d, NOTCH_W);
+        const reserve = BLOCK_H, narrowY = NOTCH_TOP, halfJoin = LINE_PAD, maxH = PAGE_H;
+        const pages = []; let current = [], used = 0, curDrop = false, lineBase = 0, curNarrow = null, curJoined = false;
+        const hasBlock = () => pages.length === 0 && reserve > 0;
+        const budget = () => hasBlock() ? Math.max(0, maxH - reserve) : maxH;
+        const occupied = () => current.length > 0 || hasBlock();
+        const firstUnplaced = () => lineBase === 0 && current.length === 0;
+        const top = () => (hasBlock() ? reserve : 0) + used;
+        const fit = (line, dropCap, joined) => {
+          if (!joined && curNarrow === null) { const full = wide(line, dropCap); if (top() + full - halfJoin <= narrowY) return { h: full, narrow: false }; }
+          const nh = narrowM(line, dropCap);
+          return { h: joined ? Math.max(1, nh - halfJoin) : nh, narrow: true };
+        };
+        const place = (line, h, narrow, joined) => {
+          if (!current.length) curDrop = firstUnplaced();
+          if (narrow && curNarrow === null) { curNarrow = current.length; curJoined = !!joined; }
+          current.push(line); used += h;
+        };
+        const finish = () => {
+          if (!occupied()) return;
+          pages.push({ lines: current, hasDropCap: curDrop, hasBlock: hasBlock(), narrowFrom: curNarrow, joined: curJoined });
+          lineBase += current.length; current = []; used = 0; curDrop = false; curNarrow = null; curJoined = false;
+        };
+        for (const src of LINES) {
+          let rem = src, joined = false;
+          while (rem.length) {
+            const dropCap = firstUnplaced();
+            const remH = budget() - used;
+            if (occupied() && remH <= 0) { finish(); joined = false; continue; }
+            const cf = fit(rem, dropCap, joined);
+            if (cf.narrow && curNarrow === null && !joined) {
+              const room = narrowY - top() + halfJoin;
+              const head = room > 0 ? largestPrefix(rem, Math.min(room, remH + halfJoin), wide, dropCap) : null;
+              if (head) {
+                const headH = Math.max(1, head.h - halfJoin), rest = rem.slice(head.count);
+                const restFirst = Math.max(1, narrowM([rest[0]], false) - halfJoin);
+                if (restFirst <= remH - headH) { place(rem.slice(0, head.count), headH, false, false); rem = rest; joined = true; continue; }
+              }
+            }
+            if (cf.h <= remH) { place(rem, cf.h, cf.narrow, joined); break; }
+            const fitting = largestPrefix(rem, remH, (l, d) => fit(l, d, joined).h, dropCap);
+            if (!fitting) {
+              if (!occupied()) { place(rem, cf.h, cf.narrow, joined); break; }
+              finish(); joined = false; continue;
+            }
+            const piece = rem.slice(0, fitting.count);
+            place(piece, fitting.h, fit(piece, dropCap, joined).narrow, joined);
+            rem = rem.slice(fitting.count);
+            if (rem.length) { finish(); joined = false; }
+          }
+        }
+        finish();
+        const flat = [];
+        pages.forEach((pg, p) => pg.lines.forEach((idx, k) => {
+          const joinAbove = pg.joined && pg.narrowFrom !== null && k === pg.narrowFrom;
+          const joinBelow = pg.joined && pg.narrowFrom !== null && k === pg.narrowFrom - 1;
+          flat.push({ idx, page: p, k, cap: pg.hasDropCap && k === 0, start: wStart[idx[0]], joinAbove, joinBelow,
+                      indent: k > 0 && !joinAbove, narrow: pg.narrowFrom !== null && k >= pg.narrowFrom });
+        }));
+        const firstOfPage = pages.map(() => -1);
+        flat.forEach((l, k) => { if (firstOfPage[l.page] < 0) firstOfPage[l.page] = k; });
+        return { pages, flat, firstOfPage };
+      }
+      let LAYOUT = null;
+
+      // ── Building the pages ──────────────────────────────────────────────────────
+      let spans = [], lineEls = [], lineList = [], lineOfWord = [];
+      function lineDiv(f, n) {
+        const pt = f.joinAbove ? 0 : LINE_PAD, pb = f.joinBelow ? 0 : LINE_PAD;
+        return '<div class="ln" data-l="' + n + '" style="padding:' + pt + 'px 0 ' + pb + 'px"><div class="tx" style="top:' + SHIFT.toFixed(3) + 'px">' +
+          textHTML(f.idx, f.cap, f.indent) + '</div></div>';
+      }
+      function buildPages() {
+        const L = LAYOUT;
+        let html = '<div class="mkLayer" id="mkUnder"></div>';
+        L.pages.forEach((pg, p) => {
+          html += '<div class="page" data-p="' + p + '" style="left:' + (p * 393) + 'px"><div class="pbox">';
+          if (pg.hasBlock) html += '<div class="blk"><div class="blkLabel">' + chapterHTML(false) + '</div><div class="rule"></div></div>';
+          let narrowOpen = false;
+          L.flat.forEach((f, n) => {
+            if (f.page !== p) return;
+            if (f.narrow && !narrowOpen) { html += '<div class="narrowCol">'; narrowOpen = true; }
+            html += lineDiv(f, n);
+          });
+          if (narrowOpen) html += '</div>';
+          html += '</div></div>';
+        });
+        html += '<div class="mkLayer" id="mkOver"></div>';
+        pager.innerHTML = html;
+        spans = []; lineEls = [];
+        pager.querySelectorAll('.w').forEach(el => { spans[+el.dataset.i] = el; });
+        pager.querySelectorAll('.ln').forEach(el => { lineEls[+el.dataset.l] = el; });
+        pager.querySelectorAll('.cap').forEach(el => { el.style.lineHeight = capLH + 'px'; });
+        const pr0 = pager.getBoundingClientRect();
+        lineList = [...pager.querySelectorAll('.ln')].map(el => ({ el, page: +el.closest('.page').dataset.p, top: (el.getBoundingClientRect().top - pr0.top) / zoomZ }));
+        L.flat.forEach((f, n) => f.idx.forEach(i => { lineOfWord[i] = n; }));
+      }
+
+      // ── Karaoke paint (lyrics_karaoke.dart) ─────────────────────────────────────
+      const cubic = (x1, y1, x2, y2) => p => {
+        p = Math.max(0, Math.min(1, p)); if (p === 0 || p === 1) return p;
+        let lo = 0, hi = 1, s = p;
+        for (let i = 0; i < 40; i++) { s = (lo + hi) / 2; const x = 3 * (1 - s) * (1 - s) * s * x1 + 3 * (1 - s) * s * s * x2 + s * s * s; if (x < p) lo = s; else hi = s; }
+        return 3 * (1 - s) * (1 - s) * s * y1 + 3 * (1 - s) * s * s * y2 + s * s * s;
+      };
+      function threePointCubic(a1, b1, mid, a2, b2) {
+        const c1 = cubic(a1[0] / mid[0], a1[1] / mid[1], b1[0] / mid[0], b1[1] / mid[1]);
+        const sx = 1 - mid[0], sy = 1 - mid[1];
+        const c2 = cubic((a2[0] - mid[0]) / sx, (a2[1] - mid[1]) / sy, (b2[0] - mid[0]) / sx, (b2[1] - mid[1]) / sy);
+        return t => { if (t <= 0) return 0; if (t >= 1) return 1; return t < mid[0] ? c1(t / mid[0]) * mid[1] : c2((t - mid[0]) / sx) * sy + mid[1]; };
+      }
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+      const easeOutCubic = p => 1 - Math.pow(1 - clamp01(p), 3);
+      const ease = cubic(.25, .1, .25, 1), easeInOut = cubic(.42, 0, .58, 1), kOut = cubic(.22, .8, .3, 1), easeIn = cubic(.42, 0, 1, 1);
+      const linearToEaseOut = cubic(0.35, 0.91, 0.33, 0.97);
+      const fastEaseInToSlowEaseOut = threePointCubic([0.056, 0.024], [0.108, 0.3085], [0.198, 0.541], [0.3655, 1.0], [0.5465, 0.989]);
+      const lerp = (a, b, p) => a + (b - a) * p;
+      const touched = new Set();
+      function lineColor(x) {
+        const a = 1 - (1 - farA * (1 - x)) * (1 - nearA * x);
+        return rgba(INK, a);
+      }
+      function resetLine(n) {
+        const el = lineEls[n]; if (!el) return;
+        el.style.color = '';
+        for (const i of LAYOUT.flat[n].idx) {
+          const s = spans[i]; if (!s) continue;
+          s.className = 'w'; s.style.removeProperty('--nowA');
+          const wp = s.querySelector('.wipe'); if (wp) wp.remove();
+        }
+      }
+      function paintKaraoke(li, pos) {
+        const L = LAYOUT, group = new Set();
+        if (li >= 0) { group.add(li); if (L.flat[li].joinAbove) group.add(li - 1); if (L.flat[li].joinBelow) group.add(li + 1); }
+        const groupStart = li < 0 ? 0 : Math.min(...[...group].map(n => L.flat[n].start));
+        const act = li < 0 ? 0 : (groupStart >= START ? easeOutCubic((pos - groupStart) / 0.18) : 1);
+        const want = new Map();
+        for (const n of group) want.set(n, act);
+        if (li > 0) {
+          const prev = Math.min(...group) - 1;
+          if (prev >= 0 && groupStart >= START && pos - groupStart < 0.18) {
+            const x = 1 - easeOutCubic((pos - groupStart) / 0.18);
+            want.set(prev, x);
+            if (L.flat[prev].joinAbove) want.set(prev - 1, x);
+          }
+        }
+        for (const n of [...touched]) if (!want.has(n)) { resetLine(n); touched.delete(n); }
+        for (const [n, x] of want) {
+          const el = lineEls[n]; if (!el) continue;
+          el.style.color = lineColor(x);
+          touched.add(n);
+          const active = group.has(n);
+          const idx = L.flat[n].idx;
+          let newest = -1;
+          for (let k = 0; k < idx.length; k++) if (wStart[idx[k]] <= pos) newest = k;
+          let cur = -1, frac = 0;
+          if (active && newest >= 0 && pos < wEnd[idx[newest]]) { cur = newest; frac = (pos - wStart[idx[newest]]) / (wEnd[idx[newest]] - wStart[idx[newest]]); }
+          idx.forEach((i, k) => {
+            const s = spans[i];
+            let wp = s.querySelector('.wipe');
+            const spoken = active && k <= newest && k !== cur;
+            const now = active && k === newest;
+            s.className = 'w' + (spoken ? ' sp' : '') + (now ? ' now' : '');
+            if (now) s.style.setProperty('--nowA', act.toFixed(3)); else s.style.removeProperty('--nowA');
+            if (active && k === cur) {
+              if (!wp) { wp = document.createElement('span'); wp.className = 'wipe'; wp.innerHTML = wordHTML(i, L.flat[n].cap && k === 0); s.appendChild(wp); }
+              wp.style.clipPath = 'inset(-4px ' + ((1 - frac) * 100).toFixed(3) + '% -4px 0)';
+            } else if (wp) wp.remove();
+          });
+        }
+        return want;
+      }
+
+      // ── Marks on the page (lyrics_karaoke.dart _MarkLayer) ──────────────────────
+      let WR = [];                 // per word of the sentence: tight glyph boxes in stage px (the cap first)
+      function stageBox(r, sr) { return { l: (r.left - sr.left) / zoomZ, t: (r.top - sr.top) / zoomZ, r: (r.right - sr.left) / zoomZ, b: (r.bottom - sr.top) / zoomZ }; }
+      function measureWords() {
+        const sr = stage.getBoundingClientRect();
+        for (let i = MARK_LO; i <= MARK_HI; i++) {
+          const s = spans[i], boxes = [];
+          const cap = s.querySelector('.cap');
+          if (cap) for (const r of cap.getClientRects()) boxes.push(stageBox(r, sr));
+          for (const r of s.getClientRects()) boxes.push(stageBox(r, sr));
+          WR[i] = boxes;
+        }
+      }
+      const onSameLine = (a, b) => { const ca = (a.t + a.b) / 2, cb = (b.t + b.b) / 2; return (cb >= a.t && cb <= a.b) || (ca >= b.t && ca <= b.b); };
+      function bandRects(lo, hi) {     // lyricsMarkBandRects: per visual line, at most 1.3 em, on the glyph box bottom, .1 em bleed
+        const lines = [];
+        for (let i = lo; i <= hi; i++) for (const b of WR[i]) {
+          const g = lines.find(g => onSameLine(g, b));
+          if (g) { g.l = Math.min(g.l, b.l); g.r = Math.max(g.r, b.r); g.t = Math.min(g.t, b.t); g.b = Math.max(g.b, b.b); }
+          else lines.push({ ...b });
+        }
+        lines.sort((a, b) => a.b - b.b);
+        const em = FONT_PX;
+        return lines.map(g => ({ l: g.l - .1 * em, t: Math.max(g.t, g.b - 1.3 * em), r: g.r + .1 * em, b: g.b }));
+      }
+      const box = (l, t, w, h, css) => '<i style="left:' + l.toFixed(2) + 'px;top:' + t.toFixed(2) + 'px;width:' + w.toFixed(2) + 'px;height:' + h.toFixed(2) + 'px;' + css + '"></i>';
+      function markLayers(st) {
+        let under = '', over = '';
+        if (st.pick) {
+          const rs = bandRects(st.pick.lo, st.pick.hi);
+          rs.forEach((r, k) => {
+            const L = k === 0, R = k === rs.length - 1;
+            const rad = (L ? 4 : 0) + 'px ' + (R ? 4 : 0) + 'px ' + (R ? 4 : 0) + 'px ' + (L ? 4 : 0) + 'px';
+            under += box(r.l - 1, r.t - 1, r.r - r.l + 2, r.b - r.t + 2, 'background:' + PENDING + ';border:1px solid ' + MK.outline + ';border-radius:' + rad);
+          });
+          const f = rs[0], e = rs[rs.length - 1];
+          const sx = f.l - 1, sTop = f.t - 1, sBot = f.b + 1, sDot = sTop - 11 + 6;
+          over += box(sx - .75, sDot, 1.5, sBot - sDot, 'background:' + MK.handle) + box(sx - 6, sDot - 6, 12, 12, 'border-radius:50%;background:' + MK.handle);
+          const ex = e.r + 1, eTop = e.t - 1, eBot = e.b + 1, eDot = eBot + 11 - 6;
+          over += box(ex - .75, eTop, 1.5, eDot - eTop, 'background:' + MK.handle) + box(ex - 6, eDot - 6, 12, 12, 'border-radius:50%;background:' + MK.handle);
+        } else if (st.saved) {
+          const rs = bandRects(MARK_LO, MARK_HI);
+          rs.forEach(r => {
+            under += box(r.l, r.t, r.r - r.l, r.b - r.t, 'background:' + (st.open ? PENDING : BAND));
+            under += box(r.l, r.b, r.r - r.l, 1, 'background:' + MK.hairline);
+            if (st.note) for (let x = r.l + 2.5; x + 1 <= r.r + 1e-6; x += 5) over += box(x - 1, r.b + 6 - 1, 2, 2, 'border-radius:50%;background:' + MK.dots);
+          });
+        }
+        return { under, over };
+      }
+      let markKey = '';
+      function paintMarks(st, want) {
+        const key = JSON.stringify(st);
+        if (key !== markKey) {
+          markKey = key;
+          const m = markLayers(st);
+          $('mkUnder').innerHTML = m.under; $('mkOver').innerHTML = m.over;
+        }
+        // Text keeps the page's rule on a band: other text 6.3:1, the narrated sentence 10.5:1.
+        const range = st.pick ? st.pick : st.saved ? { lo: MARK_LO, hi: MARK_HI } : null;
+        const pend = !!st.pick || !!st.open;
+        for (let i = MARK_LO; i <= MARK_HI; i++) {
+          const s = spans[i];
+          const inMark = range && i >= range.lo && i <= range.hi;
+          if (!inMark || s.classList.contains('sp')) { s.style.color = ''; continue; }
+          const x = want.get(lineOfWord[i]) || 0;
+          const fa = pend ? farOnPendA : farOnBandA, na = pend ? nearOnPendA : nearOnBandA;
+          s.style.color = rgba(INK, 1 - (1 - fa * (1 - x)) * (1 - na * x));
+        }
+        const capCovered = range && range.lo <= 0;
+        spans[0].style.setProperty('--capc', capCovered ? (pend ? CAP_ON_PENDING : CAP_ON_BAND) : RUBRIC);
+      }
+
+      // ── Mark toolbar, hint, popover placement (mark_toolbar.dart markToolbarOrigin) ──
+      function markToolbarOrigin(first, last, w, h, gap, margin) {
+        const aboveTop = first.t - gap - h;
+        let top = aboveTop;
+        if (first.t - HEAD_BOTTOM < h + gap) {
+          top = last.b + gap;
+          if (top + h > 852 - margin) top = Math.max(HEAD_BOTTOM, aboveTop);
+        }
+        const cx = (Math.min(first.l, last.l) + Math.max(first.r, last.r)) / 2;
+        const maxLeft = Math.max(margin, 393 - margin - w);
+        return { left: Math.min(maxLeft, Math.max(margin, cx - w / 2)), top };
+      }
+      let BAR = null, POP = null;
+      function placeToolbar() {
+        const bar = $('mkBar');
+        const w = bar.getBoundingClientRect().width / zoomZ;
+        const first = WR[MARK_LO][0];
+        const at = hi => { const ls = WR[hi]; return markToolbarOrigin(first, ls[ls.length - 1], w, 48, 8 + 11, 16); };
+        BAR = { one: at(MARK_LO), all: at(MARK_HI), w };
+      }
+      // MarkPopover: Play from here, then Add note · Make it a highlight · Share · Delete. One row while it fits
+      // the screen less 16 dp a side, else two rows of two beside Play from here.
+      const POP_ACTIONS = [[hbT('markAddNote', 'Add note'), '#c-noteIcon', 'paNote'], [hbT('markMakeHighlight', 'Make it a highlight'), '#i-pen', 'paKind'],
+                           [hbT('share', 'Share'), '#c-share', 'paShare'], [hbT('delete', 'Delete'), '#c-trash', 'paDel']];
+      function buildPopover() {
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = '700 12px HBAtk';
+        const rowW = POP_ACTIONS.reduce((s, a) => s + Math.max(56, 16 + ctx.measureText(a[0]).width), 2 + 12 + 48 + 5);
+        const grid = rowW > 393 - 32;
+        const act = (a, cls) => '<div class="pa' + cls + '" id="' + a[2] + '"><div class="press"></div><svg width="20" height="20" style="position:relative"><use href="' + a[1] + '"/></svg>' +
+          '<span class="lb"' + (grid ? ' style="white-space:normal"' : '') + '>' + esc(a[0]) + '</span></div>';
+        const play = '<div class="popPlay"><div class="playc"><svg width="20" height="20"><use href="#c-playFill"/></svg></div></div>';
+        let html;
+        if (grid) {
+          html = '<div class="popRow">' + play + '<div class="popGrid"><div class="popPair">' + act(POP_ACTIONS[0], '') + act(POP_ACTIONS[1], '') + '</div>' +
+            '<div class="popPair">' + act(POP_ACTIONS[2], '') + act(POP_ACTIONS[3], '') + '</div></div></div>';
+          $('mkPop').style.width = Math.min(340, 393 - 32) + 'px';
+        } else {
+          html = '<div class="popRow">' + play + act(POP_ACTIONS[0], ' rowa') + act(POP_ACTIONS[1], ' rowa') + act(POP_ACTIONS[2], ' rowa') +
+            '<div class="popDiv"><i></i></div>' + act(POP_ACTIONS[3], ' rowa') + '</div>';
+        }
+        $('mkPop').innerHTML = html;
+        const r = $('mkPop').getBoundingClientRect();
+        const w = r.width / zoomZ, h = r.height / zoomZ;
+        // The tap: on "clocks"; the anchor is about one rendered line tall around it (1.5 x 23).
+        const b = WR[TAP_WORD][WR[TAP_WORD].length - 1];
+        const cx = (b.l + b.r) / 2, cy = (b.t + b.b) / 2;
+        const anchor = { l: cx, r: cx, t: cy - 17.25, b: cy + 17.25 };
+        POP = markToolbarOrigin(anchor, anchor, w, h, 8, 16);
+        POP.grid = grid;
+        $('mkPop').style.left = POP.left + 'px'; $('mkPop').style.top = POP.top + 'px';
+      }
+
+      // ── The note sheet and the keyboard ─────────────────────────────────────────
+      const KB_H = 291;              // the iPhone's portrait keyboard without the QuickType bar
+      let SHEET_H = 0;
+      function buildKeyboard() {
+        const kw = (393 - 6 - 9 * 6) / 10, ys = [8, 62, 116, 170];
+        let h = '';
+        const key = (x, y, w, label, cls, id) => '<div class="key' + (cls || '') + '"' + (id ? ' id="' + id + '"' : '') + ' style="left:' + x.toFixed(2) + 'px;top:' + y + 'px;width:' + w.toFixed(2) + 'px">' + label + '</div>';
+        const letter = c => '<span class="kl" data-c="' + c + '">' + c + '</span>';
+        'qwertyuiop'.split('').forEach((c, i) => { h += key(3 + i * (kw + 6), ys[0], kw, letter(c)); });
+        'asdfghjkl'.split('').forEach((c, i) => { h += key(3 + (kw + 6) / 2 + i * (kw + 6), ys[1], kw, letter(c)); });
+        'zxcvbnm'.split('').forEach((c, i) => { h += key(3 + 1.5 * (kw + 6) + i * (kw + 6), ys[2], kw, letter(c)); });
+        h += key(3, ys[2], 42, '<svg width="22" height="22" id="kShiftG"><use href="#k-shiftOn"/></svg>', ' fn on', 'kShift');
+        h += key(393 - 3 - 42, ys[2], 42, '<svg width="24" height="19"><use href="#k-delete"/></svg>', ' fn');
+        h += key(3, ys[3], 87, '123', ' fn');
+        h += key(96, ys[3], 201, esc(hbT('keyboardSpace', 'space')), '', 'kSpace');
+        h += key(303, ys[3], 87, esc(hbT('keyboardReturn', 'return')), ' fn');
+        h += '<svg class="kbIcon" width="27" height="27" style="left:16px;top:226px"><use href="#k-face"/></svg>';
+        h += '<svg class="kbIcon" width="25" height="25" style="left:352px;top:227px"><use href="#k-mic"/></svg>';
+        $('kb').innerHTML = h;
+        $('kSpace').style.fontSize = '16px'; $('kSpace').style.lineHeight = '19px';
+      }
+      let kbUpper = null;
+      function setKeyCase(upper) {
+        if (upper === kbUpper) return;
+        kbUpper = upper;
+        $('kb').querySelectorAll('.kl').forEach(s => { s.textContent = upper ? s.dataset.c.toUpperCase() : s.dataset.c; });
+        $('kShift').classList.toggle('on', upper);
+        $('kShiftG').querySelector('use').setAttribute('href', upper ? '#k-shiftOn' : '#k-shift');
+      }
+
+      // ── Quotes & notes ──────────────────────────────────────────────────────────
+      const textWidth = (text, font, spacing) => { const c = document.createElement('canvas').getContext('2d'); c.font = font; if (spacing) c.letterSpacing = spacing + 'px'; return c.measureText(text).width; };
+      function coverArt(el, w, h) {
+        // CoverTemplateArtwork: the template under a black scrim (preview tone light), the title and author centred
+        // in the safe zone (12 % to 46 %), scaled down to fit (FittedBox).
+        const safeTop = h * .12, safeBottom = h * .46, feather = h * .14;
+        const scrimTop = Math.max(0, safeTop - feather), scrimBottom = Math.min(h, safeBottom + feather);
+        const st = [0, scrimTop / h, safeTop / h, safeBottom / h, scrimBottom / h, 1].map(v => (v * 100).toFixed(3) + '%');
+        const cols = ['rgba(0,0,0,0)', 'rgba(0,0,0,.04)', 'rgba(0,0,0,.22)', 'rgba(0,0,0,.44)', 'rgba(0,0,0,.2)', 'rgba(0,0,0,0)'];
+        const grad = 'linear-gradient(to bottom,' + cols.map((c, i) => c + ' ' + st[i]).join(',') + ')';
+        const bw = Math.max(0, w - 28), bh = safeBottom - safeTop;
+        const colW = Math.max(textWidth(BOOK.title, '800 17px HBInter'), textWidth(BOOK.author, '500 10.5px HBInter'));
+        const colH = 18.36 + 5 + 11.55;
+        const s = Math.min(1, bw / colW, bh / colH);
+        el.innerHTML = '<div class="ca"></div><div class="caScrim" style="background:' + grad + '"></div>' +
+          '<div class="caCopy" data-layout-ignore style="left:14px;width:' + bw + 'px;top:' + safeTop.toFixed(2) + 'px;height:' + bh.toFixed(2) + 'px">' +
+          '<div class="caCol" style="transform:scale(' + s.toFixed(4) + ')"><div class="caT">' + BOOK.title + '</div><div class="caA">' + BOOK.author + '</div></div></div>';
+      }
+      function buildQN() {
+        // _Hero: "24 passages" over "from 6 books, kept since July" (the joiner is 、 in ja and ko, as in the app).
+        $('heroCount').textContent = fmt('marksPassageCount', '{count, plural, =1{1 passage} other{{count} passages}}', { count: LIB.passages });
+        const joiner = /^(ja|ko)\b/.test(window.__HB_LOCALE) ? '、' : ', ';
+        $('heroLine').textContent = fmt('marksFromBooks', '{count, plural, =1{from 1 book} other{from {count} books}}', { count: LIB.books }) + joiner +
+          fmt('marksKeptSince', 'kept since {month}', { month: LIB.since });
+        $('qnTabs').innerHTML = LIB.tabs.map((tb, i) => '<div class="tab' + (i === 0 ? ' on' : '') + '"><div class="tl">' + esc(hbT(tb[0], tb[1])) + '<b> ' + tb[2] + '</b></div><i></i></div>').join('');
+        coverArt($('cov1984'), 40, 60);
+        $('ent1Passage').textContent = QUOTE;
+        $('miniQuote').textContent = QUOTE;
+        $('miniCard').style.background = bgCss(BGS.brand, 48, 58.909);
+        $('ent1NoteTx').textContent = NOTE;
+        $('ent1Meta').innerHTML = '<b>' + esc(hbT('markKindQuote', 'Quote')) + '</b> · ' + chapterHTML(false) + ' · 00:00 · NOV 2';
+        $('ent2Passage').textContent = PP;
+        $('ent2Meta').innerHTML = '<b>' + esc(hbT('markKindHighlight', 'Highlight')) + '</b> · ' + chapterHTML(false) + ' · 00:04 · JUL 14';
+        // The leader line: the title as wide as its longest line, the dots out to the count.
+        for (const id of ['ldT1', 'ldT2']) {
+          const t = $(id), row = t.parentElement;
+          const room = Math.max(0, row.getBoundingClientRect().width / zoomZ - 18 - 20 - 8 - 14);
+          t.style.width = Math.min(room, Math.ceil(textWidth(t.textContent, '500 19px HBNews')) + 1) + 'px';
+        }
+        // The inked margin line beside the note (InkedMarginPainter, inset -1, 3 dp in from each end).
+        const nb = $('ent1Note'), h = nb.getBoundingClientRect().height / zoomZ;
+        const x = v => (-1 + v).toFixed(2), y = v => (3 + (h - 6) * v / 100).toFixed(2);
+        nb.querySelector('svg').setAttribute('height', h.toFixed(2));
+        $('ent1Ink').setAttribute('d', 'M' + x(3.2) + ' ' + y(1) + 'C' + x(1.7) + ' ' + y(17) + ' ' + x(4.5) + ' ' + y(33) + ' ' + x(3) + ' ' + y(51) +
+          'C' + x(1.5) + ' ' + y(69) + ' ' + x(1.8) + ' ' + y(81) + ' ' + x(3.4) + ' ' + y(99));
+        // A highlight's band: one strip per line behind its words, .16 em out and .07 em up and down.
+        const p = $('ent2Passage'), pr = p.parentElement.getBoundingClientRect(), range = document.createRange();
+        range.selectNodeContents(p);
+        const lines = [];
+        for (const r of range.getClientRects()) {
+          const b = { l: (r.left - pr.left) / zoomZ, t: (r.top - pr.top) / zoomZ, r: (r.right - pr.left) / zoomZ, b: (r.bottom - pr.top) / zoomZ };
+          if (b.r - b.l <= 0) continue;
+          const g = lines.find(g => b.t < g.b - 1 && b.b > g.t + 1);
+          if (g) { g.l = Math.min(g.l, b.l); g.r = Math.max(g.r, b.r); g.t = Math.min(g.t, b.t); g.b = Math.max(g.b, b.b); } else lines.push(b);
+        }
+        const em = 17;
+        $('ent2Band').innerHTML = lines.map(g => box(g.l - .16 * em, g.t - .07 * em, g.r - g.l + .32 * em, g.b - g.t + .14 * em, '')).join('');
+        // Rows the screen's edge clips away entirely are not drawn.
+        const rq = $('rq').getBoundingClientRect();
+        $('qnList').querySelectorAll('.qv, .entRow, .meta, .pRow').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if ((r.top - rq.top) / zoomZ >= 852) el.style.visibility = 'hidden';
+        });
+      }
+
+      // ── Quote backgrounds (quote_backgrounds.dart) and the card ────────────────
+      const BGS = {
+        brand:  { id: 'brand',  radial: ['#2C2521', '#141009'], text: '#F5E9D0', sub: '#C9A36A', mark: 'rgba(255,255,255,.0784)', footer: '#F5E9D0' },
+        sunset: { id: 'sunset', linear: ['#B5532E', '#5B2A6E'], text: '#FFF0E6', sub: '#F2C9A8', mark: 'rgba(255,255,255,.0784)', footer: '#F5E9D0' },
+        dusk:   { id: 'dusk',   linear: ['#233047', '#6E3A5E'] },
+        ember:  { id: 'ember',  linear: ['#7A1F1A', '#2A0A08'] },
+        forest: { id: 'forest', linear: ['#14432F', '#07140E'] },
+        ocean:  { id: 'ocean',  linear: ['#0E4D52', '#10243F'] },
+        brown:  { id: 'brown',  solid: '#6F3825' },
+      };
+      const PICKER = ['brand', 'sunset', 'dusk', 'ember', 'forest', 'ocean', 'brown'];   // the first of the sixteen, as far as the row shows
+      function bgCss(bg, w, h) {
+        if (bg.solid) return bg.solid;
+        if (bg.radial) {   // RadialGradient(center: Alignment(-.45, -.65), radius: 1.3) of the shortest side
+          const r = 1.3 * Math.min(w, h);
+          return 'radial-gradient(circle ' + r.toFixed(2) + 'px at ' + (w * .275).toFixed(2) + 'px ' + (h * .175).toFixed(2) + 'px,' + bg.radial[0] + ' 0%,' + bg.radial[1] + ' 100%)';
+        }
+        const deg = 90 + Math.atan2(h, w) * 180 / Math.PI;   // topLeft -> bottomRight, as Flutter's LinearGradient
+        return 'linear-gradient(' + deg.toFixed(3) + 'deg,' + bg.linear[0] + ' 0%,' + bg.linear[1] + ' 100%)';
+      }
+      const HEADING = fmt('quoteNoteBy', "{name}''s note", { name: READER }).toLocaleUpperCase(window.__HB_LOCALE);     // quoteNoteBy, folioCaps
+      let FIT = null, CARD_S = 1;
+      function fitCard() {
+        // _AutoFitQuote: the largest quote size from 28 to 84 that fits (9 halvings); with a note, quote and note fit
+        // a 660 px box together, the note at half the quote's size (at least 26), 210 px short of the cover.
+        const m = document.createElement('div');
+        m.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;letter-spacing:0';
+        $('app').appendChild(m);
+        const hOf = (text, css, w) => { m.style.width = w + 'px'; m.innerHTML = '<div style="' + css + '">' + esc(text) + '</div>'; return m.firstChild.getBoundingClientRect().height; };
+        const quoteCss = s => 'font-family:HBPlayfair,serif;font-style:italic;font-weight:400;font-size:' + s + 'px;line-height:' + (s * 1.42) + 'px';
+        const noteSize = s => Math.max(26, Math.round(s * .5));
+        const noteCss = s => 'font-family:HBInter,sans-serif;font-style:italic;font-weight:400;font-size:' + noteSize(s) + 'px;line-height:' + (noteSize(s) * 1.42) + 'px';
+        const headH = hOf(HEADING, 'font-family:HBInter,sans-serif;font-weight:600;font-size:22px;line-height:26.4px;letter-spacing:3px', 678) + 10;
+        const solve = withNote => {
+          const maxH = withNote ? 660 : 730;
+          const fits = s => { let h = hOf(QUOTE, quoteCss(s), 888); if (withNote) h += 44 + 4 + 22 + headH + hOf(NOTE, noteCss(s), 678); return h <= maxH; };
+          let lo = 28, hi = 84, best = 28;
+          for (let i = 0; i < 9; i++) { const mid = (lo + hi) / 2; if (fits(mid)) { best = mid; lo = mid; } else hi = mid; }
+          return { s: best, note: noteSize(best) };
+        };
+        FIT = { plain: solve(false), note: solve(true) };
+        m.remove();
+      }
+      const PF = { A: 1.082, D: .251 }, IN = { A: .96875, D: .2412 };
+      const fShift = (f, fs, h) => fs * (f.A - f.D) / 2 * (h / (f.A + f.D) - 1);   // Flutter's proportional leading vs CSS's half-leading
+      function buildCard() {
+        $('qauth').textContent = '— ' + BOOK.author;
+        $('qbook').textContent = BOOK.title;
+        $('qhead').textContent = HEADING;
+        $('qnt').textContent = NOTE;
+        coverArt($('qcov'), 176, 264);
+        // The preview: the 1080 x 1350 card, contained in the room the editor's column leaves it (24 / 12 padding).
+        const pr = $('edPrev').getBoundingClientRect();
+        const bw = pr.width / zoomZ - 48, bh = pr.height / zoomZ - 24;
+        CARD_S = Math.min(bw / 1080, bh / 1350);
+        const cw = 1080 * CARD_S, ch = 1350 * CARD_S;
+        const wrap = $('qcardWrap');
+        wrap.style.left = (24 + (bw - cw) / 2) + 'px'; wrap.style.top = (12 + (bh - ch) / 2) + 'px';
+        wrap.style.width = cw + 'px'; wrap.style.height = ch + 'px';
+        $('qcard').style.transform = 'scale(' + CARD_S.toFixed(5) + ')';
+        // The background picker row.
+        $('edBgs').innerHTML = PICKER.map((id, i) => '<div class="sw" data-bg="' + id + '" style="left:' + (16 + i * 60) + 'px;background:' + bgCss(BGS[id], 48, 48) +
+          '"><svg width="20" height="20" style="color:#FFFFFF"><use href="#m-check"/></svg></div>').join('');
+      }
+      let cardKey = '';
+      function paintCard(bgId, withNote) {
+        const key = bgId + '|' + withNote;
+        if (key === cardKey) return;
+        cardKey = key;
+        const bg = BGS[bgId], f = withNote ? FIT.note : FIT.plain;
+        $('qfill').style.background = bgCss(bg, 1080, 1350);
+        $('qm1').style.color = bg.sub; $('qm2').style.color = bg.mark;
+        const q = $('qtext');
+        q.textContent = QUOTE;
+        q.style.fontSize = f.s + 'px'; q.style.lineHeight = (f.s * 1.42) + 'px'; q.style.color = bg.text;
+        q.style.position = 'relative'; q.style.top = fShift(PF, f.s, 1.42).toFixed(2) + 'px';
+        const n = $('qnote');
+        n.style.display = withNote ? 'block' : 'none';
+        $('qrule').style.background = bg.sub; $('qhead').style.color = bg.sub;
+        const nt = $('qnt');
+        nt.style.fontSize = f.note + 'px'; nt.style.lineHeight = (f.note * 1.42) + 'px'; nt.style.color = rgba(bg.text, .9);
+        nt.style.position = 'relative'; nt.style.top = fShift(IN, f.note, 1.42).toFixed(2) + 'px';
+        $('qauth').style.color = bg.sub; $('qbook').style.color = rgba(bg.sub, .7);
+        $('qbrand').style.color = bg.footer;
+      }
+
+      // ── Everything visible is a function of film time t ─────────────────────────
+      const show = (el, o) => { el.style.opacity = o; el.style.visibility = o <= 0.001 ? 'hidden' : 'inherit'; };
+      const vis = (el, on) => { el.style.visibility = on ? 'inherit' : 'hidden'; };
+      const clock = s => { s = Math.max(0, Math.floor(s)); const m = Math.floor(s / 60), x = s % 60; return String(m).padStart(2, '0') + ':' + String(x).padStart(2, '0'); };
+      // An InkWell held for PRESS: the highlight fades in fast and out on release.
+      const pressAmt = (t, at) => t < at ? 0 : t < at + PRESS ? clamp01((t - at) / 0.04) : 1 - clamp01((t - at - PRESS) / 0.15);
+
+      function renderPlayer(t) {
+        const pos = START + audioT(t);
+        const L = LAYOUT;
+        let lo = 0, hi = L.flat.length - 1;
+        while (lo < hi) { const m = (lo + hi + 1) >> 1; if (L.flat[m].start <= pos) lo = m; else hi = m - 1; }
+        const li = L.flat[lo].start <= pos ? lo : -1;
+        const want = paintKaraoke(li, pos);
+
+        // Mark mode and the marks.
+        const picking = t >= T_MODE && t < T_SAVED;
+        const st = {};
+        if (picking && t >= T_PICK2) st.pick = { lo: MARK_LO, hi: MARK_HI };
+        else if (picking && t >= T_PICK1) st.pick = { lo: MARK_LO, hi: MARK_LO };
+        else if (t >= T_SAVED) { st.saved = 1; st.open = t >= T_POP && t < T_SHEET ? 1 : 0; st.note = t >= T_NOTED ? 1 : 0; }
+        paintMarks(st, want);
+
+        // The head: Mark's ink, the pen or ×, the count badge.
+        $('hMarkInk').style.opacity = pressAmt(t, T_MARK).toFixed(3);
+        vis($('hPen'), !picking); vis($('hX'), picking);
+        vis($('hBadge'), t >= T_SAVED);
+
+        // The picking hint: "Tap a word to start", then "Tap another word to extend".
+        vis($('mkHintRow'), picking);
+        $('mkHintTx').textContent = t >= T_PICK1 ? hbT('markHintExtend', 'Tap another word to extend') : hbT('markHintStart', 'Tap a word to start');
+
+        // The toolbar by the picked words; Quote's pressed ink.
+        const bar = $('mkBar');
+        vis(bar, picking && t >= T_PICK1);
+        const at = t >= T_PICK2 ? BAR.all : BAR.one;
+        bar.style.left = at.left + 'px'; bar.style.top = at.top + 'px';
+        bar.querySelector('#segQuote .press').style.opacity = pressAmt(t, T_QUOTE).toFixed(3);
+
+        // Toasts: 200 ms in (and an 8 dp drop over 240 ms), 4 s up, then out.
+        const toast = (row, from) => {
+          const el = $(row);
+          if (t < from) { show(el, 0); return; }
+          const up = t - from, out = up - 4;
+          const o = out < 0 ? ease(clamp01(up / 0.2)) : 1 - ease(clamp01(out / 0.2));
+          const d = out < 0 ? kOut(clamp01(up / 0.24)) : 1 - kOut(clamp01(out / 0.24));
+          show(el, o); el.style.transform = 'translateY(' + (-8 * (1 - d)).toFixed(3) + 'px)';
+        };
+        toast('toastQRow', T_SAVED);
+        toast('toastNRow', T_NOTED);
+
+        // The saved mark's popover: fades in 160 ms; Add note's ink; gone when chosen.
+        const pop = $('mkPop');
+        if (t >= T_POP && t < T_SHEET) { show(pop, ease(clamp01((t - T_POP) / 0.16))); } else show(pop, 0);
+        pop.querySelector('#paNote .press').style.opacity = pressAmt(t, T_ADD).toFixed(3);
+
+        // The note sheet rises 0.3 s with the keyboard; Save's ink; it goes 0.25 s.
+        const up = t < T_SHEET ? 0 : t < T_NOTED ? easeOutCubic((t - T_SHEET) / RISE) : 1 - easeIn(clamp01((t - T_NOTED) / FALL));
+        const sheet = $('nSheet'), kb = $('kb');
+        vis(sheet, up > 0); vis(kb, up > 0);
+        sheet.style.transform = 'translateY(' + ((1 - up) * (SHEET_H + KB_H + 2)).toFixed(3) + 'px)';
+        kb.style.transform = 'translateY(' + ((1 - up) * KB_H).toFixed(3) + 'px)';
+        show($('nScrim'), up);
+        // Lines wholly under the sheet and the keyboard are not drawn.
+        const sheetTop = 852 - KB_H - SHEET_H + (1 - up) * (SHEET_H + KB_H + 2);
+        for (const ln of lineList) ln.el.classList.toggle('off', ln.page !== 0 || (up > 0 && ln.top >= sheetTop));
+        vis($('pnum'), !(up > 0 && 802 >= sheetTop));
+        const n = t < T_NOTED ? typedCount(t) : NOTE.length;
+        $('nsText').textContent = NOTE.slice(0, n);
+        vis($('nsHintTxt'), n === 0);
+        $('nsHintTxt').style.display = n === 0 ? 'inline' : 'none';
+        const typing = n > 0 && n < NOTE.length && t - TYPE_AT[n - 1] < 0.5;
+        const sinceType = n > 0 ? t - TYPE_AT[n - 1] : t - T_SHEET;
+        vis($('nsCaret'), typing || (Math.floor(sinceType / 0.5) % 2 === 0));
+        $('nsSave').style.opacity = n > 0 ? 1 : 0.42;
+        $('nsSave').querySelector('.press').style.opacity = pressAmt(t, T_SAVE).toFixed(3);
+        setKeyCase(n === 0);
+
+        // The lamp: pause while the narrator reads, play while the sheet holds the audio; its chapter ring.
+        const playing = !(t >= T_SHEET && t < T_NOTED);
+        const since = playing ? (t >= T_NOTED ? t - T_NOTED : 1) : t - T_SHEET;
+        const mph = easeOutCubic(clamp01(since / 0.15));
+        const pv = playing ? mph : 1 - mph;      // 1 = the pause glyph
+        show($('lampPause'), pv); show($('lampPlay'), 1 - pv);
+        const frac = pos / CHAPTER_LEN, sweep = 2 * Math.PI * Math.min(1, frac);
+        const ex = 33 + 30 * Math.sin(sweep), ey = 33 - 30 * Math.cos(sweep);
+        $('ringArc').setAttribute('d', 'M33 3A30 30 0 ' + (sweep > Math.PI ? 1 : 0) + ' 1 ' + ex.toFixed(3) + ' ' + ey.toFixed(3));
+      }
+
+      function renderQN(t) {
+        $('ent1Press').style.opacity = pressAmt(t, T_CARD).toFixed(3);
+      }
+
+      function renderEditor(t) {
+        paintCard(t >= T_BG ? BG2 : 'brand', t >= T_SWITCH);
+        // The picker: the selected swatch's 2.5 dp accent ring and check; the ring moves over 150 ms.
+        const k = clamp01((t - T_BG) / 0.15);
+        $('edBgs').querySelectorAll('.sw').forEach(sw => {
+          const id = sw.dataset.bg;
+          let s = id === 'brand' ? 1 - k : id === BG2 ? k : 0;
+          if (t < T_BG) s = id === 'brand' ? 1 : 0;
+          const col = s > 0 ? 'rgb(' + [111, 56, 37].map((c, i) => Math.round(lerp([232, 224, 212][i], c, s))).join(',') + ')' : '#E8E0D4';
+          sw.style.borderWidth = lerp(1, 2.5, s).toFixed(3) + 'px';
+          sw.style.borderColor = col;
+          sw.classList.toggle('on', (t >= T_BG ? BG2 : 'brand') === id);
+        });
+        // Include my note: the iOS switch thumb stretches while pressed, then slides over 200 ms.
+        const pressed = t >= T_NOTE && t < T_SWITCH ? easeOutCubic((t - T_NOTE) / 0.08) : t >= T_SWITCH ? 1 - easeOutCubic(clamp01((t - T_SWITCH) / 0.15)) : 0;
+        const on = t >= T_SWITCH ? easeOutCubic(clamp01((t - T_SWITCH) / 0.2)) : 0;
+        const tw = 27 + 7 * pressed, tx = lerp(2, 51 - 2 - 27, on) - (on > 0.5 ? 7 * pressed : 0);
+        const th = $('swThumb');
+        th.style.width = tw.toFixed(3) + 'px'; th.style.left = tx.toFixed(3) + 'px';
+        th.style.background = 'rgb(' + [133, 133, 133].map(c => Math.round(lerp(c, 255, on))).join(',') + ')';
+        $('sw').style.background = 'rgb(' + [[242, 111], [244, 56], [245, 37]].map(([a, b]) => Math.round(lerp(a, b, on))).join(',') + ')';
+      }
+
+      function render(t) {
+        // iOS pushes: the new page from the right, the old one a third to the left under a light barrier.
+        const p1 = clamp01((t - T_QN) / PUSH), p2 = clamp01((t - T_ED) / PUSH);
+        const rp = $('rp'), rq = $('rq'), re = $('re');
+        const onP = t < T_QN + PUSH, onQ = t >= T_QN && t < T_ED + PUSH, onE = t >= T_ED;
+        vis(rp, onP); vis(rq, onQ); vis(re, onE);
+        rp.style.transform = 'translateX(' + (-131 * linearToEaseOut(p1)).toFixed(3) + 'px)';
+        rq.style.transform = 'translateX(' + ((1 - fastEaseInToSlowEaseOut(p1)) * 393 - 131 * linearToEaseOut(p2)).toFixed(3) + 'px)';
+        re.style.transform = 'translateX(' + ((1 - fastEaseInToSlowEaseOut(p2)) * 393).toFixed(3) + 'px)';
+        show($('barP'), t >= T_QN && p1 < 1 ? (0x18 / 255) * ease(p1) : 0);
+        show($('barQ'), t >= T_ED && p2 < 1 ? (0x18 / 255) * ease(p2) : 0);
+        // The status bar follows the page on top: light over the read-along page, dark over the light pages.
+        const dark = t < T_QN + PUSH / 2;
+        stage.style.setProperty('--sb', dark ? '#FFFFFF' : '#000000');
+        if (onP) renderPlayer(t);
+        if (onQ) renderQN(t);
+        if (onE) renderEditor(t);
+      }
+
+      // ── Static pieces ────────────────────────────────────────────────────────────
+      function statusIcons() {
+        let d = '';
+        [[0, 7], [4.6, 5], [9.2, 2.6], [13.8, 0]].forEach(([x, y]) => { d += '<rect x="' + x + '" y="' + (1 + y) + '" width="3.2" height="' + (11 - y) + '" rx="1"/>'; });
+        const cx = 30.65, cy = 11.6, a = Math.PI / 4;
+        const pt = (r, s) => (cx + r * Math.sin(s * a)).toFixed(2) + ' ' + (cy - r * Math.cos(s * a)).toFixed(2);
+        const sector = (r0, r1) => r0 === 0
+          ? 'M' + cx + ' ' + cy + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'Z'
+          : 'M' + pt(r0, -1) + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'L' + pt(r0, 1) + 'A' + r0 + ' ' + r0 + ' 0 0 0 ' + pt(r0, -1) + 'Z';
+        d += '<path d="' + sector(0, 3.3) + sector(5.0, 7.0) + sector(8.7, 10.8) + '"/>';
+        d += '<rect x="45.5" y=".5" width="25" height="12" rx="3.8" fill="none" stroke="currentColor" stroke-opacity=".35"/>';
+        d += '<rect x="47.5" y="2.5" width="21" height="8" rx="2"/>';
+        d += '<path d="M72 4.5c.9.3 1.5 1.1 1.5 2s-.6 1.7-1.5 2Z" fill-opacity=".4"/>';
+        $('sbG').innerHTML = d;
+      }
+      function placeDevice() {
+        // frame-iphone.png 4317 x 8796, screen x 199..4111, y 168..8653; 1960 px tall, centred.
+        const s = 1960 / 8796, fw = 4317 * s, fl = (3840 - fw) / 2, ft = (2160 - 1960) / 2;
+        const fr = $('frame');
+        fr.style.left = fl + 'px'; fr.style.top = ft + 'px'; fr.style.width = fw + 'px'; fr.style.height = '1960px';
+        const sw = 3913 * s, sh = 8486 * s, z = Math.max(sw / 393, sh / 852);
+        const sc = $('screen');
+        sc.style.left = (fl + 199 * s) + 'px';
+        sc.style.top = (ft + 168 * s) + 'px';
+        sc.style.width = sw + 'px'; sc.style.height = sh + 'px';
+        sc.style.borderRadius = (400 * s) + 'px';
+        stage.style.marginLeft = ((sw - 393 * z) / 2 / z) + 'px';
+        stage.style.zoom = z;
+      }
+
+      placeDevice();
+      const FACES = ['400 23px HBNews', '400 15px HBAtk', '700 15px HBAtk', '400 16px HBInter', '500 16px HBInter', '600 17px HBInter', '700 17px HBInter',
+                     'italic 400 34px HBInter', '400 20px HBPlayfair', 'italic 400 40px HBPlayfair', 'italic 400 17px HBPagella', '400 96px HBEwert', '400 14px HBLexend'];
+      document.fonts.ready.then(() => Promise.all(FACES.map(f => document.fonts.load(f)))).then(() => {
+        // The locale's strings go in before anything is measured.
+        hbLocaleSetup();
+        hbApplyStrings();
+        $('hTitleTx').innerHTML = chapterHTML(true);
+        zoomZ = stage.getBoundingClientRect().width / 393;
+        statusIcons();
+        const rp = $('rp');
+        for (const k of Object.keys(TOK)) rp.style.setProperty('--' + k, TOK[k]);
+        $('ringTrack').setAttribute('stroke', TOK.track);
+        $('ringArc').setAttribute('stroke', RUBRIC);
+
+        // Paginate (Newsreader, the Reading Comprehension profile's read-along font).
+        meas = document.createElement('div');
+        meas.id = 'meas'; meas.className = 'ln';
+        $('reader').appendChild(meas);
+        SHIFT = LINE_H * NEWS.A / (NEWS.A + NEWS.D) - ((LINE_H - (NEWS.A + NEWS.D) * FONT_PX) / 2 + NEWS.A * FONT_PX);
+        const capRule = document.createElement('style');
+        capRule.textContent = '#meas .cap{line-height:28px}';
+        document.head.appendChild(capRule);
+        meas.style.width = PAGE_W + 'px';
+        meas.innerHTML = '<div class="tx"><span class="cap">I</span>t</div>';
+        const h0 = meas.getBoundingClientRect().height / zoomZ;
+        capLH = 28 + 2 * (CAP_ROW - h0);
+        capRule.textContent = '#meas .cap{line-height:' + capLH + 'px}';
+        LAYOUT = paginate();
+        capRule.remove();
+        meas.remove();
+        buildPages();
+        $('pnum').textContent = '1 / ' + LAYOUT.pages.length;
+        measureWords();
+        placeToolbar();
+        buildPopover();
+
+        // The note sheet: the passage, then the field (three lines at least) above the keyboard.
+        $('nsPassageTx').textContent = QUOTE;
+        buildKeyboard();
+        const sh = $('nSheet');
+        SHEET_H = sh.getBoundingClientRect().height / zoomZ;
+        sh.style.top = (852 - KB_H - SHEET_H) + 'px';
+
+        vis($('rq'), true); vis($('re'), true);
+        buildQN();
+        fitCard();
+        buildCard();
+        paintCard('brand', false);
+
+        window.__dbg = () => ({ zoom: zoomZ, pages: LAYOUT.pages.length, bar: BAR, pop: POP, sheetH: SHEET_H, fit: FIT, cardS: CARD_S,
+          wr: WR.map(b => b.map(x => [+x.l.toFixed(1), +x.t.toFixed(1), +x.r.toFixed(1), +x.b.toFixed(1)])), band: bandRects(MARK_LO, MARK_HI),
+          alphas: { nearA, farA, farOnBandA, nearOnBandA, farOnPendA, nearOnPendA, CAP_ON_BAND, CAP_ON_PENDING } });
+        render(0);
+
+        const tl = gsap.timeline({ paused: true });
+        const clockProxy = { t: 0 };
+        tl.to(clockProxy, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clockProxy.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

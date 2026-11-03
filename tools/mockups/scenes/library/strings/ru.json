@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Ваши книги",
+  "librarySelect": "Выбрать",
+  "libraryChipAll": "Все",
+  "libraryChipInProgress": "В процессе",
+  "libraryChipNotStarted": "Не начатые",
+  "libraryChipFinished": "Законченный",
+  "librarySortRecentlyPlayed": "Недавно прослушанные",
+  "libraryShowAsList": "Показать списком",
+  "durationHoursMinutes": "{hours} ч {minutes} мин",
+  "durationMinutes": "{minutes} мин",
+  "timeLeft": "Осталось {duration}",
+  "navHome": "Главная",
+  "navLibrary": "Библиотека",
+  "navAnalytics": "Аналитика",
+  "navProfile": "Профиль"
+}

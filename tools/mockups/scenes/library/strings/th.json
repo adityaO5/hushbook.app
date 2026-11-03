@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "หนังสือของคุณ",
+  "librarySelect": "เลือก",
+  "libraryChipAll": "ทั้งหมด",
+  "libraryChipInProgress": "กำลังฟัง",
+  "libraryChipNotStarted": "ยังไม่เริ่ม",
+  "libraryChipFinished": "ที่เสร็จเรียบร้อย",
+  "librarySortRecentlyPlayed": "ฟังล่าสุด",
+  "libraryShowAsList": "แสดงเป็นรายการ",
+  "durationHoursMinutes": "{hours} ชม. {minutes} นาที",
+  "durationMinutes": "{minutes} นาที",
+  "timeLeft": "เหลืออีก {duration}",
+  "navHome": "หน้าแรก",
+  "navLibrary": "ห้องสมุด",
+  "navAnalytics": "การวิเคราะห์",
+  "navProfile": "โปรไฟล์"
+}

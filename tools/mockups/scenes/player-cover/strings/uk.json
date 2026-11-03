@@ -1,0 +1,13 @@
+{
+  "readAlong": "Стежити за текстом",
+  "minutesLeftInChapter": "До кінця розділу: {minutes} хв",
+  "minuteLeftInChapter": "До кінця розділу: 1 хв",
+  "underMinuteLeftInChapter": "До кінця розділу менше хвилини",
+  "sleepInMinutes": "Зупинка через {minutes} хв",
+  "pillSpeed": "Швидкість",
+  "pillSleep": "Таймер",
+  "sleepOff": "Вимкнено",
+  "pillSleepMinutes": "{minutes} хв",
+  "chapters": "Розділи",
+  "chaptersOf": "{current} з {total}"
+}

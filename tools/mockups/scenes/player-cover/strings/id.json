@@ -1,0 +1,13 @@
+{
+  "readAlong": "Baca bersama",
+  "minutesLeftInChapter": "Sisa {minutes} mnt di bab ini",
+  "minuteLeftInChapter": "Sisa 1 mnt di bab ini",
+  "underMinuteLeftInChapter": "Sisa kurang dari semenit di bab ini",
+  "sleepInMinutes": "Berhenti dalam {minutes} mnt",
+  "pillSpeed": "Kecepatan",
+  "pillSleep": "Timer",
+  "sleepOff": "Mati",
+  "pillSleepMinutes": "{minutes} mnt",
+  "chapters": "Bab",
+  "chaptersOf": "{current} dari {total}"
+}

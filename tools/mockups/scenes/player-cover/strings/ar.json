@@ -1,0 +1,13 @@
+{
+  "readAlong": "اقرأ مع الصوت",
+  "minutesLeftInChapter": "تتبقى {minutes} دقيقة في هذا الفصل",
+  "minuteLeftInChapter": "تتبقى دقيقة واحدة في هذا الفصل",
+  "underMinuteLeftInChapter": "يتبقى أقل من دقيقة في هذا الفصل",
+  "sleepInMinutes": "يتوقف بعد {minutes} دقيقة",
+  "pillSpeed": "السرعة",
+  "pillSleep": "المؤقت",
+  "sleepOff": "عن",
+  "pillSleepMinutes": "{minutes} د",
+  "chapters": "الفصول",
+  "chaptersOf": "{current} من {total}"
+}

@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* Ported from D:\hushbook-demo-video\showcase\ios\ios-home (the launch-film replica).
+         HushBook iPhone app, light theme. Source: D:\hushbook (current phone checkout).
+         HbColors.light (lib/theme/hb_colors.dart), HomeTokens (home/widgets/home_tokens.dart),
+         TodayCardColors (home/widgets/today_card/today_card_tokens.dart), DockTokens (home/dock/dock_tokens.dart). */
+      :root {
+        --bg: #FBF8F2; --surface: #FFFFFF; --textPrimary: #090A0A; --textBody: #2F2F2F; --textSecondary: #858585;
+        --homeSecondary: #6B655F; --icon: #090A0A; --accent: #6F3825; --hairline: #F2F2F7;
+        --tcFill: #FFFDF9; --tcEdge: #EEE6D9; --tcSecondary: #5F5953; --green: #34C759; --checkInk: #0F3D1E;
+        --moon: #1F7F3B; --ringTrack: rgba(52,199,89,.169); --dayRing: #D8D0C3;
+        --framesBg: #050507; --framesLine: #E9E5DE; --framesPillInk: #141210;
+        --dockLabel: #3A3734;
+        --canvas: #FAF9F5;
+      }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Bold.ttf'); font-weight: 700; }
+      @font-face { font-family: HBPlayfair; src: url('../../assets/fonts/PlayfairDisplay-Variable.ttf'); font-weight: 400 900; }
+      @font-face { font-family: HBHush; src: url('../../assets/fonts/HushFont-Regular.otf'); font-weight: 400; }
+      @font-face { font-family: HBMaterial; src: url('../../assets/fonts/MaterialIcons-Regular.otf'); font-weight: 400; }
+      @font-face { font-family: HBCupertino; src: url('../../assets/fonts/CupertinoIcons.ttf'); font-weight: 400; }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { margin: 0; width: 3840px; height: 2160px; overflow: hidden; background: var(--canvas); }
+      #root { width: 100%; height: 100%; position: relative; background: var(--canvas); }
+      #film { position: absolute; inset: 0; }
+      img { display: block; }
+
+      /* ── Device: frame-iphone.png over the 393 x 852 stage (positions computed in build()) ── */
+      #phone { position: absolute; }
+      #frame { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 2; }
+      #screenHost { position: absolute; z-index: 1; }
+      #stageWrap { position: absolute; }
+      .stage { position: absolute; left: 0; top: 0; width: 393px; height: 852px; overflow: hidden; background: var(--bg);
+               font-family: HBInter, sans-serif; color: var(--textBody); -webkit-font-smoothing: antialiased; }
+
+      /* Icon fonts: Flutter Icon(size) = the glyph at fontSize = size in a size x size box. */
+      .mi, .ci { display: inline-block; flex: none; text-align: center; font-style: normal; font-weight: 400; white-space: nowrap; }
+      .mi { font-family: HBMaterial; }
+      .ci { font-family: HBCupertino; }
+      .s15 { font-size: 15px; line-height: 15px; width: 15px; height: 15px; }
+      .s19 { font-size: 19px; line-height: 19px; width: 19px; height: 19px; }
+      .s20 { font-size: 20px; line-height: 20px; width: 20px; height: 20px; }
+      .s22 { font-size: 22px; line-height: 22px; width: 22px; height: 22px; }
+      .s24 { font-size: 24px; line-height: 24px; width: 24px; height: 24px; }
+
+      /* ── Status bar + home indicator (drawn by iOS over both routes) ── */
+      #statusBar { position: absolute; left: 0; top: 0; width: 393px; height: 54px; z-index: 20; color: #000; }
+      #sbTime { position: absolute; left: 0; width: 132px; top: 21px; text-align: center; font: 600 17px/20px HBInter; letter-spacing: -0.2px; }
+      #sbIcons { position: absolute; right: 0; width: 132px; top: 21px; height: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+      #homeIndicator { position: absolute; left: 129.5px; bottom: 8px; width: 134px; height: 5px; border-radius: 3px; background: #000; z-index: 20; }
+
+      /* ── Routes ── */
+      .route { position: absolute; left: 0; top: 0; width: 393px; height: 852px; background: var(--bg); }
+      #homeRoute { z-index: 1; }
+      #barrier { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 2; }
+      #bookRoute { z-index: 3; }
+
+      /* Home: SafeArea(top) scroll viewport; bottom: false, so content runs under the dock. */
+      #homeViewport { position: absolute; left: 0; top: 59px; width: 393px; height: 793px; overflow: hidden; }
+      #homeContent { position: absolute; left: 0; top: 0; width: 393px; }
+
+      /* HushBookTopBar */
+      .topbar { padding: 0 9px 0 16px; height: 48px; display: flex; align-items: center; }
+      .tbSide { width: 96px; height: 48px; flex: none; display: flex; align-items: center; }
+      .tbSide.r { justify-content: flex-end; }
+      /* The launch film tinted these through CSS masks; a mask image is a CORS fetch, which file:// (the
+         runner) refuses, so they are <img>s tinted with a filter: brightness(0) makes the ink black,
+         invert(x) lifts it to grey x (textPrimary #090A0A = .035, textSecondary #858585 = .522). */
+      .mark { width: 32px; height: 32px; object-fit: contain; filter: brightness(0) invert(.035); }
+      .tbMid { flex: 1; min-width: 0; display: flex; justify-content: center; }
+      .wordmark { font-family: HBHush; font-size: 24px; letter-spacing: -0.75px; color: var(--textPrimary); white-space: nowrap; }
+      .pro { display: inline-block; width: 20.16px; height: 16.32px; margin-left: 6px; vertical-align: baseline; object-fit: contain; filter: brightness(0) invert(.035); }
+      .tbBtn { width: 48px; height: 48px; flex: none; display: grid; place-items: center; }
+      .addBtn { width: 38px; height: 38px; border-radius: 50%; background: var(--surface); display: grid; place-items: center;
+                box-shadow: 0 0 5.6px rgba(0,0,0,.08), 0 0 1.6px rgba(0,0,0,.04); color: var(--textPrimary); }
+
+      /* HomeGreeting */
+      .greeting { padding: 4px 16px 0; display: flex; align-items: flex-start; }
+      .avatar { position: relative; flex: none; border-radius: 50%; overflow: hidden; background: #F7F4EE; }
+      .avatar img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+      .greeting .col { flex: 1; min-width: 0; margin-left: 12px; }
+      .greet { font-family: HBPlayfair; font-weight: 500; font-size: 22px; letter-spacing: -0.4px; color: var(--textPrimary); }
+      .gline { margin-top: 4px; font-size: 13px; color: var(--homeSecondary); }
+
+      /* HeroPager + HeroBookCard */
+      .heroWrap { padding: 12px 16px 0; }
+      .slider { position: relative; width: 361px; height: 342px; overflow: hidden; }
+      .strip { position: absolute; left: 0; top: 0; height: 342px; display: flex; }
+      /* RTL: the pager still slides page by page from x=0 (translateX below); only the card's text flips. */
+      [dir="rtl"] .strip { direction: ltr; }
+      [dir="rtl"] .heroCard { direction: rtl; }
+      .heroCard { position: relative; width: 361px; height: 342px; flex: none; border-radius: 16px; overflow: hidden; }
+      .heroCard .fill { position: absolute; inset: 0; background-size: 100% 100%; }
+      .heroCard .scrim { position: absolute; inset: 0; background: rgba(16,12,9,.278); }
+      .heroCard .whole { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+      .caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 11px 8px 12px 14px; display: flex; align-items: center;
+                 background: linear-gradient(to bottom, rgba(16,12,9,.42), rgba(16,12,9,.60)); border-top: 1px solid rgba(255,255,255,.16);
+                 -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+      .capCol { flex: 1; min-width: 0; }
+      .hTitle { font-weight: 600; font-size: 16px; color: #fff; white-space: nowrap; }
+      .hMeta { margin-top: 2px; display: flex; white-space: nowrap; }
+      .hMeta .a { font-size: 13px; color: rgba(255,255,255,.92); min-width: 0; }
+      .hMeta .s { font-size: 13px; color: rgba(255,255,255,.92); }
+      .hMeta .l { font-weight: 600; font-size: 13px; color: #fff; }
+      .hBar { margin-top: 8px; height: 3px; border-radius: 2px; overflow: hidden; background: rgba(255,255,255,.3); }
+      .hBar i { display: block; height: 3px; background: #fff; }
+      .hPlay { margin-left: 10px; width: 48px; height: 48px; flex: none; display: grid; place-items: center; }
+      .hPlay .disc { width: 42px; height: 42px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #1A1714; box-shadow: 0 2px 10.2px rgba(0,0,0,.28); }
+      .quotes { position: absolute; top: 2px; right: 4px; width: 48px; height: 48px; display: grid; place-items: center; }
+      .quotes .glass { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; color: #fff;
+                       background: rgba(18,14,10,.45); border: 1px solid rgba(255,255,255,.22); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+      .pager { height: 28px; padding: 0 4px; display: flex; align-items: center; justify-content: space-between; }
+      .dashes { display: flex; align-items: center; }
+      .dashes i { display: block; height: 4px; border-radius: 2px; margin-left: 5px; }
+      .dashes i:first-child { margin-left: 0; }
+      .pageOf { margin-left: 12px; font-weight: 500; font-size: 12px; color: var(--homeSecondary); font-variant-numeric: tabular-nums; }
+
+      /* StreakCard (Today card) on PearlSurface */
+      .todayWrap { padding: 12px 16px 0; }
+      .today { position: relative; border-radius: 22px; background: var(--tcFill); overflow: hidden;
+               box-shadow: 0 1px 3.3px rgba(60,40,20,.051), 0 10px 31px rgba(60,40,20,.078); }
+      .today .edge { position: absolute; inset: 0; border: 1px solid var(--tcEdge); border-radius: 22px; pointer-events: none; }
+      .today .hi { position: absolute; left: 0; right: 0; top: 1px; height: 1px; background: #fff; }
+      .tcIn { position: relative; padding: 12px 16px 14px; }
+      .tcRow { display: flex; align-items: flex-start; }
+      .tcLeft { flex: 1; min-width: 0; padding-top: 2px; }
+      .numRow { min-height: 48px; display: flex; align-items: flex-end; }
+      .badge { width: 48px; height: 48px; flex: none; display: grid; place-items: center; }
+      .glow { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+              background: radial-gradient(circle closest-side, rgba(255,77,46,.275), rgba(255,122,0,0)); box-shadow: 0 0 21.8px 1px rgba(255,77,46,.55); }
+      .tier { position: relative; width: 30px; height: 30px; }
+      .tier img { position: absolute; left: 0; top: 0; width: 30px; height: 30px; transform-origin: 0 0; }
+      .numWrap { margin-left: 7px; display: flex; align-items: flex-end; flex-wrap: wrap; column-gap: 7px; }
+      .streakNum { font-family: HBHush; font-size: 46px; color: var(--textPrimary); }
+      .streakUnit { margin-bottom: 6px; font-weight: 600; font-size: 15px; color: var(--textPrimary); }
+      .kind { margin-top: 8px; font-weight: 500; font-size: 13.5px; color: var(--textBody); }
+      .rest { margin-top: 8px; display: flex; align-items: center; }
+      .rest .mi { color: var(--moon); }
+      .rest span { margin-left: 6px; font-weight: 500; font-size: 13px; color: var(--tcSecondary); }
+      .ringCol { margin-left: 12px; width: 108px; flex: none; display: flex; flex-direction: column; align-items: center; }
+      .ringBox { position: relative; width: 100px; height: 100px; }
+      .ringBox svg { position: absolute; inset: 0; }
+      .ringCentre { position: absolute; inset: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .ringWords { font-weight: 700; font-size: 19px; color: var(--textPrimary); font-variant-numeric: tabular-nums; }
+      .ringGoal { margin-top: 4px; font-weight: 500; font-size: 12px; color: var(--tcSecondary); }
+      .ringLabel { margin-top: 7px; font-weight: 600; font-size: 12px; color: var(--tcSecondary); text-align: center; }
+      .week { margin-top: 12px; display: flex; }
+      .wd { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; }
+      .wd .c { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; }
+      .wd .c.done { background: var(--green); color: var(--checkInk); }
+      .wd .c.done .mi { font-size: 18.7px; line-height: 18.7px; width: 18.7px; height: 18.7px; }
+      .wd .c.future { border: 1.5px solid var(--dayRing); }
+      .wd .c.future i { width: 4px; height: 4px; border-radius: 50%; background: var(--dayRing); }
+      .wd .lbl { margin-top: 5px; font-weight: 500; font-size: 12px; color: var(--tcSecondary); }
+      .wd .lbl.now { font-weight: 700; color: var(--textPrimary); }
+
+      /* HomeSectionHeader + YourBooksGrid */
+      .secHead { padding: 28px 16px 12px; }
+      .secTitle { font-weight: 700; font-size: 20px; color: var(--textBody); }
+      .secLine { margin-top: 3px; font-size: 13px; color: var(--homeSecondary); }
+      .grid { padding: 0 16px; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px; row-gap: 14px; }
+      .grid:not(.g12) .cell.extra { display: none; }
+      .cell { position: relative; display: flex; flex-direction: column; min-width: 0; }
+      .cell .cv { flex: 1; min-height: 0; border-radius: 4px 12px 12px 4px; overflow: hidden; }
+      .cell .cv img { width: 100%; height: 100%; object-fit: cover; }
+      .cell .lbl { margin-top: 5px; font-weight: 600; font-size: 10px; color: var(--textBody); white-space: nowrap; }
+      .cell .press { position: absolute; inset: 0; border-radius: 12px; background: rgba(9,10,10,.08); opacity: 0; }
+
+      /* DiscoverTile */
+      .discoverWrap { padding: 28px 16px 0; }
+      .discover { position: relative; width: 361px; border-radius: 16px; overflow: hidden; background: var(--framesBg); display: flex; align-items: center; }
+      .fan { position: absolute; inset: 0; }
+      .fanGlow { position: absolute; background: radial-gradient(circle closest-side, rgba(255,196,128,.42) 0%, rgba(255,170,100,.141) 55%, rgba(255,160,90,0) 100%); }
+      .fanCover { position: absolute; border-radius: 3px; box-shadow: 0 14px 33.3px rgba(0,0,0,.55), 0 2px 6.8px rgba(0,0,0,.35); }
+      .fanArt { position: absolute; inset: 0; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
+      .fanScrim { position: absolute; inset: 0; }
+      .fanCopy { position: absolute; left: 14px; right: 14px; display: flex; align-items: center; justify-content: center; }
+      .fanCopy .in { display: flex; flex-direction: column; align-items: center; text-align: center; white-space: nowrap; flex: none; }
+      .fanCopy b { font-weight: 700; font-size: 17px; line-height: 1.08; }
+      .fanCopy span { margin-top: 5px; font-weight: 500; font-size: 10.5px; line-height: 1.1; }
+      .discoverFade { position: absolute; inset: 0; background: linear-gradient(to left, #050507 0%, rgba(5,5,7,.92) 38%, rgba(5,5,7,0) 62%); }
+      .discoverCopy { position: relative; margin-left: auto; width: 209.4px; padding: 16px 18px 16px 0; display: flex; flex-direction: column; align-items: flex-end; }
+      .discoverTitle { font-family: HBHush; font-size: 46px; color: #fff; white-space: nowrap; }
+      .discoverLine { margin-top: 6px; max-width: 190px; text-align: right; font-size: 14px; color: var(--framesLine); }
+      .pill { margin-top: 6px; min-height: 44px; padding: 0 18px; border-radius: 22px; background: #fff; display: flex; align-items: center;
+              font-weight: 700; font-size: 14px; color: var(--framesPillInk); }
+      .tail { height: 300px; } /* FramesShelf (never on screen in this film) + NavDockSpacer */
+
+      /* NavDock (light, no player row, nothing playing after a cold start) */
+      #dock { position: absolute; left: 16px; top: 770px; width: 361px; height: 64px; border-radius: 32px; overflow: hidden;
+              box-shadow: 0 12px 35.6px rgba(0,0,0,.15), 0 2px 7.9px rgba(0,0,0,.06);
+              background: linear-gradient(to bottom, rgba(248,245,239,.95), rgba(248,245,239,.90));
+              -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+      #dock .edge { position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.70); border-radius: 32px; }
+      #capsule { position: absolute; top: 6px; bottom: 6px; left: 6px; width: 87.25px; border-radius: 26px; background: rgba(111,56,37,.13); }
+      .dockRow { position: absolute; inset: 6px; display: flex; }
+      .tab { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--dockLabel); }
+      .tab.on { color: var(--accent); }
+      .tab span { margin-top: 2px; font-weight: 500; font-size: 11px; line-height: 13.2px; }
+      .tab.on span { font-weight: 600; }
+
+      /* ── Book page (lib/features/library/book_detail_screen.dart) ── */
+      .topNav { padding: 73px 16px 0; } /* viewPadding.top 59 + 14 */
+      .topNav .row { position: relative; height: 48px; }
+      .topNav .btn { position: absolute; top: 0; width: 48px; height: 48px; display: grid; place-items: center; color: var(--icon); }
+      .topNav .ttl { position: absolute; left: 80px; right: 80px; top: 0; height: 48px; display: flex; align-items: center; justify-content: center;
+                     font-family: HBPlayfair; font-weight: 500; font-size: 23px; color: var(--textBody); white-space: nowrap; }
+      .albumWrap { padding: 20px 16px 0; display: flex; justify-content: center; }
+      .album { position: relative; width: 162.45px; aspect-ratio: 128 / 178; border-radius: 4px 16px 16px 4px;
+               box-shadow: 0 12px 26.4px rgba(0,0,0,.22), 0 2px 7.9px rgba(0,0,0,.10); }
+      .albumArt { position: absolute; inset: 0; border-radius: 4px 16px 16px 4px; overflow: hidden; }
+      .albumArt .fill { position: absolute; inset: 0; background-size: 100% 100%; }
+      .albumArt .scrim { position: absolute; inset: 0; background: rgba(16,12,9,.278); }
+      .albumArt .whole { position: absolute; inset: 0; background-size: contain; background-position: center; background-repeat: no-repeat; }
+      .playBtn { position: absolute; right: 12px; bottom: 12px; width: 48px; height: 48px; display: grid; place-items: center; }
+      .playBtn .disc { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; box-shadow: 0 2px 7.9px rgba(0,0,0,.28); color: #fff; }
+      .titleSec { padding: 16px 16px 0; }
+      .bookTitle { font-family: HBPlayfair; font-weight: 500; font-size: 28px; color: var(--textBody); white-space: nowrap; }
+      .byline { margin-top: 12px; font-size: 16px; color: var(--textSecondary); white-space: nowrap; }
+      .meta { padding: 16px 16px 0; display: flex; gap: 12px; }
+      .metaBox { position: relative; flex: 1 1 0; min-width: 0; background: var(--surface); border-radius: 16px; box-shadow: 0 2px 10.2px rgba(0,0,0,.078); padding: 12px 0; }
+      .metaIcon { height: 28px; display: grid; place-items: center; }
+      .metaIcon .tint { object-fit: contain; filter: brightness(0) invert(.522); }
+      .metaVal { margin-top: 6px; padding: 0 8px; text-align: center; font-weight: 600; font-size: 15px; color: var(--textBody); white-space: nowrap; }
+      .bevel { position: absolute; inset: 0; border-radius: var(--r); padding: var(--w); pointer-events: none;
+               background: linear-gradient(to bottom left, var(--c) 0%, transparent 30%, transparent 70%, var(--c) 100%);
+               -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+               mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+      .tabs { margin-top: 20px; }
+      .tabs .row { display: flex; }
+      .stab { flex: 1 1 0; height: 48px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+      .stab span { font-size: 16px; letter-spacing: -0.32px; color: var(--textSecondary); font-weight: 400; }
+      .stab.sel span { color: var(--textBody); font-weight: 600; }
+      .stab i { display: block; margin-top: 8px; height: 2px; width: 0; }
+      .stab.sel i { width: 64px; background: var(--textBody); }
+      .tabs .hl { height: .5px; background: var(--hairline); }
+      .chaptersWrap { padding: 16px 16px 0; }
+      .chapters { background: var(--surface); border-radius: 20px; box-shadow: 0 1px 4.8px rgba(0,0,0,.25); padding: 24px 17px; }
+      .chRow { display: flex; align-items: center; }
+      .chNum { font-size: 18px; color: var(--textPrimary); flex: none; }
+      .chMid { flex: 1; min-width: 0; margin-left: 33px; }
+      .chTop { display: flex; align-items: center; }
+      .chTop .ci { color: var(--accent); margin-right: 6px; }
+      .chTitle { font-family: HBPlayfair; font-weight: 500; font-size: 18px; color: var(--textPrimary); white-space: nowrap; min-width: 0; }
+      .chDur { margin-top: 2px; font-size: 11px; color: var(--textSecondary); }
+      .chDiv { height: 24px; display: flex; align-items: center; }
+      .chDiv i { display: block; width: 100%; height: .5px; background: var(--hairline); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="14" data-width="3840" data-height="2160" data-fps="60">
+      <div id="film" class="clip" data-start="0" data-duration="14" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div id="phone">
+          <div id="screenHost">
+            <div id="stageWrap">
+              <div class="stage" id="stage" data-layout-allow-overflow>
+
+                <!-- ═══ Home tab inside ShellScaffold ═══ -->
+                <div class="route" id="homeRoute">
+                  <div id="homeViewport" data-layout-allow-overflow>
+                    <div id="homeContent">
+                      <div class="topbar">
+                        <div class="tbSide"><img class="mark" src="../../assets/hushbook_mark.png" alt="" /></div>
+                        <div class="tbMid"><div class="wordmark" data-fh="1">HushBook<img class="pro" src="assets/img/pro_icon.svg" alt="" /></div></div>
+                        <div class="tbSide r">
+                          <div class="tbBtn"><div class="addBtn"><i class="mi s22">&#xe047;</i></div></div>
+                          <div class="tbBtn"><i class="mi s22" style="color:var(--icon)">&#xf235;</i></div>
+                        </div>
+                      </div>
+
+                      <div class="greeting">
+                        <div class="avatar" style="width:48px;height:48px">
+                          <img src="assets/companion/cat_base.svg" alt="" />
+                          <img id="eyesOpen" src="assets/companion/cat_eyes_open.svg" alt="" />
+                          <img id="eyesClosed" src="assets/companion/cat_eyes_closed.svg" alt="" style="visibility:hidden" />
+                          <img src="assets/companion/cat_mouth_rest.svg" alt="" />
+                          <img src="assets/companion/cat_prop.svg" alt="" />
+                        </div>
+                        <div class="col">
+                          <div class="greet" id="greet" data-fh="1.15">Good morning, Adi</div>
+                          <div class="gline" id="gline" data-fh="1.35">Thursday · A good time to start.</div>
+                        </div>
+                      </div>
+
+                      <div class="heroWrap">
+                        <div class="slider" data-layout-allow-overflow>
+                          <!-- HeroPager: Continue + 2 featured (featuredBooksProvider, watchFeatured(limit: 3)); cards built in buildHero() -->
+                          <div class="strip" id="strip"></div>
+                        </div>
+                        <div class="pager">
+                          <div class="dashes" id="dashes"></div>
+                          <div class="pageOf" id="pageOf" data-fh="1">1 of 3</div>
+                        </div>
+                      </div>
+
+                      <div class="todayWrap">
+                        <div class="today">
+                          <div class="hi"></div>
+                          <div class="tcIn">
+                            <div class="tcRow">
+                              <div class="tcLeft">
+                                <div class="numRow">
+                                  <div class="badge"><div class="glow"><div class="tier" id="tier">
+                                    <img src="assets/tier/tier4_base.svg" alt="" />
+                                    <img data-tl="flame" src="assets/tier/tier4_flame.svg" alt="" />
+                                    <img data-tl="core" src="assets/tier/tier4_core.svg" alt="" />
+                                    <img data-tl="flame" src="assets/tier/tier4_flame_2.svg" alt="" />
+                                    <img data-tl="ember" src="assets/tier/tier4_ember.svg" alt="" />
+                                  </div></div></div>
+                                  <div class="numWrap">
+                                    <div class="streakNum" data-fh="0.9">16</div>
+                                    <div class="streakUnit" data-fh="1" data-t="streakUnitDays">days</div>
+                                  </div>
+                                </div>
+                                <div class="kind" data-fh="1.38" data-t="todayKindFire">You're on fire.</div>
+                                <div class="rest"><i class="mi s15">&#xf5b8;</i><span id="restDays" data-fh="1.3">2 rest days saved up</span></div>
+                              </div>
+                              <div class="ringCol">
+                                <div class="ringBox">
+                                  <svg width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+                                    <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(52,199,89,.169)" stroke-width="9" />
+                                    <circle cx="50" cy="50" r="44" fill="none" stroke="#34C759" stroke-width="9" stroke-linecap="round" stroke-dasharray="179.15 400" transform="rotate(-90 50 50)" />
+                                  </svg>
+                                  <div class="ringCentre"><div class="ringWords" data-fh="1">3,240</div><div class="ringGoal" id="ringGoal" data-fh="1">of 5,000</div></div>
+                                </div>
+                                <div class="ringLabel" data-fh="1.2" data-t="ringLabelWords">words today</div>
+                              </div>
+                            </div>
+                            <div class="week">
+                              <div class="wd"><div class="c done"><i class="mi">&#xf636;</i></div><div class="lbl" data-fh="1" data-t="weekdayMon">Mon</div></div>
+                              <div class="wd"><div class="c done"><i class="mi">&#xf636;</i></div><div class="lbl" data-fh="1" data-t="weekdayTue">Tue</div></div>
+                              <div class="wd"><div class="c done"><i class="mi">&#xf636;</i></div><div class="lbl" data-fh="1" data-t="weekdayWed">Wed</div></div>
+                              <div class="wd"><svg class="c" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="none" stroke="#D8D0C3" stroke-width="1.5" /><circle cx="17" cy="17" r="15.5" fill="none" stroke="#34C759" stroke-width="3" stroke-linecap="round" stroke-dasharray="63.11 200" transform="rotate(-90 17 17)" /></svg><div class="lbl now" data-fh="1" data-t="weekdayThu">Thu</div></div>
+                              <div class="wd"><div class="c future"><i></i></div><div class="lbl" data-fh="1" data-t="weekdayFri">Fri</div></div>
+                              <div class="wd"><div class="c future"><i></i></div><div class="lbl" data-fh="1" data-t="weekdaySat">Sat</div></div>
+                              <div class="wd"><div class="c future"><i></i></div><div class="lbl" data-fh="1" data-t="weekdaySun">Sun</div></div>
+                            </div>
+                          </div>
+                          <div class="edge"></div>
+                        </div>
+                      </div>
+
+                      <div class="secHead" id="yourBooks">
+                        <div class="secTitle" data-fh="1.2" data-t="homeYourBooks">Your Books</div>
+                        <div class="secLine" data-fh="1.35" data-t="homeYourBooksDescription">Everything you’ve imported or downloaded</div>
+                      </div>
+                      <div class="grid" id="grid">
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/projecthailmary.webp" alt="" /></div><div class="lbl" data-ellipsis>Project Hail Mary</div><div class="press"></div></div>
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/LH.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Love Hypothesis</div><div class="press"></div></div>
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/harry potter.jpg" alt="" /></div><div class="lbl" data-ellipsis>Harry Potter and the Sorcerer’s Stone</div><div class="press"></div></div>
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/odessey.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Odyssey</div><div class="press"></div></div>
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/hitchhikers.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Hitch-Hiker’s Guide to the Galaxy</div><div class="press" id="tapPress"></div></div>
+                        <div class="cell"><div class="cv"><img src="../../assets/covers/crimeandpunishmentjpg.jpg" alt="" /></div><div class="lbl" data-ellipsis>Crime and Punishment</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv"><img src="../../assets/covers/fantastic beasts.jpg" alt="" /></div><div class="lbl" data-ellipsis>Fantastic Beasts and Where to Find Them</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv"><img src="../../assets/covers/prideandprejudice.jpg" alt="" /></div><div class="lbl" data-ellipsis>Pride and Prejudice</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv"><img src="../../assets/covers/alexandardumas.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Count of Monte Cristo</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv"><img src="../../assets/covers/harry potter1.jpg" alt="" /></div><div class="lbl" data-ellipsis>Harry Potter and the Prisoner of Azkaban</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv"><img src="../../assets/covers/dungeon crawler carl.jpg" alt="" /></div><div class="lbl" data-ellipsis>Dungeon Crawler Carl</div><div class="press"></div></div>
+                        <div class="cell extra"><div class="cv" style="background:url('../../assets/covers/dune.jpg') center / cover"></div><div class="lbl" data-ellipsis>Dune</div><div class="press"></div></div>
+                      </div>
+
+                      <div class="discoverWrap">
+                        <div class="discover" id="discover">
+                          <div class="fan" id="fan" data-layout-ignore>
+                            <div class="fanGlow" id="fanGlow"></div>
+                            <div class="fanCover" data-fan="wild"><div class="fanArt" style="background-image:url('assets/templates/wildflower_lake.webp')">
+                              <div class="fanScrim" data-safe="0.10,0.48" data-tone="light"></div>
+                              <div class="fanCopy" style="color:#fff"><div class="in"><b>The Odyssey</b><span style="color:rgba(255,255,255,.88)">Homer</span></div></div></div></div>
+                            <div class="fanCover" data-fan="signal"><div class="fanArt" style="background-image:url('assets/templates/signal_bloom.webp')">
+                              <div class="fanScrim" data-safe="0.12,0.52" data-tone="dark"></div>
+                              <div class="fanCopy" style="color:#211B18"><div class="in"><b>Dracula</b><span style="color:rgba(33,27,24,.88)">Bram Stoker</span></div></div></div></div>
+                            <div class="fanCover" data-fan="cosmos"><div class="fanArt" style="background-image:url('assets/templates/cosmos_ring.webp')">
+                              <div class="fanScrim" data-safe="0.14,0.48" data-tone="light"></div>
+                              <div class="fanCopy" style="color:#fff"><div class="in"><b>Pride and Prejudice</b><span style="color:rgba(255,255,255,.88)">Jane Austen</span></div></div></div></div>
+                          </div>
+                          <div class="discoverFade"></div>
+                          <div class="discoverCopy">
+                            <div class="discoverTitle" data-fh="1" data-t="discoverTitle">Discover</div>
+                            <div class="discoverLine" data-fh="1.35" data-t="discoverLine">Free classics, read aloud by volunteers.</div>
+                            <div class="pill" data-t="discoverBrowse">Browse</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tail"></div>
+                    </div>
+                  </div>
+
+                  <div id="dock" data-layout-allow-occlusion data-layout-allow-overlap>
+                    <div id="capsule"></div>
+                    <div class="dockRow">
+                      <div class="tab on"><i class="ci s22">&#xf6ca;</i><span data-t="navHome">Home</span></div>
+                      <div class="tab"><i class="ci s22">&#xf3e8;</i><span data-t="navLibrary">Library</span></div>
+                      <div class="tab"><i class="ci s22">&#xf8b7;</i><span data-t="navAnalytics">Analytics</span></div>
+                      <div class="tab"><i class="ci s22">&#xf47e;</i><span data-t="navProfile">Profile</span></div>
+                    </div>
+                    <div class="edge"></div>
+                  </div>
+                </div>
+
+                <div id="barrier"></div>
+
+                <!-- ═══ /book/:bookId (CupertinoPage) ═══ -->
+                <div class="route" id="bookRoute" style="visibility:hidden" data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap>
+                  <div class="topNav">
+                    <div class="row">
+                      <div class="btn" style="left:0"><i class="mi s22">&#xf570;</i></div>
+                      <div class="ttl" data-fit data-t="overview">Overview</div>
+                      <div class="btn" style="right:0"><i class="mi s22">&#xf82b;</i></div>
+                    </div>
+                  </div>
+                  <div class="albumWrap">
+                    <div class="album" id="album">
+                      <div class="albumArt">
+                        <div class="fill" style="background-image:url('assets/blur/album-hitchhikers-guide.jpg')"></div><div class="scrim"></div>
+                        <div class="whole" style="background-image:url('../../assets/covers/hitchhikers.jpg')"></div>
+                      </div>
+                      <div class="playBtn"><div class="disc"><i class="ci s15">&#xf488;</i></div></div>
+                    </div>
+                  </div>
+                  <div class="titleSec">
+                    <div class="bookTitle" data-fit>The Hitch-Hiker’s Guide to the Galaxy</div>
+                    <div class="byline" id="byline" data-ellipsis data-layout-ignore>By Douglas Adams</div>
+                  </div>
+                  <div class="meta">
+                    <div class="metaBox">
+                      <div class="metaIcon"><img class="tint" src="assets/img/released.png" alt="" style="height:20px;width:40px" /></div>
+                      <div class="metaVal" data-fit>1979</div>
+                      <div class="bevel" style="--r:16px;--w:1px;--c:#CED3D9"></div>
+                    </div>
+                    <div class="metaBox">
+                      <div class="metaIcon"><img class="tint" src="assets/img/chapters.png" alt="" style="height:26px;width:40px" /></div>
+                      <div class="metaVal" id="metaChapters" data-fit>35 chapters</div>
+                      <div class="bevel" style="--r:16px;--w:1px;--c:#CED3D9"></div>
+                    </div>
+                    <div class="metaBox">
+                      <div class="metaIcon"><img src="assets/img/airpods_dark.png" alt="" style="height:24px;width:auto" /></div>
+                      <div class="metaVal" id="metaLength" data-fit>5 hr 51 min</div>
+                      <div class="bevel" style="--r:16px;--w:1px;--c:#CED3D9"></div>
+                    </div>
+                  </div>
+                  <div class="tabs">
+                    <div class="row">
+                      <div class="stab sel"><span data-t="chapters">Chapters</span><i></i></div>
+                      <div class="stab"><span data-layout-ignore data-t="characters">Characters</span><i></i></div>
+                      <div class="stab"><span data-layout-ignore data-t="insights">Insights</span><i></i></div>
+                      <div class="stab"><span data-layout-ignore data-t="notes">Notes</span><i></i></div>
+                    </div>
+                    <div class="hl"></div>
+                  </div>
+                  <div class="chaptersWrap">
+                    <div class="chapters">
+                      <div class="chRow"><span class="chNum">01</span><div class="chMid"><div class="chTop"><i class="ci s24">&#xf3fe;</i><span class="chTitle" data-ellipsis data-ch="1">Chapter 1</span></div><div class="chDur" data-layout-ignore data-min="21">21m</div></div></div>
+                      <div class="chDiv"><i></i></div>
+                      <div class="chRow"><span class="chNum">02</span><div class="chMid"><div class="chTop"><i class="ci s24">&#xf3fe;</i><span class="chTitle" data-ellipsis data-ch="2">Chapter 2</span></div><div class="chDur" data-layout-ignore data-min="17">17m</div></div></div>
+                      <div class="chDiv"><i></i></div>
+                      <div class="chRow"><span class="chNum">03</span><div class="chMid"><div class="chTop"><i class="ci s24">&#xf3fe;</i><span class="chTitle" data-ellipsis data-ch="3">Chapter 3</span></div><div class="chDur" data-layout-ignore data-min="24">24m</div></div></div>
+                      <div class="chDiv"><i></i></div>
+                      <div class="chRow"><span class="chNum">04</span><div class="chMid"><div class="chTop"><i class="ci s24">&#xf3fe;</i><span class="chTitle" data-ellipsis data-ch="4">Chapter 4</span></div><div class="chDur" data-layout-ignore data-min="19">19m</div></div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="statusBar" data-layout-allow-occlusion>
+                  <div id="sbTime">9:41</div>
+                  <div id="sbIcons">
+                    <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1" fill="#000" /><rect x="4.9" y="5.2" width="3.2" height="6.8" rx="1" fill="#000" /><rect x="9.8" y="2.8" width="3.2" height="9.2" rx="1" fill="#000" /><rect x="14.7" y="0" width="3.2" height="12" rx="1" fill="#000" /></svg>
+                    <svg width="17" height="12" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.3 2.5.2.2.5.2.7 0l1.2-1.2c.2-.2.2-.5 0-.7A11.6 11.6 0 0 0 8.5 0C5.4 0 2.4 1.2.3 3c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0a9.1 9.1 0 0 1 6.3-2.6Z" fill="#000" /><path d="M8.5 6c1.3 0 2.6.5 3.6 1.4.2.2.5.2.7 0L14 6.2c.2-.2.2-.5 0-.7a8.1 8.1 0 0 0-11 0c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0 1-.9 2.3-1.4 3.6-1.4Z" fill="#000" /><path d="M10.9 9.3c.2-.2.2-.5 0-.7a3.5 3.5 0 0 0-4.8 0c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0Z" fill="#000" /></svg>
+                    <svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.6" fill="none" stroke="#000" stroke-opacity=".38" /><rect x="2" y="2" width="20" height="9" rx="2.2" fill="#000" /><path d="M25 4.3v4.4c.9-.3 1.5-1.2 1.5-2.2s-.6-1.9-1.5-2.2Z" fill="#000" fill-opacity=".45" /></svg>
+                  </div>
+                </div>
+                <div id="homeIndicator" data-layout-allow-occlusion></div>
+              </div>
+            </div>
+          </div>
+          <img id="frame" src="../../assets/frame-iphone.png" alt="" data-layout-allow-occlusion />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ── Shot variables (hbVar, set by tools/mockups/render.mjs from shots.json "vars") ──
+      //   hero      the Continue card, the first card of the hero pager: 'hitchhikers' (default) or
+      //             'fourth-wing' (the launch film's original). Cards 2 and 3 stay The Lord of the Rings
+      //             and Mexican Gothic.
+      //   homeGrid  covers in "Your Books": 6 (default, the app: homeLibraryBookLimit = 6) or 12 (NOT
+      //             the app; the launch film's opt-in variant, the scroll then ends on the grid's last row).
+      // Every visible UI string goes through hbT / data-t (strings/en.json); titles, authors, names
+      // and numbers stay as they are.
+
+      // ── Beats (seconds) ─────────────────────────────────────────────────────
+      const DUR = 14;
+      const HERO_ADVANCE = [1.0, 7.0];        // HeroPager: Timer.periodic(6 s); auto slide 360 ms easeInOut
+      const SCROLL_FROM = 2.2, SCROLL_TO = 8.2;
+      const PRESS = 9.0, RELEASE = 9.12;      // the cover's InkWell highlight (PressDimScope: textPrimary 8 %, 200 ms fades)
+      const PUSH = RELEASE, PUSH_DUR = 0.5;   // CupertinoPageRoute: 500 ms
+      const BLINK_FROM = 1.5, BLINK_EVERY = 4.05, BLINK_LEN = 0.12; // BlinkClock: 9 x 450 ms, eyes shut 120 ms
+      const TIER_PHASE = 4.0;                 // seconds the tier icon's loop has already run at t = 0
+      const YOUR_BOOKS_AT = 120;              // screen y of the "Your Books" title after the scroll
+      // The app's Home grid shows 6 books (library_display_limits.dart: homeLibraryBookLimit = 6).
+      // homeGrid = 12 is an opt-in variant that is NOT the app: the scroll then ends with the grid's last row above the dock.
+      const HOME_GRID = Number(hbVar('homeGrid', 6)) === 12 ? 12 : 6;
+      const GRID12_BOTTOM_AT = 744;
+
+      // ── Hero pager (hero_pager.dart + hero_book_card.dart): Continue + 2 featured, "1 of 3" ──
+      // watchFeatured(limit: 3): started books by last play, then unplayed books by date added.
+      // Lengths are the audiobooks' own (the launch film's data): left = what the caption prints,
+      // heard = the 3 px bar (null: not started, no bar). Hitchhiker's: 5 hr 51 min long (the book
+      // page below), 34 % heard as the launch film's Continue card was, so 3h 52m left.
+      const HERO_BOOKS = {
+        'hitchhikers': { cover: '../../assets/covers/hitchhikers.jpg', fill: 'assets/blur/hero-hitchhikers.jpg',
+                         title: 'The Hitch-Hiker’s Guide to the Galaxy', author: 'Douglas Adams', left: 232, heard: 0.34 },
+        'fourth-wing': { cover: '../../assets/covers/fourthwing.jpg', fill: 'assets/blur/hero-fourth-wing.jpg',
+                         title: 'Fourth Wing', author: 'Rebecca Yarros', left: 831, heard: 0.34 },
+      };
+      const HERO_REST = [
+        { cover: '../../assets/covers/LOR.jpg', fill: 'assets/blur/hero-lord-of-the-rings.jpg',
+          title: 'The Lord of the Rings', author: 'J.R.R. Tolkien', left: 1273, heard: 0.61 },
+        { cover: '../../assets/covers/Mexicangothic.jpg', fill: 'assets/blur/hero-mexican-gothic.jpg',
+          title: 'Mexican Gothic', author: 'Silvia Moreno-Garcia', left: 632, heard: null },
+      ];
+      const HERO = [HERO_BOOKS[hbVar('hero', 'hitchhikers')] || HERO_BOOKS['hitchhikers']].concat(HERO_REST);
+
+      // Strings with a value in them: the template from strings/<locale>.json, {name} filled in.
+      const fmt = (key, english, args) => hbT(key, english).replace(/\{(\w+)\}/g, (m, k) => (k in args ? args[k] : m));
+      // "4h 20m" or "37m" (formatListenDuration), then "{duration} left" (formatTimeLeft).
+      const durationText = min => min >= 60
+        ? fmt('durationHoursMinutes', '{hours}h {minutes}m', { hours: Math.floor(min / 60), minutes: min % 60 })
+        : fmt('durationMinutes', '{minutes}m', { minutes: min });
+      const timeLeftText = min => fmt('timeLeft', '{duration} left', { duration: durationText(min) });
+
+      function heroCardHtml(b) {
+        const bar = b.heard == null ? '' : '<div class="hBar"><i style="width:' + Math.round(b.heard * 100) + '%"></i></div>';
+        return '<div class="heroCard">' +
+          '<div class="fill" style="background-image:url(\'' + b.fill + '\')"></div><div class="scrim"></div>' +
+          '<img class="whole" src="' + b.cover + '" alt="" />' +
+          '<div class="caption" data-layout-ignore><div class="capCol">' +
+            '<div class="hTitle" data-fh="1.25" data-ellipsis></div>' +
+            '<div class="hMeta"><span class="a" data-fh="1.3" data-ellipsis></span><span class="s" data-fh="1.3">&#160;·&#160;</span><span class="l" data-fh="1.3"></span></div>' +
+            bar +
+          '</div><div class="hPlay"><div class="disc"><i class="mi s20">&#xf00a0;</i></div></div></div>' +
+          '<div class="quotes" data-layout-ignore><div class="glass"><i class="mi s19">&#xf5cf;</i></div></div>' +
+        '</div>';
+      }
+      // Cards, dashes and the localised copy that carries a value; runs before anything is measured.
+      function buildText() {
+        const strip = $('strip');
+        strip.innerHTML = HERO.map(heroCardHtml).join('');
+        Array.from(strip.children).forEach((card, i) => {
+          card.querySelector('.hTitle').textContent = HERO[i].title;
+          card.querySelector('.hMeta .a').textContent = HERO[i].author;
+          card.querySelector('.hMeta .l').textContent = timeLeftText(HERO[i].left);
+        });
+        $('dashes').innerHTML = HERO.map(() => '<i></i>').join('');
+        // greetingFor(): '$prefix, $name'; HomeGreeting line: "{weekday} · {day-part line}".
+        $('greet').textContent = hbT('greetingMorning', 'Good morning') + ', Adi';
+        $('gline').textContent = fmt('greetingLine', '{weekday} · {line}',
+          { weekday: hbT('weekdayThursday', 'Thursday'), line: hbT('dayPartMorning', 'A good time to start.') });
+        $('restDays').textContent = fmt('restDaysSaved', '{count} rest days saved up', { count: 2 });
+        $('ringGoal').textContent = fmt('ringOfGoal', 'of {goal}', { goal: '5,000' });
+        $('pageOf').textContent = heroPageText(0);
+        $('byline').textContent = fmt('byAuthor', 'By {author}', { author: 'Douglas Adams' });
+        $('metaChapters').textContent = fmt('chapterCount', '{count} chapters', { count: 35 });
+        $('metaLength').textContent = fmt('hoursMinutesLong', '{hours} hr {minutes} min', { hours: 5, minutes: 51 });
+        document.querySelectorAll('[data-ch]').forEach(el => { el.textContent = fmt('chapterNumber', 'Chapter {number}', { number: el.dataset.ch }); });
+        document.querySelectorAll('[data-min]').forEach(el => { el.textContent = durationText(Number(el.dataset.min)); });
+      }
+      const heroPageText = i => fmt('heroPage', '{current} of {total}', { current: i + 1, total: HERO.length });
+
+      // ── Device geometry (BRIEF: frame scale 0.2228, screen rect x 199..4111, y 168..8653) ──
+      const FRAME = { w: 4317, h: 8796 }, SCREEN = { x: 199, y: 168, w: 3913, h: 8486 }, S = 0.2228;
+      const STAGE_W = 393, STAGE_H = 852, HERO_W = 361;
+
+      // ── Curves (Flutter) ────────────────────────────────────────────────────
+      const bez = (a, b, m) => 3 * a * (1 - m) * (1 - m) * m + 3 * b * (1 - m) * m * m + m * m * m;
+      function cubic(x1, y1, x2, y2) {
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 48; i++) { const m = (lo + hi) / 2; if (bez(x1, x2, m) < t) lo = m; else hi = m; }
+          return bez(y1, y2, (lo + hi) / 2);
+        };
+      }
+      function threePointCubic(a1, b1, mid, a2, b2) {
+        const c1 = cubic(a1[0] / mid[0], a1[1] / mid[1], b1[0] / mid[0], b1[1] / mid[1]);
+        const sx = 1 - mid[0], sy = 1 - mid[1];
+        const c2 = cubic((a2[0] - mid[0]) / sx, (a2[1] - mid[1]) / sy, (b2[0] - mid[0]) / sx, (b2[1] - mid[1]) / sy);
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          return t < mid[0] ? c1(t / mid[0]) * mid[1] : c2((t - mid[0]) / sx) * sy + mid[1];
+        };
+      }
+      const easeInOut = cubic(0.42, 0, 0.58, 1);
+      const easeOut = cubic(0, 0, 0.58, 1);
+      const ease = cubic(0.25, 0.1, 0.25, 1);
+      const easeOutCubic = cubic(0.215, 0.61, 0.355, 1);
+      const linearToEaseOut = cubic(0.35, 0.91, 0.33, 0.97);
+      const fastEaseInToSlowEaseOut = threePointCubic([0.056, 0.024], [0.108, 0.3085], [0.198, 0.541], [0.3655, 1.0], [0.5465, 0.989]);
+      const easeInOutSine = p => -(Math.cos(Math.PI * p) - 1) / 2;
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+
+      // Flutter TextStyle.height: the line box is height x fontSize and the baseline sits at
+      // height x fontSize x ascent / (ascent + descent). CSS centres the glyph box instead, so shift it.
+      const METRICS = { HBInter: [0.96875, 0.2412], HBPlayfair: [1.082, 0.251], HBHush: [0.79, 0.193] };
+
+      // Tier 4 (fire) layer motions (today_card/tier_icon.dart), pivots in the 48-unit icon space.
+      const TIER_K = 30 / 48;
+      function track(stops, x, curve) {
+        if (x <= stops[0][0]) return stops[0][1];
+        for (let i = 1; i < stops.length; i++) {
+          const [p1, v1] = stops[i];
+          if (x <= p1) { const [p0, v0] = stops[i - 1]; const u = p1 === p0 ? 1 : (x - p0) / (p1 - p0); return v0 + (v1 - v0) * curve(u); }
+        }
+        return stops[stops.length - 1][1];
+      }
+      function tierPose(kind, s) {
+        if (kind === 'flame') {
+          const x = (s % 3.2) / 3.2;
+          return { pivot: [24.03, 44.21], tx: 0, ty: 0, rot: 0, skew: track([[0, 0], [.3, -2.5], [.7, 2], [1, 0]], x, easeInOut), sx: 1, sy: 1, op: 1 };
+        }
+        if (kind === 'ember') {
+          const x = (s % 2.8) / 2.8, f = track([[0, 0], [1, 1]], x, easeOut);
+          return { pivot: [0, 0], tx: 1.5 * f, ty: -6 * f, rot: 0, skew: 0, sx: 1, sy: 1, op: track([[0, 0], [.2, 1], [1, 0]], x, easeOut) };
+        }
+        return null;
+      }
+      function poseCss(p) {
+        const px = p.pivot[0] * TIER_K, py = p.pivot[1] * TIER_K;
+        return 'translate(' + (px + p.tx * TIER_K) + 'px,' + (py + p.ty * TIER_K) + 'px) rotate(' + p.rot + 'deg) skewX(' + p.skew + 'deg) scale(' + p.sx + ',' + p.sy + ') translate(' + (-px) + 'px,' + (-py) + 'px)';
+      }
+
+      const $ = id => document.getElementById(id);
+      const stage = $('stage');
+      const homeRoute = $('homeRoute'), bookRoute = $('bookRoute'), barrier = $('barrier');
+      const homeContent = $('homeContent'), strip = $('strip'), album = $('album'), tapPress = $('tapPress');
+      let dashes = [], pages = [];
+      const tierLayers = Array.from($('tier').querySelectorAll('img[data-tl]'));
+      let scrollEnd = 0, textEls = [];
+
+      function build() {
+        // Locale first, then every string, so what gets measured below is the translated text.
+        hbLocaleSetup();
+        hbApplyStrings();
+        buildText();
+        dashes = Array.from($('dashes').children);
+        pages = Array.from(strip.children);
+        if (HOME_GRID === 12) $('grid').classList.add('g12');
+        // Phone centred on the canvas; the stage zoom fills the screen rect (cover, centred).
+        const phone = $('phone'), host = $('screenHost'), wrap = $('stageWrap');
+        const fw = FRAME.w * S, fh = FRAME.h * S;
+        Object.assign(phone.style, { left: (3840 - fw) / 2 + 'px', top: (2160 - fh) / 2 + 'px', width: fw + 'px', height: fh + 'px' });
+        const sw = SCREEN.w * S, sh = SCREEN.h * S;
+        Object.assign(host.style, { left: SCREEN.x * S + 'px', top: SCREEN.y * S + 'px', width: sw + 'px', height: sh + 'px' });
+        const zoom = Math.max(sw / STAGE_W, sh / STAGE_H);
+        Object.assign(wrap.style, { left: (sw - STAGE_W * zoom) / 2 + 'px', top: (sh - STAGE_H * zoom) / 2 + 'px' });
+        stage.style.zoom = zoom;
+
+        // Grid cells: SliverGridDelegateWithMaxCrossAxisExtent(130), 3 columns, childAspectRatio 1 / 1.6.
+        const grid = $('grid');
+        const cellW = (grid.clientWidth - 32 - 20) / 3;
+        grid.querySelectorAll('.cell').forEach(c => { c.style.height = cellW * 1.6 + 'px'; });
+
+        // DiscoverTile: minHeight width x 9 / 16 and the cover fan laid out in units of the tile height.
+        const disc = $('discover');
+        disc.style.minHeight = disc.clientWidth * 9 / 16 + 'px';
+        const h = disc.offsetHeight, glow = 0.65 * h;
+        Object.assign($('fanGlow').style, { left: 0.3 * h - glow + 'px', top: 0.45 * h - glow + 'px', width: 2 * glow + 'px', height: 2 * glow + 'px' });
+        const FAN = { wild: [0.418, -0.149, 0.229, -9], signal: [0.418, 0.338, 0.229, 9], cosmos: [0.478, 0.109, 0.119, 0] };
+        disc.querySelectorAll('.fanCover').forEach(c => {
+          const [wf, start, top, deg] = FAN[c.dataset.fan], w = wf * h;
+          Object.assign(c.style, { left: start * h + 'px', top: top * h + 'px', width: w + 'px', height: w * 1.5 + 'px', transform: 'rotate(' + deg + 'deg)' });
+          // CoverTemplateArtwork: scrim feathered round the safe zone, copy centred in it (FittedBox scaleDown).
+          const scrim = c.querySelector('.fanScrim'), copy = c.querySelector('.fanCopy');
+          const [st, sb] = scrim.dataset.safe.split(',').map(Number), H = w * 1.5;
+          const tone = scrim.dataset.tone === 'dark' ? '255,255,255,' : '0,0,0,', a = scrim.dataset.tone === 'dark' ? 0.38 : 0.44;
+          const top0 = Math.max(0, st * H - 0.14 * H) / H, bot1 = Math.min(H, sb * H + 0.14 * H) / H;
+          scrim.style.background = 'linear-gradient(to bottom, rgba(' + tone + '0) 0%, rgba(' + tone + a * 0.04 + ') ' + top0 * 100 + '%, rgba(' + tone + a * 0.22 + ') ' + st * 100 + '%, rgba(' + tone + a + ') ' + sb * 100 + '%, rgba(' + tone + a * 0.2 + ') ' + bot1 * 100 + '%, rgba(' + tone + '0) 100%)';
+          Object.assign(copy.style, { top: st * H + 'px', height: (sb - st) * H + 'px' });
+          const inner = copy.querySelector('.in'), fit = Math.min(1, (w - 28) / (inner.scrollWidth || 1), (sb - st) * H / (inner.scrollHeight || 1));
+          inner.style.transform = 'scale(' + fit + ')';
+        });
+
+        // TextStyle.height emulation.
+        document.querySelectorAll('[data-fh]').forEach(el => {
+          const cs = getComputedStyle(el), fs = parseFloat(cs.fontSize), hh = parseFloat(el.dataset.fh);
+          const fam = cs.fontFamily.split(',')[0].replace(/["']/g, '').trim();
+          const [a, d] = METRICS[fam] || METRICS.HBInter;
+          el.style.lineHeight = hh * fs + 'px';
+          el.style.position = 'relative';
+          el.style.top = ((hh * a / (a + d)) - (hh / 2 + (a - d) / 2)) * fs + 'px';
+        });
+        // FittedBox(scaleDown): one line, shrunk to the available width.
+        document.querySelectorAll('[data-fit]').forEach(el => {
+          const own = getComputedStyle(el);
+          const box = el.clientWidth - parseFloat(own.paddingLeft) - parseFloat(own.paddingRight);
+          const probe = document.createElement('span');
+          probe.textContent = el.textContent;
+          probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;letter-spacing:inherit';
+          el.appendChild(probe);
+          const natural = probe.getBoundingClientRect().width / zoom;
+          el.removeChild(probe);
+          if (natural > box) el.style.fontSize = parseFloat(own.fontSize) * box / natural + 'px';
+        });
+        // maxLines: 1 + TextOverflow.ellipsis: cut at a character and end with "…" (no clipped text in the DOM).
+        document.querySelectorAll('[data-ellipsis]').forEach(el => {
+          if (el.offsetParent === null) return;
+          const full = el.textContent;
+          el.style.overflow = 'hidden';
+          if (el.scrollWidth <= el.clientWidth + 0.5) { el.style.overflow = ''; return; }
+          let lo = 0, hi = full.length;
+          while (lo < hi) {
+            const m = (lo + hi + 1) >> 1;
+            el.textContent = full.slice(0, m).trimEnd() + '…';
+            if (el.scrollWidth <= el.clientWidth + 0.5) lo = m; else hi = m - 1;
+          }
+          el.textContent = full.slice(0, lo).trimEnd() + '…';
+          el.style.overflow = '';
+        });
+
+        // Scroll target: the "Your Books" title settles at YOUR_BOOKS_AT on screen (6-book grid, the app).
+        const title = $('yourBooks').querySelector('.secTitle');
+        scrollEnd = HOME_GRID === 12
+          ? offsetIn(grid, homeContent) + grid.offsetHeight - (GRID12_BOTTOM_AT - 59)
+          : offsetIn(title, homeContent) - (YOUR_BOOKS_AT - 59);
+
+        // Every text leaf in the home list, with its top/bottom at scroll 0 (viewport coords).
+        homeContent.querySelectorAll('*').forEach(el => {
+          const own = Array.from(el.childNodes).some(n => n.nodeType === 3 && n.textContent.trim());
+          if (!own || el.offsetParent === null) return;
+          const top = offsetIn(el, homeContent);
+          textEls.push({ el, top, bottom: top + el.offsetHeight, vis: true });
+        });
+      }
+      function offsetIn(el, ancestor) {
+        let y = 0;
+        for (let n = el; n && n !== ancestor; n = n.offsetParent) y += n.offsetTop;
+        return y;
+      }
+      const setVis = (el, on) => { const v = on ? '' : 'hidden'; if (el.style.visibility !== v) el.style.visibility = v; };
+
+      // ── Everything visible is a function of t ──────────────────────────────
+      function render(t) {
+        // Hero pager: _goTo sets the page at once (dashes 300 ms easeOut, "n of 6"), then the slide runs 360 ms easeInOut.
+        let p = 0, current = 0;
+        HERO_ADVANCE.forEach(at => { if (t >= at) current++; p += easeInOut(clamp01((t - at) / 0.36)); });
+        strip.style.transform = 'translateX(' + (-p * HERO_W) + 'px)';
+        pages.forEach((pg, i) => setVis(pg, Math.abs(i - p) < 1));
+        dashes.forEach((d, i) => {
+          let w = i === 0 ? 20 : 8, a = i === 0 ? 0.9 : 0.25;
+          HERO_ADVANCE.forEach((at, k) => {
+            const q = easeOut(clamp01((t - at) / 0.3));
+            if (i === k) { w += (8 - 20) * q; a += (0.25 - 0.9) * q; }
+            if (i === k + 1) { w += (20 - 8) * q; a += (0.9 - 0.25) * q; }
+          });
+          d.style.width = w + 'px';
+          d.style.background = 'rgba(47,47,47,' + a + ')';
+        });
+        $('pageOf').textContent = heroPageText(current % pages.length);
+
+        // Companion blink and the tier icon's loop.
+        const bt = t - BLINK_FROM, shut = bt >= 0 && (bt % BLINK_EVERY) < BLINK_LEN;
+        setVis($('eyesOpen'), !shut); setVis($('eyesClosed'), shut);
+        const s = t + TIER_PHASE;
+        tierLayers.forEach(img => {
+          const kind = img.dataset.tl;
+          if (kind === 'core') {
+            const lick = tierPose('flame', s), x = (s % 2.6) / 2.6, sy = track([[0, 1], [.5, 1.05], [1, 1]], x, easeInOut);
+            img.style.transform = poseCss(lick) + ' ' + poseCss({ pivot: [25.27, 41.48], tx: 0, ty: 0, rot: 0, skew: 0, sx: 1, sy, op: 1 });
+          } else {
+            const pose = tierPose(kind, s);
+            img.style.transform = poseCss(pose);
+            img.style.opacity = pose.op;
+          }
+        });
+
+        // Scroll (eased, computed; never a CSS scroll).
+        const y = scrollEnd * easeInOutSine(clamp01((t - SCROLL_FROM) / (SCROLL_TO - SCROLL_FROM)));
+        homeContent.style.transform = 'translateY(' + (-y) + 'px)';
+        textEls.forEach(o => {
+          const inView = o.bottom - y > 0 && o.top - y < 793;
+          if (inView !== o.vis) { o.vis = inView; setVis(o.el, inView); }
+        });
+
+        // The tapped cover's InkWell highlight: fades in 200 ms from the press, out 200 ms from the release.
+        const up = clamp01((Math.min(t, RELEASE) - PRESS) / 0.2);
+        tapPress.style.opacity = t < RELEASE ? up : up * (1 - clamp01((t - RELEASE) / 0.2));
+
+        // iOS push: new page from the right (fastEaseInToSlowEaseOut), old page a third left (linearToEaseOut),
+        // barrier 0x18000000 (Curves.ease). The album art scales 0.96 -> 1 over 260 ms easeOutCubic on mount.
+        const q = clamp01((t - PUSH) / PUSH_DUR);
+        setVis(bookRoute, t >= PUSH);
+        setVis(homeRoute, q < 1);
+        bookRoute.style.transform = 'translateX(' + (1 - fastEaseInToSlowEaseOut(q)) * STAGE_W + 'px)';
+        homeRoute.style.transform = 'translateX(' + (-STAGE_W / 3) * linearToEaseOut(q) + 'px)';
+        barrier.style.opacity = q < 1 ? (0x18 / 255) * ease(q) : 0;
+        const a = easeOutCubic(clamp01((t - PUSH) / 0.26)), v = 0.96 + 0.04 * a;
+        album.style.transform = 'scale(' + v + ')';
+        album.style.opacity = clamp01((v - 0.96) / 0.04);
+      }
+
+      document.fonts.ready.then(() => {
+        build();
+        render(0);
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clock.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* RTL: English book content keeps its own direction */
+      [dir="rtl"] .desc, [dir="rtl"] .alias { direction: ltr; text-align: left; }
+
+      /* HushBook iPhone app, light. Source: D:\hushbook (main). HbColors.light (lib/theme/hb_colors.dart).
+         ScreenUtil scales nothing (HushScreenUtilPolicy), so every .w/.h/.r/.sp value is 1:1 logical px.
+         Every Flutter Text here inherits M3 bodyMedium from its Material: height 1.43 (even leading)
+         and letter-spacing 0.25 unless the widget sets its own. */
+      :root{
+        --canvas:#FAF9F5;
+        --bg:#FBF8F2; --surface:#FFFFFF; --sheet:#FFFFFF; --cardCream:#F7F4EE;
+        --tp:#090A0A; --tb:#2F2F2F; --ts:#858585; --icon:#090A0A;
+        --accent:#6F3825; --divider:#E8E0D4; --dot:#E3D4B5;
+        --onSurfaceVariant:#49454F; /* ColorScheme.fromSeed(0xFF7B61FF): IconButton default foreground */
+        --danger:#EF4444;
+      }
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Regular.ttf');font-weight:400;font-style:normal}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Italic.ttf');font-weight:400;font-style:italic}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Medium.ttf');font-weight:500;font-style:normal}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600;font-style:normal}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Bold.ttf');font-weight:700;font-style:normal}
+      @font-face{font-family:HBPlayfair;src:url('../../assets/fonts/PlayfairDisplay-Variable.ttf');font-weight:400 900;font-style:normal}
+      /* The app declares Newsreader upright only, so its italic is synthesized: same here. */
+      @font-face{font-family:HBNewsreader;src:url('../../assets/fonts/Newsreader-Variable.ttf');font-weight:200 800;font-style:normal}
+      @font-face{font-family:HBMaterial;src:url('../../assets/fonts/MaterialIcons-Regular.otf');font-weight:400}
+
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:var(--canvas)}
+      #root{width:100%;height:100%;position:relative;background:var(--canvas)}
+      #app{position:absolute;inset:0;overflow:hidden}
+      svg{display:block;flex:none}
+      img{display:block}
+
+      /* The phone: frame-iphone.png at 1960 px tall (scale 1960/8796), centred. Its screen rect
+         (x 199..4111, y 168..8653) lands at 1483.367, 137.435, 871.928 x 1890.929; the 393 x 852
+         stage is zoomed 871.928 / 393 = 2.218646 to fill it. The 89.13 px radius keeps the stage's
+         square corners inside the bezel (as ios-offload). */
+      .frame{position:absolute;left:1439.024px;top:100px;width:961.951px;height:1960px;pointer-events:none}
+      .screen{position:absolute;left:1483.367px;top:137.435px;width:871.928px;height:1890.929px;border-radius:89.13px;overflow:hidden}
+      .stage{width:393px;height:852px;zoom:2.218646;position:relative;overflow:hidden;background:var(--bg);
+             font-family:HBInter,sans-serif;color:var(--tb);-webkit-font-smoothing:antialiased;
+             line-height:1.43;letter-spacing:.25px;font-optical-sizing:none}
+
+      /* Icon fonts: Flutter Icon(size) = the glyph at fontSize = size in a size x size box. */
+      .mi{display:inline-block;flex:none;font-family:HBMaterial;font-style:normal;font-weight:400;text-align:center;white-space:nowrap;letter-spacing:0}
+
+      /* PaperDotPainter: 1.5 px dots every 16 px over the SafeArea body (59 .. 818). */
+      .dots{position:absolute;left:0;top:59px;width:393px;height:759px}
+
+      /* _TopNav: padding 16 14 16 0; back in a 44 box, the title between two Spacers, IconButton 48. */
+      .topnav{position:absolute;left:0;top:59px;width:393px;padding:14px 16px 0;z-index:2}
+      .navrow{height:48px;display:flex;align-items:center}
+      .back{width:44px;height:44px;display:grid;place-items:center;color:var(--tb)}
+      .sp{flex:1 1 0}
+      .navtitle{font-family:HBPlayfair,serif;font-weight:500;font-size:23px;color:var(--tb);white-space:nowrap}
+      .share{width:48px;height:48px;display:grid;place-items:center;color:var(--onSurfaceVariant)}
+
+      /* CharacterGraphCanvas: Expanded under the nav (59 + 14 + 48 = 121) to the bottom inset (818). */
+      .viewport{position:absolute;left:0;top:121px;width:393px;height:697px;overflow:hidden}
+      .scene{position:absolute;left:0;top:0;width:2000px;height:2000px;transform-origin:0 0}
+      .edges{position:absolute;left:0;top:0;width:2000px;height:2000px;overflow:visible}
+
+      /* Edge pills (_buildPills): 160 wide slot, 32 min tall, 120..160 wide, Newsreader italic 14. */
+      .pill{position:absolute;width:160px;height:44px;display:flex;align-items:center;justify-content:center}
+      .pill span{display:block;min-width:120px;max-width:160px;min-height:32px;padding:4px 10px;border-radius:16px;
+                 background:var(--bg);border:.8px solid rgba(111,56,37,.55);text-align:center;
+                 font-family:HBNewsreader,serif;font-style:italic;font-size:14px;color:var(--tb);white-space:nowrap;overflow:hidden}
+
+      /* CharacterNodeWidget: Column(min) of a (size+24) x (size+12) medallion stack, 2 gap, 90 wide name.
+         _DraggableNode puts its left/top at x - size/2, y - size/2. */
+      .node{position:absolute;width:103px}
+      .medal{position:relative;width:103px;height:91px}
+      .heroGlow{position:absolute;left:4.5px;top:-2px;width:94px;height:95px;border-radius:50%;background:rgba(111,56,37,.18);filter:blur(10.89px)}
+      .bust{position:absolute;left:12px;top:0;width:79px;height:79px}
+      .heroCircle{position:absolute;left:6px;top:-6px;width:91px;height:91px;overflow:visible}
+      .rolepos{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center}
+      .role{padding:1.5px 6px;border-radius:10px;border:1px solid var(--divider);background:var(--cardCream);
+            font-weight:600;font-size:9.5px;color:var(--tb);white-space:nowrap}
+      .role.hero{background:var(--accent);border-color:var(--accent);color:#fff}
+      .nname{margin:2px auto 0;width:90px;text-align:center;font-family:HBPlayfair,serif;font-weight:500;font-size:14px;color:var(--tb)}
+
+      /* CharacterAvatar -> LayeredAvatar: palette disc + the Open Peeps bust, ClipOval. */
+      .av{position:relative;border-radius:50%;overflow:hidden}
+      .av .disc,.av img{position:absolute;left:0;top:0;width:100%;height:100%}
+
+      /* _CanvasControl x3 (left 16, bottom 20), Cast pill (left 16, bottom 76), FAB (right 20, bottom 24). */
+      .controls{position:absolute;left:16px;bottom:20px;display:flex;gap:8px}
+      .ctl{position:relative;width:48px;height:48px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--icon);
+           box-shadow:0 1px 2px rgba(0,0,0,.24),0 1px 4px 1px rgba(0,0,0,.10)}
+      .ctl .hl{position:absolute;inset:0;border-radius:50%;background:rgba(188,188,188,.4);opacity:0}
+      .ctl .mi{position:relative}
+      .cast{position:absolute;left:16px;bottom:76px;min-height:44px;padding:0 14px;border-radius:22px;background:var(--surface);
+            display:flex;align-items:center;font-weight:600;font-size:13px;color:var(--tb);white-space:nowrap;
+            box-shadow:0 1px 2px rgba(0,0,0,.24),0 1px 4px 1px rgba(0,0,0,.10)}
+      .fab{position:absolute;right:20px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;
+           box-shadow:0 2px 4px rgba(0,0,0,.24),0 4px 10px 2px rgba(0,0,0,.14)}
+
+      /* iOS status bar (drawn: the frame's Dynamic Island hides the middle). */
+      .statusbar{position:absolute;left:0;top:0;width:393px;height:54px;z-index:8;color:#000;letter-spacing:0;line-height:normal}
+      .sb-time{position:absolute;left:0;width:122px;top:20px;text-align:center;font-weight:600;font-size:17px;line-height:20px;letter-spacing:-.2px}
+      .sb-right{position:absolute;right:26px;top:24px;display:flex;align-items:center;gap:6px}
+      .homebar{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:#000;z-index:9}
+
+      /* showCharacterDetailSheet: barrier 0x80000000, sheet radius 24 on top, max 75 % of the screen. */
+      .barrier{position:absolute;inset:0;background:#000;opacity:0;z-index:6}
+      .sheet{position:absolute;left:0;right:0;top:852px;z-index:7;background:var(--sheet);border-radius:24px 24px 0 0;max-height:639px;overflow:hidden}
+      .grab{padding:12px 0;display:flex;justify-content:center}
+      .grab i{display:block;width:36px;height:4px;border-radius:2px;background:var(--divider)}
+      .sbody{padding:4px 20px 24px}
+      .hdr{display:flex;align-items:center}
+      .hcol{flex:1;min-width:0;margin-left:14px}
+      .nrow{display:flex;align-items:center}
+      .dname{font-family:HBPlayfair,serif;font-weight:700;font-size:20px;color:var(--tb);white-space:nowrap}
+      .nrow .role{margin-left:8px}
+      .alias{font-style:italic;font-size:13px;color:var(--ts)}
+      .edit{width:48px;height:48px;display:grid;place-items:center;color:var(--ts)}
+      .lab{font-weight:600;font-size:10px;letter-spacing:.8px;color:var(--ts);text-transform:uppercase}
+      .val{font-size:14px;color:var(--tb)}
+      .desc{font-family:HBNewsreader,serif;font-style:italic;font-size:15px;color:var(--tb)}
+      .chips{display:flex;flex-wrap:wrap;gap:6px}
+      .chip{padding:3px 8px;border-radius:20px;border:1px solid var(--divider);background:var(--cardCream);font-weight:500;font-size:11px;color:var(--tb);white-space:nowrap}
+      .rel{display:flex;align-items:center;margin-bottom:6px;height:24px}
+      .rel .rname{flex:1;min-width:0;margin-left:8px;font-size:13px;color:var(--tb);white-space:nowrap}
+      .rpill{padding:3px 7px;border-radius:20px;border:1px solid rgba(111,56,37,.25);background:rgba(111,56,37,.08);
+             font-weight:500;font-size:10.5px;color:var(--accent);white-space:nowrap}
+      .del{display:inline-flex;align-items:center;height:40px;padding:0 24px 0 16px;border:1px solid var(--danger);border-radius:40px;color:var(--danger)}
+      .del span{margin-left:8px;font-weight:500;font-size:13px;letter-spacing:.1px}
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="s-signal" viewBox="0 0 18 12"><g fill="#000"><rect x="0" y="7.6" width="3" height="4.4" rx="1"/><rect x="5" y="5.3" width="3" height="6.7" rx="1"/><rect x="10" y="2.7" width="3" height="9.3" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></g></symbol>
+        <symbol id="s-wifi" viewBox="0 0 17 12"><g fill="#000"><path d="M8.5 2.4c2.4 0 4.6.9 6.3 2.5.2.2.5.2.7 0l1.2-1.2c.2-.2.2-.5 0-.7C14.6 1 11.6-.2 8.5-.2S2.4 1 .3 3c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0C3.9 3.3 6.1 2.4 8.5 2.4Z"/><path d="M8.5 6.2c1.3 0 2.6.5 3.6 1.4.2.2.5.2.7 0L14 6.4c.2-.2.2-.5 0-.7-1.5-1.4-3.4-2.1-5.5-2.1S4.5 4.3 3 5.7c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0 1-.9 2.3-1.4 3.6-1.4Z"/><path d="M10.7 9.3c.2-.2.2-.5 0-.7-.6-.5-1.4-.8-2.2-.8s-1.6.3-2.2.8c-.2.2-.2.5 0 .7l1.9 1.9c.2.2.5.2.7 0l1.8-1.9Z"/></g></symbol>
+        <symbol id="s-batt" viewBox="0 0 28 13"><rect x=".5" y=".5" width="24" height="12" rx="3.8" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="21" height="9" rx="2.5" fill="#000"/><path d="M26 4.4v4.2c.8-.3 1.4-1.2 1.4-2.1s-.6-1.8-1.4-2.1Z" fill="#000" fill-opacity=".4"/></symbol>
+      </defs>
+    </svg>
+
+    <div id="root" data-composition-id="main" data-start="0" data-duration="14" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="14" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div class="screen">
+          <div class="stage" id="stage">
+            <svg class="dots" width="393" height="759" aria-hidden="true">
+              <defs><pattern id="dotPat" x="-8" y="-8" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="1.5" fill="#E3D4B5"/></pattern></defs>
+              <rect width="393" height="759" fill="url(#dotPat)"/>
+            </svg>
+
+            <div class="topnav">
+              <div class="navrow">
+                <div class="back"><span class="mi" style="font-size:24px;line-height:24px;width:24px;height:24px">&#xf570;</span></div>
+                <div class="sp"></div>
+                <span class="navtitle" data-t="characterMapTitle">Character map</span>
+                <div class="sp"></div>
+                <div class="share"><span class="mi" style="font-size:24px;line-height:24px;width:24px;height:24px">&#xf826;</span></div>
+              </div>
+            </div>
+
+            <div class="viewport" id="viewport" data-layout-allow-overflow>
+              <div class="scene" id="scene" data-layout-allow-overlap>
+                <svg class="edges" id="edges" width="2000" height="2000" viewBox="0 0 2000 2000" aria-hidden="true">
+                  <defs><filter id="haloBlur" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="14"/></filter></defs>
+                  <circle id="halo" r="63.2" fill="#6F3825" fill-opacity=".10" filter="url(#haloBlur)"/>
+                  <g id="edgeLayer"></g>
+                  <g id="blotLayer" fill="#6F3825"></g>
+                </svg>
+                <div id="pills"></div>
+                <div id="nodes"></div>
+              </div>
+              <div class="cast" id="cast"></div>
+              <div class="controls">
+                <div class="ctl" id="fitBtn"><i class="hl" id="fitHl"></i><span class="mi" style="font-size:21px;line-height:21px;width:21px;height:21px">&#xf627;</span></div>
+                <div class="ctl"><span class="mi" style="font-size:21px;line-height:21px;width:21px;height:21px">&#xf00f1;</span></div>
+                <div class="ctl"><span class="mi" style="font-size:21px;line-height:21px;width:21px;height:21px">&#xf537;</span></div>
+              </div>
+              <div class="fab"><span class="mi" style="font-size:28px;line-height:28px;width:28px;height:28px">&#xf537;</span></div>
+            </div>
+
+            <div class="statusbar">
+              <span class="sb-time">9:41</span>
+              <div class="sb-right">
+                <svg width="18" height="12"><use href="#s-signal"/></svg>
+                <svg width="17" height="12"><use href="#s-wifi"/></svg>
+                <svg width="28" height="13"><use href="#s-batt"/></svg>
+              </div>
+            </div>
+
+            <div class="barrier" id="barrier"></div>
+            <div class="sheet" id="sheet" data-layout-allow-overlap>
+              <div class="grab"><i></i></div>
+              <div class="sbody">
+                <div class="hdr" data-sheet>
+                  <div id="dAvatar"></div>
+                  <div class="hcol">
+                    <div class="nrow"><span class="dname" id="dName"></span><span class="role hero" data-t="roleHero">Hero</span></div>
+                    <div class="alias" id="dAlias" data-layout-ignore></div>
+                  </div>
+                  <div class="edit" data-layout-ignore><span class="mi" style="font-size:20px;line-height:20px;width:20px;height:20px">&#xf00d;</span></div>
+                </div>
+                <div style="height:16px"></div>
+                <div class="lab" data-sheet data-layout-ignore data-t="sectionRole">Role</div>
+                <div style="height:6px"></div>
+                <div class="val" id="dRole" data-sheet></div>
+                <div style="height:14px"></div>
+                <div class="lab" data-sheet data-layout-ignore data-t="sectionFirstHeard">First heard</div>
+                <div style="height:6px"></div>
+                <div class="val" id="dFirst" data-sheet></div>
+                <div style="height:14px"></div>
+                <div class="lab" data-sheet data-layout-ignore data-t="sectionDescription">Description</div>
+                <div style="height:6px"></div>
+                <div class="desc" id="dDesc" data-sheet></div>
+                <div style="height:14px"></div>
+                <div class="lab" data-sheet data-layout-ignore data-t="sectionAttributes">Attributes</div>
+                <div style="height:8px"></div>
+                <div class="chips" id="dChips" data-sheet></div>
+                <div style="height:14px"></div>
+                <div class="lab" data-sheet data-layout-ignore data-t="sectionRelationships">Relationships</div>
+                <div style="height:8px"></div>
+                <div id="dRels"></div>
+                <div style="height:14px"></div>
+                <div class="del" data-sheet data-layout-ignore><span class="mi" style="font-size:16px;line-height:16px;width:16px;height:16px;margin:0">&#xf696;</span><span data-t="deleteCharacter">Delete character</span></div>
+              </div>
+            </div>
+            <div class="homebar"></div>
+          </div>
+        </div>
+        <img class="frame" id="frame" src="../../assets/frame-iphone.png" alt="">
+      </div>
+    </div>
+
+    <script>
+      // Shot variables (hbVar): none. Every shot is a moment (t) of the one film.
+      // UI strings come from strings/<locale>.json through hbT / data-t; the cast, their roles typed as
+      // free text, the alias, description, attributes and the custom ties ("is connected to") are the
+      // reader's own data and stay as written.
+
+      // ── Beats (s) ───────────────────────────────────────────────────────────
+      // 0.25 the map mounts: nodes blot in (480 ms elasticOut, staggered), the hero circle draws,
+      // edges draw on one after another (0.45 s + a 0.3 s ink blot), each pill lands as its line
+      // finishes; the force layout eases the cast outward. 5.3 Winston pressed, 5.4 the detail
+      // sheet rises (0.3 s); 8.7 it goes (0.2 s); 9.5 Fit character map pressed, 9.6 the canvas
+      // re-fits the settled layout (zooms out a touch); hold to 14.
+      const DUR = 14;
+      const T_OPEN = 0.25;
+      const EDGE_T0 = 0.75, EDGE_STEP = 0.13;
+      const DRAW_ON = 0.45, BLOT = 0.30;                     // _kDrawOnSeconds, _kBlotSeconds
+      const T_PRESS = 5.3, T_TAP = 5.4, RISE = 0.3;
+      const T_CLOSE = 8.7, EXIT = 0.2;
+      const T_FITPRESS = 9.5, T_FIT = 9.6, FIT_LEN = 0.45;
+      const VW = 393, VH = 697;                              // the canvas viewport
+      const NODE = 79, HALF = NODE / 2, RIM = HALF + 2;      // kNodeSize, _rimTrim
+      const PILL_MIN_SCALE = 0.6;                            // _kPillMinScale
+      const OPEN_ZOOM = 1.1, OPEN_FOCUS = [VW / 2, 560];     // the opening view, relative to the fit
+
+      // ── Curves ──────────────────────────────────────────────────────────────
+      const bez = (a, b, m) => 3 * a * (1 - m) * (1 - m) * m + 3 * b * (1 - m) * m * m + m * m * m;
+      function cubic(x1, y1, x2, y2) {
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (bez(x1, x2, m) < t) lo = m; else hi = m; }
+          return bez(y1, y2, (lo + hi) / 2);
+        };
+      }
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+      const easeInOut = cubic(0.42, 0, 0.58, 1);              // Curves.easeInOut
+      const ease = cubic(0.25, 0.1, 0.25, 1);                 // Curves.ease (modal barrier)
+      const easeOut = cubic(0, 0, 0.58, 1);                   // Curves.easeOut
+      const sheetCurve = cubic(0, 0, 0.2, 1);                 // Easing.legacyDecelerate
+      const easeOutCubic = x => 1 - Math.pow(1 - x, 3);       // Curves.easeOutCubic (draw-on)
+      const elasticOut = x => x <= 0 ? 0 : x >= 1 ? 1 : Math.pow(2, -10 * x) * Math.sin((x - 0.1) * 2 * Math.PI / 0.4) + 1;
+
+      // Stand-in for String.hashCode (Dart VM: non-negative, 30 bits): FNV-1a folded to 30 bits.
+      function hash30(s) { let h = 0x811C9DC5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return (h ^ (h >>> 30)) & 0x3FFFFFFF; }
+      // Seeded PRNG for the simulation's per-node ambient phase and amplitude (math.Random in the app).
+      function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+      // ── The book's cast (1984). Positions are the stored posX/posY on the 2000 x 2000 canvas. ──
+      // colorSeed picks one of the 14 disc palettes; avatar = AvatarSpec (assets/avatars, built by
+      // tools/build_avatars.py). role: preset key or free text; hero = CharacterPayload.isPrimary.
+      // hash stands in for the row id's String.hashCode, which the node uses for its entrance delay
+      // ((h & 7) x 45 ms), breathing phase ((h & 0xFF) / 255) and blink phase ((tick + h) % 9).
+      const CAST = [
+        { id: 'winston',     name: 'Winston Smith',      seed: 0,  role: null,           hero: true,  hash: 101416, pos: [930, 1012] },
+        { id: 'julia',       name: 'Julia',              seed: 5,  role: 'loveInterest', hash: 101554, pos: [848, 816] },
+        { id: 'obrien',      name: 'O\u2019Brien',       seed: 10, role: 'mentor',       hash: 101980, pos: [1152, 901] },
+        { id: 'bigbrother',  name: 'Big Brother',        seed: 12, role: 'villain',      hash: 101849, pos: [890, 692] },
+        { id: 'charrington', name: 'Mr Charrington',     seed: 9,  role: null,           hash: 100622, pos: [1164, 1108] },
+        { id: 'syme',        name: 'Syme',               seed: 6,  role: 'friend',       hash: 102275, pos: [847, 1235] },
+        { id: 'parsons',     name: 'Parsons',            seed: 13, role: null,           hash: 102135, pos: [1163, 1252] },
+        { id: 'goldstein',   name: 'Emmanuel Goldstein', seed: 2,  role: 'rival',        hash: 101949, pos: [1164, 690] },
+      ];
+      const ROLE = { villain: hbT('roleVillain', 'Villain'), rival: hbT('roleRival', 'Rival'), mentor: hbT('roleMentor', 'Mentor'), friend: hbT('roleFriend', 'Friend'), family: hbT('roleFamily', 'Family'), loveInterest: hbT('roleLoveInterest', 'Love interest'), narrator: hbT('roleNarrator', 'Narrator') };
+      // Relationships (characterId1 -> characterId2, forward / reverse labels), in draw-on order.
+      // Presets: 'mentor of'/'student of', 'employer of'/'employee of'; the rest a custom tie
+      // "is connected to" both ways (characterConnectedTo's words).
+      const RELS = [
+        { id: 'r-obrien-winston',     a: 'obrien',      b: 'winston',    fwd: 'mentor of',       rev: 'student of' },
+        { id: 'r-winston-julia',      a: 'winston',     b: 'julia',      fwd: 'is connected to', rev: 'is connected to' },
+        { id: 'r-syme-winston',       a: 'syme',        b: 'winston',    fwd: 'is connected to', rev: 'is connected to' },
+        { id: 'r-parsons-winston',    a: 'parsons',     b: 'winston',    fwd: 'is connected to', rev: 'is connected to' },
+        { id: 'r-charrington-winston',a: 'charrington', b: 'winston',    fwd: 'is connected to', rev: 'is connected to' },
+        { id: 'r-bigbrother-obrien',  a: 'bigbrother',  b: 'obrien',     fwd: 'employer of',     rev: 'employee of' },
+        { id: 'r-goldstein-bigbrother',a: 'goldstein',  b: 'bigbrother', fwd: 'is connected to', rev: 'is connected to' },
+      ];
+      const LABEL = { 'mentor of': hbT('relationMentorOf', 'Mentor of'), 'student of': hbT('relationStudentOf', 'Student of'), 'employer of': hbT('relationEmployerOf', 'Employer of'), 'employee of': hbT('relationEmployeeOf', 'Employee of') };
+      const label = c => LABEL[c] || c;                       // localizedRelationshipLabel
+      const edgeKind = c => (/^(mentor of|student of|employer of|employee of)$/.test(c) ? 'mentor' : 'custom');
+      const nibAtB = c => c === 'mentor of' || c === 'employer of';
+
+      // Winston's detail sheet (CharacterPayload + alias).
+      const WINSTON = {
+        alias: '6079 Smith W.',
+        role: 'Records clerk, Ministry of Truth',
+        firstHeard: hbT('firstHeardLabel', 'Ch. {chapter} · {time}').replace('{chapter}', '1').replace('{time}', '0:09'),   // characterFirstHeardLabel(chapter, clock)
+        description: 'Thirty-nine and frail, he rewrites old news at the Ministry of Truth and keeps a forbidden diary.',
+        attributes: ['Secret diary', 'Records Department', 'Victory Gin', 'Varicose ulcer'],
+      };
+
+      // _kPalettes (character_avatar_gradient.dart).
+      const PAL = [
+        { base: ['#FFB347', '#F4866A', '#EF6E5A'], blob: ['#FFC3A0', '#FF8C69'], bh: [-0.4, -0.5], oh: [0.5, 0.6] },
+        { base: ['#FFF176', '#F9A8D4', '#A7F3D0'], blob: ['#A5F3FC', '#F0ABFC'], bh: [-0.5, -0.6], oh: [0.6, 0.5], sweep: true },
+        { base: ['#E4B9F7', '#9B59B6', '#1A0536'], blob: ['#F3E8FF', '#7C3AED'], bh: [-0.6, -0.6], oh: [0.5, 0.7], sweep: true },
+        { base: ['#6D28D9', '#9333EA', '#0F0728'], blob: ['#EC4899', '#7C3AED'], bh: [0.3, -0.4], oh: [-0.4, 0.6], sweep: true },
+        { base: ['#6EE7B7', '#34D399', '#059669'], blob: ['#A7F3D0', '#10B981'], bh: [-0.3, -0.5], oh: [0.5, 0.5] },
+        { base: ['#FCE4EC', '#F48FB1', '#E91E63'], blob: ['#FFF0F3', '#F06292'], bh: [-0.5, -0.4], oh: [0.6, 0.4] },
+        { base: ['#7DD3FC', '#38BDF8', '#0284C7'], blob: ['#E0F2FE', '#0EA5E9'], bh: [-0.4, -0.5], oh: [0.5, 0.5] },
+        { base: ['#FCA5A5', '#EF4444', '#991B1B'], blob: ['#FECDD3', '#F87171'], bh: [-0.4, -0.5], oh: [0.5, 0.5] },
+        { base: ['#D9F99D', '#A3E635', '#4D7C0F'], blob: ['#ECFCCB', '#84CC16'], bh: [-0.4, -0.4], oh: [0.5, 0.5] },
+        { base: ['#FDE68A', '#FBBF24', '#D97706'], blob: ['#FEF9C3', '#F59E0B'], bh: [-0.5, -0.5], oh: [0.5, 0.5] },
+        { base: ['#C7D2FE', '#818CF8', '#3730A3'], blob: ['#E0E7FF', '#6366F1'], bh: [-0.5, -0.5], oh: [0.5, 0.5], sweep: true },
+        { base: ['#FED7AA', '#FB7185', '#BE185D'], blob: ['#FFF1F2', '#F43F5E'], bh: [-0.4, -0.6], oh: [0.5, 0.5] },
+        { base: ['#94A3B8', '#475569', '#0F172A'], blob: ['#7DD3FC', '#334155'], bh: [-0.3, -0.5], oh: [0.4, 0.6], sweep: true },
+        { base: ['#FEF3C7', '#FCD34D', '#B45309'], blob: ['#FFF7ED', '#F97316'], bh: [-0.5, -0.5], oh: [0.6, 0.4] },
+      ];
+      const rgba = (hex, a) => 'rgba(' + parseInt(hex.slice(1, 3), 16) + ',' + parseInt(hex.slice(3, 5), 16) + ',' + parseInt(hex.slice(5, 7), 16) + ',' + a + ')';
+      // buildCharacterAvatar: base radial (radius 1.0 of the side), off-corner blob (0.75), optional
+      // sweep, white sheen top-left. Painted bottom-up; CSS lists the top layer first.
+      function discCss(seed, S) {
+        const p = PAL[Math.abs(seed) % PAL.length];
+        const at = al => ((1 + al[0]) / 2 * 100) + '% ' + ((1 + al[1]) / 2 * 100) + '%';
+        const layers = [];
+        layers.push('radial-gradient(circle ' + (0.325 * S) + 'px at ' + (0.225 * S) + 'px ' + (0.175 * S) + 'px, rgba(255,255,255,.22), rgba(255,255,255,0))');
+        if (p.sweep) layers.push('conic-gradient(from 90deg, ' + rgba(p.base[0], .18) + ' 0%, ' + rgba(p.blob[0], .15) + ' 30%, ' + rgba(p.base[p.base.length - 1], 0) + ' 70%, ' + rgba(p.base[0], .18) + ' 100%)');
+        layers.push('radial-gradient(circle ' + (0.75 * S) + 'px at ' + at(p.oh) + ', ' + rgba(p.blob[0], .55) + ', ' + rgba(p.blob[1], 0) + ')');
+        layers.push('radial-gradient(circle ' + S + 'px at ' + at(p.bh) + ', ' + p.base[0] + ' 0%, ' + p.base[1] + ' 55%, ' + p.base[2] + ' 100%)');
+        return layers.join(',');
+      }
+      function avatarEl(c, S, blink) {
+        const el = document.createElement('div');
+        el.className = 'av';
+        el.style.width = S + 'px'; el.style.height = S + 'px';
+        el.innerHTML = '<div class="disc" style="background:' + discCss(c.seed, S) + '"></div>' +
+          '<img class="open" src="assets/avatars/' + c.id + '.svg" alt="">' +
+          (blink ? '<img class="shut" src="assets/avatars/' + c.id + '-blink.svg" alt="" style="visibility:hidden">' : '');
+        return el;
+      }
+
+      // ── EdgeGeometry ────────────────────────────────────────────────────────
+      function trimToRim(a, b, trim) {
+        const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy);
+        if (len <= trim * 2) return [a, b];
+        const sx = dx / len * trim, sy = dy / len * trim;
+        return [[a[0] + sx, a[1] + sy], [b[0] - sx, b[1] - sy]];
+      }
+      function control(a, b, seed) {
+        const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy);
+        if (d < 1) return [mx, my];
+        const wobble = (((seed >> 3) % 7) - 3) * 2.0;        // seed >= 0: sign +1
+        const bend = d * 0.08 + wobble + 6.0;
+        return [mx - dy / d * bend, my + dx / d * bend];
+      }
+      const lerp = (p, q, u) => [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u];
+      const pointAt = (a, c, b, u) => lerp(lerp(a, c, u), lerp(c, b, u), u);
+      function tangentAt(a, c, b, u) {
+        const tx = (c[0] - a[0]) * 2 * (1 - u) + (b[0] - c[0]) * 2 * u, ty = (c[1] - a[1]) * 2 * (1 - u) + (b[1] - c[1]) * 2 * u, l = Math.hypot(tx, ty);
+        return l < 1e-6 ? [1, 0] : [tx / l, ty / l];
+      }
+      const f2 = v => v.toFixed(2);
+      function partial(a, c, b, u) {
+        if (u >= 1) return 'M' + f2(a[0]) + ' ' + f2(a[1]) + 'Q' + f2(c[0]) + ' ' + f2(c[1]) + ' ' + f2(b[0]) + ' ' + f2(b[1]);
+        const q1 = lerp(a, c, u), e = pointAt(a, c, b, u);
+        return 'M' + f2(a[0]) + ' ' + f2(a[1]) + 'Q' + f2(q1[0]) + ' ' + f2(q1[1]) + ' ' + f2(e[0]) + ' ' + f2(e[1]);
+      }
+
+      // ── GraphSimulation (physics/graph_simulation.dart) ──────────────────────
+      // Nodes load with zero velocity, so the force solve is at rest from the first tick and only a
+      // drag wakes it: positions stay where they were stored. What moves is display-only: the ambient
+      // sway (two detuned sines, 4.5 px x ambScale) and the ripple a tap or first sync sends out.
+      const SIM = { ambAmp: 4.5, ambFreq: 0.9, ripAmp: 26, ripHop: 0.12, ripWin: 0.6, ripDecay: 0.62 };
+      const N = CAST.length, idx = {};
+      CAST.forEach((c, i) => { idx[c.id] = i; });
+      const STORED = CAST.map(c => c.pos);
+      const rng = mulberry32(1984);
+      const AMB = CAST.map(() => ({ phase: rng() * Math.PI * 2, scale: 0.6 + rng() * 0.8 }));
+      const simPos = () => STORED;
+      // Ripple: hop counts out from Winston (BFS over the edges).
+      const HOPS = (() => {
+        const adj = {}; RELS.forEach(r => { (adj[r.a] = adj[r.a] || []).push(r.b); (adj[r.b] = adj[r.b] || []).push(r.a); });
+        const h = { winston: 0 }, q = ['winston'];
+        while (q.length) { const c = q.shift(); (adj[c] || []).forEach(nb => { if (!(nb in h)) { h[nb] = h[c] + 1; q.push(nb); } }); }
+        return h;
+      })();
+      const RIPPLES = [T_OPEN, T_TAP];                          // first sync ripples the first character; the tap ripples it again
+      function displayPos(t) {
+        const P = simPos(t), clock = Math.max(0, t - T_OPEN);
+        const out = P.map((p, i) => {
+          const a = AMB[i], tt = clock + a.phase;
+          return [p[0] + Math.sin(tt * SIM.ambFreq) * SIM.ambAmp * a.scale, p[1] + Math.cos(tt * SIM.ambFreq * 1.13) * SIM.ambAmp * a.scale];
+        });
+        let r0 = -1; RIPPLES.forEach(r => { if (t >= r) r0 = r; });
+        if (r0 >= 0) {
+          const rc = t - r0, origin = simPos(r0)[idx.winston];
+          CAST.forEach((c, i) => {
+            const hop = HOPS[c.id]; if (hop == null) return;
+            const local = rc - hop * SIM.ripHop;
+            if (local < 0 || local > SIM.ripWin) return;
+            const mag = SIM.ripAmp * Math.sin(Math.PI * local / SIM.ripWin) * Math.pow(SIM.ripDecay, hop);
+            const dx = P[i][0] - origin[0], dy = P[i][1] - origin[1], d = Math.hypot(dx, dy);
+            const dir = d < 1 ? [0, -1] : [dx / d, dy / d];
+            out[i][0] += dir[0] * mag; out[i][1] += dir[1] * mag;
+          });
+        }
+        return out;
+      }
+      // _applyFit: bounds of the simulation positions, padded by the node radius + 120, scale 0.4..1.5.
+      function fitOf(P) {
+        let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+        P.forEach(p => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); });
+        const pad = HALF + 120; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
+        const s = Math.max(0.4, Math.min(1.5, Math.min(VW / (x1 - x0), VH / (y1 - y0))));
+        return { s, tx: VW / 2 - (x0 + x1) / 2 * s, ty: VH / 2 - (y0 + y1) / 2 * s };
+      }
+
+      // ── Build ───────────────────────────────────────────────────────────────
+      const $ = id => document.getElementById(id);
+      const stage = $('stage'), scene = $('scene'), sheet = $('sheet'), barrier = $('barrier'), fitHl = $('fitHl');
+      const edgeLayer = $('edgeLayer'), blotLayer = $('blotLayer'), halo = $('halo');
+      const SVGNS = 'http://www.w3.org/2000/svg';
+      const nodes = [], edges = [];
+      let FIT0, FIT1, SHEET_H = 600, sheetText = [], mapText = [];
+
+      function build() {
+        // The fit, and the opening view a touch inside it: OPEN_ZOOM about a focus just above the
+        // Cast pill, so the lowest names stay clear of the canvas controls.
+        FIT1 = fitOf(STORED);
+        const [fx, fy] = OPEN_FOCUS;
+        FIT0 = { s: FIT1.s * OPEN_ZOOM, tx: fx - (fx - FIT1.tx) * OPEN_ZOOM, ty: fy - (fy - FIT1.ty) * OPEN_ZOOM };
+
+        // Edges: halo stroke under the ink, the nib while drawing, the arrow nib on mentor kinds.
+        RELS.forEach((r, k) => {
+          const g = document.createElementNS(SVGNS, 'g');
+          const mk = (tag, attrs) => { const e = document.createElementNS(SVGNS, tag); Object.entries(attrs).forEach(([a, v]) => e.setAttribute(a, v)); g.appendChild(e); return e; };
+          const common = { fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
+          const haloP = mk('path', Object.assign({ stroke: '#FBF8F2', 'stroke-opacity': '.6', 'stroke-width': '4.5' }, common));
+          const inkP = mk('path', Object.assign({ stroke: '#6F3825', 'stroke-width': '1.6' }, common));
+          const nib = mk('circle', { fill: '#6F3825' });
+          const arrow = mk('path', Object.assign({ stroke: '#6F3825', 'stroke-width': '1.6' }, common));
+          edgeLayer.appendChild(g);
+          const blots = [0, 1, 2].map(() => { const c = document.createElementNS(SVGNS, 'circle'); blotLayer.appendChild(c); return c; });
+          // _buildPills: "fwd · rev" unless both read the same.
+          const fwd = label(r.fwd), rev = label(r.rev);
+          const pill = document.createElement('div');
+          pill.className = 'pill';
+          const span = document.createElement('span');
+          span.textContent = fwd === rev ? fwd : fwd + ' \u00b7 ' + rev;
+          pill.appendChild(span);
+          $('pills').appendChild(pill);
+          edges.push({ r, g, haloP, inkP, nib, arrow, blots, pill, span, seed: hash30(r.id), born: EDGE_T0 + k * EDGE_STEP, kind: edgeKind(r.fwd), nibB: nibAtB(r.fwd) });
+        });
+
+        // Nodes.
+        CAST.forEach(c => {
+          const h = c.hash;
+          const el = document.createElement('div');
+          el.className = 'node';
+          const roleLabel = c.hero ? hbT('roleHero', 'Hero') : (c.role ? ROLE[c.role] : null);
+          el.innerHTML = '<div class="medal">' + (c.hero ? '<div class="heroGlow"></div>' : '') + '<div class="bust"></div>' +
+            (c.hero ? '<svg class="heroCircle" viewBox="0 0 64 64"><path pathLength="1" fill="none" stroke="#6F3825" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M32 4C50 2 62 14 60 33C59 51 46 61 30 60C13 59 3 46 5 30C7 15 18 6 34 7"/></svg>' : '') +
+            (roleLabel ? '<div class="rolepos"><span class="role' + (c.hero ? ' hero' : '') + '">' + roleLabel + '</span></div>' : '') +
+            '</div><div class="nname">' + c.name + '</div>';
+          const bust = el.querySelector('.bust');
+          const av = avatarEl(c, NODE, true);
+          bust.appendChild(av);
+          $('nodes').appendChild(el);
+          nodes.push({ c, el, av, open: av.querySelector('.open'), shut: av.querySelector('.shut'), circle: el.querySelector('.heroCircle path'),
+                       delay: (h & 7) * 0.045, breath0: (h & 0xFF) / 255, blinkSeed: h, vis: true });
+        });
+
+        // Pills: maxLines 1 + ellipsis inside 160 (cut at a character, no clipped text in the DOM).
+        edges.forEach(e => {
+          const full = e.span.textContent;
+          if (e.span.scrollWidth <= e.span.clientWidth + 0.5) return;
+          let lo = 0, hi = full.length;
+          while (lo < hi) { const m = (lo + hi + 1) >> 1; e.span.textContent = full.slice(0, m).trimEnd() + '\u2026'; if (e.span.scrollWidth <= e.span.clientWidth + 0.5) lo = m; else hi = m - 1; }
+          e.span.textContent = full.slice(0, lo).trimEnd() + '\u2026';
+        });
+
+        // Winston's detail sheet.
+        const W = CAST[idx.winston];
+        $('dAvatar').appendChild(avatarEl(W, 52, false));
+        $('dName').textContent = W.name;
+        $('dAlias').textContent = '"' + WINSTON.alias + '"';
+        $('dRole').textContent = WINSTON.role;
+        $('dFirst').textContent = WINSTON.firstHeard;
+        $('dDesc').textContent = WINSTON.description;
+        WINSTON.attributes.forEach(a => { const s = document.createElement('span'); s.className = 'chip'; s.textContent = a; $('dChips').appendChild(s); });
+        RELS.filter(r => r.a === 'winston' || r.b === 'winston').forEach(r => {
+          const other = CAST[idx[r.a === 'winston' ? r.b : r.a]];
+          const type = r.a === 'winston' ? r.fwd : r.rev;
+          const row = document.createElement('div');
+          row.className = 'rel';
+          row.setAttribute('data-sheet', '');
+          row.appendChild(avatarEl(other, 24, false));
+          const nm = document.createElement('span'); nm.className = 'rname'; nm.textContent = other.name; row.appendChild(nm);
+          const p = document.createElement('span'); p.className = 'rpill'; p.textContent = label(type); row.appendChild(p);
+          $('dRels').appendChild(row);
+        });
+        sheet.style.visibility = 'hidden';
+        $('cast').textContent = hbT('castCount', 'Cast · {count}').replace('{count}', String(CAST.length));
+        SHEET_H = Math.min(639, sheet.scrollHeight);
+        sheet.style.height = SHEET_H + 'px';
+        sheetText = Array.from(sheet.querySelectorAll('[data-sheet]')).map(el => ({ el, top: el.offsetTop, bottom: el.offsetTop + el.offsetHeight }));
+        sheetText.forEach(o => { let n = o.el.offsetParent; while (n && n !== sheet) { o.top += n.offsetTop; o.bottom += n.offsetTop; n = n.offsetParent; } });
+        // Map text: what the opaque sheet covers is hidden, and what sits under the barrier is
+        // marked as dimmed backdrop rather than reading text.
+        mapText = Array.from(document.querySelectorAll('.topnav .navtitle, .topnav .mi, #viewport .nname, #viewport .role, #viewport .pill span, #cast, #viewport .mi'));
+      }
+
+      const setVis = (el, on) => { const v = on ? '' : 'hidden'; if (el.style.visibility !== v) el.style.visibility = v; };
+
+      // ── Everything visible is a function of t ──────────────────────────────
+      function render(t) {
+        // Canvas transform: the open-time fit, then Fit character map eases to the settled fit.
+        const q = easeInOut(clamp01((t - T_FIT) / FIT_LEN));
+        const s = FIT0.s + (FIT1.s - FIT0.s) * q, tx = FIT0.tx + (FIT1.tx - FIT0.tx) * q, ty = FIT0.ty + (FIT1.ty - FIT0.ty) * q;
+        scene.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+        const showPills = s >= PILL_MIN_SCALE;
+
+        const P = displayPos(t), mounted = t >= T_OPEN, local = t - T_OPEN;
+
+        // Hero halo under the edges.
+        const hp = P[idx.winston];
+        halo.setAttribute('cx', f2(hp[0])); halo.setAttribute('cy', f2(hp[1]));
+        halo.style.visibility = mounted ? '' : 'hidden';
+
+        // Edges: draw-on 0.45 s (easeOutCubic) led by a nib, then the blot burst at the far end.
+        edges.forEach(e => {
+          const age = t - e.born;
+          const [a, b] = trimToRim(P[idx[e.r.a]], P[idx[e.r.b]], RIM);
+          const c = control(a, b, e.seed);
+          if (age <= 0) { e.g.style.visibility = 'hidden'; e.pill.style.visibility = 'hidden'; e.blots.forEach(o => o.setAttribute('r', 0)); return; }
+          e.g.style.visibility = '';
+          const raw = clamp01(age / DRAW_ON), p = easeOutCubic(raw);
+          const d = partial(a, c, b, p);
+          e.haloP.setAttribute('d', d); e.inkP.setAttribute('d', d);
+          if (p < 1) {
+            const head = pointAt(a, c, b, p);
+            e.nib.setAttribute('cx', f2(head[0])); e.nib.setAttribute('cy', f2(head[1])); e.nib.setAttribute('r', f2(3 * (1 - p) + 1.5));
+            e.arrow.setAttribute('d', '');
+          } else {
+            e.nib.setAttribute('r', 0);
+            if (e.kind === 'mentor') {
+              const at = e.nibB ? b : a, tg = e.nibB ? tangentAt(a, c, b, 1) : tangentAt(a, c, b, 0).map(v => -v);
+              const back = [at[0] - tg[0] * 10, at[1] - tg[1] * 10], n = [-tg[1] * 5, tg[0] * 5];
+              e.arrow.setAttribute('d', 'M' + f2(at[0]) + ' ' + f2(at[1]) + 'L' + f2(back[0] + n[0]) + ' ' + f2(back[1] + n[1]) +
+                'M' + f2(at[0]) + ' ' + f2(at[1]) + 'L' + f2(back[0] - n[0]) + ' ' + f2(back[1] - n[1]));
+            }
+          }
+          const bt = (age - DRAW_ON) / BLOT;
+          if (bt >= 0 && bt <= 1) {
+            const fade = 1 - bt, off = [[6, -4, 2.2, 1.5], [-5, 5, 1.6, 1.2], [2, 7, 1.2, 1.0]];
+            e.blots.forEach((o, i) => {
+              o.setAttribute('cx', f2(b[0] + off[i][0] * bt)); o.setAttribute('cy', f2(b[1] + off[i][1] * bt));
+              o.setAttribute('r', f2(off[i][2] + off[i][3] * bt)); o.setAttribute('fill-opacity', (0.7 * fade).toFixed(3));
+            });
+          } else e.blots.forEach(o => o.setAttribute('r', 0));
+          // The pill sits on the curve's midpoint once the line has finished drawing.
+          const on = showPills && age >= DRAW_ON;
+          e.pill.style.visibility = on ? '' : 'hidden';
+          if (on) {
+            const mid = pointAt(a, c, b, 0.5);
+            e.pill.style.left = (mid[0] - 80) + 'px'; e.pill.style.top = (mid[1] - 22) + 'px';
+          }
+        });
+
+        // Nodes: entrance (elasticOut scale 0.4 -> 1, fade in the first half), breathing bob, blink,
+        // the hero circle drawing on once the entrance is done, and Winston's pressed scale.
+        const tick = Math.floor(Math.max(0, local) / 0.45 + 1e-9);   // BlinkClock: every 450 ms
+        const tickAge = local - tick * 0.45;
+        nodes.forEach(n => {
+          const p = P[idx[n.c.id]];
+          n.el.style.left = (p[0] - HALF) + 'px';
+          n.el.style.top = (p[1] - HALF) + 'px';
+          const ent = clamp01((local - n.delay) / 0.48);
+          const entScale = Math.max(0, Math.min(1.25, 0.4 + 0.6 * elasticOut(ent)));
+          const entFade = easeOut(clamp01(ent / 0.5));
+          let press = 1;
+          if (n.c.id === 'winston' && t >= T_PRESS) {
+            const up = Math.min(1, (Math.min(t, T_TAP) - T_PRESS) / 0.14), atRelease = 1 + 0.04 * up;
+            press = t < T_TAP ? atRelease : atRelease + (1 - atRelease) * Math.min(1, (t - T_TAP) / 0.14);
+          }
+          n.el.style.transform = 'scale(' + (entScale * press).toFixed(4) + ')';
+          n.el.style.opacity = mounted ? entFade.toFixed(3) : 0;
+          setVis(n.el, mounted && entFade > 0.001);
+          // Breathing: 2.3 s each way from (hash & 0xFF) / 255, eased; bob up 1.5 % of the size, tilt +-0.035 rad.
+          const ph = n.breath0 + Math.max(0, local) / 2.3, cyc = Math.floor(ph), fr = ph - cyc;
+          const bv = easeInOut(cyc % 2 === 0 ? fr : 1 - fr);
+          n.av.style.transform = 'translateY(' + (-NODE * 0.015 * bv).toFixed(3) + 'px) rotate(' + (0.035 * (bv - 0.5)).toFixed(4) + 'rad)';
+          const shut = mounted && tick >= 1 && (tick + n.blinkSeed) % 9 === 0 && tickAge < 0.12;
+          setVis(n.open, !shut); setVis(n.shut, shut);
+          if (n.circle) {
+            const cp = clamp01((local - n.delay - 0.48) / 0.7);
+            n.circle.style.strokeDasharray = cp + ' 2';
+            n.circle.style.visibility = cp > 0 ? '' : 'hidden';
+          }
+        });
+
+        // Detail sheet: the route animation (linear) drives legacyDecelerate for the sheet and
+        // Curves.ease for the 0x80 barrier; 0.3 s up, 0.2 s down.
+        let v = 0;
+        if (t >= T_TAP && t < T_CLOSE) v = clamp01((t - T_TAP) / RISE);
+        else if (t >= T_CLOSE) v = 1 - clamp01((t - T_CLOSE) / EXIT);
+        const shown = sheetCurve(v), top = 852 - SHEET_H * shown;
+        sheet.style.top = top + 'px';
+        setVis(sheet, v > 0);
+        barrier.style.opacity = (0x80 / 255 * ease(v)).toFixed(4);
+        sheetText.forEach(o => setVis(o.el, v > 0 && top + o.top < 852 - 0.5));
+        const dim = v > 0, sheetTop = dim ? sheet.getBoundingClientRect().top : Infinity;
+        mapText.forEach(el => {
+          if (dim !== el.hasAttribute('data-layout-ignore')) { if (dim) el.setAttribute('data-layout-ignore', ''); else el.removeAttribute('data-layout-ignore'); }
+          const under = dim && el.getBoundingClientRect().top >= sheetTop - 0.5;
+          if (under && el.style.visibility !== 'hidden') { el.style.visibility = 'hidden'; el.dataset.under = '1'; }
+          else if (!under && el.dataset.under) { el.style.visibility = ''; delete el.dataset.under; }
+        });
+
+        // Fit character map: the InkWell highlight (0x66BCBCBC) fades in 200 ms from the press, out 200 ms from the release.
+        const hUp = clamp01((Math.min(t, T_FIT) - T_FITPRESS) / 0.2);
+        fitHl.style.opacity = t < T_FITPRESS ? 0 : (t < T_FIT ? hUp : hUp * (1 - clamp01((t - T_FIT) / 0.2))).toFixed(3);
+      }
+
+      document.fonts.ready.then(() => {
+        hbLocaleSetup();
+        hbApplyStrings();
+        build();
+        render(0);
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clock.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

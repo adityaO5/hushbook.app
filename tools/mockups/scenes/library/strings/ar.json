@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "كتبك",
+  "librarySelect": "تحديد",
+  "libraryChipAll": "الكل",
+  "libraryChipInProgress": "قيد الاستماع",
+  "libraryChipNotStarted": "لم تبدأ",
+  "libraryChipFinished": "انتهى",
+  "librarySortRecentlyPlayed": "المسموعة مؤخرًا",
+  "libraryShowAsList": "عرض كقائمة",
+  "durationHoursMinutes": "{hours} س {minutes} د",
+  "durationMinutes": "{minutes} د",
+  "timeLeft": "متبقٍ {duration}",
+  "navHome": "الرئيسية",
+  "navLibrary": "المكتبة",
+  "navAnalytics": "التحليلات",
+  "navProfile": "الملف الشخصي"
+}

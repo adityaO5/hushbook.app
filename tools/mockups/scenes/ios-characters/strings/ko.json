@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "캐릭터 맵",
+  "castCount": "등장인물 · {count}",
+  "roleHero": "주인공",
+  "roleVillain": "악당",
+  "roleRival": "라이벌",
+  "roleMentor": "멘토",
+  "roleFriend": "친구",
+  "roleLoveInterest": "연애 상대",
+  "relationMentorOf": "멘토",
+  "relationStudentOf": "학생",
+  "relationEmployerOf": "고용주",
+  "relationEmployeeOf": "직원",
+  "sectionRole": "역할",
+  "sectionFirstHeard": "처음 등장",
+  "firstHeardLabel": "{chapter}장 · {time}",
+  "sectionDescription": "설명",
+  "sectionAttributes": "속성",
+  "sectionRelationships": "관계",
+  "deleteCharacter": "캐릭터 삭제"
+}

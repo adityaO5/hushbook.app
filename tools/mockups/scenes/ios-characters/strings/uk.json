@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Карта персонажів",
+  "castCount": "Персонажі · {count}",
+  "roleHero": "Герой",
+  "roleVillain": "Лиходій",
+  "roleRival": "Суперник",
+  "roleMentor": "Наставник",
+  "roleFriend": "Друг",
+  "roleLoveInterest": "Кохана людина",
+  "relationMentorOf": "наставник о",
+  "relationStudentOf": "учень о",
+  "relationEmployerOf": "роботодавець",
+  "relationEmployeeOf": "працівник о",
+  "sectionRole": "Роль",
+  "sectionFirstHeard": "Вперше почутий",
+  "firstHeardLabel": "Розд. {chapter} · {time}",
+  "sectionDescription": "Опис",
+  "sectionAttributes": "Атрибути",
+  "sectionRelationships": "Зв’язки",
+  "deleteCharacter": "Видалити символ"
+}

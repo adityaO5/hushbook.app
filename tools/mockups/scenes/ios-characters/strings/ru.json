@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Карта персонажей",
+  "castCount": "Персонажи · {count}",
+  "roleHero": "Герой",
+  "roleVillain": "Злодей",
+  "roleRival": "Соперник",
+  "roleMentor": "Наставник",
+  "roleFriend": "Друг",
+  "roleLoveInterest": "Возлюбленный",
+  "relationMentorOf": "наставник",
+  "relationStudentOf": "студент",
+  "relationEmployerOf": "работодатель",
+  "relationEmployeeOf": "сотрудник",
+  "sectionRole": "Роль",
+  "sectionFirstHeard": "Впервые услышан",
+  "firstHeardLabel": "Гл. {chapter} · {time}",
+  "sectionDescription": "Описание",
+  "sectionAttributes": "Атрибуты",
+  "sectionRelationships": "Связи",
+  "deleteCharacter": "Удалить персонажа"
+}

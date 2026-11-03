@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* HushBook iPhone player, cover face (D:\hushbook lib/features/player/cover, FolioTokens.cover).
+         Device, status bar, fonts and transport from showcase/ios/ios-read-along. 393 x 852 pt stage. */
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Bold.ttf');font-weight:700}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600}
+
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:#FAF9F5}
+      #root{position:relative;width:3840px;height:2160px;background:#FAF9F5}
+      #app{position:absolute;inset:0;overflow:hidden}
+      svg{display:block}
+      #frame{position:absolute;pointer-events:none;z-index:2}
+      /* The frame's transparent screen rect has square corners that reach past the device outline:
+         clip the screen to a 400-unit radius (89.13 px at this size), as ios-offload does. */
+      #screen{position:absolute;z-index:1;overflow:hidden}
+
+      /* LyricsBackdrop (widgets/lyrics_backdrop.dart), drawn in screen px so the 73 dp blur is exact:
+         the #22252C base, the cover (fit cover) blurred at sigma 73 with decal edges (ImageFiltered's
+         default tile mode), and the 120 dp bottom fade. */
+      #bg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;background:#22252C}
+      #bgImg{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+      #bgFade{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(15,15,15,0),rgba(34,37,44,.851))}
+
+      .stage{position:relative;width:393px;height:852px;overflow:hidden;color:var(--ink);
+             font-family:HBAtk,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:.25px;font-optical-sizing:none}
+
+      /* Top bar (cover_layout.dart _TopBar): 56 tall, Back on a 44 disc in a 48 target, Read along at the end. */
+      #topBar{position:absolute;left:14px;top:59px;width:365px;height:56px;display:flex;align-items:center}
+      #backT{width:48px;height:48px;flex:none;display:grid;place-items:center}
+      #backDisc{width:44px;height:44px;border-radius:50%;background:var(--button);display:grid;place-items:center;color:var(--ink)}
+      #barGap{flex:1}
+      #raPill{flex:none;height:48px;min-width:48px;border-radius:24px;background:var(--button);display:flex;align-items:center;padding:0 18px 0 14px;color:var(--ink)}
+      #raPill span{margin-left:8px;font-weight:700;font-size:15px;line-height:18.75px;white-space:nowrap}
+
+      /* The stage and the text under it (CoverArtView stage, _CoverInfo). */
+      #body{position:absolute;left:24px;width:345px}
+      #art{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 24px 70.28px rgba(0,0,0,.5),0 2px 10.24px rgba(0,0,0,.3)}
+      #art img{display:block;width:100%;height:100%}
+      #info{position:absolute;left:0;bottom:0;width:345px;text-align:center}
+      #cTitle{font-weight:700;font-size:26px;line-height:30.68px;color:var(--ink)}
+      #cAuthor{margin-top:4px;font-size:17px;line-height:22.1px;color:var(--secondary)}
+      #cLeft{margin-top:12px;font-size:17px;line-height:22.44px;color:var(--secondary)}
+      #cSleep{margin-top:2px;display:flex;align-items:center;justify-content:center;color:var(--rubric)}
+      #cSleep svg{flex:none}
+      #cSleep span{margin-left:6px;font-size:15px;line-height:20.1px;color:var(--secondary)}
+
+      /* PlaybackControls(density: cover): scrubber, transport 12 below, pills 18 below. */
+      #controls{position:absolute;left:24px;width:345px}
+      #scrub{position:relative;height:64.1px}
+      #track{position:absolute;left:0;right:0;top:0;height:48px}
+      #tIn{position:absolute;top:21px;height:6px;border-radius:0 3px 3px 0;background:var(--track)}
+      #tAc{position:absolute;left:0;top:20px;height:8px;border-radius:4px 0 0 4px;background:var(--rubric)}
+      #thumb{position:absolute;top:12px;width:24px;height:24px;border-radius:50%;background:var(--ink);box-shadow:0 .5px 1.5px rgba(0,0,0,.3)}
+      #times{position:absolute;left:0;right:0;top:44px;display:flex;align-items:center}
+      .time{font-weight:700;font-size:15px;line-height:20.1px;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+      .gap{flex:1}
+      #transport{margin-top:12px;height:80px;display:flex;align-items:center;justify-content:space-between}
+      .tb{display:grid;place-items:center;flex:none;color:var(--ink)}
+      .tb.sec{color:var(--secondary)}
+      .tb.dis{color:var(--disabled)}
+      #disc{width:80px;height:80px;border-radius:50%;background:var(--rubric)}
+      #pills{margin-top:18px}
+      .prow{display:flex;align-items:stretch}
+      .prow + .prow{margin-top:8px}
+      .pill{min-height:56px;min-width:48px;border-radius:28px;background:var(--button);display:flex;align-items:center;justify-content:center;padding:7px 14px}
+      .pill.on{background:var(--selected)}
+      .pill .pi{flex:none;margin-right:8px;color:var(--secondary)}
+      .pill.on .pi{color:var(--rubric)}
+      .stk{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+      .pl{font-size:13px;line-height:16.9px;color:var(--secondary)}
+      .pv{font-weight:700;font-size:16px;line-height:20px;color:var(--ink)}
+      .prow.one .pl,.prow.one .pv{white-space:nowrap}
+      .pgap{width:8px;flex:none}
+      .pill.more{padding:0;color:var(--ink)}
+      #meas{position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap}
+
+      /* iOS chrome drawn over the app (cover mode: SystemUiOverlayStyle.light). */
+      #sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:#FFFFFF}
+      #sbTime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HBInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+      #sbIcons{position:absolute;left:293px;top:23px}
+      #home{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:#FFFFFF}
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-skipPrev" viewBox="0 0 512 512"><path d="M149 128C161 128 171 138 171 149V363C171 374 161 384 149 384C138 384 128 374 128 363V149C128 138 138 128 149 128ZM227 273 351 360C365 370 384 360 384 343V169C384 152 365 142 351 152L227 239C215 247 215 265 227 273Z" fill="currentColor"/></symbol>
+        <symbol id="i-skipNext" viewBox="0 0 512 512"><path d="M162 360 285 273C297 265 297 247 285 239L162 152C147 142 128 152 128 169V343C128 360 147 370 162 360ZM341 149V363C341 374 351 384 363 384C374 384 384 374 384 363V149C384 138 374 128 363 128C351 128 341 138 341 149Z" fill="currentColor"/></symbol>
+        <symbol id="i-replay30" viewBox="0 0 512 512"><path d="M256 107V47C256 38 244 33 238 40L157 121C153 125 153 131 157 136L238 217C244 223 256 218 256 209V149C336 149 399 222 381 305C371 353 332 392 284 402C207 418 140 366 129 295C128 285 119 277 108 277C96 277 85 289 87 301C100 395 189 464 290 445C357 432 410 378 423 312C445 202 361 107 256 107ZM204 288H214C218 288 221 287 224 284C226 282 227 279 227 275C227 273 227 272 226 271C226 269 225 268 224 267C223 266 222 265 220 265C219 264 217 264 215 264C213 264 212 264 210 264C209 265 207 265 206 266C205 268 204 268 204 270C203 271 203 272 203 274H185C185 270 185 267 187 264C188 261 191 258 193 256C196 254 199 252 203 251C206 250 210 249 214 249C219 249 223 250 227 251C231 252 234 254 237 256C239 258 241 261 243 264C244 267 245 271 245 275C245 277 245 279 244 281C244 283 243 285 242 286C240 288 239 289 237 291C236 292 234 294 231 295C237 297 240 299 243 303C246 307 247 311 247 316C247 320 246 324 244 327C243 330 240 333 237 336C234 338 231 340 227 341C223 342 219 342 214 342C211 342 207 342 203 341C199 340 196 338 193 336C191 334 188 331 186 328C185 325 184 321 184 316H202C202 318 202 319 203 321C204 322 204 323 206 324C207 326 208 326 210 327C212 327 213 328 215 328C217 328 219 327 221 327C223 326 224 325 225 324C226 323 227 322 228 320C229 319 229 317 229 315C229 313 228 311 228 309C227 307 226 306 225 305C224 304 222 303 220 303C218 302 216 302 214 302H204V288ZM326 304C326 311 326 317 324 321C323 326 321 330 318 333C316 337 312 339 308 340C305 342 301 343 296 343C291 343 287 342 283 340C279 339 276 337 273 333C271 330 269 326 267 321C266 316 265 311 265 304V288C265 281 265 275 267 271C268 266 271 262 273 258C276 255 279 253 283 251C286 250 291 249 295 249C300 249 304 250 308 251C312 253 315 255 318 258C320 262 323 266 324 271C326 275 326 281 326 288V304ZM308 285C308 281 308 278 307 275C307 272 306 270 305 269C304 267 303 266 301 265C299 264 297 264 295 264C294 264 292 264 290 265C289 266 287 267 286 269C285 270 284 272 284 275C283 278 283 281 283 285V306C283 310 283 314 284 316C284 319 285 321 286 323C287 325 288 326 290 327C292 327 294 328 295 328C297 328 299 327 301 327C302 326 304 325 305 323C306 321 307 319 307 316C308 314 308 310 308 306V285Z" fill="currentColor"/></symbol>
+        <symbol id="i-fwd30" viewBox="0 0 512 512"><path d="M404 277C393 277 384 285 383 296C372 368 302 420 224 401C176 390 141 353 131 305C113 222 176 149 256 149V209C256 218 268 223 274 216L355 135C359 131 359 125 355 120L274 39C268 33 256 38 256 47V107C151 107 67 202 89 311C102 378 151 429 217 444C320 467 412 397 425 301C427 289 416 277 404 277ZM225 325C224 326 222 327 221 327C219 328 217 328 215 328C213 328 211 328 209 327C208 327 207 326 205 325C204 324 203 323 202 321C202 320 201 318 201 317H183C183 321 184 325 186 328C188 332 190 334 193 336C196 339 199 340 203 341C206 342 210 343 214 343C218 343 223 342 227 341C231 340 234 338 237 336C240 334 242 331 244 328C246 324 246 321 246 316C246 311 245 307 243 303C240 300 236 297 231 295C233 294 235 293 237 291C239 290 240 288 241 287C242 285 243 283 244 281C245 279 245 278 245 276C245 271 244 268 243 264C241 261 239 258 236 256C233 254 230 252 226 251C223 250 218 250 214 250C210 250 206 250 202 251C199 252 195 254 193 256C190 258 188 261 186 264C185 267 184 271 184 274H202C202 273 203 271 203 270C204 269 205 268 206 267C207 266 208 265 210 265C211 264 213 264 214 264C217 264 218 264 220 265C221 266 223 266 224 267C225 268 225 270 226 271C227 272 227 274 227 276C227 279 226 282 223 285C221 287 218 288 213 288H204V302H214C216 302 218 303 220 303C222 304 223 304 224 305C226 307 227 308 227 310C228 311 228 314 228 316C228 318 228 320 228 321C227 323 226 323 225 325ZM308 251C304 250 300 249 295 249C291 249 287 250 283 251C279 253 276 255 273 258C271 262 268 266 267 271C266 275 265 281 265 288V304C265 311 266 317 267 321C269 326 271 330 274 333C276 337 280 339 284 340C287 342 291 343 296 343C301 343 305 342 309 340C313 339 316 337 318 333C321 330 323 326 324 321C326 316 327 311 327 304V288C327 281 326 275 324 271C323 266 321 262 318 258C315 255 312 253 308 251ZM308 306C308 310 308 314 307 316C307 319 306 321 305 323C304 325 303 326 301 327C299 327 298 328 296 328C294 328 292 327 290 327C289 326 287 325 286 323C285 321 284 319 284 316C283 314 283 310 283 306V285C283 281 283 278 284 275C284 272 285 270 286 269C288 267 289 266 290 265C292 264 294 264 296 264C298 264 300 264 301 265C303 266 304 267 305 269C306 270 307 272 308 275C308 278 308 281 308 285V306Z" fill="currentColor"/></symbol>
+        <symbol id="i-speedometer" viewBox="0 0 512 512"><path d="M256.5 473Q166.5 473 102 408.5Q37.5 344 37.5 254Q37.5 164 101.5 99.5Q165.5 35 255.5 35Q344.5 35 409.5 100Q474.5 165 474.5 254Q474.5 344 410 408.5Q345.5 473 256.5 473ZM127.5 383Q180.5 436 256.5 436Q332.5 436 385.5 383Q438.5 330 438.5 254Q438.5 178 385 125Q331.5 72 255.5 72Q179.5 72 127 125Q74.5 178 74.5 254Q74.5 330 127.5 383ZM255.5 151Q246.5 151 240.5 144.5Q234.5 138 234.5 130Q234.5 121 240.5 115Q246.5 109 255.5 109Q263.5 109 270 115Q276.5 121 276.5 130Q276.5 138 270 144.5Q263.5 151 255.5 151ZM168.5 189Q160.5 189 154 182.5Q147.5 176 147.5 168Q147.5 159 154 153Q160.5 147 168.5 147Q177.5 147 183.5 153Q189.5 159 189.5 168Q189.5 176 183.5 182.5Q177.5 189 168.5 189ZM342.5 189Q333.5 189 327.5 182.5Q321.5 176 321.5 168Q321.5 159 327.5 153Q333.5 147 342.5 147Q350.5 147 357 153Q363.5 159 363.5 168Q363.5 176 357 182.5Q350.5 189 342.5 189ZM255.5 232H259.5L299.5 197Q305.5 192 310.5 197Q316.5 201 310.5 209L277.5 250Q277.5 251 277.5 252L278.5 254Q278.5 263 271.5 269.5Q264.5 276 255.5 276Q246.5 276 240 269.5Q233.5 263 233.5 254Q233.5 245 240 238.5Q246.5 232 255.5 232ZM132.5 275Q124.5 275 118 269Q111.5 263 111.5 254Q111.5 245 118 239Q124.5 233 132.5 233Q141.5 233 147.5 239Q153.5 245 153.5 254Q153.5 263 147.5 269Q141.5 275 132.5 275ZM394.5 269Q388.5 275 379.5 275Q370.5 275 364.5 269Q358.5 263 358.5 254Q358.5 245 364.5 239Q370.5 233 379.5 233Q388.5 233 394.5 239Q400.5 245 400.5 254Q400.5 263 394.5 269ZM169.5 361Q161.5 361 155 355Q148.5 349 148.5 340Q148.5 331 155 325Q161.5 319 169.5 319Q178.5 319 184.5 325Q190.5 331 190.5 340Q190.5 349 184.5 355Q178.5 361 169.5 361ZM342.5 361Q333.5 361 327.5 355Q321.5 349 321.5 340Q321.5 331 327.5 325Q333.5 319 342.5 319Q350.5 319 357 325Q363.5 331 363.5 340Q363.5 349 357 355Q350.5 361 342.5 361Z" fill="currentColor"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 512 512"><path d="M377.5 328Q415.5 328 446.5 316Q451.5 314 457.5 314Q462.5 314 467 318.5Q471.5 323 471.5 329Q471.5 333 468.5 342Q442.5 402 388 436.5Q333.5 471 264.5 471Q167.5 471 104 407.5Q40.5 344 40.5 246Q40.5 179 78.5 121.5Q116.5 64 175.5 40Q184.5 37 187.5 37Q193.5 37 198 42Q202.5 47 202.5 53Q202.5 60 199.5 66Q185.5 92 185.5 143Q185.5 228 237 278Q288.5 328 377.5 328ZM74.5 244Q74.5 328 129 382.5Q183.5 437 266.5 437Q318.5 437 362 414Q405.5 391 430.5 351Q403.5 360 372.5 360Q269.5 360 211.5 303Q153.5 246 153.5 146Q153.5 110 164.5 79Q122.5 105 98.5 149.5Q74.5 194 74.5 244Z" fill="currentColor"/></symbol>
+        <symbol id="i-moonFill" viewBox="0 0 512 512"><path d="M377.5 328Q415.5 328 446.5 316Q451.5 314 457.5 314Q462.5 314 467 318.5Q471.5 323 471.5 329Q471.5 333 468.5 342Q442.5 402 388 436.5Q333.5 471 264.5 471Q167.5 471 104 407.5Q40.5 344 40.5 246Q40.5 179 78.5 121.5Q116.5 64 175.5 40Q184.5 37 187.5 37Q193.5 37 198 42Q202.5 47 202.5 53Q202.5 60 199.5 66Q185.5 92 185.5 143Q185.5 228 237 278Q288.5 328 377.5 328Z" fill="currentColor"/></symbol>
+        <symbol id="i-listBullet" viewBox="0 0 512 512"><path d="M86 143Q78 151 67 151Q56 151 48 143Q40 135 40 124Q40 113 48 105Q56 97 67 97Q78 97 86 105Q94 113 94 124Q94 135 86 143ZM162 142Q145 142 145 124Q145 107 162 107H454Q472 107 472 124Q472 132 467 137Q462 142 454 142ZM86 273Q78 281 67 281Q56 281 48 273Q40 265 40 254Q40 243 48 235Q56 227 67 227Q78 227 86 235Q94 243 94 254Q94 265 86 273ZM162 271Q145 271 145 254Q145 237 162 237H454Q472 237 472 254Q472 271 454 271ZM86 403Q78 411 67 411Q56 411 48 403Q40 395 40 384Q40 373 48 365Q56 357 67 357Q78 357 86 365Q94 373 94 384Q94 395 86 403ZM162 401Q145 401 145 384Q145 366 162 366H454Q462 366 467 371Q472 376 472 384Q472 401 454 401Z" fill="currentColor"/></symbol>
+        <symbol id="i-ellipsis" viewBox="0 0 512 512"><path d="M127.5 223.5Q140 236 140 254Q140 272 127.5 284.5Q115 297 97 297Q79 297 66.5 284.5Q54 272 54 254Q54 236 66.5 223.5Q79 211 97 211Q115 211 127.5 223.5ZM286.5 223.5Q299 236 299 254Q299 272 286.5 284.5Q274 297 256 297Q238 297 225.5 284.5Q213 272 213 254Q213 236 225.5 223.5Q238 211 256 211Q274 211 286.5 223.5ZM445.5 223.5Q458 236 458 254Q458 272 445.5 284.5Q433 297 415 297Q397 297 384.5 284.5Q372 272 372 254Q372 236 384.5 223.5Q397 211 415 211Q433 211 445.5 223.5Z" fill="currentColor"/></symbol>
+        <symbol id="i-back" viewBox="0 0 24 24"><path d="M16.88 2.88c-.49-.49-1.28-.49-1.77 0L6.7 11.29c-.39.39-.39 1.02 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77z" fill="currentColor"/></symbol>
+        <symbol id="i-notes" viewBox="0 0 24 24"><path d="M20 11H4c-.55 0-1 .45-1 1s.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1zM4 18h10c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM20 6H4c-.55 0-1 .45-1 1v.01c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1z" fill="currentColor"/></symbol>
+      </defs>
+    </svg>
+
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="10" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div id="screen">
+          <div id="bg"><img id="bgImg" alt="" /><div id="bgFade"></div></div>
+          <div class="stage" id="stage">
+            <div id="topBar">
+              <div id="backT"><div id="backDisc"><svg width="24" height="24"><use href="#i-back"/></svg></div></div>
+              <div id="barGap"></div>
+              <div id="raPill"><svg width="22" height="22"><use href="#i-notes"/></svg><span data-t="readAlong">Read along</span></div>
+            </div>
+
+            <div id="body">
+              <div id="art"><img id="artImg" alt="" /></div>
+              <div id="info">
+                <div id="cTitle"></div>
+                <div id="cAuthor"></div>
+                <div id="cLeft"></div>
+                <div id="cSleep"><svg width="18" height="18"><use href="#i-moon"/></svg><span id="cSleepT"></span></div>
+              </div>
+            </div>
+
+            <div id="controls">
+              <div id="scrub">
+                <div id="track"><div id="tIn"></div><div id="tAc"></div><div id="thumb"></div></div>
+                <div id="times"><span class="time" id="elapsed">00:00</span><span class="gap"></span><span class="time" id="remaining">−00:00</span></div>
+              </div>
+              <div id="transport">
+                <div class="tb sec" id="tPrev" style="width:48px;height:48px"><svg width="24" height="24"><use href="#i-skipPrev"/></svg></div>
+                <div class="tb" id="tBack" style="height:64px"><svg width="32" height="32"><use href="#i-replay30"/></svg></div>
+                <div class="tb" id="disc"><svg width="34" height="34" viewBox="0 0 48 48"><path id="g0" fill="#141416"/><path id="g1" fill="#141416"/></svg></div>
+                <div class="tb" id="tFwd" style="height:64px"><svg width="32" height="32"><use href="#i-fwd30"/></svg></div>
+                <div class="tb sec" id="tNext" style="width:48px;height:48px"><svg width="24" height="24"><use href="#i-skipNext"/></svg></div>
+              </div>
+              <div id="pills"></div>
+            </div>
+
+            <div id="sbar">
+              <div id="sbTime">9:41</div>
+              <svg id="sbIcons" width="76" height="13" viewBox="0 0 76 13"><g id="sbG" fill="currentColor"></g></svg>
+            </div>
+            <div id="home"></div>
+            <span id="meas"></span>
+          </div>
+        </div>
+        <img id="frame" src="../../assets/frame-iphone.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      // ── Shot variables (hbVar) ──────────────────────────────────────────────────
+      //   cover    key into BOOKS below: the cover file, title and author on screen ('hitchhikers')
+      //   elapsed  seconds into the current chapter at t = 0 (166)
+      //   length   the chapter's length in seconds (724 = 12:04)
+      //   chapter  the chapter's number, 1-based; "Chapter 3" also works (1). The cover face has no
+      //            chapter line: the number shows in the Chapters pill as "1 of 35".
+      //   chapters how many chapters the book has (35)
+      //   playing  the play disc shows pause while playing, play while paused (true)
+      //   sleep    optional: minutes left on a sleep timer; adds the second status line and lights
+      //            the Sleep pill (null = no timer)
+      // Playing, the position advances with t (1 s per s at 1x); shots use t = 0.
+      const BOOKS = {
+        'hitchhikers':       { file: 'hitchhikers.jpg', title: "The Hitch-Hiker's Guide to the Galaxy", author: 'Douglas Adams' },
+        'martian':           { file: 'the martian.webp', title: 'The Martian', author: 'Andy Weir' },
+        'project-hail-mary': { file: 'projecthailmary.webp', title: 'Project Hail Mary', author: 'Andy Weir' },
+        'lotr':              { file: 'LOR.jpg', title: 'The Lord of the Rings', author: 'J.R.R. Tolkien' },
+        'love-hypothesis':   { file: 'LH.jpg', title: 'The Love Hypothesis', author: 'Ali Hazelwood' },
+        'crime-punishment':  { file: 'crimeandpunishmentjpg.jpg', title: 'Crime and Punishment', author: 'Fyodor Dostoevsky' },
+        'pride-prejudice':   { file: 'prideandprejudice.jpg', title: 'Pride and Prejudice', author: 'Jane Austen' },
+        'fourth-wing':       { file: 'fourthwing.jpg', title: 'Fourth Wing', author: 'Rebecca Yarros' },
+        'mexican-gothic':    { file: 'Mexicangothic.jpg', title: 'Mexican Gothic', author: 'Silvia Moreno-Garcia' },
+        'dune':              { file: 'dune.jpg', title: 'Dune', author: 'Frank Herbert' },
+        'born-a-crime':      { file: 'trevor_noah.jpg', title: 'Born a Crime', author: 'Trevor Noah' },
+        'monte-cristo':      { file: 'alexandardumas.jpg', title: 'The Count of Monte Cristo', author: 'Alexandre Dumas' },
+        'divine-comedy':     { file: 'comedy.jpg', title: 'The Divine Comedy', author: 'Dante Alighieri' },
+        'odyssey':           { file: 'odessey.jpg', title: 'The Odyssey', author: 'Homer' },
+        'fantastic-beasts':  { file: 'fantastic beasts.jpg', title: 'Fantastic Beasts and Where to Find Them', author: 'J.K. Rowling' },
+        'dungeon-crawler-carl': { file: 'dungeon crawler carl.jpg', title: 'Dungeon Crawler Carl', author: 'Matt Dinniman' },
+      };
+      const BOOK = BOOKS[hbVar('cover', 'hitchhikers')] || BOOKS.hitchhikers;
+      const ELAPSED = Number(hbVar('elapsed', 166));
+      const LENGTH = Number(hbVar('length', 724));
+      const CHAPTER = Math.max(1, parseInt(String(hbVar('chapter', 1)).replace(/[^0-9]+/g, ''), 10) || 1);
+      const CHAPTERS = Math.max(CHAPTER, Number(hbVar('chapters', 35)));
+      const PLAYING = hbVar('playing', true) !== false;
+      const SLEEP = hbVar('sleep', null);
+      const SPEED = 1;
+      const DUR = 10;
+
+      // ── FolioTokens.cover(): ambient, the warm cream ink over the blurred cover ──
+      const TOK = {
+        ink: '#F4E9DA', secondary: '#D3C7B6', rubric: '#E46A4F', button: 'rgba(244,233,218,.12)',
+        selected: 'rgba(228,106,79,.26)', track: 'rgba(244,233,218,.24)',
+        disabled: 'rgba(211,199,182,.45)',   // secondary at .45 (a disabled chapter skip)
+      };
+
+      // ── Geometry (stage px; cover_layout.dart, phone portrait) ──────────────────
+      const SAFE_TOP = 59, SAFE_BOTTOM = 34, TOP_BAR = 56, GUTTER = 24, W = 393 - 2 * 24;
+      const CONTROLS_BOTTOM = 852 - (SAFE_BOTTOM + 16);   // viewPadding.bottom + 16
+      const CONTROLS_GAP = 16;                             // status lines -> scrubber
+      const STAGE_INSETS = { top: 4, bottom: 18 }, STAGE_FACTOR = .82, STAGE_MAX = 360;
+
+      const $ = id => document.getElementById(id);
+      const stage = $('stage');
+      let zoomZ = 1;
+      const clock = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
+        return (h ? h + ':' : '') + String(m).padStart(2, '0') + ':' + String(x).padStart(2, '0'); };
+      const fill = (s, map) => s.replace(/\{(\w+)\}/g, (_, k) => (k in map ? String(map[k]) : '{' + k + '}'));
+      const minutesUp = ms => ms < 60000 ? 0 : Math.ceil(ms / 60000);   // minutesLeftRoundedUp
+      function leftLine(pos) {
+        const m = minutesUp(Math.round(Math.max(0, LENGTH - pos) / SPEED * 1000));
+        if (m === 0) return hbT('underMinuteLeftInChapter', 'Under a minute left in chapter');
+        if (m === 1) return hbT('minuteLeftInChapter', '1 min left in chapter');
+        return fill(hbT('minutesLeftInChapter', '{minutes} min left in chapter'), { minutes: m });
+      }
+      const textW = (text, cls) => { const m = $('meas'); m.className = cls; m.textContent = text; return Math.ceil(m.getBoundingClientRect().width / zoomZ); };
+      const boxH = el => el.getBoundingClientRect().height / zoomZ;
+
+      // ── AnimatedIcons.play_pause in its 48 box: 0 = play, 1 = pause ─────────────
+      const PLAY = [[[16, 10], [27, 17], [27, 31], [16, 38]], [[27, 17], [38, 24], [38, 24], [27, 31]]];
+      const PAUSE = [[[12, 10], [20, 10], [20, 38], [12, 38]], [[28, 10], [36, 10], [36, 38], [28, 38]]];
+      function setGlyph(m) {
+        [0, 1].forEach(k => $('g' + k).setAttribute('d', 'M' + PLAY[k].map((p, i) =>
+          (p[0] + (PAUSE[k][i][0] - p[0]) * m).toFixed(2) + ' ' + (p[1] + (PAUSE[k][i][1] - p[1]) * m).toFixed(2)).join('L') + 'Z'));
+      }
+
+      // ── Pills (_PillRow + fitPills): one row with icons, else without, else a 2-column grid ──
+      function buildPills() {
+        const sleeping = SLEEP !== null && SLEEP !== undefined;
+        const specs = [
+          { icon: 'i-speedometer', label: hbT('pillSpeed', 'Speed'), value: SPEED + '×', on: false },
+          { icon: sleeping ? 'i-moonFill' : 'i-moon', label: hbT('pillSleep', 'Sleep'),
+            value: sleeping ? fill(hbT('pillSleepMinutes', '{minutes}m'), { minutes: SLEEP }) : hbT('sleepOff', 'Off'), on: sleeping },
+        ];
+        if (CHAPTERS > 1) specs.push({ icon: 'i-listBullet', label: hbT('chapters', 'Chapters'),
+          value: fill(hbT('chaptersOf', '{current} of {total}'), { current: CHAPTER, total: CHAPTERS }), on: false });
+        const HPAD = 14, ICON = 22 + 8, GAP = 8, MORE = 56;
+        const tws = specs.map(p => Math.max(textW(p.label, 'pl'), textW(p.value, 'pv')));
+        const rowW = icons => MORE + tws.reduce((a, w) => a + HPAD * 2 + w + (icons ? ICON : 0) + GAP, 0);
+        const arrangement = rowW(true) <= W ? 'row' : rowW(false) <= W ? 'rowNoIcons' : 'grid2';
+        const withIcons = arrangement === 'row';
+        // Widths as Flutter's Expanded gives them (padding included): the row shares what More and
+        // the gaps leave in proportion to each pill's natural width (x10); the grid's cells are even.
+        const cellW = (W - GAP) / 2;
+        const flex = tws.map(tw => Math.max(1, Math.round((HPAD * 2 + tw + (withIcons ? ICON : 0)) * 10)));
+        const avail = W - MORE - specs.length * GAP, sum = flex.reduce((a, b) => a + b, 0);
+        const pillW = i => arrangement === 'grid2' ? cellW : avail * flex[i] / sum;
+        const pill = (p, i) => '<div class="pill' + (p.on ? ' on' : '') + '" style="flex:none;width:' + pillW(i).toFixed(3) + 'px">' +
+          (withIcons ? '<svg class="pi" width="22" height="22"><use href="#' + p.icon + '"/></svg>' : '') +
+          '<div class="stk"><div class="pl">' + p.label + '</div><div class="pv">' + p.value + '</div></div></div>';
+        const more = w => '<div class="pill more" style="flex:none;width:' + w.toFixed(3) + 'px">' +
+          '<svg width="22" height="22"><use href="#i-ellipsis"/></svg></div>';
+        let html = '';
+        if (arrangement === 'grid2') {
+          const cells = specs.map(pill).concat([more(cellW)]);
+          for (let i = 0; i < cells.length; i += 2)
+            html += '<div class="prow">' + cells[i] + '<div class="pgap"></div>' + (cells[i + 1] || '<div style="flex:none;width:' + cellW.toFixed(3) + 'px"></div>') + '</div>';
+        } else {
+          html = '<div class="prow one">' + specs.map((p, i) => pill(p, i) + '<div class="pgap"></div>').join('') + more(MORE) + '</div>';
+        }
+        $('pills').innerHTML = html;
+        return arrangement;
+      }
+
+      // ── The cover's column: bar, stage (what is left), text, controls low ───────
+      let LAYOUT = null;
+      function layoutCover() {
+        // Transport (spaceBetween; the 30 s skips sized to the room, 48..64).
+        const size = Math.min(64, Math.max(48, (W - 80 - 96) / 2));
+        $('tBack').style.width = size + 'px'; $('tFwd').style.width = size + 'px';
+        $('tPrev').className = 'tb ' + (CHAPTER > 1 ? 'sec' : 'dis');
+        $('tNext').className = 'tb ' + (CHAPTER < CHAPTERS ? 'sec' : 'dis');
+        const arrangement = buildPills();
+
+        const controls = $('controls');
+        const controlsH = boxH(controls);
+        const controlsTop = CONTROLS_BOTTOM - controlsH;
+        controls.style.top = controlsTop + 'px';
+
+        // The body: between the bar and the controls' 16 dp gap.
+        const bodyTop = SAFE_TOP + TOP_BAR, bodyBottom = controlsTop - CONTROLS_GAP;
+        const available = bodyBottom - bodyTop;
+        const body = $('body');
+        body.style.top = bodyTop + 'px'; body.style.height = available + 'px';
+        const infoH = boxH($('info'));
+        const zone = available - infoH;   // >= 160 here: the stage arrangement (art centred over centred text)
+
+        // CoverArtView: contain the art's own shape in the stage, 82% of the width, at most 360.
+        const img = $('artImg'), ratio = img.naturalWidth / img.naturalHeight;
+        const maxW = Math.min(STAGE_MAX, W * STAGE_FACTOR), maxH = zone - STAGE_INSETS.top - STAGE_INSETS.bottom;
+        const w = Math.min(maxW, maxH * ratio), h = w / ratio;
+        const art = $('art');
+        art.style.left = ((W - w) / 2) + 'px'; art.style.top = (STAGE_INSETS.top + (maxH - h) / 2) + 'px';
+        art.style.width = w + 'px'; art.style.height = h + 'px';
+        LAYOUT = { controlsH, controlsTop, available, infoH, zone, art: { w, h, ratio }, arrangement };
+      }
+
+      function render(t) {
+        const pos = Math.min(LENGTH, ELAPSED + (PLAYING ? t * SPEED : 0));
+        $('cLeft').textContent = leftLine(pos);
+        $('elapsed').textContent = clock(pos);
+        $('remaining').textContent = '−' + clock(LENGTH - pos);
+        const tw = W, cx = tw * Math.min(1, pos / LENGTH);
+        $('tAc').style.width = cx + 'px';
+        $('tIn').style.left = cx + 'px'; $('tIn').style.width = (tw - cx) + 'px';
+        $('thumb').style.left = (cx - 12) + 'px';
+      }
+
+      // ── Static pieces ────────────────────────────────────────────────────────────
+      function statusIcons() {
+        let d = '';
+        [[0, 7], [4.6, 5], [9.2, 2.6], [13.8, 0]].forEach(([x, y]) => { d += '<rect x="' + x + '" y="' + (1 + y) + '" width="3.2" height="' + (11 - y) + '" rx="1"/>'; });
+        const cx = 30.65, cy = 11.6, a = Math.PI / 4;
+        const pt = (r, s) => (cx + r * Math.sin(s * a)).toFixed(2) + ' ' + (cy - r * Math.cos(s * a)).toFixed(2);
+        const sector = (r0, r1) => r0 === 0
+          ? 'M' + cx + ' ' + cy + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'Z'
+          : 'M' + pt(r0, -1) + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'L' + pt(r0, 1) + 'A' + r0 + ' ' + r0 + ' 0 0 0 ' + pt(r0, -1) + 'Z';
+        d += '<path d="' + sector(0, 3.3) + sector(5.0, 7.0) + sector(8.7, 10.8) + '"/>';
+        d += '<rect x="45.5" y=".5" width="25" height="12" rx="3.8" fill="none" stroke="currentColor" stroke-opacity=".35"/>';
+        d += '<rect x="47.5" y="2.5" width="21" height="8" rx="2"/>';
+        d += '<path d="M72 4.5c.9.3 1.5 1.1 1.5 2s-.6 1.7-1.5 2Z" fill-opacity=".4"/>';
+        $('sbG').innerHTML = d;
+      }
+      let SCREEN_Z = 1;
+      function placeDevice() {
+        // frame-iphone.png 4317 x 8796, screen x 199..4111, y 168..8653; 1960 px tall, centred.
+        const s = 1960 / 8796, fw = 4317 * s, fl = (3840 - fw) / 2, ft = (2160 - 1960) / 2;
+        const fr = $('frame');
+        fr.style.left = fl + 'px'; fr.style.top = ft + 'px'; fr.style.width = fw + 'px'; fr.style.height = '1960px';
+        const sw = 3913 * s, sh = 8486 * s, z = Math.max(sw / 393, sh / 852);
+        const sc = $('screen');
+        sc.style.left = (fl + 199 * s) + 'px';
+        sc.style.top = (ft + 168 * s) + 'px';
+        sc.style.width = sw + 'px'; sc.style.height = sh + 'px';
+        sc.style.borderRadius = (400 * s) + 'px';
+        stage.style.marginLeft = ((sw - 393 * z) / 2 / z) + 'px';
+        stage.style.zoom = z;
+        SCREEN_Z = z;
+        // The backdrop lives in screen px: sigma 73 dp and the 120 dp fade scaled by the same zoom.
+        $('bgImg').style.filter = 'blur(' + (73 * z).toFixed(3) + 'px)';
+        $('bgFade').style.height = (120 * z).toFixed(3) + 'px';
+      }
+
+      placeDevice();
+      const coverSrc = '../../assets/covers/' + encodeURIComponent(BOOK.file);
+      $('artImg').src = coverSrc;
+      $('bgImg').src = coverSrc;
+      for (const k in TOK) stage.style.setProperty('--' + k, TOK[k]);
+
+      // Every face the scene measures with, loaded before measuring (fonts.ready only covers faces in use).
+      const FACES = ['400 17px HBAtk', '700 26px HBAtk', '600 17px HBInter'];
+      document.fonts.ready
+        .then(() => Promise.all(FACES.map(f => document.fonts.load(f)).concat([$('artImg').decode(), $('bgImg').decode()])))
+        .then(() => {
+          hbLocaleSetup();
+          hbApplyStrings();
+          zoomZ = stage.getBoundingClientRect().width / 393;
+          statusIcons();
+          $('cTitle').textContent = BOOK.title;
+          $('cAuthor').textContent = BOOK.author;
+          const sleeping = SLEEP !== null && SLEEP !== undefined;
+          $('cSleep').style.display = sleeping ? 'flex' : 'none';
+          if (sleeping) $('cSleepT').textContent = fill(hbT('sleepInMinutes', 'Sleep in {minutes} min'), { minutes: SLEEP });
+          setGlyph(PLAYING ? 1 : 0);
+          render(0);
+          layoutCover();
+          render(0);
+          window.__dbg = () => ({ zoom: zoomZ, screenZ: SCREEN_Z, layout: LAYOUT, book: BOOK.title });
+
+          const tl = gsap.timeline({ paused: true });
+          const clockProxy = { t: 0 };
+          tl.to(clockProxy, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clockProxy.t) }, 0);
+          window.__timelines = window.__timelines || {};
+          window.__timelines["main"] = tl;
+          tl.seek(0);
+          window.__hbReady = true;
+        });
+    </script>
+  </body>
+</html>

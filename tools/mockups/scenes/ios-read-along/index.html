@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* RTL: English book content keeps its own direction */
+      [dir="rtl"] .pbox { direction: ltr; text-align: left; }
+
+      /* HushBook iPhone read-along, Lamplight + Folio (D:\hushbook lib/features/player). 393 x 852 pt stage. */
+      @font-face{font-family:HBNews;src:url('../../assets/fonts/Newsreader-Variable.ttf');font-weight:200 800}
+      @font-face{font-family:HBKameron;src:url('../../assets/fonts/Kameron-Variable.ttf');font-weight:400 700}
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBAtk;src:url('../../assets/fonts/AtkinsonHyperlegible-Bold.ttf');font-weight:700}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600}
+
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:#FAF9F5}
+      #root{position:relative;width:3840px;height:2160px;background:#FAF9F5}
+      #app{position:absolute;inset:0;overflow:hidden}
+      svg{display:block}
+      #frame{position:absolute;pointer-events:none;z-index:2}
+      /* The frame's transparent screen rect has square corners that reach past the device outline:
+         clip the stage to a 400-unit radius (89.13 px at this size), as ios-offload does. */
+      #screen{position:absolute;z-index:1;overflow:hidden}
+
+      .stage{position:relative;width:393px;height:852px;overflow:hidden;background:var(--paper);color:var(--ink);
+             font-family:HBAtk,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:.25px;font-optical-sizing:none}
+
+      /* Reader: page mode, text box 28 / 107 / 28 / 50 with the lamp's notch (synced_lyrics_view.dart). */
+      #reader{position:absolute;inset:0;overflow:hidden}
+      #pager{position:absolute;left:0;top:0;width:393px;height:852px}
+      .page{position:absolute;top:0;width:393px;height:852px}
+      .pbox{position:absolute;left:28px;top:107px;width:337px}
+      .blk{padding:4px 0 28px;text-align:center}
+      .blkLabel{font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;
+                font-feature-settings:"case","kern";color:var(--rubricText);white-space:nowrap}
+      .rule{width:36px;height:1px;margin:16px auto 0;background:var(--hairline)}
+      .narrowCol{width:265px}
+      .ln{font-family:var(--lfont);font-size:23px;line-height:34.5px;font-variation-settings:var(--lvar);white-space:normal;font-kerning:normal;color:var(--far)}
+      .tx{position:relative}
+      .cap{font-size:49.45px;color:var(--rubric) !important;font-variation-settings:var(--capvar)}
+      .w{position:relative}
+      .w.sp,.wipe{color:var(--spoken)}
+      .wipe{position:absolute;left:0;top:0;white-space:nowrap;line-height:normal}
+      .w.now::after{content:"";position:absolute;left:0;right:0;top:100%;height:2px;background:var(--rubric);opacity:var(--nowA,1)}
+      .off{visibility:hidden}
+      #pnum{position:absolute;left:28px;width:265px;top:802px;text-align:center;font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 400;
+            font-size:14px;line-height:1.3;font-variant-numeric:lining-nums tabular-nums;color:var(--secondary);white-space:nowrap}
+      #meas{position:absolute;left:0;top:0;visibility:hidden}
+
+      /* Running head (chrome/running_head.dart): 48 tall under the status bar. */
+      #head{position:absolute;left:0;top:59px;width:393px;height:48px;color:var(--ink)}
+      .hb{position:absolute;top:0;width:48px;height:48px;display:grid;place-items:center}
+      #hBack{left:4px}
+      #hBack span{padding:0 0 6px 9px;font-family:HBNews,serif;font-size:36px;line-height:1;font-variation-settings:"opsz" 18,"wght" 380;letter-spacing:.25px}
+      #hTitle{position:absolute;left:100px;width:193px;top:0;height:48px;display:grid;place-items:center;text-align:center;white-space:nowrap;
+              font-family:HBNews,serif;font-size:11px;letter-spacing:.935px;line-height:1.3;font-feature-settings:"case","kern";
+              font-variation-settings:"opsz" 18,"wght" 500;color:var(--secondary)}
+      #hTitle b{font-weight:normal;font-variation-settings:"opsz" 18,"wght" 700;color:var(--rubric)}
+      #hAa{left:293px}
+      #hAa span{font-family:HBNews,serif;font-size:19px;letter-spacing:-.19px;line-height:1.43;font-variation-settings:"opsz" 18,"wght" 450}
+      #hMark{left:341px}
+
+      /* Dock (chrome/dock_card.dart + controls/playback_controls.dart, dock density). */
+      #dockBox{position:absolute;background:var(--dock);border:1px solid var(--dockHairline);box-shadow:var(--dockShadow)}
+      #dock{position:absolute;padding:14px 16px}
+      #scrub{position:relative;height:64.1px}
+      #track{position:absolute;left:0;right:0;top:0;height:48px}
+      #tIn{position:absolute;top:21px;height:6px;border-radius:0 3px 3px 0;background:var(--track)}
+      #tAc{position:absolute;left:0;top:20px;height:8px;border-radius:4px 0 0 4px;background:var(--rubric)}
+      #thumb{position:absolute;top:12px;width:24px;height:24px;border-radius:50%;background:var(--ink);box-shadow:0 .5px 1.5px rgba(0,0,0,.3)}
+      #times{position:absolute;left:0;right:0;top:44px;display:flex;align-items:center}
+      .time{font-weight:700;font-size:15px;line-height:1.34;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+      #chapLine{flex:1;margin:0 12px;text-align:center;font-size:15px;line-height:1.34;color:var(--secondary);white-space:nowrap}
+      #transport{margin-top:4px;height:64px;display:flex;align-items:center;justify-content:space-between}
+      .tb{display:grid;place-items:center;flex:none;color:var(--ink)}
+      .tb.sec{color:var(--secondary)}
+      .tb.dis{color:var(--disabled)}
+      #disc{width:64px;height:64px;border-radius:50%;background:var(--rubric);color:var(--glyph)}
+      #pills{margin-top:10px;height:48px;display:flex}
+      .pill{height:48px;border-radius:28px;background:var(--button);display:flex;align-items:center;justify-content:center;padding:6px 10px;min-width:48px}
+      .pill svg{color:var(--secondary);flex:none;margin-right:5px}
+      .pill span{font-weight:700;font-size:15px;line-height:1.25;color:var(--ink);white-space:nowrap}
+      .pgap{width:6px;flex:none}
+      #more{width:48px;flex:none;padding:0;color:var(--ink)}
+      #more svg{color:var(--ink);margin:0}
+
+      /* Lamp and its handle (chrome/lamp.dart) while reading. */
+      #lamp{position:absolute;left:309px;top:738px;width:64px;height:64px}
+      #lampDisc{position:absolute;inset:0;border-radius:50%;background:var(--dock);border:1px solid var(--dockHairline);box-shadow:var(--dockShadow)}
+      #lampRings{position:absolute;left:-1px;top:-1px}
+      #lampCore{position:absolute;left:11px;top:11px;width:42px;height:42px;border-radius:50%;background:var(--rubric);color:var(--glyph);display:grid;place-items:center}
+      #handle{position:absolute;left:321px;top:708px;width:40px;height:26px;border-radius:13px;background:var(--dock);border:1px solid var(--dockHairline);
+              box-shadow:0 4px 14.9px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--secondary)}
+
+      /* iOS chrome drawn over the app. */
+      #sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:var(--sb)}
+      #sbTime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HBInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+      #sbIcons{position:absolute;left:293px;top:23px}
+      #home{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:var(--sb)}
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-pause" viewBox="0 0 512 512"><path d="M128 405H213V107H128V405ZM299 107V405H384V107H299Z" fill="currentColor"/></symbol>
+        <symbol id="i-skipPrev" viewBox="0 0 512 512"><path d="M149 128C161 128 171 138 171 149V363C171 374 161 384 149 384C138 384 128 374 128 363V149C128 138 138 128 149 128ZM227 273 351 360C365 370 384 360 384 343V169C384 152 365 142 351 152L227 239C215 247 215 265 227 273Z" fill="currentColor"/></symbol>
+        <symbol id="i-skipNext" viewBox="0 0 512 512"><path d="M162 360 285 273C297 265 297 247 285 239L162 152C147 142 128 152 128 169V343C128 360 147 370 162 360ZM341 149V363C341 374 351 384 363 384C374 384 384 374 384 363V149C384 138 374 128 363 128C351 128 341 138 341 149Z" fill="currentColor"/></symbol>
+        <symbol id="i-replay30" viewBox="0 0 512 512"><path d="M256 107V47C256 38 244 33 238 40L157 121C153 125 153 131 157 136L238 217C244 223 256 218 256 209V149C336 149 399 222 381 305C371 353 332 392 284 402C207 418 140 366 129 295C128 285 119 277 108 277C96 277 85 289 87 301C100 395 189 464 290 445C357 432 410 378 423 312C445 202 361 107 256 107ZM204 288H214C218 288 221 287 224 284C226 282 227 279 227 275C227 273 227 272 226 271C226 269 225 268 224 267C223 266 222 265 220 265C219 264 217 264 215 264C213 264 212 264 210 264C209 265 207 265 206 266C205 268 204 268 204 270C203 271 203 272 203 274H185C185 270 185 267 187 264C188 261 191 258 193 256C196 254 199 252 203 251C206 250 210 249 214 249C219 249 223 250 227 251C231 252 234 254 237 256C239 258 241 261 243 264C244 267 245 271 245 275C245 277 245 279 244 281C244 283 243 285 242 286C240 288 239 289 237 291C236 292 234 294 231 295C237 297 240 299 243 303C246 307 247 311 247 316C247 320 246 324 244 327C243 330 240 333 237 336C234 338 231 340 227 341C223 342 219 342 214 342C211 342 207 342 203 341C199 340 196 338 193 336C191 334 188 331 186 328C185 325 184 321 184 316H202C202 318 202 319 203 321C204 322 204 323 206 324C207 326 208 326 210 327C212 327 213 328 215 328C217 328 219 327 221 327C223 326 224 325 225 324C226 323 227 322 228 320C229 319 229 317 229 315C229 313 228 311 228 309C227 307 226 306 225 305C224 304 222 303 220 303C218 302 216 302 214 302H204V288ZM326 304C326 311 326 317 324 321C323 326 321 330 318 333C316 337 312 339 308 340C305 342 301 343 296 343C291 343 287 342 283 340C279 339 276 337 273 333C271 330 269 326 267 321C266 316 265 311 265 304V288C265 281 265 275 267 271C268 266 271 262 273 258C276 255 279 253 283 251C286 250 291 249 295 249C300 249 304 250 308 251C312 253 315 255 318 258C320 262 323 266 324 271C326 275 326 281 326 288V304ZM308 285C308 281 308 278 307 275C307 272 306 270 305 269C304 267 303 266 301 265C299 264 297 264 295 264C294 264 292 264 290 265C289 266 287 267 286 269C285 270 284 272 284 275C283 278 283 281 283 285V306C283 310 283 314 284 316C284 319 285 321 286 323C287 325 288 326 290 327C292 327 294 328 295 328C297 328 299 327 301 327C302 326 304 325 305 323C306 321 307 319 307 316C308 314 308 310 308 306V285Z" fill="currentColor"/></symbol>
+        <symbol id="i-fwd30" viewBox="0 0 512 512"><path d="M404 277C393 277 384 285 383 296C372 368 302 420 224 401C176 390 141 353 131 305C113 222 176 149 256 149V209C256 218 268 223 274 216L355 135C359 131 359 125 355 120L274 39C268 33 256 38 256 47V107C151 107 67 202 89 311C102 378 151 429 217 444C320 467 412 397 425 301C427 289 416 277 404 277ZM225 325C224 326 222 327 221 327C219 328 217 328 215 328C213 328 211 328 209 327C208 327 207 326 205 325C204 324 203 323 202 321C202 320 201 318 201 317H183C183 321 184 325 186 328C188 332 190 334 193 336C196 339 199 340 203 341C206 342 210 343 214 343C218 343 223 342 227 341C231 340 234 338 237 336C240 334 242 331 244 328C246 324 246 321 246 316C246 311 245 307 243 303C240 300 236 297 231 295C233 294 235 293 237 291C239 290 240 288 241 287C242 285 243 283 244 281C245 279 245 278 245 276C245 271 244 268 243 264C241 261 239 258 236 256C233 254 230 252 226 251C223 250 218 250 214 250C210 250 206 250 202 251C199 252 195 254 193 256C190 258 188 261 186 264C185 267 184 271 184 274H202C202 273 203 271 203 270C204 269 205 268 206 267C207 266 208 265 210 265C211 264 213 264 214 264C217 264 218 264 220 265C221 266 223 266 224 267C225 268 225 270 226 271C227 272 227 274 227 276C227 279 226 282 223 285C221 287 218 288 213 288H204V302H214C216 302 218 303 220 303C222 304 223 304 224 305C226 307 227 308 227 310C228 311 228 314 228 316C228 318 228 320 228 321C227 323 226 323 225 325ZM308 251C304 250 300 249 295 249C291 249 287 250 283 251C279 253 276 255 273 258C271 262 268 266 267 271C266 275 265 281 265 288V304C265 311 266 317 267 321C269 326 271 330 274 333C276 337 280 339 284 340C287 342 291 343 296 343C301 343 305 342 309 340C313 339 316 337 318 333C321 330 323 326 324 321C326 316 327 311 327 304V288C327 281 326 275 324 271C323 266 321 262 318 258C315 255 312 253 308 251ZM308 306C308 310 308 314 307 316C307 319 306 321 305 323C304 325 303 326 301 327C299 327 298 328 296 328C294 328 292 327 290 327C289 326 287 325 286 323C285 321 284 319 284 316C283 314 283 310 283 306V285C283 281 283 278 284 275C284 272 285 270 286 269C288 267 289 266 290 265C292 264 294 264 296 264C298 264 300 264 301 265C303 266 304 267 305 269C306 270 307 272 308 275C308 278 308 281 308 285V306Z" fill="currentColor"/></symbol>
+        <symbol id="i-speedometer" viewBox="0 0 512 512"><path d="M256.5 473Q166.5 473 102 408.5Q37.5 344 37.5 254Q37.5 164 101.5 99.5Q165.5 35 255.5 35Q344.5 35 409.5 100Q474.5 165 474.5 254Q474.5 344 410 408.5Q345.5 473 256.5 473ZM127.5 383Q180.5 436 256.5 436Q332.5 436 385.5 383Q438.5 330 438.5 254Q438.5 178 385 125Q331.5 72 255.5 72Q179.5 72 127 125Q74.5 178 74.5 254Q74.5 330 127.5 383ZM255.5 151Q246.5 151 240.5 144.5Q234.5 138 234.5 130Q234.5 121 240.5 115Q246.5 109 255.5 109Q263.5 109 270 115Q276.5 121 276.5 130Q276.5 138 270 144.5Q263.5 151 255.5 151ZM168.5 189Q160.5 189 154 182.5Q147.5 176 147.5 168Q147.5 159 154 153Q160.5 147 168.5 147Q177.5 147 183.5 153Q189.5 159 189.5 168Q189.5 176 183.5 182.5Q177.5 189 168.5 189ZM342.5 189Q333.5 189 327.5 182.5Q321.5 176 321.5 168Q321.5 159 327.5 153Q333.5 147 342.5 147Q350.5 147 357 153Q363.5 159 363.5 168Q363.5 176 357 182.5Q350.5 189 342.5 189ZM255.5 232H259.5L299.5 197Q305.5 192 310.5 197Q316.5 201 310.5 209L277.5 250Q277.5 251 277.5 252L278.5 254Q278.5 263 271.5 269.5Q264.5 276 255.5 276Q246.5 276 240 269.5Q233.5 263 233.5 254Q233.5 245 240 238.5Q246.5 232 255.5 232ZM132.5 275Q124.5 275 118 269Q111.5 263 111.5 254Q111.5 245 118 239Q124.5 233 132.5 233Q141.5 233 147.5 239Q153.5 245 153.5 254Q153.5 263 147.5 269Q141.5 275 132.5 275ZM394.5 269Q388.5 275 379.5 275Q370.5 275 364.5 269Q358.5 263 358.5 254Q358.5 245 364.5 239Q370.5 233 379.5 233Q388.5 233 394.5 239Q400.5 245 400.5 254Q400.5 263 394.5 269ZM169.5 361Q161.5 361 155 355Q148.5 349 148.5 340Q148.5 331 155 325Q161.5 319 169.5 319Q178.5 319 184.5 325Q190.5 331 190.5 340Q190.5 349 184.5 355Q178.5 361 169.5 361ZM342.5 361Q333.5 361 327.5 355Q321.5 349 321.5 340Q321.5 331 327.5 325Q333.5 319 342.5 319Q350.5 319 357 325Q363.5 331 363.5 340Q363.5 349 357 355Q350.5 361 342.5 361Z" fill="currentColor"/></symbol>
+        <symbol id="i-chevronUp" viewBox="0 0 512 512"><path d="M76 325 242 156Q249 149 256 149Q264 149 271 156L437 325Q442 329 442 339Q442 347 436.5 353Q431 359 423 359Q414 359 409 353L256 197L104 353Q99 359 90 359Q82 359 76 353Q70 347 70 339Q70 330 76 325Z" fill="currentColor"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 512 512"><path d="M377.5 328Q415.5 328 446.5 316Q451.5 314 457.5 314Q462.5 314 467 318.5Q471.5 323 471.5 329Q471.5 333 468.5 342Q442.5 402 388 436.5Q333.5 471 264.5 471Q167.5 471 104 407.5Q40.5 344 40.5 246Q40.5 179 78.5 121.5Q116.5 64 175.5 40Q184.5 37 187.5 37Q193.5 37 198 42Q202.5 47 202.5 53Q202.5 60 199.5 66Q185.5 92 185.5 143Q185.5 228 237 278Q288.5 328 377.5 328ZM74.5 244Q74.5 328 129 382.5Q183.5 437 266.5 437Q318.5 437 362 414Q405.5 391 430.5 351Q403.5 360 372.5 360Q269.5 360 211.5 303Q153.5 246 153.5 146Q153.5 110 164.5 79Q122.5 105 98.5 149.5Q74.5 194 74.5 244Z" fill="currentColor"/></symbol>
+        <symbol id="i-listBullet" viewBox="0 0 512 512"><path d="M86 143Q78 151 67 151Q56 151 48 143Q40 135 40 124Q40 113 48 105Q56 97 67 97Q78 97 86 105Q94 113 94 124Q94 135 86 143ZM162 142Q145 142 145 124Q145 107 162 107H454Q472 107 472 124Q472 132 467 137Q462 142 454 142ZM86 273Q78 281 67 281Q56 281 48 273Q40 265 40 254Q40 243 48 235Q56 227 67 227Q78 227 86 235Q94 243 94 254Q94 265 86 273ZM162 271Q145 271 145 254Q145 237 162 237H454Q472 237 472 254Q472 271 454 271ZM86 403Q78 411 67 411Q56 411 48 403Q40 395 40 384Q40 373 48 365Q56 357 67 357Q78 357 86 365Q94 373 94 384Q94 395 86 403ZM162 401Q145 401 145 384Q145 366 162 366H454Q462 366 467 371Q472 376 472 384Q472 401 454 401Z" fill="currentColor"/></symbol>
+        <symbol id="i-ellipsis" viewBox="0 0 512 512"><path d="M127.5 223.5Q140 236 140 254Q140 272 127.5 284.5Q115 297 97 297Q79 297 66.5 284.5Q54 272 54 254Q54 236 66.5 223.5Q79 211 97 211Q115 211 127.5 223.5ZM286.5 223.5Q299 236 299 254Q299 272 286.5 284.5Q274 297 256 297Q238 297 225.5 284.5Q213 272 213 254Q213 236 225.5 223.5Q238 211 256 211Q274 211 286.5 223.5ZM445.5 223.5Q458 236 458 254Q458 272 445.5 284.5Q433 297 415 297Q397 297 384.5 284.5Q372 272 372 254Q372 236 384.5 223.5Q397 211 415 211Q433 211 445.5 223.5Z" fill="currentColor"/></symbol>
+        <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.3 11.4 3.8 16.9V20h8.7l2.8-2.8"/><path d="M20.8 12.4l-4.4 4.4a1.8 1.8 0 0 1-2.5 0l-5.2-5.2a1.8 1.8 0 0 1 0-2.5l4.4-4.4"/></g></symbol>
+      </defs>
+    </svg>
+
+    <div id="root" data-composition-id="main" data-start="0" data-duration="55" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="55" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div id="screen">
+          <div class="stage" id="stage">
+            <div id="reader">
+              <div id="pager"></div>
+              <div id="pnum">1 / 1</div>
+            </div>
+
+            <div id="head">
+              <div class="hb" id="hBack"><span>‹</span></div>
+              <div id="hTitle"><span id="hTitleText"></span></div>
+              <div class="hb" id="hAa"><span data-t="aaButton">Aa</span></div>
+              <div class="hb" id="hMark"><svg width="24" height="24"><use href="#i-pen"/></svg></div>
+            </div>
+
+            <div id="dockBox" data-layout-allow-occlusion></div>
+            <div id="dock" data-layout-allow-occlusion>
+              <div id="scrub">
+                <div id="track"><div id="tIn"></div><div id="tAc"></div><div id="thumb"></div></div>
+                <div id="times"><span class="time" id="elapsed">00:00</span><span id="chapLine"></span><span class="time" id="remaining"></span></div>
+              </div>
+              <div id="transport">
+                <div class="tb dis" style="width:48px;height:48px"><svg width="24" height="24"><use href="#i-skipPrev"/></svg></div>
+                <div class="tb" style="width:64px;height:64px"><svg width="32" height="32"><use href="#i-replay30"/></svg></div>
+                <div class="tb" id="disc"><svg width="28" height="28"><use href="#i-pause"/></svg></div>
+                <div class="tb" style="width:64px;height:64px"><svg width="32" height="32"><use href="#i-fwd30"/></svg></div>
+                <div class="tb sec" style="width:48px;height:48px"><svg width="24" height="24"><use href="#i-skipNext"/></svg></div>
+              </div>
+              <div id="pills">
+                <div class="pill" id="pSpeed"><svg width="18" height="18"><use href="#i-speedometer"/></svg><span>1×</span></div>
+                <div class="pgap"></div>
+                <div class="pill" id="pSleep"><svg width="18" height="18"><use href="#i-moon"/></svg><span data-t="sleepTimerOff">Off</span></div>
+                <div class="pgap"></div>
+                <div class="pill" id="pChapters"><svg width="18" height="18"><use href="#i-listBullet"/></svg><span data-t="chapters">Chapters</span></div>
+                <div class="pgap"></div>
+                <div class="pill" id="more"><svg width="22" height="22"><use href="#i-ellipsis"/></svg></div>
+              </div>
+            </div>
+
+            <div id="handle"><svg width="18" height="18"><use href="#i-chevronUp"/></svg></div>
+            <div id="lamp">
+              <div id="lampDisc"></div>
+              <svg id="lampRings" width="66" height="66" viewBox="0 0 66 66">
+                <circle cx="33" cy="33" r="30" fill="none" stroke-width="3" id="ringTrack"/>
+                <path id="ringArc" fill="none" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <div id="lampCore"><svg width="22" height="22"><use href="#i-pause"/></svg></div>
+            </div>
+
+            <div id="sbar">
+              <div id="sbTime">9:41</div>
+              <svg id="sbIcons" width="76" height="13" viewBox="0 0 76 13"><g id="sbG" fill="currentColor"></g></svg>
+            </div>
+            <div id="home"></div>
+          </div>
+        </div>
+        <img id="frame" src="../../assets/frame-iphone.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      // ── Shot variables (render.mjs sets them from shots.json "vars") ─────────────
+      //   theme  the reading look: 'ambient' (default; the ink-black page with the cover's wash),
+      //          'sepia', 'dark', 'amber', or 'warm' (the Warm Paper preset: sepia + Kameron +
+      //          its brown spoken accent).
+      //   font   the reading face: 'news' (Newsreader) or 'kameron'. Defaults to the look's own
+      //          face: Newsreader, except Kameron for 'warm'.
+      // Film time t is the chapter position in seconds (START = 0). The dock shows until 2.5 s
+      // and folds into the lamp by about 3 s; shots without the dock need t >= 3.
+
+      // ── The excerpt: The Hitch-Hiker's Guide to the Galaxy, chapter 1 (BUILDER-BRIEF.md) ──
+      const CHAPTER = [
+"Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.",
+"Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.",
+"This planet has, or rather had, a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn't the small green pieces of paper that were unhappy.",
+"And so the problem remained; lots of the people were mean, and most of them were miserable, even the ones with digital watches."
+      ];
+
+      // ── Beats (seconds of film time) ────────────────────────────────────────────
+      // Read-along is open and playing from the chapter's start with the dock shown; it folds
+      // into the lamp 2.5 s later (PlayerOverlayController.kAutoHideDelay). One look for the
+      // whole timeline, picked by the shot.
+      const START = 0;                      // chapter position (s) at film time 0
+      const T_HIDE = 2.5;
+      const CHAPTER_LEN = 12 * 60 + 4;      // Chapter 1, 12:04
+      const CHAPTER_NUMBER = 1;             // the dock's "Chapter 1" (chapterNumber)
+      const CHAPTER_NUMERAL = 'I';          // romanNumeral(1): the head and the chapter block print it
+      // The Hitchhiker's cover's average colour (coverAverageColorProvider: the opaque pixels of a
+      // 16 px wide decode of assets/covers/hitchhikers.jpg). The ambient page carries its wash.
+      const COVER_AVERAGE = '#AE2A37';
+
+      // ── Appearance: LyricsTheme (prefs_service.dart) + FolioTokens (folio/folio_tokens.dart) ──
+      const THEMES = {
+        ambient: { page: '#141416', backdrop: '#25272A', ink: '#F2F0EA', secondary: '#C7C4BE', rubric: '#E46A4F', dock: '#232427', light: false },
+        sepia:   { page: '#FFF1D6', backdrop: '#FFF1D6', ink: '#2A241C', secondary: '#655B4C', rubric: '#B23A26', dock: '#FFF9EE', light: true },
+        dark:    { page: '#121315', backdrop: '#121315', ink: '#F2F0EA', secondary: '#C7C4BE', rubric: '#E46A4F', dock: '#222326', light: false },
+        amber:   { page: '#121315', backdrop: '#121315', ink: '#FFC233', secondary: '#D6A53F', rubric: '#E8553F', dock: '#24221D', light: false },
+      };
+      // Reading Comprehension profile: Newsreader until a font is picked; a theme keeps the font,
+      // the Warm Paper look sets sepia + Kameron and its spoken accent.
+      const LOOKS = {
+        ambient: { theme: 'ambient', font: 'news' },
+        sepia:   { theme: 'sepia', font: 'news' },
+        dark:    { theme: 'dark', font: 'news' },
+        amber:   { theme: 'amber', font: 'news' },
+        warm:    { theme: 'sepia', font: 'kameron', spoken: '#9B4D2C' },
+      };
+      const FONTS = {
+        news:    { family: 'HBNews,serif', lvar: '"opsz" 18,"wght" 400', capvar: '"opsz" 18,"wght" 450', A: 1470 / 2000, D: 530 / 2000 },
+        kameron: { family: 'HBKameron,serif', lvar: '"wght" 400', capvar: '"wght" 450', A: 1823 / 2048, D: 608 / 2048 },
+      };
+      const LOOK_NAME = hbVar('theme', 'ambient');
+      if (!LOOKS[LOOK_NAME]) throw new Error('ios-read-along: unknown theme "' + LOOK_NAME + '" (' + Object.keys(LOOKS).join(', ') + ')');
+      const FONT_ID = hbVar('font', LOOKS[LOOK_NAME].font);
+      if (!FONTS[FONT_ID]) throw new Error('ios-read-along: unknown font "' + FONT_ID + '" (' + Object.keys(FONTS).join(', ') + ')');
+      const LOOK = Object.assign({}, LOOKS[LOOK_NAME], { font: FONT_ID });
+      const hex =h => { const n = parseInt(h.slice(1), 16); return [(n >> 16) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]; };
+      const rgba = (h, a) => { const c = hex(h); return 'rgba(' + Math.round(c[0] * 255) + ',' + Math.round(c[1] * 255) + ',' + Math.round(c[2] * 255) + ',' + (+a.toFixed(4)) + ')'; };
+      const lin = c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      const lum = c => 0.2126 * lin(c[0]) + 0.7152 * lin(c[1]) + 0.0722 * lin(c[2]);
+      // lowestAlphaFor: the lowest alpha (.40-1.00) at which ink over the backdrop reaches the ratio.
+      function lowestAlpha(ink, bg, ratio) {
+        const f = hex(ink), b = hex(bg), lb = lum(b);
+        for (let step = 40; step <= 100; step++) {
+          const a = step / 100, mix = f.map((v, i) => a * v + (1 - a) * b[i]);
+          const lm = lum(mix), r = (Math.max(lm, lb) + 0.05) / (Math.min(lm, lb) + 0.05);
+          if (r >= ratio) return a;
+        }
+        return 1;
+      }
+      const DARK_SHADOW = '0 18px 51.8px rgba(0,0,0,.5),0 2px 10.2px rgba(0,0,0,.35)';
+      const LIGHT_SHADOW = '0 14px 42.6px rgba(60,40,20,.12),0 2px 7.9px rgba(60,40,20,.07)';
+      function tokens(look) {
+        const th = THEMES[look.theme], L = th.light;
+        const nearA = lowestAlpha(th.ink, th.backdrop, 10.5), farA = lowestAlpha(th.ink, th.backdrop, 6.3);
+        return {
+          page: th.page, ink: th.ink, secondary: th.secondary, rubric: th.rubric, rubricText: th.rubric,
+          nearA, farA, near: rgba(th.ink, nearA), far: rgba(th.ink, farA),
+          spoken: look.spoken || th.ink,
+          glyph: L ? th.page : '#141416', dock: th.dock,
+          dockHairline: rgba(th.ink, L ? .11 : .14), button: rgba(th.ink, L ? .06 : .08),
+          track: rgba(th.ink, L ? .16 : .20), hairline: rgba(th.ink, L ? .20 : .22),
+          disabled: rgba(th.secondary, .45), dockShadow: L ? LIGHT_SHADOW : DARK_SHADOW,
+          sb: L ? '#000000' : '#FFFFFF', light: L, paper: look.theme === 'ambient' ? ambientWash(COVER_AVERAGE) : th.page,
+        };
+      }
+      // FolioPageBackdrop (folio/folio_page_backdrop.dart): ambient paints #141416 under a vertical
+      // gradient of folioWashComposite(average, a) at a = .40 / .30 / .55, stops 0 / .45 / 1: the
+      // cover's average at .62 brightness and 20 % over the page, then the page at a on top.
+      function ambientWash(average) {
+        const page = hex('#141416'), avg = hex(average);
+        const washed = page.map((p, i) => 0.2 * avg[i] * 0.62 + 0.8 * p);
+        const stop = a => 'rgb(' + washed.map((w, i) => Math.round((a * page[i] + (1 - a) * w) * 255)).join(',') + ')';
+        return 'linear-gradient(to bottom,' + stop(.40) + ' 0%,' + stop(.30) + ' 45%,' + stop(.55) + ' 100%)';
+      }
+
+      // ── Words and the narrator's pace (showcase/read-along word-timing formula) ──
+      // Pauses after a word: sentence end .42 s, colon or semicolon .30 s, comma or dash .17 s,
+      // and a breath of .12 s after the phrases in BREATHS, where a narrator takes one without
+      // punctuation. The reader's lines are cut at these pauses (regroup below), as they are
+      // at a real narrator's pauses; with no pause at all, an over-long run splits after its
+      // first words.
+      const BREATHS = ['ninety-two million miles', 'little blue green planet'];
+      const words = [];
+      CHAPTER.forEach(p => p.split(' ').forEach(w => words.push({ text: w, end: /[.!?]["’”)]*$/.test(w), breath: false })));
+      { const flat = words.map(w => w.text).join(' ');
+        for (const ph of BREATHS) { const at = flat.indexOf(ph); if (at >= 0) words[flat.slice(0, at + ph.length).split(' ').length - 1].breath = true; } }
+      const alnum = w => w.text.replace(/[^A-Za-z0-9]/g, '').length;
+      const pause = w => w.end ? 0.42 : /[;:]["’”]*$/.test(w.text) ? 0.30 : /[,—]["’”]*$/.test(w.text) ? 0.17 : w.breath ? 0.12 : 0;
+      const dur = words.map(w => 0.19 + 0.028 * alnum(w) + pause(w));
+      const wStart = [], wEnd = [];
+      { let t = 0; words.forEach((w, i) => { wStart.push(t); wEnd.push(t + 0.19 + 0.028 * alnum(w)); t += dur[i]; }); }
+      // The timeline runs to the passage's last word, plus a two-second hold.
+      const DUR = Math.ceil(wStart[words.length - 1] + dur[words.length - 1] - START) + 2;
+
+      // ── UI strings (strings/<locale>.json) ──────────────────────────────────────
+      // playerChapterRoman ("Chapter {numeral}") in folio caps (folioCaps: Turkish and Azerbaijani
+      // upper-case i to İ), split around the numeral so the head can set it in rubric.
+      function chapterLabelParts() {
+        const lc = (window.__HB_LOCALE || 'en').split('-')[0];
+        const caps = s => (lc === 'tr' || lc === 'az' ? s.replace(/i/g, 'İ') : s).toUpperCase();
+        const tpl = hbT('chapterLabel', 'Chapter {numeral}'), at = tpl.indexOf('{numeral}');
+        if (at < 0) return [caps(tpl), '', ''];
+        return [caps(tpl.slice(0, at)), CHAPTER_NUMERAL, caps(tpl.slice(at + '{numeral}'.length))];
+      }
+
+      // ── Reader lines: AlignmentPipeline.regroup with AlignmentConfig.reader ─────
+      const CFG = { gapMs: 1400, maxWords: 24, minWords: 6, softCutMinWords: 14, maxChars: 180 };
+      const ms = s => Math.round(s * 1000);
+      function regroup() {
+        const n = words.length, breaks = new Array(n).fill(false);
+        let runWords = 0, runChars = 0;
+        for (let i = 0; i < n; i++) {
+          const text = words[i].text.trim();
+          runWords++; runChars += text.length + 1;
+          const last = text.slice(-1);
+          const strong = last === '.' || last === '!' || last === '?';
+          const soft = last === ',' || last === ';' || last === ':';
+          let br = false;
+          if (i + 1 < n && ms(wStart[i + 1]) - ms(wEnd[i]) >= CFG.gapMs) br = true;
+          if (strong) br = true;
+          if (soft && runWords >= CFG.softCutMinWords) br = true;
+          if (runChars >= CFG.maxChars && runWords >= CFG.softCutMinWords) br = true;
+          if (br) { breaks[i] = true; runWords = 0; runChars = 0; }
+        }
+        const segs = []; let cur = [];
+        for (let i = 0; i < n; i++) { cur.push(i); if (breaks[i]) { segs.push(cur); cur = []; } }
+        if (cur.length) segs.push(cur);
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+        const best = seg => {
+          const max = CFG.maxWords, mid = seg.length >> 1;
+          let lo = clamp(mid - (max >> 1), 1, seg.length - 2), hi = clamp(mid + (max >> 1), 1, seg.length - 2);
+          if (hi > max - 1) hi = max - 1;
+          if (lo > hi) { lo = hi - (max >> 1); if (lo < 1) lo = 1; }
+          let bi = mid > hi ? hi : mid, bs = -1;
+          for (let i = lo; i <= hi; i++) {
+            const gap = ms(wStart[seg[i + 1]]) - ms(wEnd[seg[i]]);
+            const last = words[seg[i]].text.trim().slice(-1);
+            const score = gap + ((last === ',' || last === ';' || last === ':') ? 200 : 0);
+            if (score > bs) { bs = score; bi = i; }
+          }
+          return bi;
+        };
+        const out = [];
+        for (const seg of segs) {
+          if (seg.length <= CFG.maxWords) { out.push(seg); continue; }
+          let rest = seg;
+          while (rest.length > CFG.maxWords) { const c = best(rest); out.push(rest.slice(0, c + 1)); rest = rest.slice(c + 1); }
+          if (rest.length) out.push(rest);
+        }
+        const merged = [];
+        for (const seg of out) {
+          if (merged.length && seg.length < CFG.minWords && merged[merged.length - 1].length + seg.length <= CFG.maxWords) merged[merged.length - 1].push(...seg);
+          else merged.push(seg.slice());
+        }
+        if (merged.length >= 2 && merged[merged.length - 1].length < CFG.minWords && merged[merged.length - 2].length + merged[merged.length - 1].length <= CFG.maxWords)
+          merged[merged.length - 2].push(...merged.pop());
+        return merged;
+      }
+      const LINES = regroup();
+
+      // ── Reader geometry on a 393 x 852 iPhone (safe area 59 / 34) ───────────────
+      // ReadAlongChrome insets: top 59 + 48; bottomEdge 34 + 16; lamp corner 84 x 218.
+      // Page: sides 28, text from y 107 to 852 - 50, rows from y 634 narrowed to 265 past the lamp.
+      const SAFE_TOP = 59, SAFE_BOTTOM = 34, HEAD_H = 48;
+      const TEXT_TOP = SAFE_TOP + HEAD_H, TEXT_BOTTOM = SAFE_BOTTOM + 16, SIDE = 28;
+      const PAGE_W = 393 - 2 * SIDE, PAGE_H = 852 - TEXT_TOP - TEXT_BOTTOM;
+      const LAMP = { x: 393 - 20 - 64, y: 852 - SAFE_BOTTOM - 16 - 64, s: 64 };
+      const NOTCH_TOP = (852 - (SAFE_BOTTOM + 16 + 64 + 4 + 48 + 4 + 48)) - TEXT_TOP;
+      const NOTCH_W = Math.max(1, LAMP.x - 16 - SIDE);
+      const LINE_PAD = 10, FONT_PX = 23, LINE_H = 23 * 1.5, CAP_ROW = 0.78 * 23 * 2.15;
+      const BLOCK_H = 4 + 15 + 16 + 1 + 28;  // ChapterBlock: label only (the title is the generated "Chapter 1")
+
+      const stage = document.getElementById('stage');
+      const pager = document.getElementById('pager');
+      const $ = id => document.getElementById(id);
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      function wordHTML(i, cap) {
+        const t = words[i].text;
+        return cap ? '<span class="cap">' + esc(t.slice(0, 1)) + '</span>' + esc(t.slice(1)) : esc(t);
+      }
+      // A line's text: an em-space indent (lyricsIndentPrefix) unless it opens the page or carries the cap.
+      function textHTML(idx, dropCap, indent) {
+        return (indent && !dropCap ? '\u2003' : '') + idx.map((i, k) => '<span class="w" data-i="' + i + '">' + wordHTML(i, dropCap && k === 0) + '</span>').join(' ');
+      }
+
+      // ── Measuring and paginating (lyrics_page_layout.dart paginateLyricsLines) ──
+      let meas = null, zoomZ = 1;
+      const capLH = {}, shift = {};
+      function measure(idx, dropCap, width) {
+        meas.style.width = width + 'px';
+        meas.innerHTML = '<div class="tx">' + textHTML(idx, dropCap, true) + '</div>';
+        return meas.getBoundingClientRect().height / zoomZ + 2 * LINE_PAD;
+      }
+      function largestPrefix(ws, maxH, m, dropCap) {
+        if (maxH <= 0 || ws.length < 2) return null;
+        const h = c => m(ws.slice(0, c), dropCap);
+        const fh = h(1);
+        if (fh > maxH) return null;
+        let lo = 1, loH = fh, hi = ws.length - 1;
+        while (lo < hi) { const mid = (lo + hi + 1) >> 1; const mh = h(mid); if (mh <= maxH) { lo = mid; loH = mh; } else hi = mid - 1; }
+        return { count: lo, h: loH };
+      }
+      function paginate() {
+        const wide = (l, d) => measure(l, d, PAGE_W), narrowM = (l, d) => measure(l, d, NOTCH_W);
+        const reserve = BLOCK_H, narrowY = NOTCH_TOP, halfJoin = LINE_PAD, maxH = PAGE_H;
+        const pages = []; let current = [], used = 0, curDrop = false, lineBase = 0, curNarrow = null, curJoined = false;
+        const hasBlock = () => pages.length === 0 && reserve > 0;
+        const budget = () => hasBlock() ? Math.max(0, maxH - reserve) : maxH;
+        const occupied = () => current.length > 0 || hasBlock();
+        const firstUnplaced = () => lineBase === 0 && current.length === 0;
+        const top = () => (hasBlock() ? reserve : 0) + used;
+        const fit = (line, dropCap, joined) => {
+          if (!joined && curNarrow === null) { const full = wide(line, dropCap); if (top() + full - halfJoin <= narrowY) return { h: full, narrow: false }; }
+          const nh = narrowM(line, dropCap);
+          return { h: joined ? Math.max(1, nh - halfJoin) : nh, narrow: true };
+        };
+        const place = (line, h, narrow, joined) => {
+          if (!current.length) curDrop = firstUnplaced();
+          if (narrow && curNarrow === null) { curNarrow = current.length; curJoined = !!joined; }
+          current.push(line); used += h;
+        };
+        const finish = () => {
+          if (!occupied()) return;
+          pages.push({ lines: current, hasDropCap: curDrop, hasBlock: hasBlock(), narrowFrom: curNarrow, joined: curJoined });
+          lineBase += current.length; current = []; used = 0; curDrop = false; curNarrow = null; curJoined = false;
+        };
+        for (const src of LINES) {
+          let rem = src, joined = false;
+          while (rem.length) {
+            const dropCap = firstUnplaced();
+            const remH = budget() - used;
+            if (occupied() && remH <= 0) { finish(); joined = false; continue; }
+            const cf = fit(rem, dropCap, joined);
+            if (cf.narrow && curNarrow === null && !joined) {
+              const room = narrowY - top() + halfJoin;
+              const head = room > 0 ? largestPrefix(rem, Math.min(room, remH + halfJoin), wide, dropCap) : null;
+              if (head) {
+                const headH = Math.max(1, head.h - halfJoin), rest = rem.slice(head.count);
+                const restFirst = Math.max(1, narrowM([rest[0]], false) - halfJoin);
+                if (restFirst <= remH - headH) { place(rem.slice(0, head.count), headH, false, false); rem = rest; joined = true; continue; }
+              }
+            }
+            if (cf.h <= remH) { place(rem, cf.h, cf.narrow, joined); break; }
+            const fitting = largestPrefix(rem, remH, (l, d) => fit(l, d, joined).h, dropCap);
+            if (!fitting) {
+              if (!occupied()) { place(rem, cf.h, cf.narrow, joined); break; }
+              finish(); joined = false; continue;
+            }
+            const piece = rem.slice(0, fitting.count);
+            place(piece, fitting.h, fit(piece, dropCap, joined).narrow, joined);
+            rem = rem.slice(fitting.count);
+            if (rem.length) { finish(); joined = false; }
+          }
+        }
+        finish();
+        // Flat line list in reading order; joined pieces light up together.
+        const flat = [];
+        pages.forEach((pg, p) => pg.lines.forEach((idx, k) => {
+          const joinAbove = pg.joined && pg.narrowFrom !== null && k === pg.narrowFrom;
+          const joinBelow = pg.joined && pg.narrowFrom !== null && k === pg.narrowFrom - 1;
+          flat.push({ idx, page: p, k, cap: pg.hasDropCap && k === 0, start: wStart[idx[0]], joinAbove, joinBelow,
+                      indent: k > 0 && !joinAbove, narrow: pg.narrowFrom !== null && k >= pg.narrowFrom });
+        }));
+        const firstOfPage = pages.map(() => -1);
+        flat.forEach((l, k) => { if (firstOfPage[l.page] < 0) firstOfPage[l.page] = k; });
+        return { pages, flat, firstOfPage };
+      }
+      const LAYOUT = {};
+
+      // ── Building one layout's pages ─────────────────────────────────────────────
+      let built = null, spans = [], lineEls = [], lineList = [];
+      function lineDiv(f, n, fontId) {
+        const pt = f.joinAbove ? 0 : LINE_PAD, pb = f.joinBelow ? 0 : LINE_PAD;
+        return '<div class="ln" data-l="' + n + '" style="padding:' + pt + 'px 0 ' + pb + 'px"><div class="tx" style="top:' + shift[fontId].toFixed(3) + 'px">' +
+          textHTML(f.idx, f.cap, f.indent) + '</div></div>';
+      }
+      function buildPages(fontId) {
+        const L = LAYOUT[fontId], F = FONTS[fontId];
+        stage.style.setProperty('--lfont', F.family);
+        stage.style.setProperty('--lvar', F.lvar);
+        stage.style.setProperty('--capvar', F.capvar);
+        let html = '';
+        L.pages.forEach((pg, p) => {
+          html += '<div class="page" data-p="' + p + '" style="left:' + (p * 393) + 'px"><div class="pbox">';
+          if (pg.hasBlock) html += '<div class="blk"><div class="blkLabel">' + esc(chapterLabelParts().join('')) + '</div><div class="rule"></div></div>';
+          let narrowOpen = false;
+          L.flat.forEach((f, n) => {
+            if (f.page !== p) return;
+            if (f.narrow && !narrowOpen) { html += '<div class="narrowCol">'; narrowOpen = true; }
+            html += lineDiv(f, n, fontId);
+          });
+          if (narrowOpen) html += '</div>';
+          html += '</div></div>';
+        });
+        pager.innerHTML = html;
+        spans = []; lineEls = [];
+        pager.querySelectorAll('.w').forEach(el => { spans[+el.dataset.i] = el; });
+        pager.querySelectorAll('.ln').forEach(el => { lineEls[+el.dataset.l] = el; });
+        pager.querySelectorAll('.cap').forEach(el => { el.style.lineHeight = capLH[fontId] + 'px'; });
+        // Each line's page and resting top (stage px), for the dock fade.
+        lineList = [...pager.querySelectorAll('.ln')].map(el => {
+          const pg = el.closest('.page'), r = el.getBoundingClientRect(), pr = pg.getBoundingClientRect();
+          return { el, page: +pg.dataset.p, top: (r.top - pr.top) / zoomZ };
+        });
+        built = fontId;
+        touched.clear();
+      }
+
+      // ── Karaoke paint (lyrics_karaoke.dart) ─────────────────────────────────────
+      // Narrated line at the near alpha, others at the far alpha (180 ms cross-fade), spoken
+      // words in full ink (or the look's accent), the current word wiped, the red 2 dp now-rule
+      // under the newest started word. Emphasis and the word fill are off by default.
+      const cubic = (x1, y1, x2, y2) => p => {
+        p = Math.max(0, Math.min(1, p)); if (p === 0 || p === 1) return p;
+        let lo = 0, hi = 1, s = p;
+        for (let i = 0; i < 40; i++) { s = (lo + hi) / 2; const x = 3 * (1 - s) * (1 - s) * s * x1 + 3 * (1 - s) * s * s * x2 + s * s * s; if (x < p) lo = s; else hi = s; }
+        return 3 * (1 - s) * (1 - s) * s * y1 + 3 * (1 - s) * s * s * y2 + s * s * s;
+      };
+      const easeOutCubic = p => 1 - Math.pow(1 - Math.max(0, Math.min(1, p)), 3);
+      const easeOut = cubic(0, 0, .58, 1), ease = cubic(.25, .1, .25, 1), easeInOut = cubic(.42, 0, .58, 1), kOut = cubic(.22, .8, .3, 1);
+      let tk = null;
+      const touched = new Set();
+      function lineColor(x) {
+        // idle (far) painted at 1 - x under unspoken (near) at x: two layers of the same ink.
+        const a = 1 - (1 - tk.farA * (1 - x)) * (1 - tk.nearA * x);
+        return rgba(tk.ink, a);
+      }
+      function resetLine(n, L) {
+        const el = lineEls[n]; if (!el) return;
+        el.style.color = '';
+        for (const i of L.flat[n].idx) {
+          const s = spans[i]; if (!s) continue;
+          s.className = 'w'; s.style.removeProperty('--nowA');
+          const wp = s.querySelector('.wipe'); if (wp) wp.remove();
+        }
+      }
+      function paintKaraoke(L, li, pos, lookStartPos) {
+        // The narrated group: the active line, plus its joined other half at the lamp's notch.
+        const group = new Set();
+        if (li >= 0) {
+          group.add(li);
+          if (L.flat[li].joinAbove) group.add(li - 1);
+          if (L.flat[li].joinBelow) group.add(li + 1);
+        }
+        const groupStart = li < 0 ? 0 : Math.min(...[...group].map(n => L.flat[n].start));
+        const act = li < 0 ? 0 : (groupStart >= lookStartPos ? easeOutCubic((pos - groupStart) / 0.18) : 1);
+        const want = new Map();
+        for (const n of group) want.set(n, act);
+        // The group the narrator just left fades from near to far over 180 ms.
+        if (li > 0) {
+          const prev = Math.min(...group) - 1;
+          if (prev >= 0 && groupStart >= lookStartPos && pos - groupStart < 0.18) {
+            const x = 1 - easeOutCubic((pos - groupStart) / 0.18);
+            want.set(prev, x);
+            if (L.flat[prev].joinAbove) want.set(prev - 1, x);
+          }
+        }
+        for (const n of [...touched]) if (!want.has(n)) { resetLine(n, L); touched.delete(n); }
+        for (const [n, x] of want) {
+          const el = lineEls[n]; if (!el) continue;
+          el.style.color = lineColor(x);
+          touched.add(n);
+          const active = group.has(n);
+          const idx = L.flat[n].idx;
+          let newest = -1;
+          for (let k = 0; k < idx.length; k++) if (wStart[idx[k]] <= pos) newest = k;
+          let cur = -1, frac = 0;
+          if (active && newest >= 0 && pos < wEnd[idx[newest]]) { cur = newest; frac = (pos - wStart[idx[newest]]) / (wEnd[idx[newest]] - wStart[idx[newest]]); }
+          idx.forEach((i, k) => {
+            const s = spans[i];
+            let wp = s.querySelector('.wipe');
+            const spoken = active && k <= newest && k !== cur;
+            const now = active && k === newest;
+            s.className = 'w' + (spoken ? ' sp' : '') + (now ? ' now' : '');
+            if (now) s.style.setProperty('--nowA', act.toFixed(3)); else s.style.removeProperty('--nowA');
+            if (active && k === cur) {
+              if (!wp) { wp = document.createElement('span'); wp.className = 'wipe'; wp.innerHTML = wordHTML(i, L.flat[n].cap && k === 0); s.appendChild(wp); }
+              wp.style.clipPath = 'inset(-4px ' + ((1 - frac) * 100).toFixed(3) + '% -4px 0)';
+            } else if (wp) wp.remove();
+          });
+        }
+      }
+
+      // ── Everything visible is a function of film time t ─────────────────────────
+      const clock = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60; return (h ? h + ':' : '') + String(m).padStart(2, '0') + ':' + String(x).padStart(2, '0'); };
+      // The shot's look, set once at build time (the colours; the pages are built for LOOK.font).
+      function applyLook(look) {
+        tk = tokens(look);
+        for (const k of ['page', 'paper', 'ink', 'secondary', 'rubric', 'rubricText', 'near', 'far', 'spoken', 'glyph', 'dock', 'dockHairline', 'button', 'track', 'hairline', 'disabled', 'dockShadow', 'sb'])
+          stage.style.setProperty('--' + k, tk[k]);
+        $('ringTrack').setAttribute('stroke', tk.track);
+        $('ringArc').setAttribute('stroke', tk.rubric);
+      }
+      function show(el, opacity) {
+        el.style.opacity = opacity;
+        el.style.visibility = opacity <= 0.001 ? 'hidden' : 'visible';
+      }
+      const lerp = (a, b, p) => a + (b - a) * p;
+      let CARD = null;
+
+      function render(t) {
+        const pos = START + t;
+        const lookSince = 0, L = LAYOUT[LOOK.font];
+
+        // Active line: sticky binary search over the paged lines.
+        let lo = 0, hi = L.flat.length - 1;
+        while (lo < hi) { const m = (lo + hi + 1) >> 1; if (L.flat[m].start <= pos) lo = m; else hi = m - 1; }
+        const li = L.flat[lo].start <= pos ? lo : -1;
+
+        // Page follow: animateToPage 320 ms easeOutCubic.
+        const page = li >= 0 ? L.flat[li].page : 0;
+        let off = page;
+        if (page > 0) {
+          const tc = L.flat[L.firstOfPage[page]].start - START;
+          if (tc >= lookSince && t - tc < 0.32) off = page - 1 + easeOutCubic((t - tc) / 0.32);
+        }
+        pager.style.transform = 'translateX(' + (-off * 393).toFixed(3) + 'px)';
+        $('pnum').textContent = (Math.round(off) + 1) + ' / ' + L.pages.length;
+
+        paintKaraoke(L, li, pos, START + lookSince);
+
+        // Dock -> lamp (DockUnfold 300 ms easeInOut; contents fade by 60%); the lamp fades in
+        // after 200 ms and grows from .8, its handle after 260 ms; the page's dock fade lets go.
+        const tau = t - T_HIDE;
+        const u = tau <= 0 ? 1 : Math.max(0, 1 - tau / 0.3), e = easeInOut(u);
+        const box = $('dockBox');
+        if (u > 0) {
+          const x = lerp(LAMP.x, CARD.x, e), y = lerp(LAMP.y, CARD.y, e), w = lerp(LAMP.s, CARD.w, e), h = lerp(LAMP.s, CARD.h, e);
+          box.style.left = x + 'px'; box.style.top = y + 'px'; box.style.width = w + 'px'; box.style.height = h + 'px';
+          box.style.borderRadius = lerp(32, 28, e) + 'px';
+          show(box, 1);
+        } else show(box, 0);
+        show($('dock'), Math.max(0, Math.min(1, (u - 0.6) / 0.4)));
+        const lampA = tau <= 0 ? 0 : ease((tau - 0.2) / 0.2);
+        const lampS = tau <= 0 ? 0.8 : lerp(0.8, 1, kOut((tau - 0.18) / 0.26));
+        show($('lamp'), lampA); $('lamp').style.transform = 'scale(' + lampS.toFixed(4) + ')';
+        show($('handle'), tau <= 0 ? 0 : ease((tau - 0.26) / 0.2));
+        // ReaderDockFade: a 48 px fade ending 14 px above the dock while it shows, released over 300 ms.
+        const s = tau <= 0 ? 1 : 1 - easeOut(tau / 0.3);
+        const end = CARD.y - 14, start = end - 48;
+        if (s > 0) {
+          const a = (1 - s).toFixed(4);
+          pager.style.webkitMaskImage = pager.style.maskImage = 'linear-gradient(to bottom,#000 0,#000 ' + start + 'px,rgba(0,0,0,' + a + ') ' + end + 'px,rgba(0,0,0,' + a + ') 100%)';
+        } else pager.style.webkitMaskImage = pager.style.maskImage = 'none';
+        // Not drawn: pages off screen, and lines wholly inside the closed part of the fade.
+        for (const ln of lineList) {
+          const offPage = Math.abs(ln.page - off) >= 0.999;
+          const masked = s >= 0.999 && ln.top + LINE_PAD >= end;
+          ln.el.classList.toggle('off', offPage || masked);
+        }
+        show($('pnum'), u > 0 ? 0 : 1);
+
+        // Scrubber, times and the lamp's chapter ring.
+        const frac = pos / CHAPTER_LEN;
+        $('elapsed').textContent = clock(pos);
+        $('remaining').textContent = '−' + clock(CHAPTER_LEN - pos);
+        const tw = $('track').offsetWidth, cx = tw * frac;
+        $('tAc').style.width = cx + 'px';
+        $('tIn').style.left = cx + 'px'; $('tIn').style.width = (tw - cx) + 'px';
+        $('thumb').style.left = (cx - 12) + 'px';
+        const sweep = 2 * Math.PI * Math.min(1, frac), ex = 33 + 30 * Math.sin(sweep), ey = 33 - 30 * Math.cos(sweep);
+        $('ringArc').setAttribute('d', 'M33 3A30 30 0 ' + (sweep > Math.PI ? 1 : 0) + ' 1 ' + ex.toFixed(3) + ' ' + ey.toFixed(3));
+      }
+
+      // ── Static pieces ────────────────────────────────────────────────────────────
+      function statusIcons() {
+        let d = '';
+        [[0, 7], [4.6, 5], [9.2, 2.6], [13.8, 0]].forEach(([x, y]) => { d += '<rect x="' + x + '" y="' + (1 + y) + '" width="3.2" height="' + (11 - y) + '" rx="1"/>'; });
+        const cx = 30.65, cy = 11.6, a = Math.PI / 4;
+        const pt = (r, s) => (cx + r * Math.sin(s * a)).toFixed(2) + ' ' + (cy - r * Math.cos(s * a)).toFixed(2);
+        const sector = (r0, r1) => r0 === 0
+          ? 'M' + cx + ' ' + cy + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'Z'
+          : 'M' + pt(r0, -1) + 'L' + pt(r1, -1) + 'A' + r1 + ' ' + r1 + ' 0 0 1 ' + pt(r1, 1) + 'L' + pt(r0, 1) + 'A' + r0 + ' ' + r0 + ' 0 0 0 ' + pt(r0, -1) + 'Z';
+        d += '<path d="' + sector(0, 3.3) + sector(5.0, 7.0) + sector(8.7, 10.8) + '"/>';
+        d += '<rect x="45.5" y=".5" width="25" height="12" rx="3.8" fill="none" stroke="currentColor" stroke-opacity=".35"/>';
+        d += '<rect x="47.5" y="2.5" width="21" height="8" rx="2"/>';
+        d += '<path d="M72 4.5c.9.3 1.5 1.1 1.5 2s-.6 1.7-1.5 2Z" fill-opacity=".4"/>';
+        $('sbG').innerHTML = d;
+      }
+      function placeDevice() {
+        // frame-iphone.png 4317 x 8796, screen x 199..4111, y 168..8653; 1960 px tall, centred.
+        const s = 1960 / 8796, fw = 4317 * s, fl = (3840 - fw) / 2, ft = (2160 - 1960) / 2;
+        const fr = $('frame');
+        fr.style.left = fl + 'px'; fr.style.top = ft + 'px'; fr.style.width = fw + 'px'; fr.style.height = '1960px';
+        const sw = 3913 * s, sh = 8486 * s, z = Math.max(sw / 393, sh / 852);
+        const sc = $('screen');
+        sc.style.left = (fl + 199 * s) + 'px';
+        sc.style.top = (ft + 168 * s) + 'px';
+        sc.style.width = sw + 'px'; sc.style.height = sh + 'px';
+        sc.style.borderRadius = (400 * s) + 'px';
+        stage.style.marginLeft = ((sw - 393 * z) / 2 / z) + 'px';
+        stage.style.zoom = z;
+      }
+      function layoutDock() {
+        // DockCard: 12 dp gutters, 8 dp above the home-indicator inset, contents 14 / 16 padding.
+        const dock = $('dock');
+        dock.style.left = '12px'; dock.style.width = (393 - 24) + 'px';
+        // Pills: one row with icons (fitPills), each as wide as its natural width allows (flex x10).
+        const pills = ['pSpeed', 'pSleep', 'pChapters'].map($);
+        const textW = pills.map(p => Math.ceil(p.querySelector('span').getBoundingClientRect().width / zoomZ));
+        pills.forEach((p, k) => { p.style.flex = Math.max(1, Math.round((10 * 2 + textW[k] + 18 + 5) * 10)) + ' 1 0'; });
+        const h = dock.offsetHeight;
+        const bottom = 852 - SAFE_BOTTOM - 8;
+        dock.style.top = (bottom - h) + 'px';
+        CARD = { x: 12, y: bottom - h, w: 393 - 24, h };
+      }
+
+      placeDevice();
+      // Every face the film measures with, loaded before measuring (fonts.ready only covers faces in use).
+      const FACES = ['400 23px HBNews', '400 23px HBKameron', '400 15px HBAtk', '700 15px HBAtk', '600 17px HBInter'];
+      document.fonts.ready.then(() => Promise.all(FACES.map(f => document.fonts.load(f)))).then(() => {
+        // Translated strings first: everything below measures them.
+        hbLocaleSetup();
+        hbApplyStrings();
+        const head = chapterLabelParts();
+        $('hTitleText').innerHTML = esc(head[0]) + (head[1] ? '<b>' + esc(head[1]) + '</b>' : '') + esc(head[2]);
+        $('chapLine').textContent = hbT('chapterNumber', 'Chapter {number}').replace('{number}', String(CHAPTER_NUMBER));
+        zoomZ = stage.getBoundingClientRect().width / 393;
+        statusIcons();
+        applyLook(LOOK);
+        layoutDock();
+        // Paginate the shot's reading font.
+        meas = document.createElement('div');
+        meas.id = 'meas'; meas.className = 'ln';
+        $('reader').appendChild(meas);
+        for (const fontId of [LOOK.font]) {
+          const F = FONTS[fontId];
+          meas.style.fontFamily = F.family;
+          meas.style.fontVariationSettings = F.lvar;
+          // Flutter splits a line's leading by ascent/descent; CSS halves it. Shift the glyphs to match.
+          shift[fontId] = LINE_H * F.A / (F.A + F.D) - ((LINE_H - (F.A + F.D) * FONT_PX) / 2 + F.A * FONT_PX);
+          // Drop cap: 2.15 x the size, w450, height .78, so its row is 0.78 x 49.45 tall.
+          const capRule = document.createElement('style');
+          capRule.textContent = '#meas .cap{line-height:28px;font-variation-settings:' + F.capvar + '}';
+          document.head.appendChild(capRule);
+          meas.style.width = PAGE_W + 'px';
+          // Measured on the chapter's own first letters (the cap and the one after it).
+          const first = words[0].text, capCh = String.fromCodePoint(first.codePointAt(0)), rest = first.slice(capCh.length, capCh.length + 1);
+          meas.innerHTML = '<div class="tx"><span class="cap">' + esc(capCh) + '</span>' + esc(rest) + '</div>';
+          const h0 = meas.getBoundingClientRect().height / zoomZ;
+          capLH[fontId] = 28 + 2 * (CAP_ROW - h0);
+          capRule.textContent = '#meas .cap{line-height:' + capLH[fontId] + 'px;font-variation-settings:' + F.capvar + '}';
+          LAYOUT[fontId] = paginate();
+          capRule.remove();
+        }
+        meas.remove();
+        buildPages(LOOK.font);
+        window.__dbg = () => ({
+          zoom: zoomZ, capLH, shift, pageH: PAGE_H, notchTop: NOTCH_TOP, notchW: NOTCH_W, card: CARD, near: tk.nearA, far: tk.farA,
+          layouts: Object.fromEntries(Object.entries(LAYOUT).map(([k, L]) => [k, { pages: L.pages.length,
+            flat: L.flat.map(f => ({ a: f.idx[0], b: f.idx[f.idx.length - 1], page: f.page, start: +f.start.toFixed(2), narrow: f.narrow, ja: f.joinAbove, jb: f.joinBelow })) }])),
+          tops: lineList.map(l => [+l.el.dataset.l, l.page, +(l.top).toFixed(1), +(l.top + l.el.getBoundingClientRect().height / zoomZ).toFixed(1)]),
+        });
+        render(0);
+
+        const tl = gsap.timeline({ paused: true });
+        const clockProxy = { t: 0 };
+        tl.to(clockProxy, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clockProxy.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

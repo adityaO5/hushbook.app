@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Karakter haritası",
+  "castCount": "Oyuncular · {count}",
+  "roleHero": "Kahraman",
+  "roleVillain": "Kötü karakter",
+  "roleRival": "Rakip",
+  "roleMentor": "Akıl hocası",
+  "roleFriend": "Arkadaş",
+  "roleLoveInterest": "Aşk ilgisi",
+  "relationMentorOf": "akıl hocası",
+  "relationStudentOf": "öğrencisi",
+  "relationEmployerOf": "işvereni",
+  "relationEmployeeOf": "çalışanı",
+  "sectionRole": "Rol",
+  "sectionFirstHeard": "İlk duyulduğu yer",
+  "firstHeardLabel": "Böl. {chapter} · {time}",
+  "sectionDescription": "Açıklama",
+  "sectionAttributes": "Özellikler",
+  "sectionRelationships": "İlişkiler",
+  "deleteCharacter": "Karakteri sil"
+}

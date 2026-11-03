@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Karakterkaart",
+  "castCount": "Cast · {count}",
+  "roleHero": "Held",
+  "roleVillain": "Schurk",
+  "roleRival": "Rivaal",
+  "roleMentor": "Mentor",
+  "roleFriend": "Vriend",
+  "roleLoveInterest": "Liefdesinteresse",
+  "relationMentorOf": "mentor van",
+  "relationStudentOf": "leerling van",
+  "relationEmployerOf": "werkgever van",
+  "relationEmployeeOf": "medewerker van",
+  "sectionRole": "Rol",
+  "sectionFirstHeard": "Voor het eerst gehoord",
+  "firstHeardLabel": "Hfst. {chapter} · {time}",
+  "sectionDescription": "Beschrijving",
+  "sectionAttributes": "Kenmerken",
+  "sectionRelationships": "Relaties",
+  "deleteCharacter": "Teken verwijderen"
+}

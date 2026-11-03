@@ -1,0 +1,4 @@
+[
+  { "id": "read-along", "t": 14.45, "crop": "phone", "out": "read-along" },
+  { "id": "read-along-paper", "t": 14.45, "crop": "phone", "out": "read-along-paper", "vars": { "theme": "warm" } }
+]

@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Mapa postaci",
+  "castCount": "Obsada · {count}",
+  "roleHero": "Bohater",
+  "roleVillain": "Czarny charakter",
+  "roleRival": "Rywal",
+  "roleMentor": "Mentor",
+  "roleFriend": "Przyjaciel",
+  "roleLoveInterest": "Obiekt uczuć",
+  "relationMentorOf": "mentor",
+  "relationStudentOf": "uczeń",
+  "relationEmployerOf": "pracodawca z",
+  "relationEmployeeOf": "pracownik",
+  "sectionRole": "Rola",
+  "sectionFirstHeard": "Pierwszy raz usłyszana",
+  "firstHeardLabel": "Rozdz. {chapter} · {time}",
+  "sectionDescription": "Opis",
+  "sectionAttributes": "Atrybuty",
+  "sectionRelationships": "Relacje",
+  "deleteCharacter": "Usuń znak"
+}

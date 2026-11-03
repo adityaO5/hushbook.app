@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* HushBook iPhone app, Analytics tab, light theme. Source: D:\hushbook (main).
+         HbColors.light (lib/theme/hb_colors.dart), EngagementInk (analytics/engagement/engagement_driver_ui.dart),
+         the cards under lib/features/analytics/cards and widgets, trends_screen.dart for the layout. */
+      :root{
+        --canvas:#FAF9F5;
+        --bg:#FBF8F2; --tb:#2F2F2F; --seg:#858585; --hair:#F2F2F7; --accent:#6F3825; --icon:#090A0A;
+        --ink:#2A1A14; --text:#2F2F2F; --soft:#4E423C; --muted:#6B6B6B; --divider:#F0EDE7;
+        --border:#E9D9C7; --track:#E8E2D9; --dotted:#9A8F85; --link:#1D6890;
+        --dockLabel:#3A3734;
+      }
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Regular.ttf');font-weight:400}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Medium.ttf');font-weight:500}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-SemiBold.ttf');font-weight:600}
+      @font-face{font-family:HBInter;src:url('../../assets/fonts/Inter-Bold.ttf');font-weight:700}
+      @font-face{font-family:HBHush;src:url('../../assets/fonts/HushFont-Regular.otf');font-weight:400}
+      @font-face{font-family:HBPlayfair;src:url('../../assets/fonts/PlayfairDisplay-Variable.ttf');font-weight:400 900}
+      @font-face{font-family:HBNews;src:url('../../assets/fonts/Newsreader-Variable.ttf');font-weight:200 800}
+      @font-face{font-family:HBMaterial;src:url('../../assets/fonts/MaterialIcons-Regular.otf');font-weight:400}
+      @font-face{font-family:HBCupertino;src:url('../../assets/fonts/CupertinoIcons.ttf');font-weight:400}
+
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{margin:0;width:3840px;height:2160px;overflow:hidden;background:var(--canvas)}
+      #root{width:100%;height:100%;position:relative;background:var(--canvas)}
+      #app{position:absolute;inset:0;overflow:hidden}
+      img{display:block}
+      svg{display:block;flex:none}
+
+      /* The phone: frame-iphone.png at 1960 px tall (scale 1960/8796), centred. Its screen rect
+         (x 199..4111, y 168..8653) lands at 1483.367, 137.435, 871.929 x 1890.929; the 393 x 852
+         stage is zoomed 1890.929 / 852 = 2.2194 (cover) and centred, clipped at the screen's corner radius. */
+      .frame{position:absolute;left:1439.024px;top:100px;width:961.951px;height:1960px;pointer-events:none}
+      .screen{position:absolute;left:1483.367px;top:137.435px;width:871.929px;height:1890.929px;border-radius:89.13px;overflow:hidden}
+      /* Material's DefaultTextStyle under a Scaffold is M3 bodyMedium: letter spacing 0.25, height 1.43,
+         even leading (the CSS line box). Every Text below inherits it unless it sets its own. */
+      .stage{position:absolute;left:-0.0665px;top:0;width:393px;height:852px;zoom:2.2194;overflow:hidden;background:var(--bg);
+             font-family:HBInter,sans-serif;font-weight:400;color:var(--text);letter-spacing:.25px;line-height:1.43;
+             -webkit-font-smoothing:antialiased}
+
+      /* Icon fonts: Flutter Icon(size) is the glyph at fontSize = size in a size x size box. */
+      .mi,.ci{display:inline-block;flex:none;text-align:center;font-style:normal;font-weight:400;white-space:nowrap;letter-spacing:0;line-height:1}
+      .mi{font-family:HBMaterial}
+      .ci{font-family:HBCupertino}
+
+      /* ── App bar (_AnalyticsAppBar): SafeArea 59 + 16, a 52-tall row ── */
+      #appbar{position:absolute;left:0;top:75px;width:393px;height:52px;padding:0 16px;display:flex;align-items:center;z-index:3}
+      .abTitle{flex:1;min-width:0;font-family:HBPlayfair;font-weight:500;font-size:23px;color:var(--tb);white-space:nowrap}
+      .abBell{width:48px;height:48px;display:grid;place-items:center;color:var(--tb)}
+      .avatar{position:relative;width:52px;height:52px;flex:none;border-radius:50%;overflow:hidden;background:#F7F4EE;margin-left:4px}
+      .avatar img{position:absolute;left:0;top:0;width:100%;height:100%}
+
+      /* ── NestedScrollView viewport: y 127 .. 852 ── */
+      #viewport{position:absolute;left:0;top:127px;width:393px;height:725px;overflow:hidden;z-index:1}
+      #momWrap{position:absolute;left:0;top:0;width:393px;padding:16px}
+
+      /* MomentumCard on PearlSurface: 397:251, radius 25, the orange-pink wash bottom-left to top-right. */
+      #mom{position:relative;width:361px;height:228.237px;border-radius:25px;overflow:hidden;isolation:isolate;
+           background:linear-gradient(57.69deg,#FFC97A 0%,#F49CC2 100%);
+           box-shadow:0 1px 3.31px rgba(60,40,20,.051),0 10px 31.02px rgba(60,40,20,.078)}
+      #mom .edge{position:absolute;inset:0;border:1px solid #EEE6D9;border-radius:25px}
+      #pearl{position:absolute;left:0;top:0;width:361px;height:228.237px;mix-blend-mode:multiply}
+      #mom .hi{position:absolute;left:0;right:0;top:1px;height:1px;background:#fff}
+      .momIn{position:absolute;inset:0;padding:16.368px 18.186px;display:flex;flex-direction:column;color:#fff}
+      .momTitleRow{height:36px;display:flex;align-items:center;flex:none}
+      .momTitle{font-weight:700;font-size:20.005px;line-height:1}
+      .momSp{flex:1}
+      .momMid{display:flex;align-items:center;justify-content:space-between;flex:none}
+      .momLeft{display:flex;align-items:center;min-width:0}
+      .momNum{font-family:HBHush;font-size:49.103px;line-height:1;white-space:nowrap}
+      .momDays{margin-left:7.275px;font-weight:700;font-size:20.005px;line-height:1.1;white-space:nowrap}
+      .momArt{width:57.287px;height:61.834px;margin-left:10.912px}
+      .momBot{display:flex;align-items:flex-end;justify-content:space-between;flex:none}
+      .momSub{flex:1;min-width:0;font-weight:300;font-size:16.368px;line-height:1;color:rgba(255,255,255,.85);white-space:nowrap}
+      .momNext{display:flex;flex-direction:column;align-items:flex-end}
+      .momNextL{font-weight:600;font-size:10.912px;line-height:1;color:rgba(255,255,255,.85);white-space:nowrap}
+      .momNextV{margin-top:3.637px;font-weight:800;font-size:21.824px;line-height:1;white-space:nowrap}
+
+      /* Tab body: analyticsCanvas under tabs_gradient_bg.jpg (cover, top centre), from the tab bar's top. */
+      #body{position:absolute;left:0;width:393px;overflow:hidden;background:#FFB08A}
+      #bgimg{position:absolute;left:0;top:0;width:393px;height:2555.386px}
+      .page{position:absolute;left:0;top:0;width:393px}
+      .col{padding:60px 16px 0;display:flex;flex-direction:column;gap:16px}
+
+      /* _TabBar in its pinned 48-tall header */
+      #tabbar{position:absolute;left:0;width:393px;height:48px;background:var(--bg);z-index:2}
+      .tbRow{display:flex;padding:0 16px}
+      .tbCell{position:relative;flex:1 1 0;height:47px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+      .tbLab{position:relative;font-size:16px;letter-spacing:-.32px;color:var(--seg);white-space:nowrap}
+      .tbLab.on{font-weight:600;color:var(--tb)}
+      .tbLine{position:relative;display:block;margin-top:8px;height:2px;width:0;background:var(--tb)}
+      .tbInk{position:absolute;inset:0;border-radius:12px;overflow:hidden;pointer-events:none}
+      .tbHl{position:absolute;inset:0;background:rgba(188,188,188,.4);opacity:0}
+      .tbRip{position:absolute;border-radius:50%;background:rgba(200,200,200,.4);opacity:0}
+      .tbHair{height:.5px;background:var(--hair)}
+
+      /* ── AnalyticsCard shell ── */
+      .acard{position:relative;width:361px;background:#fff;border:1px solid var(--border);border-radius:24px;
+             box-shadow:0 4px 12.03px rgba(0,0,0,.145);padding:18px 16px 16px}
+      .ahead{display:flex;align-items:flex-start}
+      .tcol{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+      .atitle{font-weight:600;font-size:19px;line-height:1.3;color:var(--ink)}
+      .aperiod{font-size:13px;line-height:1.45;color:var(--soft)}
+      .abody{margin-top:12px;display:flex;flex-direction:column}
+      .ins{font-weight:500;font-size:15px;line-height:1.45;color:var(--text)}
+      .note{font-size:12px;line-height:1.45;color:var(--muted)}
+      .ib48{width:48px;height:48px;display:grid;place-items:center;flex:none;color:var(--muted)}
+      .ib44{width:44px;height:44px;display:grid;place-items:center;flex:none;color:var(--muted)}
+      /* TextButton: 44 tall visual in a 48 tap target, 4 dp side padding, labelLarge spacing 0.1 */
+      .vat{align-self:flex-start;height:48px;padding:0 4px;display:flex;align-items:center;letter-spacing:.1px;line-height:1.43;
+           font-weight:600;font-size:13px;color:var(--link);text-decoration:underline;text-decoration-color:var(--link);white-space:nowrap}
+      .linkInk{color:var(--ink);text-decoration-color:var(--ink)}
+      .sp{flex:none}
+
+      /* HushNumber: figures in HushFont, units in Inter, lifted 0.118 em so they bottom out with the figures. */
+      .hn{font-family:HBHush;white-space:pre;letter-spacing:0;color:#64210A}
+      .hn .u{font-family:HBInter;font-weight:600;line-height:0;position:relative}
+
+      /* TrendChip */
+      .chip{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:#E5F5F1;color:#2B6E5C}
+      .chip span{font-weight:600;font-size:12px;line-height:1.3}
+
+      /* Charts (positions computed in build) */
+      .chart{position:relative}
+      .chart .lbl{position:absolute;font-size:12px;line-height:1.3;color:var(--muted);white-space:nowrap;text-align:center}
+      .chart .lbl.strong{font-weight:600;color:var(--ink)}
+      .chart .paper{background:#fff}
+      .bar{position:absolute}
+      .legendRow{display:flex;align-items:center;gap:8px}
+      .legendRow span{font-size:12px;line-height:1.3;color:var(--muted)}
+
+      /* Goals */
+      .obtn{height:48px;display:flex;align-items:center;flex:none}
+      .obtn .in{height:44px;padding:0 14px;border:1px solid var(--border);border-radius:22px;display:flex;align-items:center;gap:8px;color:var(--ink)}
+      .obtn span{font-weight:600;font-size:14px;letter-spacing:.1px;line-height:1.43}
+      .gHead{display:flex;align-items:flex-start;gap:12px}
+      .gTitle{flex:3 1 0;min-width:0;font-weight:600;font-size:15px;line-height:1.35;color:var(--ink)}
+      .gProg{flex:2 1 0;min-width:0;text-align:end;font-weight:600;font-size:14px;line-height:1.35;color:var(--soft)}
+      .gPace{font-size:14px;line-height:1.5;color:var(--text)}
+      .gDiv{margin:14px 0;height:1px;background:var(--divider)}
+      .gBar{height:8px;border-radius:999px;background:var(--track);overflow:hidden}
+      .gBar i{display:block;height:100%;border-radius:999px;background:#B26F14}
+
+      /* Finish forecast */
+      .about{font-family:HBHush;font-size:44px;line-height:44px;white-space:pre;letter-spacing:0;color:#64210A}
+      .about .w{font-family:HBInter;font-weight:500;font-size:15px;line-height:0;letter-spacing:.25px;color:var(--muted);position:relative;top:-5.192px}
+      .ticks{display:flex;align-items:flex-start;font-size:12px;line-height:1.35;color:var(--soft)}
+      .ticks > div{flex:1 1 0;min-width:0}
+      .ticks b{font-weight:600;color:var(--ink)}
+      .paceLegend{display:flex;align-items:flex-start;gap:6px}
+      .paceLegend .sw{height:15.6px;display:flex;align-items:center}
+      .paceLegend .sw i{display:block;width:16px;height:2px;background:var(--ink)}
+      .paceLegend span{font-weight:600;font-size:12px;line-height:1.3;color:var(--text)}
+
+      /* Habits */
+      .rule{padding:4px 0 14px}
+      .rule i{display:block;height:1px;background:var(--divider)}
+      .pill{align-self:flex-start;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:#E5F3FA;color:#1D6890}
+      .pill span{font-weight:600;font-size:13px;line-height:1.35}
+
+      /* Records */
+      .rec{display:flex;align-items:center;gap:12px;padding:11px 0}
+      .rec .tile{width:40px;height:40px;border-radius:10px;background:#FDF1E2;color:#8E560F;display:grid;place-items:center;flex:none}
+      .rec .lab{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+      .rec .lt{font-weight:600;font-size:15px;line-height:1.3;color:var(--ink)}
+      .rec .ld{font-size:13px;line-height:1.4;color:var(--soft)}
+      .rec .val{font-weight:700;font-size:17px;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+      .hr{height:1px;background:var(--divider)}
+
+      /* Reading engagement (BrainScoreCard): padding 14 20 12 16, a 6 dp inset for the text column */
+      .rcard{position:relative;width:361px;background:#fff;border:1px solid var(--border);border-radius:24px;
+             box-shadow:0 4px 12.03px rgba(0,0,0,.145);padding:20px 12px 16px 14px}
+      .rin{padding:0 6px}
+      .rtitle{font-weight:600;font-size:19px;line-height:1.3;color:var(--text)}
+      .rsub{font-size:13px;line-height:1.45;color:var(--muted)}
+      .score{display:flex;flex-wrap:wrap;align-items:flex-end;column-gap:14px;row-gap:8px}
+      .score .n{font-family:HBHush;font-size:68px;line-height:.9;letter-spacing:0;color:#64210A}
+      .score .lv{padding-bottom:4px;font-weight:600;font-size:15px;line-height:1.35;color:var(--text)}
+      .score .lv em{font-style:normal;color:#925540}
+      .next{font-size:14px;line-height:1.5;color:var(--text)}
+
+      /* Month in review: the 360 x 640 story card, scaled to 62 % of the card width */
+      .poster{position:relative;align-self:center;border-radius:18px;box-shadow:0 8px 21.78px rgba(42,26,20,.2)}
+      .poster .clipr{position:absolute;inset:0;border-radius:18px;overflow:hidden}
+      .story{position:absolute;left:0;top:0;width:360px;height:640px;transform-origin:0 0;padding:24px 20px 20px;display:flex;flex-direction:column;
+             background:linear-gradient(174.22deg,#FDF1E8 2.21%,#FBE3D6 54.79%,#F8D2CB 97.79%);color:var(--ink);letter-spacing:0}
+      .story .per{font-weight:500;font-size:15px;line-height:1.25;color:#43362F;white-space:nowrap}
+      .story .exp{flex:1;min-height:0;display:flex;flex-direction:column}
+      .story .covers{display:flex;gap:10px;height:150px}
+      .story .covers div{width:100px;height:150px;border-radius:8px;overflow:hidden;box-shadow:0 6px 17.17px rgba(42,26,20,.18)}
+      .story .covers div{background-size:cover;background-position:center}
+      .story .line{font-weight:500;font-size:14px;line-height:1.5}
+      .story .quote{font-family:HBNews;font-weight:400;font-size:18px;line-height:1.35;color:var(--ink)}
+      .story .foot{border-top:1px solid rgba(67,54,47,.251);padding-top:10px;display:flex;align-items:baseline}
+      .story .foot span{font-weight:600;font-size:13px;line-height:1.2;color:#43362F;white-space:nowrap}
+      .rbtns{display:flex;flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:8px}
+      .rbtn{height:48px;display:flex;align-items:center}
+      .rbtn .in{height:44px;padding:0 16px;border-radius:22px;display:flex;align-items:center;gap:8px;border:1px solid var(--dotted);background:#fff;color:var(--ink)}
+      .rbtn.primary .in{border-color:var(--ink);background:var(--ink);color:#fff}
+      .rbtn span{font-weight:600;font-size:14px;letter-spacing:.1px;line-height:1.25;white-space:nowrap}
+
+      /* Listening calendar */
+      .navRow{display:flex;align-items:center}
+      .arrow{width:48px;height:48px;display:grid;place-items:center;flex:none}
+      .arrow .in{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;color:var(--ink)}
+      .arrow.off .in i{color:rgba(42,26,20,.3)}
+      .month{flex:1;text-align:center;font-weight:600;font-size:15px;line-height:1.3;color:var(--ink)}
+      .cal{display:flex;flex-direction:column;gap:5px}
+      .calRow{display:flex;gap:5px}
+      .wdn{flex:none;text-align:center;font-weight:600;font-size:12px;line-height:1.3;color:var(--soft)}
+      .day{position:relative;flex:none;border-radius:8px}
+      .day.quiet{background:#F6F2EC;padding:4px 3px 3px 4px}
+      .day.future{background:#fff;border:1px solid #E6DED3;padding:4px 3px 3px 4px}
+      .day .num{display:inline-block;font-weight:600;font-size:12px;line-height:1;color:var(--soft)}
+      .day.future .num{color:var(--muted)}
+      .day .plate{position:absolute;border-radius:8px;background:#CBC7C2}
+      .day .cov{position:absolute;border-radius:8px;overflow:hidden;background:#E8E2D9}
+      .day .cov img{width:100%;height:100%;object-fit:cover}
+      .day .dchip{position:absolute;left:3px;top:3px;padding:2px 3px;border-radius:5px;background:rgba(255,255,255,.92)}
+      .day .dchip .num{color:var(--ink)}
+      .day .len{position:absolute;left:4px;right:4px;bottom:4px;height:6px;border-radius:3px;background:#fff}
+      .day .len i{display:block;height:100%;border-radius:3px}
+      .day .ring{position:absolute;inset:0;border:2px solid var(--ink);border-radius:8px}
+      .legend{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:6px}
+      .legend > div{display:flex;align-items:center;gap:6px}
+      .legend .key{width:22px;height:8px;padding:1px;border:1px solid #E6DED3;border-radius:4px;background:#fff}
+      .legend .key i{display:block;height:100%;border-radius:3px}
+      .legend span{font-size:12px;line-height:1.4;color:var(--text)}
+
+      /* Finished this year */
+      .yearSw{display:flex;align-items:center;flex:none}
+      .yearSw .y{font-weight:600;font-size:15px;line-height:1.3;color:var(--ink)}
+      .yearSw .a{width:48px;height:48px;display:grid;place-items:center;color:var(--ink)}
+      .yearSw .a.off i{color:rgba(42,26,20,.3)}
+      .fin{display:flex;align-items:flex-start;gap:12px;padding:12px 0}
+      .fin .th{width:44px;height:62px;border-radius:6px;overflow:hidden;flex:none}
+      .fin .th img{width:100%;height:100%;object-fit:cover}
+      .fin .c{flex:1;min-width:0;display:flex;flex-direction:column}
+      .fin .ft{font-weight:600;font-size:15px;line-height:1.35;color:var(--ink)}
+      .fin .fa{font-size:13px;line-height:1.4;color:var(--soft)}
+      .fin .lr{margin-top:6px;display:flex;align-items:center;gap:8px}
+      .fin .lb{flex:1;height:8px;border-radius:4px;background:var(--track)}
+      .fin .lb i{display:block;height:100%;border-radius:4px;background:#B26F14}
+      .fin .ld{font-weight:600;font-size:13px;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+      .fin .ff{margin-top:4px;font-size:13px;line-height:1.4;color:var(--soft)}
+
+      /* Genres */
+      .seg2{align-self:flex-start;display:flex;gap:2px;padding:3px;border-radius:999px;background:#F3EEE8}
+      .seg2 div{min-height:44px;padding:0 14px;border-radius:999px;display:flex;align-items:center;font-weight:600;font-size:13px;line-height:1.3;color:var(--ink);white-space:nowrap}
+      .seg2 div.on{background:var(--ink);color:#fff}
+      .gen{display:flex;flex-direction:column;gap:12px}
+      .gen .r{display:flex;flex-direction:column;gap:4px}
+      .gen .h{display:flex;align-items:flex-end;gap:10px}
+      .gen .nm{flex:1;min-width:0;display:flex;align-items:flex-end;gap:6px}
+      .gen .nm b{font-weight:600;font-size:14px;line-height:1.3;color:var(--ink)}
+      .gen .nm span{font-size:12px;line-height:1.4;color:var(--muted)}
+      .gen .t{font-weight:600;font-size:14px;line-height:1.3;color:var(--ink);font-variant-numeric:tabular-nums}
+      .gen .b{height:12px;border-radius:0 4px 4px 0;background:#925540}
+
+      /* Quote of the week: the reading font (Newsreader, 23, height 1.4) */
+      .qtext{font-family:HBNews;font-weight:400;font-size:23px;line-height:1.4;color:var(--ink)}
+      .qsrc{font-size:14px;line-height:1.45;color:var(--soft)}
+
+      /* NavDock (as the Home film draws it), Analytics active */
+      #dock{position:absolute;left:16px;top:770px;width:361px;height:64px;border-radius:32px;overflow:hidden;z-index:5;
+            box-shadow:0 12px 35.6px rgba(0,0,0,.15),0 2px 7.9px rgba(0,0,0,.06);
+            background:linear-gradient(to bottom,rgba(248,245,239,.95),rgba(248,245,239,.90));
+            -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+      #dock .edge{position:absolute;inset:0;border:1px solid rgba(255,255,255,.70);border-radius:32px}
+      #capsule{position:absolute;top:6px;bottom:6px;left:180.5px;width:87.25px;border-radius:26px;background:rgba(111,56,37,.13)}
+      .dockRow{position:absolute;inset:6px;display:flex}
+      .tab{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--dockLabel)}
+      .tab.on{color:var(--accent)}
+      .tab span{margin-top:2px;font-weight:500;font-size:11px;line-height:13.2px;letter-spacing:0}
+      .tab.on span{font-weight:600}
+
+      /* Status bar + home indicator */
+      #statusBar{position:absolute;left:0;top:0;width:393px;height:54px;z-index:20;color:#000}
+      #sbTime{position:absolute;left:0;width:132px;top:21px;text-align:center;font:600 17px/20px HBInter;letter-spacing:-.2px}
+      #sbIcons{position:absolute;right:0;width:132px;top:21px;height:20px;display:flex;align-items:center;justify-content:center;gap:6px}
+      #homeIndicator{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:3px;background:#000;z-index:20}
+
+      /* Cutout shots (hbVar('cutout') names a card's id): that card alone on a transparent screen, so
+         the selector crop carries its rounded corners clean. The dock, home indicator, the other cards
+         and every background behind the card step aside; nothing moves. */
+      html.cutout .stage,html.cutout #body{background:transparent}
+      html.cutout #bgimg,html.cutout #dock,html.cutout #homeIndicator,html.cutout #mom{visibility:hidden}
+      html.cutout .acard:not(.cutTarget),html.cutout .rcard:not(.cutTarget){visibility:hidden}
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16" data-width="3840" data-height="2160" data-fps="60">
+      <div id="app" class="clip" data-start="0" data-duration="16" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div class="screen">
+          <div class="stage" id="stage" data-layout-allow-overflow>
+
+            <!-- ═══ _AnalyticsAppBar ═══ -->
+            <div id="appbar">
+              <div class="abTitle" data-t="analyticsTitle">Analytics</div>
+              <div class="abBell"><i class="mi" style="font-size:24px;width:24px;height:24px">&#xf237;</i></div>
+              <div class="avatar">
+                <img src="assets/companion/cat_base.svg" alt="" />
+                <img src="assets/companion/cat_eyes_open.svg" alt="" />
+                <img src="assets/companion/cat_mouth_rest.svg" alt="" />
+                <img src="assets/companion/cat_prop.svg" alt="" />
+              </div>
+            </div>
+
+            <!-- ═══ NestedScrollView ═══ -->
+            <div id="viewport" data-layout-allow-overflow>
+
+              <!-- _MomentumSection -->
+              <div id="momWrap">
+                <div id="mom">
+                  <div class="edge"></div>
+                  <canvas id="pearl" width="722" height="456"></canvas>
+                  <div class="hi"></div>
+                  <div class="momIn">
+                    <div class="momTitleRow"><span class="momTitle" data-layout-ignore data-t="momentumTitle">Momentum</span></div>
+                    <div class="momSp"></div>
+                    <div class="momMid">
+                      <div class="momLeft"><span class="momNum" data-layout-ignore>16</span><span class="momDays" data-layout-ignore data-t="daysStreak">Days streak</span></div>
+                      <img class="momArt" src="assets/img/milestone_14.svg" alt="" />
+                    </div>
+                    <div class="momSp"></div>
+                    <div class="momBot">
+                      <span class="momSub" data-layout-ignore data-t="totalReadingDays">468 total reading days</span>
+                      <div class="momNext"><span class="momNextL" data-layout-ignore data-t="nextBadge">Next badge</span><span class="momNextV" data-layout-ignore data-t="nextBadgeValue">14d</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab pages over the tab background -->
+              <div id="body" data-layout-allow-overflow>
+                <img id="bgimg" src="assets/img/tabs_gradient_bg.jpg" alt="" />
+
+                <!-- ─── This week ─── -->
+                <div class="page" id="pgWeek" data-layout-allow-overflow>
+                  <div class="col" id="colWeek">
+
+                    <!-- ListeningTimeCard -->
+                    <div class="acard" id="cListen">
+                      <div class="ahead"><div class="tcol"><div class="atitle" data-t="listeningTimeTitle">Listening time</div><div class="aperiod" data-t="yourTimeNote">Your time, not audio length</div></div></div>
+                      <div class="abody">
+                        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;column-gap:8px;row-gap:2px">
+                          <div class="hn" data-hn="44" data-text="4h 20m"></div>
+                          <div style="padding-bottom:3px;font-size:15px;line-height:1.3;color:var(--soft)" data-t="listeningLastWeek">last week</div>
+                        </div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="chip"><i class="mi" style="font-size:12px;width:12px;height:12px">&#xf57e;</i><span data-t="listeningTrend">37m more than usual</span></div>
+                        <div class="sp" style="height:18px"></div>
+                        <div class="chart" id="weekBars"></div>
+                        <div class="sp" style="height:8px"></div>
+                        <div class="legendRow">
+                          <svg width="22" height="2" viewBox="0 0 22 2" aria-hidden="true"><path d="M0 1h6M10 1h6M20 1h2" stroke="#2A1A14" stroke-width="1.5"/></svg>
+                          <span data-t="listeningUsualWeek">Usual week: 3h 43m</span>
+                        </div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="ins" data-t="listeningSentence">Last week you listened for 4h 20m, 37m more than usual.</div>
+                        <div class="sp" style="height:4px"></div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                      </div>
+                    </div>
+
+                    <!-- GoalsCard -->
+                    <div class="acard" id="cGoals">
+                      <div class="ahead">
+                        <div class="tcol"><div class="atitle" data-t="goalsTitle">Goals</div></div>
+                        <div class="obtn"><div class="in"><i class="mi" style="font-size:18px;width:18px;height:18px">&#xf00d;</i><span data-t="goalsEdit">Edit</span></div></div>
+                      </div>
+                      <div class="abody">
+                        <div class="gHead"><div class="gTitle" data-t="goalDailyWords">Every day: 5,000 words</div><div class="gProg" data-t="goalDailyProgress">4 of 7 days</div></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="chart" id="wordsChart"></div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="gPace" data-t="goalDailyPace">Met on 4 of the last 7 days. Today: 3,240 so far, about 10 minutes to go.</div>
+                        <div class="gDiv"></div>
+                        <div class="gHead"><div class="gTitle" data-t="goalYearBooks">2026: 20 books</div><div class="gProg" data-t="goalYearProgress">17 of 20</div></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="gBar"><i style="width:85%"></i></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="gPace" data-t="goalYearPace">At your pace since January, about a book every 3 weeks, you’d reach about 21 by December 31.</div>
+                      </div>
+                    </div>
+
+                    <!-- FinishForecastCard -->
+                    <div class="acard" id="cForecast">
+                      <div class="ahead"><div class="tcol"><div class="atitle">Fourth Wing</div><div class="aperiod" data-t="forecastProgress">34% listened, 11h 5m left at 1.25x</div></div></div>
+                      <div class="abody">
+                        <div class="about"><span class="w" data-t="forecastAbout">about</span><span style="font-family:HBInter;font-size:15px;line-height:0;display:inline-block;width:8px"> </span>Tue, Nov 17</div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="chart" id="projBar" style="height:12px"></div>
+                        <div class="sp" style="height:6px"></div>
+                        <div class="ticks"><div><b data-t="today">Today</b> 34%</div><div style="text-align:end" data-t="forecastFinishAround">Finish around Nov 17</div></div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="ins" data-t="forecastSentence">At about 35 minutes a day, you’ll finish around Tuesday, November 17.</div>
+                        <div class="sp" style="height:16px"></div>
+                        <div class="chart" id="paceStrip"></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="paceLegend"><div class="sw"><i></i></div><span data-t="forecastYourPace">Your pace, 35 minutes a day</span></div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                        <div class="sp" style="height:4px"></div>
+                        <div class="note" data-t="forecastMethod">Rest days count, so the date stays realistic. It moves a little after each session.</div>
+                      </div>
+                    </div>
+
+                    <!-- HabitInsightsCard -->
+                    <div class="acard" id="cHabits">
+                      <div class="ahead">
+                        <div class="tcol"><div class="atitle" data-t="habitsTitle">Habits</div><div class="aperiod" data-t="habitsPeriod">Last 30 days</div></div>
+                        <div class="ib48"><i class="mi" style="font-size:22px;width:22px;height:22px">&#xf815;</i></div>
+                      </div>
+                      <div class="abody">
+                        <div class="ins" data-t="habitsPeak">Most of your listening starts between 9&#160;PM and 10&#160;PM.</div>
+                        <div class="sp" style="height:12px"></div>
+                        <div class="chart" id="hourBars"></div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                        <div class="rule"><i></i></div>
+                        <div class="ins" data-t="habitsLongestDay">Sunday is your longest day, about 1h 8m.</div>
+                        <div class="sp" style="height:12px"></div>
+                        <div class="chart" id="dayBars"></div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                        <div class="rule"><i></i></div>
+                        <div class="ins" data-t="habitsTypical">A session usually lasts about 24m.</div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="pill"><i class="mi" style="font-size:16px;width:16px;height:16px">&#xf01a;</i><span data-t="habitsLongest">Longest: 1h 52m on Sunday, October 18</span></div>
+                      </div>
+                    </div>
+
+                    <!-- PersonalRecordsCard -->
+                    <div class="acard" id="cRecords">
+                      <div class="ahead"><div class="tcol"><div class="atitle" data-t="recordsTitle">Your records</div><div class="aperiod" data-t="recordsSince">Since February 9, 2025</div></div></div>
+                      <div class="abody">
+                        <div class="ins" data-t="recordsSummary">Your longest session so far is 2h 41m.</div>
+                        <div class="sp" style="height:8px"></div>
+                        <div class="rec"><div class="tile"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xf1c2;</i></div><div class="lab"><div class="lt" data-t="recordsWordsWithText">Most words with the text</div><div class="ld">Sunday, October 18</div></div><div class="val" data-t="recordsWordsValue">about 14,000</div></div>
+                        <div class="hr"></div>
+                        <div class="rec"><div class="tile"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xf012b;</i></div><div class="lab"><div class="lt" data-t="recordsLongestSession">Longest session</div><div class="ld">Project Hail Mary, Saturday, March 14</div></div><div class="val" data-dur>2h 41m</div></div>
+                        <div class="hr"></div>
+                        <div class="rec"><div class="tile"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xf4bc;</i></div><div class="lab"><div class="lt" data-t="recordsMostInDay">Most in one day</div><div class="ld">Saturday, March 14</div></div><div class="val" data-dur>3h 18m</div></div>
+                        <div class="hr"></div>
+                        <div class="rec"><div class="tile"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xf17a;</i></div><div class="lab"><div class="lt" data-t="recordsLongestStreak">Longest streak</div></div><div class="val" data-t="recordsLongestStreakValue">23 days</div></div>
+                        <div class="hr"></div>
+                        <div class="rec"><div class="tile"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xeedd;</i></div><div class="lab"><div class="lt" data-t="recordsFastestFinish">Fastest finish</div><div class="ld">Project Hail Mary, March 2026</div></div><div class="val" data-t="recordsFastestFinishValue">5 days</div></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="note" data-t="recordsFootnote">Session times are your time. A record stays marked new for 7 days.</div>
+                      </div>
+                    </div>
+
+                    <!-- BrainScoreCard (its top; the brain below it never reaches the screen in this film) -->
+                    <div class="rcard" id="cEngage">
+                      <div class="rin">
+                        <div class="ahead">
+                          <div class="tcol"><div class="rtitle" data-t="engagementTitle">Reading engagement</div><div class="rsub" data-t="engagementSubtitle">How your listening and reading habits have looked lately.</div></div>
+                          <div style="width:4px;flex:none"></div>
+                          <div class="ib48"><i class="mi" style="font-size:22px;width:22px;height:22px">&#xf815;</i></div>
+                        </div>
+                      </div>
+                      <div class="sp" style="height:16px"></div>
+                      <div class="rin"><div class="score"><div class="n">58</div><div class="lv"><em><span data-t="engagementLevel">Level 3 of 5</span> · </em><span data-t="engagementLevelName">Finding your rhythm</span></div></div></div>
+                      <div class="sp" style="height:12px"></div>
+                      <div class="rin"><div class="next" data-t="engagementNext">2 points to Deep in the story. Easiest gain: Read-along.</div></div>
+                      <div class="sp" style="height:420px"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ─── Books ─── -->
+                <div class="page" id="pgBooks" data-layout-allow-overflow>
+                  <div class="col" id="colBooks">
+
+                    <!-- MonthInReviewCard -->
+                    <div class="acard" id="cMonth">
+                      <div class="ahead"><div class="tcol"><div class="atitle" data-t="monthReviewTitle">Month in review</div><div class="aperiod">September 2026</div></div></div>
+                      <div class="abody">
+                        <div class="ins" data-t="monthReviewSentence">September 2026: 16h 33m of listening. You finished 2 books. You saved 6 quotes.</div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="poster" id="poster">
+                          <div class="clipr">
+                            <div class="story" id="story">
+                              <div class="per">September 2026</div>
+                              <div class="sp" style="height:8px"></div>
+                              <div class="hn" data-hn="64" data-scale="0.44" data-text="16h 33m" data-flat></div>
+                              <div class="sp" style="height:4px"></div>
+                              <div class="per" data-t="recapOfListening">of listening</div>
+                              <div class="exp">
+                                <div class="sp" style="height:16px"></div>
+                                <div class="covers">
+                                  <div style="background-image:url('../../assets/covers/prideandprejudice.jpg')"></div>
+                                  <div style="background-image:url('../../assets/covers/harry%20potter1.jpg')"></div>
+                                  <div style="background-image:url('../../assets/covers/hitchhikers.jpg')"></div>
+                                </div>
+                                <div class="sp" style="height:14px"></div>
+                                <div class="line" data-t="recapBooksFinished">2 books finished</div>
+                                <div class="line" data-t="recapQuotesCharacters">6 quotes saved, 31 characters met</div>
+                                <div class="line" data-t="recapLongestSession">Longest session 1h 34m</div>
+                                <div class="line" data-t="recapBlock">An evening listener</div>
+                              </div>
+                              <div class="sp" style="height:12px"></div>
+                              <div class="quote">“I declare after all there is no enjoyment like reading!”</div>
+                              <div class="sp" style="height:14px"></div>
+                              <div class="foot"><span>HushBook</span><span style="flex:1;margin-left:12px;text-align:end">Pride and Prejudice</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="sp" style="height:16px"></div>
+                        <div class="rbtns">
+                          <div class="rbtn"><div class="in"><i class="mi" style="font-size:18px;width:18px;height:18px">&#xf0032;</i><span data-t="recapOpen">Open</span></div></div>
+                          <div class="rbtn primary"><div class="in"><i class="mi" style="font-size:18px;width:18px;height:18px">&#xf826;</i><span data-t="recapShareImage">Share image</span></div></div>
+                          <div class="rbtn"><div class="in"><i class="mi" style="font-size:18px;width:18px;height:18px">&#xf0258;</i><span data-t="recapChoose">Choose what’s shown</span></div></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ListeningCalendarCard -->
+                    <div class="acard" id="cCal">
+                      <div class="ahead">
+                        <div class="tcol"><div class="atitle" data-t="calendarTitle">Listening calendar</div></div>
+                        <div class="ib44"><i class="ci" style="font-size:20px;width:20px;height:20px">&#xf4ca;</i></div>
+                      </div>
+                      <div class="abody">
+                        <div class="navRow">
+                          <div class="arrow"><div class="in"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xe15e;</i></div></div>
+                          <div class="month">October 2026</div>
+                          <div class="arrow off"><div class="in"><i class="mi" style="font-size:20px;width:20px;height:20px" data-layout-ignore>&#xe15f;</i></div></div>
+                        </div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="ins" data-t="calendarSentence">You listened on 27 days in October, 15h 54m in all. Your longest day was Sunday, October 18, 1h 52m.</div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="cal" id="calGrid"></div>
+                        <div class="sp" style="height:14px"></div>
+                        <div class="legend">
+                          <div><div class="key"><i style="width:25%;background:#DC7650"></i></div><span data-t="calendarBandUnder15">Under 15 min</span></div>
+                          <div><div class="key"><i style="width:50%;background:#BD5A35"></i></div><span data-t="calendarBand15To45">15 to 45</span></div>
+                          <div><div class="key"><i style="width:75%;background:#943A1B"></i></div><span data-t="calendarBand45To90">45 to 90</span></div>
+                          <div><div class="key"><i style="width:100%;background:#5E1F0C"></i></div><span data-t="calendarBandOver90">Over 90 min</span></div>
+                        </div>
+                        <div class="sp" style="height:12px"></div>
+                        <div class="hr"></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="note" data-t="calendarHow">Your time each day. Bands are fixed minutes, so any two months compare fairly. Tap a day for its books.</div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                      </div>
+                    </div>
+
+                    <!-- FinishedThisYearCard -->
+                    <div class="acard" id="cFinished">
+                      <div class="ahead">
+                        <div class="tcol"><div class="atitle" data-t="finishedTitle">Finished this year</div></div>
+                        <div class="yearSw"><div class="a"><i class="mi" style="font-size:20px;width:20px;height:20px">&#xe15e;</i></div><span class="y">2026</span><div class="a off"><i class="mi" style="font-size:20px;width:20px;height:20px" data-layout-ignore>&#xe15f;</i></div></div>
+                        <div class="ib44"><i class="ci" style="font-size:20px;width:20px;height:20px">&#xf4ca;</i></div>
+                      </div>
+                      <div class="abody">
+                        <div class="ins" data-t="finishedSentence">17 books, about 216 hours.</div>
+                        <div class="sp" style="height:6px"></div>
+                        <div class="fin"><div class="th"><img src="../../assets/covers/dungeon%20crawler%20carl.jpg" alt="" /></div><div class="c"><div class="ft">Dungeon Crawler Carl</div><div class="fa">Matt Dinniman</div><div class="lr"><div class="lb"><i style="width:100%"></i></div><span class="ld" data-dur>13h 43m</span></div><div class="ff" data-t="finishedDetailCarl">Finished Oct 14, in 12 days. About 120K words.</div></div></div>
+                        <div class="hr"></div>
+                        <div class="fin"><div class="th"><img src="../../assets/covers/prideandprejudice.jpg" alt="" /></div><div class="c"><div class="ft">Pride and Prejudice</div><div class="fa">Jane Austen</div><div class="lr"><div class="lb"><i style="width:84.45%"></i></div><span class="ld" data-dur>11h 35m</span></div><div class="ff" data-t="finishedDetailPride">Finished Oct 2, in 14 days. About 122K words.</div></div></div>
+                        <div class="hr"></div>
+                        <div class="fin"><div class="th"><img src="../../assets/covers/hitchhikers.jpg" alt="" /></div><div class="c"><div class="ft">The Hitchhiker’s Guide to the Galaxy</div><div class="fa">Douglas Adams</div><div class="lr"><div class="lb"><i style="width:42.65%"></i></div><span class="ld" data-dur>5h 51m</span></div><div class="ff" data-t="finishedDetailHitchhikers">Finished Sep 18, in 7 days. About 46K words.</div></div></div>
+                        <div class="hr"></div>
+                        <div class="fin"><div class="th"><img src="../../assets/covers/harry%20potter1.jpg" alt="" /></div><div class="c"><div class="ft">Harry Potter and the Prisoner of Azkaban</div><div class="fa">J.K. Rowling</div><div class="lr"><div class="lb"><i style="width:86.15%"></i></div><span class="ld" data-dur>11h 49m</span></div><div class="ff" data-t="finishedDetailAzkaban">Finished Sep 11, in 12 days. About 107K words.</div></div></div>
+                        <div class="hr"></div>
+                        <div class="fin"><div class="th"><img src="../../assets/covers/LH.jpg" alt="" /></div><div class="c"><div class="ft">The Love Hypothesis</div><div class="fa">Ali Hazelwood</div><div class="lr"><div class="lb"><i style="width:77.64%"></i></div><span class="ld" data-dur>10h 39m</span></div><div class="ff" data-t="finishedDetailLoveHypothesis">Finished Aug 30, in 10 days. About 98K words.</div></div></div>
+                        <div class="vat linkInk" data-t="finishedShowAll">Show all 17 books</div>
+                      </div>
+                    </div>
+
+                    <!-- GenresCard -->
+                    <div class="acard" id="cGenres">
+                      <div class="ahead">
+                        <div class="tcol"><div class="atitle" data-t="genresTitle">What you listen to</div></div>
+                        <div class="ib44"><i class="ci" style="font-size:20px;width:20px;height:20px">&#xf4ca;</i></div>
+                      </div>
+                      <div class="abody">
+                        <div class="seg2"><div class="on" data-t="genresLast30">Last 30 days</div><div data-t="genresAllTime">All time</div></div>
+                        <div class="sp" style="height:12px"></div>
+                        <div class="ins" data-t="genresSentence">Fantasy is most of your listening: 57% over the last 30 days.</div>
+                        <div class="sp" style="height:12px"></div>
+                        <div class="gen">
+                          <div class="r"><div class="h"><div class="nm"><b data-t="genreFantasy">Fantasy</b><span data-t="genresFantasyBooks">2 books</span></div><span class="t" data-dur>9h 24m</span></div><div class="b" style="width:100%"></div></div>
+                          <div class="r"><div class="h"><div class="nm"><b data-t="genreScienceFiction">Science Fiction</b><span data-t="genresScienceFictionBooks">1 book</span></div><span class="t" data-dur>5h 19m</span></div><div class="b" style="width:56.56%"></div></div>
+                          <div class="r"><div class="h"><div class="nm"><b data-t="genreClassics">Classics</b><span data-t="genresClassicsBooks">1 book</span></div><span class="t" data-dur>1h 46m</span></div><div class="b" style="width:18.79%"></div></div>
+                        </div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="hr"></div>
+                        <div class="sp" style="height:10px"></div>
+                        <div class="note" data-t="genresHow">Your time, by each book’s genre. Removed books still count. Books with no genre show as “No genre”. “Other” gathers genres past the top 7 and books filed as Other.</div>
+                        <div class="vat" data-t="viewAsTable">View as table</div>
+                      </div>
+                    </div>
+
+                    <!-- QuotesCard -->
+                    <div class="acard" id="cQuote">
+                      <div class="ahead"><div class="tcol"><div class="atitle" data-t="quoteTitle">Quote of the week</div><div class="aperiod" data-t="quoteSaved">Saved October 1</div></div></div>
+                      <div class="abody">
+                        <div class="qtext">“There is a stubbornness about me that never can bear to be frightened at the will of others.”</div>
+                        <div class="sp" style="height:8px"></div>
+                        <div class="qsrc" data-t="quoteSource">Pride and Prejudice, Chapter 31</div>
+                        <div class="sp" style="height:200px"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- _TabBarDelegate (pinned) -->
+              <div id="tabbar" data-layout-allow-occlusion data-layout-allow-overlap>
+                <div class="tbRow">
+                  <div class="tbCell"><span class="tbLab on" id="lab0" data-t="tabThisWeek">This week</span><i class="tbLine" id="line0"></i></div>
+                  <div class="tbCell"><span class="tbLab" data-layout-ignore data-t="tabHabits">Habits</span><i class="tbLine"></i></div>
+                  <div class="tbCell"><div class="tbInk"><div class="tbHl" id="tabHl"></div><div class="tbRip" id="tabRip"></div></div><span class="tbLab" id="lab2" data-layout-ignore data-t="tabBooks">Books</span><i class="tbLine" id="line2"></i></div>
+                </div>
+                <div class="tbHair"></div>
+              </div>
+            </div>
+
+            <!-- NavDock -->
+            <div id="dock" data-layout-allow-occlusion data-layout-allow-overlap>
+              <div id="capsule"></div>
+              <div class="dockRow">
+                <div class="tab"><i class="ci" style="font-size:22px;width:22px;height:22px">&#xf6ca;</i><span data-t="navHome">Home</span></div>
+                <div class="tab"><i class="ci" style="font-size:22px;width:22px;height:22px">&#xf3e8;</i><span data-t="navLibrary">Library</span></div>
+                <div class="tab on"><i class="ci" style="font-size:22px;width:22px;height:22px">&#xf8b7;</i><span data-t="navAnalytics">Analytics</span></div>
+                <div class="tab"><i class="ci" style="font-size:22px;width:22px;height:22px">&#xf47e;</i><span data-t="navProfile">Profile</span></div>
+              </div>
+              <div class="edge"></div>
+            </div>
+
+            <div id="statusBar" data-layout-allow-occlusion>
+              <div id="sbTime">9:41</div>
+              <div id="sbIcons">
+                <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1" fill="#000" /><rect x="4.9" y="5.2" width="3.2" height="6.8" rx="1" fill="#000" /><rect x="9.8" y="2.8" width="3.2" height="9.2" rx="1" fill="#000" /><rect x="14.7" y="0" width="3.2" height="12" rx="1" fill="#000" /></svg>
+                <svg width="17" height="12" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.3 2.5.2.2.5.2.7 0l1.2-1.2c.2-.2.2-.5 0-.7A11.6 11.6 0 0 0 8.5 0C5.4 0 2.4 1.2.3 3c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0a9.1 9.1 0 0 1 6.3-2.6Z" fill="#000" /><path d="M8.5 6c1.3 0 2.6.5 3.6 1.4.2.2.5.2.7 0L14 6.2c.2-.2.2-.5 0-.7a8.1 8.1 0 0 0-11 0c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0 1-.9 2.3-1.4 3.6-1.4Z" fill="#000" /><path d="M10.9 9.3c.2-.2.2-.5 0-.7a3.5 3.5 0 0 0-4.8 0c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0Z" fill="#000" /></svg>
+                <svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.6" fill="none" stroke="#000" stroke-opacity=".38" /><rect x="2" y="2" width="20" height="9" rx="2.2" fill="#000" /><path d="M25 4.3v4.4c.9-.3 1.5-1.2 1.5-2.2s-.6-1.9-1.5-2.2Z" fill="#000" fill-opacity=".45" /></svg>
+              </div>
+            </div>
+            <div id="homeIndicator" data-layout-allow-occlusion></div>
+          </div>
+        </div>
+        <img class="frame" id="frame" src="../../assets/frame-iphone.png" alt="" data-layout-allow-occlusion />
+      </div>
+    </div>
+
+    <script>
+      // ── Beats (s) ───────────────────────────────────────────────────────────
+      // 0    Analytics opens on This week: Momentum, the tab bar, Listening time.
+      // 1.0  a short scroll: Momentum goes, the tab bar pins, Listening time's sentence and Goals.
+      // 2.6  the 5 s scroll through Finish forecast, Habits, Your records to Reading engagement.
+      // 8.0  Books pressed (InkWell highlight + ripple), released at 8.1: the tabs change and the
+      //      TabBarView slides to Books (300 ms, Curves.ease).
+      // 8.9  the 5 s scroll through Month in review, the Listening calendar, Finished this year, Genres.
+      // 13.9 hold to 16.
+      //
+      // Shot variables (hbVar):
+      //   cutout  a card's element id ('cHabits', 'cGenres', ...): that card alone on a transparent
+      //           screen for a "#id" selector crop (html.cutout in the CSS). Default: none, the full screen.
+      // Strings: data-t / hbT keys in strings/en.json. Durations ("4h 20m", "37m") shown on their own
+      // go through the durationHoursMinutes / durationMinutes templates (data-dur in markup, fmtDur in JS).
+      const DUR = 16;
+      const CUTOUT = hbVar('cutout', '');
+      const A0 = 1.0, A1 = 2.3, B0 = 2.6, B1 = 7.6, PRESS = 8.0, UP = 8.1, SLIDE = 0.3, C0 = 8.9, C1 = 13.9;
+
+      // Layout (logical px): SafeArea 59 + the 68-tall app bar; Momentum section 16 + 361 x 251/397 + 16.
+      const VIEW_TOP = 127, VIEW_H = 725, MOM_H = 16 + 361 * 251 / 397 + 16, TAB_H = 48;
+      const LISTEN_AT = 183;     // screen y of the Listening time card after the first scroll
+      const ENGAGE_AT = 676;     // screen y of the Reading engagement card at the end of the This week scroll
+      const GENRES_BOTTOM = 762; // screen y of the Genres card's bottom edge at the end of the Books scroll
+
+      // ── Curves ──────────────────────────────────────────────────────────────
+      const bez = (a, b, m) => 3 * a * (1 - m) * (1 - m) * m + 3 * b * (1 - m) * m * m + m * m * m;
+      function cubic(x1, y1, x2, y2) {
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 48; i++) { const m = (lo + hi) / 2; if (bez(x1, x2, m) < t) lo = m; else hi = m; }
+          return bez(y1, y2, (lo + hi) / 2);
+        };
+      }
+      const ease = cubic(0.25, 0.1, 0.25, 1);              // Curves.ease
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+      const easeInOutSine = p => -(Math.cos(Math.PI * clamp01(p)) - 1) / 2;
+
+      const $ = id => document.getElementById(id);
+      const stage = $('stage');
+
+      // ── Strings ─────────────────────────────────────────────────────────────
+      // A duration as the app formats it (calendarDurationHoursMinutes / calendarDurationMinutes).
+      function fmtDur(text) {
+        let m = /^(\d+)h (\d+)m$/.exec(text);
+        if (m) return hbT('durationHoursMinutes', '{hours}h {minutes}m').replace('{hours}', m[1]).replace('{minutes}', m[2]);
+        m = /^(\d+)m$/.exec(text);
+        if (m) return hbT('durationMinutes', '{minutes}m').replace('{minutes}', m[1]);
+        return text;
+      }
+      // Short weekday names, Sunday first.
+      const WD = [['weekdaySun', 'Sun'], ['weekdayMon', 'Mon'], ['weekdayTue', 'Tue'], ['weekdayWed', 'Wed'],
+                  ['weekdayThu', 'Thu'], ['weekdayFri', 'Fri'], ['weekdaySat', 'Sat']];
+      const wd = i => hbT(WD[i][0], WD[i][1]);
+      const NS = 'http://www.w3.org/2000/svg';
+      function el(tag, cls, css, html) {
+        const e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (css) e.style.cssText = css;
+        if (html != null) e.innerHTML = html;
+        return e;
+      }
+
+      // Text width in logical px, measured in the stage with the style it is drawn in.
+      let meter = null, Z = 1;
+      function textSize(text, css) {
+        meter.style.cssText = 'position:absolute;left:0;top:0;white-space:nowrap;visibility:hidden;' + css;
+        meter.textContent = text;
+        const r = meter.getBoundingClientRect();
+        return { w: r.width / Z, h: r.height / Z };
+      }
+      const LBL = 'font-size:12px;line-height:1.3;letter-spacing:.25px;font-weight:400;';
+      const LBL_STRONG = 'font-size:12px;line-height:1.3;letter-spacing:.25px;font-weight:600;';
+
+      // ── HushNumber.parts ────────────────────────────────────────────────────
+      function hushNumber(box) {
+        const size = Number(box.dataset.hn), scale = Number(box.dataset.scale || 0.36);
+        const unit = Math.max(box.hasAttribute('data-flat') ? 12 : 12, size * scale);
+        const lift = 0.118 * size;
+        box.style.fontSize = size + 'px';
+        box.style.lineHeight = size + 'px';
+        box.style.height = size + 'px';
+        let html = '';
+        for (const m of fmtDur(box.dataset.text).match(/\d+|[^\d]+/g)) {
+          if (/^\d/.test(m)) { html += m; continue; }
+          const lead = m.match(/^\s*/)[0], tail = m.match(/\s*$/)[0], mark = m.trim();
+          if (lead) html += '<span class="u" style="font-size:' + unit + 'px;top:0">' + lead + '</span>';
+          if (mark) html += '<span class="u" style="font-size:' + unit + 'px;top:' + (-lift) + 'px">' + mark + '</span>';
+          if (tail) html += '<span class="u" style="font-size:' + unit + 'px;top:0">' + tail + '</span>';
+        }
+        box.innerHTML = html;
+      }
+
+      // ── WeekBars (kit/week_bars.dart) ───────────────────────────────────────
+      const WEEKS = [
+        ['Sep 6', 232], ['Sep 13', 245], ['Sep 20', 211], ['Sep 27', 238],
+        ['Oct 4', 214], ['Oct 11', 229], ['Oct 18', 260, fmtDur('4h 20m')], ['Oct 25', 158, null, true],
+      ];
+      const USUAL = 223, HIGHLIGHT = 6;
+
+      // placeBarLabels: as low as it can, clear of every bar (2 to the side, gap above) and earlier blocks.
+      function placeLabels(bars, labels, width, gap, ownColumn) {
+        const out = labels.map(() => null);
+        const obstacles = bars.filter(b => b.h > 0).map(b => ({ l: b.l, t: b.t, r: b.l + b.w, b: b.t + b.h, own: b }));
+        const around = o => ({ l: o.l - 2, t: o.t - gap, r: o.r + 2, b: o.b + gap });
+        const overlaps = (a, b) => a.l < b.r && b.l < a.r && a.t < b.b && b.t < a.b;
+        const order = labels.map((_, i) => i).sort((a, b) => (bars[labels[a].bar].t - bars[labels[b].bar].t) || (a - b));
+        for (const k of order) {
+          const { bar, w, h } = labels[k];
+          if (w > width) continue;
+          const own = bars[bar];
+          const centres = bars.filter((_, i) => i !== bar).map(b => b.l + b.w / 2);
+          const cx = x => Math.max(0, Math.min(width - w, x));
+          const xs = [...new Set([cx(own.l + own.w / 2 - w / 2), cx(own.l), cx(own.l + own.w - w)])];
+          const lowest = own.t - gap;
+          const bottoms = [...new Set([lowest, ...obstacles.filter(o => o.t - gap < lowest).map(o => o.t - gap)])].sort((a, b) => b - a);
+          let found = null;
+          for (const bottom of bottoms) {
+            for (const x of xs) {
+              const r = { l: x, t: bottom - h, r: x + w, b: bottom };
+              const inColumn = !ownColumn || centres.every(c => c <= r.l || c >= r.r);
+              if (inColumn && obstacles.every(o => o.own === own || !overlaps(r, around(o)))) { found = r; break; }
+            }
+            if (found) break;
+          }
+          out[k] = found;
+          if (found) obstacles.push({ ...found, own: null });
+        }
+        return out;
+      }
+
+      function buildWeekBars() {
+        const host = $('weekBars'), width = host.clientWidth, H = 120, gap = 4;
+        const max = Math.max(USUAL, ...WEEKS.map(w => w[1]));
+        const slot = width / WEEKS.length, bw = Math.max(4, Math.min(22, slot - 10));
+        const bars = WEEKS.map((w, i) => {
+          const h = Math.max(2, H * w[1] / max);
+          return { l: (i + 0.5) * slot - bw / 2, t: H - h, w: bw, h };
+        });
+        const blocks = [];
+        WEEKS.forEach((w, i) => {
+          const lines = [];
+          if (i === HIGHLIGHT && w[2]) lines.push([w[2], LBL_STRONG, true]);
+          if (w[3]) lines.push([hbT('soFar', 'so far'), i === HIGHLIGHT ? LBL : LBL_STRONG, i !== HIGHLIGHT]);
+          if (!lines.length) return;
+          let bw2 = 0, bh = 0;
+          lines.forEach(([t, css]) => { const s = textSize(t, css); bw2 = Math.max(bw2, s.w); bh += s.h; });
+          blocks.push({ bar: i, w: Math.ceil(bw2) + 1, h: Math.ceil(bh), lines });
+        });
+        let placed = placeLabels(bars, blocks, width, gap, true);
+        const cur = blocks.findIndex(b => WEEKS[b.bar][3]);
+        if (cur >= 0 && !placed[cur]) placed = blocks.map((_, k) => k === cur ? placeLabels(bars, [blocks[cur]], width, gap, false)[0] : null);
+        const band = Math.ceil(placed.reduce((m, r) => r ? Math.max(m, -r.t) : m, 0));
+
+        const chart = el('div', '', 'position:relative;height:' + (band + H) + 'px');
+        bars.forEach((b, i) => {
+          const current = !!WEEKS[i][3], colour = i === HIGHLIGHT || current ? '#D6495A' : '#948A80';
+          const r = Math.min(4, b.w / 2, b.h);
+          const bar = el('div', 'bar', 'left:' + b.l + 'px;top:' + (band + b.t) + 'px;width:' + b.w + 'px;height:' + b.h + 'px;border-radius:' + r + 'px ' + r + 'px 0 0;' +
+            (current ? 'background:#fff;box-shadow:inset 0 0 0 2px ' + colour : 'background:' + colour));
+          chart.appendChild(bar);
+        });
+        // The dashed usual-week line (6 on, 4 off, 1.5 wide, ink).
+        const y = band + H * (1 - USUAL / max);
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('width', width); svg.setAttribute('height', band + H);
+        svg.style.cssText = 'position:absolute;left:0;top:0;overflow:visible';
+        let d = '';
+        for (let x = 0; x < width; x += 10) d += 'M' + x + ' ' + y + 'H' + Math.min(x + 6, width);
+        svg.innerHTML = '<path d="' + d + '" stroke="#2A1A14" stroke-width="1.5" fill="none"/>';
+        chart.appendChild(svg);
+        blocks.forEach((b, k) => {
+          const r = placed[k]; if (!r) return;
+          const box = el('div', 'paper', 'position:absolute;left:' + r.l + 'px;top:' + (band + r.t) + 'px;width:' + b.w + 'px;background:#fff;display:flex;flex-direction:column;align-items:center');
+          b.lines.forEach(([t, css, strong]) => box.appendChild(el('div', '', css + 'white-space:nowrap;color:' + (strong ? '#2A1A14' : '#6B6B6B'), t)));
+          chart.appendChild(box);
+        });
+        host.appendChild(chart);
+        host.appendChild(el('div', '', 'height:1px;background:#E8E2D9'));
+        host.appendChild(el('div', '', 'height:6px'));
+        // Dates: every one, else every 2nd (3rd …) counting back from the current week; never two that touch.
+        const sizes = WEEKS.map(w => textSize(w[0], LBL));
+        const dw = i => Math.ceil(sizes[i].w) + 1;
+        const dl = i => Math.max(0, Math.min(width - dw(i), (i + 0.5) * slot - dw(i) / 2));
+        const shown = every => WEEKS.map((_, i) => i).filter(i => (WEEKS.length - 1 - i) % every === 0);
+        const apart = every => {
+          const s = shown(every).map(i => [dl(i), dl(i) + dw(i)]).sort((a, b) => a[0] - b[0]);
+          for (let k = 1; k < s.length; k++) if (s[k][0] - s[k - 1][1] < 4) return false;
+          return true;
+        };
+        let every = 1;
+        while (every < WEEKS.length && !apart(every)) every++;
+        const dh = Math.ceil(Math.max(...sizes.map(s => s.h)));
+        const dates = el('div', '', 'position:relative;height:' + dh + 'px');
+        shown(every).forEach(i => dates.appendChild(el('div', 'lbl', 'left:' + dl(i) + 'px;top:0;width:' + dw(i) + 'px', WEEKS[i][0])));
+        dates.className = 'chart';
+        host.appendChild(dates);
+      }
+
+      // ── Goals: the last 7 days of words against the dashed goal line ────────
+      const WORDS = [6412, 4786, 11034, 6251, 6107, 3388, 3240], TARGET = 5000;
+      const WORD_DAYS = () => [wd(5), wd(6), wd(0), wd(1), wd(2), wd(3), hbT('today', 'Today')];
+      function buildWordsChart() {
+        const host = $('wordsChart'), width = host.clientWidth;
+        const goal = textSize('5,000', LBL_STRONG);
+        const gutter = Math.ceil(goal.w + 6), band = goal.h + 4, H = 96;
+        const top = Math.max(TARGET, ...WORDS);
+        const hOf = v => top <= 0 ? 0 : H * v / top;
+        const goalY = band + H - hOf(TARGET);
+        const slot = (width - gutter) / WORDS.length, last = WORDS.length - 1;
+        const chart = el('div', 'chart', 'height:' + (band + H) + 'px');
+        WORDS.forEach((v, i) => {
+          const cx = gutter + (i + 0.5) * slot;
+          if (i === last) {
+            const h = Math.max(3, hOf(v)), w = 22;
+            const svg = document.createElementNS(NS, 'svg');
+            svg.setAttribute('width', w); svg.setAttribute('height', h);
+            svg.style.cssText = 'position:absolute;left:' + (cx - w / 2) + 'px;top:' + (band + H - h) + 'px';
+            const r = Math.min(3, w / 2);
+            const shape = 'M0 ' + h + 'V' + r + 'Q0 0 ' + r + ' 0H' + (w - r) + 'Q' + w + ' 0 ' + w + ' ' + r + 'V' + h + 'Z';
+            let stripes = '';
+            for (let x = -h; x < w; x += 5) stripes += 'M' + x + ' ' + h + 'L' + (x + h) + ' 0';
+            const ir = Math.max(0, r - 0.75);
+            const inner = 'M.75 ' + (h - 0.75) + 'V' + (0.75 + ir) + 'Q.75 .75 ' + (0.75 + ir) + ' .75H' + (w - 0.75 - ir) + 'Q' + (w - 0.75) + ' .75 ' + (w - 0.75) + ' ' + (0.75 + ir) + 'V' + (h - 0.75) + 'Z';
+            svg.innerHTML = '<defs><clipPath id="todayClip"><path d="' + shape + '"/></clipPath></defs>' +
+              '<path d="' + shape + '" fill="#FDF1E2"/><path d="' + stripes + '" stroke="#B26F14" stroke-width="1.5" clip-path="url(#todayClip)"/>' +
+              '<path d="' + inner + '" fill="none" stroke="#B26F14" stroke-width="1.5"/>';
+            chart.appendChild(svg);
+          } else if (v > 0) {
+            const h = Math.max(2, hOf(v));
+            chart.appendChild(el('div', 'bar', 'left:' + (cx - 11) + 'px;top:' + (band + H - h) + 'px;width:22px;height:' + h + 'px;background:#B26F14;border-radius:3px 3px 0 0'));
+          }
+        });
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('width', width - gutter); svg.setAttribute('height', band + H);
+        svg.style.cssText = 'position:absolute;left:' + gutter + 'px;top:0';
+        let d = '';
+        for (let x = 0; x < width - gutter; x += 10) d += 'M' + x + ' ' + goalY + 'H' + Math.min(x + 6, width - gutter);
+        svg.innerHTML = '<path d="' + d + '" stroke="#2A1A14" stroke-width="1.5" fill="none"/>';
+        chart.appendChild(svg);
+        const ly = Math.max(0, Math.min(band + H - goal.h, goalY - goal.h / 2));
+        chart.appendChild(el('div', 'lbl strong', 'left:0;top:' + ly + 'px;text-align:start', '5,000'));
+        host.appendChild(chart);
+        host.appendChild(el('div', '', 'height:1px;background:#E8E2D9'));
+        host.appendChild(el('div', '', 'height:6px'));
+        const row = el('div', '', 'display:flex;padding-left:' + gutter + 'px');
+        WORD_DAYS().forEach((d2, i) => row.appendChild(el('div', '', 'flex:1 1 0;min-width:0;text-align:center;white-space:nowrap;overflow:hidden;' + (i === last ? LBL_STRONG + 'color:#2A1A14' : LBL + 'color:#6B6B6B'), d2)));
+        host.appendChild(row);
+      }
+
+      // ── Finish forecast: projection bar and the 14-day pace strip ──────────
+      const PCT = 0.34;
+      const DAYS14 = [42, 31, 112, 24, 26, 27, 12, 34, 25, 58, 33, 32, 18, 17];   // Oct 16 … Oct 29 (today), minutes
+      const PACE = DAYS14.reduce((a, b) => a + b, 0) / DAYS14.length;
+      function buildProjection() {
+        const host = $('projBar'), w = host.clientWidth, h = 12, split = w * PCT;
+        let stripes = '';
+        for (let x = split - h; x < w; x += 6) stripes += 'M' + x + ' ' + h + 'L' + (x + h) + ' 0';
+        host.innerHTML = '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true">' +
+          '<defs><clipPath id="projWhole"><rect width="' + w + '" height="' + h + '" rx="6"/></clipPath><clipPath id="projAhead"><rect x="' + split + '" width="' + (w - split) + '" height="' + h + '"/></clipPath></defs>' +
+          '<g clip-path="url(#projWhole)"><rect width="' + split + '" height="' + h + '" fill="#B26F14"/><rect x="' + split + '" width="' + (w - split) + '" height="' + h + '" fill="#FDF1E2"/>' +
+          '<path d="' + stripes + '" stroke="#B26F14" stroke-width="2" clip-path="url(#projAhead)"/>' +
+          '<rect x=".5" y=".5" width="' + (w - 1) + '" height="' + (h - 1) + '" rx="5.5" fill="none" stroke="#B26F14" stroke-width="1"/></g></svg>';
+      }
+      function buildPaceStrip() {
+        const host = $('paceStrip'), width = host.clientWidth;
+        const maxI = DAYS14.indexOf(Math.max(...DAYS14));
+        const label = fmtDur('1h 52m'), ls = textSize(label, LBL_STRONG);
+        const band = ls.h + 4, H = 72, size = band + H;
+        const top = Math.max(PACE, ...DAYS14), slot = width / DAYS14.length;
+        const bw = Math.max(3, Math.min(18, slot * 0.56)), r = Math.min(3, bw / 2);
+        const chart = el('div', 'chart', 'height:' + size + 'px');
+        DAYS14.forEach((m, i) => {
+          const cx = i * slot + slot / 2, h = Math.max(2, H * m / top);
+          chart.appendChild(el('div', 'bar', 'left:' + (cx - bw / 2) + 'px;top:' + (size - h) + 'px;width:' + bw + 'px;height:' + h + 'px;background:#B26F14;border-radius:' + r + 'px ' + r + 'px 0 0'));
+          if (i === maxI) {
+            const x = Math.max(0, Math.min(width - ls.w, cx - ls.w / 2));
+            chart.appendChild(el('div', 'lbl strong', 'left:' + x + 'px;top:' + (size - h - ls.h - 2) + 'px;text-align:start', label));
+          }
+        });
+        const y = size - H * PACE / top;
+        chart.appendChild(el('div', '', 'position:absolute;left:0;width:' + width + 'px;top:' + (y - 0.75) + 'px;height:1.5px;background:#2A1A14'));
+        host.appendChild(chart);
+        host.appendChild(el('div', '', 'height:1px;background:#E8E2D9'));
+        host.appendChild(el('div', '', 'height:6px'));
+        // Axis: the first day, the middle day under its own bar, "Today".
+        const today = hbT('today', 'Today');
+        const a = textSize('Oct 16', LBL), b = textSize('Oct 23', LBL), c = textSize(today, LBL);
+        const mid = width * (7 + 0.5) / 14;
+        const axis = el('div', 'chart', 'height:' + Math.max(a.h, b.h, c.h) + 'px');
+        axis.appendChild(el('div', 'lbl', 'left:0;top:0;text-align:start', 'Oct 16'));
+        if (a.w + 8 <= mid - b.w / 2 && mid + b.w / 2 + 8 <= width - c.w) axis.appendChild(el('div', 'lbl', 'left:' + (mid - b.w / 2) + 'px;top:0;text-align:start', 'Oct 23'));
+        axis.appendChild(el('div', 'lbl', 'right:0;top:0;text-align:end', today));
+        host.appendChild(axis);
+      }
+
+      // ── Habits: the proof bars ──────────────────────────────────────────────
+      const HOURS = { 7: 58, 12: 18, 18: 21, 19: 46, 20: 131, 21: 512, 22: 176, 23: 27 };   // minutes by start hour, last 30 days
+      const DAY_AVG = [68.25, 20.75, 30.75, 21.8, 27.2, 38.75, 27.5];                          // Sun … Sat
+      function proofBars(host, values, highlighted, labels, valueLabels) {
+        const width = host.clientWidth, H = 72, max = Math.max(...values);
+        const lh = textSize('0', LBL).h;
+        const band = Object.keys(valueLabels).length ? textSize('0', LBL_STRONG).h + 4 : 0;
+        const slot = width / values.length, bw = Math.max(3, Math.min(22, slot * 0.62));
+        const centre = i => (i + 0.5) * slot;
+        const left = (i, w) => Math.max(0, Math.min(Math.max(0, width - w), centre(i) - w / 2));
+        const chart = el('div', 'chart', 'height:' + (band + H + 1 + 6 + lh) + 'px');
+        values.forEach((v, i) => {
+          const h = max <= 0 || v <= 0 ? 0 : Math.max(2, H * v / max);
+          if (!h) return;
+          const r = Math.min(3, bw / 2);
+          chart.appendChild(el('div', 'bar', 'left:' + (centre(i) - bw / 2) + 'px;top:' + (band + H - h) + 'px;width:' + bw + 'px;height:' + h + 'px;border-radius:' + r + 'px ' + r + 'px 0 0;background:' + (highlighted.includes(i) ? '#2C86B5' : '#948A80')));
+        });
+        for (const [k, text] of Object.entries(valueLabels)) {
+          const i = Number(k), s = textSize(text, LBL_STRONG);
+          chart.appendChild(el('div', 'lbl strong', 'left:' + left(i, s.w) + 'px;top:' + (H - H * values[i] / max) + 'px;text-align:start', text));
+        }
+        chart.appendChild(el('div', '', 'position:absolute;left:0;right:0;top:' + (band + H) + 'px;height:1px;background:#E8E2D9'));
+        // Axis labels that would touch are thinned to every other one, keeping the highlighted bar's.
+        const keys = Object.keys(labels).map(Number).sort((a, b) => a - b);
+        const crowded = shown => {
+          let last = null;
+          for (const i of shown) {
+            const w = textSize(labels[i], LBL).w, l = left(i, w);
+            if (last != null && l < last + 4) return true;
+            last = l + w;
+          }
+          return false;
+        };
+        const anchor = Math.max(0, keys.findIndex(i => highlighted.includes(i)));
+        let axis = keys;
+        for (let step = 2; axis.length > 1 && crowded(axis); step *= 2) axis = keys.filter((i, k) => (k - anchor) % step === 0);
+        axis.forEach(i => {
+          const w = textSize(labels[i], LBL).w;
+          chart.appendChild(el('div', 'lbl', 'left:' + left(i, w) + 'px;top:' + (band + H + 7) + 'px;text-align:start', labels[i]));
+        });
+        host.appendChild(chart);
+      }
+
+      // ── Listening calendar: October 2026, Sunday first, today the 29th ──────
+      // The shared covers (tools/mockups/assets/covers).
+      const COVER = { pp: 'prideandprejudice.jpg', dcc: 'dungeon%20crawler%20carl.jpg', lor: 'LOR.jpg', fw: 'fourthwing.jpg' };
+      const OCT = {
+        1: ['pp', 33], 2: ['pp', 38], 3: ['dcc', 22], 4: ['lor', 48, 1], 5: ['dcc', 26], 6: ['dcc', 31], 8: ['dcc', 36],
+        9: ['dcc', 41], 10: ['dcc', 32], 11: ['dcc', 55, 1], 13: ['dcc', 34], 14: ['dcc', 29], 15: ['fw', 38], 16: ['fw', 42],
+        17: ['fw', 31], 18: ['fw', 112, 1], 19: ['fw', 24], 20: ['fw', 26], 21: ['fw', 27], 22: ['fw', 12], 23: ['fw', 34],
+        24: ['fw', 25], 25: ['lor', 58, 1], 26: ['fw', 33], 27: ['fw', 32], 28: ['fw', 18], 29: ['fw', 17],
+      };
+      const band = m => m < 15 ? [0.25, '#DC7650'] : m < 45 ? [0.5, '#BD5A35'] : m < 90 ? [0.75, '#943A1B'] : [1, '#5E1F0C'];
+      function buildCalendar() {
+        const host = $('calGrid'), width = host.clientWidth, gap = 5;
+        const w = (width - 6 * gap) / 7, h = w / (46 / 60);
+        const head = el('div', 'calRow');
+        [0, 1, 2, 3, 4, 5, 6].map(wd).forEach(n => head.appendChild(el('div', 'wdn', 'width:' + w + 'px', n)));
+        host.appendChild(head);
+        const leading = 4, days = 31, today = 29, rows = Math.ceil((leading + days) / 7);
+        for (let r = 0; r < rows; r++) {
+          const row = el('div', 'calRow', 'height:' + h + 'px');
+          for (let c = 0; c < 7; c++) {
+            const day = r * 7 + c - leading + 1;
+            if (day < 1 || day > days) { row.appendChild(el('div', '', 'flex:none;width:' + w + 'px')); continue; }
+            const d = OCT[day];
+            if (!d) {
+              const cell = el('div', 'day ' + (day > today ? 'future' : 'quiet'), 'width:' + w + 'px;height:' + h + 'px');
+              cell.appendChild(el('span', 'num', '', String(day)));
+              row.appendChild(cell);
+              continue;
+            }
+            const [book, mins, more] = d, [f, colour] = band(mins);
+            const cell = el('div', 'day', 'width:' + w + 'px;height:' + h + 'px');
+            const o = 3;
+            if (more) cell.appendChild(el('div', 'plate', 'left:' + o + 'px;top:0;right:0;bottom:' + o + 'px'));
+            const cov = el('div', 'cov', more ? 'left:0;top:' + o + 'px;right:' + o + 'px;bottom:0' : 'inset:0');
+            cov.appendChild(el('img', '', ''));
+            cov.firstChild.src = '../../assets/covers/' + COVER[book];
+            cov.firstChild.alt = '';
+            cell.appendChild(cov);
+            const chip = el('div', 'dchip', '');
+            chip.appendChild(el('span', 'num', '', String(day)));
+            cell.appendChild(chip);
+            const len = el('div', 'len', '');
+            len.appendChild(el('i', '', 'width:' + f * 100 + '%;background:' + colour));
+            cell.appendChild(len);
+            if (day === today) cell.appendChild(el('div', 'ring', ''));
+            row.appendChild(cell);
+          }
+          host.appendChild(row);
+        }
+      }
+
+      // ── Pearl shimmer (assets/shaders/shimmer.frag), multiplied onto the wash ──
+      const PEARL = [[244, 168, 190], [248, 212, 158], [158, 224, 200], [160, 198, 246], [204, 182, 244]].map(c => c.map(v => v / 255));
+      const PEARL_A = [0.32, 0.28, 0.32, 0.30, 0.24];
+      const PW = 361, PH = 361 * 251 / 397, PS = 2;         // logical size, canvas at 2x
+      const pearlCtx = $('pearl').getContext('2d');
+      const pearlImg = pearlCtx.createImageData(722, 456);
+      const grain = new Float32Array(Math.ceil(PW) * Math.ceil(PH + 1));
+      for (let y = 0; y < Math.ceil(PH + 1); y++) for (let x = 0; x < Math.ceil(PW); x++) {
+        const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
+        grain[y * Math.ceil(PW) + x] = ((s - Math.floor(s)) - 0.5) * 0.07;
+      }
+      const smooth = (a, b, x) => { const u = clamp01((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+      let pearlLast = -1;
+      function drawPearl(u) {
+        if (u === pearlLast) return;
+        pearlLast = u;
+        const data = pearlImg.data, cxp = 1.18 * PW, cyp = -0.70 * PH;
+        const mx = -0.45 + 1.9 * smooth(0, 0.72, u), gw = Math.ceil(PW);
+        let k = 0;
+        for (let py = 0; py < 456; py++) {
+          const y = (py + 0.5) / PS, dy = y - cyp, ey = (y / PH - 0.46) / 1.30;
+          for (let px = 0; px < 722; px++, k += 4) {
+            const x = (px + 0.5) / PS;
+            const dx = x - cxp, d = Math.sqrt(dx * dx + dy * dy);
+            let f = d / 90 + u * 0.78; f -= Math.floor(f);
+            const s = f * 6, i = Math.min(5, Math.floor(s)), fr = s - i;
+            let r, g, b, a;
+            if (i === 0) { [r, g, b] = PEARL[0]; a = PEARL_A[0] * fr; }
+            else if (i === 5) { [r, g, b] = PEARL[4]; a = PEARL_A[4] * (1 - fr); }
+            else {
+              const p0 = PEARL[i - 1], p1 = PEARL[i];
+              r = p0[0] + (p1[0] - p0[0]) * fr; g = p0[1] + (p1[1] - p0[1]) * fr; b = p0[2] + (p1[2] - p0[2]) * fr;
+              a = PEARL_A[i - 1] + (PEARL_A[i] - PEARL_A[i - 1]) * fr;
+            }
+            const ex = (x / PW - mx) / 0.44;
+            const env = 1 - smooth(0, 0.74, Math.sqrt(ex * ex + ey * ey));
+            const al = clamp01(clamp01(env * a + grain[Math.floor(y) * gw + Math.floor(x)]));
+            data[k] = r * 255; data[k + 1] = g * 255; data[k + 2] = b * 255; data[k + 3] = al * 255;
+          }
+        }
+        pearlCtx.putImageData(pearlImg, 0, 0);
+      }
+
+      // ── State ───────────────────────────────────────────────────────────────
+      const viewport = $('viewport'), momWrap = $('momWrap'), body = $('body'), tabbar = $('tabbar');
+      const pgWeek = $('pgWeek'), pgBooks = $('pgBooks');
+      const lab0 = $('lab0'), lab2 = $('lab2'), line0 = $('line0'), line2 = $('line2'), tabHl = $('tabHl'), tabRip = $('tabRip');
+      let S1 = 0, S2 = 0, SB = 0, texts = [];
+      const setVis = (e, on) => { const v = on ? '' : 'hidden'; if (e.style.visibility !== v) e.style.visibility = v; };
+
+      function build() {
+        document.querySelectorAll('[data-dur]').forEach(e => { e.textContent = fmtDur(e.textContent.trim()); });
+        if (CUTOUT && $(CUTOUT)) {
+          document.documentElement.classList.add('cutout');
+          $(CUTOUT).classList.add('cutTarget');
+        }
+        meter = el('span', '', '');
+        stage.appendChild(meter);
+        Z = stage.getBoundingClientRect().width / 393;
+        document.querySelectorAll('.hn[data-hn]').forEach(hushNumber);
+        buildWeekBars();
+        buildWordsChart();
+        buildProjection();
+        buildPaceStrip();
+        proofBars($('hourBars'), Array.from({ length: 24 }, (_, h) => HOURS[h] || 0), [21], { 0: '12 AM', 6: '6 AM', 12: '12 PM', 18: '6 PM' }, {});
+        proofBars($('dayBars'), DAY_AVG, [0], { 0: wd(0), 1: wd(1), 2: wd(2), 3: wd(3), 4: wd(4), 5: wd(5), 6: wd(6) }, { 0: fmtDur('1h 8m') });
+        buildCalendar();
+        // The story card at 62 % of the card's width (at most 280), 9:16.
+        const poster = $('poster'), pw = Math.min(poster.parentElement.clientWidth * 0.62, 280);
+        poster.style.width = pw + 'px';
+        poster.style.height = pw * 16 / 9 + 'px';
+        $('story').style.transform = 'scale(' + pw / 360 + ')';
+        stage.removeChild(meter);
+
+        // Scroll targets from the laid-out columns (logical px, nothing scrolled yet).
+        const colTop = id => $(id).offsetTop;               // a card's offsetParent is its .page
+        // A card's screen y: 127 + (MOM_H - outer) + its column offset - inner, with outer + inner = S.
+        S1 = VIEW_TOP + MOM_H + colTop('cListen') - LISTEN_AT;
+        S2 = VIEW_TOP + MOM_H + colTop('cEngage') - ENGAGE_AT;
+        const g = $('cGenres');
+        SB = Math.max(0, VIEW_TOP + colTop('cGenres') + g.offsetHeight - GENRES_BOTTOM);
+
+        // Every text leaf (and icon) that scrolls, with its top and bottom in its column at rest.
+        const sr = stage.getBoundingClientRect();
+        const collect = (root, kind) => root.querySelectorAll('*').forEach(e => {
+          const own = Array.from(e.childNodes).some(n => n.nodeType === 3 && n.textContent.trim());
+          if (!own) return;
+          const r = e.getBoundingClientRect();
+          texts.push({ e, kind, top: (r.top - sr.top) / Z, bottom: (r.bottom - sr.top) / Z, vis: true });
+        });
+        render(0);
+        collect(momWrap, 'mom');
+        collect(pgWeek, 'week');
+        collect(pgBooks, 'books');
+      }
+
+      // ── Everything visible is a function of t ───────────────────────────────
+      function render(t) {
+        // This week: outer (Momentum) first, then the tab's own scroll, as one drag.
+        let S = 0;
+        if (t >= A0) S = S1 * easeInOutSine((t - A0) / (A1 - A0));
+        if (t >= B0) S = S1 + (S2 - S1) * easeInOutSine((t - B0) / (B1 - B0));
+        const outer = Math.min(S, MOM_H), innerW = Math.max(0, S - MOM_H);
+        const innerB = t >= C0 ? SB * easeInOutSine((t - C0) / (C1 - C0)) : 0;
+        const tabTop = MOM_H - outer;                       // the pinned header never rises above the viewport
+        momWrap.style.transform = 'translateY(' + (-outer) + 'px)';
+        tabbar.style.top = Math.max(0, tabTop) + 'px';
+        body.style.top = tabTop + 'px';
+        body.style.height = (VIEW_H - tabTop) + 'px';
+
+        // TabBarView: animateTo(2) warps Books next to This week and slides 300 ms (Curves.ease).
+        const p = t < UP ? 0 : ease(clamp01((t - UP) / SLIDE));
+        pgWeek.style.transform = 'translate(' + (-393 * p) + 'px,' + (-innerW) + 'px)';
+        pgBooks.style.transform = 'translate(' + (393 * (1 - p)) + 'px,' + (-innerB) + 'px)';
+        setVis(pgWeek, p < 1);
+        setVis(pgBooks, p > 0);
+
+        // The tab bar: labels change on the tap (index set at once), underlines 160 ms.
+        const books = t >= UP;
+        lab0.classList.toggle('on', !books);
+        lab2.classList.toggle('on', books);
+        if (books) { lab2.removeAttribute('data-layout-ignore'); lab0.setAttribute('data-layout-ignore', ''); }
+        else { lab0.removeAttribute('data-layout-ignore'); lab2.setAttribute('data-layout-ignore', ''); }
+        const u = books ? clamp01((t - UP) / 0.16) : 0;
+        line0.style.width = 64 * (1 - u) + 'px';
+        line2.style.width = 64 * u + 'px';
+
+        // The Books cell's InkWell: highlight 200 ms in from the press, out from the release;
+        // InkRipple from the centre (0.3 R → R + 5, 1 s unconfirmed, 225 ms once confirmed), fades 375 ms.
+        let hl = 0;
+        if (t >= PRESS) {
+          const up = clamp01((Math.min(t, UP) - PRESS) / 0.2);
+          hl = t < UP ? up : Math.max(0, up - (t - UP) / 0.2);
+        }
+        tabHl.style.opacity = hl.toFixed(3);
+        let ra = 0, rv = 0;
+        if (t >= PRESS) {
+          const v1 = clamp01((UP - PRESS) / 1.0);
+          rv = t < UP ? clamp01((t - PRESS) / 1.0) : Math.min(1, v1 + (t - UP) / 0.225);
+          ra = t < UP ? clamp01((t - PRESS) / 0.075) : clamp01(1 - (t - UP) / 0.375);
+        }
+        const cw = 361 / 3, ch = 47, R = Math.hypot(cw, ch) / 2;
+        const rad = 0.3 * R + (R + 5 - 0.3 * R) * ease(rv);
+        tabRip.style.opacity = ra.toFixed(3);
+        tabRip.style.left = (cw / 2 - rad) + 'px';
+        tabRip.style.top = (ch / 2 - rad) + 'px';
+        tabRip.style.width = tabRip.style.height = 2 * rad + 'px';
+
+        // Pearl shimmer: the 10 s loop from its still frame while Momentum is on screen.
+        if (outer < MOM_H) drawPearl(Math.round((((0.3194 + t / 10) % 1) * 600)) / 600);
+
+        // Text the viewport clips (or that sits under the pinned tab bar) is hidden, so nothing off
+        // screen counts as on it.
+        const cardTop = Math.max(0, tabTop) + TAB_H;
+        for (const o of texts) {
+          let shift, from;
+          if (o.kind === 'mom') { shift = -outer; from = 0; }
+          else if (o.kind === 'week') { shift = -S; from = cardTop; }
+          else { shift = -outer - innerB; from = cardTop; }
+          const top = o.top + shift - VIEW_TOP, bottom = o.bottom + shift - VIEW_TOP;
+          const page = o.kind === 'week' ? p < 1 : o.kind === 'books' ? p > 0 : true;
+          const inView = page && bottom > from + 0.5 && top < VIEW_H - 0.5;
+          if (inView !== o.vis) { o.vis = inView; setVis(o.e, inView); }
+        }
+      }
+
+      document.fonts.ready.then(() => {
+        hbLocaleSetup();
+        hbApplyStrings();
+        build();
+        render(0);
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clock.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

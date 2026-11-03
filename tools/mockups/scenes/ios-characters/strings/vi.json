@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Bản đồ nhân vật",
+  "castCount": "Dàn nhân vật · {count}",
+  "roleHero": "Anh hùng",
+  "roleVillain": "Phản diện",
+  "roleRival": "Đối thủ",
+  "roleMentor": "Người cố vấn",
+  "roleFriend": "Bạn bè",
+  "roleLoveInterest": "Người trong mộng",
+  "relationMentorOf": "cố vấn của",
+  "relationStudentOf": "sinh viên của",
+  "relationEmployerOf": "chủ nhân của",
+  "relationEmployeeOf": "nhân viên của",
+  "sectionRole": "Vai trò",
+  "sectionFirstHeard": "Nghe lần đầu",
+  "firstHeardLabel": "Chương {chapter} · {time}",
+  "sectionDescription": "Mô tả",
+  "sectionAttributes": "Thuộc tính",
+  "sectionRelationships": "Mối quan hệ",
+  "deleteCharacter": "Xóa ký tự"
+}

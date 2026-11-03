@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "แผนที่ตัวละคร",
+  "castCount": "ตัวละคร · {count}",
+  "roleHero": "ตัวเอก",
+  "roleVillain": "ตัวร้าย",
+  "roleRival": "คู่แข่ง",
+  "roleMentor": "ผู้ชี้แนะ",
+  "roleFriend": "เพื่อน",
+  "roleLoveInterest": "คนที่หลงรัก",
+  "relationMentorOf": "ที่ปรึกษาของ",
+  "relationStudentOf": "นักเรียนของ",
+  "relationEmployerOf": "นายจ้างของ",
+  "relationEmployeeOf": "พนักงานของ",
+  "sectionRole": "บทบาท",
+  "sectionFirstHeard": "ได้ยินครั้งแรก",
+  "firstHeardLabel": "บทที่ {chapter} · {time}",
+  "sectionDescription": "คำอธิบาย",
+  "sectionAttributes": "คุณลักษณะ",
+  "sectionRelationships": "ความสัมพันธ์",
+  "deleteCharacter": "ลบตัวละคร"
+}

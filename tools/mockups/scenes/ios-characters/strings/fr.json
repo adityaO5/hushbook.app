@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Carte des personnages",
+  "castCount": "Distribution · {count}",
+  "roleHero": "Héros",
+  "roleVillain": "Méchant",
+  "roleRival": "Rival",
+  "roleMentor": "Mentor",
+  "roleFriend": "Ami",
+  "roleLoveInterest": "Intérêt amoureux",
+  "relationMentorOf": "mentor de",
+  "relationStudentOf": "étudiant de",
+  "relationEmployerOf": "employeur de",
+  "relationEmployeeOf": "employé de",
+  "sectionRole": "Rôle",
+  "sectionFirstHeard": "Entendu pour la première fois",
+  "firstHeardLabel": "Chap. {chapter} · {time}",
+  "sectionDescription": "Description",
+  "sectionAttributes": "Attributs",
+  "sectionRelationships": "Relations",
+  "deleteCharacter": "Supprimer un caractère"
+}

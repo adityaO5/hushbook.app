@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Buku Anda",
+  "librarySelect": "Pilih",
+  "libraryChipAll": "Semua",
+  "libraryChipInProgress": "Sedang didengarkan",
+  "libraryChipNotStarted": "Belum dimulai",
+  "libraryChipFinished": "Selesai",
+  "librarySortRecentlyPlayed": "Terakhir diputar",
+  "libraryShowAsList": "Tampilkan sebagai daftar",
+  "durationHoursMinutes": "{hours} j {minutes} mnt",
+  "durationMinutes": "{minutes} mnt",
+  "timeLeft": "Sisa {duration}",
+  "navHome": "Beranda",
+  "navLibrary": "Perpustakaan",
+  "navAnalytics": "Analitik",
+  "navProfile": "Profil"
+}

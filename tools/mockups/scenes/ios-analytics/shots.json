@@ -1,0 +1,55 @@
+[
+  {
+    "id": "analytics",
+    "t": 0.5,
+    "crop": "phone",
+    "out": "analytics"
+  },
+  {
+    "id": "analytics-calendar",
+    "t": 10.8,
+    "crop": "phone",
+    "out": "analytics-calendar",
+    "quality": 76
+  },
+  {
+    "id": "card-goals",
+    "t": 4.1,
+    "crop": "#cGoals",
+    "width": 880,
+    "out": "card-goals",
+    "vars": {
+      "cutout": "cGoals"
+    }
+  },
+  {
+    "id": "card-habits",
+    "t": 5.7,
+    "crop": "#cHabits",
+    "width": 880,
+    "out": "card-habits",
+    "vars": {
+      "cutout": "cHabits"
+    }
+  },
+  {
+    "id": "card-records",
+    "t": 7.0,
+    "crop": "#cRecords",
+    "width": 880,
+    "out": "card-records",
+    "vars": {
+      "cutout": "cRecords"
+    }
+  },
+  {
+    "id": "card-genres",
+    "t": 14.5,
+    "crop": "#cGenres",
+    "width": 880,
+    "out": "card-genres",
+    "vars": {
+      "cutout": "cGenres"
+    }
+  }
+]

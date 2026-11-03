@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Character map",
+  "castCount": "Cast · {count}",
+  "roleHero": "Hero",
+  "roleVillain": "Villain",
+  "roleRival": "Rival",
+  "roleMentor": "Mentor",
+  "roleFriend": "Friend",
+  "roleLoveInterest": "Love interest",
+  "relationMentorOf": "Mentor of",
+  "relationStudentOf": "Student of",
+  "relationEmployerOf": "Employer of",
+  "relationEmployeeOf": "Employee of",
+  "sectionRole": "Role",
+  "sectionFirstHeard": "First heard",
+  "firstHeardLabel": "Ch. {chapter} · {time}",
+  "sectionDescription": "Description",
+  "sectionAttributes": "Attributes",
+  "sectionRelationships": "Relationships",
+  "deleteCharacter": "Delete character"
+}

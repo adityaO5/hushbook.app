@@ -1,0 +1,13 @@
+{
+  "readAlong": "Đọc theo",
+  "minutesLeftInChapter": "Còn {minutes} phút trong chương",
+  "minuteLeftInChapter": "Còn 1 phút trong chương",
+  "underMinuteLeftInChapter": "Còn chưa đến một phút trong chương",
+  "sleepInMinutes": "Dừng sau {minutes} phút",
+  "pillSpeed": "Tốc độ",
+  "pillSleep": "Hẹn giờ",
+  "sleepOff": "Tắt",
+  "pillSleepMinutes": "{minutes} phút",
+  "chapters": "chương",
+  "chaptersOf": "{current}/{total}"
+}

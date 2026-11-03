@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "登場人物マップ",
+  "castCount": "登場人物 · {count}",
+  "roleHero": "主人公",
+  "roleVillain": "悪役",
+  "roleRival": "ライバル",
+  "roleMentor": "師匠",
+  "roleFriend": "友人",
+  "roleLoveInterest": "恋愛対象",
+  "relationMentorOf": "の指導者",
+  "relationStudentOf": "の学生",
+  "relationEmployerOf": "の雇用主",
+  "relationEmployeeOf": "の従業員",
+  "sectionRole": "役割",
+  "sectionFirstHeard": "初登場",
+  "firstHeardLabel": "第{chapter}章 · {time}",
+  "sectionDescription": "説明",
+  "sectionAttributes": "属性",
+  "sectionRelationships": "関係",
+  "deleteCharacter": "文字の削除"
+}

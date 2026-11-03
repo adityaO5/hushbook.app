@@ -1,0 +1,13 @@
+{
+  "readAlong": "Meelezen",
+  "minutesLeftInChapter": "Nog {minutes} min in dit hoofdstuk",
+  "minuteLeftInChapter": "Nog 1 min in dit hoofdstuk",
+  "underMinuteLeftInChapter": "Nog minder dan een minuut in dit hoofdstuk",
+  "sleepInMinutes": "Stopt over {minutes} min",
+  "pillSpeed": "Snelheid",
+  "pillSleep": "Slaaptimer",
+  "sleepOff": "Uit",
+  "pillSleepMinutes": "{minutes} min",
+  "chapters": "Hoofdstukken",
+  "chaptersOf": "{current} van {total}"
+}

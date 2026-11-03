@@ -1,0 +1,4 @@
+[
+  { "id": "characters-map", "t": 3.2, "crop": "phone", "out": "characters-map" },
+  { "id": "characters-sheet", "t": 7.0, "crop": "phone", "out": "characters-sheet" }
+]

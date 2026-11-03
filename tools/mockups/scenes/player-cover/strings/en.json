@@ -1,0 +1,13 @@
+{
+  "readAlong": "Read along",
+  "minutesLeftInChapter": "{minutes} min left in chapter",
+  "minuteLeftInChapter": "1 min left in chapter",
+  "underMinuteLeftInChapter": "Under a minute left in chapter",
+  "sleepInMinutes": "Sleep in {minutes} min",
+  "pillSpeed": "Speed",
+  "pillSleep": "Sleep",
+  "sleepOff": "Off",
+  "pillSleepMinutes": "{minutes}m",
+  "chapters": "Chapters",
+  "chaptersOf": "{current} of {total}"
+}

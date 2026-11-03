@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Mappa dei personaggi",
+  "castCount": "Cast · {count}",
+  "roleHero": "Eroe",
+  "roleVillain": "Cattivo",
+  "roleRival": "Rivale",
+  "roleMentor": "Mentore",
+  "roleFriend": "Amico",
+  "roleLoveInterest": "Interesse amoroso",
+  "relationMentorOf": "mentore di",
+  "relationStudentOf": "studente di",
+  "relationEmployerOf": "datore di lavoro di",
+  "relationEmployeeOf": "dipendente di",
+  "sectionRole": "Ruolo",
+  "sectionFirstHeard": "Prima apparizione",
+  "firstHeardLabel": "Cap. {chapter} · {time}",
+  "sectionDescription": "Descrizione",
+  "sectionAttributes": "Attributi",
+  "sectionRelationships": "Relazioni",
+  "deleteCharacter": "Elimina carattere"
+}

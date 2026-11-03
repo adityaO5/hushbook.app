@@ -190,7 +190,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero{padding:212px 0 0;text-align:center;position:relative}
 .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;max-width:100%;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
 .hero h1{margin:0 auto 20px;max-width:16ch}
-.hero .sub{margin:0 auto 34px;max-width:560px}
+.hero .sub{margin:0 auto 34px;max-width:560px;text-wrap:balance}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
@@ -204,13 +204,73 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero phone fan */
 .fan{margin-top:64px;position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,26px);padding:0 12px;mask-image:linear-gradient(to bottom,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent)}
-.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
 .fan .f1{transform:translateY(46px) rotate(-4deg)}
 .fan .f2{transform:translateY(18px) rotate(-2deg)}
 .fan .f3{width:clamp(150px,20vw,268px);z-index:2}
 .fan .f4{transform:translateY(18px) rotate(2deg)}
 .fan .f5{transform:translateY(46px) rotate(4deg)}
-.fan img:hover{transform:translateY(-8px)}
+/* hra:css:start */
+/* hero live read-along (assets/js/hero-read-along.js): the centre phone's reader as a 393 x 852 stage,
+   scaled into the frame's screen; it fades in over the static .hra-shot once fonts and frame are in */
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin-ext.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:HRAInter;src:url(/assets/fonts/hra-inter-600-clock.woff) format("woff");font-weight:600;font-display:swap;unicode-range:U+0030-003A}
+.fan .hra{position:relative;flex:none;width:clamp(150px,20vw,268px);z-index:2}
+.fan .hra img{width:100%;transform:none}
+.hra-live{position:absolute;left:0;top:0;width:100%;height:100%;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .6s ease,visibility 0s .6s}
+.hra-live.hra-on{visibility:visible;opacity:1;transition:opacity .6s ease}
+.fan .hra-frame{position:absolute;left:0;top:0;filter:none}
+/* frame-iphone 4317 x 8796: screen x 199..4111, y 168..8653, corners clipped at a 400-unit radius */
+.hra-screen{position:absolute;left:4.6097%;top:1.91%;width:90.6416%;height:96.4757%;border-radius:10.2223%/4.7136%;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.hra-live{display:none}}
+.hra-stage{--hra-ink:#F2F0EA;--hra-ink-rgb:242,240,234;--hra-far-a:.65;--hra-near-a:.89;--hra-secondary:#C7C4BE;--hra-rubric:#E46A4F;--hra-dock:#232427;--hra-dock-hairline:rgba(242,240,234,.14);
+  position:absolute;left:0;top:0;width:393px;height:852px;overflow:hidden;transform-origin:0 0;color:var(--hra-ink);
+  background:#141416 linear-gradient(to bottom,rgb(31,21,23) 0%,rgb(32,21,24) 45%,rgb(28,21,23) 100%);
+  font:16px/normal HRANews,serif;letter-spacing:.25px;text-align:left;font-optical-sizing:none;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;text-size-adjust:none}
+.hra-stage svg{display:block}
+.hra-pager{position:absolute;left:0;top:0;width:393px;height:852px}
+.hra-pbox{position:absolute;left:28px;top:107px;width:337px}
+.hra-blk{padding:4px 0 28px;text-align:center}
+.hra-label{font-variation-settings:"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;font-feature-settings:"case","kern";color:var(--hra-rubric);white-space:nowrap}
+.hra-rule{width:36px;height:1px;margin:16px auto 0;background:rgba(242,240,234,.22)}
+.hra-narrow{width:265px}
+.hra-ln{font-size:23px;line-height:34.5px;font-variation-settings:"wght" 400;white-space:normal;font-kerning:normal;color:rgba(var(--hra-ink-rgb),var(--hra-far-a))}
+.hra-tx{position:relative;top:2.702px}
+.hra-meas{position:absolute;left:0;top:0;visibility:hidden}
+.hra-cap{font-size:49.45px;color:var(--hra-rubric)!important;font-variation-settings:"wght" 450}
+.hra-f{position:relative}
+.hra-w.hra-sp,.hra-wipe{color:var(--hra-ink)}
+.hra-wipe{position:absolute;left:0;top:0;white-space:nowrap;line-height:normal}
+.hra-wipe .hra-cap{line-height:0!important}
+.hra-f::after{content:"";position:absolute;left:0;right:0;top:100%;height:2px;background:var(--hra-rubric);opacity:0}
+.hra-now .hra-f::after{opacity:var(--hra-now-a,1)}
+.hra-xf .hra-ln,.hra-xf .hra-w{transition:color .4s ease}
+.hra-xf .hra-f::after{transition:opacity .4s ease}
+.hra-pnum{position:absolute;left:28px;width:265px;top:802px;text-align:center;font-size:14px;line-height:1.3;font-variant-numeric:lining-nums tabular-nums;color:var(--hra-secondary);white-space:nowrap}
+.hra-head{position:absolute;left:0;top:59px;width:393px;height:48px}
+.hra-hb{position:absolute;top:0;width:48px;height:48px;display:grid;place-items:center}
+.hra-back{left:4px}
+.hra-back span{padding:0 0 6px 9px;font-size:36px;line-height:1;font-variation-settings:"wght" 380}
+.hra-title{position:absolute;left:100px;width:193px;top:0;height:48px;display:grid;place-items:center;text-align:center;white-space:nowrap;font-size:11px;letter-spacing:.935px;line-height:1.3;font-feature-settings:"case","kern";font-variation-settings:"wght" 500;color:var(--hra-secondary)}
+.hra-title b{font-weight:normal;font-variation-settings:"wght" 700;color:var(--hra-rubric)}
+.hra-aa{left:293px}
+.hra-aa span{font-size:19px;letter-spacing:-.19px;line-height:1.43;font-variation-settings:"wght" 450}
+.hra-mark{left:341px}
+.hra-mark svg{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round}
+.hra-host{position:absolute;left:-10000px;top:0;visibility:hidden}
+.hra-lamp{position:absolute;left:309px;top:738px;width:64px;height:64px}
+.hra-disc{position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 18px 51.8px rgba(0,0,0,.5),0 2px 10.2px rgba(0,0,0,.35)}
+.hra-rings{position:absolute;left:-1px;top:-1px;fill:none;stroke-width:3px}
+.hra-rings circle{stroke:rgba(242,240,234,.2)}
+.hra-rings path{stroke:var(--hra-rubric);stroke-linecap:round}
+.hra-core{position:absolute;left:11px;top:11px;width:42px;height:42px;border-radius:50%;background:var(--hra-rubric);color:#141416;display:grid;place-items:center}
+.hra-handle{position:absolute;left:321px;top:708px;width:40px;height:26px;border-radius:13px;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 4px 14.9px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--hra-secondary)}
+.hra-sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:#fff}
+.hra-sbtime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HRAInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+.hra-sbicons{position:absolute;left:293px;top:23px}
+.hra-home{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:#fff}
+/* hra:css:end */
 @media (max-width:680px){.fan .f1,.fan .f5{display:none}}
 
 /* ============ VALUE BAND ============ */
@@ -315,7 +375,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
 /* shift exactly one 6-card set: (img 190 + gap 30) × 6 = 1320px. needs 4 copies in markup so 3 sets always cover the viewport */
-@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 6))}}
+@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 11))}}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
 /* moment */
@@ -426,8 +486,6 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
 #stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
-.hero{perspective:1400px}
-.fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
 
 /* seo long-form */
 .seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
@@ -533,7 +591,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "Sesim telefonumdan hiç çıkıyor mu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Hayır. Deşifre tamamen cihazında çalışır — yükleme yok, hesap yok, sunucu yok. Tek seferlik engine indirmesinden sonra tüm uygulama çevrimdışı çalışır."
+        "text": "Hiçbir sunucuya gitmez. Yazıya dökme telefonunda çalışır; istersen evdeki Wi-Fi üzerinden kendi bilgisayarında. Yükleme yok, hesap yok; tek seferlik engine indirmesinden sonra tüm uygulama çevrimdışı çalışır."
       }
     },
     {
@@ -549,7 +607,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "Hangi dosyaları içe aktarabilirim?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA ve ALAC — içe aktarma başına bir dosya. M4B dosyalarındaki bölümler, kapak ve meta verilerle birlikte otomatik algılanır."
+        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA ve ALAC. Tek dosya da seçebilirsin, birkaç dosya da: birkaç dosya tek kitap olur, her dosya bir bölüm. M4B dosyalarındaki bölümler, kapak ve meta verilerle birlikte otomatik algılanır."
       }
     },
     {
@@ -679,7 +737,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <h1 id="hero-h1" class="reveal" aria-label="Dikkatini toplama gücünü geri kazan"><span class="kw">Dikkatini</span> <span class="kw">toplama</span> <span class="kw">gücünü</span> <span class="kw">geri</span> <span class="kw">kazan</span></h1>
-    <p class="sub reveal">Sesli kitabını dinlerken oku, kalıcı bir alışkanlık kur</p>
+    <p class="sub reveal">Sesli kitabındaki her kelime, anlatıcı okudukça ışıldar.</p>
     <div class="stores reveal" id="get" aria-label="HushBook'u edin">
       <a class="pill" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=Hushbook-landing&amp;mt=8" target="_blank" rel="noopener" aria-label="HushBook'u App Store'dan indir">
         <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -693,9 +751,28 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <p class="hero-note reveal">🌟 İndirmesi ücretsiz, sıfır reklam.</p>
   </div>
   <div class="fan" aria-hidden="true">
-    <img class="f1" src="/assets/img/mockups/locales/tr/brain-health.webp" alt="" loading="lazy">
+    <img class="f1" src="/assets/img/mockups/locales/tr/brain.webp" alt="" loading="lazy">
     <img class="f2" src="/assets/img/mockups/locales/tr/home.webp" alt="" loading="eager">
-    <img class="f3" src="/assets/img/mockups/locales/tr/karaoke-live.webp" alt="HushBook, Düşünceler'i kelime düzeyinde canlı karaokeye dönüştürüyor" loading="eager" fetchpriority="high">
+    <div class="hra">
+      <img class="f3 hra-shot" src="/assets/img/mockups/locales/tr/read-along.webp" alt="Chapter 1 of The Hitchhiker's Guide to the Galaxy in the HushBook read-along, the narrated word filled in and underlined in red" loading="eager" fetchpriority="high">
+      <script type="application/json" id="hra-text">
+      {
+        "chapterLabel": "Bölüm {numeral}",
+        "chapterNumeral": "I",
+        "aaButton": "Aa",
+        "chapterSeconds": 724,
+        "startSeconds": 14.45,
+        "breaths": ["ninety-two million miles", "little blue green planet"],
+        "paragraphs": [
+          "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.",
+          "Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.",
+          "This planet has, or rather had, a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn't the small green pieces of paper that were unhappy.",
+          "And so the problem remained; lots of the people were mean, and most of them were miserable, even the ones with digital watches."
+        ]
+      }
+      </script>
+      <div class="hra-live"><div class="hra-screen"></div><img class="hra-frame" data-src="/assets/img/mockups/frame-iphone.webp" alt=""></div>
+    </div>
     <img class="f4" src="/assets/img/mockups/locales/tr/player-hitchhikers.webp" alt="" loading="eager">
     <img class="f5" src="/assets/img/mockups/locales/tr/library.webp" alt="" loading="lazy">
   </div>
@@ -851,33 +928,33 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">Nasıl çalışır</span>
-      <h2>Ses dosyasından birlikte okumaya, üç dokunuşta.</h2>
-      <p class="sub">Bir kitap seç, Deşifre Et'e dokun, HushBook Engine işe koyulsun — bölüm bölüm, doğrudan telefonunda.</p>
+      <h2>Sesli kitap, birlikte okumaya böyle dönüşür.</h2>
+      <p class="sub">Bir kitap ekle ve nerede yazıya döküleceğini seç: telefonunda ya da evdeki Wi-Fi üzerinden bilgisayarında.</p>
     </div>
     <div class="steps">
       <figure class="step reveal">
         <span class="num">01</span>
-        <h3>Bir kitap seç</h3>
-        <p>Ücretsiz klasiklere göz at veya kendi MP3, M4B, FLAC, OGG ve daha birçok dosyanı içe aktar.</p>
-        <img src="/assets/img/mockups/locales/tr/library.webp" alt="İçe aktarılmış ve kamu malı sesli kitaplarla HushBook kütüphanesi" loading="lazy">
+        <h3>Bir kitap ekle</h3>
+        <p>Keşfet'ten ücretsiz bir klasik indir ya da zaten sahip olduğun bir sesli kitap dosyasını içe aktar.</p>
+        <img src="/assets/img/mockups/locales/tr/discover.webp" alt="HushBook Keşfet: İndir ve Örnek dinle düğmeleriyle öne çıkan bir klasik, altında bir sıra ücretsiz sesli kitap" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">02</span>
-        <h3>Deşifre Et'e dokun</h3>
-        <p>Bölüm başına tek dokunuş. M4B dosyalarındaki bölümler otomatik algılanır.</p>
-        <img src="/assets/img/mockups/locales/tr/book-info-transcribe.webp" alt="Her bölüm için Deşifre Et düğmeleriyle kitap bilgi ekranı" loading="lazy">
+        <h3>Telefon ya da PC</h3>
+        <p>"Kitabı yazıya dök" işi telefonunda yapar. Pro ile "PC’mde yazıya dök" kitabı evdeki Wi-Fi üzerinden bilgisayarına gönderir. Daha hızlıdır, telefonun da serin kalır.</p>
+        <img src="/assets/img/mockups/locales/tr/step-transcribe.webp" alt="Project Hail Mary kitap sayfasında Seçenekler açık: Kitabı yazıya dök ve PC’mde yazıya dök" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">03</span>
-        <h3>Engine çalışıyor</h3>
-        <p>HushBook Engine, söylenen her kelimeyi anlatımla birlikte hareket eden senkron metne dönüştürür.</p>
-        <img src="/assets/img/mockups/locales/tr/transcribing-chapters.webp" alt="Birinci bölüm ilerleme çubuğuyla deşifre ediliyor" loading="lazy">
+        <h3>Dinlemeye devam et</h3>
+        <p>Kitap sayfası ilerlemeyi gösterir: "Bilgisayarınızda: yazıya dökülüyor, %64" ve kalan dakikalar. Telefonda her bölüm, biter bitmez okunmaya hazırdır.</p>
+        <img src="/assets/img/mockups/locales/tr/step-transcribing.webp" alt="Kitap sayfasındaki kartta Bilgisayarınızda: yazıya dökülüyor, %64 yazıyor, altında kalan süre" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">04</span>
         <h3>Birlikte oku</h3>
-        <p>Her kelime anlatıcıyla birlikte ışıldar. Herhangi bir kelimeye dokunarak oraya atla.</p>
-        <img src="/assets/img/mockups/locales/tr/read-along-monte-cristo.webp" alt="Monte Cristo Kontu ile birlikte okuma — her kelime anlatımla senkron vurgulanıyor" loading="lazy">
+        <p>Kelimeler anlatıcı okudukça dolar, o an okunan kelimenin altında kırmızı bir çizgi durur. Bir satıra uzun bas, oradan çalmaya başlasın.</p>
+        <img src="/assets/img/mockups/locales/tr/read-along-paper.webp" alt="Otostopçunun Galaksi Rehberi'nin 1. bölümü sıcak kâğıt görünümünde birlikte okumada; okunan kelime dolmuş ve altı çizili" loading="lazy">
       </figure>
     </div>
   </div>
@@ -889,10 +966,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="privacy-card reveal">
       <div>
         <span class="eyebrow">HushBook Engine</span>
-        <h2>Telefonunda deşifre edilir. Asla bulutta değil.</h2>
+        <h2>Telefonunda ya da PC'nde yazıya dökülür. Asla bulutta değil.</h2>
         <p class="sub">HushBook'a güç veren konuşma-metin dönüşümü cihazında yerel çalışır. Sesli kitapların asla yüklenmez — yükleyecek bir sunucu yok.</p>
         <ul class="plist">
-          <li><span class="tick">✓</span><span><b>Hiçbir şey telefonundan çıkmaz.</b> Ses, deşifreler, notlar, skorlar — hepsi yerelde saklanır.</span></li>
+          <li><span class="tick">✓</span><span><b>Hiçbir şey sunucuya gitmez.</b> Ses, deşifreler, notlar ve skorlar telefonunda ya da kendi bilgisayarında kalır.</span></li>
           <li><span class="tick">✓</span><span><b>Hesap yok, giriş yok.</b> Uygulamayı aç ve okumaya başla.</span></li>
           <li><span class="tick">✓</span><span><b>Tamamen çevrimdışı</b> — tek seferlik engine indirmesinden sonra uçakta, tünelde, her yerde.</span></li>
           <li><span class="tick">✓</span><span><b>Isıya duyarlı.</b> Uzun kitaplar parçalar hâlinde deşifre edilir, hata olursa kaldığı yerden devam eder ve telefonunu serin tutar.</span></li>
@@ -911,57 +988,66 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">Alıntılar</span>
-      <h2>Dizeyi kaydet. Kartı paylaş.</h2>
-      <p class="sub">Duyduğun anda bir alıntıyı yakala — birlikte okumada iki dokunuş, saklamak ya da paylaşmak senin.</p>
+      <h2>Seni durduran cümle kaybolmasın.</h2>
+      <p class="sub">Birlikte okumada kelimeleri seç ve sakla. Her işaret seste nerede durduğunu hatırlar, böylece onu yeniden dinleyebilirsin.</p>
     </div>
     <div class="gallery">
       <figure class="gcard reveal">
         <span class="num">01</span>
-        <img src="/assets/img/mockups/locales/tr/quote-select.webp" alt="HushBook'ta alıntı seçme — birlikte okuma metninde ilk ve son kelimeye dokunma" loading="lazy">
-        <h3>İki dokunuşta yakala</h3>
-        <p>İlk kelimeye dokun, son kelimeye dokun. Az önce duyduğun dize kaydedildi — birlikte okumadan çıkmadan.</p>
+        <img src="/assets/img/mockups/locales/tr/quote-mark.webp" alt="1984'ün ilk cümlesi birlikte okumada seçilmiş, üstünde Vurgula, Not ve Alıntı seçenekleri" loading="lazy">
+        <h3>Kelimeleri seç</h3>
+        <p>Önce İşaretle düğmesine, sonra ilk ve son kelimeye dokun. Ardından Vurgula, Not ya da Alıntı'yı seç. Not'u seçersen, sen yazarken ses bekler.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">02</span>
-        <img src="/assets/img/mockups/locales/tr/quotes-collection.webp" alt="HushBook'ta kitaba göre toplanmış tüm kayıtlı alıntılar" loading="lazy">
-        <h3>Her dize tek yerde</h3>
-        <p>Alıntıların kitaba göre toplanır, telefonunda saklanır. Yeniden ziyaret et, düzenle ya da birini ilet.</p>
+        <img src="/assets/img/mockups/locales/tr/quote-index.webp" alt="Alıntılar ve notlar: 6 kitaptan 24 pasaj, 1984'ten bir alıntı ve altında okurun notu" loading="lazy">
+        <h3>Kendi alıntı defterin</h3>
+        <p>Alıntılar ve notlar ekranı her işaretini kitaba göre toplar, notların da altlarında durur. Bir satırda oynat düğmesine bas, onu anlatıcının sesinden dinle.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">03</span>
-        <img src="/assets/img/mockups/locales/tr/quote-card-share.webp" alt="Paylaşmaya hazır tamamlanmış bir HushBook alıntı kartı — dize, yazar ve kitap" loading="lazy">
-        <h3>Paylaşmaya değer bir kart</h3>
-        <p>Her alıntı tamamlanmış bir karta dönüşür — kelimeler, kitap, yazar. Paylaşmaya hazır.</p>
+        <img src="/assets/img/mockups/locales/tr/quote-card.webp" alt="Özelleştir: 1984 alıntısı gün batımı renginde bir kartta okurun notuyla, altında yazı tipi ve arka plan seçenekleri ile Paylaş düğmesi" loading="lazy">
+        <h3>Kart olarak paylaş</h3>
+        <p>Özelleştir ekranı alıntıyı kitabın kapağıyla birlikte bir karta yerleştirir. 16 arka plan ve üç yazı tipi arasından seç. Notumu ekle seçeneği notunu alıntının altına ekler.</p>
       </figure>
     </div>
   </div>
   <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
     <div class="marquee-track" id="marquee-fallback">
-      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
-      <img src="/assets/img/mockups/locales/tr/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/tr/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/tr/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/tr/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/tr/player-pride-prejudice.webp" alt="" loading="lazy">
+      <!-- 3 copies of the 11-card set; keyframe shifts one set (2420px), 2 sets stay on screen so it never runs out -->
       <img src="/assets/img/mockups/locales/tr/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/tr/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/tr/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/tr/player-born-a-crime.webp" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -1053,14 +1139,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/tr/home.webp" alt="Öne çıkan kitaplar ve kütüphanenle HushBook ana sayfası" loading="lazy">
-        <img src="/assets/img/mockups/locales/tr/library.webp" alt="Sesli Kitap Yükle kutucuğuyla Koleksiyonlarım kütüphane görünümü" loading="lazy">
+        <img src="/assets/img/mockups/locales/tr/home.webp" alt="HushBook Ana sayfa: bugünkü seri ve kelime sayısı, kaldığın yerden devam etmeye hazır Otostopçunun Galaksi Rehberi ve altında kitapların" loading="lazy">
+        <img src="/assets/img/mockups/locales/tr/library.webp" alt="HushBook Kitaplık: kitapların kapaklardan oluşan bir ızgarada, her birinin altında kalan süre" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Kütüphanen</span>
-        <h2>Binlerce klasik, ücretsiz — <em>ya da kendi kitaplarını getir.</em></h2>
-        <p class="sub">LibriVox ve Internet Archive'dan altı dilde kamu malı sesli kitaplardan oluşan yerleşik bir katalog. Birini indir, deşifre kendiliğinden başlasın — dakikalar içinde birlikte okuyorsun.</p>
-        <p class="sub">Kitapların zaten sende mi? MP3, M4A, M4B, AAC, WAV, FLAC, OGG ve daha birçok formatı içe aktar. Bölümler, kapaklar ve meta veriler otomatik gelir.</p>
+        <h2>Binlerce ücretsiz klasik, <em>ya da kendi kitapların.</em></h2>
+        <p class="sub">Keşfet, LibriVox ve Internet Archive'da aynı anda arar: İngilizce, Almanca, Fransızca, İspanyolca, İtalyanca ya da Portekizce. Bir kitap indir, yazıya dökme sırasına kendiliğinden girer.</p>
+        <p class="sub">Ya da kendi dosyalarını içe aktar: MP3, M4A, M4B, FLAC, OGG ve on tür daha. Bölüm işaretleri de gelir; birlikte seçtiğin birkaç dosya tek kitap olur.</p>
       </div>
     </div>
   </div>
@@ -1072,35 +1158,37 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="split">
       <div class="life-head reveal">
         <span class="eyebrow">Okuma hayatın</span>
-        <h2>Okuyan beyninin ışıldamasını izle.</h2>
-        <p class="sub" style="margin-top:18px">Tamamen cihazında hesaplanan özel bir istatistik paketi. 0'dan 100'e bir beyin skoru; serin, okuduğun kelimeler, anlama ve düzenlilikle büyür — Yeni Başlayan'dan Zirve Beyin Sağlığı'na uzanan sekiz seviye boyunca.</p>
-        <p class="sub" style="margin-top:14px">Kelimeler gerçek deşifreden sayılır — gerçekten duyduğun gerçek kelimeler. Her kart şık bir görsel olarak paylaşılabilir.</p>
+        <h2>Okuma alışkanlıkların, bir beyin çiziminde.</h2>
+        <p class="sub" style="margin-top:18px">Okuma etkileşimi, altı alışkanlığı 0 ile 100 arasında tek bir skorda toplar. İlk sayfalar ile başlayıp Baştan sona ile biten beş seviye vardır.</p>
+        <p class="sub" style="margin-top:14px">Bir alışkanlığa dokun; nasıl sayıldığını ve onu neyin yükselteceğini gör. Hepsi telefonunda hesaplanır, skor da Pro ile gelir.</p>
       </div>
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/tr/brain-health.webp" alt="Beyin Sağlığı skoru ve onu besleyen faktörler" loading="lazy">
-        <img src="/assets/img/mockups/locales/tr/goals-graphs.webp" alt="Kelime eğilimi ve bu yıl okunan toplam kitap" loading="lazy">
+        <img src="/assets/img/mockups/locales/tr/brain.webp" alt="Okuma etkileşimi skoru 58, Seviye 3/5 · Ritminizi buluyorsunuz; yanında bölgeleri altı alışkanlığı temsil eden, mürekkeple çizilmiş bir beyin" loading="lazy">
+        <img src="/assets/img/mockups/locales/tr/analytics.webp" alt="HushBook Analizler: üstte ivme seri kartı, altında Dinleme süresi ile açılan Bu hafta sekmesi" loading="lazy">
       </div>
     </div>
 
     <div class="sec-head center reveal" style="margin:130px auto 0">
       <span class="eyebrow">Gelişmiş İstatistik · Pro</span>
-      <h2>Gelişmiş istatistik, emrinde.</h2>
-      <p class="sub">Serilerin ötesine geç — ne zaman başladığın, ne zaman bıraktığın, neye uzandığın ve gerçekte kaç kelime duyduğun. Her sayı, deşifrelerinden, cihazında hesaplanır.</p>
+      <h2>Dinleme zamanın nereye gidiyor?</h2>
+      <p class="sub">Pro ile kartlarla dolu üç sekme daha açılır. Kartlar sade cümlelerle cevap verir: "Dinlemelerinizin çoğu 21 ile 22 arasında başlıyor."</p>
     </div>
 
     <div class="collage">
       <div class="cstack cstack--l reveal">
-        <figure class="ccard dark"><span class="tag tag-tl">Alışkanlık içgörüleri</span><img src="assets/img/mockups/card-habit-insights.webp" alt="Alışkanlık içgörüleri: alışıldık dinleme saati, en uzun oturum, en aktif gün" loading="lazy">figure>
-        <figure class="ccard"><span class="tag tag-bl">Tür radarı</span><img src="assets/img/mockups/card-genre-radar.webp" alt="En çok okunan türler radar grafiği" loading="lazy">figure>
+        <figure class="ccard"><span class="tag tag-tl">Her zamanki saatin</span><img src="/assets/img/mockups/locales/tr/card-habits.webp" alt="Alışkanlıklar kartı: dinlemelerin çoğu 21 ile 22 arasında başlıyor, bir oturum genellikle yaklaşık 24 dakika sürüyor" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">En çok ne dinliyorsun</span><img src="/assets/img/mockups/locales/tr/card-genres.webp" alt="Ne dinliyorsunuz: son 30 günün çoğu Fantezi, diğer türler çubuklarla" loading="lazy"></figure>
       </div>
-      <div class="collage-phone reveal">         <span class="tag tag-c" style="top:-52px">Günlük ritmin</span>         <img src="assets/img/mockups/advanced-analytics.webp" alt="Gelişmiş istatistik: günlük dinleme başlangıç ve bitişi ile en iyi kategorilerin" loading="lazy">       ing="lazy">
+      <div class="collage-phone reveal">
+        <span class="tag tag-c" style="top:-52px">Dinlediğin her gün</span>
+        <img src="/assets/img/mockups/locales/tr/analytics-calendar.webp" alt="Analizler'deki Kitaplar sekmesi: Ekim ayı dinleme takvimi, her günde o gün dinlenen kitabın kapağı" loading="lazy">
       </div>
       <div class="cstack cstack--r reveal">
-        <figure class="ccard"><span class="tag tag-tr">Kitap başına kelime</span><img src="assets/img/mockups/card-words-per-book.webp" alt="Kitap başına kelime çubuk grafiği" loading="lazy">ing="lazy"></figure>
-        <figure class="ccard"><span class="tag tag-br">Dürüst hedefler</span><img src="assets/img/mockups/card-goals-sheet.webp" alt="Kitaplar ve kelimeler için hedef belirleme sayfası" loading="lazy">lazy"></figure>
+        <figure class="ccard"><span class="tag tag-tr">Kişisel rekorlar</span><img src="/assets/img/mockups/locales/tr/card-records.webp" alt="Rekorlarınız: en uzun oturum, bir günde en çok, en uzun seri ve en hızlı bitirme" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">Kendi hedeflerin</span><img src="/assets/img/mockups/locales/tr/card-goals.webp" alt="Hedefler kartı: günde 5.000 kelimelik hedef ve kaç gün tutturulduğu" loading="lazy"></figure>
       </div>
     </div>
-    <p class="collage-cap reveal">Alışkanlık içgörüleri · tür radarı · kitap başına kelime · dürüst hedefler — her kart şık bir görsel olarak paylaşılabilir.</p>
+    <p class="collage-cap reveal">Hepsi dinlediklerinden, telefonunda hesaplanır. Takvim, türler ve Ayın özeti görsel olarak paylaşılabilir.</p>
 
     <div class="medals reveal" aria-label="Koleksiyon rozetleri">
       <img src="/assets/img/streak_7_front.webp" alt="7 günlük seri rozeti" loading="lazy">
@@ -1119,14 +1207,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media layer reveal">
-        <img class="back" src="/assets/img/mockups/locales/tr/character-slide.webp?v=2" alt="Karakter ayrıntı sayfası — rol, ilk görülme, özellikler ve ilişkiler" loading="lazy">
-        <img class="front" src="/assets/img/mockups/locales/tr/character-graph.webp" alt="Sürüklenebilir düğümlü karakter ilişki grafiği" loading="lazy">
+        <img class="back" src="/assets/img/mockups/locales/tr/characters-sheet.webp" alt="Winston Smith'in sayfası: rol, ilk duyulduğu yer Böl. 1 · 0:09, açıklama, özellikler ve ilişkileri" loading="lazy">
+        <img class="front" src="/assets/img/mockups/locales/tr/characters-map.webp" alt="1984 için karakter haritası: Kahraman olarak Winston Smith; Julia, O'Brien, Büyük Birader ve dört kişiye daha bağlı" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">Okuma yoldaşları</span>
-        <h2>Okurken kadroyu haritala.</h2>
-        <p class="sub" style="margin-top:18px">Dallanan romanlar kafa karıştırabilir. Karakterleri bir tuvalin üzerine sürükle, aralarındaki çizgileri çiz ve her birini kendi sözlerinle etiketle — müttefik, rakip, kardeş, hayran. Haritan kitapla birlikte yaşar.</p>
-        <p class="sub" style="margin-top:14px">Ve bir dize seni durdurduğunda: ilk kelimeye dokun, son kelimeye dokun; alıntı olarak kaydedilir — kart olarak paylaşmaya hazır.</p>
+        <h2>Kim kimdir, aklında kalsın.</h2>
+        <p class="sub" style="margin-top:18px">Dinlerken bir karakter ekle; harita onu ilk duyduğun yeri saniyesine kadar kaydeder. Ona bir yüz ve bir rol ver.</p>
+        <p class="sub" style="margin-top:14px">İki kişiyi birbirine bağla, aradaki bağı seç: kardeşlerden sırra kadar, ya da kendin yaz. Harita içine sinene kadar yüzleri sürükle.</p>
       </div>
     </div>
   </div>
@@ -1169,7 +1257,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <p><strong>Senkron metinli ücretsiz sesli kitap uygulaması</strong> mı arıyorsun? HushBook, düz oynatmadan fazlasını isteyenler için yapıldı. Sıradan oynatıcılar anlatımı yayınlar ve gözlerine takip edecek hiçbir şey bırakmaz. HushBook dinlemeyi <strong>kelimeli sesli kitaba</strong> dönüştürür: söylenen her kelime anlatıcıyla aynı anda ışıldar; bir müzik uygulamasında şarkı sözleri nasıl akıyorsa öyle birlikte okursun — tek fark, bu sefer parçanın koskoca bir kitap olması.</p>
 
       <h3>Senkron metin neden tek başına dinlemeyi geçer</h3>
-      <p>Pasif sesi başlatmak kolay, kaybetmek de kolaydır. Zihin dağılır. İsimler bulanıklaşır. Bir bölümü bitirirsin ve neredeyse hiçbir şey hatırlamadığını fark edersin. Kelime düzeyinde vurgu, dikkati sese bağlar: duyduğunu görürsün, tek dokunuşla istediğin dizeye atlarsın ve yarım bölümü geri sarmadan yerini korursun. Bu çift kanallı odak, birçok okurun anlama rahatlık kadar önemliyken HushBook'u <strong>en iyi ücretsiz sesli kitap uygulamaları</strong> arasında saymasının nedenidir.</p>
+      <p>Pasif sesi başlatmak kolay, kaybetmek de kolaydır. Zihin dağılır. İsimler bulanıklaşır. Bir bölümü bitirirsin ve neredeyse hiçbir şey hatırlamadığını fark edersin. Kelime düzeyinde vurgu, dikkati sese bağlar: duyduğunu görürsün, bir satıra uzun basıp oradan çalarsın ve yarım bölümü geri sarmadan yerini korursun. Bu çift kanallı odak, birçok okurun anlama rahatlık kadar önemliyken HushBook'u <strong>en iyi ücretsiz sesli kitap uygulamaları</strong> arasında saymasının nedenidir.</p>
 
       <h3>En iyi sesli kitap uygulamaları — HushBook'u gerçekten farklı kılan ne</h3>
       <p>"<strong>En iyi sesli kitap uygulamaları</strong>" diye aradığında vitrinler, abonelikler ve bulut kütüphaneleri bulursun. Apple Books sesli kitapları, Audible sesli kitapları ve YouTube sesli kitapları gibi Apple sesli kitapları bir kitap keşfetmene yardımcı olabilir; her birinin kendi kataloğu, koşulları ve erişilebilirliği vardır. Arama ifadeleri de değişir: "Apple sesli kitap" arayan biri genelde aynı Apple Books kataloğunu karşılaştırıyordur. HushBook farklı bir sorunu çözer: <em>zaten sahip olduğun sesi nasıl okuduğunu</em>. Kendi MP3, M4B, FLAC ve daha fazla dosyanı içe aktar; dosya içeriyorsa bölümler ve kapak da gelir. Deşifre Et'e dokun; cihaz üzerindeki HushBook Engine senkron metni kurar — şarkı sözü veritabanı yok, yükleme yok, hesap yok. Tek seferlik engine indirmesinden sonra tüm deneyim çevrimdışı çalışır. Gizli ve dosya öncelikli bu tasarım, yaygın <strong>iPhone sesli kitap uygulamaları</strong> ve <strong>Android sesli kitap uygulamaları</strong> arasında nadirdir.</p>
@@ -1198,9 +1286,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h2>Yanıtlar.</h2>
     </div>
     <div class="faq reveal">
-      <div class="qa"><button type="button" aria-expanded="false">Sesim telefonumdan hiç çıkıyor mu?</button><div class="a"><p>Hayır. Deşifre tamamen cihazında çalışır — yükleme yok, hesap yok, sunucu yok. Tek seferlik engine indirmesinden sonra tüm uygulama çevrimdışı çalışır.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Sesim telefonumdan hiç çıkıyor mu?</button><div class="a"><p>Hiçbir sunucuya gitmez. Yazıya dökme telefonunda çalışır; istersen evdeki Wi-Fi üzerinden kendi bilgisayarında. Yükleme yok, hesap yok; tek seferlik engine indirmesinden sonra tüm uygulama çevrimdışı çalışır.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Senkron metinler nereden geliyor?</button><div class="a"><p>HushBook bunları sesinden, cihaz üzerindeki HushBook Engine ile üretir — şarkı sözü veritabanı yok. Uzun bir kitabın ilk taraması biraz sürer; sonrasında her açışında anında hazırdır.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">Hangi dosyaları içe aktarabilirim?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA ve ALAC — içe aktarma başına bir dosya. M4B dosyalarındaki bölümler, kapak ve meta verilerle birlikte otomatik algılanır.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Hangi dosyaları içe aktarabilirim?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA ve ALAC. Tek dosya da seçebilirsin, birkaç dosya da: birkaç dosya tek kitap olur, her dosya bir bölüm. M4B dosyalarındaki bölümler, kapak ve meta verilerle birlikte otomatik algılanır.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Ücreti ne kadar?</button><div class="a"><p>Temel birlikte okuma deneyimi ve kamu malı kütüphanesi ücretsizdir. Gelişmiş istatistik için isteğe bağlı bir Pro yükseltmesi var — Pro'ya geçmek HushBook'un bağımsız kalmasına ve gelişmesine yardımcı olur.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">Pilimi bitirir mi ya da telefonumu ısıtır mı?</button><div class="a"><p>Engine ısıya duyarlıdır: telefonunu serin tutmak için iş parçacıklarını sınırlar ve parçalar arasında dinlenir; uzun bir deşifre kesintiye uğrarsa otomatik olarak kaldığı yerden devam eder.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBook kimin için?</button><div class="a"><p>Kulaklarıyla okuyan herkes — özellikle disleksisi, DEHB'si veya görme güçlüğü olan okurlar, dil öğrenenler ve duyduğu kelimeleri gördüğünde daha iyi odaklanan herkes.</p></div></div>
@@ -1381,19 +1469,6 @@ if(reviewSet){
   reviewClone.setAttribute('aria-hidden','true');
   reviewClone.querySelectorAll('[tabindex]').forEach(el=>el.removeAttribute('tabindex'));
   reviewSet.after(reviewClone);
-}
-
-// hero fan 3D tilt
-const fan=document.querySelector('.fan');
-if(fan&&fine&&!calm){
-  const hero=document.querySelector('.hero');
-  hero.addEventListener('pointermove',e=>{
-    const r=hero.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    fan.style.setProperty('--rx',(-y*5)+'deg');
-    fan.style.setProperty('--ry',(x*7)+'deg');
-  });
-  hero.addEventListener('pointerleave',()=>{fan.style.setProperty('--rx','0deg');fan.style.setProperty('--ry','0deg')});
 }
 
 // three.js + GSAP — The Transcription Field
@@ -1659,18 +1734,17 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
   if (!container || !window.THREE || calm) return;
 
   const IMAGES = [
-    "/assets/img/mockups/locales/tr/player-martian.webp",
-    "/assets/img/mockups/locales/tr/player-lotr.webp",
-    "/assets/img/mockups/locales/tr/player-love-hypothesis.webp",
-    "/assets/img/mockups/locales/tr/player-crime-punishment.webp",
-    "/assets/img/mockups/locales/tr/player-pride-prejudice.webp",
     "/assets/img/mockups/locales/tr/player-hitchhikers.webp",
     "/assets/img/mockups/locales/tr/player-martian.webp",
     "/assets/img/mockups/locales/tr/player-lotr.webp",
     "/assets/img/mockups/locales/tr/player-love-hypothesis.webp",
     "/assets/img/mockups/locales/tr/player-crime-punishment.webp",
     "/assets/img/mockups/locales/tr/player-pride-prejudice.webp",
-    "/assets/img/mockups/locales/tr/player-hitchhikers.webp"
+    "/assets/img/mockups/locales/tr/player-project-hail-mary.webp",
+    "/assets/img/mockups/locales/tr/player-fourth-wing.webp",
+    "/assets/img/mockups/locales/tr/player-dune.webp",
+    "/assets/img/mockups/locales/tr/player-mexican-gothic.webp",
+    "/assets/img/mockups/locales/tr/player-born-a-crime.webp"
   ];
 
   const width = container.clientWidth;
@@ -1854,7 +1928,9 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
 })();
 </script>
 <div class="locale-switcher" data-locale-switcher aria-label="Dil seçici"><a data-locale="en">İngilizce İngilizce İngilizce English</a><span aria-hidden="true">/</span><a data-locale="de">Deutsch Deutsch Deutsch</a></div>
-<script src="/assets/js/locale.js" defer></script></body>
+<script src="/assets/js/locale.js" defer></script><!-- hra:script -->
+<script defer src="/assets/js/hero-read-along.js"></script>
+</body>
 </html>
 
 

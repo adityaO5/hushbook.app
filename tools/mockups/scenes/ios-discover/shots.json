@@ -1,0 +1,12 @@
+[
+  {
+    "id": "discover",
+    "t": 3.0,
+    "crop": "phone",
+    "out": "discover",
+    "vars": {
+      "discoverRest": "featured"
+    },
+    "quality": 76
+  }
+]

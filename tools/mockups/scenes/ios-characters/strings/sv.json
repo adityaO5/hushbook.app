@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Karaktärskarta",
+  "castCount": "Rollista · {count}",
+  "roleHero": "Hjälte",
+  "roleVillain": "Skurk",
+  "roleRival": "Rival",
+  "roleMentor": "Mentor",
+  "roleFriend": "Vän",
+  "roleLoveInterest": "Kärleksintresse",
+  "relationMentorOf": "mentor för",
+  "relationStudentOf": "elev av",
+  "relationEmployerOf": "arbetsgivare för",
+  "relationEmployeeOf": "anställd hos",
+  "sectionRole": "Roll",
+  "sectionFirstHeard": "Hördes första gången",
+  "firstHeardLabel": "Kap. {chapter} · {time}",
+  "sectionDescription": "Beskrivning",
+  "sectionAttributes": "Attribut",
+  "sectionRelationships": "Relationer",
+  "deleteCharacter": "Ta bort tecken"
+}

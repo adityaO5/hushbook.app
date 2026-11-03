@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "خريطة الشخصيات",
+  "castCount": "الشخصيات · {count}",
+  "roleHero": "البطل",
+  "roleVillain": "الشرير",
+  "roleRival": "المنافس",
+  "roleMentor": "المرشد",
+  "roleFriend": "صديق",
+  "roleLoveInterest": "الحبيب",
+  "relationMentorOf": "معلمه",
+  "relationStudentOf": "طالب",
+  "relationEmployerOf": "صاحب العمل",
+  "relationEmployeeOf": "موظف في",
+  "sectionRole": "الدور",
+  "sectionFirstHeard": "أول ظهور",
+  "firstHeardLabel": "الفصل {chapter} · {time}",
+  "sectionDescription": "الوصف",
+  "sectionAttributes": "السمات",
+  "sectionRelationships": "العلاقات",
+  "deleteCharacter": "حذف الحرف"
+}

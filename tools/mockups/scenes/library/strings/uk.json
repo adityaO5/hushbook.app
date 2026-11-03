@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Ваші книги",
+  "librarySelect": "Вибрати",
+  "libraryChipAll": "Усі",
+  "libraryChipInProgress": "У процесі",
+  "libraryChipNotStarted": "Не розпочаті",
+  "libraryChipFinished": "Готово",
+  "librarySortRecentlyPlayed": "Нещодавно прослухані",
+  "libraryShowAsList": "Показати списком",
+  "durationHoursMinutes": "{hours} год {minutes} хв",
+  "durationMinutes": "{minutes} хв",
+  "timeLeft": "Залишилося {duration}",
+  "navHome": "Головна",
+  "navLibrary": "Бібліотека",
+  "navAnalytics": "Аналітика",
+  "navProfile": "Профіль"
+}

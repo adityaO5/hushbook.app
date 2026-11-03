@@ -1,0 +1,13 @@
+{
+  "readAlong": "Læs med",
+  "minutesLeftInChapter": "{minutes} min. tilbage af kapitlet",
+  "minuteLeftInChapter": "1 min. tilbage af kapitlet",
+  "underMinuteLeftInChapter": "Under et minut tilbage af kapitlet",
+  "sleepInMinutes": "Stopper om {minutes} min.",
+  "pillSpeed": "Hastighed",
+  "pillSleep": "Dvaletimer",
+  "sleepOff": "Slukket",
+  "pillSleepMinutes": "{minutes} min",
+  "chapters": "Kapitler",
+  "chaptersOf": "{current} af {total}"
+}

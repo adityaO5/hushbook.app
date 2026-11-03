@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "I tuoi libri",
+  "librarySelect": "Seleziona",
+  "libraryChipAll": "Tutti",
+  "libraryChipInProgress": "In corso",
+  "libraryChipNotStarted": "Non iniziati",
+  "libraryChipFinished": "Finito",
+  "librarySortRecentlyPlayed": "Ascoltati di recente",
+  "libraryShowAsList": "Mostra come elenco",
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "durationMinutes": "{minutes} min",
+  "timeLeft": "Ancora {duration}",
+  "navHome": "Home",
+  "navLibrary": "Libreria",
+  "navAnalytics": "Analisi",
+  "navProfile": "Profilo"
+}

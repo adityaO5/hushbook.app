@@ -1,0 +1,5 @@
+[
+  { "id": "quote-mark", "t": 5.0, "crop": "phone", "out": "quote-mark" },
+  { "id": "quote-index", "t": 13.6, "crop": "phone", "out": "quote-index" },
+  { "id": "quote-card", "t": 21.0, "crop": "phone", "out": "quote-card" }
+]

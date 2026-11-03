@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Dina böcker",
+  "librarySelect": "Välj",
+  "libraryChipAll": "Alla",
+  "libraryChipInProgress": "Pågående",
+  "libraryChipNotStarted": "Inte påbörjade",
+  "libraryChipFinished": "Färdig",
+  "librarySortRecentlyPlayed": "Senast spelade",
+  "libraryShowAsList": "Visa som lista",
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "durationMinutes": "{minutes} min",
+  "timeLeft": "{duration} kvar",
+  "navHome": "Hem",
+  "navLibrary": "Bibliotek",
+  "navAnalytics": "Analys",
+  "navProfile": "Profil"
+}

@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape-4k">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=3840, height=2160" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="../../lib/i18n.js"></script>
+    <style>
+      /* RTL: English book content keeps its own direction */
+      [dir="rtl"] .featTop { direction: ltr; }
+      [dir="rtl"] .featLine { unicode-bidi: plaintext; }
+      [dir="rtl"] .featDesc { direction: ltr; text-align: left; }
+
+      /* HushBook iPhone app, light. Source: D:\hushbook (read only).
+         Discover + store book page: DiscoverTokens.light (features/store/widgets/discover_tokens.dart).
+         Home + library book page: HbColors.light (theme/hb_colors.dart), HomeTokens (home/widgets/home_tokens.dart).
+         Every Text sits under the Scaffold's Material, so a style that leaves them unset inherits the M3
+         bodyMedium geometry: height 1.43, letter spacing 0.25, even leading (TextButton: labelLarge 0.1). */
+      :root {
+        --canvas: #FAF9F5;
+        /* DiscoverTokens.light */
+        --dPage: #FBF8F2; --dCard: #EFE9DE; --dLine: #D9CFC0; --dHair: #E6DFD8; --dField: #FFFFFF;
+        --dInk: #141413; --dBody: #3D3D3A; --dGrey: #6C6A64; --dGreyCard: #5F5D57; --dBrown: #6F3825;
+        --dFill: #4A2214; --dChipOn: rgba(111,56,37,.102); --dGreen: #1B6E36; --dEdge: rgba(20,20,19,.102);
+        --dNoArt: #E4DBCB; --dNoArtInk: #3D3D3A;
+        /* HbColors.light */
+        --bg: #FBF8F2; --surface: #FFFFFF; --tp: #090A0A; --tb: #2F2F2F; --ts: #858585; --accent: #6F3825;
+        --hairline: #F2F2F7; --skyLight: #E3E5E5;
+        /* HomeTokens */
+        --homeSecondary: #6B655F; --shelfLine: #6B6359; --framesBg: #050507; --framesLine: #E9E5DE;
+        --framesPillInk: #141210; --dockLabel: #3A3734;
+        /* M3 ColorScheme.fromSeed(0xFF7B61FF), tonal spot: the SnackBar */
+        --inverseSurface: #312F36; --inverseOnSurface: #F4EFF7;
+      }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+      @font-face { font-family: HBInter; src: url('../../assets/fonts/Inter-Bold.ttf'); font-weight: 700; }
+      @font-face { font-family: HBTienne; src: url('../../assets/fonts/Tienne-Regular.ttf'); font-weight: 400; }
+      @font-face { font-family: HBHush; src: url('../../assets/fonts/HushFont-Regular.otf'); font-weight: 400; }
+      @font-face { font-family: HBPlayfair; src: url('../../assets/fonts/PlayfairDisplay-Variable.ttf'); font-weight: 400 900; }
+      @font-face { font-family: HBMaterial; src: url('../../assets/fonts/MaterialIcons-Regular.otf'); font-weight: 400; }
+      @font-face { font-family: HBCupertino; src: url('../../assets/fonts/CupertinoIcons.ttf'); font-weight: 400; }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { margin: 0; width: 3840px; height: 2160px; overflow: hidden; background: var(--canvas); }
+      #root { width: 100%; height: 100%; position: relative; background: var(--canvas); }
+      #film { position: absolute; inset: 0; overflow: hidden; }
+      img { display: block; }
+
+      /* The phone: frame-iphone.png at 1960 px tall (scale 1960/8796), centred. Its screen rect
+         (x 199..4111, y 168..8653) lands at 1483.367, 137.435, 871.928 x 1890.929; the 393 x 852
+         stage is zoomed 871.928 / 393 = 2.218646 to fill it, clipped at the bezel's 89.13 px. */
+      .frame { position: absolute; left: 1439.024px; top: 100px; width: 961.951px; height: 1960px; pointer-events: none; z-index: 2; }
+      .screen { position: absolute; left: 1483.367px; top: 137.435px; width: 871.928px; height: 1890.929px; border-radius: 89.13px;
+                overflow: hidden; background: var(--bg); z-index: 1; }
+      .stage { position: relative; width: 393px; height: 852px; zoom: 2.218646; overflow: hidden; background: var(--bg);
+               font-family: HBInter, sans-serif; font-size: 14px; line-height: 1.43; letter-spacing: .25px; color: var(--tp);
+               -webkit-font-smoothing: antialiased; }
+
+      /* Icon fonts: Flutter Icon(size) is the glyph at fontSize = size in a size x size box. */
+      .mi, .ci { display: inline-block; flex: none; text-align: center; font-style: normal; font-weight: 400; white-space: nowrap; letter-spacing: 0; }
+      .mi { font-family: HBMaterial; }
+      .ci { font-family: HBCupertino; }
+      .s12 { font-size: 12px; line-height: 12px; width: 12px; height: 12px; }
+      .s13 { font-size: 13px; line-height: 13px; width: 13px; height: 13px; }
+      .s14 { font-size: 14px; line-height: 14px; width: 14px; height: 14px; }
+      .s15 { font-size: 15px; line-height: 15px; width: 15px; height: 15px; }
+      .s16 { font-size: 16px; line-height: 16px; width: 16px; height: 16px; }
+      .s18 { font-size: 18px; line-height: 18px; width: 18px; height: 18px; }
+      .s19 { font-size: 19px; line-height: 19px; width: 19px; height: 19px; }
+      .s20 { font-size: 20px; line-height: 20px; width: 20px; height: 20px; }
+      .s22 { font-size: 22px; line-height: 22px; width: 22px; height: 22px; }
+
+      /* Status bar + home indicator (iOS draws them over every route). */
+      #statusBar { position: absolute; left: 0; top: 0; width: 393px; height: 54px; z-index: 40; color: #000; letter-spacing: 0; }
+      #sbTime { position: absolute; left: 0; width: 132px; top: 21px; text-align: center; font: 600 17px/20px HBInter; letter-spacing: -0.2px; }
+      #sbIcons { position: absolute; right: 0; width: 132px; top: 21px; height: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+      #homeIndicator { position: absolute; left: 129.5px; bottom: 8px; width: 134px; height: 5px; border-radius: 3px; background: #000; z-index: 40; }
+
+      .route { position: absolute; left: 0; top: 0; width: 393px; height: 852px; overflow: hidden; }
+      .barrier { position: absolute; inset: 0; background: #000; opacity: 0; }
+      #homeRoute { z-index: 1; background: var(--bg); }
+      #bar1 { z-index: 2; }
+      #discRoute { z-index: 3; background: var(--dPage); }
+      #bar2 { z-index: 4; }
+      #storeRoute { z-index: 5; background: var(--dPage); }
+      #bar3 { z-index: 6; }
+      #libRoute { z-index: 7; background: var(--bg); }
+
+      /* ═══ Home (home_screen.dart in ShellScaffold), scrolled to its end ═══ */
+      #homeViewport { position: absolute; left: 0; top: 59px; width: 393px; height: 793px; overflow: hidden; }
+      #homeContent { position: absolute; left: 0; top: 0; width: 393px; }
+      .secHead { padding: 28px 16px 12px; }
+      .secTitle { font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--tb); }
+      .secLine { margin-top: 3px; font-size: 13px; line-height: 1.35; color: var(--homeSecondary); }
+      .grid { padding: 0 16px; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 10px; row-gap: 14px; }
+      .cell { position: relative; display: flex; flex-direction: column; min-width: 0; }
+      .cell .cv { flex: 1; min-height: 0; border-radius: 4px 12px 12px 4px; overflow: hidden; }
+      .cell .cv img { width: 100%; height: 100%; object-fit: cover; }
+      .cell .lbl { margin-top: 5px; font-weight: 600; font-size: 10px; color: var(--tb); white-space: nowrap; overflow: hidden; }
+
+      /* DiscoverTile (home/widgets/discover_tile.dart) */
+      .discoverWrap { padding: 28px 16px 0; }
+      .discover { position: relative; width: 361px; border-radius: 16px; overflow: hidden; background: var(--framesBg); display: flex; align-items: center; }
+      .fan { position: absolute; inset: 0; }
+      .fanGlow { position: absolute; background: radial-gradient(circle closest-side, rgba(255,196,128,.42) 0%, rgba(255,170,100,.141) 55%, rgba(255,160,90,0) 100%); }
+      .fanCover { position: absolute; border-radius: 3px; box-shadow: 0 14px 33.3px rgba(0,0,0,.55), 0 2px 6.8px rgba(0,0,0,.35); }
+      .fanArt { position: absolute; inset: 0; border-radius: 3px; overflow: hidden; background-size: cover; background-position: center; }
+      .fanScrim { position: absolute; inset: 0; }
+      .fanCopy { position: absolute; left: 14px; right: 14px; display: flex; align-items: center; justify-content: center; letter-spacing: 0; }
+      .fanCopy .in { display: flex; flex-direction: column; align-items: center; text-align: center; white-space: nowrap; flex: none; }
+      .fanCopy b { font-weight: 700; font-size: 17px; line-height: 1.08; }
+      .fanCopy span { margin-top: 5px; font-weight: 500; font-size: 10.5px; line-height: 1.1; }
+      .cardFade { position: absolute; inset: 0; background: linear-gradient(to left, #050507 0%, rgba(5,5,7,.92) 38%, rgba(5,5,7,0) 62%); }
+      .discoverCopy { position: relative; margin-left: auto; width: 209.38px; padding: 16px 18px 16px 0; display: flex; flex-direction: column; align-items: flex-end; }
+      .darkTitle { font-family: HBHush; font-size: 46px; line-height: 1; letter-spacing: 0; color: #fff; white-space: nowrap; }
+      .darkLine { margin-top: 6px; max-width: 190px; font-size: 14px; line-height: 1.35; color: var(--framesLine); }
+      .discoverCopy .darkLine { text-align: right; }
+      .pill { margin-top: 6px; min-height: 44px; padding: 0 18px; border-radius: 22px; background: #fff; display: flex; align-items: center;
+              font-weight: 700; font-size: 14px; color: var(--framesPillInk); white-space: nowrap; }
+      .press { position: absolute; inset: 0; background: rgba(9,10,10,.08); opacity: 0; pointer-events: none; }
+
+      /* FramesShelf (home/widgets/frames_shelf.dart): under the dock at this scroll */
+      .framesWrap { padding: 28px 16px 0; }
+      .framesTitle { font-weight: 700; font-size: 22px; line-height: 1.2; color: var(--tb); }
+      .framesLineTxt { margin-top: 4px; font-size: 13px; line-height: 1.35; color: var(--shelfLine); }
+      .frames { position: relative; margin-top: 12px; width: 361px; min-height: 203.06px; border-radius: 16px; overflow: hidden; background: var(--framesBg); display: flex; align-items: center; }
+      .frames .photo { position: absolute; top: 0; bottom: 0; right: -21.66px; height: 100%; width: auto; }
+      .frames .cardFade { background: linear-gradient(to right, #050507 0%, rgba(5,5,7,.92) 38%, rgba(5,5,7,0) 62%); }
+      .framesCopy { position: relative; width: 209.38px; padding: 16px 0 16px 18px; display: flex; flex-direction: column; align-items: flex-start; }
+      .tail { height: 124px; }
+
+      /* NavDock (home/dock), nothing playing */
+      #dock { position: absolute; left: 16px; top: 770px; width: 361px; height: 64px; border-radius: 32px; overflow: hidden;
+              box-shadow: 0 12px 35.6px rgba(0,0,0,.15), 0 2px 7.9px rgba(0,0,0,.06);
+              background: linear-gradient(to bottom, rgba(248,245,239,.95), rgba(248,245,239,.90));
+              -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+      #dock .edge { position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.70); border-radius: 32px; }
+      #capsule { position: absolute; top: 6px; bottom: 6px; left: 6px; width: 87.25px; border-radius: 26px; background: rgba(111,56,37,.13); }
+      .dockRow { position: absolute; inset: 6px; display: flex; }
+      .tab { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--dockLabel); }
+      .tab.on { color: var(--accent); }
+      .tab span { margin-top: 2px; font-weight: 500; font-size: 11px; line-height: 13.2px; letter-spacing: 0; }
+      .tab.on span { font-weight: 600; }
+
+      /* ═══ Discover (store/provider_browse_screen.dart, spec 7 "Paperback") ═══ */
+      #dViewport { position: absolute; left: 0; top: 59px; width: 393px; height: 793px; overflow: hidden; }
+      #dContent { position: absolute; left: 0; top: 0; width: 393px; }
+      .backRow { height: 48px; display: flex; align-items: center; padding-left: 4px; }
+      .iconBtn { width: 48px; height: 48px; flex: none; display: grid; place-items: center; color: var(--dInk); }
+      .mast { padding: 0 16px; }
+      .dTitle { font-family: HBTienne; font-size: 34px; line-height: 40px; letter-spacing: -1.02px; color: var(--dInk); }
+      .dSub { margin-top: 4px; font-size: 14px; line-height: 20px; color: var(--dGrey); }
+      .field { margin: 14px 16px 0; min-height: 48.5px; background: var(--dField); border: 1px solid var(--dLine); border-radius: 10px;
+               display: flex; align-items: center; }
+      .field .mi { margin-left: 12px; color: var(--dGrey); }
+      .field .hint { margin-left: 10px; font-size: 15px; line-height: 22.5px; letter-spacing: .5px; color: var(--dGrey); white-space: nowrap; }
+      .chips { margin-top: 12px; padding: 0 16px; display: flex; flex-wrap: wrap; column-gap: 8px; }
+      .chip { padding: 4px 0; }
+      .chip .face { min-height: 40px; display: flex; align-items: center; padding: 0 6px 0 11px; border: 1px solid var(--dLine); border-radius: 10px; background: var(--dPage); }
+      .chip .face span { font-weight: 500; font-size: 13px; color: var(--dInk); white-space: nowrap; }
+      .chip .face .mi { margin-left: 2px; color: var(--dGrey); }
+      .stripSlot { margin-top: 4px; height: 48px; }
+
+      /* DiscoverGenreStrip (pinned header) */
+      #strip { position: absolute; left: 0; top: 0; width: 393px; height: 48px; background: var(--dPage); display: flex; z-index: 3; }
+      .grow { flex: none; width: 0; height: 48px; overflow: hidden; position: relative; }
+      .grow .iconBtn { position: absolute; left: 0; top: 0; width: 44px; }
+      #stripView { position: relative; flex: 1; min-width: 0; height: 48px; overflow: hidden; }
+      #stripWords { position: absolute; left: 0; top: 0; height: 48px; display: flex; }
+      #genrePill { position: absolute; top: 6px; height: 36px; border-radius: 10px; background: var(--dCard); }
+      .word { position: relative; flex: none; height: 48px; min-width: 48px; padding: 0 13px; display: flex; align-items: center; justify-content: center;
+              font-weight: 500; font-size: 15px; line-height: 20px; letter-spacing: .1px; color: var(--dBody); white-space: nowrap; }
+      .word.on { font-weight: 600; color: var(--dInk); }
+      #stripFade { position: absolute; top: 0; right: 0; width: 28px; height: 48px; background: linear-gradient(to right, rgba(251,248,242,0), var(--dPage)); }
+
+      /* Rows (discover_row_shelf.dart) */
+      .rowBlock { position: relative; }
+      .rowHead { min-height: 48px; padding: 0 16px; display: flex; align-items: center; }
+      .rowHead .names { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 8px; }
+      .rowTitle { font-family: HBTienne; font-size: 22px; line-height: 28px; letter-spacing: -0.66px; color: var(--dInk); }
+      .rowCount { padding-bottom: 4px; font-size: 13px; color: var(--dGrey); font-variant-numeric: tabular-nums; }
+      .seeAll { margin-left: 8px; min-height: 48px; padding: 0 2px 0 8px; display: flex; align-items: center; color: var(--dBrown); }
+      .seeAll span { font-weight: 600; font-size: 14px; letter-spacing: .1px; white-space: nowrap; }
+      .shelf { margin-top: 14px; height: 283px; padding: 0 16px; display: flex; column-gap: 12px; }
+
+      /* StoreCoverCard (store_cover_card.dart) */
+      .tile { position: relative; width: 136px; height: 283px; flex: none; display: flex; flex-direction: column; }
+      .tcv { position: relative; width: 136px; height: 204px; border-radius: 4px 12px 12px 4px; overflow: hidden; background: var(--dNoArt); }
+      /* LibriVox art is matted whole (BoxFit.contain, squareLibriVoxArt); other art fills (BoxFit.cover). */
+      .bgArt { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; }
+      .edgeLine { position: absolute; inset: 0; border: 1px solid var(--dEdge); border-radius: 4px 12px 12px 4px; pointer-events: none; }
+      .noArtTitle { position: absolute; left: 10px; top: 12px; right: 12px; font-family: HBTienne; font-size: 15px; line-height: 18px; letter-spacing: -0.3px; color: var(--dNoArtInk); }
+      .tTitle { margin-top: 8px; height: 34px; font-weight: 600; font-size: 13px; line-height: 17px; color: var(--dInk); overflow: hidden; }
+      .tAuthor { margin-top: 2px; height: 16px; font-size: 12px; line-height: 16px; color: var(--dGrey); white-space: nowrap; overflow: hidden; }
+      .tMeta { margin-top: 2px; height: 16px; font-size: 12px; line-height: 16px; color: var(--dGrey); white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .tMeta .mi { vertical-align: -1.5px; }
+      .tile .press { border-radius: 4px 12px 12px 4px; }
+
+      /* StoreFeaturedCard (store_featured_card.dart) on SampleLampBox */
+      .featWrap { padding: 4px 16px 0; }
+      .feat { position: relative; background: var(--dCard); border-radius: 16px; padding: 16px; }
+      .featTop { display: flex; align-items: flex-start; }
+      .sqCover { position: relative; flex: none; border-radius: 4px 12px 12px 4px; overflow: hidden; background: var(--dNoArt); }
+      .sqCover img { width: 100%; height: 100%; object-fit: cover; }
+      .featWords { flex: 1; min-width: 0; margin-left: 14px; }
+      .featTitle { font-family: HBTienne; font-size: 26px; line-height: 30px; letter-spacing: -0.78px; color: var(--dInk); }
+      .featLine { margin-top: 8px; font-size: 13px; line-height: 18px; color: var(--dGreyCard); }
+      .featDesc { margin-top: 14px; font-size: 15px; line-height: 22px; color: var(--dBody); }
+      .actions { margin-top: 16px; display: flex; column-gap: 8px; }
+      .actions.stack { flex-direction: column; row-gap: 8px; }
+
+      /* DownloadButton / SampleButton (download_button.dart, sample_button.dart) */
+      .btn { position: relative; height: 48px; min-width: 0; border-radius: 10px; overflow: hidden; }
+      .btn.dl { background: var(--dBrown); }
+      .btn.sample { background: var(--dPage); }
+      .btn .ring { position: absolute; inset: 0; border: 1px solid var(--dLine); border-radius: 10px; pointer-events: none; }
+      .btn .fillBar { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--dFill); }
+      .bl { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 6px 10px; }
+      .bl span { margin-left: 6px; font-weight: 600; font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .bl.white { color: #fff; }
+      .bl.ink { color: var(--dInk); }
+      .bl .mi.green { color: var(--dGreen); }
+
+      /* ═══ Store book page (store_book_detail_screen.dart) ═══ */
+      .bookBar { position: absolute; left: 0; top: 59px; width: 393px; height: 48px; display: flex; align-items: center; padding-left: 4px; background: var(--dPage); }
+      #storeBody { position: absolute; left: 0; top: 107px; width: 393px; padding: 4px 16px 0; }
+      .sblock { position: relative; background: var(--dCard); border-radius: 16px; padding: 16px; }
+      .sTitle { font-family: HBTienne; font-size: 28px; line-height: 32px; letter-spacing: -0.84px; color: var(--dInk); }
+      .sLine { margin-top: 8px; font-size: 14px; line-height: 20px; color: var(--dGreyCard); }
+      .sFacts { margin-top: 10px; font-size: 13px; line-height: 18px; color: var(--dGreyCard); font-variant-numeric: tabular-nums; }
+      .sFacts .mi { vertical-align: -2px; color: var(--dGreyCard); }
+      .longChip { margin-top: 4px; height: 48px; display: flex; align-items: center; }
+      .longChip .face { display: flex; align-items: center; padding: 5px 10px 5px 8px; border: 1px solid var(--dBrown); border-radius: 10px; background: var(--dChipOn); color: var(--dBrown); }
+      .longChip span { margin: 0 6px; font-weight: 500; font-size: 13px; line-height: 18px; white-space: nowrap; }
+      .sDesc { margin-top: 20px; font-size: 15px; line-height: 24px; color: var(--dBody); }
+      .link { height: 48px; display: flex; align-items: center; padding-right: 12px; font-weight: 600; font-size: 14px; letter-spacing: .1px; color: var(--dBrown); white-space: nowrap; }
+      .seg .segRow { display: flex; }
+      .segCell { flex: 1 1 0; min-width: 88px; height: 48px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+      .segCell span { font-size: 16px; line-height: normal; letter-spacing: -0.32px; color: var(--ts); white-space: nowrap; }
+      .segCell.on span { font-weight: 600; color: var(--tb); }
+      .segCell i { display: block; margin-top: 8px; height: 2px; width: 0; }
+      .segCell.on i { width: 64px; background: var(--tb); }
+      .seg .segHair { height: .5px; background: var(--hairline); }
+      .sChapters { margin-top: 8px; }
+      .sRow { min-height: 56px; padding: 13px 0; border-bottom: 1px solid var(--dHair); display: flex; align-items: baseline; }
+      .sNum { min-width: 28px; font-size: 13px; color: var(--dGrey); font-variant-numeric: tabular-nums; }
+      .sCol { flex: 1; min-width: 0; margin-left: 10px; }
+      .sChTitle { font-weight: 500; font-size: 15px; line-height: 21px; color: var(--dInk); }
+      .sReader { margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--dGrey); }
+      .sLen { margin-left: 10px; font-size: 13px; color: var(--dGrey); font-variant-numeric: tabular-nums; }
+      .sTag { margin-left: 10px; padding: 1px 6px; border: 1px solid var(--dLine); border-radius: 7px; font-size: 13px; line-height: 18px; color: var(--dGrey); }
+
+      /* SnackBar (showQuietNotice: floating, M3) */
+      .snack { position: absolute; left: 15px; top: 760px; width: 363px; height: 48px; border-radius: 4px; background: var(--inverseSurface);
+               box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+               padding: 14px 16px; font-size: 14px; line-height: 20px; color: var(--inverseOnSurface); white-space: nowrap; opacity: 0; z-index: 9; }
+
+      /* ═══ Library book page (library/book_detail_screen.dart), ScreenUtil 390 x 844 -> 393 x 852 ═══ */
+      .topNav { padding: 73px 16.12px 0; }
+      .topNav .row { position: relative; height: 48px; }
+      .topNav .nb { position: absolute; top: 0; width: 48px; height: 48px; display: grid; place-items: center; color: var(--tp); }
+      .topNav .ttl { position: absolute; left: 80px; right: 80px; top: 0; height: 48px; display: flex; align-items: center; justify-content: center;
+                     font-family: HBPlayfair; font-weight: 500; font-size: 23px; color: var(--tb); white-space: nowrap; }
+      .albumWrap { padding: 20.19px 16.12px 0; display: flex; justify-content: center; }
+      .album { position: relative; width: 162.34px; height: 225.76px; border-radius: 4.03px 16.12px 16.12px 4.03px;
+               box-shadow: 0 12px 22px rgba(0,0,0,.22), 0 2px 6px rgba(0,0,0,.10); }
+      .albumArt { position: absolute; inset: 0; border-radius: 4.03px 16.12px 16.12px 4.03px; overflow: hidden; }
+      .albumArt .fill { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .albumArt .scrim { position: absolute; inset: 0; background: rgba(16,12,9,.278); }
+      .albumArt .whole { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; background-size: contain; }
+      .playBtn { position: absolute; right: 12.09px; bottom: 12.11px; width: 48.37px; height: 48.37px; display: grid; place-items: center; }
+      .playBtn .disc { width: 38.29px; height: 38.29px; border-radius: 50%; background: var(--accent); box-shadow: 0 2px 6px rgba(0,0,0,.28); display: grid; place-items: center; color: #fff; }
+      .titleSec { padding: 16.19px 16.12px 0; }
+      .bookTitle { font-family: HBPlayfair; font-weight: 500; font-size: 28.22px; color: var(--tb); white-space: nowrap; }
+      .people { font-size: 16.12px; color: var(--ts); white-space: nowrap; }
+      .meta { padding: 16.19px 16.12px 0; display: flex; gap: 12.09px; }
+      .mbox { flex: 1 1 0; position: relative; min-width: 0; background: var(--surface); border-radius: 16.12px; box-shadow: 0 2px 8px rgba(0,0,0,.078);
+              padding: 12.11px 0; display: flex; flex-direction: column; align-items: center; }
+      .mbox::before { content: ""; position: absolute; inset: 0; border-radius: 16.12px; padding: 1px;
+                      background: linear-gradient(to bottom left, #CED3D9 0%, rgba(206,211,217,0) 30%, rgba(206,211,217,0) 70%, #CED3D9 100%);
+                      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+      .mic { height: 28.27px; display: grid; place-items: center; }
+      .mk { display: block; background: var(--ts); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
+            mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
+      .mk.rel { width: 20.62px; height: 20.19px; -webkit-mask-image: url(assets/img/released.png); mask-image: url(assets/img/released.png); }
+      .mk.chp { width: 39.52px; height: 26.25px; -webkit-mask-image: url(assets/img/chapters.png); mask-image: url(assets/img/chapters.png); }
+      .mic img { height: 24.23px; width: auto; }
+      .mval { margin-top: 6.06px; padding: 0 8.06px; font-weight: 600; font-size: 15.12px; color: var(--tb); white-space: nowrap; }
+      .lpill { padding: 12px 16.12px 0; display: flex; }
+      .lpill .p { display: inline-flex; align-items: center; background: rgba(111,56,37,.10); border: 1px solid rgba(111,56,37,.30); border-radius: 20.15px; color: var(--accent); }
+      .lpill .lab { display: flex; align-items: center; padding: 4.04px 6.05px 4.04px 10.08px; }
+      .lpill .txt { font-size: 12.09px; margin: 0 5.04px 0 4.03px; white-space: nowrap; }
+      .lpill .sep { width: 1px; height: 12.09px; background: rgba(111,56,37,.30); }
+      .lpill .x { padding: 0 9.07px 0 6.05px; display: flex; }
+      .lseg { margin-top: 20px; }
+      .chWrap { padding: 16.19px 16.12px 0; }
+      .chCard { background: var(--surface); border-radius: 20.15px; box-shadow: 0 1px 3.3px rgba(0,0,0,.25); padding: 24.23px 17.13px; }
+      .bnRow { display: flex; align-items: center; }
+      .spin14 { position: relative; width: 14px; height: 14px; flex: none; }
+      .spin14 svg, .spin20 svg { position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; overflow: visible; }
+      .bnText { flex: 1; min-width: 0; margin-left: 8.06px; font-size: 12.09px; color: transparent; white-space: nowrap;
+                background-image: linear-gradient(90deg, #858585 0%, #858585 28%, #C68A41 40%, #C98A3D 50%, #C68A41 60%, #858585 72%, #858585 100%);
+                background-size: 280% 100%; background-repeat: no-repeat; -webkit-background-clip: text; background-clip: text; }
+      .bnPause { margin-left: 8.06px; width: 44px; height: 44px; display: grid; place-items: center; color: var(--accent); }
+      .bnHint1 { margin-top: 8.08px; font-weight: 600; font-size: 11.08px; line-height: 1.35; color: var(--ts); }
+      .bnHint2 { margin-top: 2.02px; font-size: 11.08px; line-height: 1.35; color: var(--ts); }
+      .bnBar { position: relative; margin-top: 6.06px; height: 3.03px; border-radius: 100px; overflow: hidden; background: var(--skyLight); }
+      .bnBar i { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: var(--accent); }
+      .lRow { margin-top: 16.19px; display: flex; align-items: center; }
+      .lNum { font-size: 18.14px; color: var(--tp); }
+      .lMid { flex: 1; min-width: 0; margin-left: 33.25px; }
+      .lTitle { font-family: HBPlayfair; font-weight: 500; font-size: 18.14px; color: var(--tp); white-space: nowrap; }
+      .lDur { margin-top: 2.02px; font-size: 11.08px; color: var(--ts); }
+      .spin20 { position: relative; margin-left: 8.06px; width: 20.15px; height: 20.15px; flex: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16" data-width="3840" data-height="2160" data-fps="60">
+      <div id="film" class="clip" data-start="0" data-duration="16" data-track-index="0" data-track-kind="graphics" data-layout-allow-overflow>
+        <div class="screen" data-layout-allow-overflow>
+          <div class="stage" id="stage" data-layout-allow-overflow>
+
+            <!-- ═══ Home tab (ShellScaffold), scrolled to the Discover tile ═══ -->
+            <div class="route" id="homeRoute" data-layout-allow-overflow>
+              <div id="homeViewport" data-layout-allow-overflow>
+                <div id="homeContent">
+                  <div class="secHead" id="yourBooks">
+                    <div class="secTitle" data-t="homeYourBooks">Your Books</div>
+                    <div class="secLine" data-t="homeYourBooksLine">Everything you’ve imported or downloaded</div>
+                  </div>
+                  <div class="grid" id="grid">
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/projecthailmary.webp" alt="" /></div><div class="lbl" data-ellipsis>Project Hail Mary</div></div>
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/LH.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Love Hypothesis</div></div>
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/harry%20potter.jpg" alt="" /></div><div class="lbl" data-ellipsis>Harry Potter and the Sorcerer’s Stone</div></div>
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/odessey.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Odyssey</div></div>
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/hitchhikers.jpg" alt="" /></div><div class="lbl" data-ellipsis>The Hitch-Hiker’s Guide to the Galaxy</div></div>
+                    <div class="cell"><div class="cv"><img src="../../assets/covers/crimeandpunishmentjpg.jpg" alt="" /></div><div class="lbl" data-ellipsis>Crime and Punishment</div></div>
+                  </div>
+
+                  <div class="discoverWrap">
+                    <div class="discover" id="discover">
+                      <div class="fan" id="fan" data-layout-ignore>
+                        <div class="fanGlow" id="fanGlow"></div>
+                        <div class="fanCover" data-fan="wild"><div class="fanArt" style="background-image:url('assets/templates/wildflower_lake.webp')">
+                          <div class="fanScrim" data-safe="0.10,0.48" data-tone="light"></div>
+                          <div class="fanCopy" style="color:#fff"><div class="in"><b>The Odyssey</b><span style="color:rgba(255,255,255,.88)">Homer</span></div></div></div></div>
+                        <div class="fanCover" data-fan="signal"><div class="fanArt" style="background-image:url('assets/templates/signal_bloom.webp')">
+                          <div class="fanScrim" data-safe="0.12,0.52" data-tone="dark"></div>
+                          <div class="fanCopy" style="color:#211B18"><div class="in"><b>Dracula</b><span style="color:rgba(33,27,24,.88)">Bram Stoker</span></div></div></div></div>
+                        <div class="fanCover" data-fan="cosmos"><div class="fanArt" style="background-image:url('assets/templates/cosmos_ring.webp')">
+                          <div class="fanScrim" data-safe="0.14,0.48" data-tone="light"></div>
+                          <div class="fanCopy" style="color:#fff"><div class="in"><b>Pride and Prejudice</b><span style="color:rgba(255,255,255,.88)">Jane Austen</span></div></div></div></div>
+                      </div>
+                      <div class="cardFade"></div>
+                      <div class="discoverCopy">
+                        <div class="darkTitle" data-t="discoverTitle">Discover</div>
+                        <div class="darkLine" data-t="homeDiscoverLine">Free classics, read aloud by volunteers.</div>
+                        <div class="pill" data-t="homeDiscoverBrowse">Browse</div>
+                      </div>
+                      <div class="press" id="tilePress"></div>
+                    </div>
+                  </div>
+
+                  <div class="framesWrap">
+                    <div class="framesTitle" data-t="homeFramesShelfTitle">Share your read</div>
+                    <div class="framesLineTxt" data-t="homeFramesShelfLine">Put the book you're reading on a photo</div>
+                    <div class="frames">
+                      <img class="photo" src="assets/img/frame_banner_woman.webp" alt="" />
+                      <div class="cardFade"></div>
+                      <div class="framesCopy">
+                        <div class="darkTitle" data-t="framesTitle">Frames</div>
+                        <div class="darkLine" data-t="homeFramesCardLine">A photo card with your current read on it.</div>
+                        <div class="pill" data-t="homeFramesMakeCard">Make a card</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tail"></div>
+                </div>
+              </div>
+
+              <div id="dock" data-layout-allow-occlusion data-layout-allow-overlap>
+                <div id="capsule"></div>
+                <div class="dockRow">
+                  <div class="tab on"><i class="ci s22">&#xf6ca;</i><span data-t="navHome">Home</span></div>
+                  <div class="tab"><i class="ci s22">&#xf3e8;</i><span data-t="navLibrary">Library</span></div>
+                  <div class="tab"><i class="ci s22">&#xf8b7;</i><span data-t="navAnalytics">Analytics</span></div>
+                  <div class="tab"><i class="ci s22">&#xf47e;</i><span data-t="navProfile">Profile</span></div>
+                </div>
+                <div class="edge"></div>
+              </div>
+            </div>
+
+            <div class="barrier" id="bar1"></div>
+
+            <!-- ═══ /discover ═══ -->
+            <div class="route" id="discRoute" style="visibility:hidden" data-layout-allow-overflow data-layout-allow-overlap>
+              <div id="dViewport" data-layout-allow-overflow>
+                <div id="dContent">
+                  <div class="backRow"><div class="iconBtn"><i class="mi s22">&#xf570;</i></div></div>
+                  <div class="mast">
+                    <div class="dTitle" data-t="discoverTitle">Discover</div>
+                    <div class="dSub" data-t="discoverSubtitle">Free audiobooks from LibriVox and Internet Archive.</div>
+                  </div>
+                  <div class="field"><i class="mi s20">&#xf013d;</i><span class="hint" data-t="discoverSearchHint">Search both libraries</span></div>
+                  <div class="chips">
+                    <div class="chip"><div class="face"><span data-t="chipBothLibraries">Both libraries</span><i class="mi s16">&#xf720;</i></div></div>
+                    <div class="chip"><div class="face"><span data-t="chipAnyLanguage">Any language</span><i class="mi s16">&#xf720;</i></div></div>
+                    <div class="chip"><div class="face"><span data-t="chipAnyLength">Any length</span><i class="mi s16">&#xf720;</i></div></div>
+                  </div>
+                  <div class="stripSlot" id="stripSlot"></div>
+
+                  <!-- Row 1: the seasonal row, holding the featured pick (its shelf drops the book) -->
+                  <div class="rowBlock" id="row1" style="padding-top:12px">
+                    <div class="rowHead">
+                      <div class="names"><span class="rowTitle" data-t="rowSeasonNovember">For November evenings</span><span class="rowCount">2,846</span></div>
+                      <div class="seeAll"><span data-t="seeAll">See all</span><i class="mi s18">&#xf63b;</i></div>
+                    </div>
+                    <div class="featWrap">
+                      <div class="feat">
+                        <div class="featTop">
+                          <div class="sqCover" style="width:100px;height:100px"><img src="../../assets/covers/alexandardumas.jpg" alt="" /><div class="edgeLine"></div></div>
+                          <div class="featWords">
+                            <div class="featTitle">The Count of Monte Cristo</div>
+                            <div class="featLine" data-sentence="Alexandre Dumas|several|52h 52m|en">Alexandre Dumas. Read by several readers, 52h 52m, English.</div>
+                          </div>
+                        </div>
+                        <div class="featDesc" data-lines="3" data-lh="22">Betrayed by the men he trusted and buried in the Château d’If for fourteen years, the young sailor Edmond Dantès escapes with the secret of a hidden fortune, and comes back to Paris under a new name to settle every debt.</div>
+                        <div class="actions">
+                          <div class="btn dl"><div class="bl white"><i class="mi s19">&#xf6df;</i><span data-size="1.4 GB">Download, 1.4 GB</span></div></div>
+                          <div class="btn sample"><div class="ring"></div><div class="bl ink"><i class="mi s19">&#xf00a0;</i><span data-t="samplePlay">Play a sample</span></div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="shelf" data-layout-allow-overflow>
+                      <div class="tile" data-len="11h 46m" data-rating="4.6" data-count="14" data-lib="Archive">
+                        <div class="tcv"><div class="bgArt" style="background-image:url('../../assets/covers/odessey.jpg');background-size:cover"></div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17">The Odyssey</div><div class="tAuthor" data-ellipsis>Homer</div><div class="tMeta"></div>
+                      </div>
+                      <div class="tile" data-len="22h 14m" data-rating="4.5" data-count="11" data-lib="Archive">
+                        <div class="tcv"><div class="bgArt" style="background-image:url('../../assets/covers/crimeandpunishmentjpg.jpg');background-size:cover"></div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17">Crime and Punishment</div><div class="tAuthor" data-ellipsis>Fyodor Dostoyevsky</div><div class="tMeta"></div>
+                      </div>
+                      <div class="tile" data-len="15h 52m" data-rating="4.6" data-count="9" data-lib="Archive">
+                        <div class="tcv"><div class="noArtTitle" data-layout-ignore>A Tale of Two Cities</div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17" data-layout-ignore>A Tale of Two Cities</div><div class="tAuthor" data-ellipsis data-layout-ignore>Charles Dickens</div><div class="tMeta" data-layout-ignore></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2: Popular this month (it only sorts: no count) -->
+                  <div class="rowBlock" id="row2" style="padding-top:20px">
+                    <div class="rowHead">
+                      <div class="names"><span class="rowTitle" data-t="rowPopularThisMonth">Popular this month</span></div>
+                      <div class="seeAll"><span data-t="seeAll">See all</span><i class="mi s18">&#xf63b;</i></div>
+                    </div>
+                    <div class="shelf" id="shelf2" data-layout-allow-overflow>
+                      <div class="tile" id="ppTile" data-len="11h 35m" data-rating="4.7" data-count="209" data-lib="LibriVox">
+                        <div class="tcv"><div class="bgArt" style="background-image:url('../../assets/covers/prideandprejudice.jpg');background-size:contain"></div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17">Pride and Prejudice</div><div class="tAuthor" data-ellipsis>Jane Austen</div><div class="tMeta"></div>
+                        <div class="press" id="ppPress"></div>
+                      </div>
+                      <div class="tile" data-len="52h 52m" data-rating="4.8" data-count="87" data-lib="LibriVox">
+                        <div class="tcv"><div class="bgArt" style="background-image:url('../../assets/covers/alexandardumas.jpg');background-size:contain"></div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17">The Count of Monte Cristo</div><div class="tAuthor" data-ellipsis>Alexandre Dumas</div><div class="tMeta"></div>
+                      </div>
+                      <div class="tile" data-len="8h 24m" data-rating="4.5" data-count="16" data-lib="Archive">
+                        <div class="tcv"><div class="noArtTitle" data-layout-ignore>Frankenstein</div><div class="edgeLine"></div></div>
+                        <div class="tTitle" data-lines="2" data-lh="17" data-layout-ignore>Frankenstein</div><div class="tAuthor" data-ellipsis data-layout-ignore>Mary Wollstonecraft Shelley</div><div class="tMeta" data-layout-ignore></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="height:58px"></div>
+                </div>
+
+                <div id="strip" data-layout-allow-overlap data-layout-allow-occlusion>
+                  <div class="grow" id="growBack"><div class="iconBtn"><i class="mi s22">&#xf570;</i></div></div>
+                  <div id="stripView" data-layout-allow-overflow>
+                    <div id="stripWords">
+                      <div id="genrePill"></div>
+                      <div class="word on" data-t="genreAll">All</div><div class="word" data-t="genreFiction">Fiction</div><div class="word" data-t="genreClassics">Classics</div><div class="word" data-t="genreMystery">Mystery</div>
+                      <div class="word" data-t="genreGothicHorror">Gothic and horror</div><div class="word" data-t="genreScienceFiction">Science fiction</div><div class="word" data-t="genreHistory">History</div>
+                      <div class="word" data-t="genrePhilosophy">Philosophy</div><div class="word" data-t="genreChildren">Children</div><div class="word" data-t="genreDrama">Drama</div>
+                    </div>
+                    <div id="stripFade"></div>
+                  </div>
+                  <div class="grow" id="growSearch"><div class="iconBtn"><i class="mi s22">&#xf013d;</i></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="barrier" id="bar2"></div>
+
+            <!-- ═══ /discover/librivox/book/:id ═══ -->
+            <div class="route" id="storeRoute" style="visibility:hidden" data-layout-allow-overflow data-layout-allow-overlap>
+              <div id="storeBody">
+                <div class="sblock">
+                  <div class="featTop">
+                    <div class="sqCover" style="width:120px;height:120px"><img src="../../assets/covers/prideandprejudice.jpg" alt="" /><div class="edgeLine"></div></div>
+                    <div class="featWords">
+                      <div class="sTitle">Pride and Prejudice</div>
+                      <div class="sLine" data-sentence="Jane Austen|Karen Savage|11h 35m|en">Jane Austen. Read by Karen Savage, 11h 35m, English.</div>
+                      <div class="sFacts"><span id="sFactsText">Recorded 2007 · 61 chapters · LibriVox</span> · <i class="mi s13">&#xf01d4;</i> 4.7 (209)</div>
+                    </div>
+                  </div>
+                  <div class="actions" id="storeActions">
+                    <div class="btn dl" id="dlBtn">
+                      <div class="fillBar" id="dlFill"></div>
+                      <div class="bl white" id="lblIdle"><i class="mi s19">&#xf6df;</i><span data-size="318 MB">Download, 318 MB</span></div>
+                      <div class="bl white" id="lblDl" style="visibility:hidden"><i class="mi s19">&#xf6df;</i><span id="dlPct">Downloading 0%</span></div>
+                      <div class="bl white" id="lblSave" style="visibility:hidden"><i class="mi s19">&#xf6df;</i><span data-t="downloadSaving">Saving…</span></div>
+                      <div class="bl ink" id="lblDone" style="visibility:hidden"><i class="mi s19 green">&#xf636;</i><span id="doneText" data-t="downloadedOpen">Downloaded · Open</span></div>
+                      <div class="ring" id="dlRing" style="opacity:0"></div>
+                      <div class="press" id="dlPress"></div>
+                    </div>
+                    <div class="btn sample"><div class="ring"></div><div class="bl ink"><i class="mi s19">&#xf00a0;</i><span data-t="samplePlay">Play a sample</span></div></div>
+                  </div>
+                  <div class="longChip"><div class="face"><i class="mi s16">&#xf012b;</i><span data-t="longAudiobook">Long audiobook</span><i class="mi s14">&#xf815;</i></div></div>
+                </div>
+                <div class="sDesc" data-lines="3" data-lh="24">It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. So opens Jane Austen’s best-loved novel, the story of Elizabeth Bennet, her four sisters, and the proud Mr. Darcy.</div>
+                <div class="link" data-t="moreAboutRecording">More about this recording</div>
+                <div class="seg">
+                  <div class="segRow"><div class="segCell on"><span data-t="tabChapters">Chapters</span><i></i></div><div class="segCell"><span data-layout-ignore data-t="tabAbout">About</span><i></i></div></div>
+                  <div class="segHair"></div>
+                </div>
+                <div class="sChapters">
+                  <div class="sRow"><span class="sNum">1</span><div class="sCol"><div class="sChTitle">Chapter 1</div><div class="sReader">Karen Savage</div></div><span class="sLen" data-min="6">6m</span><span class="sTag" data-t="sampleTag">Sample</span></div>
+                  <div class="sRow"><span class="sNum">2</span><div class="sCol"><div class="sChTitle">Chapter 2</div><div class="sReader">Karen Savage</div></div><span class="sLen" data-min="7">7m</span></div>
+                  <div class="sRow"><span class="sNum">3</span><div class="sCol"><div class="sChTitle">Chapter 3</div><div class="sReader">Karen Savage</div></div><span class="sLen" data-min="12">12m</span></div>
+                  <div class="sRow" data-layout-ignore><span class="sNum">4</span><div class="sCol"><div class="sChTitle">Chapter 4</div><div class="sReader">Karen Savage</div></div><span class="sLen" data-min="8">8m</span></div>
+                </div>
+              </div>
+              <div class="bookBar"><div class="iconBtn"><i class="mi s22">&#xf570;</i></div></div>
+              <div class="snack" id="snackA" style="visibility:hidden" data-t="addedToLibraryQueued">Added to library. Transcription queued.</div>
+            </div>
+
+            <div class="barrier" id="bar3"></div>
+
+            <!-- ═══ /book/:bookId, the downloaded book ═══ -->
+            <div class="route" id="libRoute" style="visibility:hidden" data-layout-allow-overflow data-layout-allow-overlap>
+              <div class="topNav">
+                <div class="row">
+                  <div class="nb" style="left:0"><i class="mi s22">&#xf570;</i></div>
+                  <div class="ttl" data-t="overview">Overview</div>
+                  <div class="nb" style="right:0"><i class="mi s22">&#xf82b;</i></div>
+                </div>
+              </div>
+              <div class="albumWrap">
+                <div class="album" id="album">
+                  <div class="albumArt">
+                    <img class="fill" src="assets/blur/album-pride-and-prejudice.jpg" alt="" />
+                    <div class="scrim"></div>
+                    <div class="whole" style="background-image:url('../../assets/covers/prideandprejudice.jpg')"></div>
+                  </div>
+                  <div class="playBtn"><div class="disc"><i class="ci s15">&#xf488;</i></div></div>
+                </div>
+              </div>
+              <div class="titleSec">
+                <div class="bookTitle">Pride and Prejudice</div>
+                <div class="people" style="margin-top:12.11px" data-layout-ignore id="libBy">By Jane Austen</div>
+                <div class="people" style="margin-top:4.04px" data-layout-ignore id="libReadBy">Read by Karen Savage</div>
+              </div>
+              <div class="meta">
+                <div class="mbox"><div class="mic"><i class="mk rel"></i></div><div class="mval" data-t="releasedUnknown">Unknown</div></div>
+                <div class="mbox"><div class="mic"><i class="mk chp"></i></div><div class="mval" id="libChapters">61 chapters</div></div>
+                <div class="mbox"><div class="mic"><img src="assets/img/airpods_dark.png" alt="" /></div><div class="mval" id="libLength">11 hr 35 min</div></div>
+              </div>
+              <div class="lpill">
+                <div class="p">
+                  <div class="lab"><i class="mi s13">&#xf339;</i><span class="txt" data-t="longAudiobook">Long audiobook</span><i class="mi s12" style="opacity:.7">&#xf815;</i></div>
+                  <span class="sep"></span>
+                  <div class="x"><i class="mi s13">&#xf647;</i></div>
+                </div>
+              </div>
+              <div class="seg lseg">
+                <div class="segRow">
+                  <div class="segCell on"><span data-t="tabChapters">Chapters</span><i></i></div>
+                  <div class="segCell"><span data-layout-ignore data-t="tabCharacters">Characters</span><i></i></div>
+                  <div class="segCell"><span data-layout-ignore data-t="tabInsights">Insights</span><i></i></div>
+                  <div class="segCell"><span data-layout-ignore data-t="tabNotes">Notes</span><i></i></div>
+                </div>
+                <div class="segHair"></div>
+              </div>
+              <div class="chWrap">
+                <div class="chCard">
+                  <div class="bnRow">
+                    <div class="spin14"><svg viewBox="-10 -10 20 20" aria-hidden="true" id="spinA"></svg></div>
+                    <div class="bnText" id="bnText" data-layout-ignore><span data-t="transcribing">Transcribing…</span> · <span data-t="estimating">estimating…</span></div>
+                    <div class="bnPause"><i class="mi s20">&#xf0056;</i></div>
+                  </div>
+                  <div class="bnHint1" data-layout-ignore data-t="longAudiobookVeryLong">This is a long one, so it may take a while to finish.</div>
+                  <div class="bnHint2" data-layout-ignore data-t="transcriptionWarmWarning">Your device may get warm — that's normal. Transcription will continue in the background.</div>
+                  <div class="bnBar"><i id="bnBar1"></i><i id="bnBar2"></i></div>
+                  <div class="lRow" data-layout-ignore>
+                    <span class="lNum">01</span>
+                    <div class="lMid"><div class="lTitle">Chapter 1</div><div class="lDur" data-min="6">6m</div></div>
+                    <div class="spin20"><svg viewBox="-10 -10 20 20" aria-hidden="true" id="spinB"></svg></div>
+                  </div>
+                </div>
+              </div>
+              <div class="snack" id="snackB" style="visibility:hidden" data-t="addedToLibraryQueued">Added to library. Transcription queued.</div>
+            </div>
+
+            <div id="statusBar" data-layout-allow-occlusion>
+              <div id="sbTime">9:41</div>
+              <div id="sbIcons">
+                <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="7.5" width="3.2" height="4.5" rx="1" fill="#000" /><rect x="4.9" y="5.2" width="3.2" height="6.8" rx="1" fill="#000" /><rect x="9.8" y="2.8" width="3.2" height="9.2" rx="1" fill="#000" /><rect x="14.7" y="0" width="3.2" height="12" rx="1" fill="#000" /></svg>
+                <svg width="17" height="12" viewBox="0 0 17 12" aria-hidden="true"><path d="M8.5 2.3c2.4 0 4.6.9 6.3 2.5.2.2.5.2.7 0l1.2-1.2c.2-.2.2-.5 0-.7A11.6 11.6 0 0 0 8.5 0C5.4 0 2.4 1.2.3 3c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0a9.1 9.1 0 0 1 6.3-2.6Z" fill="#000" /><path d="M8.5 6c1.3 0 2.6.5 3.6 1.4.2.2.5.2.7 0L14 6.2c.2-.2.2-.5 0-.7a8.1 8.1 0 0 0-11 0c-.2.2-.2.5 0 .7l1.2 1.2c.2.2.5.2.7 0 1-.9 2.3-1.4 3.6-1.4Z" fill="#000" /><path d="M10.9 9.3c.2-.2.2-.5 0-.7a3.5 3.5 0 0 0-4.8 0c-.2.2-.2.5 0 .7l2 2c.2.2.5.2.7 0Z" fill="#000" /></svg>
+                <svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.6" fill="none" stroke="#000" stroke-opacity=".38" /><rect x="2" y="2" width="20" height="9" rx="2.2" fill="#000" /><path d="M25 4.3v4.4c.9-.3 1.5-1.2 1.5-2.2s-.6-1.9-1.5-2.2Z" fill="#000" fill-opacity=".45" /></svg>
+              </div>
+            </div>
+            <div id="homeIndicator" data-layout-allow-occlusion></div>
+          </div>
+        </div>
+        <img class="frame" id="frame" src="../../assets/frame-iphone.png" alt="" data-layout-allow-occlusion />
+      </div>
+    </div>
+
+    <script>
+      // Shot variables (hbVar):
+      //   discoverRest  null (default) = the film's own scroll on the Discover page;
+      //                 'featured' = the page at rest, scrolled just far enough that the seasonal row's
+      //                 featured card and the cover shelf under it are whole (genre strip pinned and settled).
+      // UI strings come from strings/<locale>.json through hbT / data-t. Book titles, authors, readers,
+      // descriptions, chapter titles, counts, sizes and ratings are store data and stay as written.
+      const REST = hbVar('discoverRest', null);
+
+      // ── Beats (seconds) ─────────────────────────────────────────────────────
+      const DUR = 16;
+      const TILE_PRESS = 1.30, TILE_UP = 1.42;         // DiscoverTile InkWell (PressDimScope: textPrimary 8 %, 200 ms fades)
+      const PUSH1 = TILE_UP, PUSH1_LEN = 0.5;          // /discover: CupertinoPage, 500 ms
+      const SCROLL_FROM = 3.30, SCROLL_TO = 4.90;      // down to Popular this month; the genre strip pins
+      const PP_PRESS = 5.40, PP_UP = 5.52;             // the Pride and Prejudice tile's InkWell
+      const PUSH2 = PP_UP, PUSH2_LEN = 0.3;            // /discover/:p/book/:id: _TimedCupertinoPage, 300 ms in
+      const DL_PRESS = 7.85, DL_UP = 7.97;             // Download pressed; start(): "Starting…" reads Downloading 0 %
+      const CH_FROM = 8.10, CH_TO = 12.00, CHAPTERS = 61; // chapters 1..61: fraction 0.01 -> 0.85
+      const SAVE_AT = 12.00, DONE_AT = 12.50;          // merge / duration / cover / save -> "Saving…"; done
+      const OPEN_PRESS = 13.30, OPEN_UP = 13.42;       // "Downloaded · Open" pressed
+      const PUSH3 = OPEN_UP, PUSH3_LEN = 0.5;          // /book/:bookId: CupertinoPage, 500 ms
+      const SWITCH = 0.16;                             // AnimatedSwitcher and fill tween (_kSwitch)
+      const TILE_TOP = 541;                            // where the Discover tile sits on screen at Home's scroll
+      const SCROLL_END_AT = 836;                       // the Popular row's meta line settles here (screen y)
+      const W = 393;
+
+      // ── Curves (Flutter) ────────────────────────────────────────────────────
+      const bez = (a, b, m) => 3 * a * (1 - m) * (1 - m) * m + 3 * b * (1 - m) * m * m + m * m * m;
+      function cubic(x1, y1, x2, y2) {
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 48; i++) { const m = (lo + hi) / 2; if (bez(x1, x2, m) < t) lo = m; else hi = m; }
+          return bez(y1, y2, (lo + hi) / 2);
+        };
+      }
+      function threePointCubic(a1, b1, mid, a2, b2) {
+        const c1 = cubic(a1[0] / mid[0], a1[1] / mid[1], b1[0] / mid[0], b1[1] / mid[1]);
+        const sx = 1 - mid[0], sy = 1 - mid[1];
+        const c2 = cubic((a2[0] - mid[0]) / sx, (a2[1] - mid[1]) / sy, (b2[0] - mid[0]) / sx, (b2[1] - mid[1]) / sy);
+        return t => {
+          if (t <= 0) return 0; if (t >= 1) return 1;
+          return t < mid[0] ? c1(t / mid[0]) * mid[1] : c2((t - mid[0]) / sx) * sy + mid[1];
+        };
+      }
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+      const interval = (a, b, c) => x => c(clamp01((x - a) / (b - a)));
+      const easeOut = cubic(0, 0, 0.58, 1);
+      const ease = cubic(0.25, 0.1, 0.25, 1);
+      const easeOutCubic = cubic(0.215, 0.61, 0.355, 1);
+      const fastOutSlowIn = cubic(0.4, 0, 0.2, 1);
+      const easeInCirc = cubic(0.6, 0.04, 0.98, 0.335);
+      const linearToEaseOut = cubic(0.35, 0.91, 0.33, 0.97);
+      const fastEaseInToSlowEaseOut = threePointCubic([0.056, 0.024], [0.108, 0.3085], [0.198, 0.541], [0.3655, 1.0], [0.5465, 0.989]);
+      const easeInOutSine = p => -(Math.cos(Math.PI * p) - 1) / 2;
+      // LinearProgressIndicator, indeterminate (1800 ms; progress_indicator.dart).
+      const L1H = interval(0, 750 / 1800, cubic(0.2, 0, 0.8, 1)), L1T = interval(333 / 1800, 1083 / 1800, cubic(0.4, 0, 1, 1));
+      const L2H = interval(1000 / 1800, 1567 / 1800, cubic(0, 0, 0.65, 1)), L2T = interval(1267 / 1800, 1, cubic(0.1, 0, 0.45, 1));
+
+      const $ = id => document.getElementById(id);
+      const stage = $('stage');
+      const homeRoute = $('homeRoute'), discRoute = $('discRoute'), storeRoute = $('storeRoute'), libRoute = $('libRoute');
+      const bar1 = $('bar1'), bar2 = $('bar2'), bar3 = $('bar3');
+      const homeContent = $('homeContent'), dContent = $('dContent'), strip = $('strip');
+      const growBack = $('growBack'), growSearch = $('growSearch'), stripWords = $('stripWords');
+      const lblIdle = $('lblIdle'), lblDl = $('lblDl'), lblSave = $('lblSave'), lblDone = $('lblDone');
+      const dlFill = $('dlFill'), dlRing = $('dlRing'), dlPress = $('dlPress'), dlBtn = $('dlBtn'), dlPct = $('dlPct');
+      const snackA = $('snackA'), snackB = $('snackB'), album = $('album');
+      const setVis = (el, on) => { const v = on ? '' : 'hidden'; if (el.style.visibility !== v) el.style.visibility = v; };
+
+      let Z = 1, S = 0, STRIP_TOP = 0, T_PIN = Infinity, REST_Y = null, dTexts = [], entrances = [], stripWordBoxes = [], fillTable = null, FILL_STEP = 1 / 600;
+      const rect = el => { const r = el.getBoundingClientRect(); return { x: r.left / Z, y: r.top / Z, w: r.width / Z, h: r.height / Z, b: r.bottom / Z, r: r.right / Z }; };
+      const textW = (txt, style) => {
+        const p = document.createElement('span');
+        p.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap;' + style;
+        p.textContent = txt;
+        stage.appendChild(p);
+        const w = p.getBoundingClientRect().width / Z;
+        stage.removeChild(p);
+        return w;
+      };
+      // maxLines + TextOverflow.ellipsis: cut at a character, end with "…" (nothing clipped stays in the DOM).
+      function clampLines(el, lines, lh) {
+        const full = el.textContent, max = lines * lh + 0.5;
+        const prevH = el.style.height; el.style.height = 'auto';
+        if (el.scrollHeight > max) {
+          let lo = 0, hi = full.length;
+          while (lo < hi) {
+            const m = (lo + hi + 1) >> 1;
+            el.textContent = full.slice(0, m).trimEnd() + '…';
+            if (el.scrollHeight <= max) lo = m; else hi = m - 1;
+          }
+          el.textContent = full.slice(0, lo).trimEnd() + '…';
+        }
+        el.style.height = prevH;
+      }
+      function ellipsis(el) {
+        const full = el.textContent;
+        if (el.scrollWidth <= el.clientWidth + 0.5) return;
+        let lo = 0, hi = full.length;
+        while (lo < hi) {
+          const m = (lo + hi + 1) >> 1;
+          el.textContent = full.slice(0, m).trimEnd() + '…';
+          if (el.scrollWidth <= el.clientWidth + 0.5) lo = m; else hi = m - 1;
+        }
+        el.textContent = full.slice(0, lo).trimEnd() + '…';
+      }
+
+      // The download entry the button reads (store_download_controller + store_import_service fractions).
+      function dlTarget(t) {
+        if (t < DL_UP) return { phase: 'idle', frac: 0 };
+        if (t < CH_FROM) return { phase: 'downloading', frac: 0 };
+        if (t < SAVE_AT) {
+          const overall = clamp01((t - CH_FROM) / (CH_TO - CH_FROM));
+          return { phase: 'downloading', frac: 0.01 + overall * 0.84, chapter: Math.min(CHAPTERS, Math.floor(overall * CHAPTERS) + 1) };
+        }
+        if (t < DONE_AT) return { phase: 'saving', frac: 1 };
+        return { phase: 'downloaded', frac: 1 };
+      }
+
+      // Strings the app builds from templates (discover_copy.dart, store_book_detail_screen.dart,
+      // download_button.dart, book_detail_screen.dart). Runs before build() so the measured text is the locale's.
+      const fill = (s, map) => Object.keys(map).reduce((a, k) => a.split('{' + k + '}').join(map[k]), s);
+      const hoursMinutes = len => {
+        const m = /^(\d+)h (\d+)m$/.exec(len);
+        return m ? fill(hbT('durationHoursMinutes', '{hours}h {minutes}m'), { hours: m[1], minutes: m[2] }) : len;
+      };
+      const LANGUAGE = { en: () => hbT('langEnglish', 'English') };
+      function composeStrings() {
+        // discoverBookSentence: "{author}. {details}." (reader, length, language, list separator).
+        document.querySelectorAll('[data-sentence]').forEach(el => {
+          const [author, reader, len, lang] = el.dataset.sentence.split('|');
+          const who = reader === 'several' ? hbT('readBySeveral', 'Read by several readers') : fill(hbT('readBy', 'Read by {reader}'), { reader });
+          const details = [who, hoursMinutes(len), LANGUAGE[lang]()].join(hbT('listSeparator', ', '));
+          el.textContent = fill(hbT('bookSentence', '{author}. {details}.'), { author, details });
+        });
+        document.querySelectorAll('[data-size]').forEach(el => { el.textContent = fill(hbT('downloadSized', 'Download, {size}'), { size: el.dataset.size }); });
+        document.querySelectorAll('[data-min]').forEach(el => { el.textContent = fill(hbT('durationMinutes', '{minutes}m'), { minutes: el.dataset.min }); });
+        // The store page's facts line (" · " is the app's own separator; LibriVox is a name).
+        $('sFactsText').textContent = [fill(hbT('recordedYear', 'Recorded {year}'), { year: '2007' }),
+          fill(hbT('chapterCount', '{count} chapters'), { count: '61' }), 'LibriVox'].join(' · ');
+        // The library book page.
+        $('libBy').textContent = fill(hbT('byAuthor', 'By {author}'), { author: 'Jane Austen' });
+        $('libReadBy').textContent = fill(hbT('readBy', 'Read by {reader}'), { reader: 'Karen Savage' });
+        $('libChapters').textContent = fill(hbT('chapterCount', '{count} chapters'), { count: '61' });
+        $('libLength').textContent = fill(hbT('durationHrMin', '{hours} hr {minutes} min'), { hours: '11', minutes: '35' });
+        // Tile meta parts (fitted in build): the length format and the short "Archive" library name.
+        document.querySelectorAll('.tile').forEach(tile => {
+          tile.dataset.len = hoursMinutes(tile.dataset.len);
+          if (tile.dataset.lib === 'Archive') tile.dataset.lib = hbT('archiveShort', 'Archive');
+        });
+      }
+
+      function build() {
+        Z = stage.getBoundingClientRect().width / W;
+
+        // Home: the grid cells (MaxCrossAxisExtent 130 -> 3 columns, 1 / 1.6) and the two dark 16:9 cards.
+        const grid = $('grid');
+        const cellW = (grid.clientWidth - 32 - 20) / 3;
+        grid.querySelectorAll('.cell').forEach(c => { c.style.height = cellW * 1.6 + 'px'; });
+        const disc = $('discover');
+        disc.style.minHeight = 361 * 9 / 16 + 'px';
+        const h = disc.offsetHeight, glow = 0.65 * h;
+        Object.assign($('fanGlow').style, { left: 0.3 * h - glow + 'px', top: 0.45 * h - glow + 'px', width: 2 * glow + 'px', height: 2 * glow + 'px' });
+        const FAN = { wild: [0.418, -0.149, 0.229, -9], signal: [0.418, 0.338, 0.229, 9], cosmos: [0.478, 0.109, 0.119, 0] };
+        disc.querySelectorAll('.fanCover').forEach(c => {
+          const [wf, start, top, deg] = FAN[c.dataset.fan], w = wf * h;
+          Object.assign(c.style, { left: start * h + 'px', top: top * h + 'px', width: w + 'px', height: w * 1.5 + 'px', transform: 'rotate(' + deg + 'deg)' });
+          const scrim = c.querySelector('.fanScrim'), copy = c.querySelector('.fanCopy');
+          const [st, sb] = scrim.dataset.safe.split(',').map(Number), H = w * 1.5;
+          const tone = scrim.dataset.tone === 'dark' ? '255,255,255,' : '0,0,0,', a = scrim.dataset.tone === 'dark' ? 0.38 : 0.44;
+          const top0 = Math.max(0, st * H - 0.14 * H) / H, bot1 = Math.min(H, sb * H + 0.14 * H) / H;
+          scrim.style.background = 'linear-gradient(to bottom, rgba(' + tone + '0) 0%, rgba(' + tone + a * 0.04 + ') ' + top0 * 100 + '%, rgba(' + tone + a * 0.22 + ') ' + st * 100 + '%, rgba(' + tone + a + ') ' + sb * 100 + '%, rgba(' + tone + a * 0.2 + ') ' + bot1 * 100 + '%, rgba(' + tone + '0) 100%)';
+          Object.assign(copy.style, { top: st * H + 'px', height: (sb - st) * H + 'px' });
+          const inner = copy.querySelector('.in'), fit = Math.min(1, (w - 28) / (inner.scrollWidth || 1), (sb - st) * H / (inner.scrollHeight || 1));
+          inner.style.transform = 'scale(' + fit + ')';
+        });
+        document.querySelectorAll('[data-ellipsis]').forEach(ellipsis);
+        // Home's scroll: the Discover tile at TILE_TOP; text the viewport or the stage clips is hidden.
+        const tileY = rect(disc).y - rect(homeContent).y;
+        const homeY = (TILE_TOP - 59) - tileY;
+        homeContent.style.transform = 'translateY(' + homeY + 'px)';
+        const st0 = rect(stage).y;
+        homeContent.querySelectorAll('*').forEach(el => {
+          const own = Array.from(el.childNodes).some(n => n.nodeType === 3 && n.textContent.trim());
+          if (!own) return;
+          const r = rect(el);
+          if (r.b - st0 <= 59.5 || r.y - st0 >= 852 - 0.5) el.style.visibility = 'hidden';
+        });
+
+        // Discover: tile meta lines fitted (fitStoreMeta: drop the count, then language, library, rating).
+        const metaStyle = 'font:400 12px/16px HBInter;letter-spacing:.25px;font-variant-numeric:tabular-nums';
+        document.querySelectorAll('.tile').forEach(tile => {
+          const d = tile.dataset, meta = tile.querySelector('.tMeta');
+          let parts = { length: d.len, rating: d.rating, count: '(' + d.count + ')', library: d.lib };
+          const plain = p => [p.length, p.rating ? (p.count ? ' ' + p.rating + ' ' + p.count : ' ' + p.rating) : null, p.library].filter(Boolean).join(' · ');
+          const fits = p => textW(plain(p), metaStyle) + (p.rating ? 14 : 0) <= 136;
+          while (!fits(parts)) {
+            if (parts.count) parts = Object.assign({}, parts, { count: null });
+            else if (parts.library) parts = Object.assign({}, parts, { library: null });
+            else if (parts.rating) parts = Object.assign({}, parts, { rating: null });
+            else break;
+          }
+          let html = parts.length;
+          if (parts.rating) html += ' · <i class="mi s12">&#xf01d4;</i>' + (parts.count ? ' ' + parts.rating + ' ' + parts.count : ' ' + parts.rating);
+          if (parts.library) html += ' · ' + parts.library;
+          meta.innerHTML = html;
+        });
+        document.querySelectorAll('[data-lines]').forEach(el => clampLines(el, Number(el.dataset.lines), Number(el.dataset.lh)));
+
+        // StoreBookActions: side by side when both natural widths fit, in proportion; else stacked.
+        const labelStyle = 'font:600 14px HBInter;letter-spacing:.25px;font-variant-numeric:tabular-nums';
+        const natural = labels => Math.ceil(Math.max(...labels.map(l => textW(l, labelStyle)))) + 2 * 10 + 19 + 6;
+        const wS = natural([hbT('samplePlay', 'Play a sample'), fill(hbT('sampleStop', 'Stop · {time}'), { time: '0:30' })]);
+        document.querySelectorAll('.actions').forEach(row => {
+          const idle = row.querySelector('.btn.dl span').textContent;
+          const wD = natural([idle, fill(hbT('downloadingPercent', 'Downloading {percent}'), { percent: '100%' })]);
+          const box = row.clientWidth;
+          const [dl, sm] = row.querySelectorAll('.btn');
+          if (wD + 8 + wS <= box) { dl.style.flex = Math.round(wD * 100) + ' 1 0'; sm.style.flex = Math.round(wS * 100) + ' 1 0'; }
+          else row.classList.add('stack');
+        });
+        // Downloaded reads "Downloaded · Open" when it fits beside the icon, else "Open".
+        const room = dlBtn.clientWidth - 2 * 10 - 19 - 6;
+        if (textW(hbT('downloadedOpen', 'Downloaded · Open'), labelStyle) > room) $('doneText').textContent = hbT('downloadOpen', 'Open');
+
+        // Discover geometry: the strip's place, the scroll that brings Popular this month up.
+        const c0 = rect(dContent).y, v0 = rect($('dViewport')).y;
+        STRIP_TOP = rect($('stripSlot')).y - c0;
+        const ppMeta = $('ppTile').querySelector('.tMeta');
+        S = Math.max(0, (rect(ppMeta).b - c0) + 59 - SCROLL_END_AT);
+        S = Math.min(S, dContent.offsetHeight - 793);
+        // pinned = shrinkOffset > 0: the moment the scroll passes the strip's top.
+        if (S > STRIP_TOP) T_PIN = SCROLL_FROM + Math.acos(1 - 2 * STRIP_TOP / S) / Math.PI * (SCROLL_TO - SCROLL_FROM);
+        // discoverRest 'featured': the seasonal row's heading sits right under the pinned genre strip, so its
+        // featured card and the shelf of covers below it are whole; if a long locale makes the card too tall,
+        // the scroll goes on until the covers clear the home indicator.
+        if (REST === 'featured') {
+          const row1 = $('row1');
+          const headTop = rect(row1.querySelector('.rowHead')).y - c0;
+          const coverBottom = rect(row1.querySelector('.tcv')).b - c0;
+          REST_Y = Math.max(headTop - 48 - 8, coverBottom - (793 - 34 - 4));
+          REST_Y = Math.max(0, Math.min(dContent.offsetHeight - 793, REST_Y));
+        }
+        // The cream pill under the chosen word ("All").
+        const words = Array.from(stripWords.querySelectorAll('.word'));
+        const sw = rect(stripWords), w0 = rect(words[0]);
+        Object.assign($('genrePill').style, { left: w0.x - sw.x + 'px', width: w0.w + 'px' });
+        stripWordBoxes = words.map(el => { const r = rect(el); return { el, x: r.x - sw.x, w: r.w }; });
+
+        // Discover text leaves with their content y, for the scroll's visibility pass.
+        dContent.querySelectorAll('*').forEach(el => {
+          const own = Array.from(el.childNodes).some(n => n.nodeType === 3 && n.textContent.trim());
+          if (!own) return;
+          const r = rect(el);
+          dTexts.push({ el, top: r.y - c0, bottom: r.b - c0, vis: true });
+        });
+        entrances = [$('row1'), $('row2')];
+
+        // The fill's TweenAnimationBuilder: each progress tick restarts a 160 ms linear tween from where it is.
+        const N = Math.ceil((DONE_AT - DL_UP) / FILL_STEP) + 2;
+        fillTable = new Float32Array(N);
+        let from = 0, to = 0, start = DL_UP, last = -1;
+        const cur = tt => from + (to - from) * clamp01((tt - start) / SWITCH);
+        for (let i = 0; i < N; i++) {
+          const tt = DL_UP + i * FILL_STEP;
+          const tick = Math.floor((tt - DL_UP) * 60 + 1e-9);   // one onBytes callback a frame
+          if (tick !== last) {
+            last = tick;
+            const target = dlTarget(DL_UP + tick / 60).frac;
+            if (target !== to) { from = cur(tt); to = target; start = tt; }
+          }
+          fillTable[i] = cur(tt);
+        }
+
+        // CupertinoActivityIndicator: 8 ticks, radius 10.
+        ['spinA', 'spinB'].forEach(id => {
+          let s = '';
+          for (let i = 0; i < 8; i++) s += '<rect x="-1" y="-10" width="2" height="6.667" rx="1" fill="#6F3825" transform="rotate(' + (i * 45) + ')"/>';
+          $(id).innerHTML = s;
+        });
+      }
+      const fillAt = t => fillTable[Math.max(0, Math.min(fillTable.length - 1, Math.round((t - DL_UP) / FILL_STEP)))];
+
+      // InkWell highlight: fades in 200 ms from the press, out 200 ms from the release.
+      function inkAt(t, press, up) {
+        if (t < press) return 0;
+        const peak = clamp01((Math.min(t, up) - press) / 0.2);
+        return t < up ? peak : peak * (1 - clamp01((t - up) / 0.2));
+      }
+      // iOS push: the new page from the right, the old one a third left, the 0x18 barrier (Curves.ease).
+      function push(t, at, len, oldEl, newEl, bar) {
+        const q = clamp01((t - at) / len);
+        newEl.style.transform = 'translateX(' + (1 - fastEaseInToSlowEaseOut(q)) * W + 'px)';
+        oldEl.style.transform = 'translateX(' + (-W / 3) * linearToEaseOut(q) + 'px)';
+        bar.style.opacity = t >= at && q < 1 ? (0x18 / 255) * ease(q) : 0;
+        return q;
+      }
+      // AnimatedSwitcher: a child keyed in at `on` fades in over 160 ms; out over 160 ms from `off`.
+      const switcher = (t, on, off) => (t < on ? 0 : clamp01((t - on) / SWITCH)) * (t < off ? 1 : 1 - clamp01((t - off) / SWITCH));
+      function spinner(svg, t, t0) {
+        const pos = (((t - t0) % 1) + 1) % 1, active = Math.floor(pos * 8), A = [47, 47, 47, 47, 72, 106, 140, 174];
+        const ticks = svg.children;
+        for (let i = 0; i < 8; i++) ticks[i].setAttribute('fill-opacity', (A[((i - active) % 8 + 8) % 8] / 255).toFixed(3));
+      }
+
+      // ── Everything visible is a function of t ──────────────────────────────
+      function render(t) {
+        // Home: the tile's press, then the push.
+        $('tilePress').style.opacity = inkAt(t, TILE_PRESS, TILE_UP);
+        const q1 = push(t, PUSH1, PUSH1_LEN, homeRoute, discRoute, bar1);
+        setVis(homeRoute, q1 < 1);
+
+        // Discover: the rows' first-open entrance (60 ms + 40 ms apart, 220 ms easeOutCubic, rise 8).
+        entrances.forEach((el, i) => {
+          const e = easeOutCubic(clamp01((t - PUSH1 - (0.06 + 0.04 * i)) / 0.22));
+          el.style.opacity = e;
+          el.style.transform = 'translateY(' + 8 * (1 - e) + 'px)';
+        });
+        // The scroll, and the strip that pins under the top (back and search grow 0 -> 44 in 200 ms).
+        const resting = REST_Y !== null;
+        const y = resting ? REST_Y : S * easeInOutSine(clamp01((t - SCROLL_FROM) / (SCROLL_TO - SCROLL_FROM)));
+        dContent.style.transform = 'translateY(' + (-y) + 'px)';
+        const pinned = resting ? REST_Y > STRIP_TOP : t >= T_PIN;
+        strip.style.transform = 'translateY(' + Math.max(0, STRIP_TOP - y) + 'px)';
+        const g = !pinned ? 0 : resting ? 1 : easeOut(clamp01((t - T_PIN) / 0.2));
+        growBack.style.width = growSearch.style.width = 44 * g + 'px';
+        stripWords.style.transform = 'translateX(' + 16 * (1 - g) + 'px)';
+        strip.style.boxShadow = pinned ? '0 8px 24px rgba(0,0,0,.102)' : 'none';
+        const viewW = W - 88 * g, under = pinned ? 48 : 0;
+        stripWordBoxes.forEach(o => setVis(o.el, o.x + 16 * (1 - g) < viewW - 6));
+        dTexts.forEach(o => {
+          const inView = o.bottom - y > under + 0.5 && o.top - y < 793 - 0.5;
+          if (inView !== o.vis) { o.vis = inView; setVis(o.el, inView); }
+        });
+        $('ppPress').style.opacity = inkAt(t, PP_PRESS, PP_UP);
+
+        // The store book page, then the library book page.
+        push(t, PUSH2, PUSH2_LEN, discRoute, storeRoute, bar2);
+        const q3 = push(t, PUSH3, PUSH3_LEN, storeRoute, libRoute, bar3);
+        setVis(discRoute, t >= PUSH1 && t < PUSH2 + PUSH2_LEN);
+        setVis(storeRoute, t >= PUSH2 && q3 < 1);
+        setVis(libRoute, t >= PUSH3);
+
+        // The Download button: idle -> Downloading n % over the fill -> Saving… -> outlined Downloaded · Open.
+        const st = dlTarget(t);
+        const done = st.phase === 'downloaded';
+        dlBtn.style.background = done ? 'var(--dPage)' : 'var(--dBrown)';
+        dlRing.style.opacity = done ? fastOutSlowIn(clamp01((t - DONE_AT) / 0.2)) : 0;
+        const progressing = st.phase === 'downloading' || st.phase === 'saving';
+        setVis(dlFill, progressing);
+        dlFill.style.width = progressing ? fillAt(t) * 100 + '%' : '0%';
+        const oIdle = t < DL_UP ? 1 : 1 - clamp01((t - DL_UP) / SWITCH);
+        const oDl = switcher(t, DL_UP, SAVE_AT), oSave = switcher(t, SAVE_AT, DONE_AT), oDone = switcher(t, DONE_AT, Infinity);
+        [[lblIdle, oIdle], [lblDl, oDl], [lblSave, oSave], [lblDone, oDone]].forEach(([el, o]) => { el.style.opacity = o; setVis(el, o > 0); });
+        const shown = dlTarget(Math.min(t, SAVE_AT - 1e-6));
+        dlPct.textContent = fill(hbT('downloadingPercent', 'Downloading {percent}'), { percent: Math.floor(shown.frac * 100 + 1e-9) + '%' });
+        dlPress.style.opacity = Math.max(inkAt(t, DL_PRESS, DL_UP), inkAt(t, OPEN_PRESS, OPEN_UP));
+        // "Added to library. Transcription queued." (M3 floating SnackBar: fade Interval(0.4, 0.6, easeInCirc) of 250 ms).
+        // Every root Scaffold shows it, so the library page brings its own copy in.
+        const sn = t < DONE_AT ? 0 : easeInCirc(clamp01((t - DONE_AT - 0.1) / 0.05));
+        [snackA, snackB].forEach(el => { el.style.opacity = sn; setVis(el, sn > 0); });
+
+        // The library book page: the album's 260 ms settle, the job's spinners, shimmer and indeterminate bar.
+        const a = easeOutCubic(clamp01((t - PUSH3) / 0.26)), v = 0.96 + 0.04 * a;
+        album.style.transform = 'scale(' + v + ')';
+        album.style.opacity = clamp01((v - 0.96) / 0.04);
+        const t0 = Math.max(0, t - PUSH3);
+        spinner($('spinA'), t0, 0); spinner($('spinB'), t0, 0);
+        const ph = (t0 % 2) / 2, sweep = Math.min(ph / 0.6, 1);
+        $('bnText').style.backgroundPosition = (1 - sweep) * 100 + '% 0';
+        const lv = (t0 % 1.8) / 1.8, b1 = $('bnBar1').style, b2 = $('bnBar2').style;
+        b1.left = L1T(lv) * 100 + '%'; b1.width = Math.max(0, L1H(lv) - L1T(lv)) * 100 + '%';
+        b2.left = L2T(lv) * 100 + '%'; b2.width = Math.max(0, L2H(lv) - L2T(lv)) * 100 + '%';
+      }
+
+      document.fonts.ready.then(() => {
+        hbLocaleSetup();
+        hbApplyStrings();
+        composeStrings();
+        build();
+        render(0);
+        const tl = gsap.timeline({ paused: true });
+        const clock = { t: 0 };
+        tl.to(clock, { t: DUR, duration: DUR, ease: 'none', onUpdate: () => render(clock.t) }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["main"] = tl;
+        tl.seek(0);
+        window.__hbReady = true;
+      });
+    </script>
+  </body>
+</html>

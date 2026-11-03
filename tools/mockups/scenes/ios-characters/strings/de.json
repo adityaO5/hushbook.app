@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Figurenkarte",
+  "castCount": "Besetzung · {count}",
+  "roleHero": "Held",
+  "roleVillain": "Schurke",
+  "roleRival": "Rivale",
+  "roleMentor": "Mentor",
+  "roleFriend": "Freund",
+  "roleLoveInterest": "Liebesinteresse",
+  "relationMentorOf": "Mentor von",
+  "relationStudentOf": "Schüler von",
+  "relationEmployerOf": "Arbeitgeber von",
+  "relationEmployeeOf": "Mitarbeiter von",
+  "sectionRole": "Rolle",
+  "sectionFirstHeard": "Erstmals gehört",
+  "firstHeardLabel": "Kap. {chapter} · {time}",
+  "sectionDescription": "Beschreibung",
+  "sectionAttributes": "Attribute",
+  "sectionRelationships": "Beziehungen",
+  "deleteCharacter": "Zeichen löschen"
+}

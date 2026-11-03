@@ -190,7 +190,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero{padding:212px 0 0;text-align:center;position:relative}
 .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1100px;max-width:100%;height:680px;background:radial-gradient(closest-side,rgba(201,163,106,.16),transparent 70%);pointer-events:none}
 .hero h1{margin:0 auto 20px;max-width:16ch}
-.hero .sub{margin:0 auto 34px;max-width:560px}
+.hero .sub{margin:0 auto 34px;max-width:560px;text-wrap:balance}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
@@ -204,13 +204,73 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 
 /* hero phone fan */
 .fan{margin-top:64px;position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2vw,26px);padding:0 12px;mask-image:linear-gradient(to bottom,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent)}
-.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fan img{width:clamp(120px,17vw,230px);height:auto;border-radius:clamp(18px,2.6vw,34px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
 .fan .f1{transform:translateY(46px) rotate(-4deg)}
 .fan .f2{transform:translateY(18px) rotate(-2deg)}
 .fan .f3{width:clamp(150px,20vw,268px);z-index:2}
 .fan .f4{transform:translateY(18px) rotate(2deg)}
 .fan .f5{transform:translateY(46px) rotate(4deg)}
-.fan img:hover{transform:translateY(-8px)}
+/* hra:css:start */
+/* hero live read-along (assets/js/hero-read-along.js): the centre phone's reader as a 393 x 852 stage,
+   scaled into the frame's screen; it fades in over the static .hra-shot once fonts and frame are in */
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:HRANews;src:url(/assets/fonts/hra-newsreader-latin-ext.woff) format("woff");font-weight:400 700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:HRAInter;src:url(/assets/fonts/hra-inter-600-clock.woff) format("woff");font-weight:600;font-display:swap;unicode-range:U+0030-003A}
+.fan .hra{position:relative;flex:none;width:clamp(150px,20vw,268px);z-index:2}
+.fan .hra img{width:100%;transform:none}
+.hra-live{position:absolute;left:0;top:0;width:100%;height:100%;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .6s ease,visibility 0s .6s}
+.hra-live.hra-on{visibility:visible;opacity:1;transition:opacity .6s ease}
+.fan .hra-frame{position:absolute;left:0;top:0;filter:none}
+/* frame-iphone 4317 x 8796: screen x 199..4111, y 168..8653, corners clipped at a 400-unit radius */
+.hra-screen{position:absolute;left:4.6097%;top:1.91%;width:90.6416%;height:96.4757%;border-radius:10.2223%/4.7136%;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.hra-live{display:none}}
+.hra-stage{--hra-ink:#F2F0EA;--hra-ink-rgb:242,240,234;--hra-far-a:.65;--hra-near-a:.89;--hra-secondary:#C7C4BE;--hra-rubric:#E46A4F;--hra-dock:#232427;--hra-dock-hairline:rgba(242,240,234,.14);
+  position:absolute;left:0;top:0;width:393px;height:852px;overflow:hidden;transform-origin:0 0;color:var(--hra-ink);
+  background:#141416 linear-gradient(to bottom,rgb(31,21,23) 0%,rgb(32,21,24) 45%,rgb(28,21,23) 100%);
+  font:16px/normal HRANews,serif;letter-spacing:.25px;text-align:left;font-optical-sizing:none;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;text-size-adjust:none}
+.hra-stage svg{display:block}
+.hra-pager{position:absolute;left:0;top:0;width:393px;height:852px}
+.hra-pbox{position:absolute;left:28px;top:107px;width:337px}
+.hra-blk{padding:4px 0 28px;text-align:center}
+.hra-label{font-variation-settings:"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;font-feature-settings:"case","kern";color:var(--hra-rubric);white-space:nowrap}
+.hra-rule{width:36px;height:1px;margin:16px auto 0;background:rgba(242,240,234,.22)}
+.hra-narrow{width:265px}
+.hra-ln{font-size:23px;line-height:34.5px;font-variation-settings:"wght" 400;white-space:normal;font-kerning:normal;color:rgba(var(--hra-ink-rgb),var(--hra-far-a))}
+.hra-tx{position:relative;top:2.702px}
+.hra-meas{position:absolute;left:0;top:0;visibility:hidden}
+.hra-cap{font-size:49.45px;color:var(--hra-rubric)!important;font-variation-settings:"wght" 450}
+.hra-f{position:relative}
+.hra-w.hra-sp,.hra-wipe{color:var(--hra-ink)}
+.hra-wipe{position:absolute;left:0;top:0;white-space:nowrap;line-height:normal}
+.hra-wipe .hra-cap{line-height:0!important}
+.hra-f::after{content:"";position:absolute;left:0;right:0;top:100%;height:2px;background:var(--hra-rubric);opacity:0}
+.hra-now .hra-f::after{opacity:var(--hra-now-a,1)}
+.hra-xf .hra-ln,.hra-xf .hra-w{transition:color .4s ease}
+.hra-xf .hra-f::after{transition:opacity .4s ease}
+.hra-pnum{position:absolute;left:28px;width:265px;top:802px;text-align:center;font-size:14px;line-height:1.3;font-variant-numeric:lining-nums tabular-nums;color:var(--hra-secondary);white-space:nowrap}
+.hra-head{position:absolute;left:0;top:59px;width:393px;height:48px}
+.hra-hb{position:absolute;top:0;width:48px;height:48px;display:grid;place-items:center}
+.hra-back{left:4px}
+.hra-back span{padding:0 0 6px 9px;font-size:36px;line-height:1;font-variation-settings:"wght" 380}
+.hra-title{position:absolute;left:100px;width:193px;top:0;height:48px;display:grid;place-items:center;text-align:center;white-space:nowrap;font-size:11px;letter-spacing:.935px;line-height:1.3;font-feature-settings:"case","kern";font-variation-settings:"wght" 500;color:var(--hra-secondary)}
+.hra-title b{font-weight:normal;font-variation-settings:"wght" 700;color:var(--hra-rubric)}
+.hra-aa{left:293px}
+.hra-aa span{font-size:19px;letter-spacing:-.19px;line-height:1.43;font-variation-settings:"wght" 450}
+.hra-mark{left:341px}
+.hra-mark svg{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round}
+.hra-host{position:absolute;left:-10000px;top:0;visibility:hidden}
+.hra-lamp{position:absolute;left:309px;top:738px;width:64px;height:64px}
+.hra-disc{position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 18px 51.8px rgba(0,0,0,.5),0 2px 10.2px rgba(0,0,0,.35)}
+.hra-rings{position:absolute;left:-1px;top:-1px;fill:none;stroke-width:3px}
+.hra-rings circle{stroke:rgba(242,240,234,.2)}
+.hra-rings path{stroke:var(--hra-rubric);stroke-linecap:round}
+.hra-core{position:absolute;left:11px;top:11px;width:42px;height:42px;border-radius:50%;background:var(--hra-rubric);color:#141416;display:grid;place-items:center}
+.hra-handle{position:absolute;left:321px;top:708px;width:40px;height:26px;border-radius:13px;background:var(--hra-dock);border:1px solid var(--hra-dock-hairline);box-shadow:0 4px 14.9px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--hra-secondary)}
+.hra-sbar{position:absolute;left:0;top:0;width:393px;height:54px;color:#fff}
+.hra-sbtime{position:absolute;left:24px;width:80px;top:19px;text-align:center;font-family:HRAInter,sans-serif;font-size:17px;font-weight:600;letter-spacing:-.2px;line-height:22px}
+.hra-sbicons{position:absolute;left:293px;top:23px}
+.hra-home{position:absolute;left:129.5px;bottom:8px;width:134px;height:5px;border-radius:2.5px;background:#fff}
+/* hra:css:end */
 @media (max-width:680px){.fan .f1,.fan .f5{display:none}}
 
 /* ============ VALUE BAND ============ */
@@ -315,7 +375,7 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee img{width:190px;border-radius:26px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
 /* shift exactly one 6-card set: (img 190 + gap 30) × 6 = 1320px. needs 4 copies in markup so 3 sets always cover the viewport */
-@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 6))}}
+@keyframes slide{to{transform:translateX(calc((-190px - 30px) * 11))}}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
 /* moment */
@@ -426,8 +486,6 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 #stage-gl{position:absolute;top:0;left:0;right:0;height:min(100%,780px);z-index:0;pointer-events:none;mask-image:linear-gradient(to bottom,#000 64%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent)}
 #stage-gl canvas{width:100%;height:100%;display:block;animation:gl-in 2s ease both}@keyframes gl-in{from{opacity:0}}
 .hero .wrap,.hero .fan{position:relative;z-index:1}
-.hero{perspective:1400px}
-.fan{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s ease-out;transform-style:preserve-3d;will-change:transform}
 
 /* seo long-form */
 .seo-copy{padding:96px 0 80px;border-top:1px solid var(--line-soft)}
@@ -533,7 +591,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "내 오디오가 폰 밖으로 나가나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "아니요. 텍스트 변환은 전적으로 기기에서 실행됩니다 — 업로드도, 계정도, 서버도 없습니다. 엔진을 한 번 다운로드한 후에는 앱 전체가 오프라인으로 작동합니다."
+        "text": "서버로는 가지 않습니다. 텍스트 변환은 폰에서, 원하면 집 Wi-Fi를 통해 내 컴퓨터에서 실행됩니다. 업로드도 계정도 없고, 엔진을 한 번 다운로드한 후에는 앱 전체가 오프라인으로 작동합니다."
       }
     },
     {
@@ -549,7 +607,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       "name": "어떤 파일을 가져올 수 있나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA, ALAC — 한 번에 파일 하나씩 가져옵니다. M4B 파일 안의 챕터는 표지와 메타데이터와 함께 자동으로 감지됩니다."
+        "text": "MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA, ALAC. 파일을 하나만 골라도, 여러 개 골라도 됩니다. 여러 개를 고르면 파일마다 한 챕터씩, 한 권의 책이 됩니다. M4B 파일 안의 챕터는 표지와 메타데이터와 함께 자동으로 감지됩니다."
       }
     },
     {
@@ -679,7 +737,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
     <h1 id="hero-h1" class="reveal" aria-label="집중하는 힘을 되찾아 보세요"><span class="kw">집중하는</span> <span class="kw">힘을</span> <span class="kw">되찾</span><span class="kw">아</span> <span class="kw">보세요</span></h1>
-    <p class="sub reveal">오디오북을 들으며 함께 읽고, 오래 가는 습관을 만들어 보세요</p>
+    <p class="sub reveal">내레이터가 읽는 순간, 오디오북의 단어가 하나씩 빛납니다.</p>
     <div class="stores reveal" id="get" aria-label="HushBook 받기">
       <a class="pill" href="https://apps.apple.com/app/apple-store/id6783243597?pt=129070657&amp;ct=Hushbook-landing&amp;mt=8" target="_blank" rel="noopener" aria-label="App Store에서 HushBook 다운로드">
         <svg class="pic" viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -693,9 +751,28 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <p class="hero-note reveal">🌟 무료 다운로드, 광고 제로.</p>
   </div>
   <div class="fan" aria-hidden="true">
-    <img class="f1" src="/assets/img/mockups/locales/ko/brain-health.webp" alt="" loading="lazy">
+    <img class="f1" src="/assets/img/mockups/locales/ko/brain.webp" alt="" loading="lazy">
     <img class="f2" src="/assets/img/mockups/locales/ko/home.webp" alt="" loading="eager">
-    <img class="f3" src="/assets/img/mockups/locales/ko/karaoke-live.webp" alt="HushBook이 『명상록』을 라이브 단어 단위 노래방처럼 텍스트로 변환하는 모습" loading="eager" fetchpriority="high">
+    <div class="hra">
+      <img class="f3 hra-shot" src="/assets/img/mockups/read-along.webp" alt="Chapter 1 of The Hitchhiker's Guide to the Galaxy in the HushBook read-along, the narrated word filled in and underlined in red" loading="eager" fetchpriority="high">
+      <script type="application/json" id="hra-text">
+      {
+        "chapterLabel": "Chapter {numeral}",
+        "chapterNumeral": "I",
+        "aaButton": "Aa",
+        "chapterSeconds": 724,
+        "startSeconds": 14.45,
+        "breaths": ["ninety-two million miles", "little blue green planet"],
+        "paragraphs": [
+          "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.",
+          "Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.",
+          "This planet has, or rather had, a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn't the small green pieces of paper that were unhappy.",
+          "And so the problem remained; lots of the people were mean, and most of them were miserable, even the ones with digital watches."
+        ]
+      }
+      </script>
+      <div class="hra-live"><div class="hra-screen"></div><img class="hra-frame" data-src="/assets/img/mockups/frame-iphone.webp" alt=""></div>
+    </div>
     <img class="f4" src="/assets/img/mockups/locales/ko/player-hitchhikers.webp" alt="" loading="eager">
     <img class="f5" src="/assets/img/mockups/locales/ko/library.webp" alt="" loading="lazy">
   </div>
@@ -952,33 +1029,33 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">사용 방법</span>
-      <h2>오디오 파일에서 따라 읽기까지, 탭 3번이면 충분합니다.</h2>
-      <p class="sub">책을 고르고 「텍스트 변환」을 탭하면 HushBook Engine이 작동을 시작합니다. 챕터마다, 당신의 폰 위에서.</p>
+      <h2>오디오북이 따라 읽기가 되기까지.</h2>
+      <p class="sub">책을 추가하고 텍스트 변환할 곳을 고르세요. 폰에서, 아니면 집 Wi-Fi로 연결된 컴퓨터에서.</p>
     </div>
     <div class="steps">
       <figure class="step reveal">
         <span class="num">01</span>
-        <h3>책 고르기</h3>
-        <p>무료 고전을 찾아보거나, 내 MP3, M4B, FLAC, OGG 등을 가져오세요.</p>
-        <img src="/assets/img/mockups/locales/ko/library.webp" alt="가져온 책과 퍼블릭 도메인 오디오북이 있는 HushBook 라이브러리" loading="lazy">
+        <h3>책 추가하기</h3>
+        <p>무료 고전은 「둘러보기」에서 다운로드하고, 이미 가진 오디오북 파일은 그대로 가져오세요.</p>
+        <img src="/assets/img/mockups/locales/ko/discover.webp" alt="HushBook 「둘러보기」 — 「다운로드」와 「미리 듣기」가 있는 추천 고전, 그 아래 무료 오디오북 목록" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">02</span>
-        <h3>「텍스트 변환」 탭하기</h3>
-        <p>챕터당 탭 한 번. M4B 파일 안의 챕터는 자동으로 감지됩니다.</p>
-        <img src="/assets/img/mockups/locales/ko/book-info-transcribe.webp" alt="각 챕터에 텍스트 변환 버튼이 있는 책 정보 화면" loading="lazy">
+        <h3>폰 또는 PC</h3>
+        <p>「책 받아쓰기」는 폰에서 실행됩니다. Pro라면 「내 PC에서 받아쓰기」로 집 Wi-Fi를 통해 컴퓨터에 맡길 수 있습니다. 더 빠르고, 폰도 뜨거워지지 않습니다.</p>
+        <img src="/assets/img/mockups/locales/ko/step-transcribe.webp" alt="『프로젝트 헤일메리』 책 페이지에서 「옵션」을 열어 「책 받아쓰기」와 「내 PC에서 받아쓰기」가 보이는 화면" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">03</span>
-        <h3>엔진이 작동합니다</h3>
-        <p>HushBook Engine은 말해지는 모든 단어를 내레이션과 함께 움직이는 동기화 텍스트로 변환합니다.</p>
-        <img src="/assets/img/mockups/locales/ko/transcribing-chapters.webp" alt="1장이 진행 표시줄과 함께 텍스트로 변환되는 모습" loading="lazy">
+        <h3>계속 듣기</h3>
+        <p>책 페이지에 「컴퓨터에서 받아쓰는 중, 64%」와 남은 시간이 표시됩니다. 폰에서 변환할 때는 챕터가 끝나는 대로 바로 읽을 수 있습니다.</p>
+        <img src="/assets/img/mockups/locales/ko/step-transcribing.webp" alt="「컴퓨터에서 받아쓰는 중, 64%」라고 표시된 책 페이지 카드와 그 아래 남은 시간" loading="lazy">
       </figure>
       <figure class="step reveal">
         <span class="num">04</span>
         <h3>함께 읽기</h3>
-        <p>모든 단어가 내레이터와 함께 빛납니다. 아무 단어나 탭해서 그 위치로 점프하세요.</p>
-        <img src="/assets/img/mockups/locales/ko/read-along-monte-cristo.webp" alt="『몬테크리스토 백작』 따라 읽기 — 모든 단어가 내레이션과 동기화되어 강조됩니다" loading="lazy">
+        <p>내레이터가 읽는 대로 단어가 채워지고, 지금 읽는 단어에는 빨간 밑줄이 그어집니다. 아무 줄이나 길게 누르면 거기서부터 재생됩니다.</p>
+        <img src="/assets/img/mockups/locales/ko/read-along-paper.webp" alt="따뜻한 종이 테마로 본 『은하수를 여행하는 히치하이커를 위한 안내서』 1장 따라 읽기 — 읽힌 단어가 채워지고 밑줄이 그어져 있습니다" loading="lazy">
       </figure>
     </div>
   </div>
@@ -990,10 +1067,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="privacy-card reveal">
       <div>
         <span class="eyebrow">HushBook Engine</span>
-        <h2>텍스트 변환은 폰 위에서 일어납니다. 클라우드가 아니라.</h2>
+        <h2>텍스트 변환은 폰이나 PC에서 일어납니다. 클라우드가 아니라.</h2>
         <p class="sub">HushBook을 뒷받침하는 음성 인식은 기기에서 네이티브로 실행됩니다. 당신의 오디오북은 절대 업로드되지 않습니다 — 업로드할 서버 자체가 없으니까요.</p>
         <ul class="plist">
-          <li><span class="tick">✓</span><span><b>아무것도 폰을 떠나지 않습니다.</b> 오디오, 텍스트 변환, 메모, 점수 — 모두 로컬에 저장됩니다.</span></li>
+          <li><span class="tick">✓</span><span><b>아무것도 서버로 가지 않습니다.</b> 오디오, 텍스트 변환, 메모, 점수는 폰이나 내 컴퓨터에 남습니다.</span></li>
           <li><span class="tick">✓</span><span><b>계정도 로그인도 없습니다.</b> 앱을 열고 바로 읽기 시작하세요.</span></li>
           <li><span class="tick">✓</span><span><b>완전한 오프라인</b> — 엔진을 한 번 다운로드한 후에는 비행기 안에서도, 터널 안에서도, 어디서든.</span></li>
           <li><span class="tick">✓</span><span><b>발열 배려.</b> 긴 책은 나누어 변환하고, 중단되면 다시 이어서 하며, 폰이 뜨거워지지 않게 합니다.</span></li>
@@ -1012,57 +1089,66 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow">인용</span>
-      <h2>문장을 저장하고, 카드로 공유하세요.</h2>
-      <p class="sub">들은 그 순간에 인용을 포착하세요 — 따라 읽기에서 탭 두 번. 저장도 게시도 당신의 선택입니다.</p>
+      <h2>마음을 붙잡은 문장을 간직하세요.</h2>
+      <p class="sub">따라 읽기에서 단어를 골라 간직하세요. 표시한 부분은 오디오 속 위치를 기억하므로, 언제든 다시 들을 수 있습니다.</p>
     </div>
     <div class="gallery">
       <figure class="gcard reveal">
         <span class="num">01</span>
-        <img src="/assets/img/mockups/locales/ko/quote-select.webp" alt="HushBook에서 인용 선택 — 따라 읽기 가사에서 첫 단어와 마지막 단어를 탭" loading="lazy">
-        <h3>탭 두 번으로 포착</h3>
-        <p>첫 단어를 탭하고, 마지막 단어를 탭하세요. 방금 들은 문장이 따라 읽기를 떠나지 않고 저장됩니다.</p>
+        <img src="/assets/img/mockups/locales/ko/quote-mark.webp" alt="따라 읽기에서 『1984』의 첫 문장을 고르고, 그 위에 「하이라이트」, 「메모」, 「인용」이 떠 있는 화면" loading="lazy">
+        <h3>단어 고르기</h3>
+        <p>「표시」를 탭한 다음 첫 단어와 마지막 단어를 탭하세요. 「하이라이트」, 「메모」, 「인용」 중 하나를 고릅니다. 「메모」를 고르면 입력하는 동안 오디오가 기다려 줍니다.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">02</span>
-        <img src="/assets/img/mockups/locales/ko/quotes-collection.webp" alt="HushBook에 저장된 모든 인용, 책별로 정리" loading="lazy">
-        <h3>모든 문장을 한곳에</h3>
-        <p>인용은 책별로 모여 폰에 저장됩니다. 다시 읽거나, 수정하거나, 누군가에게 보내거나 — 자유입니다.</p>
+        <img src="/assets/img/mockups/locales/ko/quote-index.webp" alt="인용문과 메모: 책 6권에서 구절 24개, 『1984』의 인용과 그 아래 독자의 메모" loading="lazy">
+        <h3>나만의 문장 수첩</h3>
+        <p>「인용문과 메모」에는 표시한 모든 부분이 책별로 모이고, 그 아래 내 메모가 붙습니다. 어느 문장이든 재생을 누르면 내레이터의 목소리로 다시 들을 수 있습니다.</p>
       </figure>
       <figure class="gcard reveal">
         <span class="num">03</span>
-        <img src="/assets/img/mockups/locales/ko/quote-card-share.webp" alt="공유 준비가 끝난 완성된 HushBook 인용 카드 — 문장, 저자, 책" loading="lazy">
-        <h3>올리고 싶어지는 카드</h3>
-        <p>모든 인용이 완성된 카드가 됩니다 — 문장, 책, 저자까지. 그대로 공유할 수 있습니다.</p>
+        <img src="/assets/img/mockups/locales/ko/quote-card.webp" alt="맞춤 설정: 노을빛 카드 위의 『1984』 인용과 독자의 메모, 아래에 글꼴과 배경 선택, 그리고 「공유」 버튼" loading="lazy">
+        <h3>카드로 공유하기</h3>
+        <p>「맞춤 설정」은 인용을 책 표지와 함께 카드로 만듭니다. 배경 16가지와 글꼴 3가지 중에서 고르세요. 「내 메모 포함」을 켜면 그 아래 메모가 들어갑니다.</p>
       </figure>
     </div>
   </div>
   <div class="marquee reveal" id="marquee-3d-container" aria-hidden="true">
     <div class="marquee-track" id="marquee-fallback">
-      <!-- 4 copies of the 6-card set; keyframe shifts one set (1320px), 3 sets stay on screen so it never runs out -->
-      <img src="/assets/img/mockups/locales/ko/player-martian.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/ko/player-lotr.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/ko/player-love-hypothesis.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/ko/player-crime-punishment.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/ko/player-pride-prejudice.webp" alt="" loading="lazy">
+      <!-- 3 copies of the 11-card set; keyframe shifts one set (2420px), 2 sets stay on screen so it never runs out -->
       <img src="/assets/img/mockups/locales/ko/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-pride-prejudice.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-born-a-crime.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-hitchhikers.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-martian.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-lotr.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-love-hypothesis.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-crime-punishment.webp" alt="" loading="lazy">
       <img src="/assets/img/mockups/locales/ko/player-pride-prejudice.webp" alt="" loading="lazy">
-      <img src="/assets/img/mockups/locales/ko/player-hitchhikers.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-project-hail-mary.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-fourth-wing.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-dune.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-mexican-gothic.webp" alt="" loading="lazy">
+      <img src="/assets/img/mockups/locales/ko/player-born-a-crime.webp" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -1154,14 +1240,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/ko/home.webp" alt="주목할 만한 책과 라이브러리가 있는 HushBook 홈 화면" loading="lazy">
-        <img src="/assets/img/mockups/locales/ko/library.webp" alt="오디오북 업로드 타일이 있는 「내 컬렉션」 라이브러리 그리드" loading="lazy">
+        <img src="/assets/img/mockups/locales/ko/home.webp" alt="HushBook 홈: 오늘의 연속 기록과 단어 수, 이어 들을 수 있는 『은하수를 여행하는 히치하이커를 위한 안내서』, 그 아래 내 책들" loading="lazy">
+        <img src="/assets/img/mockups/locales/ko/library.webp" alt="HushBook 라이브러리: 표지 그리드로 정리된 내 책, 각 책 아래에 남은 시간" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">당신의 라이브러리</span>
-        <h2>수천 권의 고전이 무료 — <em>내 책을 가져와도 됩니다.</em></h2>
-        <p class="sub">LibriVox와 Internet Archive의 퍼블릭 도메인 오디오북을 6개 언어로 담은 내장 카탈로그. 한 권만 다운로드하면 텍스트 변환이 자동으로 시작되고, 몇 분이면 따라 읽기를 시작할 수 있습니다.</p>
-        <p class="sub">이미 책을 갖고 계신가요? MP3, M4A, M4B, AAC, WAV, FLAC, OGG 등을 가져오세요. 챕터, 표지, 메타데이터도 자동으로 함께 들어옵니다.</p>
+        <h2>무료 고전 수천 권, <em>그리고 내 책까지.</em></h2>
+        <p class="sub">「둘러보기」는 LibriVox와 Internet Archive를 한 번에 검색합니다. 언어는 영어, 독일어, 프랑스어, 스페인어, 이탈리아어, 포르투갈어. 책을 다운로드하면 텍스트 변환 대기열에 저절로 들어갑니다.</p>
+        <p class="sub">내 MP3, M4A, M4B, FLAC, OGG 외에도 10가지 파일 형식을 더 가져올 수 있습니다. 챕터 표시도 그대로 따라오고, 여러 파일을 함께 고르면 한 권의 책이 됩니다.</p>
       </div>
     </div>
   </div>
@@ -1173,33 +1259,37 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
     <div class="split">
       <div class="life-head reveal">
         <span class="eyebrow">당신의 독서 생활</span>
-        <h2>읽는 당신의 뇌가 빛나는 걸 지켜보세요.</h2>
-        <p class="sub" style="margin-top:18px">모두 기기에서 계산되는 프라이빗 통계 모음. 0에서 100까지의 브레인 스코어가 연속 기록, 읽은 단어 수, 이해도, 꾸준함과 함께 올라갑니다. 「첫걸음」부터 「최고의 뇌 건강」까지 8단계 레벨로.</p>
-        <p class="sub" style="margin-top:14px">단어 수는 실제 텍스트 변환에서 집계됩니다 — 당신이 정말로 들은, 진짜 단어들. 모든 카드는 아름다운 이미지로 공유할 수 있습니다.</p>
+        <h2>당신의 독서 습관을 뇌 그림으로.</h2>
+        <p class="sub" style="margin-top:18px">「독서 참여」는 여섯 가지 습관을 0에서 100까지 하나의 점수로 묶습니다. 레벨은 「첫 페이지」부터 「마지막 페이지까지」 다섯 단계입니다.</p>
+        <p class="sub" style="margin-top:14px">습관을 탭하면 어떻게 집계되는지, 무엇을 하면 올라가는지 볼 수 있습니다. 계산은 모두 폰에서 이루어지며, 점수는 Pro에서 제공됩니다.</p>
       </div>
       <div class="split-media duo reveal">
-        <img src="/assets/img/mockups/locales/ko/brain-health.webp" alt="브레인 헬스 스코어와 그것을 움직이는 요소들" loading="lazy">
-        <img src="/assets/img/mockups/locales/ko/goals-graphs.webp" alt="시간에 따른 단어 수와 올해 읽은 책 합계" loading="lazy">
+        <img src="/assets/img/mockups/locales/ko/brain.webp" alt="독서 참여 점수 58, 레벨 3/5 · 리듬 찾기. 옆에는 부위마다 여섯 가지 습관을 나타내는 수묵화풍의 뇌" loading="lazy">
+        <img src="/assets/img/mockups/locales/ko/analytics.webp" alt="HushBook 분석: 연속 기록을 보여 주는 「기세」 카드 아래 「이번 주」 탭, 첫 카드는 「듣기 시간」" loading="lazy">
       </div>
     </div>
 
     <div class="sec-head center reveal" style="margin:130px auto 0">
       <span class="eyebrow">고급 통계 · Pro</span>
-      <h2>당신을 위한 고급 통계.</h2>
-      <p class="sub">연속 기록 너머로 — 언제 듣기 시작하고, 언제 멈추고, 무엇에 손이 가고, 실제로 몇 단어를 들었는지. 모든 숫자는 당신의 텍스트 변환에서, 당신의 기기에서 계산됩니다.</p>
+      <h2>듣는 시간은 어디로 가는가.</h2>
+      <p class="sub">Pro에서는 카드 탭 세 개가 더 열립니다. 「대부분의 듣기는 오후 9시에서 오후 10시 사이에 시작돼요.」처럼, 답은 평범한 문장으로 알려 줍니다.</p>
     </div>
 
     <div class="collage">
       <div class="cstack cstack--l reveal">
-        <figure class="ccard dark"><span class="tag tag-tl">습관 인사이트</span><img src="assets/img/mockups/card-habit-insights.webp" alt="습관 인사이트: 평소 듣는 시간대, 최장 세션, 가장 활발한 요일" loading="lazy">figure>
-        <figure class="ccard"><span class="tag tag-bl">장르 레이더</span><img src="assets/img/mockups/card-genre-radar.webp" alt="가장 많이 읽는 장르의 레이더 차트" loading="lazy">"></figure>
+        <figure class="ccard"><span class="tag tag-tl">평소 듣는 시간</span><img src="/assets/img/mockups/locales/ko/card-habits.webp" alt="습관 카드: 대부분의 듣기는 오후 9시에서 10시 사이에 시작되고, 한 세션은 보통 약 24분" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-bl">손이 가는 장르</span><img src="/assets/img/mockups/locales/ko/card-genres.webp" alt="듣는 장르: 최근 30일은 판타지가 대부분, 나머지 장르는 막대로 표시" loading="lazy"></figure>
       </div>
-      <div class="collage-phone reveal">         <span class="tag tag-c" style="top:-52px">당신의 하루 리듬</span>         <img src="assets/img/mockups/advanced-analytics.webp" alt="고급 통계: 하루의 청취 시작과 종료, 상위 카테고리" loading="lazy">          <div class="cstack cstack--r reveal">
-        <figure class="ccard"><span class="tag tag-tr">책별 단어 수</span><img src="assets/img/mockups/card-words-per-book.webp" alt="책별 단어 수 막대 차트" loading="lazy">"></figure>
-        <figure class="ccard"><span class="tag tag-br">정직한 목표</span><img src="assets/img/mockups/card-goals-sheet.webp" alt="책과 단어 목표 설정 시트" loading="lazy">ure>
+      <div class="collage-phone reveal">
+        <span class="tag tag-c" style="top:-52px">들은 날, 하루하루</span>
+        <img src="/assets/img/mockups/locales/ko/analytics-calendar.webp" alt="분석의 「책」 탭: 10월 듣기 캘린더, 날마다 그날 들은 책의 표지" loading="lazy">
+      </div>
+      <div class="cstack cstack--r reveal">
+        <figure class="ccard"><span class="tag tag-tr">개인 최고 기록</span><img src="/assets/img/mockups/locales/ko/card-records.webp" alt="나의 기록: 가장 긴 세션, 하루 최다, 최장 연속 기록, 가장 빠른 완독" loading="lazy"></figure>
+        <figure class="ccard"><span class="tag tag-br">직접 정한 목표</span><img src="/assets/img/mockups/locales/ko/card-goals.webp" alt="목표 카드: 하루 5,000단어 목표와 달성한 날 수" loading="lazy"></figure>
       </div>
     </div>
-    <p class="collage-cap reveal">습관 인사이트 · 장르 레이더 · 책별 단어 수 · 정직한 목표 — 모든 카드는 아름다운 이미지로 공유할 수 있습니다.</p>
+    <p class="collage-cap reveal">재생한 기록을 바탕으로 폰에서 계산합니다. 캘린더, 장르, 「월간 돌아보기」는 이미지로 공유할 수 있습니다.</p>
 
     <div class="medals reveal" aria-label="컬렉터 배지">
       <img src="/assets/img/streak_7_front.webp" alt="7일 연속 배지" loading="lazy">
@@ -1218,14 +1308,14 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
   <div class="wrap">
     <div class="split rev">
       <div class="split-media layer reveal">
-        <img class="back" src="/assets/img/mockups/locales/ko/character-slide.webp?v=2" alt="등장인물 상세 시트 — 역할, 첫 등장, 속성, 관계" loading="lazy">
-        <img class="front" src="/assets/img/mockups/locales/ko/character-graph.webp" alt="드래그 가능한 노드가 있는 등장인물 관계 그래프" loading="lazy">
+        <img class="back" src="/assets/img/mockups/locales/ko/characters-sheet.webp" alt="윈스턴 스미스의 시트: 역할, 처음 등장(1장 · 0:09), 설명, 속성, 관계" loading="lazy">
+        <img class="front" src="/assets/img/mockups/locales/ko/characters-map.webp" alt="『1984』 캐릭터 맵: 주인공 윈스턴 스미스가 줄리아, 오브라이언, 빅 브라더 외 4명과 연결된 모습" loading="lazy">
       </div>
       <div class="reveal">
         <span class="eyebrow">독서 동반자</span>
-        <h2>읽으면서 등장인물을 매핑하세요.</h2>
-        <p class="sub" style="margin-top:18px">장대한 장편은 헷갈리기 쉽습니다. 등장인물을 캔버스에 드래그하고, 사이에 선을 긋고, 내 말로 라벨을 붙이세요 — 아군, 라이벌, 형제, 짝사랑. 지도는 책과 함께 남습니다.</p>
-        <p class="sub" style="margin-top:14px">마음에 꽂히는 문장을 만나면: 첫 단어를 탭하고, 마지막 단어를 탭하세요. 인용으로 저장되고, 카드로 공유할 수 있습니다.</p>
+        <h2>누가 누구인지, 더는 헷갈리지 않게.</h2>
+        <p class="sub" style="margin-top:18px">듣는 도중 인물을 추가하면, 처음 등장한 위치가 초 단위까지 맵에 기록됩니다. 얼굴과 역할도 정해 주세요.</p>
+        <p class="sub" style="margin-top:14px">두 사람을 이어 관계를 고르세요. 「형제」부터 「비밀」까지, 직접 입력해도 됩니다. 맵이 한눈에 읽힐 때까지 얼굴을 끌어 옮기세요.</p>
       </div>
     </div>
   </div>
@@ -1268,7 +1358,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <p><strong>동기화 텍스트가 있는 무료 오디오북 앱</strong>을 찾고 계신가요? HushBook은 단순한 재생 이상을 원하는 사람들을 위해 만들어졌습니다. 일반 플레이어는 내레이션을 틀어줄 뿐, 눈이 따라갈 것을 남겨두지 않습니다. HushBook은 듣기를 <strong>글자가 있는 오디오북</strong>으로 바꿉니다 — 말해지는 모든 단어가 내레이터에 맞춰 빛나기 때문에, 음악 앱에서 가사가 움직이듯 따라 읽을 수 있습니다. 다만 이번 트랙은 책 한 권 전체입니다.</p>
 
       <h3>왜 동기화 텍스트가 듣기만 하는 것보다 나을까</h3>
-      <p>수동적인 오디오는 시작하기도 쉽고 놓치기도 쉽습니다. 마음은 표류하고, 이름은 흐려지고, 챕터를 다 듣고 나서야 거의 기억나는 게 없다는 걸 깨닫습니다. 단어 단위 강조는 주의를 목소리에 고정합니다 — 듣는 것이 보이고, 탭 한 번으로 어떤 문장으로든 이동하고, 챕터 절반을 되감지 않고도 자리를 지킬 수 있습니다. 이 이중 채널 집중이, 이해가 편의만큼 중요할 때 많은 독자가 HushBook을 <strong>최고의 무료 오디오북 앱</strong> 중 하나로 꼽는 이유입니다.</p>
+      <p>수동적인 오디오는 시작하기도 쉽고 놓치기도 쉽습니다. 마음은 표류하고, 이름은 흐려지고, 챕터를 다 듣고 나서야 거의 기억나는 게 없다는 걸 깨닫습니다. 단어 단위 강조는 주의를 목소리에 고정합니다 — 듣는 것이 보이고, 어느 줄이든 길게 눌러 거기서부터 재생하고, 챕터 절반을 되감지 않고도 자리를 지킬 수 있습니다. 이 이중 채널 집중이, 이해가 편의만큼 중요할 때 많은 독자가 HushBook을 <strong>최고의 무료 오디오북 앱</strong> 중 하나로 꼽는 이유입니다.</p>
 
       <h3>최고의 오디오북 앱 — HushBook을 진짜로 다르게 만드는 것</h3>
       <p>「<strong>최고의 오디오북 앱</strong>」을 검색하면 스토어, 구독, 클라우드 라이브러리가 나옵니다. Apple Books 오디오북을 포함한 Apple 오디오북, Audible 오디오북, YouTube 오디오북은 작품을 찾는 데 도움이 되며, 각자의 카탈로그와 조건, 제공 범위가 있습니다. 검색 표현도 다양합니다 — 「audiobooks Apple」로 찾는 사람은 대개 같은 Apple Books 카탈로그를 비교하는 중입니다. HushBook이 푸는 문제는 다릅니다 — <em>이미 가진 오디오를 어떻게 읽을 것인가</em>. 내 MP3, M4B, FLAC 등을 가져오세요. 파일에 포함되어 있다면 챕터와 표지도 함께 들어옵니다. 「텍스트 변환」을 탭하면 온디바이스 HushBook Engine이 동기화 텍스트를 만듭니다 — 가사 데이터베이스도, 업로드도, 계정도 없습니다. 엔진을 한 번 다운로드한 후에는 모든 경험이 오프라인으로 작동합니다. 이런 프라이빗한 파일 우선 설계는 주류 <strong>iPhone용 오디오북 앱</strong>과 <strong>Android용 오디오북 앱</strong> 사이에서 드뭅니다.</p>
@@ -1297,9 +1387,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
       <h2>답해 드립니다.</h2>
     </div>
     <div class="faq reveal">
-      <div class="qa"><button type="button" aria-expanded="false">내 오디오가 폰 밖으로 나가나요?</button><div class="a"><p>아니요. 텍스트 변환은 전적으로 기기에서 실행됩니다 — 업로드도, 계정도, 서버도 없습니다. 엔진을 한 번 다운로드한 후에는 앱 전체가 오프라인으로 작동합니다.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">내 오디오가 폰 밖으로 나가나요?</button><div class="a"><p>서버로는 가지 않습니다. 텍스트 변환은 폰에서, 원하면 집 Wi-Fi를 통해 내 컴퓨터에서 실행됩니다. 업로드도 계정도 없고, 엔진을 한 번 다운로드한 후에는 앱 전체가 오프라인으로 작동합니다.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">동기화된 가사는 어디서 오나요?</button><div class="a"><p>HushBook은 온디바이스 HushBook Engine으로 당신의 오디오에서 생성합니다 — 가사 데이터베이스는 없습니다. 긴 책의 첫 변환은 시간이 좀 걸리지만, 그 후에는 열 때마다 바로입니다.</p></div></div>
-      <div class="qa"><button type="button" aria-expanded="false">어떤 파일을 가져올 수 있나요?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, MKA, ALAC — 한 번에 파일 하나씩 가져옵니다. M4B 파일 안의 챕터는 표지와 메타데이터와 함께 자동으로 감지됩니다.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">어떤 파일을 가져올 수 있나요?</button><div class="a"><p>MP3, M4A, M4B, AAC, WAV, FLAC, OGG, OPUS, OGA, AIFF, AIF, CAF, WMA, MKA, ALAC. 파일을 하나만 골라도, 여러 개 골라도 됩니다. 여러 개를 고르면 파일마다 한 챕터씩, 한 권의 책이 됩니다. M4B 파일 안의 챕터는 표지와 메타데이터와 함께 자동으로 감지됩니다.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">가격은 얼마인가요?</button><div class="a"><p>핵심 따라 읽기 경험과 퍼블릭 도메인 라이브러리는 무료입니다. 고급 통계를 위한 선택적 Pro 업그레이드가 있습니다 — Pro가 되는 것은 HushBook이 독립성을 지키며 계속 발전하는 데 도움이 됩니다.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">배터리를 소모하거나 폰이 뜨거워지지 않나요?</button><div class="a"><p>엔진은 발열을 인식합니다 — 워커 스레드 수를 제한하고 청크 사이에 쉬면서 폰이 뜨거워지지 않게 하고, 긴 텍스트 변환이 중단되면 자동으로 다시 이어갑니다.</p></div></div>
       <div class="qa"><button type="button" aria-expanded="false">HushBook은 어떤 사람을 위한 앱인가요?</button><div class="a"><p>귀로 읽는 모든 사람 — 특히 난독증, ADHD, 저시력 독자, 언어 학습자, 그리고 듣는 단어를 볼 수 있을 때 더 잘 집중하는 모든 사람을 위해.</p></div></div>
@@ -1480,19 +1570,6 @@ if(reviewSet){
   reviewClone.setAttribute('aria-hidden','true');
   reviewClone.querySelectorAll('[tabindex]').forEach(el=>el.removeAttribute('tabindex'));
   reviewSet.after(reviewClone);
-}
-
-// hero fan 3D tilt
-const fan=document.querySelector('.fan');
-if(fan&&fine&&!calm){
-  const hero=document.querySelector('.hero');
-  hero.addEventListener('pointermove',e=>{
-    const r=hero.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    fan.style.setProperty('--rx',(-y*5)+'deg');
-    fan.style.setProperty('--ry',(x*7)+'deg');
-  });
-  hero.addEventListener('pointerleave',()=>{fan.style.setProperty('--rx','0deg');fan.style.setProperty('--ry','0deg')});
 }
 
 // three.js + GSAP — The Transcription Field
@@ -1758,18 +1835,17 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
   if (!container || !window.THREE || calm) return;
 
   const IMAGES = [
-    "/assets/img/mockups/locales/ko/player-martian.webp",
-    "/assets/img/mockups/locales/ko/player-lotr.webp",
-    "/assets/img/mockups/locales/ko/player-love-hypothesis.webp",
-    "/assets/img/mockups/locales/ko/player-crime-punishment.webp",
-    "/assets/img/mockups/locales/ko/player-pride-prejudice.webp",
     "/assets/img/mockups/locales/ko/player-hitchhikers.webp",
     "/assets/img/mockups/locales/ko/player-martian.webp",
     "/assets/img/mockups/locales/ko/player-lotr.webp",
     "/assets/img/mockups/locales/ko/player-love-hypothesis.webp",
     "/assets/img/mockups/locales/ko/player-crime-punishment.webp",
     "/assets/img/mockups/locales/ko/player-pride-prejudice.webp",
-    "/assets/img/mockups/locales/ko/player-hitchhikers.webp"
+    "/assets/img/mockups/locales/ko/player-project-hail-mary.webp",
+    "/assets/img/mockups/locales/ko/player-fourth-wing.webp",
+    "/assets/img/mockups/locales/ko/player-dune.webp",
+    "/assets/img/mockups/locales/ko/player-mexican-gothic.webp",
+    "/assets/img/mockups/locales/ko/player-born-a-crime.webp"
   ];
 
   const width = container.clientWidth;
@@ -1953,7 +2029,9 @@ window.addEventListener('load',()=>{if(calm)return;setTimeout(()=>(window.reques
 })();
 </script>
 <div class="locale-switcher" data-locale-switcher aria-label="언어 선택"><a data-locale="en">한국어</a><span aria-hidden="true">/</span><a data-locale="de">한국어</a></div>
-<script src="/assets/js/locale.js" defer></script></body>
+<script src="/assets/js/locale.js" defer></script><!-- hra:script -->
+<script defer src="/assets/js/hero-read-along.js"></script>
+</body>
 </html>
 
 

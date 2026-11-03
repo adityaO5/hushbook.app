@@ -64,6 +64,7 @@ const htmlSkipDirs = new Set([
   'embeds', // blog body partials, not pages
   'research',
   'output',
+  'tools', // mockup generator scenes: rendered to images, never served
   '.worktrees',
   '.superpowers',
   '.legacy-index',

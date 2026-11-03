@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Dine bøger",
+  "librarySelect": "Vælg",
+  "libraryChipAll": "Alle",
+  "libraryChipInProgress": "I gang",
+  "libraryChipNotStarted": "Ikke startet",
+  "libraryChipFinished": "Færdig",
+  "librarySortRecentlyPlayed": "Senest afspillet",
+  "libraryShowAsList": "Vis som liste",
+  "durationHoursMinutes": "{hours} t {minutes} min",
+  "durationMinutes": "{minutes} min",
+  "timeLeft": "{duration} tilbage",
+  "navHome": "Hjem",
+  "navLibrary": "Bibliotek",
+  "navAnalytics": "Analyse",
+  "navProfile": "Profil"
+}

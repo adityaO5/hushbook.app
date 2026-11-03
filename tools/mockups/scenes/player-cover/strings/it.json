@@ -1,0 +1,13 @@
+{
+  "readAlong": "Segui il testo",
+  "minutesLeftInChapter": "{minutes} min alla fine del capitolo",
+  "minuteLeftInChapter": "1 min alla fine del capitolo",
+  "underMinuteLeftInChapter": "Meno di un minuto alla fine del capitolo",
+  "sleepInMinutes": "Si ferma tra {minutes} min",
+  "pillSpeed": "Velocità",
+  "pillSleep": "Timer",
+  "sleepOff": "Spento",
+  "pillSleepMinutes": "{minutes} min",
+  "chapters": "Capitoli",
+  "chaptersOf": "{current} di {total}"
+}

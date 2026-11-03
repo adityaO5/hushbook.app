@@ -1,0 +1,13 @@
+{
+  "readAlong": "Mitlesen",
+  "minutesLeftInChapter": "Noch {minutes} Min. in diesem Kapitel",
+  "minuteLeftInChapter": "Noch 1 Min. in diesem Kapitel",
+  "underMinuteLeftInChapter": "Noch unter einer Minute in diesem Kapitel",
+  "sleepInMinutes": "Schlaf-Timer endet in {minutes} Min.",
+  "pillSpeed": "Geschwindigkeit",
+  "pillSleep": "Schlaf-Timer",
+  "sleepOff": "Aus",
+  "pillSleepMinutes": "{minutes} Min.",
+  "chapters": "Kapitel",
+  "chaptersOf": "{current} von {total}"
+}

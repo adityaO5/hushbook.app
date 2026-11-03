@@ -1,0 +1,13 @@
+{
+  "readAlong": "Следить за текстом",
+  "minutesLeftInChapter": "До конца главы: {minutes} мин",
+  "minuteLeftInChapter": "До конца главы: 1 мин",
+  "underMinuteLeftInChapter": "До конца главы меньше минуты",
+  "sleepInMinutes": "Остановка через {minutes} мин",
+  "pillSpeed": "Скорость",
+  "pillSleep": "Таймер",
+  "sleepOff": "Выключенный",
+  "pillSleepMinutes": "{minutes} мин",
+  "chapters": "Главы",
+  "chaptersOf": "{current} из {total}"
+}

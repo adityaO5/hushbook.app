@@ -1,0 +1,13 @@
+{
+  "readAlong": "อ่านตาม",
+  "minutesLeftInChapter": "เหลือ {minutes} นาทีในบทนี้",
+  "minuteLeftInChapter": "เหลือ 1 นาทีในบทนี้",
+  "underMinuteLeftInChapter": "เหลือไม่ถึงหนึ่งนาทีในบทนี้",
+  "sleepInMinutes": "หยุดในอีก {minutes} นาที",
+  "pillSpeed": "ความเร็ว",
+  "pillSleep": "ตั้งเวลา",
+  "sleepOff": "ปิด",
+  "pillSleepMinutes": "{minutes} นาที",
+  "chapters": "บท",
+  "chaptersOf": "{current} จาก {total}"
+}

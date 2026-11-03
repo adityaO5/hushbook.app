@@ -1,0 +1,13 @@
+{
+  "readAlong": "Metni takip et",
+  "minutesLeftInChapter": "Bölümün bitmesine {minutes} dk kaldı",
+  "minuteLeftInChapter": "Bölümün bitmesine 1 dk kaldı",
+  "underMinuteLeftInChapter": "Bölümün bitmesine bir dakikadan az kaldı",
+  "sleepInMinutes": "{minutes} dk sonra durur",
+  "pillSpeed": "Hız",
+  "pillSleep": "Uyku",
+  "sleepOff": "Kapalı",
+  "pillSleepMinutes": "{minutes} dk",
+  "chapters": "Bölümler",
+  "chaptersOf": "{current}/{total}"
+}

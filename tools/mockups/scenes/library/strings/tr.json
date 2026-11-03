@@ -1,0 +1,17 @@
+{
+  "libraryYourBooks": "Kitaplarınız",
+  "librarySelect": "Seç",
+  "libraryChipAll": "Tümü",
+  "libraryChipInProgress": "Devam eden",
+  "libraryChipNotStarted": "Başlanmamış",
+  "libraryChipFinished": "Bitti",
+  "librarySortRecentlyPlayed": "Son dinlenenler",
+  "libraryShowAsList": "Liste olarak göster",
+  "durationHoursMinutes": "{hours} sa {minutes} dk",
+  "durationMinutes": "{minutes} dk",
+  "timeLeft": "{duration} kaldı",
+  "navHome": "Ana sayfa",
+  "navLibrary": "Kitaplık",
+  "navAnalytics": "Analizler",
+  "navProfile": "Profil"
+}

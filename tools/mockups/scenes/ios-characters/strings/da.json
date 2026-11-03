@@ -1,0 +1,21 @@
+{
+  "characterMapTitle": "Karakterkort",
+  "castCount": "Rollebesætning · {count}",
+  "roleHero": "Helt",
+  "roleVillain": "Skurk",
+  "roleRival": "Rival",
+  "roleMentor": "Mentor",
+  "roleFriend": "Ven",
+  "roleLoveInterest": "Kærlighedsinteresse",
+  "relationMentorOf": "mentor af",
+  "relationStudentOf": "elev af",
+  "relationEmployerOf": "arbejdsgiver af",
+  "relationEmployeeOf": "medarbejder af",
+  "sectionRole": "Rolle",
+  "sectionFirstHeard": "Hørt første gang",
+  "firstHeardLabel": "Kap. {chapter} · {time}",
+  "sectionDescription": "Beskrivelse",
+  "sectionAttributes": "Attributter",
+  "sectionRelationships": "Relationer",
+  "deleteCharacter": "Slet tegn"
+}

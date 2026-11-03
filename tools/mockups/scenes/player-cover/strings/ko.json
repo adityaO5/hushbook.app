@@ -1,0 +1,13 @@
+{
+  "readAlong": "따라 읽기",
+  "minutesLeftInChapter": "이 챕터 {minutes}분 남음",
+  "minuteLeftInChapter": "이 챕터 1분 남음",
+  "underMinuteLeftInChapter": "이 챕터 1분 미만 남음",
+  "sleepInMinutes": "{minutes}분 후 정지",
+  "pillSpeed": "속도",
+  "pillSleep": "타이머",
+  "sleepOff": "끄다",
+  "pillSleepMinutes": "{minutes}분",
+  "chapters": "챕터",
+  "chaptersOf": "{current}/{total}"
+}
