@@ -6,7 +6,15 @@
     <atom:link href="https://hushbook.app/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Guides to immersive reading and read-along audiobooks.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Audiobooks With Captions: How to Get Subtitles on Any Audiobook</title>
+      <link>https://hushbook.app/blog/audiobooks-with-captions</link>
+      <guid isPermaLink="true">https://hushbook.app/blog/audiobooks-with-captions</guid>
+      <pubDate>Tue, 03 Nov 2026 09:00:00 GMT</pubDate>
+      <category>Accessibility</category>
+      <description>Audible, Spotify, Libby, Apple Books and hoopla show no text for audiobooks, and Audible&#39;s 2019 captions feature never launched. How to get them: Read &amp; Listen, Live Captions on iPhone and Android, or an app that transcribes files you own.</description>
+    </item>
     <item>
       <title>The Information Diet: How to Swap Scrolling for Audiobooks</title>
       <link>https://hushbook.app/blog/how-to-go-on-an-information-diet</link>

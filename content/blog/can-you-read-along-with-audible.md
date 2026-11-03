@@ -47,7 +47,7 @@ That third one is the reason I made **HushBook**. It works from audio files you 
 
 Audible downloads and Kindle ebooks are locked to Amazon's apps, so the two tools split the work neatly: Read & Listen for the books in your Audible and Kindle libraries, and **HushBook** for your own MP3 and M4B files, DRM-free EPUB, PDF or TXT e-books, and *free LibriVox classics*.
 
-There's more on [how **HushBook** compares to Whispersync](/whispersync-alternative), on [getting text for an audiobook](/audiobook-with-text) and, for library books, on [whether Libby can read to you](/blog/can-libby-read-to-you). For every other app that lets you read and listen at once, see [the best apps to read and listen at the same time](/blog/best-apps-to-read-and-listen-at-the-same-time).
+There's more on [how **HushBook** compares to Whispersync](/whispersync-alternative), on [getting text for an audiobook](/audiobook-with-text), on [audiobooks with captions](/blog/audiobooks-with-captions) and, for library books, on [whether Libby can read to you](/blog/can-libby-read-to-you). For every other app that lets you read and listen at once, see [the best apps to read and listen at the same time](/blog/best-apps-to-read-and-listen-at-the-same-time).
 
 ## Is reading along worth it?
 

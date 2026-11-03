@@ -18,7 +18,7 @@ So reading along on Spotify means holding a book or e-reader while the app plays
 
 ## Do Spotify audiobooks have text or transcripts?
 
-No. Spotify's "Unlock Audiobooks" help page lists what the Now Playing view gives you on an audiobook: play speed, skip forward or back 15 seconds, a sleep timer, a rating once you've heard a chapter, and sharing. There is no text. Spotify's help center has no article on audiobook transcripts, and none of the audiobook announcements we read, from November 2024 to October 2026, mention one.
+No. Spotify's "Unlock Audiobooks" help page lists what the Now Playing view gives you on an audiobook: play speed, skip forward or back 15 seconds, a sleep timer, a rating once you've heard a chapter, and sharing. There is no text. Spotify's help center has no article on audiobook transcripts, and none of the audiobook announcements we read, from November 2024 to October 2026, mention one. For every service's caption status, and how to caption a file you own, see [audiobooks with captions](/blog/audiobooks-with-captions).
 
 The mix-up is easy to make. Podcasts and audiobooks sit side by side in the same app, and many podcast episodes do show their words as they play. That is a podcast feature, covered further down.
 

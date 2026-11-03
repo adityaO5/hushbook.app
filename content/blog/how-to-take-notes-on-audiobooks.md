@@ -123,7 +123,7 @@ Not the audio itself. A highlight needs text, and most audiobook apps have none.
 
 ## Does Audible have a transcription feature?
 
-No. Audible does not show a transcript or captions for its audiobooks. The closest thing is Read & Listen, which shows the text of the Kindle edition in sync with the audio, and only when you own both. Apps like HushBook build the text from the audio on your phone, for files you can import, but Audible downloads are copy-protected and cannot be imported.
+No. Audible does not show a transcript or captions for its audiobooks. The closest thing is Read & Listen, which shows the text of the Kindle edition in sync with the audio, and only when you own both. Apps like HushBook build the text from the audio on your phone, for files you can import, but Audible downloads are copy-protected and cannot be imported. Our guide to [audiobooks with captions](/blog/audiobooks-with-captions) covers every service.
 
 ## What the evidence does not show
 

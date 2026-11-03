@@ -26,6 +26,7 @@ const SKIP_DIRS = new Set([
   'videos',
   'demos', // iframe embeds: the host page already counts the view
   'embeds', // blog body partials, not pages
+  'tools', // mockup scenes rendered by Playwright, never shipped
   'research',
   'output',
   '.worktrees',
