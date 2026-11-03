@@ -16,8 +16,8 @@ if (!fs.existsSync(localeDir)) {
 const tokens = ['Download','Read-along','Privacy','Accessibility','Analytics','Habit insights','Genre radar','Honest goals','Book info','My Collections','Search by Title','Upload Audiobook','Choose your profile','Improve Reading Comprehension','Brain Health','Words per book','Total books read','Transcribe','Transcribing','Save','Terms and Conditions','Refund Policy','Privacy Policy'];
 // “Transcribe” is valid Spanish (imperative), and “Transcribeer” is valid
 // Dutch. Keep those target-language words out of the English-leak detector.
-// Also the loanword "Download" (German, Danish, Brazilian Portuguese) and "privacy" (Italian, Dutch).
-const allowedByLocale = { 'es-ES': ['Transcribe'], 'es-419': ['Transcribe'], de: ['Download'], da: ['Download'], 'pt-BR': ['Download'], it: ['Privacy'], nl: ['Privacy'] };
+// Also the loanword "Download" (German, Danish, Brazilian Portuguese) and "privacy" (Italian, Dutch), which also use "download".
+const allowedByLocale = { 'es-ES': ['Transcribe'], 'es-419': ['Transcribe'], de: ['Download'], da: ['Download'], 'pt-BR': ['Download'], it: ['Privacy', 'Download'], nl: ['Privacy', 'Download'] };
 const allowed = new Set(allowedByLocale[locale] || []);
 const englishUi = new RegExp(`\\b(?:${tokens.filter(token => !allowed.has(token)).map(token => token.replace(/[.*+?^${}()|[\\]\\]/g, '\\\\$&')).join('|')})\\b`, 'i');
 
