@@ -19,7 +19,7 @@ The same estimate works for any length:
 - **400 pages:** about 11 to 14 hours
 - **500 pages:** about 13.5 to 17.5 hours
 
-Bigger pages hold more words. Gatekeeper Press puts a 6 by 9 inch page at about 360 to 390 words, so a book printed that size runs longer than its page count suggests. If you can find the word count, use it instead of pages. It is far more reliable.
+Bigger pages hold more words. Gatekeeper Press puts a 6 by 9 inch page at about 360 to 390 words, so a book printed that size runs longer than its page count suggests. If you can find the word count, use it instead of pages. It is far more reliable. For the reverse question, pages from listening hours for a reading challenge, see [do audiobooks count on Goodreads](/blog/do-audiobooks-count-on-goodreads).
 
 ## How long are famous audiobooks?
 
@@ -77,7 +77,7 @@ If you keep losing track at higher speeds, reading the text along with the audio
 
 ## Sources
 
-- [ACX, "How long will my narrated audiobook be?"](https://help.acx.com/s/article/how-long-will-my-narrated-audiobook-be)
+- [ACX Help, "Narrate an audiobook" (section "How long will my narrated audiobook be?")](https://help.acx.com/s/article/producing-and-recording-your-audiobook)
 - [Gatekeeper Press, "How many pages will my book be?"](https://kb.gatekeeperpress.com/help/how-many-pages-will-my-book-be)
 - [Project Gutenberg](https://www.gutenberg.org/), plain-text editions used for our word counts (ebooks 11, 46, 64317, 84, 1727, 1342, 2701, 1184, 2600 and 10)
 - [LibriVox: Alice's Adventures in Wonderland, read by Kara Shallenberg](https://librivox.org/alices-adventures-in-wonderland-by-lewis-carroll-4/)

@@ -41,4 +41,10 @@ Draft written by the scheduled weekly run on 2026-11-02. Nothing in this folder 
 - `how-long-is-an-audiobook` owns the hours-from-pages maths. This post reuses its sourced figures (ACX 9,300 words an hour, Gatekeeper Press words per page) for the reverse question, pages from hours, and links to it.
 - No answer page covers tracking or challenges.
 
-SOURCES_PLACEHOLDER
+## Published 2026-11-03
+
+The scheduled run left `post.md` as a stub ("PENDING RESEARCH"). Finished in an interactive session: one Opus research agent fetched every Goodreads, StoryGraph, Fable, Beanstack, library, Renaissance, ACX, Gatekeeper, Pew, APA and Ipsos page on 2026-11-03 (`research.md`, 36 sources, exact quotes). Key corrections to the earlier assumptions: reread support dates from February 7, 2017 (not 2016); 75 Hard's official page gates the rules behind a signup, so the ten-pages rule is cited as "reproduced across sites"; the ACX URL in how-long-is-an-audiobook had started redirecting, so that post's source line was updated.
+
+Images: `audiobook-hours-to-pages.webp` (HTML tiles rendered with Playwright, figures from the how-long post) and `audiobook-tracking-hushbook.webp` (real analytics renders from tools/mockups/out composed with PIL). See the blog-images memory.
+
+Wiring: registry entry (`registry-entry.mjs`, metaTitle 56, metaDescription 154, description 238, 12 min), `llms-line.txt`, contextual links from does-listening-to-audiobooks-count-as-reading ("Put it on your Goodreads shelf") and how-long-is-an-audiobook (reverse conversion). No answer-page change. Tests: 8 pass, the two stale-baseline failures as before.
