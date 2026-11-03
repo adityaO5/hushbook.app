@@ -30,7 +30,7 @@ Complete this goal for every locale before indexing or production routing.
 - App Store, Google Play, iOS, Android, file extensions, URLs, email addresses, and third-party legal terms.
 - English UI embedded inside a mockup region not yet declared editable in the
   private-preview manifest, with the exact asset recorded in
-  `docs/MOCKUP_LOCALIZATION_QA.md`.
+  `tools/mockups/README.md` (renders are generated per locale by `npm run build:mockups`).
 
 Record each additional exception with page, exact text, reason, and reviewer approval in release notes. Do not add broad exception patterns.
 
