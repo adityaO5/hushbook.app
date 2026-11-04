@@ -121,7 +121,7 @@ If you are new to audiobooks, [how to get into audiobooks](/blog/how-to-get-into
 
 Most free audiobooks are audio only. You get the narrator's voice, but no text to follow, which makes it easy to drift or lose a name you did not catch.
 
-**[HushBook](/)** fixes that for free public domain books. It has a built-in store of LibriVox and Internet Archive audiobooks. Download one, and **HushBook** transcribes it **on your phone** and highlights each word as the narrator says it. Tap any word to jump the audio back to that spot.
+**[HushBook](/)** fixes that for free public domain books. It has a built-in store of LibriVox and Internet Archive audiobooks. Download one, and **HushBook** transcribes it **on your phone** and highlights each word as the narrator says it. Long-press a line to play from that spot.
 
 **HushBook** works with free public domain titles and with *audio files you own*, such as MP3 and M4B. If you have M4B files, [how to play M4B files](/blog/how-to-play-m4b-files) covers your other options too.
 

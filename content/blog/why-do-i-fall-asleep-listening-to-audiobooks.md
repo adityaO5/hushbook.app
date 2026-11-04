@@ -72,7 +72,7 @@ A lower volume and a slightly slower speed, around 0.9x to 1x, make the narratio
 
 This is the morning problem. With a normal player you scrub back thirty seconds at a time and guess which scene you actually remember.
 
-**[HushBook](/)** shows the words on screen in time with the narration, so you can scroll back through the text to the last sentence you remember, tap the word, and *the audio jumps straight there*. It transcribes the audiobook on your phone, so **nothing is uploaded**, and it works with your own MP3, M4A or M4B files or the free public domain books in its built-in LibriVox and Internet Archive library.
+**[HushBook](/)** shows the words on screen in time with the narration, so you can scroll back through the text to the last sentence you remember, long-press its line, and *the audio plays from there*. It transcribes the audiobook on your phone, so **nothing is uploaded**, and it works with your own MP3, M4A or M4B files or the free public domain books in its built-in LibriVox and Internet Archive library.
 
 ## If you want to stay awake instead
 

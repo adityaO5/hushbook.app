@@ -78,7 +78,7 @@ Build up over a few books instead of starting with the biggest one on the list.
 
 ## Read free classics word by word
 
-**[HushBook](/)** has a built-in catalogue of *thousands of free classics*: public domain audiobooks from LibriVox and the Internet Archive, in six languages. Download one and the transcription starts on its own, **on your phone**, and then every word lights up with the narrator. Tap any word to jump the audio there.
+**[HushBook](/)** has a built-in catalogue of *thousands of free classics*: public domain audiobooks from LibriVox and the Internet Archive, in six languages. Download one and the transcription starts on its own, **on your phone**, and then every word lights up with the narrator. Long-press a line to play from there.
 
 A few settings suit classics in particular:
 

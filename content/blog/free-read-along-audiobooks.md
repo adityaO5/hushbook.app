@@ -6,7 +6,7 @@ The catch is that free audiobooks almost never come with synced text. You get a 
 
 ## What does read-along mean?
 
-Most people want one thing: to hear the narrator and see the words, with the current word marked. That's what **HushBook** does. It **highlights each word as it's spoken**, scrolls the text as the audio plays, and lets you tap any word to jump to that point in the recording.
+Most people want one thing: to hear the narrator and see the words, with the current word marked. That's what **HushBook** does. It **highlights each word as it's spoken**, scrolls the text as the audio plays, and lets you long-press a line to play from that point in the recording.
 
 It's different from text-to-speech, where a synthetic voice reads a text aloud. Here a human narrator reads, and the app finds where each word falls in the recording. There's a longer explanation in the [immersive reading guide](/blog/what-is-immersive-reading).
 
@@ -30,14 +30,14 @@ Any recording you legally own as an ordinary audio file works too, such as an MP
 
 1. **Get the audiobook.** **HushBook** has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. Search for a title and download it. Or import your own MP3 or M4B.
 2. **Let it transcribe.** **HushBook** transcribes the recording on your phone, so *the audio never leaves your device*. The transcript is matched to the audio word by word.
-3. **Press play.** Each word highlights as the narrator reads it, and the text scrolls along. Tap a word to jump there. Change the speed, or keep listening with the screen locked.
+3. **Press play.** Each word highlights as the narrator reads it, and the text scrolls along. Long-press a line to play from there. Change the speed, or keep listening with the screen locked.
 
 The core read-along is **free to start**, so you can try it on a free LibriVox book without paying for anything.
 
 ## Who is it useful for?
 
 - **Anyone who loses their place.** When your mind wanders, the highlighted word shows you exactly where the narrator is.
-- **Language learners.** You hear a word and see how it's spelled at the same moment.
+- **Language learners.** You hear a word and see how it's spelled at the same moment. Free Spanish picks by level are in [how to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks).
 - **Readers with dyslexia or ADHD.** **HushBook** has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
 - **Readers with low vision.** Another profile uses a high-contrast, hyper-legible font and large type for the highlighted line.
 - **Classics readers.** Older language is easier to follow when you can hear it and see it. Our guide to [reading classics without getting bored](/blog/how-to-read-classics-without-getting-bored) has more ways in.

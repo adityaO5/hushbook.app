@@ -44,7 +44,7 @@ For a first attempt, pick a short recording you can legally download. A public-d
 
 In **HushBook**, download the engine while you're online, then import the audio file. MP3 and M4B are supported. Let the on-device transcription run, and start listening as soon as the first chapter is ready. **You don't need to buy the ebook** for the generated transcript.
 
-Then press play and follow a passage. Each word lights up as the narrator says it, and you can *tap any word* to jump the audio there.
+Then press play and follow a passage. Each word lights up as the narrator says it, and you can *long-press a line* to play from there.
 
 You can adjust playback speed and text size. I wouldn't start by pushing the speed up. Find a pace where following the sentence doesn't feel like chasing it. Once the engine, recording and transcript are on the phone, you can use them offline.
 

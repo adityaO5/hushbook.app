@@ -54,7 +54,7 @@ Put the M4B in iCloud Drive or On My iPhone first, then import it from the app. 
 
 ## Read along with your M4B files in HushBook
 
-**[HushBook](/)** plays M4B files on iPhone, iPad and Android, with chapters, cover art and saved position. Then it does something other players do not: it transcribes the audiobook on your phone and **highlights each word as the narrator says it**, so you can read along. Tap any word to jump the audio there.
+**[HushBook](/)** plays M4B files on iPhone, iPad and Android, with chapters, cover art and saved position. Then it does something other players do not: it transcribes the audiobook on your phone and **highlights each word as the narrator says it**, so you can read along. Long-press a line to play from there.
 
 The transcript is made on the device, so *the audio is never uploaded*, and there is **no account**. Listening can start while the rest of the book transcribes. It also plays MP3, M4A, FLAC, OGG, OPUS and more. The [M4B player](/m4b-player) page has the details.
 

@@ -35,7 +35,7 @@ Abridged editions make sense in a few situations: a long non-fiction book where 
 
 Abridgment causes a specific problem if you like to follow the text while you listen. Pair an abridged recording with a full ebook and the two stop matching within a few pages. Whole paragraphs get skipped and you lose your place.
 
-**[HushBook](/)** avoids this by making the text from the recording itself. It transcribes the audiobook **on your phone**, then highlights each word as the narrator reads it. Whatever version you have, abridged or unabridged, *the words on screen match what you hear*, because they came from the same audio. Tap any word to jump to that moment.
+**[HushBook](/)** avoids this by making the text from the recording itself. It transcribes the audiobook **on your phone**, then highlights each word as the narrator reads it. Whatever version you have, abridged or unabridged, *the words on screen match what you hear*, because they came from the same audio. Long-press a line to play from that moment.
 
 It works with audiobook files you can legally import, such as MP3 and M4B, and with **free** public domain recordings from its built-in LibriVox and Internet Archive store. LibriVox volunteers generally record complete texts, which makes those a good place to start.
 

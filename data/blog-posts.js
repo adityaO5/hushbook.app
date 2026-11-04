@@ -8,6 +8,43 @@
 
 const posts = [
   {
+    slug: 'learn-spanish-with-audiobooks',
+    cta: { heading: 'Every Spanish word, as the narrator says it', text: 'HushBook\'s Universal engine transcribes Spanish audiobooks on your phone and underlines each word as the narrator says it. LibriVox Spanish classics are built into Discover, and a long press on any line plays it again. No account, no ads.' },
+    title: 'How to Learn Spanish With Audiobooks (and Free Ones With Text)',
+    metaTitle: 'How to Learn Spanish With Audiobooks: Free Books With Text',
+    metaDescription: 'Start with A2 stories, read the Spanish text as you listen, replay what you miss, then listen without it. Free LibriVox picks by level and what research shows.',
+    description: 'Audiobooks help you learn Spanish when you can see the words. Start with A2 stories, read along, replay what you missed, then listen without the text. Free LibriVox picks by level, which services show text, and what the research shows.',
+    category: 'Language learning',
+    datePublished: '2026-11-04',
+    dateModified: '2026-11-04',
+    readingTime: '16 min read',
+    keywords: [
+      'audiobooks to learn spanish',
+      'spanish audiobooks for beginners',
+      'spanish audiobooks with text',
+      'learn spanish with audiobooks',
+      'free spanish audiobooks',
+      'can you learn spanish from audiobooks',
+      'spanish audiobooks with transcript',
+      'easy spanish audiobooks'
+    ],
+    takeaways: [
+      'No study has tested adults learning Spanish from audiobooks. In studies with learners of Japanese, Chinese and English, text with audio beat audio alone, but in a 2025 study of 86 learners, people understood a novel less well when reading along than when reading silently.',
+      'Spanish sounds fast because it is: in a 2011 study, Spanish speakers read at 7.82 syllables a second against 6.19 for English, with less information in each syllable. In a 2003 study of 84 learners of Spanish, hearing each line three times helped whether or not the replay was slowed.',
+      'Start with graded readers and children\'s classics. Olly Richards\'s Short Stories in Spanish for Beginners is mapped by its publisher to A2 to B1, and free LibriVox picks include Cuentos de la selva para los niños (2 h 07 min) and El Capitán Veneno, read by one narrator (2 h 14 min).',
+      'LibriVox listed 628 complete Spanish recordings on November 4, 2026, free and public domain, read by volunteers with mixed accents. Audible\'s Read & Listen covers only English and German titles, and Spotify shows no text for audiobooks.',
+      'Audiobooks build understanding, not speaking or writing: comprehension-only programs fell behind on written production and on fluency ratings. The US Foreign Service Institute puts Spanish at 30 weeks, or 690 class hours, of full-time training.'
+    ],
+    faqs: [
+      ['Can you learn Spanish just by listening to audiobooks?', 'Not on its own. Listening works once you know most of the words you hear, around 95% in a 2013 study by van Zeeland and Schmitt, and fiction needs far more vocabulary than speech. Comprehension-only programs fell behind on writing and on fluency ratings, so speaking and writing need practice of their own. No study has tested adults learning Spanish from audiobooks, but in studies of other languages text with audio beat audio alone.'],
+      ['Are there free Spanish audiobooks for beginners?', 'Yes. LibriVox listed 628 complete Spanish recordings on November 4, 2026, all public domain and free. Good first picks are Horacio Quiroga\'s Cuentos de la selva para los niños (2 h 07 min), the Grimm Cuentos de hadas in Spanish, Fernán Caballero\'s folk tales, riddles and proverbs, and the 42-minute first volume of Aesop\'s fables. The readers are volunteers with mixed accents, and the vocabulary is from the 19th and early 20th centuries.'],
+      ['Does Audible have books in Spanish, and can you learn Spanish on Audible?', 'Yes, audible.com has a Spanish-language storefront with an Audible Latino section, and Spain has audible.es. Read & Listen, which highlights the Kindle text, covers only English and German titles, so Spanish audiobooks play without text. Courses such as Learn Spanish with Paul Noble for Beginners (13 h 21 min) and Pimsleur Spanish Level 1 Lessons 1-5 (3 h 4 min) are spoken in English and are copy-protected Audible files.'],
+      ['Are Spanish audiobooks with English translation good for learning?', 'They help you understand. In a 2001 study of 169 university Spanish students watching a Spanish episode, English captions gave the best comprehension, Spanish captions came next and no captions came last. That was a single session, so it shows nothing about building your listening. Check the meaning in English and listen with the Spanish text; Beelinguapp shows its own stories in two languages side by side.'],
+      ['Should I pick Latin American or Castilian (Spain) narration?', 'Pick the accent you are most likely to need. No study ranks one as easier, but in a 2018 study of 60 English-speaking learners, familiarity with a variety predicted how well advanced learners understood it. Add other accents once yours feels easy. On LibriVox, the Antología de cuentos hispanoamericanos matches each story to a reader from, or fluent in the accent of, the author\'s country.'],
+      ['Are podcasts or audiobooks better for learning Spanish?', 'No study compares them for learning Spanish. The research points to two things that matter more than the format: understand most of what you hear, and see the words while you learn them. Choose whichever gives you material at your level with the text available.']
+    ]
+  },
+  {
     slug: 'do-audiobooks-count-on-goodreads',
     cta: { heading: 'Finish more books, then log them in a minute', text: 'HushBook shows every word as the narrator reads it, keeps a Finished shelf and a Finished this year card with each book\'s listening time, so your Goodreads log is one glance away. Works with audiobook files you own and free classics. No account, no ads.' },
     title: 'Do Audiobooks Count on Goodreads? Reading Challenge Rules and How to Log Them',
@@ -168,7 +205,7 @@ const posts = [
   },
   {
     slug: 'how-to-get-into-audiobooks',
-    cta: { heading: 'Never lose your place in an audiobook', text: 'HushBook highlights each word as the narrator reads it, so when your mind drifts you can tap the last line you remember and carry on. Free classics are built in, or use audio files you own.' },
+    cta: { heading: 'Never lose your place in an audiobook', text: 'HushBook highlights each word as the narrator reads it, so when your mind drifts you can long-press the last line you remember and carry on. Free classics are built in, or use audio files you own.' },
     title: 'How to Get Into Audiobooks: 10 Tips for Beginners',
     metaTitle: 'How to Get Into Audiobooks: 10 Tips for Beginners',
     metaDescription: 'Start with a short book you already know, borrowed free from your library. Play the sample, listen in short sessions and rewind when you drift. 10 tips.',
@@ -600,7 +637,7 @@ const posts = [
   },
   {
     slug: 'does-reading-along-with-an-audiobook-help',
-    cta: { heading: 'Read along at your own speed', text: 'HushBook highlights each word as the narrator reads it. Speed the narration up to match your reading, tap any word to jump back, and start with free classics or audiobook files you own.' },
+    cta: { heading: 'Read along at your own speed', text: 'HushBook highlights each word as the narrator reads it. Speed the narration up to match your reading, long-press a line to go back, and start with free classics or audiobook files you own.' },
     title: 'Does Reading Along With an Audiobook Help? What the Research Says',
     metaTitle: 'Does Reading Along With an Audiobook Help? What Studies Show',
     metaDescription: 'Yes, for hard books, a new language or a drifting mind. For fast readers it adds little, and the narrator can slow you down. What 16 studies show.',
@@ -640,7 +677,7 @@ const posts = [
   {
     slug: 'are-audiobooks-good-for-kids',
     hero: 'companions-arc',
-    cta: { heading: 'Let them see the words they hear', text: 'HushBook highlights each word as the narrator reads it, and you can tap any word to jump back to it. Free classics are built in, or use audiobook files you own. A reading aid to use together.' },
+    cta: { heading: 'Let them see the words they hear', text: 'HushBook highlights each word as the narrator reads it, and you can long-press a line to play it again. Free classics are built in, or use audiobook files you own. A reading aid to use together.' },
     title: 'Are Audiobooks Good for Kids? What the Research Says',
     metaTitle: 'Are Audiobooks Good for Kids? What the Research Says',
     metaDescription: 'Yes, alongside reading together. Audiobooks build vocabulary and story skills, and seeing the words helps. What studies show for toddlers, readers and TV.',
@@ -681,7 +718,7 @@ const posts = [
   },
   {
     slug: 'how-to-retain-information-from-audiobooks',
-    cta: { heading: 'See the sentence you missed', text: 'HushBook highlights each word as the narrator reads it, so you can follow dense chapters, tap back to the line you drifted on, and save key quotes in two taps.' },
+    cta: { heading: 'See the sentence you missed', text: 'HushBook highlights each word as the narrator reads it, so you can follow dense chapters, long-press the line you drifted on, and save key quotes in two taps.' },
     title: 'How to Retain Information From Audiobooks: 8 Habits Backed by Research',
     metaTitle: 'How to Retain Information From Audiobooks (8 Habits)',
     metaDescription: 'Test yourself after each chapter, space sessions out and read along on dense books. What studies show about remembering audiobooks vs reading.',
@@ -720,7 +757,7 @@ const posts = [
   },
   {
     slug: 'are-audiobooks-good-for-adhd',
-    cta: { heading: 'Give your eyes something to follow', text: 'HushBook highlights each word as the narrator reads it, with a Dyslexia and ADHD profile and tap-to-rewind on any word. A reading aid for your own audiobook files and free classics.' },
+    cta: { heading: 'Give your eyes something to follow', text: 'HushBook highlights each word as the narrator reads it, with a Dyslexia and ADHD profile and long-press replay on any line. A reading aid for your own audiobook files and free classics.' },
     title: 'Are Audiobooks Good for ADHD? What the Research Actually Shows',
     metaTitle: 'Are Audiobooks Good for ADHD? What the Research Shows',
     metaDescription: 'Often, yes, but evidence is thin. Small studies link read-aloud tools to less distraction in ADHD. Why listening alone can still drift, and tips.',
@@ -915,7 +952,7 @@ const posts = [
   },
   {
     slug: 'learn-english-with-audiobooks',
-    cta: { heading: 'Hear it, see it, tap to hear it again', text: 'HushBook highlights every word as the narrator says it. Tap any word to replay it, or slow down to 0.75x. Free LibriVox classics are built in.' },
+    cta: { heading: 'Hear it, see it, hear it again', text: 'HushBook highlights every word as the narrator says it. Long-press a line to replay it, or slow down to 0.75x. Free LibriVox classics are built in.' },
     title: 'How to Learn English With Audiobooks (and Why Reading Along Helps)',
     metaTitle: 'How to Learn English With Audiobooks: The Read-Along Method',
     metaDescription: 'Read the text while you listen. Learners pick up far more new words that way than from audio alone. A daily routine, free audiobooks, and picks by level.',
@@ -941,7 +978,7 @@ const posts = [
       'Listening alone works once you know most of the words. A 2013 study found learners understood spoken stories well at 95% of words known, roughly the 2,000 to 3,000 most common word families.',
       'For new words, reading along and silent reading come out about equal. The audio\'s main value is training your ear, setting a steady pace and making longer books manageable.',
       'Pick easy books: graded readers at first, then audiobooks one or two levels below your reading level. Listen 20 to 30 minutes a day, and finish many easy books rather than struggle through one hard one.',
-      'Free sources include LibriVox, the Internet Archive and the British Council audio series. HushBook transcribes LibriVox recordings and audiobook files you own on your phone and highlights each word, with tap-to-replay and 0.5x to 3x speed.'
+      'Free sources include LibriVox, the Internet Archive and the British Council audio series. HushBook transcribes LibriVox recordings and audiobook files you own on your phone and highlights each word, with long-press replay and 0.5x to 3x speed.'
     ],
     faqs: [
       ['Can you learn English just by listening to audiobooks?', 'Not at first. Listening works once you understand most of what you hear, about 90 to 95% of the words. Before that, read along with the text. In one study, learners who only listened could translate just 2% of a story\'s new words.'],
@@ -954,7 +991,7 @@ const posts = [
   },
   {
     slug: 'why-do-i-fall-asleep-listening-to-audiobooks',
-    cta: { heading: 'Find the sentence you fell asleep on', text: 'HushBook shows every word as the narrator reads it, so in the morning you can scroll back, tap the last line you remember and carry on from there. It works with your own audiobook files and free classics.' },
+    cta: { heading: 'Find the sentence you fell asleep on', text: 'HushBook shows every word as the narrator reads it, so in the morning you can scroll back, long-press the last line you remember and carry on from there. It works with your own audiobook files and free classics.' },
     title: 'Why Do I Fall Asleep Listening to Audiobooks? And Is It Bad?',
     metaTitle: 'Why Do I Fall Asleep Listening to Audiobooks? Is It Bad?',
     description: 'A story gives your mind something to follow that is not your own worries, right when your body is primed to sleep. What a 2026 survey of 1,136 bedtime listeners found, whether the habit is bad, and how to keep your place.',
@@ -987,7 +1024,7 @@ const posts = [
       ['Does listening to an audiobook help you sleep?', 'Many people say so. In the 2026 Uppsala survey, daily listeners were more likely than occasional listeners to report that audiobooks helped them fall asleep and improved their sleep. The authors caution these are self-reports, not measured sleep.'],
       ['Does listening to audiobooks while sleeping work?', 'No. A 2017 study found the brain can pick up simple sound patterns in light sleep but suppresses them in deep sleep, and a 2019 study found only a faint implicit trace of single words. Nobody absorbs a chapter while asleep.'],
       ['What happens if you listen to an audiobook while sleeping all night?', 'You lose your place, you may wake to a loud scene or a dead battery, and nothing you heard goes in. A sleep timer that stops the book 15 to 30 minutes in avoids all three.'],
-      ['How do I find where I fell asleep in an audiobook?', 'Rewind in 30 second steps until a scene sounds familiar, or use a player that shows the text. In HushBook you scroll back to the last sentence you remember and tap the word to jump the audio there.']
+      ['How do I find where I fell asleep in an audiobook?', 'Rewind in 30 second steps until a scene sounds familiar, or use a player that shows the text. In HushBook you scroll back to the last sentence you remember and long-press its line to play from there.']
     ]
   },
   {
@@ -1129,7 +1166,7 @@ const posts = [
     takeaways: [
       'Free audiobooks almost never come with synced text, so a read-along has to be created from the recording.',
       'LibriVox recordings are public domain, with source texts mainly from Project Gutenberg and audio hosted on the Internet Archive, so they are free to use for any purpose.',
-      'HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. It transcribes the recording on your phone and highlights each word as the narrator reads. Tap any word to jump to it.',
+      'HushBook has a built-in store of public domain audiobooks from LibriVox and the Internet Archive. It transcribes the recording on your phone and highlights each word as the narrator reads. Long-press a line to play from there.',
       'The core read-along is free to start. It also has profiles for dyslexia or ADHD and low vision.',
       'HushBook also works with recordings you own as ordinary audio files, such as MP3 or M4B, and the transcript is made on your phone, so the audio never leaves your device.'
     ],

@@ -80,7 +80,7 @@ Children who listen also tend to enjoy reading more, but these surveys cannot sh
 
 ## Reading along with HushBook
 
-Most audiobooks come without text. **[HushBook](/)** transcribes an audiobook on your phone and *highlights each word as the narrator says it*, so a child can [read along](/blog/what-is-immersive-reading) instead of only listening. Tap any word to jump the audio back to it, and slow the narration down for a new reader. It has LibriVox and Internet Archive classics built in, including children's classics such as *Alice's Adventures in Wonderland*, and it **works offline with no account**.
+Most audiobooks come without text. **[HushBook](/)** transcribes an audiobook on your phone and *highlights each word as the narrator says it*, so a child can [read along](/blog/what-is-immersive-reading) instead of only listening. Long-press a line to play it again, and slow the narration down for a new reader. It has LibriVox and Internet Archive classics built in, including children's classics such as *Alice's Adventures in Wonderland*, and it **works offline with no account**.
 
 **HushBook** is a reading aid to use alongside reading together and reading lessons, and younger kids get the most from it *with you beside them*. It works with audiobook files you own, such as MP3 and M4B, as well as the free classics built into the app.
 

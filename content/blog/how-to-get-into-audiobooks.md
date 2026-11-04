@@ -71,7 +71,7 @@ Start at 1x for the first chapter, then adjust in small steps. Some narrators re
 
 Don't push on and hope the plot fills itself in. Go back to the last thing you clearly remember. Thirty seconds is often enough, and most players have a button for it.
 
-The hard part is knowing how far back to go. Seeing the words fixes that: an app that highlights the text as the narrator reads, such as HushBook, lets you tap the last sentence you remember and the audio jumps straight there.
+The hard part is knowing how far back to go. Seeing the words fixes that: an app that highlights the text as the narrator reads, such as HushBook, lets you long-press the last line you remember and the audio plays from there.
 
 ### 9. Use earbuds, and a sleep timer in bed
 
@@ -114,7 +114,7 @@ Often, yes, though many people with ADHD also find audiobooks the easiest way to
 
 ## Getting into audiobooks with HushBook
 
-[HushBook](/) is an audiobook player for iPhone and Android that shows the words while you listen. It transcribes the audiobook on your phone and highlights each word as the narrator says it, so if you drift, you can see exactly where the story is and tap any word to jump back to it. It has a built-in store of free LibriVox and Internet Archive audiobooks, so your first book costs nothing. You also get speed control from 0.5x to 3x, a 30-second rewind, a sleep timer and a low-vision profile with large, high-contrast text. Nothing is uploaded and you don't need an account.
+[HushBook](/) is an audiobook player for iPhone and Android that shows the words while you listen. It transcribes the audiobook on your phone and highlights each word as the narrator says it, so if you drift, you can see exactly where the story is and long-press a line to play from there. It has a built-in store of free LibriVox and Internet Archive audiobooks, so your first book costs nothing. You also get speed control from 0.5x to 3x, a 30-second rewind, a sleep timer and a low-vision profile with large, high-contrast text. Nothing is uploaded and you don't need an account.
 
 Honest limits. The text comes from speech recognition, so unusual names can come out wrong. HushBook plays audio files you can import, such as MP3, M4A and M4B, and its free public domain library. It cannot import copy-protected books such as Audible downloads or Libby and Hoopla loans.
 

@@ -91,7 +91,7 @@ It is less useful if you read much faster than the narrator and the book is easy
 
 ## Reading along with HushBook
 
-Most audiobooks come without the text. **[HushBook](/)** transcribes an audiobook on your phone and highlights each word as the narrator says it. Tap any word to jump the audio there, change the playback speed to match your reading, and adjust the font, text size and spacing. It has **thousands of free public domain classics** from LibriVox and the Internet Archive built in, and you can import your own files, such as MP3 and M4B. Transcription runs on the device, it works offline after a one-time engine download, and *there is no account*.
+Most audiobooks come without the text. **[HushBook](/)** transcribes an audiobook on your phone and highlights each word as the narrator says it. Long-press a line to play from there, change the playback speed to match your reading, and adjust the font, text size and spacing. It has **thousands of free public domain classics** from LibriVox and the Internet Archive built in, and you can import your own files, such as MP3 and M4B. Transcription runs on the device, it works offline after a one-time engine download, and *there is no account*.
 
 As the research shows, reading along helps most when the book, the language or your attention makes listening alone hard.
 

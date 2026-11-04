@@ -99,7 +99,7 @@ The fastest way to find out what you retained is to explain it to someone. Telli
 **[HushBook](/)** turns an audiobook into a **word-by-word read-along**. It transcribes the recording *on your phone* and highlights each word as the narrator says it.
 
 - **See where you are.** When you drift, the highlight shows exactly where the narrator is now.
-- **Go back precisely.** Tap any word to jump the audio to that spot, or use the 30-second rewind.
+- **Go back precisely.** Long-press a line to play from that spot, or use the 30-second rewind.
 - **Keep the lines that matter.** Save a quote with two taps and find it later, grouped by book.
 - **Set your speed.** Slow down for hard chapters while the text stays in sync.
 

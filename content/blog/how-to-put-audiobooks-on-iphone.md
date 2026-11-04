@@ -108,7 +108,7 @@ Got a book that comes as a folder of MP3 parts? Select them all at once, and **H
 
 ## Read along with the audiobooks you put on your iPhone
 
-Once a file is on your phone, **[HushBook](/)** does more than play it. It imports MP3, M4B, AAC, OGG, FLAC and WAV. Tap Transcribe and it transcribes the book **on your phone**, so *every word lights up with the narrator*. Tap any word to jump the audio there. You can start listening as soon as the first chapter is ready, and each chapter unlocks for read-along as it finishes.
+Once a file is on your phone, **[HushBook](/)** does more than play it. It imports MP3, M4B, AAC, OGG, FLAC and WAV. Tap Transcribe and it transcribes the book **on your phone**, so *every word lights up with the narrator*. Long-press a line to play from there. You can start listening as soon as the first chapter is ready, and each chapter unlocks for read-along as it finishes.
 
 It is **free to download**, with *no ads and no account*. If you don't have a file yet, start with the built-in catalogue of free public domain audiobooks from LibriVox and the Internet Archive, in six languages. And your first import earns the My First Book badge.
 

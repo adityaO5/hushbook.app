@@ -37,7 +37,7 @@ Three things happen when you read and listen at once:
 
 1. **Pick an easy book.** Read the first page. If you know almost every word and can follow the story, it is the right level. The Extensive Reading Foundation suggests knowing about 98% of the words for comfortable reading, and choosing audiobooks one or two levels below your reading level, because listening usually lags behind reading.
 2. **First listen, eyes on the text.** Play a chapter or 10 minutes and follow every word. Do not stop to look things up. Aim to understand the story, not every word.
-3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word. In a read-along app like **[HushBook](/)**, that is **one tap** on the sentence instead of scrubbing back.
+3. **Replay the hard parts.** Go back to a sentence you did not catch, read it, then listen again until you can hear each word. In a read-along app like **[HushBook](/)**, that is **a long press** on the line instead of scrubbing back.
 4. **Shadow a few lines.** Pause and say a sentence out loud, copying the narrator's rhythm and stress. This trains your speaking as well as your ear.
 5. **Note five words.** Only words you saw more than once, or that you need. A short list you review beats a long list you never open.
 6. **Listen again without the text.** Once a chapter feels easy, play it again with the screen off. If you can follow it, you are ready for the next one.
@@ -58,7 +58,7 @@ If you keep losing the thread, try 0.75x or 0.8x and move up to 1x as the words 
 - **Graded readers with audio.** The Extensive Reading Foundation notes that almost all graded readers come with audio recordings. Oxford Bookworms, Penguin Readers and Cambridge readers all publish levelled books. Your library may lend them.
 - **Books you already own.** If you have bought an English audiobook as an ordinary audio file, you can use it for reading along too.
 
-We cover free sources in more depth in [free read-along audiobooks](/blog/free-read-along-audiobooks).
+We cover free sources in more depth in [free read-along audiobooks](/blog/free-read-along-audiobooks). If you are learning Spanish, [how to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks) covers the Spanish research and free Spanish books by level.
 
 ## Which English audiobooks to start with
 
@@ -87,7 +87,7 @@ Most audiobooks come without text, and free LibriVox recordings never include a 
 
 For English learners it helps in a few specific ways:
 
-- **Tap a word to hear it again.** Tap any word in the text and the audio jumps there, so replaying a sentence takes one tap instead of scrubbing back.
+- **Long-press a line to hear it again.** The audio plays from that line, so replaying a sentence takes one press instead of scrubbing back.
 - **Slow it down.** Playback runs from 0.5x to 3x, and the highlighting stays in sync at every speed.
 - **Free books built in.** Browse and download LibriVox and Internet Archive titles inside the app, or import an MP3, M4A or M4B file you own.
 - **Private.** The transcript is made on your phone. Your audio is never uploaded and there is no account.

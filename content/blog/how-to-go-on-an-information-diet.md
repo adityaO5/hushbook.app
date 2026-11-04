@@ -87,6 +87,6 @@ Same with the book you are stuck on. Fix it: slow the speed down, listen with th
 
 ## Doing this with HushBook
 
-[HushBook](/) is an audiobook player for iPhone and Android that shows the words while you listen. It transcribes the audiobook on your phone and highlights each word as the narrator says it. Tap any word and the audio jumps there. Free LibriVox and Internet Archive classics are built in, and Mark keeps a line as a quote or a note. Speed control, a sleep timer and a low-vision profile with large, high-contrast text. Nothing is uploaded. No account. No ads.
+[HushBook](/) is an audiobook player for iPhone and Android that shows the words while you listen. It transcribes the audiobook on your phone and highlights each word as the narrator says it. Long-press a line and the audio plays from there. Free LibriVox and Internet Archive classics are built in, and Mark keeps a line as a quote or a note. Speed control, a sleep timer and a low-vision profile with large, high-contrast text. Nothing is uploaded. No account. No ads.
 
 Honest limits. The text comes from speech recognition, so unusual names can come out wrong. It plays audio files you import, such as MP3, M4A and M4B, plus its free public domain library. It cannot import copy-protected books such as Audible downloads or Libby and Hoopla loans.

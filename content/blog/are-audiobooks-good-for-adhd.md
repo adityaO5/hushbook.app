@@ -76,7 +76,7 @@ They can be a useful part of the mix. The read-aloud test studies were done with
 **[HushBook](/)** turns an audiobook into a **word-by-word read-along**. It transcribes the recording *on your phone* and highlights each word as the narrator says it, so your eyes have something to follow and you can see where you are when your mind comes back.
 
 - **A Dyslexia and ADHD reading profile** sets up fonts, spacing and colors for easier reading, and you can change them while the narrator keeps going.
-- **Tap any word** to jump the audio straight back to it, or use the 30-second rewind.
+- **Long-press a line** to play from there, or use the 30-second rewind.
 - **Change the speed** and the text stays in sync.
 
 **HushBook** is a reading aid that works alongside the habits above and proven ADHD treatment. It plays audiobook files you own, such as MP3 and M4B, and the **free classics** from LibriVox and the Internet Archive built into the app. Start with a book you like and *set the profile to suit you*. There is more on the reading profiles on our [audiobook app for dyslexia and ADHD](/audiobook-app-for-dyslexia) page.

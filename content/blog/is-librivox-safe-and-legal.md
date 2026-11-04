@@ -76,6 +76,8 @@ How to find a good recording:
 3. **Play the first chapter** before you download the whole book.
 4. **Adjust the speed.** When we timed ten LibriVox recordings, readers ranged from 131 to 179 words a minute, so a slow reader may sound better at 1.25x. The details are in [how long is an audiobook](/blog/how-long-is-an-audiobook).
 
+LibriVox is also a free source for language learners. [How to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks) lists Spanish recordings by level, with running times and reader counts.
+
 ## Why is LibriVox not working?
 
 LibriVox runs on two separate systems, and either can fail on its own.
@@ -101,7 +103,7 @@ If LibriVox does not have the book you want, our guide to [listening to audioboo
 
 ## Reading along with LibriVox in HushBook
 
-**HushBook** is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can *pick a solo recording*. Download a book and **[HushBook](/)** transcribes it on your phone, then highlights each word as the volunteer reads it. Tap any word to jump the audio there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing. After a one-time engine download, it works offline.
+**HushBook** is one of the third-party apps that use LibriVox's catalog. It has a built-in catalogue of public domain audiobooks from LibriVox and the Internet Archive, in six languages, and it shows who reads each book or flags one as read by several readers, so you can *pick a solo recording*. Download a book and **[HushBook](/)** transcribes it on your phone, then highlights each word as the volunteer reads it. Long-press a line to play from there. It is free to download, with **no ads and no account**. The read-along and the free library cost nothing. After a one-time engine download, it works offline.
 
 ## Sources
 
