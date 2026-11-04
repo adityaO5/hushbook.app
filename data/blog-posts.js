@@ -8,6 +8,80 @@
 
 const posts = [
   {
+    slug: 'learn-german-with-audiobooks',
+    cta: { heading: 'See where the German verb lands', text: 'HushBook transcribes German audiobooks on your phone and underlines each word as the narrator says it, so the verb at the end of a long clause is right there on screen. LibriVox German classics are built into Discover. No account, no ads.' },
+    title: 'How to Learn German With Audiobooks (and Free Ones With Text)',
+    metaTitle: 'How to Learn German With Audiobooks: Free Audio With Text',
+    metaDescription: 'Start with A2 stories, read the German text as you listen, replay what you miss. Free LibriVox books and DW audio with text by level, and what research shows.',
+    description: 'Audiobooks help you learn German when you can see the words, because the verb often waits at the end of the clause. Free LibriVox books by level, Deutsche Welle audio with full text, which services show text, and a routine.',
+    category: 'Language learning',
+    datePublished: '2026-11-04',
+    dateModified: '2026-11-04',
+    readingTime: '17 min read',
+    keywords: [
+      'audiobooks to learn german',
+      'german audiobooks for beginners',
+      'german audiobooks with text',
+      'learn german with audiobooks',
+      'free german audiobooks',
+      'langsam gesprochene nachrichten',
+      'german audiobook with transcript',
+      'easy german audiobooks'
+    ],
+    takeaways: [
+      'No study has tested learners of German with audiobooks or reading along. In studies with learners of Japanese, Chinese and English, text with audio beat audio alone, and in a 2002 study, 27 first-semester German students read a 142-page novel and matched a comparison group of 32 on department tests.',
+      'German is not fast: in a 2011 study, German speakers read 5.97 syllables a second against 6.19 for English. The hard part is structure. The verb or separable prefix often comes at the end of the clause, and in a 2015 study, 45 English-speaking learners predicted from word meanings alone while listening, not from case endings.',
+      'Start with graded readers and children\'s classics. Olly Richards\'s Short Stories in German for Beginners is mapped by its publisher to A2-B1, and free LibriVox picks include the Grimm Ausgewählte Märchen, read by one narrator (5 h 21 min), and Der kleine Häwelmann (8 min).',
+      'German has plenty of free audio with text: Deutsche Welle\'s Langsam gesprochene Nachrichten (B2) and Top-Thema mit Vokabeln (B1) publish the full text with an MP3. Audible\'s Read & Listen covers German titles too, if you own the Kindle eBook and the audiobook of the same edition.',
+      'Vocabulary and time are the big costs. In a 2018 count of 26 German literary titles, the 5,000 most common words covered 87.4% of the text on average, and the US Foreign Service Institute puts German at about 36 weeks, or 828 class hours. Audiobooks build understanding, not speaking or writing.'
+    ],
+    faqs: [
+      ['Can you learn German just by listening to audiobooks?', 'Not on its own. Listening works once you know most of the words, around 95% in a 2013 study by van Zeeland and Schmitt, and in a 2018 count of 26 German literary titles the 5,000 most common words covered only 87.4% of the text. Learners also miss case endings by ear: in a 2015 study, 45 English-speaking learners of German predicted from word meanings alone. Speaking and writing need practice of their own.'],
+      ['Are there free German audiobooks for beginners?', 'Yes. The Internet Archive\'s LibriVox collection held 850 finished German-language books on November 4, 2026, all public domain in the US. Good first picks are the Grimm Ausgewählte Märchen read by one narrator (5 h 21 min), Theodor Storm\'s Der kleine Häwelmann (8 min), Der Struwwelpeter (18 min) and Max und Moritz (20 min). Deutsche Welle\'s Nicos Weg is a free A1 to B1 video course with a script for every lesson.'],
+      ['Does Audible have German audiobooks, and can you learn German on Audible?', 'Yes. Germany has its own store, audible.de, and the German category on audible.com leads with courses such as Learn German with Paul Noble for Beginners (12 h 14 min) and Pimsleur German Level 1 Lessons 1-5 (2 h 43 min), both spoken in English and copy-protected. Read & Listen, which highlights the Kindle text as the narrator reads, covers supported German titles, but you need the Kindle eBook and the audiobook of the same edition on one Amazon account.'],
+      ['What level is Deutsche Welle\'s Langsam gesprochene Nachrichten?', 'B2, according to Deutsche Welle. It is the news, Monday to Saturday, read slowly, with the full text on the page and an MP3 to download at slow and normal speed. For B1, Deutsche Welle\'s Top-Thema mit Vokabeln gives a short weekly article with its transcript, a vocabulary list and an MP3.'],
+      ['Are German audiobooks with English translation good for learning?', 'They help you follow the story, but the German text is what teaches the words. In a 2022 meta-analysis of 20 studies, captions had a large effect on vocabulary, largest when they were in the language being learned. Check meanings in English, then listen with the German text. Readle offers tap-to-translate on its own news stories, and Beelinguapp shows its own stories in two languages.'],
+      ['Are German children\'s audiobooks good for adult learners?', 'Often, at the start. Children\'s stories are short and familiar, and in a 2024 study of learners of Chinese, audio with text helped only the lower-level learners. Free options include the one-voice Grimm tales and Der kleine Häwelmann on LibriVox, and Ohrka\'s free children\'s MP3s. Der Struwwelpeter (1845) and Max und Moritz (1865) are old rhymes, and old texts often use old spelling such as daß.']
+    ]
+  },
+  {
+    slug: 'learn-french-with-audiobooks',
+    cta: { heading: 'See where every French word begins', text: 'HushBook transcribes French audiobooks on your phone and underlines each word as the narrator says it, so liaison stops hiding where words begin. LibriVox French classics are in Discover, and a long press replays any line. No account, no ads.' },
+    title: 'How to Learn French With Audiobooks (and Free Ones With Text)',
+    metaTitle: 'How to Learn French With Audiobooks: Free Books With Text',
+    metaDescription: 'Read the French text as you listen so liaison stops hiding words, replay what you miss, then listen without it. Free books by level, transcripts and research.',
+    description: 'Audiobooks help you learn French when you can see the words, because liaison hides where they start. Read along, replay what you missed, then listen without the text. Free books and transcripts by level, and what the research shows.',
+    category: 'Language learning',
+    datePublished: '2026-11-04',
+    dateModified: '2026-11-04',
+    readingTime: '17 min read',
+    keywords: [
+      'audiobooks to learn french',
+      'learn french with audiobooks',
+      'french audiobooks for beginners',
+      'french audiobooks with text',
+      'french audiobooks with transcript',
+      'free french audiobooks with transcript',
+      'easy french audiobooks',
+      'are there french audiobooks on spotify'
+    ],
+    takeaways: [
+      'No study has tested adults learning French from audiobooks. The closest evidence is captioned video: in a 2014 study of 226 Flemish students, full French captions helped learners follow the gist, and in a 2023 study, 65 learners who watched a French series with captions learned far more words than 37 who only took the tests.',
+      'Spoken French hides where words start. Liaison moves a consonant onto the next word, liaison consonants are 15% shorter than word-initial ones, and English students of French name speed and making out individual words as their main listening problems. Seeing the text shows where each word begins.',
+      'Start with graded readers and fairy tales you already know. Olly Richards\'s Short Stories in French for Beginners is mapped by its publisher to A2 to B1, and free LibriVox picks include Lemaître\'s ABC: Petits Contes (46 min) and Perrault\'s Contes du temps passé (2 h 33 min), each read by one narrator.',
+      'Much free French audio comes with its text: RFI\'s Journal en français facile posts 10 minutes of news every weekday with a transcript and an MP3, Littérature audio links about 10,100 free audiobooks to their text, and LibriVox held 316 finished French books on November 4, 2026. Audible\'s immersion reading covers only English and German titles.',
+      'Audiobooks build understanding, not speaking: in a 2004 study of 87 English-speaking university students, the learners made nearly three times as many liaison errors as native speakers, and eight months of immersion did not drastically change that. The US Foreign Service Institute puts French at 30 weeks of full-time training.'
+    ],
+    faqs: [
+      ['Can you learn French just from audiobooks?', 'Not on its own. Audiobooks build listening and vocabulary, but programs built only on listening and reading fell behind on writing and on fluency ratings, and advanced learners in a 2004 study made nearly three times as many liaison errors as native speakers. No study has tested adults learning French from audiobooks, but in captioned-video studies, seeing the French words helped learners follow the gist and pick up new ones.'],
+      ['Are there free French audiobooks with a transcript?', 'Yes. RFI\'s Journal en français facile posts 10 minutes of world news every weekday with a free transcript, a PDF and a downloadable MP3, and Français Authentique and Podcast Français Facile print the text beside free MP3s. Littérature audio has about 10,100 free audiobooks, each linked to its text, and LibriVox held 316 finished French books on November 4, 2026.'],
+      ['Are there French audiobooks on Spotify?', 'Yes. Spotify Premium in France has included 12 hours of audiobooks a month since October 2024, with 15,000 French titles at launch, and US Premium includes 15 hours a month. We could not confirm whether US Premium carries French titles, so search for the book. Replaying a chapter uses up hours again, and Spotify shows no text for audiobooks.'],
+      ['Are French audiobooks with English translation useful?', 'An English translation helps you understand, but the French text shows you the words you hear. In a 2023 study of 65 learners watching a French series with French captions and click-to-translate, looking up words predicted which ones they learned. Check meanings in English one word at a time, for example with Readle\'s tap-to-translate, and listen with the French.'],
+      ['Is Harry Potter in French a good first audiobook?', 'Usually not as a first one. A native-speed novel needs a large vocabulary: in a 2023 study, the 3,000 most frequent words covered 95% of the first three episodes of a French TV drama, while the average UK learner takes A level French with about 2,000. Start with graded readers and fairy tales you already know, and move to a novel when a chapter makes sense on the second listen without the text.'],
+      ['What speed should I listen to French audiobooks at?', 'Normal speed with replays is the safest default. In a 2003 study of 84 learners of Spanish, hearing each line three times helped whether or not the replay was slowed, and no study has tested 0.75x or any other speed for learners. If you slow a hard passage, treat it as a step on the way back to 1x.']
+    ]
+  },
+  {
     slug: 'learn-spanish-with-audiobooks',
     cta: { heading: 'Every Spanish word, as the narrator says it', text: 'HushBook\'s Universal engine transcribes Spanish audiobooks on your phone and underlines each word as the narrator says it. LibriVox Spanish classics are built into Discover, and a long press on any line plays it again. No account, no ads.' },
     title: 'How to Learn Spanish With Audiobooks (and Free Ones With Text)',
@@ -32,12 +106,12 @@ const posts = [
       'No study has tested adults learning Spanish from audiobooks. In studies with learners of Japanese, Chinese and English, text with audio beat audio alone, but in a 2025 study of 86 learners, people understood a novel less well when reading along than when reading silently.',
       'Spanish sounds fast because it is: in a 2011 study, Spanish speakers read at 7.82 syllables a second against 6.19 for English, with less information in each syllable. In a 2003 study of 84 learners of Spanish, hearing each line three times helped whether or not the replay was slowed.',
       'Start with graded readers and children\'s classics. Olly Richards\'s Short Stories in Spanish for Beginners is mapped by its publisher to A2 to B1, and free LibriVox picks include Cuentos de la selva para los niños (2 h 07 min) and El Capitán Veneno, read by one narrator (2 h 14 min).',
-      'LibriVox listed 628 complete Spanish recordings on November 4, 2026, free and public domain, read by volunteers with mixed accents. Audible\'s Read & Listen covers only English and German titles, and Spotify shows no text for audiobooks.',
+      'LibriVox held 564 finished Spanish-language books on November 4, 2026, free and public domain, read by volunteers with mixed accents. Audible\'s Read & Listen covers only English and German titles, and Spotify shows no text for audiobooks.',
       'Audiobooks build understanding, not speaking or writing: comprehension-only programs fell behind on written production and on fluency ratings. The US Foreign Service Institute puts Spanish at 30 weeks, or 690 class hours, of full-time training.'
     ],
     faqs: [
       ['Can you learn Spanish just by listening to audiobooks?', 'Not on its own. Listening works once you know most of the words you hear, around 95% in a 2013 study by van Zeeland and Schmitt, and fiction needs far more vocabulary than speech. Comprehension-only programs fell behind on writing and on fluency ratings, so speaking and writing need practice of their own. No study has tested adults learning Spanish from audiobooks, but in studies of other languages text with audio beat audio alone.'],
-      ['Are there free Spanish audiobooks for beginners?', 'Yes. LibriVox listed 628 complete Spanish recordings on November 4, 2026, all public domain and free. Good first picks are Horacio Quiroga\'s Cuentos de la selva para los niños (2 h 07 min), the Grimm Cuentos de hadas in Spanish, Fernán Caballero\'s folk tales, riddles and proverbs, and the 42-minute first volume of Aesop\'s fables. The readers are volunteers with mixed accents, and the vocabulary is from the 19th and early 20th centuries.'],
+      ['Are there free Spanish audiobooks for beginners?', 'Yes. LibriVox held 564 finished Spanish-language books on November 4, 2026, all public domain and free. Good first picks are Horacio Quiroga\'s Cuentos de la selva para los niños (2 h 07 min), the Grimm Cuentos de hadas in Spanish, Fernán Caballero\'s folk tales, riddles and proverbs, and the 42-minute first volume of Aesop\'s fables. The readers are volunteers with mixed accents, and the vocabulary is from the 19th and early 20th centuries.'],
       ['Does Audible have books in Spanish, and can you learn Spanish on Audible?', 'Yes, audible.com has a Spanish-language storefront with an Audible Latino section, and Spain has audible.es. Read & Listen, which highlights the Kindle text, covers only English and German titles, so Spanish audiobooks play without text. Courses such as Learn Spanish with Paul Noble for Beginners (13 h 21 min) and Pimsleur Spanish Level 1 Lessons 1-5 (3 h 4 min) are spoken in English and are copy-protected Audible files.'],
       ['Are Spanish audiobooks with English translation good for learning?', 'They help you understand. In a 2001 study of 169 university Spanish students watching a Spanish episode, English captions gave the best comprehension, Spanish captions came next and no captions came last. That was a single session, so it shows nothing about building your listening. Check the meaning in English and listen with the Spanish text; Beelinguapp shows its own stories in two languages side by side.'],
       ['Should I pick Latin American or Castilian (Spain) narration?', 'Pick the accent you are most likely to need. No study ranks one as easier, but in a 2018 study of 60 English-speaking learners, familiarity with a variety predicted how well advanced learners understood it. Add other accents once yours feels easy. On LibriVox, the Antología de cuentos hispanoamericanos matches each story to a reader from, or fluent in the accent of, the author\'s country.'],

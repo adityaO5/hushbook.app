@@ -76,7 +76,7 @@ How to find a good recording:
 3. **Play the first chapter** before you download the whole book.
 4. **Adjust the speed.** When we timed ten LibriVox recordings, readers ranged from 131 to 179 words a minute, so a slow reader may sound better at 1.25x. The details are in [how long is an audiobook](/blog/how-long-is-an-audiobook).
 
-LibriVox is also a free source for language learners. [How to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks) lists Spanish recordings by level, with running times and reader counts.
+LibriVox is also a free source for language learners. [How to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks) lists Spanish recordings by level, with running times and reader counts, and there are guides for [French](/blog/learn-french-with-audiobooks) and [German](/blog/learn-german-with-audiobooks) too.
 
 ## Why is LibriVox not working?
 

@@ -1,6 +1,6 @@
 # How to Learn Spanish With Audiobooks (and Free Ones With Text)
 
-Audiobooks help you learn Spanish when you can follow the words. Start with short stories written for learners, at roughly A2, and keep the Spanish text in front of you while you listen. Replay each chapter until it makes sense without the text, and only then move on to native-speed novels. The free ones are on LibriVox, which listed 628 complete Spanish recordings of public domain books on November 4, 2026. The text matters because spoken Spanish packs more syllables into each second than English, and seeing the words shows you what you just heard.
+Audiobooks help you learn Spanish when you can follow the words. Start with short stories written for learners, at roughly A2, and keep the Spanish text in front of you while you listen. Replay each chapter until it makes sense without the text, and only then move on to native-speed novels. The free ones are on LibriVox, which held 564 finished Spanish-language books on November 4, 2026. The text matters because spoken Spanish packs more syllables into each second than English, and seeing the words shows you what you just heard.
 
 This guide covers the research, why Spanish sounds fast, books for each level, free sources, which services show the text, and a routine to follow. Service details were read from each company's own pages on November 4, 2026.
 
@@ -72,15 +72,15 @@ No study ranks Latin American or Castilian Spanish as easier to learn from. In a
 
 ## Where can you listen to Spanish audiobooks for free?
 
-- **LibriVox.** The catalogue listed 628 complete Spanish recordings on November 4, 2026, and 644 counting those in progress. "All our audio is in the public domain," LibriVox says. It accepts "all volunteers in all languages, with all kinds of accents", sound quality varies, and the vocabulary is from the 19th and early 20th centuries. More in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
+- **LibriVox.** The Internet Archive's LibriVox collection held 564 finished Spanish-language books on November 4, 2026. LibriVox's own catalogue search shows 628 complete recordings, because it also counts single Spanish pieces inside multilingual collections. "All our audio is in the public domain," LibriVox says. It accepts "all volunteers in all languages, with all kinds of accents", sound quality varies, and the vocabulary is from the 19th and early 20th centuries. More in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
 - **The Internet Archive.** It hosts the LibriVox recordings. Outside LibriVox its Spanish shelf is thin, and some uploads carry no licence; a recent commercial title with none is probably an unauthorised upload.
 - **Libby.** Libby's blog says you can filter results by "format, language, subject, and more" and pin filters, so pin Spanish and audiobooks to see your library's Spanish shelf. Loans stay in the app: audiobooks "can't be transferred to MP3 players or iPods".
 
-More free sources with text are in [free read-along audiobooks](/blog/free-read-along-audiobooks).
+More free sources with text are in [free read-along audiobooks](/blog/free-read-along-audiobooks). For French, [how to learn French with audiobooks](/blog/learn-french-with-audiobooks) lists free audio that comes with a transcript, such as RFI's weekday news in easy French.
 
 ## Do Spanish audiobooks come with text or a transcript?
 
-Rarely. Audible's Read & Listen highlights the Kindle ebook as the narrator reads, but only "for supported English and German language titles". Spotify's audiobook player offers speed, 15-second skips and a sleep timer, and no text.
+Rarely. Audible's Read & Listen highlights the Kindle ebook as the narrator reads, but only "for supported English and German language titles". Spotify's audiobook player offers speed, 15-second skips and a sleep timer, and no text. German learners have more options: Read & Listen covers German, and [how to learn German with audiobooks](/blog/learn-german-with-audiobooks) lists free German audio published with its full text.
 
 Routes that do show Spanish text, as listed on November 4, 2026, in US dollars:
 

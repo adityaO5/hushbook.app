@@ -37,7 +37,7 @@ The core read-along is **free to start**, so you can try it on a free LibriVox b
 ## Who is it useful for?
 
 - **Anyone who loses their place.** When your mind wanders, the highlighted word shows you exactly where the narrator is.
-- **Language learners.** You hear a word and see how it's spelled at the same moment. Free Spanish picks by level are in [how to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks).
+- **Language learners.** You hear a word and see how it's spelled at the same moment. Free picks by level are in our guides to learning [Spanish](/blog/learn-spanish-with-audiobooks), [French](/blog/learn-french-with-audiobooks) and [German](/blog/learn-german-with-audiobooks) with audiobooks.
 - **Readers with dyslexia or ADHD.** **HushBook** has a profile with dyslexia-friendly fonts and a focus view. There's more on [audiobook apps for dyslexia](/audiobook-app-for-dyslexia).
 - **Readers with low vision.** Another profile uses a high-contrast, hyper-legible font and large type for the highlighted line.
 - **Classics readers.** Older language is easier to follow when you can hear it and see it. Our guide to [reading classics without getting bored](/blog/how-to-read-classics-without-getting-bored) has more ways in.

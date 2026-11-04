@@ -1709,6 +1709,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
   </url>
   <url>
+    <loc>https://hushbook.app/blog/learn-german-with-audiobooks</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/learn-german-with-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/learn-german-with-audiobooks"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/learn-french-with-audiobooks</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/learn-french-with-audiobooks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/learn-french-with-audiobooks"/>
+  </url>
+  <url>
     <loc>https://hushbook.app/blog/learn-spanish-with-audiobooks</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>

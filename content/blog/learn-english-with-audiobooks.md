@@ -58,7 +58,7 @@ If you keep losing the thread, try 0.75x or 0.8x and move up to 1x as the words 
 - **Graded readers with audio.** The Extensive Reading Foundation notes that almost all graded readers come with audio recordings. Oxford Bookworms, Penguin Readers and Cambridge readers all publish levelled books. Your library may lend them.
 - **Books you already own.** If you have bought an English audiobook as an ordinary audio file, you can use it for reading along too.
 
-We cover free sources in more depth in [free read-along audiobooks](/blog/free-read-along-audiobooks). If you are learning Spanish, [how to learn Spanish with audiobooks](/blog/learn-spanish-with-audiobooks) covers the Spanish research and free Spanish books by level.
+We cover free sources in more depth in [free read-along audiobooks](/blog/free-read-along-audiobooks). If you are learning another language, there are guides for [Spanish](/blog/learn-spanish-with-audiobooks), [French](/blog/learn-french-with-audiobooks) and [German](/blog/learn-german-with-audiobooks), each with the research and free books by level.
 
 ## Which English audiobooks to start with
 

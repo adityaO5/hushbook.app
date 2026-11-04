@@ -12,7 +12,7 @@ Audible's help page puts it plainly: you need the audiobook in your Audible libr
 
 The title also has to support it. On the store page, look for "Read & Listen" in the product details. Older listings may still say "Whispersync for Voice-ready", which is the old name for the same thing.
 
-Audible announced the current version in February 2026 with hundreds of thousands of titles. At launch it supported English, German, Spanish, Italian and French books. The US came first. On October 26, 2026, Audible said the feature was live in the US, UK, Germany and Australia, covered more than 800,000 English and German titles with a Read & Listen badge, and was rolling out to Canada, India, France, Italy, Spain, Japan and Brazil. If you're elsewhere, check your country's Audible help pages before you buy anything.
+Audible announced the current version in February 2026 with hundreds of thousands of titles. At launch it supported English, German, Spanish, Italian and French books. The US came first. On October 26, 2026, Audible said the feature was live in the US, UK, Germany and Australia, covered more than 800,000 English and German titles with a Read & Listen badge, and was rolling out to Canada, India, France, Italy, Spain, Japan and Brazil. If you're elsewhere, check your country's Audible help pages before you buy anything. If you're learning German, [how to learn German with audiobooks](/blog/learn-german-with-audiobooks) covers German books by level and free German audio that comes with the full text.
 
 ## How to turn it on
 
