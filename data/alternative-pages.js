@@ -501,7 +501,7 @@ const pages = [
     whyHushBook: [
       'Real human narration with synced highlighting, instead of an AI voice reading text.',
       'Free to start, while Speechify Premium is listed at $29 a month.',
-      'Built for reading support: dyslexia and ADHD fonts and focus view, a low-vision profile, and on-device transcription with no account.'
+      'Built for reading support: a dyslexia and ADHD profile with dyslexia-friendly fonts and color overlays, a low-vision profile, and on-device transcription with no account.'
     ],
     options: ['hushbook', 'naturalreader', 'voicedream', 'elevenreader', 'speechcentral'],
     verdicts: [

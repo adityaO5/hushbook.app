@@ -56,7 +56,7 @@ When the words are on screen, your eyes have a job, so you're less likely to dri
 
 1. **Add a book.** Import your own MP3, M4A or M4B file, or download a free public domain audiobook from the built-in LibriVox and Internet Archive store.
 2. **Let it transcribe.** **HushBook** transcribes the recording on your phone and matches every word to the audio. *Nothing is uploaded.*
-3. **Listen and read.** Each word highlights as the narrator says it, and the text scrolls along. If you lose your place, long-press a line to play from there.
+3. **Listen and read.** The word being spoken is underlined in red, and the page turns as the narrator reads. If you lose your place, long-press a line to play from there.
 
 Besides the default **Focused Reader** profile, there's one for dyslexia and ADHD with dyslexia-friendly fonts and color overlays, and another for low vision with large, high-contrast text. If attention is the main thing you struggle with, [audiobooks for dyslexia and ADHD](/audiobook-app-for-dyslexia) goes into more detail.
 
