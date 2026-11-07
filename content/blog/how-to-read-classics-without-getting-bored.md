@@ -19,7 +19,7 @@ Because they were written for readers who lived in their world. The sentences ar
 
 Treat boredom as information about the reading, not about you. In Westgate and Wilson's MAC model, published in *Psychological Review* in 2018, boredom comes from two kinds of mismatch: between what a task demands and the attention you have for it, whether it asks too little or too much, and between the activity and the goals you value. A classic can miss on both counts: too dense to hold your attention, and read only because you feel you ought to.
 
-Difficulty also feeds mind wandering. In a 2013 study by Feng, D'Mello and Graesser, people read easy or difficult versions of eight passages. Their minds wandered more often on the difficult versions, and there the wandering did more harm to comprehension.
+Difficulty also feeds mind wandering. In a 2013 study by Feng, D'Mello and Graesser, people read easy or difficult versions of eight passages. Their minds wandered more often on the difficult versions, and there the wandering did more harm to comprehension. If every book feels like this lately, not only the classics, see [why can't I focus on reading anymore](/blog/why-cant-i-focus-on-reading).
 
 So fix the mismatch:
 

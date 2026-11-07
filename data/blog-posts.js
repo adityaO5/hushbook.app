@@ -8,6 +8,43 @@
 
 const posts = [
   {
+    slug: 'why-cant-i-focus-on-reading',
+    cta: { heading: 'Give your eyes a place to be', text: 'With the audiobook playing, HushBook underlines each word as the narrator says it and turns the page for you. Drift off, and a long press on the line you missed plays it again. Free LibriVox classics are built in. No account, no ads.' },
+    title: 'Why Can\'t I Focus on Reading Anymore? Causes and What Helps',
+    metaTitle: 'Why Can\'t I Focus on Reading Anymore? What Actually Helps',
+    metaDescription: 'Usually tiredness, stress, notifications or a book that is too hard for now. Shorter sittings, an easier book and reading along with the audiobook help.',
+    description: 'You usually can\'t focus on reading because you are tired or stressed, notifications interrupt, or the book is too hard for now. What phone research really found, when to see a doctor, reading slumps and nine things that help.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-08',
+    dateModified: '2026-11-08',
+    readingTime: '14 min read',
+    keywords: [
+      'why can\'t i focus on reading anymore',
+      'why can\'t i focus when i read',
+      'can\'t focus on reading anymore',
+      'suddenly can\'t focus on reading',
+      'what to do when you can\'t focus on reading',
+      'eyes can\'t focus when reading',
+      'adhd can\'t focus on reading',
+      'how to get out of a reading slump'
+    ],
+    takeaways: [
+      'You usually can\'t focus on reading because you are tired or stressed, notifications interrupt, or the book is too hard. In a 2013 study of 211 students, minds wandered at 35.6% of silent-reading check-ins.',
+      'The eight-second goldfish attention span has no traceable source, and a 2024 meta-analysis of 33 studies found no effect from a phone merely sitting nearby. Notifications did disrupt attention in a 2015 lab study.',
+      'See a doctor or optometrist if the trouble started suddenly, comes with low mood or constant worry, or print blurs up close. NIMH says ADHD symptoms must begin before age 12.',
+      'The best-supported fixes are simple: shorter sittings, an easier or shorter book, and notifications off. Of 18,824 English LibriVox recordings we counted on November 7, 2026, 37.4% run under three hours.',
+      'Reading along lets a narrator set the pace, but no study has measured whether it reduces mind wandering. Narrators read at a median 151 words a minute, against 238 to 260 for silent reading.'
+    ],
+    faqs: [
+      ['Why can\'t I focus on reading but I can focus on other things?', 'Two reasons. A book only moves when you move it, and your eyes can keep scanning after your mind leaves. In a 2013 study of 211 students, minds wandered at 35.6% of check-ins during silent reading.'],
+      ['Is not being able to focus on reading a sign of ADHD?', 'No, not by itself. NIMH says ADHD symptoms must begin before age 12 and show in two or more settings. Focus trouble that started recently in adulthood has many other causes, such as sleep, stress, mood or eyesight.'],
+      ['Can anxiety or depression make it hard to concentrate on reading?', 'Yes. NIMH lists difficulty concentrating as a symptom of depression, lasting at least 2 weeks, and of generalized anxiety disorder, lasting at least 6 months. If that sounds like you, talk to a doctor first.'],
+      ['Why can\'t my eyes focus when I read?', 'Two common reasons. After about 40, presbyopia makes you hold print farther away to see it, says the American Academy of Ophthalmology. Convergence insufficiency can make words seem to move or float. An optometrist can check both.'],
+      ['Is it okay to stop reading a book I\'m not enjoying?', 'Yes. In a 2013 Goodreads survey, "slow, boring" was the top reason for putting a book down. In Jellybooks\' reading tests, a book that 25% to 50% of readers finish counts as a good result. Quitting is normal.'],
+      ['Do audiobooks count as reading if I can\'t focus on print?', 'Yes. The American Time Use Survey counts listening to audiobooks as reading. If audio gets you through a book, it counts, and reading along with the text gives your eyes something to follow too.']
+    ]
+  },
+  {
     slug: 'learn-german-with-audiobooks',
     cta: { heading: 'See where the German verb lands', text: 'HushBook transcribes German audiobooks on your phone and underlines each word as the narrator says it, so the verb at the end of a long clause is right there on screen. LibriVox German classics are built into Discover. No account, no ads.' },
     title: 'How to Learn German With Audiobooks (and Free Ones With Text)',
@@ -1136,7 +1173,7 @@ const posts = [
       ['What should I do while listening to an audiobook?', 'Something physical that needs little thought, such as walking, cleaning, cooking or a puzzle. Avoid anything involving words, like texting or email, which competes with the narrator.'],
       ['Does listening faster help you focus?', 'Sometimes. If a slow narrator bores you, 1.25x or 1.5x can hold your attention better. If you keep losing track, slow down instead.'],
       ['Does reading along help with audiobook focus?', 'It can. With the text on screen your eyes have something to do, and if you drift, the highlighted word shows where the narrator is. HushBook does this for audiobook files you can legally import.'],
-      ['Are audiobooks good for ADHD?', 'Many people with ADHD find audiobooks easier than print, especially with a physical task or the text in front of them. HushBook has a dyslexia and ADHD profile with a focus view.']
+      ['Are audiobooks good for ADHD?', 'Many people with ADHD find audiobooks easier than print, especially with a physical task or the text in front of them. HushBook has a dyslexia and ADHD profile with dyslexia-friendly fonts and color overlays.']
     ]
   },
   {

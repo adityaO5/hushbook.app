@@ -51,7 +51,7 @@ For a skilled adult reader, treat the highlight as a bookmark, not a pacer. Let 
 
 It gives your attention somewhere to land, which listening alone does not. In a 2013 study in *Frontiers in Psychology*, Varao Sousa, Carriere and Smilek had 211 students read one passage aloud, read one silently and listen to one, and asked at random moments whether their minds had wandered. Listening produced the most mind wandering, the worst memory for the passage and the least interest in it.
 
-No study we found has measured mind wandering while reading along. The practical case is simpler. With your eyes on the words, a drift shows up as a lost place on the page, and you can see exactly which sentence you missed instead of rewinding by guesswork. Most audiobooks give you no text to look at, which is where an app that highlights each word as it is spoken, such as **HushBook**, fills the gap. For more on attention, see [how to focus on audiobooks](/blog/how-to-focus-on-audiobooks).
+No study we found has measured mind wandering while reading along. The practical case is simpler. With your eyes on the words, a drift shows up as a lost place on the page, and you can see exactly which sentence you missed instead of rewinding by guesswork. Most audiobooks give you no text to look at, which is where an app that highlights each word as it is spoken, such as **HushBook**, fills the gap. For more on attention, see [how to focus on audiobooks](/blog/how-to-focus-on-audiobooks). If reading itself has become hard to stick with, [why can't I focus on reading anymore](/blog/why-cant-i-focus-on-reading) goes through the usual causes and nine things that help.
 
 ## Does reading while listening make you a better reader?
 

@@ -58,11 +58,13 @@ When the words are on screen, your eyes have a job, so you're less likely to dri
 2. **Let it transcribe.** **HushBook** transcribes the recording on your phone and matches every word to the audio. *Nothing is uploaded.*
 3. **Listen and read.** Each word highlights as the narrator says it, and the text scrolls along. If you lose your place, long-press a line to play from there.
 
-There's a reading profile for dyslexia and ADHD with dyslexia-friendly fonts and a **focus view**, and another for low vision with large, high-contrast text. If attention is the main thing you struggle with, [audiobooks for dyslexia and ADHD](/audiobook-app-for-dyslexia) goes into more detail.
+Besides the default **Focused Reader** profile, there's one for dyslexia and ADHD with dyslexia-friendly fonts and color overlays, and another for low vision with large, high-contrast text. If attention is the main thing you struggle with, [audiobooks for dyslexia and ADHD](/audiobook-app-for-dyslexia) goes into more detail.
 
 ## What if nothing works?
 
 Some people really do follow a story better on paper, and that's fine. Mind wandering happens in print too. You just notice it sooner.
+
+If print has become hard to stick with too, [why can't I focus on reading anymore](/blog/why-cant-i-focus-on-reading) covers the causes, from sleep to eyesight, and when to see a doctor.
 
 But before giving up on audio, try one easy book, at a speed that feels right, while walking, with the text in front of you. If that still doesn't work, you've learned something useful about how you read.
 

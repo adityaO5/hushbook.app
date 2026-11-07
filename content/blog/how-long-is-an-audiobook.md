@@ -2,7 +2,7 @@
 
 A 300-page book usually runs about 8 to 10.5 hours as an audiobook. Most novels take 7 to 13 hours, while long classics run 25 to 100 hours. The quick formula: divide the book's word count by 9,300, the number of words ACX, Audible's audiobook production platform, says most narrators read in an hour.
 
-To check that against real recordings, we counted the words in ten classics and compared them with their LibriVox audiobooks. The narrators averaged 151 words a minute, very close to ACX's figure, and every book is listed below with its listening time.
+To check that against real recordings, we counted the words in ten classics and compared them with their LibriVox audiobooks. The narrators read at a median of 151 words a minute, very close to ACX's figure, and every book is listed below with its listening time.
 
 ## How long is an audiobook for a 300-page book?
 
