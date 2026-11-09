@@ -192,6 +192,12 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 .hero h1{margin:0 auto 20px;max-width:16ch}
 .hero .sub{margin:0 auto 34px;max-width:560px;text-wrap:balance}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.launch-badges{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.launch-badges a{display:block;line-height:0;border-radius:10px;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.launch-badges a:hover{transform:translateY(-2px)}
+.launch-badges img{display:block;height:44px;width:auto}
+.dir-badges{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.dir-badges img{height:40px;width:auto;display:block;border:0}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
 .pill .pic{width:22px;height:22px;flex:none;fill:currentColor}
@@ -736,6 +742,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="hero">
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
+    <div class="launch-badges reveal" aria-label="Launch badges">
+      <a href="https://www.producthunt.com/products/hushbook-read-while-you-listen?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-hushbook-2" target="_blank" rel="noopener noreferrer"><img alt="HushBook - Audiobook Read-Along App with Synced Text | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1307875&amp;theme=light&amp;t=1794219708627"></a>
+      <a href="https://tools.launchllama.co/products/hushbook?utm_source=badge&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer" aria-label="HushBook in the Launch Llama newsletter"><img src="https://tools.launchllama.co/featured-badge.png?v=2" alt="As seen on Launch Llama Newsletter" width="200" height="52"></a>
+    </div>
     <h1 id="hero-h1" class="reveal" aria-label="Tag din evne til at fokusere tilbage"><span class="kw">Tag</span> <span class="kw">din</span> <span class="kw">evne</span> <span class="kw">til at</span> <span class="kw">fokusere tilbage</span></h1>
     <p class="sub reveal">Hvert ord i din lydbog lyser op, mens oplæseren læser det.</p>
     <div class="stores reveal" id="get" aria-label="Få HushBook">
@@ -1353,6 +1363,9 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           <a href="https://bsky.app/profile/hushbook.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="HushBook på Bluesky">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
           </a>
+        </div>
+        <div class="dir-badges" style="margin-top:20px;">
+          <a href="https://www.producthunt.com/products/hushbook-read-while-you-listen?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-hushbook-2" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;"><img alt="HushBook - Audiobook Read-Along App with Synced Text | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1307875&amp;theme=light&amp;t=1794219708627"></a>
         </div>
       </div>
       <div class="fcol">         <b>Produkt</b>         <a href="#read-along">Sådan fungerer det</a>         <a href="#privacy">Privatliv by design</a>         <a href="#accessibility">Tilgængelighed</a>         <a href="#life">Statistik</a>       </div>

@@ -242,6 +242,10 @@ h3{font-size:clamp(21px,2.4vw,26px)}
 h2{font-family:"Hushwrite Velvet Serif",var(--serif);font-weight:400;letter-spacing:-.03em}
 .hero .sub{margin:0 auto 34px;max-width:560px;text-wrap:balance}
 .stores{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.launch-badges{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.launch-badges a{display:block;line-height:0;border-radius:10px;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.launch-badges a:hover{transform:translateY(-2px)}
+.launch-badges img{display:block;height:44px;width:auto}
 .pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:#171310;border-radius:999px;padding:12px 26px 12px 20px;box-shadow:0 12px 32px rgba(0,0,0,.38);transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s cubic-bezier(.2,.7,.2,1);border:none;font-family:inherit;cursor:pointer;outline:none}
 .pill:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(201,163,106,.28)}
 .pill .pic{width:22px;height:22px;flex:none;fill:currentColor}
@@ -799,6 +803,10 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
 <section class="hero">
   <div id="stage-gl" aria-hidden="true"></div>
   <div class="wrap">
+    <div class="launch-badges reveal" aria-label="Launch badges">
+      <a href="https://www.producthunt.com/products/hushbook-read-while-you-listen?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-hushbook-2" target="_blank" rel="noopener noreferrer"><img alt="HushBook - Audiobook Read-Along App with Synced Text | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1307875&amp;theme=light&amp;t=1794219708627"></a>
+      <a href="https://tools.launchllama.co/products/hushbook?utm_source=badge&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer" aria-label="HushBook in the Launch Llama newsletter"><img src="https://tools.launchllama.co/featured-badge.png?v=2" alt="As seen on Launch Llama Newsletter" width="200" height="52"></a>
+    </div>
     <h1 id="hero-h1" class="reveal" aria-label="Reclaim your ability to focus"><span class="kw">Reclaim</span> <span class="kw">your</span> <span class="kw">ability</span> <span class="kw">to</span> <span class="kw">focus</span></h1>
     <p class="sub reveal">Each word of your audiobook lights up as the narrator reads it.</p>
     <div class="stores reveal" id="get" aria-label="Get HushBook">
@@ -1454,6 +1462,7 @@ footer{background:#080706;border-top:1px solid var(--line-soft);padding:64px 0 4
           </a>
         </div>
         <div class="dir-badges" style="margin-top:20px;">
+          <a href="https://www.producthunt.com/products/hushbook-read-while-you-listen?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-hushbook-2" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;"><img alt="HushBook - Audiobook Read-Along App with Synced Text | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1307875&amp;theme=light&amp;t=1794219708627"></a>
           <!-- Launch Llama badge: backlink that keeps the free listing live -->
           <span style="display:inline-block;text-align:center;font-family:system-ui,sans-serif;line-height:1;">
             <a href="https://tools.launchllama.co/products/hushbook?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0;">
