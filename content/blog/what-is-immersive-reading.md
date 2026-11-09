@@ -20,7 +20,7 @@ Check your edition, though. A recording might have a different introduction or l
 
 With an audiobook, somebody has recorded the narration already. Their pauses and delivery are part of the book. The missing bit, for read-along, is text that follows that particular recording.
 
-A text-to-speech reader goes the other way. Give it a document or ebook and a computer voice reads the words. I would use that for a PDF with no recording.
+A text-to-speech reader goes the other way. Give it a document or ebook and a computer voice reads the words. I would use that for a PDF with no recording. The Kindle app has one built in, called Assistive Reader; see [can Kindle read to you](/blog/can-kindle-read-to-you).
 
 **HushBook** works from audio. The **HushBook** engine makes a transcript **on your phone** and highlights the words *in time with the recording*. You can see [how audiobook text works here](/audiobook-with-text).
 

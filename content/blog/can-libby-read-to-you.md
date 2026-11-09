@@ -80,7 +80,7 @@ Possibly, if your library is in the US. Libby can send most ebooks from US libra
 
 The Kindle app has its own read-aloud feature, Assistive Reader. Amazon says it reads the book with your device's text-to-speech engine and highlights the text as it goes. It runs in the Kindle app on iPhone, iPad, Android, Mac and Fire tablets, and "works with any Kindle book with Enhanced Typesetting." To turn it on, open the book, tap the top center of the screen, then Aa, then More, and switch on Assistive Reader.
 
-The catch: Amazon's page lists books bought from the Kindle store, borrowed from "Kindle+ or Prime Reading, or other official Kindle partner sources," and shared in Family Library. It does not mention public library loans, so try it on your loan before you count on it.
+The catch: Amazon's page lists books bought from the Kindle store, borrowed from "Kindle+ or Prime Reading, or other official Kindle partner sources," and shared in Family Library. It does not mention public library loans, so try it on your loan before you count on it. For e-readers, Alexa and the other ways to have a Kindle read aloud, see [can Kindle read to you](/blog/can-kindle-read-to-you).
 
 Audiobooks don't go to Kindle. The Kindle option in Libby is for ebooks, and Libby audiobooks play in the Libby app or at libbyapp.com.
 

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Ways to hear a Kindle book</title>
+<!--
+  Figure for /blog/can-kindle-read-to-you (assets/img/blog/can-kindle-read-to-you-routes.webp).
+  Facts: docs/seo/drafts/2026-11-09-can-kindle-read-to-you/post.md, the first table (lines 11-21)
+  and "How do I turn my Kindle book into an audiobook?" (lines 94-102). Sources and alt text:
+  notes-images.md in the same folder, which also describes render-html.mjs. Re-render (2x, WebP 86):
+    node render-html.mjs routes-figure.html can-kindle-read-to-you-routes.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #6E6760;           /* de-emphasis mark */
+    --coral: #E8613F;          /* the one accent */
+    --hair: rgba(246, 239, 228, .10);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    max-width: 600px;
+  }
+  .tbl { padding: 0 14px; }
+  .row {
+    display: grid;
+    grid-template-columns: 226px 1fr 136px;
+    column-gap: 20px;
+    border-top: 1px solid var(--hair);
+  }
+  .head { border-top: 0; }
+  .head > div {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    padding-bottom: 10px;
+  }
+  .group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16.5px;
+    font-weight: 600;
+    padding: 14px 0 10px;
+    border-top: 1px solid var(--hair);
+  }
+  .mark { width: 18px; height: 4px; border-radius: 2px; background: var(--gray); flex: none; }
+  .paid .mark { background: var(--coral); }
+  .route {
+    font-size: 15.5px;
+    line-height: 1.38;
+    color: var(--paper-dim);
+    margin: -4px 0 0;
+    padding: 0 0 12px 28px;
+  }
+  .row > div { font-size: 15.5px; line-height: 1.34; padding: 9px 0; }
+  .head > div { padding: 0 0 10px; }
+  .dev { font-weight: 500; color: var(--paper); }
+  .how { color: var(--paper-dim); }
+  .hl { color: var(--paper); }
+  .hl.ns { color: var(--muted); }
+  .paid {
+    margin-top: 16px;
+    border-radius: 12px;
+    background: rgba(232, 97, 63, .085);
+    box-shadow: inset 3px 0 0 var(--coral);
+    padding-bottom: 3px;
+  }
+  .paid .group { border-top: 0; }
+  .paid .row { border-top-color: rgba(246, 239, 228, .12); }
+  .src { margin: 22px 0 0; padding: 0 14px; font-size: 15px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Every Kindle read-aloud is free and synthetic. A person reading costs extra.</h1>
+
+  <div class="tbl row head"><div>Where you read</div><div>What reads to you</div><div>Highlights words?</div></div>
+
+  <div class="tbl free">
+    <div class="group"><span class="mark"></span>Computer voice · free</div>
+    <div class="row"><div class="dev">Kindle app on iPhone, iPad, Android, Mac</div><div class="how">Assistive Reader</div><div class="hl">Yes</div></div>
+    <div class="row"><div class="dev">Kindle app on Windows 11</div><div class="how">Assistive Reader shortcuts, Narrator, NVDA, JAWS</div><div class="hl ns">Not stated</div></div>
+    <div class="row"><div class="dev">Kindle 11th generation and newer, Scribe, Colorsoft</div><div class="how">Assistive Reader, over Bluetooth</div><div class="hl">Yes</div></div>
+    <div class="row"><div class="dev">Kindles from 2016 on</div><div class="how">VoiceView screen reader, over Bluetooth</div><div class="hl ns">Not stated</div></div>
+    <div class="row"><div class="dev">Fire tablets</div><div class="how">Assistive Reader, VoiceView</div><div class="hl">Yes, with Assistive Reader</div></div>
+    <div class="row"><div class="dev">Echo and other Alexa devices, not Alexa+</div><div class="how">Kindle Assistive Reader on Alexa</div><div class="hl ns">Not stated</div></div>
+  </div>
+
+  <div class="tbl paid">
+    <div class="group"><span class="mark"></span>A person reading · paid</div>
+    <p class="route">Audible narration added to the Kindle book, or included with a Kindle+ title</p>
+    <div class="row"><div class="dev">Kindle app on iOS and Android, Fire tablets</div><div class="how">Audible narration</div><div class="hl">Yes</div></div>
+    <div class="row"><div class="dev">Kindles with Bluetooth</div><div class="how">Audible narration, over Bluetooth</div><div class="hl ns">Not stated</div></div>
+  </div>
+
+  <p class="src">Amazon help pages, checked November 9, 2026</p>
+</div>
+</body>
+</html>
