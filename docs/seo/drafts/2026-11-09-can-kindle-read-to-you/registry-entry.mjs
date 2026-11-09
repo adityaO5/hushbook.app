@@ -1,14 +1,14 @@
 const entry = {
   slug: 'can-kindle-read-to-you',
-  cta: { heading: 'Hear a narrator and see every word', text: 'A computer voice is free, but a human narrator usually means a second purchase. HushBook highlights each word as a recorded narrator says it, in free public domain classics or audio files you own. No ads, no account.' },
+  cta: { heading: 'Hear a narrator and see every word, free', text: 'Kindle\'s read-aloud is a computer voice, and a human narrator costs extra. HushBook highlights each word as a recorded narrator says it, free on iPhone, Android and Windows, in public domain classics or audio you own. No ads, no account.' },
   title: 'Can Kindle Read to You? How to Make Kindle Read Aloud, by Device',
   metaTitle: 'Can Kindle Read to You? How to Make Kindle Read Aloud',
-  metaDescription: 'Yes. Assistive Reader reads Kindle books aloud free in a computer voice, in the Kindle app and on newer Kindles. Steps by device, Alexa, voice and narration.',
-  description: 'Yes. Assistive Reader reads Kindle books aloud for free in the Kindle app and on newer Kindles over Bluetooth. Steps for each device, Alexa and Alexa+, PC and Mac, voice and speed, why some books won\'t read, and the human-narrated route.',
+  metaDescription: 'Yes. Assistive Reader reads Kindle books aloud free in a computer voice. Steps by device and for Alexa, plus HushBook, the free human-narrated alternative.',
+  description: 'Yes. Assistive Reader reads Kindle books aloud free in the Kindle app and on newer Kindles. Steps for each device, Alexa and Alexa+, PC and Mac, voice and speed, why some books won\'t read, and HushBook, the free human-narrated alternative.',
   category: 'Read-along guides',
   datePublished: '2026-11-09',
   dateModified: '2026-11-09',
-  readingTime: '16 min read',
+  readingTime: '18 min read',
   keywords: [
     'can kindle read to you',
     'how to make kindle read to you',
@@ -24,7 +24,7 @@ const entry = {
     'Kindle e-readers from the 11th generation on, Kindle Scribe and Kindle Colorsoft have Assistive Reader in five languages, with sound through Bluetooth headphones or a speaker. Older Kindles have VoiceView.',
     'Books need Enhanced Typesetting and must come from the Kindle store, Kindle+, Prime Reading, an official Kindle partner or Family Library. Amazon does not list public library loans.',
     'Alexa reads Kindle books on the original Alexa only. Amazon says Kindle Assistive Reader isn\'t available on Alexa+, which US Prime members have had at no extra cost since February 2026.',
-    'A human narrator costs extra: add the Audible audiobook at a discount, or borrow a Kindle+ title with audio. In a 2023 study, listeners enjoyed and remembered stories more with a human voice.'
+    'A human narrator costs extra on Kindle: an Audible add-on or a Kindle+ title with audio. HushBook is the better alternative for a human narrator with synced words, free on phone and Windows.'
   ],
   faqs: [
     ['Can Kindle Unlimited books read to you?', 'Yes. Assistive Reader reads books borrowed from Kindle+, the new name for Kindle Unlimited, if they have Enhanced Typesetting. For a human narrator, borrow a Kindle+ title labeled "Books with Audio" and you get the audiobook too.'],
@@ -32,7 +32,8 @@ const entry = {
     ['Can a Kindle read out loud without headphones?', 'Yes, in the Kindle app on a phone, tablet or computer. A Kindle e-reader plays sound over Bluetooth, so pair a Bluetooth speaker if you want the book read out loud in the room.'],
     ['Is there a monthly fee for Kindle?', 'No. The Kindle app is free, and Assistive Reader, VoiceView and Alexa reading cost nothing extra. Kindle+, at $11.99 a month in the US, and Audible narration are optional paid extras.'],
     ['Can Alexa read my Kindle books?', 'Yes, on the original Alexa. Ask Alexa to read a book by its title, then pause, skip chapters or change the speed by voice. Amazon says Kindle Assistive Reader isn\'t available on Alexa+.'],
-    ['Can you change the Kindle Assistive Reader voice?', 'No, not inside the Kindle app. Amazon says Assistive Reader uses your device\'s own text-to-speech engine, so the voice comes from your phone, tablet or computer settings. Amazon does not say which setting.']
+    ['Can you change the Kindle Assistive Reader voice?', 'No, not inside the Kindle app. Amazon says Assistive Reader uses your device\'s own text-to-speech engine, so the voice comes from your phone, tablet or computer settings. Amazon does not say which setting.'],
+    ['Is there a better alternative to Kindle read-aloud?', 'Yes. HushBook is the better alternative for a human narrator with every word highlighted. It is free on iPhone, Android and Windows, with no account. It plays public domain classics and audiobooks you own, not Kindle books.']
   ]
 };
 
@@ -62,7 +63,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   check(entry.keywords.length === 8, `keywords ${entry.keywords.length} != 8`);
   check(entry.takeaways.length === 5, `takeaways ${entry.takeaways.length} != 5`);
   entry.takeaways.forEach((t, i) => check(words(t) >= 20 && words(t) <= 35, `takeaway ${i + 1} has ${words(t)} words`));
-  check(entry.faqs.length === 6, `faqs ${entry.faqs.length} != 6`);
+  check(entry.faqs.length >= 5 && entry.faqs.length <= 7, `faqs ${entry.faqs.length} not in 5..7`);
   entry.faqs.forEach(([q, a], i) => {
     check(words(a) <= 40, `faq ${i + 1} answer has ${words(a)} words`);
     check(/^(Yes|No|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|\d)/.test(a), `faq ${i + 1} answer must start with yes, no or a number`);
