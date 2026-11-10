@@ -9,7 +9,7 @@
 const posts = [
   {
     slug: 'best-count-of-monte-cristo-audiobook',
-    cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android and Windows, no account. French names can come out misspelled.' },
+    cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android and Windows, no account.' },
     title: 'Best Audiobook Version of The Count of Monte Cristo: Every Unabridged Edition Compared',
     metaTitle: 'Best Count of Monte Cristo Audiobook: Every Edition Compared',
     metaDescription: 'John Lee\'s Blackstone recording is the best paid Count of Monte Cristo audiobook; David Clarke\'s LibriVox reading is the best free one. 17 editions compared.',
@@ -47,7 +47,7 @@ const posts = [
   },
   {
     slug: 'immersion-reading-kindle-paperwhite',
-    cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android and Windows. Free, with no account. It cannot open Kindle or Audible books.' },
+    cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android and Windows. Free, with no account.' },
     title: 'Does Kindle Paperwhite Support Immersion Reading? Every Kindle, Checked',
     metaTitle: 'Does Kindle Paperwhite Support Immersion Reading? By Model',
     metaDescription: 'No. No Kindle e-reader highlights words with Audible narration. Immersion Reading works on Fire tablets and in the Kindle and Audible apps. Every model checked.',
@@ -79,7 +79,7 @@ const posts = [
       ['Is immersion reading free?', 'No. You need both the Kindle eBook and the Audible audiobook, often sold as a discounted add-on, or a Kindle+ title with audio at $11.99 a month in the US. Kindle+ is not part of Prime.'],
       ['Does immersion reading work offline?', 'No, not fully in the Audible app. Audible says the ebook text loads from the internet, though some pages are saved so you can still see them without a connection.'],
       ['Can I listen to Audible on a Kindle Paperwhite without headphones?', 'No. Amazon says you must first pair a Bluetooth audio device, such as headphones, speakers or earbuds, to listen to Audible books on a Kindle. A Bluetooth speaker plays the book out loud.'],
-      ['Is there a better alternative to Immersion Reading on Kindle?', 'No, not on the Kindle itself. For audiobook files you own and free classics, HushBook highlights each word as the narrator reads, free on iPhone, Android and Windows. HushBook cannot open Kindle or Audible books.']
+      ['Is there a better alternative to Immersion Reading on Kindle?', 'Yes, for audiobook files you own and free classics. HushBook highlights each word as the narrator reads, free on iPhone, Android and Windows, with no account.']
     ]
   },
   {

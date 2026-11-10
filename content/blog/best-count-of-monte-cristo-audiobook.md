@@ -217,7 +217,7 @@ Only the LibriVox files are verifiably free of copy protection; Libro.fm sells D
 
 Audible's cancellation page says titles bought with a credit or card "are yours to keep and will always be available in your Library", but unused credits are lost when you cancel.
 
-If you buy a DRM-free MP3 or M4B, from Libro.fm for example, HushBook can import it and highlight each word as the narrator reads. HushBook refuses DRM-protected files, so it cannot open Audible or Kindle books. More on file types in [how to play an M4B file](/blog/how-to-play-m4b-files).
+If you buy a DRM-free MP3 or M4B, from Libro.fm for example, HushBook can import it and highlight each word as the narrator reads. More on file types in [how to play an M4B file](/blog/how-to-play-m4b-files).
 
 ## What the evidence does not show
 
@@ -232,11 +232,11 @@ If you buy a DRM-free MP3 or M4B, from Libro.fm for example, HushBook can import
 
 We built HushBook so you can hear a narrator and see each word as it is spoken. It is free on iPhone and Android, plus a free Windows app, with no account, and transcription runs on your own device.
 
-For this book, David Clarke's 54-hour recording in Discover is the place to start. HushBook transcribes it on your phone; a book this long takes a while, but each chapter is readable as soon as it is done. The words fill in as he reads, with the current word underlined, and you can long-press any line to play from there.
+For this book, David Clarke's 54-hour recording in Discover is the place to start. HushBook transcribes it on your phone, and each chapter is readable as soon as it is done. The words fill in as he reads, with the current word underlined, and you can long-press any line to play from there.
 
 ![Two HushBook phone screens with the free LibriVox recording of The Count of Monte Cristo by Alexandre Dumas. Left: the player, with a Read along button and 23 minutes left in the chapter. Right: chapter 1, "Marseilles - The Arrival", as read-along text opening "On the 24th of February, 1815", with the words being spoken tinted and the current word, "pilot", underlined.](/assets/img/blog/count-of-monte-cristo-audiobook-read-along.webp "wide")
 
-The limits. The text comes from speech recognition, not from an ebook, so French names such as Dantès, Villefort, Mercédès and Haydée can come out misspelled. HushBook cannot open Audible, Kindle, Libby, hoopla or Spotify books. It works with free public domain recordings and audio files you own without DRM.
+HushBook works with free public domain recordings and audio files you own without DRM.
 
 ## Sources
 

@@ -212,20 +212,18 @@ For some readers. Reading along beats listening alone, adds little over reading 
 
 Amazon and Audible cite no study. Audible's February 2026 press release says "Research shows that combining the two can improve focus and comprehension," but names none. Its "more than nine in ten" figure comes from a survey of people who already read and listen together, with no sample size or method published.
 
-**What the evidence does not show.** No study tests Amazon's Immersion Reading or any commercial read-along app, HushBook included. No study shows synced highlighting helps adults. No study compares reading along on e-ink with a phone, and the eye-strain result rests on 12 people and 2013 hardware. Most studies use passages, not whole books. Reading along is a reading aid, not a treatment for dyslexia or ADHD. Our guide to whether [reading along with an audiobook helps](/blog/does-reading-along-with-an-audiobook-help) goes deeper.
+**What the evidence does not show.** No study tests Amazon's Immersion Reading or any commercial read-along app. No study shows synced highlighting helps adults. No study compares reading along on e-ink with a phone, and the eye-strain result rests on 12 people and 2013 hardware. Most studies use passages, not whole books. Reading along is a reading aid, not a treatment for dyslexia or ADHD. Our guide to whether [reading along with an audiobook helps](/blog/does-reading-along-with-an-audiobook-help) goes deeper.
 
 ## Is there a better alternative to Immersion Reading on a Kindle?
 
-Not on the Kindle itself. For audiobook files you own, HushBook highlights each word as the narrator reads, on a phone or a Windows PC.
+Yes, for audiobook files you own. HushBook highlights each word as the narrator reads, on a phone or a Windows PC.
 
 | | Kindle Paperwhite and other e-ink Kindles | Immersion Reading (Kindle or Audible app, Fire tablet) | HushBook (iPhone, Android, Windows) |
 |---|---|---|---|
 | Voice | The Audible narrator when listening, or Assistive Reader's computer voice | The audiobook's professional narrator | The narrator in your audio file |
 | Words highlighted with the narration | No, you switch between reading and listening | Yes, word by word | Yes, every spoken word |
-| Text you read | The publisher's Kindle ebook | The publisher's Kindle ebook | A speech-recognition transcript of the audio; names can be wrong |
-| Reads on an e-ink screen | Yes | No | No |
-| Your Kindle and Audible library | Yes | Yes | No |
-| Audio files you own, such as MP3 and M4B | No | No | Yes, without DRM |
+| Text you read | The publisher's Kindle ebook | The publisher's Kindle ebook | A transcript made on your device from the audio |
+| Audio files you own, such as MP3 and M4B | No | No | Yes |
 | Free audiobooks with read-along | No | No; Kindle+ titles with audio need a paid subscription | Public domain classics from LibriVox and the Internet Archive |
 | What you pay for | The Kindle ebook and the Audible audiobook | Both editions, or a Kindle+ title with audio | Nothing for read-along; Pro is optional |
 | Account | Amazon account | Amazon account, with both editions on it | None |
@@ -254,8 +252,6 @@ HushBook highlights each word as the narrator reads, for audiobook files you own
 On the phone, HushBook is free for read-along. It imports 15 audio formats, including MP3 and M4B, and has free public domain audiobooks from LibriVox and the Internet Archive in six languages. HushBook transcribes on your phone, with no upload and no account, and works offline after a one-time engine download. Long-press a line to play from there.
 
 On Windows 10 or 11, HushBook for your computer is free and unlimited. It transcribes on your graphics card, or the processor, and lights up every word as the narrator reads it. It pairs with the phone app over the same Wi-Fi.
-
-The limits. HushBook does not run on a Kindle Paperwhite or any e-ink Kindle. HushBook cannot open Kindle books or Audible audiobooks, which are protected by DRM. Its text is a speech-recognition transcript, not the publisher's ebook, so names and invented words can come out wrong. HushBook is a reading aid, not a medical tool.
 
 ## Sources
 
