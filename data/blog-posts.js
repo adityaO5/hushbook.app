@@ -8,6 +8,43 @@
 
 const posts = [
   {
+    slug: 'immersion-reading-kindle-paperwhite',
+    cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android and Windows. Free, with no account. It cannot open Kindle or Audible books.' },
+    title: 'Does Kindle Paperwhite Support Immersion Reading? Every Kindle, Checked',
+    metaTitle: 'Does Kindle Paperwhite Support Immersion Reading? By Model',
+    metaDescription: 'No. No Kindle e-reader highlights words with Audible narration. Immersion Reading works on Fire tablets and in the Kindle and Audible apps. Every model checked.',
+    description: 'No Kindle e-reader, Paperwhite included, does Immersion Reading. A table for every model and app, how switching works on a Paperwhite, where words do light up, PC and Mac, troubleshooting, and what research says about reading along.',
+    category: 'Read-along guides',
+    datePublished: '2026-11-10',
+    dateModified: '2026-11-10',
+    readingTime: '19 min read',
+    keywords: [
+      'immersion reading kindle paperwhite',
+      'can you do immersion reading on kindle paperwhite',
+      'which kindle has immersion reading',
+      'immersion reading kindle paperwhite 12th generation',
+      'whispersync kindle paperwhite',
+      'how to use whispersync on kindle paperwhite',
+      'kindle immersion reading not working',
+      'audible read and listen on pc'
+    ],
+    takeaways: [
+      'No Kindle e-reader does Immersion Reading. Every Kindle Paperwhite, Colorsoft, Scribe, Oasis and basic Kindle plays Audible over Bluetooth and switches between reading and listening, but none highlights words with the narration.',
+      'Amazon lists Immersion Reading only for the Kindle apps on iOS and Android and for Fire tablets. Audible lists its own apps on iPhone, iPad, Android, Fire tablets and macOS.',
+      'On a Kindle Paperwhite, Read & Listen, formerly Whispersync for Voice, means switching: tap the headphone icon to hear the audiobook from your page, then switch back to the ebook at the same spot.',
+      'There is no documented Immersion Reading on a Windows PC. Amazon stopped supporting Kindle for PC on June 30, 2026, and Audible discontinued its Windows app. On a Mac, use the Audible app.',
+      'Reading along beats listening alone, but a 2023 meta-analysis of 30 studies found only a trivial gain over reading alone (g = 0.18), and no study shows the word highlighting itself helps.'
+    ],
+    faqs: [
+      ['Does the 2026 Kindle Paperwhite have immersion reading?', 'No. Amazon\'s user guides for the 2026 Kindle Paperwhite and its Signature Edition describe Audible playback, switching to listening and Assistive Reader, but never mention Immersion Reading.'],
+      ['Does Kindle Unlimited include immersion reading?', 'Yes, for some titles. Kindle+, the new name for Kindle Unlimited, includes companion audiobooks for thousands of eBooks. Words are highlighted in the Kindle app on a phone or Fire tablet, not on an e-ink Kindle.'],
+      ['Is immersion reading free?', 'No. You need both the Kindle eBook and the Audible audiobook, often sold as a discounted add-on, or a Kindle+ title with audio at $11.99 a month in the US. Kindle+ is not part of Prime.'],
+      ['Does immersion reading work offline?', 'No, not fully in the Audible app. Audible says the ebook text loads from the internet, though some pages are saved so you can still see them without a connection.'],
+      ['Can I listen to Audible on a Kindle Paperwhite without headphones?', 'No. Amazon says you must first pair a Bluetooth audio device, such as headphones, speakers or earbuds, to listen to Audible books on a Kindle. A Bluetooth speaker plays the book out loud.'],
+      ['Is there a better alternative to Immersion Reading on Kindle?', 'No, not on the Kindle itself. For audiobook files you own and free classics, HushBook highlights each word as the narrator reads, free on iPhone, Android and Windows. HushBook cannot open Kindle or Audible books.']
+    ]
+  },
+  {
     slug: 'can-kindle-read-to-you',
     cta: { heading: 'Hear a narrator and see every word, free', text: 'Kindle\'s read-aloud is a computer voice, and a human narrator costs extra. HushBook highlights each word as a recorded narrator says it, free on iPhone, Android and Windows, in public domain classics or audio you own. No ads, no account.' },
     title: 'Can Kindle Read to You? How to Make Kindle Read Aloud, by Device',

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Immersion Reading by device</title>
+<!--
+  Figure for /blog/immersion-reading-kindle-paperwhite (assets/img/blog/immersion-reading-kindle-by-device.webp).
+  Facts: docs/seo/drafts/2026-11-10-immersion-reading-kindle-paperwhite/research-platforms.md,
+  "Quick answer for the writer", sections 1 to 4. Every cell is listed in notes-images.md (same folder).
+  Re-render (2x, WebP 84) with render-html.mjs from the scratchpad named in notes-images.md:
+    node render-html.mjs by-device-figure.html immersion-reading-kindle-by-device.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #6E6760;           /* de-emphasis mark */
+    --coral: #E8613F;          /* the one accent */
+    --hair: rgba(246, 239, 228, .10);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 50% at 100% 104%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 10px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+  }
+  .lede { margin: 0 0 26px; font-size: 17px; line-height: 1.4; color: var(--paper-dim); }
+
+  .tbl { position: relative; padding: 0 14px; }
+  /* The Immersion Reading column: the question the figure answers, so the only tinted band. */
+  .band {
+    position: absolute; top: -10px; bottom: 0;
+    left: calc(14px + 234px + 12px - 7px); width: calc(110px + 14px);
+    border-radius: 12px;
+    background: rgba(232, 97, 63, .085);
+    box-shadow: inset 0 3px 0 var(--coral);
+  }
+  .row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 234px 110px 110px 110px;
+    column-gap: 12px;
+    border-top: 1px solid var(--hair);
+  }
+  .head { border-top: 0; align-items: end; }
+  .head > div { font-size: 15px; line-height: 1.3; font-weight: 500; color: var(--muted); padding: 2px 0 12px; }
+  .head .q { color: var(--paper); font-weight: 600; display: block; margin-bottom: 3px; }
+  .group {
+    position: relative;
+    font-size: 16.5px; font-weight: 600; color: var(--paper);
+    padding: 18px 0 9px;
+    border-top: 1px solid var(--hair);
+  }
+  .row > div { padding: 11px 0; }
+  .dev { font-size: 15.5px; line-height: 1.32; font-weight: 500; color: var(--paper); }
+  .dev small { display: block; margin-top: 2px; font-size: 15px; font-weight: 400; color: var(--muted); }
+  .v { display: grid; grid-template-columns: 20px 1fr; column-gap: 8px; align-items: start; font-size: 15.5px; line-height: 1.32; }
+  .v svg { width: 20px; height: 20px; margin-top: 0; }
+  .v.yes { color: var(--paper); }
+  .v.no { color: var(--paper-dim); }
+  .v.nl { color: var(--muted); }
+  .src { margin: 24px 0 0; padding: 0 14px; font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Yes, Immersion Reading column: the accent -->
+  <symbol id="m-yes-hi" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#E8613F"/><path d="M5.6 10.4l3 3 5.8-6.6" fill="none" stroke="#0B0A09" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <!-- Yes, other columns: neutral -->
+  <symbol id="m-yes" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9.1" fill="none" stroke="#CABFB0" stroke-width="1.6"/><path d="M5.8 10.4l2.9 2.9 5.6-6.4" fill="none" stroke="#CABFB0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <!-- No -->
+  <symbol id="m-no" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9.1" fill="none" stroke="#6E6760" stroke-width="1.6"/><path d="M6.9 6.9l6.2 6.2M13.1 6.9l-6.2 6.2" fill="none" stroke="#9A9086" stroke-width="2" stroke-linecap="round"/></symbol>
+  <!-- Not listed -->
+  <symbol id="m-nl" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9.1" fill="none" stroke="#6E6760" stroke-width="1.6"/><path d="M6.4 10h7.2" fill="none" stroke="#9A9086" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="fig">
+  <h1>Which Kindle has Immersion Reading?</h1>
+  <p class="lede">No Kindle e-reader does. Fire tablets and the phone apps do.</p>
+
+  <div class="tbl">
+    <div class="band"></div>
+    <div class="row head">
+      <div>Device or app</div>
+      <div><span class="q">Immersion Reading</span>words highlighted with the narrator</div>
+      <div>Plays the Audible audiobook</div>
+      <div>Switch between reading and listening</div>
+    </div>
+
+    <div class="group">Kindle e-readers</div>
+    <div class="row">
+      <div class="dev">Kindle Paperwhite<small>10th gen (2018), 11th gen (2021), 12th gen (2024), 2026, and Signature Editions</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, over Bluetooth</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle<small>11th gen (2022, 2024) and 2026</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, over Bluetooth</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle Colorsoft<small>2024/2025 and 2026</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, over Bluetooth</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle Scribe<small>2022, 2024, 3rd gen, Scribe Colorsoft</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, over Bluetooth</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle Oasis<small>9th gen (2017), 10th gen (2019)</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, over Bluetooth</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+
+    <div class="group">Tablets and phones</div>
+    <div class="row">
+      <div class="dev">Fire tablets<small>Fire OS 7 and up (Kindle app), Fire OS 8 and up (Audible app)</small></div>
+      <div class="v yes"><svg><use href="#m-yes-hi"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle app<small>iPhone, iPad, Android</small></div>
+      <div class="v yes"><svg><use href="#m-yes-hi"/></svg><span>Yes, per Amazon</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Audible app<small>iPhone, iPad, Android</small></div>
+      <div class="v yes"><svg><use href="#m-yes-hi"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+    </div>
+
+    <div class="group">Computers</div>
+    <div class="row">
+      <div class="dev">Audible app on a Mac<small>macOS</small></div>
+      <div class="v yes"><svg><use href="#m-yes-hi"/></svg><span>Yes</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes</span></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not listed</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle for Mac<small>Amazon pages disagree</small></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Unclear</span></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not stated</span></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not listed</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Kindle for Windows<small>Windows 11</small></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not listed</span></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not stated</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, per Audible</span></div>
+    </div>
+    <div class="row">
+      <div class="dev">Audible on a Windows PC<small>app discontinued, Cloud Player in a browser</small></div>
+      <div class="v no"><svg><use href="#m-no"/></svg><span>No</span></div>
+      <div class="v yes"><svg><use href="#m-yes"/></svg><span>Yes, in a browser</span></div>
+      <div class="v nl"><svg><use href="#m-nl"/></svg><span>Not listed</span></div>
+    </div>
+  </div>
+
+  <p class="src">Amazon and Audible help pages and Kindle user guides, read November 10, 2026</p>
+</div>
+</body>
+</html>

@@ -212,6 +212,7 @@ const LABELS = {
   '/blog/what-is-immersive-reading': 'What is immersive reading?',
   '/blog/free-read-along-audiobooks': 'Free read-along audiobooks',
   '/blog/can-you-read-along-with-audible': 'Can you read along with Audible?',
+  '/blog/immersion-reading-kindle-paperwhite': 'Does Kindle Paperwhite support Immersion Reading?',
   '/blog/how-to-focus-on-audiobooks': 'How to focus on audiobooks',
   '/blog/audiobook-listening-speed': 'Best audiobook listening speed',
   '/blog/m4b-vs-mp3': 'M4B vs MP3',
@@ -225,7 +226,7 @@ const RELATED = {
   'read-along-audiobooks': ['/audiobook-with-text', '/blog/what-is-immersive-reading', '/blog/free-read-along-audiobooks', '/audiobook-app-for-dyslexia'],
   'audiobook-with-text': ['/read-along-audiobooks', '/blog/can-you-read-along-with-audible', '/whispersync-alternative', '/m4b-player'],
   'speechify-alternative': ['/alternatives/speechify-alternatives', '/read-along-audiobooks', '/audiobook-app-for-dyslexia', '/blog/what-is-immersive-reading'],
-  'whispersync-alternative': ['/blog/can-you-read-along-with-audible', '/audiobook-with-text', '/read-along-audiobooks', '/m4b-player'],
+  'whispersync-alternative': ['/blog/can-you-read-along-with-audible', '/blog/immersion-reading-kindle-paperwhite', '/audiobook-with-text', '/read-along-audiobooks'],
   'audiobook-app-for-dyslexia': ['/blog/are-audiobooks-good-for-dyslexia', '/blog/are-audiobooks-good-for-adhd', '/blog/how-to-focus-on-audiobooks', '/read-along-audiobooks'],
   'm4b-player': ['/blog/how-to-play-m4b-files', '/blog/m4b-vs-mp3', '/alternatives/bookplayer-alternatives', '/audiobook-with-text']
 };

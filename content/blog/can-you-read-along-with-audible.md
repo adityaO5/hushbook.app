@@ -23,7 +23,7 @@ Audible announced the current version in February 2026 with hundreds of thousand
 
 The text and the narration stay in sync when you switch back and forth. Audible lists its iPhone, iPad, Android and Android tablet apps, Fire tablets (Fire OS 8 and later) and its macOS app as supported. A Kindle e-reader isn't on that list. Newer Kindle e-readers can still read a book aloud in a computer voice; see [can Kindle read to you](/blog/can-kindle-read-to-you).
 
-If the toggle doesn't appear, the usual reason is that one of the two editions is missing from your account, or that the title isn't eligible.
+If the toggle doesn't appear, the usual reason is that one of the two editions is missing from your account, or that the title isn't eligible. On a Kindle e-reader it never appears; [which Kindles support Immersion Reading](/blog/immersion-reading-kindle-paperwhite) goes model by model.
 
 ## If you only own one edition
 

@@ -71,7 +71,7 @@ Open the book and tap the top center of the screen. Then tap the reading setting
 
 ### 3. Turn on Assistive Reader and press play
 
-Turn on **Assistive Reader**. The player at the bottom of the screen plays, pauses, changes the reading speed and rewinds by 30 seconds. Amazon says you can "follow along with the words highlighted as they're read aloud."
+Turn on **Assistive Reader**. The player at the bottom of the screen plays, pauses, changes the reading speed and rewinds by 30 seconds. Amazon says you can "follow along with the words highlighted as they're read aloud." Audible narration gets no highlighted words on any Kindle e-reader; see [does Kindle Paperwhite support Immersion Reading](/blog/immersion-reading-kindle-paperwhite).
 
 On e-readers, Amazon says Assistive Reader supports books in five languages: English, Spanish, French, German and Italian. It "only works with books that have Enhanced Typesetting." Amazon's software page lists the 11th generation and newer models as the Kindle (2022 and 2024 releases), Kindle Paperwhite 11th and 12th generation, Kindle Colorsoft and the Kindle Scribe models. The Kindle Oasis stopped at the 10th generation, so Assistive Reader is not listed for it. Amazon's Assistive Reader page does not name the 2026 Kindles.
 

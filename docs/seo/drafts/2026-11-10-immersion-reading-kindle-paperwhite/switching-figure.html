@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Switching and Immersion Reading</title>
+<!--
+  Figure for /blog/immersion-reading-kindle-paperwhite (assets/img/blog/immersion-reading-vs-switching.webp).
+  Facts: research-platforms.md in this folder, sections 1, 2 and 7 ("switch between your Kindle e-book and
+  the matching Audible audiobook without losing your place"; "The text highlights as the narrator reads").
+  Page text: Pride and Prejudice, chapter 1, 1817 edition on Wikisource (public domain), as in the
+  2026-11-09 post. Device outlines are generic CSS shapes: no logos, product photos or Amazon UI.
+  Re-render (2x, WebP 84) with render-html.mjs from the scratchpad named in notes-images.md:
+    node render-html.mjs switching-figure.html immersion-reading-vs-switching.webp 700 450
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;
+    --muted: #9A9086;
+    --gray: #6E6760;
+    --coral: #E8613F;
+    --hair: rgba(246, 239, 228, .10);
+    --eink: #E2DDD3;          /* e-ink screen */
+    --eink-ink: #2B2723;
+    --eink-soft: #8C857C;
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px; height: 450px; overflow: hidden;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(70% 60% at 100% 110%, rgba(232, 97, 63, .10), transparent 70%),
+      var(--ink);
+  }
+  .fig { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; padding: 28px 28px 26px; height: 450px; box-sizing: border-box; }
+  .panel {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    background: rgba(246, 239, 228, .03);
+    padding: 20px 20px 18px;
+  }
+  h2 {
+    margin: 0;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 30;
+    font-size: 25px; line-height: 1.15;
+  }
+  .where { margin: 4px 0 0; font-size: 15px; line-height: 1.3; color: var(--muted); }
+  .stage { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .cap { margin: 0; font-size: 15px; line-height: 1.38; color: var(--paper-dim); }
+  .cap b { font-weight: 600; color: var(--paper); }
+
+  /* Generic e-reader: even bezel, no logo */
+  .ereader { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .ereader .body {
+    width: 112px; height: 164px; box-sizing: border-box;
+    padding: 8px 8px 8px;
+    border-radius: 11px;
+    background: #34302B;
+    box-shadow: inset 0 0 0 1px rgba(246, 239, 228, .10), 0 10px 24px rgba(0, 0, 0, .45);
+  }
+  .ereader .screen { height: 100%; border-radius: 3px; background: var(--eink); overflow: hidden; box-sizing: border-box; padding: 8px 7px; color: var(--eink-ink); }
+  .ereader .lbl { font-size: 15px; color: var(--paper-dim); }
+  .page { font-family: 'HBNews', Georgia, serif; font-variation-settings: "opsz" 10; font-size: 9.2px; line-height: 12.2px; height: calc(12.2px * 10); overflow: hidden; }
+  .chap { font-family: 'HBNews', Georgia, serif; font-size: 7px; letter-spacing: .12em; text-align: center; color: var(--eink-soft); margin: 0 0 4px; }
+  .listen { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .listen .bar { width: 100%; height: 3px; border-radius: 2px; background: #BDB6AB; position: relative; }
+  .listen .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 22%; border-radius: 2px; background: var(--eink-ink); }
+  .swap { display: flex; flex-direction: column; gap: 6px; margin-bottom: 30px; }
+
+  /* Generic tablet */
+  .tablet {
+    width: 190px; height: 236px; box-sizing: border-box;
+    padding: 10px;
+    border-radius: 14px;
+    background: #1D1B19;
+    box-shadow: inset 0 0 0 1px rgba(246, 239, 228, .16), 0 12px 28px rgba(0, 0, 0, .5);
+  }
+  .tablet .screen { height: 100%; border-radius: 4px; background: #FBF7F0; overflow: hidden; display: flex; flex-direction: column; color: #2A241C; }
+  .tablet .page { font-size: 11px; line-height: 15px; height: calc(15px * 10); padding: 0 11px; }
+  .pp { display: block; text-indent: 1.2em; }
+  .tablet .chap { font-size: 7.8px; margin: 10px 0 6px; color: #8A8176; }
+  .hl { background: rgba(232, 97, 63, .32); box-shadow: 0 0 0 1.5px rgba(232, 97, 63, .32); border-radius: 2px; }
+  .player { margin-top: auto; display: flex; align-items: center; gap: 7px; padding: 7px 9px 8px; border-top: 1px solid rgba(42, 36, 28, .10); background: #F3EDE3; }
+  .player .bar { flex: 1; height: 3px; border-radius: 2px; background: #D9D1C4; position: relative; }
+  .player .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 38%; border-radius: 2px; background: var(--coral); }
+  .player .bar b { position: absolute; left: 38%; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--coral); }
+  .stage.right { flex-direction: column; gap: 0; }
+</style>
+</head>
+<body>
+<div class="fig">
+  <section class="panel">
+    <h2>Switching</h2>
+    <p class="where">Kindle Paperwhite</p>
+    <div class="stage">
+      <div class="ereader">
+        <div class="body"><div class="screen">
+          <p class="chap">CHAPTER 1</p>
+          <div class="page">It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.<span class="pp">However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.</span></div>
+        </div></div>
+        <span class="lbl">Reading</span>
+      </div>
+      <div class="swap" aria-hidden="true">
+        <svg width="26" height="12" viewBox="0 0 26 12"><path d="M2 6h20M17 1.5L22 6l-5 4.5" fill="none" stroke="#9A9086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="26" height="12" viewBox="0 0 26 12"><path d="M24 6H4M9 1.5L4 6l5 4.5" fill="none" stroke="#9A9086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="ereader">
+        <div class="body"><div class="screen">
+          <div class="listen">
+            <svg width="40" height="38" viewBox="0 0 40 38" aria-hidden="true"><path d="M6 24v-6a14 14 0 0 1 28 0v6" fill="none" stroke="#2B2723" stroke-width="2.6" stroke-linecap="round"/><rect x="3" y="21" width="9" height="14" rx="3" fill="#2B2723"/><rect x="28" y="21" width="9" height="14" rx="3" fill="#2B2723"/></svg>
+            <p class="chap" style="margin:0">CHAPTER 1</p>
+            <div class="bar"><i></i></div>
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="none" stroke="#2B2723" stroke-width="1.6"/><path d="M9 7l6 4-6 4z" fill="#2B2723"/></svg>
+          </div>
+        </div></div>
+        <span class="lbl">Listening</span>
+      </div>
+    </div>
+    <p class="cap"><b>One at a time.</b> The Kindle keeps your place when you swap.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Immersion Reading</h2>
+    <p class="where">Fire tablet, Kindle and Audible apps</p>
+    <div class="stage right">
+      <div class="tablet"><div class="screen">
+        <p class="chap">CHAPTER 1</p><div class="page">It is a truth universally acknowledged, that a single man in <span class="hl">possession</span> of a good fortune must be in want of a wife.<span class="pp">However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families,</span></div>
+        <div class="player">
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="2" width="3" height="10" rx="1" fill="#2A241C"/><rect x="8.5" y="2" width="3" height="10" rx="1" fill="#2A241C"/></svg>
+          <div class="bar"><i></i><b></b></div>
+        </div>
+      </div></div>
+    </div>
+    <p class="cap"><b>Both at once.</b> The text highlights as the narrator reads.</p>
+  </section>
+</div>
+</body>
+</html>

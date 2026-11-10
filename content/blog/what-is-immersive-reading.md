@@ -34,7 +34,7 @@ They work on text, not on a recording. To follow a human narrator, you need a se
 
 Audible announced Read & Listen inside its app in February 2026. It pairs eligible audiobook and ebook editions from your Audible and Kindle libraries and highlights the text with the narration. The announcement described a US rollout first, with other markets following.
 
-It works inside Audible's own app, for eligible titles, and you may need both formats.
+It works inside Audible's own app, for eligible titles, and you may need both formats. Kindle e-readers can't do it even with both formats; see [does Kindle Paperwhite support Immersion Reading](/blog/immersion-reading-kindle-paperwhite).
 
 **HushBook** is for the rest of your listening: recordings you can legally import, like MP3 and M4B files or *free public domain books*. We compare the [best immersive reading apps](/blog/best-apps-to-read-and-listen-at-the-same-time) side by side, with prices.
 
