@@ -54,7 +54,7 @@ Seeing and hearing the words together does better. Adesope and Nesbit's 2012 met
 
 Three checks before you press play:
 
-- **Pick the narrator.** LibriVox readers are volunteers and quality varies, so prefer a solo recording and play the first chapter. More in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal).
+- **Pick the narrator.** LibriVox readers are volunteers and quality varies, so prefer a solo recording and play the first chapter. More in [is LibriVox safe and legal](/blog/is-librivox-safe-and-legal). For a long classic, see how [the recordings of *The Count of Monte Cristo*](/blog/best-count-of-monte-cristo-audiobook) compare.
 - **Make sure it's unabridged.** An abridged recording cuts description and side plots, so it won't match a full text. See [abridged vs unabridged audiobooks](/blog/abridged-vs-unabridged-audiobooks).
 - **Slow down for dense prose.** Our [listening speed guide](/blog/audiobook-listening-speed) suggests 1x to 1.25x for literary fiction.
 

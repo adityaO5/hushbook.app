@@ -8,6 +8,44 @@
 
 const posts = [
   {
+    slug: 'best-count-of-monte-cristo-audiobook',
+    cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android and Windows, no account. French names can come out misspelled.' },
+    title: 'Best Audiobook Version of The Count of Monte Cristo: Every Unabridged Edition Compared',
+    metaTitle: 'Best Count of Monte Cristo Audiobook: Every Edition Compared',
+    metaDescription: 'John Lee\'s Blackstone recording is the best paid Count of Monte Cristo audiobook; David Clarke\'s LibriVox reading is the best free one. 17 editions compared.',
+    description: 'John Lee\'s Blackstone recording is our paid pick and David Clarke\'s LibriVox reading the free one. Every unabridged edition by runtime and narrator, translations, the 2027 Penguin Audio listing, abridged traps and files you keep.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-10',
+    dateModified: '2026-11-10',
+    readingTime: '17 min read',
+    keywords: [
+      'best count of monte cristo audiobook',
+      'best audiobook version of the count of monte cristo',
+      'best count of monte cristo audiobook narrator',
+      'best unabridged count of monte cristo audiobook',
+      'how long is the count of monte cristo audiobook',
+      'count of monte cristo audiobook free',
+      'count of monte cristo audiobook john lee',
+      'count of monte cristo abridged or unabridged'
+    ],
+    takeaways: [
+      'John Lee\'s unabridged Blackstone recording, 46 hours 56 minutes on Audible and winner of the 2009 Audie Award for male solo narration, is our paid pick. Bill Homewood\'s Naxos recording is the runner-up.',
+      'The best free version is David Clarke\'s solo LibriVox recording: one voice for all 117 chapters, 54 hours 16 minutes, in the public domain and free to download as MP3 or M4B.',
+      'A Penguin Audio recording listed on the Robin Buss translation\'s page is expected on February 11, 2027, with narrator and length unannounced. No commercial audiobook page we read names its translation.',
+      'Unabridged recordings run from 43 hours 18 minutes to 57 hours 20 minutes. Naxos\'s abridgement, read by the same narrator as its unabridged recording, keeps about 5% of the running time.',
+      'Only the LibriVox files are verifiably free of copy protection. Audible purchases stay in your library after you cancel, but they play only in Audible\'s apps and on supported devices.'
+    ],
+    faqs: [
+      ['Who is the best narrator for The Count of Monte Cristo audiobook?', 'John Lee, on the evidence we could check. His unabridged Blackstone recording won the 2009 Audie Award for male solo narration and runs 46 hours 56 minutes on Audible. Play the sample first.'],
+      ['Is there a Robin Buss audiobook of The Count of Monte Cristo?', 'Not yet. Penguin UK lists a Penguin Audio download for February 11, 2027 on the Robin Buss translation\'s page, crediting Buss for the introduction. No narrator or length has been announced.'],
+      ['Can I listen to The Count of Monte Cristo audiobook for free?', 'Yes. LibriVox has three finished English recordings in the public domain, free to stream or download. In version 3, David Clarke reads all 117 chapters alone in 54 hours 16 minutes.'],
+      ['How many hours is the unabridged Count of Monte Cristo audiobook?', '43 to 57 hours. Richard Matthews\'s recording runs 43 hours 18 minutes, per Penguin Random House, and Alan Munro\'s 57 hours 20 minutes, per Audible. Abridged versions can be under 3 hours.'],
+      ['Which translation does the John Lee audiobook use?', 'No page says. Audible, Apple Books and Downpour name no translator for John Lee\'s recording. Only the LibriVox recordings name their text, Project Gutenberg eBook #1184, which itself names no translator.'],
+      ['Is the Count of Monte Cristo audiobook on Audible abridged?', 'Both kinds are sold there. Complete recordings run 43 to 57 hours. David Case\'s Tantor recording is abridged at 17 hours 18 minutes, and some listings marked "Unabridged Audiobook" are far shorter.'],
+      ['How long does it take to listen to The Count of Monte Cristo?', '47 days at an hour a day for John Lee\'s 46-hour-56-minute recording at 1x, or 32 days at 1.5x. David Clarke\'s free 54-hour recording takes 55 days at 1x.']
+    ]
+  },
+  {
     slug: 'immersion-reading-kindle-paperwhite',
     cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android and Windows. Free, with no account. It cannot open Kindle or Audible books.' },
     title: 'Does Kindle Paperwhite Support Immersion Reading? Every Kindle, Checked',
