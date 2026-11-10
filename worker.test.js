@@ -133,7 +133,81 @@ async function main() {
   assert.equal(await response.text(), 'asset body');
   assert.equal(env.calls.length, 2);
 
-  console.log('Cloudflare Worker routing, tracking and noindex contract passes.');
+  const { DOWNLOADS, downloadEvent } = await load('src/downloads.mjs');
+  const dl = (url, headers = {}, method = 'GET') => {
+    const req = new Request(url, { method, headers: { 'user-agent': BROWSER_UA, ...headers } });
+    req.cf = { country: 'SE' };
+    return req;
+  };
+  const source = (url, headers) => downloadEvent(dl(url, headers)).row;
+
+  let row = source('https://hushbook.app/dl/windows?utm_source=Reddit&utm_medium=Social&utm_campaign=launch&r=https%3A%2F%2Fwww.reddit.com%2Fr%2Faudiobooks%2F%3Fx%3D1', { referer: 'https://hushbook.app/desktop?utm_source=Reddit' });
+  assert.equal(row.src, 'reddit', 'utm_source wins and is lowercased');
+  assert.equal(row.medium, 'social');
+  assert.equal(row.campaign, 'launch');
+  assert.equal(row.referrer, 'https://www.reddit.com/r/audiobooks/', 'referrer drops its query string');
+  assert.equal(row.page, '/desktop');
+  assert.equal(row.country, 'SE');
+  assert.equal(row.bot, 0);
+  assert.equal(source('https://hushbook.app/dl/windows?ref=producthunt').src, 'producthunt', 'ref names the source');
+  assert.equal(source('https://hushbook.app/dl/windows?r=https%3A%2F%2Fwww.producthunt.com%2Fposts%2Fhushbook').src, 'producthunt.com', 'landing referrer host names the source');
+  assert.equal(source('https://hushbook.app/dl/windows', { referer: 'https://news.ycombinator.com/item?id=1' }).src, 'news.ycombinator.com', 'a link straight to /dl counts its referrer');
+  row = source('https://hushbook.app/dl/windows?from=%2Fblog%2Fcan-kindle-read-to-you&r=https%3A%2F%2Fhushbook.app%2F', { referer: 'https://hushbook.app/desktop' });
+  assert.equal(row.src, 'direct', 'the site itself is never a source');
+  assert.equal(row.prev, '/blog/can-kindle-read-to-you');
+  assert.equal(row.referrer, '');
+  assert.equal(source('https://hushbook.app/dl/windows?r=javascript%3Aalert(1)').src, 'direct', 'non-http referrer is ignored');
+  assert.equal(source('https://hushbook.app/dl/windows?utm_source=' + 'x'.repeat(500)).src.length, 80, 'values are clipped');
+  for (const userAgent of ['node', 'facebookexternalhit/1.1', 'Mozilla/5.0 (compatible; SemrushBot/7~bl)', 'RiverBot/1.0', 'curl/8.4.0']) {
+    assert.equal(source('https://hushbook.app/dl/windows', { 'user-agent': userAgent }).bot, 1, `"${userAgent}" must be flagged as a bot`);
+  }
+  assert.equal(downloadEvent(dl('https://hushbook.app/dl/macos')), null, 'unknown platform passes through');
+  assert.equal(downloadEvent(dl('https://hushbook.app/dl/windows/extra')), null);
+  assert.equal(downloadEvent(dl('https://hushbook.app/dl/windows', {}, 'POST')), null, 'POST passes through');
+
+  const fakeDb = (fail) => {
+    const rows = [];
+    return { rows, prepare: () => ({ bind: (...values) => ({ run: async () => { if (fail) throw new Error('d1 down'); rows.push(values); } }) }) };
+  };
+  const ctx = () => { const pending = []; return { pending, waitUntil: (p) => pending.push(p) }; };
+
+  env = { ...fakeEnv(), DB: fakeDb() };
+  let context = ctx();
+  response = await worker.fetch(dl('https://hushbook.app/dl/windows?utm_source=x'), env, context);
+  await Promise.all(context.pending);
+  assert.equal(response.status, 302);
+  assert.equal(response.headers.get('location'), DOWNLOADS.windows);
+  assert.equal(response.headers.get('cache-control'), 'private, no-store', 'a cached redirect would skip the log');
+  assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
+  assert.equal(env.DB.rows.length, 1, 'GET writes one row');
+  assert.equal(env.DB.rows[0][2], 'x');
+  assert.equal(env.calls.length, 0, 'download redirect must not touch ASSETS');
+
+  response = await worker.fetch(dl('https://hushbook.app/dl/windows', {}, 'HEAD'), env, context);
+  response = await worker.fetch(dl('https://hushbook.app/dl/windows', { 'sec-purpose': 'prefetch' }), env, context);
+  assert.equal(response.status, 302);
+  assert.equal(env.DB.rows.length, 1, 'HEAD and prefetch are not counted');
+
+  env = { ...fakeEnv(), DB: fakeDb(true) };
+  context = ctx();
+  const consoleError = console.error;
+  console.error = () => {};
+  response = await worker.fetch(dl('https://hushbook.app/dl/windows'), env, context);
+  await Promise.all(context.pending);
+  console.error = consoleError;
+  assert.equal(response.headers.get('location'), DOWNLOADS.windows, 'a failed log must not block the download');
+  response = await worker.fetch(dl('https://hushbook.app/dl/windows'), fakeEnv());
+  assert.equal(response.status, 302, 'no DB binding and no ctx still redirects');
+
+  const wrangler = fs.readFileSync(path.join(ROOT, 'wrangler.jsonc'), 'utf8');
+  assert.ok(/"run_worker_first":\s*\[[^\]]*"\/dl\/\*"/.test(wrangler), '/dl/* must reach the Worker');
+  assert.ok(/"binding":\s*"DB"/.test(wrangler), 'DB binding must exist');
+  assert.ok(fs.readFileSync(path.join(ROOT, '.assetsignore'), 'utf8').includes('/migrations/'), 'migrations must not ship as assets');
+  const desktop = fs.readFileSync(path.join(ROOT, 'desktop.html'), 'utf8');
+  assert.equal((desktop.match(/<a [^>]*href="\/dl\/windows"[^>]*data-dl="windows"/g) || []).length, 2, 'both Windows buttons go through /dl/windows');
+  assert.equal(/<a [^>]*href="[^"]*HushBook-Setup\.exe/.test(desktop), false, 'no button may bypass the download log');
+
+  console.log('Cloudflare Worker routing, tracking, download log and noindex contract passes.');
 }
 
 main().catch((error) => {

@@ -12,6 +12,7 @@
 /content/
 /scripts/
 /src/
+/migrations/
 /docs/
 /data/
 /research/

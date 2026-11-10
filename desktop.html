@@ -322,7 +322,7 @@ h2 em{font-style:italic;color:var(--gold-hi)}
     <h1>HushBook for your computer</h1>
     <p class="sub shimmer">Transcribe audiobooks on your PC and read along on a big screen.</p>
     <div class="get" id="download">
-      <a class="pill" href="https://downloads.hushbook.app/windows/HushBook-Setup.exe" aria-label="Download HushBook for Windows">
+      <a class="pill" href="/dl/windows" data-dl="windows" rel="nofollow" aria-label="Download HushBook for Windows">
         <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.1 10.4 4v7.2H3V5.1Zm8.4-1.3L21 2.4v8.8h-9.6V3.8ZM3 12.6h7.4v7.3L3 18.9v-6.3Zm8.4 0H21v9l-9.6-1.4v-7.6Z"/></svg>
         <span><small>Download for</small><b>Windows</b></span>
       </a>
@@ -442,7 +442,7 @@ h2 em{font-style:italic;color:var(--gold-hi)}
   <div class="glyph"><img src="/assets/img/logo.png" width="192" height="189" alt="" loading="lazy"></div>
   <h2 id="get-title">Start reading along on your PC.</h2>
   <div class="get">
-    <a class="pill" href="https://downloads.hushbook.app/windows/HushBook-Setup.exe" aria-label="Download HushBook for Windows">
+    <a class="pill" href="/dl/windows" data-dl="windows" rel="nofollow" aria-label="Download HushBook for Windows">
       <svg class="pic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.1 10.4 4v7.2H3V5.1Zm8.4-1.3L21 2.4v8.8h-9.6V3.8ZM3 12.6h7.4v7.3L3 18.9v-6.3Zm8.4 0H21v9l-9.6-1.4v-7.6Z"/></svg>
       <span><small>Download for</small><b>Windows</b></span>
     </a>
@@ -578,7 +578,26 @@ h2 em{font-style:italic;color:var(--gold-hi)}
     panel.hidden=true;
     if(back&&opener)opener.focus();
   }
-  document.querySelectorAll('.pill[href*="HushBook-Setup.exe"]').forEach(function(a){a.addEventListener("click",open);});
+  // /dl/windows logs the download with its source, then redirects to the installer (src/downloads.mjs).
+  // The landing data is kept for the tab, so a reload or a detour through another page does not lose it.
+  var src="";
+  try{src=sessionStorage.getItem("hb_dl_src")||"";}catch(e){}
+  if(!src){
+    var q=new URLSearchParams(location.search),p=new URLSearchParams(),r=null;
+    ["utm_source","utm_medium","utm_campaign","ref"].forEach(function(k){var v=q.get(k);if(v)p.set(k,v);});
+    try{r=new URL(document.referrer);}catch(e){}
+    if(r&&r.host!==location.host)p.set("r",(r.origin+r.pathname).slice(0,200));
+    else if(r)p.set("from",r.pathname.slice(0,200));
+    src=p.toString();
+    try{sessionStorage.setItem("hb_dl_src",src);}catch(e){}
+  }
+  document.querySelectorAll("a[data-dl]").forEach(function(a){
+    if(src)a.href=a.getAttribute("href")+"?"+src;
+    a.addEventListener("click",function(e){
+      if(window.gtag)gtag("event","file_download",{file_name:"HushBook-Setup.exe",file_extension:"exe",link_url:a.href,link_text:"Download for Windows"});
+      open(e);
+    });
+  });
   closeBtn.addEventListener("click",close);
   document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
 })();

@@ -22,7 +22,8 @@
     "indexnow": "node scripts/indexnow-ping.js",
     "build:mockups": "node tools/mockups/render.mjs",
     "dev:cf": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "stats:downloads": "wrangler d1 execute hushbook-downloads --remote --command \"SELECT src, COUNT(*) AS downloads, MAX(ts) AS latest FROM downloads WHERE bot = 0 GROUP BY src ORDER BY downloads DESC\""
   },
   "devDependencies": {
     "playwright": "^1.64.1",

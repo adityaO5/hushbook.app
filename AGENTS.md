@@ -10,4 +10,5 @@
 - Hosting: Cloudflare Workers Static Assets (`wrangler.jsonc`, Worker in `src/`, `.assetsignore` decides what ships).
 - `npm run build:cf` regenerates `_redirects`, `_headers` and `src/locale-rules.json` from `localization.config.js`.
 - Push to `main` deploys through `.github/workflows/deploy.yml`; `npm run deploy` deploys from a logged-in machine.
+- Installer buttons link to `/dl/<platform>`: the Worker (`src/downloads.mjs`) logs the download and its source to D1 `hushbook-downloads`, then redirects to R2. `npm run stats:downloads` lists downloads by source; schema in `migrations/`.
 - Cutover and rollback steps: `docs/migration/cloudflare-workers.md`.

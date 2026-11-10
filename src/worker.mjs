@@ -1,9 +1,13 @@
 import rules from './locale-rules.json' with { type: 'json' };
+import { downloadResponse } from './downloads.mjs';
 import { localeRedirect } from './routing.mjs';
 import { normalizeTrackingRequest } from './tracking.mjs';
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    const download = downloadResponse(request, env, ctx);
+    if (download) return download;
+
     const tracking = normalizeTrackingRequest(request);
     if (tracking) return tracking;
 

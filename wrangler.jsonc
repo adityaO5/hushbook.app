@@ -11,6 +11,10 @@
   // Production: this route captures hushbook.app before it reaches Vercel. Remove it to roll back.
   "routes": [{ "pattern": "hushbook.app/*", "zone_name": "hushbook.app" }],
   "observability": { "enabled": true },
+  // Installer download log, written by /dl/<platform> (src/downloads.mjs). Read it with `npm run stats:downloads`.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "hushbook-downloads", "database_id": "ae00f9b4-cfd5-463b-961c-d643f3f441f8", "migrations_dir": "migrations" }
+  ],
   "assets": {
     // The repo root is the site; .assetsignore keeps source, tooling and secrets out.
     "directory": "./",
@@ -19,7 +23,7 @@
     "html_handling": "drop-trailing-slash",
     // Paths with no asset get the nearest 404.html with status 404.
     "not_found_handling": "404-page",
-    // The Worker runs only here: / (locale redirects) and /*=* (/utm_source=x links). Every other path, 404s included, never reaches it.
-    "run_worker_first": ["/", "/*=*", "!/assets/*"]
+    // The Worker runs only here: / (locale redirects), /*=* (/utm_source=x links) and /dl/* (download log). Every other path, 404s included, never reaches it.
+    "run_worker_first": ["/", "/*=*", "/dl/*", "!/assets/*"]
   }
 }
