@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Crime and Punishment editions</title>
+<!--
+  Figure for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-editions.webp).
+  Data: docs/seo/drafts/2026-11-11-best-crime-and-punishment-audiobook/research-platforms.md, tables 1a, 2a and 8
+  (VERIFIED rows only). Runtime = Audible's for the store editions, LibriVox's own for the free versions, rounded to
+  the minute as in table 8. Re-render (2x, WebP):
+    node render-html.mjs editions-figure.html crime-and-punishment-audiobook-editions.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #655E57;           /* neutral bars: 3.1:1 on ink, paper text inside 5.5:1 */
+    --coral: #E8613F;          /* the one accent: the free pick, ink text inside 5.8:1 */
+    --hair: rgba(246, 239, 228, .10);
+    --base: rgba(246, 239, 228, .34);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 8px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    max-width: 610px;
+    text-wrap: balance;
+  }
+  .group { margin-top: 24px; }
+  .gh {
+    display: flex; align-items: baseline; gap: 10px;
+    margin: 0 0 12px; padding-top: 14px; border-top: 1px solid var(--hair);
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 22px; line-height: 1.2; color: var(--paper);
+  }
+  .gh .yr { font-family: 'HBInter', system-ui, sans-serif; font-size: 15px; font-weight: 500; color: var(--paper-dim); font-variant-numeric: tabular-nums; }
+  .sub { margin: 14px 0 8px; font-size: 15px; font-weight: 500; color: var(--paper-dim); }
+  .plot { position: relative; width: 628px; }
+  /* Zero baseline the bars grow from; every bar carries its value, so no gridlines. */
+  .zero { position: absolute; top: -4px; bottom: -4px; left: 0; width: 1px; background: var(--base); }
+  .row { position: relative; height: 24px; margin-bottom: 7px; display: flex; align-items: center; }
+  .row:last-child { margin-bottom: 0; }
+  .bar {
+    position: relative; height: 24px; flex: none;
+    background: var(--gray);
+    border-radius: 0 4px 4px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    box-sizing: border-box; padding: 0 10px;
+    font-size: 15px; line-height: 1; white-space: nowrap;
+    color: var(--paper);
+  }
+  .pick .bar { background: var(--coral); color: var(--ink); }
+  .who b { font-weight: 600; }
+  .who span { font-weight: 400; }
+  .tag { font-weight: 600; }
+  .val { margin-left: 8px; font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; }
+  .val i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .axis { position: relative; height: 34px; margin-top: 10px; border-top: 1px solid var(--hair); }
+  .mark { position: absolute; top: -1px; width: 1px; height: 6px; background: rgba(246, 239, 228, .22); }
+  .tick { position: absolute; top: 10px; transform: translateX(-50%); font-size: 15px; color: var(--muted); white-space: nowrap; }
+  .tick.first { transform: none; }
+  .src { margin: 16px 0 0; font-size: 15px; line-height: 1.4; color: var(--muted); max-width: 628px; }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Crime and Punishment, unabridged: which translation each recording reads</h1>
+  <div id="groups"></div>
+  <div class="axis" id="axis"></div>
+  <p class="src">Translations from store, publisher and LibriVox credits, or from Audible samples matched to Project Gutenberg #2554.<br>Runtimes as listed by Audible and LibriVox, read November 11, 2026</p>
+</div>
+<script>
+  // Groups by translation, oldest first. Rows: [reader, label, hours, minutes, seconds, pick tag].
+  // Seconds only where the page prints them (LibriVox); labels round to the minute as table 8 does.
+  const GROUPS = [
+    { name: 'Constance Garnett', year: '1914', blocks: [
+      { rows: [
+        ['Anthony Heald', 'Blackstone', 20, 28, 0],
+        ['Will Poulter', 'Audible Studios', 22, 27, 0],
+        ['Constantine Gregory', 'Naxos AudioBooks', 22, 2, 0],
+        ['George Guidall', 'Recorded Books', 25, 1, 0],
+        ['James Anderson Foster', 'Brilliance Audio', 20, 43, 0],
+        ['Charlton Griffin', 'Audio Connoisseur', 24, 19, 0],
+        ['Dick Hill', 'Tantor Audio', 23, 44, 0],
+        ['Walter Zimmerman', 'Jimcin Recordings', 23, 21, 0],
+        ['Alan Munro', 'Trout Lake Media', 25, 4, 0],
+        ['Alastair Cameron', 'A.R.N. Publications', 20, 8, 0],
+        ['Mark Nelson', 'Paperless', 21, 50, 0],
+        ['David Rintoul', 'SNR Audio', 22, 38, 0],
+        ['David Bendena', 'Dreamscape Media', 22, 22, 0],
+        ['Keith Brown', 'Spotify Audiobooks', 21, 20, 0],
+      ] },
+      { sub: 'Free on LibriVox', rows: [
+        ['14 readers', 'Version 1', 23, 26, 7],
+        ['Expatriate', 'Version 2', 19, 52, 38],
+        ['Mark Nelson', 'Version 3', 22, 2, 11, 'Best free'],
+        ['49 readers', 'Version 4, dramatic', 21, 19, 44],
+      ] },
+    ] },
+    { name: 'Richard Pevear and Larissa Volokhonsky', year: '1992', blocks: [
+      { rows: [['Bill Homewood', 'Echo Point Books & Media, 2025', 28, 4, 0]] },
+    ] },
+    { name: 'Oliver Ready', year: '2014', blocks: [
+      { rows: [['Don Warrington', 'Penguin Classics, 2020', 25, 2, 0]] },
+    ] },
+  ];
+  const MAX_H = 30, PLOT_W = 530;            // 0 to 30 hours across 530 px; the value label rides past the tip
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const x = h => h / MAX_H * PLOT_W;
+  const hm = r => {                          // rounded to the minute
+    const total = Math.round(r[2] * 60 + r[3] + r[4] / 60);
+    return [Math.floor(total / 60), total % 60];
+  };
+  let html = '';
+  for (const g of GROUPS) {
+    html += '<section class="group"><div class="gh">' + esc(g.name) + '<span class="yr">' + g.year + '</span></div>';
+    for (const b of g.blocks) {
+      if (b.sub) html += '<div class="sub">' + esc(b.sub) + '</div>';
+      const rows = b.rows.map((d, i) => ({ i, d, hours: d[2] + d[3] / 60 + d[4] / 3600 }))
+        .sort((a, c) => a.hours - c.hours || a.i - c.i);   // shortest first
+      html += '<div class="plot"><div class="zero"></div>';
+      for (const { d, hours } of rows) {
+        const [h, m] = hm(d);
+        html += '<div class="row' + (d[5] ? ' pick' : '') + '">' +
+          '<div class="bar" style="width:' + x(hours).toFixed(2) + 'px">' +
+            '<span class="who"><b>' + esc(d[0]) + '</b><span> · ' + esc(d[1]) + '</span></span>' +
+            (d[5] ? '<span class="tag">' + esc(d[5]) + '</span>' : '') +
+          '</div>' +
+          '<span class="val">' + h + '<i> h </i>' + m + '<i> min</i></span>' +
+        '</div>';
+      }
+      html += '</div>';
+    }
+    html += '</section>';
+  }
+  document.getElementById('groups').innerHTML = html;
+  let ticks = '';
+  for (let h = 0; h <= MAX_H; h += 5) {
+    ticks += '<div class="mark" style="left:' + x(h).toFixed(2) + 'px"></div>' +
+      '<div class="tick' + (h === 0 ? ' first' : '') + '" style="left:' + x(h).toFixed(2) + 'px">' + (h === 0 ? '0' : h + ' h') + '</div>';
+  }
+  const axis = document.getElementById('axis');
+  axis.style.width = (PLOT_W + 1) + 'px';
+  axis.innerHTML = ticks;
+  // Fit check for the renderer: every label must sit inside its bar with its padding.
+  window.__fit = [...document.querySelectorAll('.bar')].map(b => {
+    const who = b.querySelector('.who').getBoundingClientRect().width;
+    const tag = b.querySelector('.tag') ? b.querySelector('.tag').getBoundingClientRect().width + 12 : 0;
+    return { label: b.textContent, bar: +b.getBoundingClientRect().width.toFixed(1), need: +(who + tag + 20).toFixed(1) };
+  }).filter(f => f.need > f.bar);
+</script>
+</body>
+</html>

@@ -43,7 +43,7 @@ What helps when you listen:
 2. **Skip back on introductions.** If you missed who someone is, rewind straight away rather than hoping it comes clear later.
 3. **Slow down for the opening chapters.** That is where most of the cast arrives at once. Our guide to [audiobook listening speed](/blog/audiobook-listening-speed) explains when slower is worth it.
 4. **Note where you heard them.** Chapter and time let you find the introduction again.
-5. **Read along when the names are hard.** With the text on screen you see the spelling and the context. [Reading along](/blog/does-reading-along-with-an-audiobook-help) helps most when listening alone would lose you, and a long cast is one of those times.
+5. **Read along when the names are hard.** With the text on screen you see the spelling and the context. [Reading along](/blog/does-reading-along-with-an-audiobook-help) helps most when listening alone would lose you, and a long cast is one of those times. In *Crime and Punishment*, Raskolnikov is also Rodya and Rodion Romanovitch, and our [guide to its audiobooks](/blog/best-crime-and-punishment-audiobook) lists the names each main character goes by.
 
 ## Is there an app to keep track of book characters?
 

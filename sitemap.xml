@@ -1702,11 +1702,19 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-crime-and-punishment-audiobook</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-crime-and-punishment-audiobook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-crime-and-punishment-audiobook"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/best-count-of-monte-cristo-audiobook</loc>

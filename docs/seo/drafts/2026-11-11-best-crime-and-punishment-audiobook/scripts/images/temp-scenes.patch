@@ -1,0 +1,154 @@
+--- player-cover/index.html	2026-11-03 15:48:52.523824500 +0530
++++ _tmp-cp-player/index.html	2026-11-11 12:04:18.716280800 +0530
+@@ -183,6 +183,9 @@
+         'odyssey':           { file: 'odessey.jpg', title: 'The Odyssey', author: 'Homer' },
+         'fantastic-beasts':  { file: 'fantastic beasts.jpg', title: 'Fantastic Beasts and Where to Find Them', author: 'J.K. Rowling' },
+         'dungeon-crawler-carl': { file: 'dungeon crawler carl.jpg', title: 'Dungeon Crawler Carl', author: 'Matt Dinniman' },
++        // TEMP (blog image): LibriVox Crime and Punishment (Version 3), archive.org item crime_punishment_3_1708_librivox;
++        // title and author as the item's metadata gives them, which Discover imports as is.
++        'cp-librivox':       { file: 'crimepunishment_1708.jpg', title: 'Crime and Punishment (Version 3)', author: 'Fyodor Dostoyevsky', local: true },
+       };
+       const BOOK = BOOKS[hbVar('cover', 'hitchhikers')] || BOOKS.hitchhikers;
+       const ELAPSED = Number(hbVar('elapsed', 166));
+@@ -349,7 +352,7 @@
+       }
+ 
+       placeDevice();
+-      const coverSrc = '../../assets/covers/' + encodeURIComponent(BOOK.file);
++      const coverSrc = (BOOK.local ? 'assets/' : '../../assets/covers/') + encodeURIComponent(BOOK.file);
+       $('artImg').src = coverSrc;
+       $('bgImg').src = coverSrc;
+       for (const k in TOK) stage.style.setProperty('--' + k, TOK[k]);
+--- ios-read-along/index.html	2026-11-03 15:48:52.509247400 +0530
++++ _tmp-cp-read-along/index.html	2026-11-11 12:05:52.522256300 +0530
+@@ -38,6 +38,10 @@
+       .blkLabel{font-family:HBNews,serif;font-variation-settings:"opsz" 18,"wght" 500;font-size:12px;letter-spacing:1.44px;line-height:15px;
+                 font-feature-settings:"case","kern";color:var(--rubricText);white-space:nowrap}
+       .rule{width:36px;height:1px;margin:16px auto 0;background:var(--hairline)}
++      /* TEMP: ChapterBlock title (chapter_block.dart): Newsreader 1.32 em of the reading size, w420, height 1.15, ink, 10 below the label. */
++      .blkTitle{margin-top:10px;font-family:HBNews,serif;font-size:30.36px;line-height:1.15;font-variation-settings:"opsz" 18,"wght" 420;
++                letter-spacing:0;color:var(--ink);text-align:center;white-space:normal}
++      #hTitleText.two{display:block;width:193px;white-space:normal;text-wrap:balance}
+       .narrowCol{width:265px}
+       .ln{font-family:var(--lfont);font-size:23px;line-height:34.5px;font-variation-settings:var(--lvar);white-space:normal;font-kerning:normal;color:var(--far)}
+       .tx{position:relative}
+@@ -192,12 +196,17 @@
+       // and folds into the lamp by about 3 s; shots without the dock need t >= 3.
+ 
+       // ── The excerpt: The Hitch-Hiker's Guide to the Galaxy, chapter 1 (BUILDER-BRIEF.md) ──
++      // TEMP (blog image): Crime and Punishment, Part I, Chapter I, Constance Garnett's translation,
++      // Project Gutenberg #2554 (public domain), first three paragraphs.
+       const CHAPTER = [
+-"Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.",
+-"Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.",
+-"This planet has, or rather had, a problem, which was this: most of the people living on it were unhappy for pretty much of the time. Many solutions were suggested for this problem, but most of these were largely concerned with the movements of small green pieces of paper, which is odd because on the whole it wasn't the small green pieces of paper that were unhappy.",
+-"And so the problem remained; lots of the people were mean, and most of them were miserable, even the ones with digital watches."
++"On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.",
++"He had successfully avoided meeting his landlady on the staircase. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room. The landlady who provided him with garret, dinners, and attendance, lived on the floor below, and every time he went out he was obliged to pass her kitchen, the door of which invariably stood open. And each time he passed, the young man had a sick, frightened feeling, which made him scowl and feel ashamed. He was hopelessly in debt to his landlady, and was afraid of meeting her.",
++"This was not because he was cowardly and abject, quite the contrary; but for some time past he had been in an overstrained irritable condition, verging on hypochondria. He had become so completely absorbed in himself, and isolated from his fellows that he dreaded meeting, not only his landlady, but anyone at all. He was crushed by poverty, but the anxieties of his position had of late ceased to weigh upon him. He had given up attending to matters of practical importance; he had lost all desire to do so. Nothing that any landlady could do had a real terror for him. But to be stopped on the stairs, to be forced to listen to her trivial, irrelevant gossip, to pestering demands for payment, threats and complaints, and to rack his brains for excuses, to prevaricate, to lie--no, rather than that, he would creep down the stairs like a cat and slip out unseen."
+       ];
++      // The chapter's title as the app stores it for this recording: the archive.org file title of
++      // crimepunishment_01_dostoyevsky_64kb.mp3 (item crime_punishment_3_1708_librivox), which Discover
++      // imports as is. The book's chapter 2 of 41: chapter 1 is "00 - Preface".
++      const CHAPTER_TITLE = '01 - Part 1 Chapter 1';
+ 
+       // ── Beats (seconds of film time) ────────────────────────────────────────────
+       // Read-along is open and playing from the chapter's start with the dock shown; it folds
+@@ -205,12 +214,12 @@
+       // whole timeline, picked by the shot.
+       const START = 0;                      // chapter position (s) at film time 0
+       const T_HIDE = 2.5;
+-      const CHAPTER_LEN = 12 * 60 + 4;      // Chapter 1, 12:04
+-      const CHAPTER_NUMBER = 1;             // the dock's "Chapter 1" (chapterNumber)
+-      const CHAPTER_NUMERAL = 'I';          // romanNumeral(1): the head and the chapter block print it
++      const CHAPTER_LEN = 1283;             // LibriVox v3 "01 - Part 1 Chapter 1", 1283.29 s (archive.org length)
++      const CHAPTER_NUMBER = 2;             // chapter.ordinal + 1 (the preface is ordinal 0)
++      const CHAPTER_NUMERAL = 'II';         // romanNumeral(2): the head and the chapter block print it
+       // The Hitchhiker's cover's average colour (coverAverageColorProvider: the opaque pixels of a
+       // 16 px wide decode of assets/covers/hitchhikers.jpg). The ambient page carries its wash.
+-      const COVER_AVERAGE = '#AE2A37';
++      const COVER_AVERAGE = '#B86D25';      // crimepunishment_1708.jpg, 16 px wide decode
+ 
+       // ── Appearance: LyricsTheme (prefs_service.dart) + FolioTokens (folio/folio_tokens.dart) ──
+       const THEMES = {
+@@ -283,12 +292,14 @@
+       // punctuation. The reader's lines are cut at these pauses (regroup below), as they are
+       // at a real narrator's pauses; with no pause at all, an over-long run splits after its
+       // first words.
+-      const BREATHS = ['ninety-two million miles', 'little blue green planet'];
++      const BREATHS = ['hot evening early in July', 'came out of the garret', 'every time he went out'];
+       const words = [];
+-      CHAPTER.forEach(p => p.split(' ').forEach(w => words.push({ text: w, end: /[.!?]["’”)]*$/.test(w), breath: false })));
++      // TEMP: Garnett's initials ("S. Place", "K. bridge") are read through, not as sentence ends.
++      const initial = w => /^[A-Z]\.$/.test(w.trim());
++      CHAPTER.forEach(p => p.split(' ').forEach(w => words.push({ text: w, end: /[.!?]["’”)]*$/.test(w) && !initial(w), breath: false })));
+       { const flat = words.map(w => w.text).join(' ');
+         for (const ph of BREATHS) { const at = flat.indexOf(ph); if (at >= 0) words[flat.slice(0, at + ph.length).split(' ').length - 1].breath = true; } }
+-      const alnum = w => w.text.replace(/[^A-Za-z0-9]/g, '').length;
++      const alnum = w => w.text.replace(/[^\p{L}\p{N}]/gu, '').length;
+       const pause = w => w.end ? 0.42 : /[;:]["’”]*$/.test(w.text) ? 0.30 : /[,—]["’”]*$/.test(w.text) ? 0.17 : w.breath ? 0.12 : 0;
+       const dur = words.map(w => 0.19 + 0.028 * alnum(w) + pause(w));
+       const wStart = [], wEnd = [];
+@@ -317,7 +328,7 @@
+           const text = words[i].text.trim();
+           runWords++; runChars += text.length + 1;
+           const last = text.slice(-1);
+-          const strong = last === '.' || last === '!' || last === '?';
++          const strong = (last === '.' || last === '!' || last === '?') && !initial(text);
+           const soft = last === ',' || last === ';' || last === ':';
+           let br = false;
+           if (i + 1 < n && ms(wStart[i + 1]) - ms(wEnd[i]) >= CFG.gapMs) br = true;
+@@ -372,7 +383,7 @@
+       const NOTCH_TOP = (852 - (SAFE_BOTTOM + 16 + 64 + 4 + 48 + 4 + 48)) - TEXT_TOP;
+       const NOTCH_W = Math.max(1, LAMP.x - 16 - SIDE);
+       const LINE_PAD = 10, FONT_PX = 23, LINE_H = 23 * 1.5, CAP_ROW = 0.78 * 23 * 2.15;
+-      const BLOCK_H = 4 + 15 + 16 + 1 + 28;  // ChapterBlock: label only (the title is the generated "Chapter 1")
++      let BLOCK_H = 4 + 15 + 16 + 1 + 28;    // ChapterBlock: label; TEMP: + 10 + the title's height, measured once fonts load
+ 
+       const stage = document.getElementById('stage');
+       const pager = document.getElementById('pager');
+@@ -486,7 +497,8 @@
+         let html = '';
+         L.pages.forEach((pg, p) => {
+           html += '<div class="page" data-p="' + p + '" style="left:' + (p * 393) + 'px"><div class="pbox">';
+-          if (pg.hasBlock) html += '<div class="blk"><div class="blkLabel">' + esc(chapterLabelParts().join('')) + '</div><div class="rule"></div></div>';
++          if (pg.hasBlock) html += '<div class="blk"><div class="blkLabel">' + esc(chapterLabelParts().join('')) + '</div>' +
++            (CHAPTER_TITLE ? '<div class="blkTitle">' + esc(CHAPTER_TITLE) + '</div>' : '') + '<div class="rule"></div></div>';
+           let narrowOpen = false;
+           L.flat.forEach((f, n) => {
+             if (f.page !== p) return;
+@@ -717,7 +729,33 @@
+         hbLocaleSetup();
+         hbApplyStrings();
+         const head = chapterLabelParts();
+-        $('hTitleText').innerHTML = esc(head[0]) + (head[1] ? '<b>' + esc(head[1]) + '</b>' : '') + esc(head[2]);
++        // TEMP: RunningHead fit rule (running_head.dart): the full form "I · TITLE" on one line, else on two
++        // balanced lines that fit the 48 dp row (phones), else the short form "CHAPTER I".
++        {
++          const ht = $('hTitleText'), z0 = stage.getBoundingClientRect().width / 393;
++          const shortHTML = esc(head[0]) + (head[1] ? '<b>' + esc(head[1]) + '</b>' : '') + esc(head[2]);
++          const fullHTML = CHAPTER_TITLE ? '<b>' + esc(CHAPTER_NUMERAL) + '</b>' + esc(' · ' + CHAPTER_TITLE.toUpperCase()) : shortHTML;
++          ht.innerHTML = fullHTML;
++          let fit = 'oneLine';
++          if (ht.getBoundingClientRect().width / z0 > 193) {
++            ht.classList.add('two');
++            const h = ht.getBoundingClientRect().height / z0, lines = Math.round(h / (11 * 1.3));
++            fit = lines <= 2 && h <= 48 ? 'twoLines' : 'short';
++            if (fit === 'short') { ht.classList.remove('two'); ht.innerHTML = shortHTML; }
++          }
++          window.__headFit = fit;
++        }
++        // TEMP: the chapter block's height with its title.
++        if (CHAPTER_TITLE) {
++          const z0 = stage.getBoundingClientRect().width / 393, probe = document.createElement('div');
++          probe.className = 'blkTitle';
++          probe.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;margin:0;width:' + PAGE_W + 'px';
++          probe.textContent = CHAPTER_TITLE;
++          $('reader').appendChild(probe);
++          BLOCK_H += 10 + Math.ceil(probe.getBoundingClientRect().height / z0);
++          window.__titleH = probe.getBoundingClientRect().height / z0;
++          probe.remove();
++        }
+         $('chapLine').textContent = hbT('chapterNumber', 'Chapter {number}').replace('{number}', String(CHAPTER_NUMBER));
+         zoomZ = stage.getBoundingClientRect().width / 393;
+         statusIcons();

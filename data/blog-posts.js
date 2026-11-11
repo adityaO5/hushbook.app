@@ -8,6 +8,43 @@
 
 const posts = [
   {
+    slug: 'best-crime-and-punishment-audiobook',
+    cta: { heading: 'Read Crime and Punishment as you hear it', text: 'HushBook finds the free LibriVox recordings of Crime and Punishment and highlights each word as the narrator reads, so no name slips past you. Free on iPhone, Android and Windows, no account.' },
+    title: 'Best Audiobook Version of Crime and Punishment: Every Translation and Narrator Compared',
+    metaTitle: 'Best Crime and Punishment Audiobook: Every Edition Compared',
+    metaDescription: 'Anthony Heald\'s Blackstone recording is the best Crime and Punishment audiobook; Mark Nelson\'s LibriVox Version 3 is the best free one. 20 editions compared.',
+    description: 'Anthony Heald\'s Blackstone recording is our pick and Mark Nelson\'s LibriVox reading the free one. Every unabridged edition by translation, narrator and runtime, the McDuff and Penguin question, listening time and the Russian names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-11',
+    dateModified: '2026-11-11',
+    readingTime: '17 min read',
+    keywords: [
+      'best crime and punishment audiobook',
+      'crime and punishment audiobook best narrator',
+      'best crime and punishment translation',
+      'crime and punishment audiobook length',
+      'crime and punishment audiobook free',
+      'crime and punishment audiobook translated by david mcduff',
+      'crime and punishment audiobook translated by richard pevear',
+      'crime and punishment audiobook penguin classics'
+    ],
+    takeaways: [
+      'Anthony Heald\'s unabridged Blackstone recording, 20 hours 28 minutes, is our best overall pick: 4.6 stars from 10,436 Audible ratings as of November 11, 2026, and a 2009 Audie finalist.',
+      'The best free version is LibriVox Version 3, in which Mark Nelson reads Constance Garnett\'s translation alone for 22 hours 2 minutes. All four free LibriVox recordings read Garnett\'s 1914 text.',
+      'Penguin\'s unabridged audiobook, read by Don Warrington in 2020, uses Oliver Ready\'s translation. The only audio on the David McDuff page is a 2005 abridged download of 5 hours 15 minutes.',
+      'For Pevear and Volokhonsky\'s translation, Bill Homewood\'s 2025 recording runs 28 hours 4 minutes. Anthony Heald, Will Poulter, Constantine Gregory and George Guidall all read Garnett\'s public domain translation.',
+      'Garnett\'s text has 203,197 words in 41 chapters by our count: about 22 hours 26 minutes at 1x, 17 hours 57 minutes at 1.25x and 14 hours 57 minutes at 1.5x.'
+    ],
+    faqs: [
+      ['Who is the best narrator of Crime and Punishment?', 'Anthony Heald, on the evidence we could check. His 2007 Blackstone recording runs 20 hours 28 minutes and has 4.6 stars from 10,436 Audible ratings as of November 11, 2026, more than any other edition.'],
+      ['How many hours is the Crime and Punishment audiobook?', 'About 20 to 28 hours. Paid editions run from 20 hours 8 minutes (Alastair Cameron) to 28 hours 4 minutes (Bill Homewood) on Audible. The free LibriVox Version 2 runs 19 hours 53 minutes.'],
+      ['Is there a free Crime and Punishment audiobook?', 'Yes. LibriVox has four free recordings of Constance Garnett\'s translation. In Version 3, Mark Nelson reads alone for 22 hours 2 minutes; Version 4 is a dramatic reading with 49 volunteers.'],
+      ['Is there an audiobook of the Penguin Classics translation?', 'Yes, of Oliver Ready\'s: Penguin\'s 2020 unabridged recording, read by Don Warrington, runs 1,502 minutes. We found no unabridged audiobook of David McDuff\'s translation, the Penguin Classics paperback sold in the US.'],
+      ['Which translation of Crime and Punishment is best for listening?', 'Garnett\'s, for choice: most audiobooks and all four free ones read her 1914 translation. For modern English, Don Warrington reads Oliver Ready\'s and Bill Homewood reads Pevear and Volokhonsky\'s.'],
+      ['Is there a Crime and Punishment audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+    ]
+  },
+  {
     slug: 'best-count-of-monte-cristo-audiobook',
     cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android and Windows, no account.' },
     title: 'Best Audiobook Version of The Count of Monte Cristo: Every Unabridged Edition Compared',

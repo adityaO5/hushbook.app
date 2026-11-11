@@ -19,7 +19,7 @@ Downloads removed most of that problem. A long book costs about the same to deli
 ## How to tell if an audiobook is unabridged
 
 - **Check the label.** Most stores print "Unabridged" or "Abridged" on the listing, often in the product details or right under the title.
-- **Compare the length.** A typical novel runs somewhere around 8 to 15 hours unabridged. If a 600-page book shows a 5-hour runtime, it has almost certainly been cut.
+- **Compare the length.** A typical novel runs somewhere around 8 to 15 hours unabridged. If a 600-page book shows a 5-hour runtime, it has almost certainly been cut. *Crime and Punishment*, for example, runs about 20 to 28 hours unabridged, while its [abridged audiobooks](/blog/best-crime-and-punishment-audiobook) run from 2 hours 20 minutes to 5 hours 15 minutes.
 - **Read the description.** Look for words like "condensed", "adapted", "dramatized" or "radio play". A dramatization with a full cast is a different thing again, and it may change the text.
 - **Look at the narrator credit.** A single narrator usually means a straight reading. Lots of named performers often means a dramatization.
 

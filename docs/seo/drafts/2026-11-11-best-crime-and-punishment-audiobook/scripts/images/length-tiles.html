@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Crime and Punishment length</title>
+<!--
+  Figure for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-length.webp).
+  Data: docs/seo/drafts/2026-11-11-best-crime-and-punishment-audiobook/research-evidence.md, section (b)2:
+  203,197 words (count 5, Project Gutenberg #2554), 41 chapters (parts table), listening time at 151 wpm
+  (1,345.7 / 1,076.5 / 897.1 min). Re-render (2x, WebP):
+    node render-html.mjs length-tiles.html crime-and-punishment-audiobook-length.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --coral: #E8613F;          /* the one accent */
+    --hair: rgba(246, 239, 228, .12);
+    --track: rgba(246, 239, 228, .14);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row.two { grid-template-columns: repeat(2, 1fr); }
+  .row.three { grid-template-columns: repeat(3, 1fr); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 18px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 17px; font-weight: 500; letter-spacing: 0; margin-left: 5px; color: var(--paper-dim); }
+  .three .v { font-size: 30px; }
+  .three .v small { font-size: 15px; margin-left: 3px; margin-right: 5px; }
+  .three .v small:last-child { margin-right: 0; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); }
+  .speed { font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 12px; }
+  /* Meter: this speed's listening time against the 1x time, coral fill on a track of the same paper. */
+  .meter { margin-top: 16px; height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; }
+  .meter b { display: block; height: 100%; border-radius: 4px; background: var(--coral); }
+  .rowlabel { margin: 26px 0 12px; font-size: 15px; font-weight: 500; color: var(--paper-dim); }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>How long Crime and Punishment is, in Constance Garnett’s translation</h1>
+  <div class="row two">
+    <div class="tile"><i class="dash"></i><div class="v">203,197<small>words</small></div><div class="l">in the novel, without preface or notes</div></div>
+    <div class="tile"><i class="dash"></i><div class="v">41<small>chapters</small></div><div class="l">in six parts and an epilogue</div></div>
+  </div>
+  <div class="rowlabel">Listening time at 151 words a minute</div>
+  <div class="row three" id="speeds"></div>
+  <p class="src">Our count of Project Gutenberg eBook #2554 (Constance Garnett, 1914). 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study</p>
+</div>
+<script>
+  // [speed label, minutes] from research-evidence.md (b)2, "Listening time from the Garnett count".
+  const WORDS = 203197, WPM = 151;
+  const SPEEDS = [['1x', 1], ['1.25x', 1.25], ['1.5x', 1.5]];
+  const base = WORDS / WPM;                       // 1,345.7 min at 1x
+  let html = '';
+  for (const [label, k] of SPEEDS) {
+    const min = WORDS / WPM / k, total = Math.round(min);
+    const h = Math.floor(total / 60), m = total % 60;
+    html += '<div class="tile"><div class="speed">' + label + '</div>' +
+      '<div class="v">' + h + '<small>h</small>' + m + '<small>min</small></div>' +
+      '<div class="meter"><b style="width:' + (min / base * 100).toFixed(2) + '%"></b></div></div>';
+  }
+  document.getElementById('speeds').innerHTML = html;
+  window.__minutes = SPEEDS.map(([l, k]) => [l, +(WORDS / WPM / k).toFixed(1)]);
+</script>
+</body>
+</html>

@@ -56,7 +56,7 @@ You may want each narrator's accent. No publisher or store page we read states o
 
 Only the three LibriVox recordings say: they read Project Gutenberg eBook #1184, and no commercial audiobook page we read names a translation or a translator.
 
-None of the store or publisher pages we read for the editions above names a translator. Project Gutenberg's own record for eBook #1184 does not name one either: it credits "Anonymous Project Gutenberg Volunteers, Dan Muller and David Widger", with a release date of January 1, 1998.
+None of the store or publisher pages we read for the editions above names a translator. Project Gutenberg's own record for eBook #1184 does not name one either: it credits "Anonymous Project Gutenberg Volunteers, Dan Muller and David Widger", with a release date of January 1, 1998. For *Crime and Punishment*, where several stores do credit a translator, our [comparison of its audiobooks](/blog/best-crime-and-punishment-audiobook) names the translation each recording reads.
 
 Two ways to narrow it down, both our own observations rather than publisher statements:
 
