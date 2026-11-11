@@ -26,11 +26,11 @@ Don Warrington reads Oliver Ready's translation for Penguin Classics, published 
 
 ## How do the unabridged Crime and Punishment audiobooks compare?
 
+![Bar chart of 20 unabridged English recordings of Crime and Punishment, grouped by the translation each one reads, bars starting at zero. Constance Garnett's 1914 translation: Alastair Cameron, A.R.N. Publications, 20 h 8 min; Anthony Heald, Blackstone, 20 h 28 min; James Anderson Foster, Brilliance Audio, 20 h 43 min; Keith Brown, Spotify Audiobooks, 21 h 20 min; Mark Nelson, Paperless, 21 h 50 min; Constantine Gregory, Naxos AudioBooks, 22 h 2 min; David Bendena, Dreamscape Media, 22 h 22 min; Will Poulter, Audible Studios, 22 h 27 min; David Rintoul, SNR Audio, 22 h 38 min; Walter Zimmerman, Jimcin Recordings, 23 h 21 min; Dick Hill, Tantor Audio, 23 h 44 min; Charlton Griffin, Audio Connoisseur, 24 h 19 min; George Guidall, Recorded Books, 25 h 1 min; Alan Munro, Trout Lake Media, 25 h 4 min; and free on LibriVox, Expatriate, Version 2, 19 h 53 min; 49 readers, Version 4 dramatic, 21 h 20 min; Mark Nelson, Version 3, 22 h 2 min, marked best free; 14 readers, Version 1, 23 h 26 min. Richard Pevear and Larissa Volokhonsky's 1992 translation: Bill Homewood, Echo Point Books & Media, 2025, 28 h 4 min. Oliver Ready's 2014 translation: Don Warrington, Penguin Classics, 2020, 25 h 2 min. Translations from store, publisher and LibriVox credits or Audible samples matched to Project Gutenberg #2554; runtimes as listed by Audible and LibriVox, read November 11, 2026.](/assets/img/blog/crime-and-punishment-audiobook-editions.webp "wide")
+
 We found 20 unabridged English recordings by named human narrators: 16 on sale and 4 free from LibriVox.
 
 Ratings are Audible US stars with the number of ratings in brackets, as of November 11, 2026. Runtimes are Audible's for the paid editions and LibriVox's for the free ones.
-
-![Bar chart of 20 unabridged English recordings of Crime and Punishment, grouped by the translation each one reads, bars starting at zero. Constance Garnett's 1914 translation: Alastair Cameron, A.R.N. Publications, 20 h 8 min; Anthony Heald, Blackstone, 20 h 28 min; James Anderson Foster, Brilliance Audio, 20 h 43 min; Keith Brown, Spotify Audiobooks, 21 h 20 min; Mark Nelson, Paperless, 21 h 50 min; Constantine Gregory, Naxos AudioBooks, 22 h 2 min; David Bendena, Dreamscape Media, 22 h 22 min; Will Poulter, Audible Studios, 22 h 27 min; David Rintoul, SNR Audio, 22 h 38 min; Walter Zimmerman, Jimcin Recordings, 23 h 21 min; Dick Hill, Tantor Audio, 23 h 44 min; Charlton Griffin, Audio Connoisseur, 24 h 19 min; George Guidall, Recorded Books, 25 h 1 min; Alan Munro, Trout Lake Media, 25 h 4 min; and free on LibriVox, Expatriate, Version 2, 19 h 53 min; 49 readers, Version 4 dramatic, 21 h 20 min; Mark Nelson, Version 3, 22 h 2 min, marked best free; 14 readers, Version 1, 23 h 26 min. Richard Pevear and Larissa Volokhonsky's 1992 translation: Bill Homewood, Echo Point Books & Media, 2025, 28 h 4 min. Oliver Ready's 2014 translation: Don Warrington, Penguin Classics, 2020, 25 h 2 min. Translations from store, publisher and LibriVox credits or Audible samples matched to Project Gutenberg #2554; runtimes as listed by Audible and LibriVox, read November 11, 2026.](/assets/img/blog/crime-and-punishment-audiobook-editions.webp "wide")
 
 | Narrator | Translation | Runtime | Publisher | Year | Audible rating | Where we found it |
 |---|---|---|---|---|---|---|
@@ -100,11 +100,11 @@ Dralyuk's verdict: Ready's line "sounds far fresher", and Garnett's "'They are i
 
 ## How long is the Crime and Punishment audiobook?
 
+![Stat tiles for Crime and Punishment in Constance Garnett's translation: 203,197 words, 41 chapters, and listening time at 151 words a minute of 22 hours 26 minutes at 1x, 17 hours 57 minutes at 1.25x and 14 hours 57 minutes at 1.5x. Our count of Project Gutenberg eBook #2554, November 11, 2026.](/assets/img/blog/crime-and-punishment-audiobook-length.webp "wide")
+
 Unabridged recordings run from 19 hours 53 minutes (LibriVox Version 2) to 28 hours 4 minutes (Bill Homewood); paid editions start at 20 hours 8 minutes (Alastair Cameron).
 
 We counted the words ourselves. Garnett's translation in Project Gutenberg eBook #2554 has 203,197 words in the novel itself, in six parts and an epilogue: 41 chapters (7, 7, 6, 6, 5 and 8, plus Epilogue I and II). At 151 words a minute, the median pace we measured for LibriVox solo readers in our guide to [how long audiobooks run](/blog/how-long-is-an-audiobook), that is 22 hours 26 minutes at 1x, 17 hours 57 minutes at 1.25x and 14 hours 57 minutes at 1.5x.
-
-![Stat tiles for Crime and Punishment in Constance Garnett's translation: 203,197 words, 41 chapters, and listening time at 151 words a minute of 22 hours 26 minutes at 1x, 17 hours 57 minutes at 1.25x and 14 hours 57 minutes at 1.5x. Our count of Project Gutenberg eBook #2554, November 11, 2026.](/assets/img/blog/crime-and-punishment-audiobook-length.webp "wide")
 
 These figures hold for recordings of Garnett's text. Modern translations have their own word counts, which we did not measure. The Russian original on Wikisource has 170,747 words by our count, so Garnett's English runs about 19% longer.
 
@@ -210,11 +210,11 @@ None of these studies tested a whole novel, and none measured how listeners keep
 
 ## Is there a Crime and Punishment audiobook with text?
 
+![Two HushBook phone screens with the free LibriVox recording Crime and Punishment (Version 3). Left: the player, with the LibriVox cover and the title "Crime and Punishment (Version 3)". Right: Part 1, Chapter 1 as read-along text opening "On an exceptionally hot evening early in July", with the line "as though in hesitation, towards K. bridge" being read and the current word, "towards", underlined.](/assets/img/blog/crime-and-punishment-read-along.webp "wide")
+
 Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings, on iPhone, Android and Windows.
 
 HushBook is free, with no account, and transcription runs on your own device. For this book, open Discover, search "crime and punishment" and pick "Crime and Punishment (Version 3)", the 22-hour one, which is Mark Nelson's solo reading. Play a 30-second sample before you download. The download is about 640 MB, and HushBook transcribes it on your phone; each chapter is ready to read the moment it finishes. Words fill in as the narrator reads them, with a red underline on the current one. Long-press any line to play from there. For Expatriate's faster solo reading, pick the "Crime and Punishment" that runs 19 hours 53 minutes.
-
-![Two HushBook phone screens with the free LibriVox recording Crime and Punishment (Version 3). Left: the player, with the LibriVox cover and the title "Crime and Punishment (Version 3)". Right: Part 1, Chapter 1 as read-along text opening "On an exceptionally hot evening early in July", with the line "as though in hesitation, towards K. bridge" being read and the current word, "towards", underlined.](/assets/img/blog/crime-and-punishment-read-along.webp "wide")
 
 Mark a passage to keep it as a highlight, note or quote, and set the speed anywhere from 0.5x to 3x. Each book has its own character map.
 
