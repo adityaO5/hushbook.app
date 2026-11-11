@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Crime and Punishment picks</title>
+<!--
+  Lead image for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-picks.webp).
+  Data: research-platforms.md section 7 and table 8; the same values as content/blog/best-crime-and-punishment-audiobook.md
+  ("Best overall", "Best free", "Best modern translation"). phone-player.png = tools/mockups/out/en-_tmp-cp-player.png from
+  the temp scene in temp-scenes.patch (player-cover copy, cover crimepunishment_1708.jpg, elapsed 10, length 1283,
+  chapter 2 of 41), copied next to this file. Re-render (2x, WebP, fixed 16:9):
+    node render-html.mjs picks-card.html crime-and-punishment-audiobook-picks.webp 700 394
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --coral: #E8613F;          /* the one accent: the three labels */
+    --hair: rgba(246, 239, 228, .12);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px; height: 394px; overflow: hidden; position: relative;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(330px 170px at 42% -6%, rgba(232, 97, 63, .26), transparent 72%),
+      radial-gradient(240px 170px at -4% 108%, rgba(232, 97, 63, .10), transparent 72%),
+      var(--ink);
+  }
+  .phone {
+    position: absolute; left: 44px; top: 30px; height: 470px; width: auto;
+    filter: drop-shadow(0 13px 19px rgba(0, 0, 0, .62));
+  }
+  .side { position: absolute; left: 318px; right: 34px; top: 24px; }
+  h1 {
+    margin: 0 0 12px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 26px; line-height: 1.12; letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .pick { padding: 9px 0 9px; border-top: 1px solid var(--hair); }
+  .lab { font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--coral); }
+  .val {
+    margin-top: 2px;
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 23px; line-height: 1.15; color: var(--paper);
+  }
+  .det { margin-top: 2px; font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+  <img class="phone" src="phone-player.png" alt="">
+  <div class="side">
+    <h1>Crime and Punishment audiobooks: our picks</h1>
+    <div class="pick">
+      <div class="lab">Best overall</div>
+      <div class="val">Anthony Heald</div>
+      <div class="det">Blackstone · 20 h 28 min</div>
+    </div>
+    <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Mark Nelson</div>
+      <div class="det">LibriVox Version 3 · 22 h 2 min</div>
+    </div>
+    <div class="pick">
+      <div class="lab">Best modern translation</div>
+      <div class="pair">
+        <div><div class="val">Bill Homewood</div><div class="det">Pevear and Volokhonsky</div><div class="det">28 h 4 min</div></div>
+        <div><div class="val">Don Warrington</div><div class="det">Oliver Ready</div><div class="det">25 h 2 min</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

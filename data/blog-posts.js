@@ -9,6 +9,7 @@
 const posts = [
   {
     slug: 'best-crime-and-punishment-audiobook',
+    hero: 'crime-and-punishment-picks',
     cta: { heading: 'Read Crime and Punishment as you hear it', text: 'HushBook finds the free LibriVox recordings of Crime and Punishment and highlights each word as the narrator reads, so no name slips past you. Free on iPhone, Android and Windows, no account.' },
     title: 'Best Audiobook Version of Crime and Punishment: Every Translation and Narrator Compared',
     metaTitle: 'Best Crime and Punishment Audiobook: Every Edition Compared',

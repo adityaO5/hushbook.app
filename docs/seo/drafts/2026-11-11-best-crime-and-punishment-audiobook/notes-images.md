@@ -9,6 +9,7 @@ Made 2026-11-11. Nothing stock or AI-generated: two HTML figures rendered with t
 | `assets/img/blog/crime-and-punishment-audiobook-editions.webp` | 1400x2256 | 185 KB (189,828 bytes) | `scripts/images/editions-figure.html`, rendered at 2x |
 | `assets/img/blog/crime-and-punishment-audiobook-length.webp` | 1400x1092 | 66 KB (67,860 bytes) | `scripts/images/length-tiles.html`, rendered at 2x |
 | `assets/img/blog/crime-and-punishment-read-along.webp` | 1400x900 | 68 KB (69,584 bytes) | two renders from temporary mockup scenes, composed with PIL |
+| `assets/img/blog/crime-and-punishment-audiobook-picks.webp` | 1400x788 | 77 KB (78,758 bytes) | `scripts/images/picks-card.html` with the player render, rendered at 2x |
 
 Re-render a figure: `node scripts/images/render-html.mjs <figure.html> <out.webp> 700 auto` (fonts load from `D:/hushbook.app/tools/mockups/assets/fonts/`). The renderer reports font loading, overflow, text under 15 px and bar-label fit; all three images passed with no overflow and all text at 15 px or larger at 1x.
 
@@ -78,6 +79,23 @@ Data: `research-evidence.md` section (b)2 only.
 - Composed with `scripts/images/compose_phones.py`: 1400x900 ink canvas, coral glows, drop shadows, left phone 1000 px tall at (175, 130), right phone 1060 px tall at (715, 50), the same placement as 2026-11-10.
 - Simplification, as in the earlier posts: the page starts at the novel's first sentence. The real chapter file opens with the spoken LibriVox preamble, which a HushBook transcript would also show.
 - Cleanup: deleted `tools/mockups/scenes/_tmp-cp-player/`, `tools/mockups/scenes/_tmp-cp-read-along/`, `assets/img/mockups/_tmp-cp-player.webp`, `_tmp-cp-ra-ambient.webp`, `_tmp-cp-ra-warm.webp`, and `tools/mockups/out/en-_tmp-cp-*.png`. No tracked file under `assets/img/mockups/` or `tools/mockups/` was changed.
+
+## 4. Picks card (lead image, added later on 2026-11-11)
+
+Asked for by the owner as the image under the H1, above the takeaways: an answer-first picks card, 16:9.
+
+- Method: `scripts/images/picks-card.html`, a 700x394 page rendered at 2x with `render-html.mjs ... 700 394` (fixed height). Left: the player render of the LibriVox Version 3 temp scene (the same `en-_tmp-cp-player.png` used in image 3, copied next to the HTML as `phone-player.png`; no new render, so no temp scenes were created this time), 470 px tall at (44, 30) CSS, overflowing the bottom edge, with a drop shadow. The player was picked over the read-along screen because the cover draws the eye and its title, "Crime and Punishment (Version 3)", is the free pick. Right: heading in Newsreader 26 px, three rows with a coral label (Inter 15 px semibold), the narrator in Newsreader 23 px and the details in Inter 15 px. The renderer's only flag is the phone running past the bottom edge, which is intended.
+- Coral only on the three labels; everything else in paper tokens on the ink canvas with the same coral glows. Smallest figure text is 15 px CSS, 30 px in the 1400 px file. No logo, no tagline, no em or en dashes.
+- Data (research-platforms.md section 7 and table 8, the same as `content/blog/best-crime-and-punishment-audiobook.md` lines 11, 15, 19 and the edition table):
+
+| Row | Label | Values on the card | Source |
+|---|---|---|---|
+| 1 | Best overall | Anthony Heald · Blackstone · 20 h 28 min | Audible 20 hrs 28 mins (table 1a row 1) |
+| 2 | Best free | Mark Nelson · LibriVox Version 3 · 22 h 2 min | LibriVox 22:02:11 (table 2a) |
+| 3 | Best modern translation | Bill Homewood · Pevear and Volokhonsky · 28 h 4 min | Audible 28 hrs 4 mins (table 1a row 6) |
+| 3 | | Don Warrington · Oliver Ready · 25 h 2 min | Audible 25 hrs 2 mins; Penguin UK 1,502 minutes (table 1a row 5) |
+
+- Alt text: "Crime and Punishment audiobooks, our picks: best overall, Anthony Heald, Blackstone, 20 h 28 min; best free, Mark Nelson, LibriVox Version 3, 22 h 2 min; best modern translation, Bill Homewood reading Pevear and Volokhonsky, 28 h 4 min, or Don Warrington reading Oliver Ready, 25 h 2 min. Beside the list, the HushBook player with the LibriVox cover of Crime and Punishment (Version 3)."
 
 ## Scripts (`scripts/images/`)
 
