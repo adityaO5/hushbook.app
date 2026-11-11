@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>War and Peace picks</title>
+<!--
+  Lead image for /blog/best-war-and-peace-audiobook (assets/img/blog/war-and-peace-audiobook-picks.webp).
+  Data: research-platforms.md section 7 and tables 1a, 2a and 8 (VERIFIED). phone-player.png =
+  tools/mockups/out/en-_tmp-wp-player.png from the temp scene in temp-scenes.patch (player-cover copy, cover
+  warandpeacevolume1_2212.jpg, elapsed 10, length 872, chapter 1 of 68), copied next to this file.
+  Same layout as the Crime and Punishment card, with four rows set tighter. Re-render (2x, WebP, fixed 16:9):
+    node render-html.mjs picks-card.html war-and-peace-audiobook-picks.webp 700 394
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --coral: #E8613F;          /* the one accent: the four labels */
+    --hair: rgba(246, 239, 228, .12);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px; height: 394px; overflow: hidden; position: relative;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(330px 170px at 42% -6%, rgba(232, 97, 63, .26), transparent 72%),
+      radial-gradient(240px 170px at -4% 108%, rgba(232, 97, 63, .10), transparent 72%),
+      var(--ink);
+  }
+  .phone {
+    position: absolute; left: 44px; top: 30px; height: 470px; width: auto;
+    filter: drop-shadow(0 13px 19px rgba(0, 0, 0, .62));
+  }
+  .side { position: absolute; left: 318px; right: 34px; top: 18px; }
+  h1 {
+    margin: 0 0 6px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 26px; line-height: 1.12; letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .pick { padding: 5px 0 5px; border-top: 1px solid var(--hair); }
+  .lab { font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--coral); }
+  .val {
+    margin-top: 1px;
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 22px; line-height: 1.12; color: var(--paper);
+  }
+  .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+</style>
+</head>
+<body>
+  <img class="phone" src="phone-player.png" alt="">
+  <div class="side">
+    <h1>War and Peace audiobooks: our picks</h1>
+    <div class="pick">
+      <div class="lab">Best overall</div>
+      <div class="val">Thandiwe Newton</div>
+      <div class="det">Audible Studios · 60 h 14 min</div>
+    </div>
+    <div class="pick">
+      <div class="lab">Best to borrow</div>
+      <div class="val">Neville Jason</div>
+      <div class="det">Naxos AudioBooks · 2 volumes · 61 h 43 min</div>
+    </div>
+    <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Mark Nelson</div>
+      <div class="det">LibriVox Volumes 1 to 4 · 62 h 27 min</div>
+    </div>
+    <div class="pick">
+      <div class="lab">Best modern translation</div>
+      <div class="val">Penguin Classics</div>
+      <div class="det">Anthony Briggs · 5 readers · 67 h 13 min</div>
+    </div>
+  </div>
+</body>
+</html>

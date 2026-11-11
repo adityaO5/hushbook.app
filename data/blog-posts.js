@@ -8,6 +8,44 @@
 
 const posts = [
   {
+    slug: 'best-war-and-peace-audiobook',
+    hero: 'war-and-peace-picks',
+    cta: { heading: 'See every name in War and Peace as it is read', text: 'HushBook finds the free LibriVox recording of War and Peace and highlights each word as the narrator reads, so no name slips past you in 62 hours. Free on iPhone, Android and Windows, no account.' },
+    title: 'Best Audiobook Version of War and Peace: Every Translation and Narrator Compared',
+    metaTitle: 'Best War and Peace Audiobook: Every Edition Compared',
+    metaDescription: 'Thandiwe Newton\'s 2023 Audie winner is the best War and Peace audiobook; Mark Nelson\'s free LibriVox reading of the Maude translation runs 62 hours 27 minutes.',
+    description: 'Thandiwe Newton\'s 2023 Audie winner is our pick, Neville Jason\'s Naxos set the one to borrow and Mark Nelson\'s LibriVox reading the free one. Every edition by translation and runtime, listening time, the French and the names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-11',
+    dateModified: '2026-11-11',
+    readingTime: '22 min read',
+    keywords: [
+      'best war and peace audiobook',
+      'war and peace audiobook length',
+      'how long is war and peace audiobook',
+      'war and peace audiobook best narrator',
+      'war and peace audiobook thandie newton',
+      'best war and peace translation',
+      'war and peace pevear and volokhonsky audiobook',
+      'war and peace audiobook librivox'
+    ],
+    takeaways: [
+      'Thandiwe Newton\'s Audible Studios recording, 60 hours 14 minutes, is our best overall pick: winner of the 2023 Audie Award for Literary Fiction & Classics, with 4.6 stars from 1,613 ratings.',
+      'Neville Jason\'s Naxos recording, 61 hours 43 minutes in two volumes, is the best to borrow: Libby showed it at the New York, King County and San Francisco libraries.',
+      'The best free version is LibriVox\'s Maude translation in four volumes, read by Mark Nelson alone for 62 hours 27 minutes over 365 sections, one per chapter.',
+      'Penguin Classics\' 2020 recording of Anthony Briggs\'s translation, 67 hours 13 minutes with five readers, is the only modern translation on audio. We found no Pevear and Volokhonsky audiobook.',
+      'The Maude translation has 561,870 words: 62 hours 1 minute at 1x, 49 hours 37 minutes at 1.25x, 41 hours 21 minutes at 1.5x and 31 hours at 2x.'
+    ],
+    faqs: [
+      ['Who is the best narrator of War and Peace?', 'Thandiwe Newton, on the evidence we could check. Her 2021 Audible Studios recording of the Maude translation won the 2023 Audie Award for Literary Fiction & Classics and has 4.6 stars from 1,613 Audible ratings.'],
+      ['How long is the War and Peace audiobook?', 'About 62 hours at 1x. Complete recordings run from 50 hours 39 minutes to 67 hours 33 minutes on Audible, and the free LibriVox Maude reading runs 62 hours 27 minutes.'],
+      ['Which translation of War and Peace is best for audiobooks?', 'The Maude translation, for choice: ten of the twelve complete recordings on sale read it, and so do both complete free ones. Penguin\'s Briggs recording is the only modern translation on audio.'],
+      ['Is there a Pevear and Volokhonsky audiobook of War and Peace?', 'No. On November 11, 2026 we found none on Audible in four countries, Apple Books, OverDrive, Kobo or hoopla. The only modern translation on audio is Penguin\'s 2020 recording of Anthony Briggs\'s.'],
+      ['Do War and Peace audiobooks read the French parts?', 'Mostly in English. Every complete recording reads the Maude, Garnett or Briggs translation, which put almost all of Tolstoy\'s French into English. The French is heaviest in the first five hours.'],
+      ['Is there a War and Peace audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox Maude recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+    ]
+  },
+  {
     slug: 'best-crime-and-punishment-audiobook',
     hero: 'crime-and-punishment-picks',
     cta: { heading: 'Read Crime and Punishment as you hear it', text: 'HushBook finds the free LibriVox recordings of Crime and Punishment and highlights each word as the narrator reads, so no name slips past you. Free on iPhone, Android and Windows, no account.' },

@@ -74,7 +74,7 @@ Build up over a few books instead of starting with the biggest one on the list.
 1. **First book:** one of the six above, in a genre you like.
 2. **Second book:** a longer one in the same vein. From the Holmes stories to *The Hound of the Baskervilles*, or from *Jekyll and Hyde* to *Frankenstein* or *Dracula*.
 3. **Third book:** a big novel with support, such as *Pride and Prejudice* or *Jane Eyre*, with the audio, the text and a cast list.
-4. **Then the giants.** *War and Peace* runs 62 hours 27 minutes across the four volumes of LibriVox's recording of the Maude translation, so plan it like a long series: a few chapters a night.
+4. **Then the giants.** *War and Peace* runs 62 hours 27 minutes across the four volumes of LibriVox's recording of the Maude translation, so plan it like a long series: a few chapters a night. Our [War and Peace audiobook guide](/blog/best-war-and-peace-audiobook) sets that free reading beside the paid ones and counts the days to finish at each speed.
 
 ## Read free classics word by word
 

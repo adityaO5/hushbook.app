@@ -33,7 +33,7 @@ These are solo LibriVox recordings, the free volunteer recordings of public doma
 - *Pride and Prejudice*: 121,676 words, 13 hours 25 minutes (151 words a minute)
 - *Moby-Dick*: 208,234 words, 24 hours 38 minutes (141 words a minute)
 - *The Count of Monte Cristo*: 459,752 words, 54 hours 16 minutes (141 words a minute)
-- *War and Peace*, the Maude translation: 561,870 words, 62 hours 27 minutes across four volumes (150 words a minute)
+- [*War and Peace*](/blog/best-war-and-peace-audiobook), the Maude translation: 561,870 words, 62 hours 27 minutes across four volumes (150 words a minute)
 - *The Bible*, King James Version: 790,016 words, 100 hours 45 minutes (131 words a minute)
 
 The median pace across the ten readers was 151 words a minute, with a range of 131 to 179. ACX's 9,300 words an hour works out to 155. So the formula is a good guide, but a particular narrator can take 15% more or less time than it predicts.

@@ -79,7 +79,7 @@ What works for this book:
 
 1. **Sort by family, not by order of appearance.** The Rostovs, the Bolkonskis, the Bezukhovs and the Kuragins each get their own corner of the page or map. New names can then be filed under a family as they arrive.
 2. **File every name under one entry.** "Pierre (Monsieur Pierre, Peter Kirílovich, Count Bezúkhov)." When a new form turns up, add it to the line rather than starting a new one.
-3. **Make your own list.** The free Project Gutenberg edition has no list of characters. If your print edition has one, mark it.
+3. **Make your own list.** The free Project Gutenberg edition has no list of characters. If your print edition has one, mark it. Naxos's free booklet for Volume I of Neville Jason's recording has one, sorted by family, and our [guide to War and Peace audiobooks](/blog/best-war-and-peace-audiobook) compares his reading with the others.
 4. **Expect long gaps if you listen.** The [LibriVox](/blog/is-librivox-safe-and-legal) recording of the Maude translation runs [62 hours 27 minutes](/blog/how-long-is-an-audiobook) across four volumes. A character you meet in the first hours can return dozens of hours later, and that is when a note with the chapter and time pays off.
 
 ## How to keep track of characters in Game of Thrones and other long series
