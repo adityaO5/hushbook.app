@@ -2,33 +2,35 @@
 
 The best *Pride and Prejudice* audiobook is Rosamund Pike's unabridged Audible Studios recording, which runs 11 hours 35 minutes. The runner-up is Juliet Stevenson's Naxos recording at 14 hours 2 minutes, and the best free one is Karen Savage's LibriVox reading at 10 hours 23 minutes. The best dramatised version is the 2025 Audible Original with a full cast, but it is a 4 hour 34 minute adaptation, not the whole novel.
 
-Pike's recording has 4.8 stars from 43,975 ratings on Audible US as of November 12, 2026, about eight times as many as the next most rated edition. Stevenson's has the highest average of any recording with more than 100 ratings: 4.9 from 204. Below: every unabridged edition with its running time, listening time at each speed, the American narrators, the six free LibriVox versions told apart, which famous versions are not the whole book, and the names that trip up listeners. Every edition fact was read from the publisher's or store's own page on November 12, 2026.
+Pike's recording has 4.8 stars from 43,975 ratings on Audible US as of November 12, 2026, about eight times as many as the next most rated edition. Stevenson's has the highest average of any recording with more than 100 ratings: 4.9 from 204. Below: every unabridged edition with its running time, listening time at each speed, the recording with an American accent, the six free LibriVox versions told apart, which famous versions are not the whole book, and the names that trip up listeners. Every edition fact was read from the publisher's or store's own page on November 12, 2026.
 
 ## Which Pride and Prejudice audiobook is best?
 
-![Bar chart titled "Pride and Prejudice, unabridged: running time and rating", 14 recordings in three groups, bars starting at zero on a 0 to 15 hour axis. Audible, with Audible US ratings: Carolyn Seymour, Blackstone, 11 h 28 min, 4.6 (1,902); Flo Gibson, Recorded Books, 11 h 28 min, 4.6 (252); Rosamund Pike, Audible Studios, 11 h 35 min, 4.8 (43,975), marked best overall; Lindsay Duncan, Audible Studios, 12 h 3 min, 4.7 (5,348); Emilia Fox, Naxos AudioBooks, 13 h 2 min, 4.7 (787); Indira Varma, Penguin Classics, 13 h 27 min, 4.7 (195); Juliet Stevenson, Naxos AudioBooks, 14 h 2 min, 4.9 (204), marked runner-up. Apple Books and Libby, with Apple Books ratings: Kate Beckinsale, Apple, 11 h 43 min, 4.5 (8,598); Kate Reading, Books on Tape, 12 h 8 min, 4.2 (203); Katherine Kellgren, Duke Classics, 12 h 21 min. Free on LibriVox, with archive.org reviews: Karen Savage, version 3, 10 h 23 min, 4.25 (17), marked best free; Elizabeth Klett, version 4, 11 h 10 min, 4.91 (12); 26 readers, version 6, dramatic reading, 11 h 58 min, 5 (1); Annie Coleman Rothenberg, version 2, 13 h 25 min, 4.8 (5). Runtimes and ratings as listed by Audible US, Apple Books US, OverDrive, LibriVox and archive.org, read November 12, 2026; Indira Varma's time includes an introduction.](/assets/img/blog/pride-and-prejudice-editions.webp "wide")
+![Bar chart of 14 unabridged Pride and Prejudice recordings by running time and rating. Rosamund Pike, 11 h 35 min and 4.8 from 43,975 ratings, is marked best overall; Karen Savage's free LibriVox reading, 10 h 23 min, is marked best free.](/assets/img/blog/pride-and-prejudice-editions.webp "wide")
 
 Rosamund Pike for most listeners, Juliet Stevenson as the runner-up, Karen Savage's LibriVox reading for free, and the Audible Original for a full cast, as long as you know it is an adaptation.
 
 ### Best overall: Rosamund Pike (Audible Studios, 2015)
 
-Rosamund Pike's recording is the most rated *Pride and Prejudice* audiobook anywhere we checked. On November 12, 2026 it had 4.8 stars from 43,975 ratings on Audible US, with 4.8 for performance, and 4.8 from another 7,704 on Audible UK. The next most rated edition, Lindsay Duncan's, had 5,348. Audible's description notes that Pike played Jane Bennet in the 2005 film, and she is named first in nearly every Reddit thread about the audiobook that we read.
+[Rosamund Pike's recording](https://www.audible.com/pd/B016LN23CC) is the most rated *Pride and Prejudice* audiobook anywhere we checked. On November 12, 2026 it had 4.8 stars from 43,975 ratings on Audible US, with 4.8 for performance, and 4.8 from another 7,704 on Audible UK. The next most rated edition, Lindsay Duncan's, had 5,348. Audible's description notes that Pike played Jane Bennet in the 2005 film, and she is named first in nearly every Reddit thread about the audiobook that we read.
 
 One listener wrote on r/PrideandPrejudice in 2023 that "listening to it was the first time I realised how funny the book can be." The recording runs 11 hours 35 minutes, about 175 words a minute by our calculation, and Audible's list price was $19.74. It is sold only on Audible: we did not find it on Apple Books, Libby, hoopla or the first page of Kobo's results.
 
 ### Runner-up: Juliet Stevenson (Naxos AudioBooks, 2021)
 
-Juliet Stevenson's unabridged recording has 4.9 stars from 204 ratings on Audible US, the highest average of any edition with more than 100 ratings. AudioFile's review, now hosted by Kirkus, gives it an Earphones Award. "Stevenson's flawless performance, sparkling with her distinctive voice and lyrical accent, brings Austen's story to life," it says, and "Dialogue is lively and easy to follow." At 14 hours 2 minutes it is the slowest of the main editions, about 145 words a minute. It cost $22.35 on Audible and $29.99 on Apple Books on November 12, 2026, and the Los Angeles and King County libraries had copies on Libby.
+[Juliet Stevenson's unabridged recording](https://www.audible.com/pd/1781983755) has 4.9 stars from 204 ratings on Audible US, the highest average of any edition with more than 100 ratings. AudioFile's review, now hosted by Kirkus, gives it an Earphones Award. "Stevenson's flawless performance, sparkling with her distinctive voice and lyrical accent, brings Austen's story to life," it says, and "Dialogue is lively and easy to follow." At 14 hours 2 minutes it is the slowest of the main editions, about 145 words a minute. It cost $22.35 on Audible and $29.99 on Apple Books on November 12, 2026, and the Los Angeles and King County libraries had copies on Libby.
 
 **Check the running time before you buy.** Hodder & Stoughton's 2006 abridged recording, also read by Juliet Stevenson, is sold under the same plain title and runs 2 hours 47 minutes.
 
 ### Best free: Karen Savage, LibriVox Version 3 (2007)
 
-Karen Savage reads LibriVox's third recording alone in 10 hours 23 minutes, one section per chapter, 61 in all. It is the shortest complete recording we found and the free reading that Reddit listeners named most from 2017 to 2024. "Karen Savage on librivox is my absolute favorite. I can't even tell you the number of times I have listened to it," one wrote on r/PrideandPrejudice in 2022. The Internet Archive counted 7,370,665 downloads of it on November 12, 2026. Like every LibriVox version, it reads the text of Project Gutenberg eBook #1342.
+Karen Savage reads [LibriVox's third recording](https://librivox.org/pride-and-prejudice-by-jane-austen-2/) alone in 10 hours 23 minutes, one section per chapter, 61 in all. It is the shortest complete recording we found and the free reading that Reddit listeners named most from 2017 to 2024. "Karen Savage on librivox is my absolute favorite. I can't even tell you the number of times I have listened to it," one wrote on r/PrideandPrejudice in 2022. The Internet Archive counted 7,370,665 downloads of it on November 12, 2026. Like every LibriVox version, it reads the text of Project Gutenberg eBook #1342.
+
+**On Apple devices**, [Kate Beckinsale's recording](https://books.apple.com/us/audiobook/id1445220910) is also free. It is an Apple Books exclusive of 11 hours 43 minutes, and on November 12, 2026 it cost $0 and had 4.5 stars from 8,598 ratings, the most of any Apple listing we found. The price may not last: a 2023 Reddit commenter who got it free thought it "might have been a temporary deal".
 
 ### Best dramatised: the Audible Original (2025), an adaptation
 
-Audible's 2025 full-cast *Pride and Prejudice* is adapted by Lulu Raczka. Marisa Abela plays Elizabeth, Harris Dickinson plays Darcy, Bill Nighy and Marianne Jean-Baptiste play Mr and Mrs Bennet, and Glenn Close plays Lady Catherine, with a score by Morgan Kibby. It has 4.8 stars from 7,336 ratings on Audible US and was a finalist for Audiobook of the Year at the 2026 Audie Awards. In our scan of the Audio Publishers Association's Audie pages from 1996 to 2026, the only other *Pride and Prejudice* finalist was Irene Sutcliffe's reading in 1999, which we could not find on sale.
+[Audible's 2025 full-cast *Pride and Prejudice*](https://www.audible.com/pd/B0FBS2CPR7) is adapted by Lulu Raczka. Marisa Abela plays Elizabeth, Harris Dickinson plays Darcy, Bill Nighy and Marianne Jean-Baptiste play Mr and Mrs Bennet, and Glenn Close plays Lady Catherine, with a score by Morgan Kibby. It has 4.8 stars from 7,336 ratings on Audible US and was a finalist for Audiobook of the Year at the 2026 Audie Awards. In our scan of the Audio Publishers Association's Audie pages from 1996 to 2026, the only other *Pride and Prejudice* finalist was Irene Sutcliffe's reading in 1999, which we could not find on sale.
 
 Audible calls the full-cast version "a retelling". It runs 4 hours 34 minutes, less than half the length of the shortest complete reading, so it is a way into the story rather than the novel itself. One 2025 Reddit listener found the actors hard to hear over the music at times.
 
@@ -36,7 +38,7 @@ Audible calls the full-cast version "a retelling". It runs 4 hours 34 minutes, l
 
 ### How the unabridged recordings compare
 
-These are the 22 main complete recordings by named narrators that you can buy or borrow, plus LibriVox's two free solo readings. Ratings are Audible US stars with the number of ratings in brackets, as of November 12, 2026.
+These are the 22 main complete recordings by named narrators that you can buy or borrow, plus two of LibriVox's free solo readings. Ratings are Audible US stars with the number of ratings in brackets, as of November 12, 2026.
 
 | Narrator | Runtime | Publisher | Year | Audible US rating | Where we found it |
 |---|---|---|---|---|---|
@@ -47,7 +49,7 @@ These are the 22 main complete recordings by named narrators that you can buy or
 | Indira Varma | 13 h 27 min (with an introduction) | Penguin Classics | 2020 | 4.7 (195) | Audible, Apple Books, Kobo, Libro.fm, Spotify, Google Play |
 | Kate Beckinsale | 11 h 43 min | Apple | 2018 | Not on Audible | Apple Books (free on November 12, 2026) |
 | Kate Reading | 12 h 8 min | Books on Tape | 2000 | Not on Audible | Apple Books, Libby |
-| Katherine Kellgren | 12 h 21 min | Duke Classics | n/a | Not on Audible | Libby |
+| Katherine Kellgren | 12 h 21 min | Duke Classics | Not listed | Not on Audible | Libby |
 | Carolyn Seymour | 11 h 28 min | Blackstone | 2011 | 4.6 (1,902) | Audible, Apple Books, Libby, hoopla |
 | Emma Messenger | 14 h 12 min | Trout Lake Media | 2013 | 4.6 (1,940) | Audible, Apple Books |
 | Josephine Bailey | 11 h 20 min | Tantor | 2008 | 4.6 (440) | Audible, Apple Books, Libby |
@@ -71,7 +73,7 @@ Runtimes are Audible's for the editions sold there, Apple's for Kate Beckinsale 
 
 ## How long is the Pride and Prejudice audiobook?
 
-![Stat tiles titled "How long Pride and Prejudice is": 121,676 words in the novel; 61 chapters in three volumes; listening time at 151 words a minute of 13 h 26 min at 1x, 10 h 45 min at 1.25x, 8 h 57 min at 1.5x and 6 h 43 min at 2x; and the three volumes of the 1813 first edition, Volume I with 23 chapters (Chapters 1 to 23), Volume II with 19 (Chapters 24 to 42) and Volume III with 19 (Chapters 43 to 61). Our count of Project Gutenberg eBook #1342; volumes as in the 1813 edition on Wikisource.](/assets/img/blog/pride-and-prejudice-length.webp "wide")
+![Stat tiles on the length of Pride and Prejudice: 121,676 words in 61 chapters and three volumes, or 13 h 26 min at 1x and 6 h 43 min at 2x at 151 words a minute.](/assets/img/blog/pride-and-prejudice-length.webp "wide")
 
 About 13 hours 26 minutes at 1x: the novel has 121,676 words, and complete readings run from 10 hours 23 minutes to 14 hours 27 minutes.
 
@@ -108,22 +110,28 @@ On r/janeausten in 2023, a thread asking for an audiobook with an English accent
 
 Other narrators with fans:
 
-- **Lindsay Duncan** (Audible Studios, 2006, 12 hours 3 minutes): 4.7 stars from 5,348 ratings, the second most rated edition. "The one on audible by Lindsay Duncan is my favorite!" (r/PrideandPrejudice, 2022).
-- **Emilia Fox** (Naxos AudioBooks, 2004, 13 hours 2 minutes): 4.7 from 787. "I just listened to the Emilia Fox version. I really liked it!" (r/audiobooks, 2020).
+- **Lindsay Duncan** (Audible Studios, 2006, 12 hours 3 minutes): 4.7 stars from 5,348 ratings, the second most rated edition.
+- **Emilia Fox** (Naxos AudioBooks, 2004, 13 hours 2 minutes): 4.7 from 787.
 - **Indira Varma** (Penguin Classics, 2020, 13 hours 27 minutes with an introduction): 4.7 from 195. Penguin UK lists Libro.fm among its stores.
 - **Adjoa Andoh** (Saga Egmont, 2022, 12 hours 33 minutes): "She is excellent at bringing out the humour" (r/janeausten, 2023).
 
 ## Is there a Pride and Prejudice audiobook with an American accent?
 
-We could not confirm one: no store page or review we read says a complete recording is read in an American accent. Three American narrators have recorded the whole novel, so play their samples.
+Yes: Elizabeth Klett's free LibriVox Version 4, 11 hours 10 minutes, is narrated in an American accent with the dialogue in British accents, according to two Internet Archive reviews.
 
-- **Kate Reading** (Books on Tape, 12 hours 8 minutes, Apple Books and Libby). Wikipedia describes her as an "American actress and audiobook narrator" who has "won 6 Audie Awards and 46 Earphone Awards". "I am a big fan of Kate Reading, and love her reading of Pride and Prejudice," one listener wrote on r/audiobooks in 2017.
+"She narrates with an American accent yet, to my ear, nails the dialog with perfect expression, tempo, and accent," one reviewer wrote on May 5, 2010. The same review adds: "It certainly does help us quickly distinguish (as could a reader of the book itself) when the piece is changing from narration to dialog." That matters in this novel, where most speeches carry no "said she". A second review, on October 28, 2010, says: "I think the American / British accents worked wonderfully." We read both on the Internet Archive on November 12, 2026.
+
+Klett teaches at a university in Houston, Texas, according to her own site. Her recording is [on LibriVox](https://librivox.org/pride-and-prejudice-solo-version-3-by-jane-austen/) and in HushBook Discover as "Pride and Prejudice (version 4)".
+
+American narrators whose accent for Austen we could not confirm; play a sample:
+
+- **Kate Reading** (Books on Tape, 12 hours 8 minutes, Apple Books and Libby). Wikipedia describes her as an "American actress and audiobook narrator" who has "won 6 Audie Awards and 46 Earphone Awards".
 - **Flo Gibson** (Recorded Books, 11 hours 28 minutes, Audible, Libby and Kobo). Wikipedia calls her an "American narrator of audiobooks".
-- **Katherine Kellgren** (Duke Classics, 12 hours 21 minutes, Libby, where she is listed as Kate Kellgren). Wikipedia calls her an "American actress, known for her narration of audiobooks". "I loved Kate Kellgren narrating!" one listener wrote on r/audiobooks in 2024.
+- **Katherine Kellgren** (Duke Classics, 12 hours 21 minutes, Libby, where she is listed as Kate Kellgren). Wikipedia calls her an "American actress, known for her narration of audiobooks".
 
-Elizabeth Klett, who reads the free LibriVox Version 4, teaches at a university in Houston, Texas, according to her own site. A listing by "Kate Redding" (InAudio, 11 hours 58 minutes) is a different recording from Kate Reading's.
+A listing by "Kate Redding" (InAudio, 11 hours 58 minutes) is a different recording from Kate Reading's.
 
-Most of the best-known recordings are by British actresses: Wikipedia describes Rosamund Pike and Indira Varma as British, Juliet Stevenson, Emilia Fox and Kate Beckinsale as English, and Lindsay Duncan as Scottish. Listeners ask in both directions. The 2023 r/janeausten thread began with a request for "an audiobook with an English accent" from someone "having a bit of trouble with the American accented ones", and another reader replied: "I'm an American, but I can't imagine listening to Jane Austen in an American accent. All wrong!"
+Most of the best-known recordings are by British actresses: Wikipedia describes Rosamund Pike and Indira Varma as British, Juliet Stevenson, Emilia Fox and Kate Beckinsale as English, and Lindsay Duncan as Scottish. Listeners ask in both directions. The 2023 r/janeausten thread began with a request for "an audiobook with an English accent" from someone "having a bit of trouble with the American accented ones", and another reader replied: "I'm an American, but I can't imagine listening to Jane Austen in an American accent. All wrong!" For a British accent at no cost, an April 19, 2009 Internet Archive review of Karen Savage's Version 3 says she brings "a nice British accent", though the reviewer heard American English come in at times, especially in the vowels.
 
 ## Is there a free Pride and Prejudice audiobook?
 
@@ -140,14 +148,15 @@ Yes: LibriVox has six complete free recordings, all made from Project Gutenberg'
 
 Running times, sections and dates come from the LibriVox catalog and API; downloads were read from the Internet Archive on November 12, 2026. LibriVox also has a free recording of a 4-act stage adaptation, "Pride and Prejudice: A Play", which runs 2:42:55.
 
-**Which one to pick.** Version 3 is one voice, one section per chapter and the shortest. "Karen Savage singlehandedly got me into audiobooks," one listener wrote on r/janeausten in 2023. The one complaint that recurs is about her characters: "all of the voices sound the same and it's hard for me to differentiate between characters" (r/audiobooks, 2024). Version 4, Elizabeth Klett's, has the best Internet Archive average, 4.91 stars from 12 reviews, with review titles such as "Professional quality, highly recommend"; "She is the voice of Lizzy in my head now," one Reddit listener wrote. Version 6 gives each character a separate reader. Version 1 is the most downloaded, but its reader changes between sections. Version 2 is the recording behind the 13 hours 25 minutes in our length guide.
+**Which one to pick.** Version 3 is one voice, one section per chapter and the shortest. The one complaint that recurs is about her characters: "all of the voices sound the same and it's hard for me to differentiate between characters" (r/audiobooks, 2024). Version 4, Elizabeth Klett's, has the best Internet Archive average, 4.91 stars from 12 reviews, with review titles such as "Professional quality, highly recommend", and two of those reviews describe American narration with British-accented dialogue. Version 6 gives each character a separate reader. Version 1 is the most downloaded, but its reader changes between sections. Version 2 is the recording behind the 13 hours 25 minutes in our length guide.
 
 Other free ways to hear it, as of November 12, 2026:
 
 - **Julie Andrews** reads it in Noiser's free podcast "Jane Austen Stories" (next section).
-- **Kate Beckinsale's** Apple Books exclusive (11 hours 43 minutes) cost $0 and had 4.5 stars from 8,598 ratings, the most of any Apple listing we found. A 2023 Reddit commenter who got it free thought it "might have been a temporary deal".
+- **Kate Beckinsale's** Apple Books exclusive (11 hours 43 minutes) cost $0, a price that may not last (see the best free pick above).
 - **Ballarat National Theatre's podcast**, an Australian community theatre production, has 27 actors over 30 episodes, 14 hours 28 minutes in all, with ambient sound and music, and was a 2021 Webby Award Honoree.
-- **Lindsay Duncan's** Audible US page showed "Listen for free" to a signed-out visitor.
+
+**On YouTube.** Full uploads of the audiobook came up in our web searches for "pride and prejudice audiobook youtube" on November 12, 2026; we did not check their source or rights. Jennifer Ehle read the book aloud on her YouTube channel in 2020, and we could not confirm she finished it. The LibriVox recordings are the free route with a named reader.
 
 ## Are the Audible full-cast, BBC and Julie Andrews versions the whole book?
 
@@ -178,7 +187,7 @@ Runtimes are Audible's; the Julie Andrews figure is our sum of its podcast feed.
 
 ## How do you keep track of the names in Pride and Prejudice?
 
-![Stat tiles titled "Who is speaking in Pride and Prejudice": 46.8% of the words are dialogue; 61.5%, or 754 of 1,227 speech paragraphs, name no speaker; and of the 65 times "Miss Bennet" appears, it means Jane 39 times and Elizabeth 26 times. Our count of the Project Gutenberg text (eBook #1342): words inside quotation marks, paragraphs that open with a quotation mark and have no speaker's name or speech verb outside it, and each "Miss Bennet" read in context.](/assets/img/blog/pride-and-prejudice-who-is-speaking.webp "wide")
+![Stat tiles on who is speaking in Pride and Prejudice: 46.8% of the words are dialogue, 61.5% of speech paragraphs name no speaker, and "Miss Bennet" means Jane 39 times and Elizabeth 26.](/assets/img/blog/pride-and-prejudice-who-is-speaking.webp "wide")
 
 Learn that one title can mean two people: "Miss Bennet" is usually Jane, the eldest sister, but Darcy, Bingley, Wickham and Lady Catherine also use it for Elizabeth. And expect long runs of talk with no "said she".
 
@@ -188,7 +197,7 @@ The longest runs come in conversations between two people. The first chapter has
 
 Austen saw it coming. In her January 1813 letter to Cassandra, she wrote that a "said he" or a "said she" "would sometimes make the dialogue more immediately clear; but 'I do not write for such dull elves' as have not a great deal of ingenuity themselves." She also found a printing error that made the problem worse: "The greatest blunder in the printing that I have met with is in page 220, v. 3, where two speeches are made into one" (February 1813).
 
-**The names.** Here is how often each form appears, by our count of the Gutenberg text. The "Miss Bennet" split is our reading of all 65 uses in context. These roles give nothing away.
+**The names.** The five Bennet sisters, from eldest to youngest, are Jane, Elizabeth, Mary, Catherine (called Kitty) and Lydia. The text calls Jane the eldest daughter in Chapter 3, Elizabeth "next to Jane in birth" in Chapter 15, Catherine and Lydia "the two youngest" in Chapter 7, and Lydia "the youngest" in Chapter 2. Here is how often each form appears, by our count of the Gutenberg text. The "Miss Bennet" split is our reading of all 65 uses in context. These roles give nothing away.
 
 | Character | Names you will hear (count) | The trap |
 |---|---|---|
@@ -199,7 +208,9 @@ Austen saw it coming. In her January 1813 letter to Cassandra, she wrote that a 
 | Mr. Bingley | Bingley 306, of which Mr. Bingley 114; Charles 7 | "Bingley" alone can be him; "Miss Bingley" is his sister |
 | Caroline Bingley | Miss Bingley 87, Caroline 16 | |
 | Georgiana Darcy | Miss Darcy 39, Georgiana 15 | |
+| Mary Bennet | Mary 37 | "Mary King", named twice, is a different young woman |
 | Kitty Bennet | Kitty 71, Catherine 10 | The narration sometimes calls her Catherine, as in "Catherine and Lydia" |
+| Lydia Bennet | Lydia 170, of which Miss Lydia 4 | |
 | Lady Catherine de Bourgh | Lady Catherine 116, "her ladyship" or "your ladyship" 42 | Not Kitty |
 | Mr. and Mrs. Bennet | Mr. Bennet 89, Mrs. Bennet 154 | No first names |
 
@@ -207,51 +218,49 @@ Places recur as often as people: Longbourn 88 times, Netherfield 73, Meryton 57,
 
 Letters carry long stretches too. "Letter" or "letters" appears 131 times, in 33 of the 61 chapters. Darcy's letter in Chapter 35 (Volume II, Chapter 12) runs 2,604 words, about 17 minutes at 1x, all in his first person and all in the narrator's one voice.
 
-By ear, a run of unattributed speeches goes past with nothing to look back at. Seeing the words as the narrator speaks them gives your eyes the exchange too, and that is why we built HushBook. Its free character map keeps every name a person goes by on one card: add Elizabeth once and keep Lizzy, Eliza and Miss Bennet in her card's notes. The card also records the chapter and time you first heard her. Our guide on how to [keep track of characters](/blog/how-to-keep-track-of-characters-in-a-book) has methods that work without any app.
+By ear, a run of unattributed speeches goes past with nothing to look back at. Seeing the words as the narrator speaks them gives your eyes the exchange too, and that is why we built HushBook; with its e-book sync, in beta, Austen's own paragraphs show each change of speaker. Its free character map keeps every name a person goes by on one card: add Elizabeth once and keep Lizzy, Eliza and Miss Bennet in her card's notes. The card also records the chapter and time you first heard her. Our guide on how to [keep track of characters](/blog/how-to-keep-track-of-characters-in-a-book) has methods that work without any app.
 
 ## Should you read or listen to Pride and Prejudice?
 
 Either works for the story. Listening alone brings the most mind wandering, and when Austen heard her novel read aloud in 1813, her complaint was about the reader.
 
-*Pride and Prejudice* is not in Old English: it is modern English, published in 1813. Project Gutenberg gives it a reading ease score of 69.2 ("8th & 9th grade") and calls it "Neither easy nor difficult to read." That formula measures only sentence and word length.
+*Pride and Prejudice* is not hard to read by the usual measure, and it is not in Old English: it is modern English, published in 1813. Project Gutenberg gives it a reading ease score of 69.2 ("8th & 9th grade") and calls it "Neither easy nor difficult to read." That formula measures only sentence and word length, so it misses what makes the book harder by ear: the long runs of dialogue with no speaker named, counted in the names section above.
 
 The novel was read aloud from the start. In a January 1813 letter to Cassandra, Austen called the book "my own darling child" and reported: "Miss B. dined with us on the very day of the book's coming, and in the evening we fairly set at it, and read half the first vol. to her." In February she was less pleased: "Our second evening's reading to Miss B. had not pleased me so well, but I believe something must be attributed to my mother's too rapid way of getting on: though she perfectly understands the characters herself, she cannot speak as they ought." Her two tests still work for choosing a narrator: a speed you can follow, and voices for the characters.
 
-The research, read on November 12, 2026:
+Two general findings matter, both read on November 12, 2026. A 2022 meta-analysis by Clinton-Lisell of 46 studies with 4,687 people found no reliable difference between understanding a text by reading and by listening. In a 2013 study of 211 students, Varao Sousa, Carriere and Smilek found that people's minds wandered most when they only listened.
 
-- **No reliable overall difference.** A 2022 meta-analysis by Clinton-Lisell of 46 studies with 4,687 people found no reliable difference between understanding a text by reading and by listening (g = 0.07). Reading did better when readers set their own pace (g = 0.13) and on questions that need inference.
-- **More mind wandering while listening.** In a 2013 study of 211 students, Varao Sousa, Carriere and Smilek found that listening to a passage led to the most mind wandering and the poorest memory, and reading aloud to the least.
-- **Literary texts.** In a 2016 study using The Red-Headed League and Walden, Kopp and D'Mello found that audio alone produced the most mind wandering; following the text while listening produced about as much as reading at your own pace. The abstract gives no sample size.
-- **Reading along.** Clinton-Lisell's 2023 meta-analysis of 30 studies (1,945 people) found a trivial overall benefit of reading while listening over reading only (g = 0.18), and no reliable benefit when readers set their own pace (g = 0.06).
-- **Novel excerpts.** In a study published in 2026, Hui and Godfroid had 86 intermediate to advanced Chinese learners of English read, listen to, or read and listen to excerpts of a novel. Both reading conditions beat listening alone; reading while listening scored below silent reading.
+Two studies used *Pride and Prejudice* itself:
+
 - **Austen's style.** Austen often gives a character's thoughts in the narrator's voice, without "she thought". In a 2014 reading experiment with a passage from *Pride and Prejudice*, Mikulan and Legac found that only about a quarter of 78 Croatian students, 38 reading it in English and 40 in Croatian translation, could hear this "dual voice". It tested reading, not listening.
 - **Audio holds attention.** In a 2020 study of 102 adults, Richardson and colleagues played audiobook scenes or showed film and TV versions of the same scenes; *Pride and Prejudice* was one of eight stories. Heart rate and skin conductance rose more for the audio, though people rated the video as more involving. The results are pooled across all eight stories.
 
-None of these studies tested a whole novel by ear, and none measured how listeners follow unattributed dialogue. For *Pride and Prejudice*, that points to a simple rule: listen when it fits your day, pick a narrator whose voices you can tell apart, and have the text in front of you for the long conversations. Our guide on [how to read classics without getting bored](/blog/how-to-read-classics-without-getting-bored) covers long books in general.
+None of these four studies tested a whole novel by ear, and none measured how listeners follow unattributed dialogue. For *Pride and Prejudice*, that points to a simple rule: listen when it fits your day, pick a narrator whose voices you can tell apart, and have the text in front of you for the long conversations. Our guide on [how to read classics without getting bored](/blog/how-to-read-classics-without-getting-bored) covers long books in general.
 
 ## What we could not verify
 
-- **Sound.** We did not rank the recordings by listening, and we describe no narrator's accent.
+- **Sound.** We did not rank the recordings by listening. The accents above are reviewers' words; we judged no narrator's accent ourselves.
 - **Some stores.** Libro.fm and Chirp blocked us, Spotify needs a login, and we read only the first page of Kobo's results, so their listings are unchecked.
-- **Free offers.** We could not see which membership Lindsay Duncan's "Listen for free" means, or how long Kate Beckinsale's recording stays at $0.
+- **Free offers.** Lindsay Duncan's Audible US page showed "Listen for free" to a signed-out visitor; we could not see which membership that means, or how long Kate Beckinsale's recording stays at $0.
 - **Podcasts.** We did not check Julie Andrews' or Ballarat National Theatre's episodes against the text; "unabridged" is Noiser's word.
 - **The 2025 BBC drama.** Its running time, and whether it is sold as an audiobook.
 - **Penguin's introduction.** Penguin and Audible credit both Tony Tanner and Vivien Jones, and we could not tell who reads it.
 - **Juliet Stevenson's year.** Naxos and Audible say 2021; AudioFile's review on Kirkus gives a release date of June 5, 2020.
 - **Repeat releases.** Whether the paid Karen Savage and Elizabeth Klett releases are their LibriVox recordings, and whether Kate Reading and Kate Redding are the same person.
-- **Jennifer Ehle.** She read the book aloud on her YouTube channel in 2020; we could not confirm she finished it.
 - **Names in searches.** We found no *Pride and Prejudice* recording by Claire Foy, Alexis Bledel or Sally Ann Burnett on Audible, Apple Books or OverDrive.
 - **Your country.** Availability and prices vary by region. Prices and ratings above are a snapshot of November 12, 2026.
 
 ## Is there a Pride and Prejudice audiobook with text?
 
-![Two HushBook phone screens with the free LibriVox recording Pride and Prejudice (version 3). Left: the read-along page for Chapter XXIX in the warm paper theme, where the line being read, "Do you play and sing, Miss Bennet? A little.", is tinted red and the word "little" is underlined, between "It was not thought necessary in Sir Lewis de Bourgh's family" and "Oh then, some time or other we shall be happy to hear you." Right: the player with the LibriVox cover read by Karen Savage, the title "Pride and Prejudice (version 3)", 5 min left in the chapter and a Read along button.](/assets/img/blog/pride-and-prejudice-audiobook-with-text.webp "wide")
+![Two HushBook phone screens with the free LibriVox Pride and Prejudice (version 3), read by Karen Savage: the read-along page for Chapter XXIX with "Do you play and sing, Miss Bennet? A little." highlighted, and the player with a Read along button.](/assets/img/blog/pride-and-prejudice-audiobook-with-text.webp "wide")
 
 Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings of *Pride and Prejudice*, on iPhone, Android and Windows.
 
 HushBook is free, with no account, and transcription runs on your own device. For this book, open Discover, search "pride and prejudice" and pick "Pride and Prejudice (version 3)", the card that reads 10h 23m. That is Karen Savage's reading: on November 12, 2026 the card showed 61 chapters and a 299 MB download, and the book arrives with one chapter per file, "Chapter 01" to "Chapter 61". For Elizabeth Klett's reading, pick "Pride and Prejudice (version 4)", 11h 10m and 307 MB. Play a 30-second sample before you download.
 
 HushBook transcribes the book on your phone, and each chapter is ready to read the moment it finishes. Words fill in as the narrator reads them, with a red underline on the current one, so in Chapter 29 you see Lady Catherine's "Do you play and sing, Miss Bennet?" and Elizabeth's "A little." as they are spoken. Long-press any line to play from there. Mark a passage to keep it as a highlight, note or quote, set the speed anywhere from 0.5x to 3x, and add each person to the book's character map. After the one-time HushBook Engine download, playback and read-along work without an internet connection.
+
+For Austen's own text on screen, attach a matching DRM-free EPUB, PDF or TXT, such as Project Gutenberg's free eBook #1342, the text Karen Savage reads. HushBook's e-book sync (in beta, first sync free) aligns that text to the audio word by word. Austen's quotation marks and paragraphs then appear in time with the voice, so each change of speaker starts a new paragraph.
 
 For Indira Varma's Penguin recording, read along with a DRM-free MP3 or M4B copy you own; Penguin UK lists Libro.fm among the stores for it. HushBook imports MP3, M4B and 13 other audio formats and detects the chapters inside M4B files. The Windows app has Discover too and transcribes on your computer, free and unlimited.
 
@@ -293,8 +302,8 @@ HushBook works with free public domain recordings and audio files you own withou
 - [LibriVox, Pride and Prejudice (Version 5)](https://librivox.org/pride-and-prejudice-v-4-by-jane-austen/)
 - [LibriVox, Pride and Prejudice (Version 6, dramatic reading)](https://librivox.org/pride-and-prejudice-by-jane-austen-3/)
 - [LibriVox, Pride and Prejudice: A Play, by Mary Keith Medbery Mackaye](https://librivox.org/pride-and-prejudice-a-play-by-mary-keith-medbery-mackaye/)
-- [Internet Archive, LibriVox Pride and Prejudice Version 3 item metadata](https://archive.org/metadata/pride_prejudice_krs_librivox)
-- [Internet Archive, LibriVox Pride and Prejudice Version 4 item metadata](https://archive.org/metadata/prideandprejudice_1005_librivox)
+- [Internet Archive, LibriVox Pride and Prejudice Version 3 item metadata and reviews](https://archive.org/metadata/pride_prejudice_krs_librivox)
+- [Internet Archive, LibriVox Pride and Prejudice Version 4 item metadata and reviews](https://archive.org/metadata/prideandprejudice_1005_librivox)
 - [Noiser, Jane Austen Stories](https://www.noiser.com/jane-austen-stories)
 - [Noiser, Jane Austen Stories podcast feed (Acast)](https://feeds.acast.com/public/shows/68cc0f36f3dd257283d8eda1)
 - [Sounds Profitable, press release on Noiser's Pride and Prejudice podcast with Dame Julie Andrews (September 30, 2025)](https://soundsprofitable.com/press-release/noiser-launches-pride-and-prejudice-podcast-with-dame-julie-andrews)
@@ -302,6 +311,7 @@ HushBook works with free public domain recordings and audio files you own withou
 - [Ballarat National Theatre, Pride and Prejudice podcast feed (Buzzsprout)](https://rss.buzzsprout.com/1078322.rss)
 - [Sue Terry Voices, Luke Thompson, Miles Jupp and Gaia Wise in new Pride and Prejudice for BBC Radio 4](https://www.sueterryvoices.com/news/luke-thompson-miles-jupp-gaia-wise-in-new-pride-prejudice-for-bbc-radio-4)
 - [BBC Media Centre, Jane Austen birthday special programming on Radio 4 (2025)](https://www.bbc.com/mediacentre/2025/jane-austen-radio-4-birthday-special-programming)
+- [YouTube, Jennifer Ehle, "Reading Pride and Prejudice Part 1"](https://www.youtube.com/watch?v=cVbLdOWjfhg)
 - [Wikipedia, Kate Reading](https://en.wikipedia.org/wiki/Kate_Reading)
 - [Wikipedia, Flo Gibson](https://en.wikipedia.org/wiki/Flo_Gibson)
 - [Wikipedia, Katherine Kellgren](https://en.wikipedia.org/wiki/Katherine_Kellgren)
@@ -322,8 +332,5 @@ HushBook works with free public domain recordings and audio files you own withou
 - [Brysbaert (2019), "How many words do we read per minute? A review and meta-analysis of reading rate", Journal of Memory and Language](https://doi.org/10.1016/j.jml.2019.104047)
 - [Clinton-Lisell (2022), "Listening Ears or Reading Eyes: A Meta-Analysis of Reading and Listening Comprehension Comparisons", Review of Educational Research](https://doi.org/10.3102/00346543211060871)
 - [Varao Sousa, Carriere and Smilek (2013), "The way we encounter reading material influences how frequently we mind wander", Frontiers in Psychology](https://doi.org/10.3389/fpsyg.2013.00892)
-- [Kopp and D'Mello (2016), "The Impact of Modality on Mind Wandering during Comprehension", Applied Cognitive Psychology](https://doi.org/10.1002/acp.3163)
-- [Clinton-Lisell (2023), "Does Reading While Listening to Text Improve Comprehension Compared to Reading Only? A Systematic Review and Meta-Analysis", Educational Research: Theory and Practice (ERIC EJ1403866)](https://eric.ed.gov/?id=EJ1403866)
-- [Hui and Godfroid (2026), "Listening, Reading, or Both? Rethinking the Comprehension Benefits of Reading-While-Listening", Language Learning](https://doi.org/10.1111/lang.12721)
 - [Mikulan and Legac (2014), "The 'Dual Voice' of Free Indirect Discourse: A Reading Experiment with Croatian Speakers Reading a Literary Text in English and Croatian", Procedia - Social and Behavioral Sciences](https://doi.org/10.1016/j.sbspro.2014.12.077)
 - [Richardson, Griffin, Zaki, Stephenson, Yan, Curry, Noble, Hogan, Skipper and Devlin (2020), "Engagement in video and audio narratives: contrasting self-report and physiological measures", Scientific Reports](https://doi.org/10.1038/s41598-020-68253-2)

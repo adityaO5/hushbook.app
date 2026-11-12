@@ -2,17 +2,17 @@
 
 The best *Wuthering Heights* audiobook is Joanne Froggatt's unabridged Audible Studios recording, 12 hours 32 minutes long. Juliet Stevenson's (13 hours 24 minutes) is the highest rated, Janet McTeer and David Timson's Naxos recording (13 hours 9 minutes) is the best with two voices, and Ruth Golding's LibriVox reading (14 hours 49 minutes) is the best free one.
 
-Froggatt's recording has 4.4 stars from 8,661 ratings on Audible US as of November 12, 2026, with 4.8 for performance. That is more ratings than all the other recordings in our table put together. Below: every complete recording with its runtime and ratings, how long the book takes at each speed, which recordings give Lockwood and Nelly Dean separate voices, what Joseph is saying, the three free LibriVox versions told apart, the abridged and dramatised ones, and the names. Every edition fact was read from the publisher's or store's own page on November 12, 2026.
+Froggatt's recording has 4.4 stars from 8,661 ratings on Audible US as of November 12, 2026, with 4.8 for performance. That is more ratings than all the other recordings in our table put together. Below: every complete recording with its runtime and ratings, how long the book takes at each speed, who narrates each chapter, which recordings give Lockwood and Nelly Dean separate voices, what Joseph is saying in plain English, the three free LibriVox versions told apart, the abridged and dramatised ones, and the names. Every edition fact was read from the publisher's or store's own page on November 12, 2026.
 
 ## Which Wuthering Heights audiobook is best?
 
-![Bar chart titled "Wuthering Heights, unabridged: running time and rating", bars starting at zero. Sold by stores, with Audible US rating: Flo Gibson, Recorded Books, 11 h 15 min, 3.9 (516); Carolyn Seymour, Blackstone, 11 h 34 min, 3.9 (81); Michael Kitchen, Audible Studios, 11 h 38 min, 4.2 (327); Michael Page and Laural Merlington, Brilliance, 11 h 57 min, 4.1 (223); Joanne Froggatt, Audible Studios, 12 h 32 min, 4.4 (8,661), marked best overall; Janet McTeer and David Timson, Naxos, 13 h 9 min, 4.2 (1,562), marked best two-voice; Emma Messenger, Trout Lake Media, 13 h 13 min, 4.0 (1,397); Ciaran Saward and Sherry Baines, Arcturus Digital, 13 h 14 min, no rating; Juliet Stevenson, silksoundbooks, 13 h 24 min, 4.6 (427), marked highest rated; Billie Fulford-Brown, Spotify Audiobooks, 13 h 38 min, no Audible US rating; Aimee Lou Wood and Kristin Atherton, Penguin Classics, 13 h 58 min, 4.4 (202); Patricia Routledge, Audible Studios, 14 h 15 min, 4.3 (1,533). Free on LibriVox, with archive.org rating: 14 readers, Version 1, 11 h 33 min, 2.83 (8); 25 readers, Version 3, dramatic, 11 h 54 min, no rating; Ruth Golding, Version 2, solo, 14 h 49 min, 4.33 (13), marked best free. Runtimes as listed by Audible, Naxos and LibriVox; ratings from Audible US and archive.org, read November 12, 2026.](/assets/img/blog/wuthering-heights-editions.webp "wide")
+![Bar chart of 15 complete Wuthering Heights recordings by running time, 11 h 15 min to 14 h 49 min, with ratings. Marked: Joanne Froggatt best overall, Naxos best two-voice, Juliet Stevenson highest rated, Ruth Golding best free.](/assets/img/blog/wuthering-heights-editions.webp "wide")
 
 Joanne Froggatt for most listeners, Juliet Stevenson for the highest ratings, the Naxos recording for two voices and a library loan, and Ruth Golding's LibriVox reading for free.
 
 ### Best overall: Joanne Froggatt (Audible Studios, 2017)
 
-Joanne Froggatt's recording has 4.4 stars from 8,661 ratings on Audible US and 4.8 for performance, as of November 12, 2026. On Audible UK it has 4.5 from 1,385. Audible's own pages bill it as the "Winner of Audible UK's 2017 Narrator of the Year Award"; that is Audible's statement about its own production.
+Joanne Froggatt's [Audible Studios recording](https://www.audible.com/pd/B076PPDCYD) has 4.4 stars from 8,661 ratings on Audible US and 4.8 for performance, as of November 12, 2026. On Audible UK it has 4.5 from 1,385. Audible's own pages bill it as the "Winner of Audible UK's 2017 Narrator of the Year Award"; that is Audible's statement about its own production.
 
 A top review on the US page says "The voices for different characters were very effective, almost as if performed by a whole cast." On r/audible in 2020, one listener called her reading "very clear and crisp".
 
@@ -20,19 +20,19 @@ One catch when you sample it. The recording opens with an introduction by Ann Di
 
 ### Highest rated: Juliet Stevenson (silksoundbooks, 2015)
 
-Juliet Stevenson's recording has the best stars of any edition with hundreds of ratings: 4.6 from 427 on Audible US with 4.9 for performance, and 4.7 from 507 on Audible UK, as of November 12, 2026. Reviewers single out her accents: "I was really impressed with Stevenson's ability to handle the different accents and emotional states of not only the female but also the male characters." It runs 13 hours 24 minutes.
+Juliet Stevenson's [silksoundbooks recording](https://www.audible.com/pd/B0186DGBCI) has the best stars of any edition with hundreds of ratings: 4.6 from 427 on Audible US with 4.9 for performance, and 4.7 from 507 on Audible UK, as of November 12, 2026. Reviewers single out her accents: "I was really impressed with Stevenson's ability to handle the different accents and emotional states of not only the female but also the male characters." It runs 13 hours 24 minutes.
 
 Stevenson also recorded an abridgement of 2 hours 41 minutes for Penguin in 2012, so check the runtime before you buy.
 
 ### Best with two voices: Janet McTeer with David Timson (Naxos AudioBooks, 2006)
 
-The Naxos recording puts Lockwood, who opens and closes the book, in a different voice from Nelly Dean, who tells most of it. Naxos does not say who reads which part; in our test of its Audible sample, a male voice reads Lockwood (see the two-voice section below). It has 4.2 stars from 1,562 ratings on Audible US and 4.5 from 426 on Audible UK. The Naxos booklet says McTeer "grew up in York and has a distinct ear for accents which made her an ideal reader for Wuthering Heights." One Audible US reviewer found the narration "luscious and wonderful, particularly Ms. McTeer's."
+The [Naxos recording](https://www.audible.com/pd/B002UZX6M2) puts Lockwood, who opens and closes the book, in a different voice from Nelly Dean, who tells most of it. Naxos does not say who reads which part; in our test of its Audible sample, a male voice reads Lockwood (see which audiobooks give Lockwood and Nelly separate voices, below). It has 4.2 stars from 1,562 ratings on Audible US and 4.5 from 426 on Audible UK. The Naxos booklet says McTeer "grew up in York and has a distinct ear for accents which made her an ideal reader for Wuthering Heights."
 
 It runs 13 hours 9 minutes by Naxos's own listing (13 hours 8 minutes on Audible), and Naxos released it in March 2006. You can borrow it too: on November 12, 2026, the New York Public Library had 14 copies on Libby and the Los Angeles Public Library 4. Audible includes the Naxos PDF booklet, with a full track list.
 
 ### Best free: Ruth Golding, LibriVox Version 2 (2009)
 
-Ruth Golding reads all 34 chapters alone in LibriVox's second recording, catalogued on May 18, 2009, at 14:48:42. It is the only solo LibriVox reading and by far the most downloaded of the three LibriVox versions: 1,949,246 downloads on the Internet Archive on November 12, 2026, with 4.33 stars from 13 reviews. A 2025 reviewer called her "very expressive, professional and steadily paced". It reads the text of Project Gutenberg eBook #768.
+Ruth Golding reads all 34 chapters alone in [LibriVox's second recording](https://librivox.org/wuthering-heights-by-emily-bronte-2/), catalogued on May 18, 2009, at 14:48:42. It is the only solo LibriVox reading and by far the most downloaded of the three LibriVox versions: 1,949,246 downloads on the Internet Archive on November 12, 2026, with 4.33 stars from 13 reviews. A 2025 reviewer called her "very expressive, professional and steadily paced". It reads the text of Project Gutenberg eBook #768.
 
 **Also worth knowing.** Aimee Lou Wood's 2020 Penguin Classics recording, 13 hours 58 minutes, was the Guardian's audiobook of the week in February 2026 and has the most library copies of any edition (see the narrator comparison below). Patricia Routledge's 2012 Audible Studios recording is the most rated on Audible UK, with 4.5 stars from 2,286 ratings. For a play instead of the book, BBC Radio 4's dramatisation runs 2 hours 17 minutes.
 
@@ -62,13 +62,13 @@ Our table has 16 complete recordings on sale by named human narrators, and Libri
 | 25 volunteers, LibriVox Version 3 (dramatic reading) | Full cast | 11 h 54 min | LibriVox | 2013 | Free | LibriVox, Internet Archive, HushBook Discover |
 | 14 volunteers, LibriVox Version 1 | Reader changes by chapter | 11 h 33 min | LibriVox | 2008 | Free | LibriVox, Internet Archive, HushBook Discover |
 
-Years are the store's or publisher's. Flo Gibson's recording is dated 1999 on Audible and 1981 on OverDrive. OverDrive dates Donada Peters's recording 2007 and Apple Books 2009, but it was already a finalist in the Classic category of the 2004 Audie Awards, according to the Audio Publishers Association. Spotify for the Naxos edition comes from the Naxos page's own link. The "Lockwood and Nelly" column comes from our sample test, explained below.
+Years are the store's or publisher's. Flo Gibson's recording is dated 1999 on Audible and 1981 on OverDrive. OverDrive dates Donada Peters's recording 2007 and Apple Books 2009, but it was already a finalist in the Classic category of the 2004 Audie Awards, according to the Audio Publishers Association. Spotify for the Naxos edition comes from the Naxos page's own link. Billie Fulford-Brown's edition is published by Spotify Audiobooks, but Spotify's catalogue needs a login, so we list only the stores where we saw it. The "Lockwood and Nelly" column comes from our sample test, explained below.
 
 **Listings we left out.** Two full-cast readings of the whole text are covered in the abridged section below. Audible also carries smaller listings we did not test, among them Anna Bentinck, Charlton Griffin, B.J. Harrison, Wanda McCaddon and Adjoa Andoh, plus machine-voiced editions and "Modern English" rewrites. Audible and Apple Books also sell Ruth Golding readings from Paperless, Erika and Booktrack, of 14 hours 39 to 42 minutes; we could not confirm whether any of them is her LibriVox recording.
 
 ## How long is the Wuthering Heights audiobook?
 
-![Stat tiles titled "How long Wuthering Heights is, and who tells it": 116,440 words in the novel; 34 chapters, 9 to 45 minutes each at 1x; 12 h 51 min of listening at 1x, at 151 words a minute. Below, a bar of who narrates by share of the words: Lockwood 14.7%, 1 h 53 min at 1x; Nelly Dean 82.3%, 10 h 35 min; Isabella's letter 3.0%, 23 min. Our count of Project Gutenberg eBook #768.](/assets/img/blog/wuthering-heights-length.webp "wide")
+![Stat tiles: 116,440 words, 34 chapters and 12 h 51 min at 1x at 151 words a minute, over a bar of who narrates: Lockwood 14.7%, Nelly Dean 82.3%, Isabella's letter 3.0%. Our count of Project Gutenberg eBook #768.](/assets/img/blog/wuthering-heights-length.webp "wide")
 
 About 12 hours 51 minutes at 1x: the novel has 116,440 words, and complete recordings run from 11 hours 1 minute to 14 hours 49 minutes.
 
@@ -81,7 +81,7 @@ We counted the words ourselves. Project Gutenberg eBook #768, downloaded on Nove
 | 1.5x | 8 h 34 min | 8 h 21 min | 8 h 56 min | 8 h 46 min | 9 h 19 min | 9 h 52 min |
 | 2x | 6 h 26 min | 6 h 16 min | 6 h 42 min | 6 h 35 min | 6 h 59 min | 7 h 24 min |
 
-**The real range.** Across 18 complete recordings we timed, including the three free ones, narrators read at 131 to 176 words a minute, median 151. Kate Petrie's is the shortest at 11 hours 1 minute and Ruth Golding's the longest at 14 hours 49 minutes; she is also the slowest reader, at 131 words a minute. These paces include any introduction, so an edition with one reads the novel a little faster than its figure. A "12 to 14 hours" figure circulates online, but 10 of the 19 complete recordings in our table fall outside it: eight run under 12 hours and two over 14.
+**The real range.** Across the 18 complete recordings we timed from their Audible or LibriVox runtimes, the three free ones included, narrators read at 131 to 176 words a minute, median 151. Donada Peters's recording is the one without a pace figure, because it is not on Audible. Kate Petrie's is the shortest at 11 hours 1 minute and Ruth Golding's the longest at 14 hours 49 minutes; she is also the slowest reader, at 131 words a minute. These paces include any introduction, so an edition with one reads the novel a little faster than its figure. A "12 to 14 hours" figure circulates online, but 10 of the 19 complete recordings in our table fall outside it: eight run under 12 hours and two over 14.
 
 **Chapters.** By our count the average chapter is 3,425 words, about 23 minutes at 1x. The longest, Chapter 17, has 6,832 words, about 45 minutes. The shortest, Chapter 5, has 1,414, about 9 minutes.
 
@@ -108,11 +108,11 @@ Froggatt has the most listeners behind her, Stevenson the highest ratings, and W
 | Apple Books price | $20.99 | $21.99 | $12.99 |
 | Libby | Not in the five systems we checked | Not in the five systems we checked | Los Angeles Public Library, 47 copies |
 
-Ratings and prices as of November 12, 2026.
+Ratings, prices and Libby copies as of November 12, 2026. The five Libby systems we checked are the New York, Los Angeles, San Francisco and Chicago public libraries and the King County Library System.
 
-**Joanne Froggatt.** In the Reddit threads we read, Froggatt, Stevenson and Ruth Golding are the names listeners recommend most. "I have the Joanne Froggatt version. Her voice is just so lovely," wrote one on r/audible in 2020.
+**Joanne Froggatt.** In the Reddit threads we read, Froggatt, Stevenson and Ruth Golding are the names listeners recommend most.
 
-**Juliet Stevenson.** One Audible reviewer planned to use her recording with students "to illustrate accents from the north of England." On r/audible in 2018: "Can't go wrong with anything from Juliet Stevenson!" Not everyone agrees: in the 2020 r/audible thread, one listener "ended up swapping it for Patricia Routledge".
+**Juliet Stevenson.** One Audible reviewer planned to use her recording with students "to illustrate accents from the north of England." Not every listener stays with it: in a 2020 r/audible thread, one "ended up swapping it for Patricia Routledge".
 
 **Aimee Lou Wood.** Fiona Sturges, reviewing Wood's recording as the Guardian's audiobook of the week on February 5, 2026, wrote "I favour this 2020 edition narrated by Aimee Lou Wood" and "Wood breathes fresh life into this tempestuous novel, capturing Nellie's gossipy tone and the early wildness of Catherine and Heathcliff." The Independent, on February 12, 2026, credited "Wood's northern accent". On November 12, 2026, the Los Angeles Public Library had 47 copies on Libby, 32 of them available, the most of any edition. Apple Books says the edition "includes an introduction by Pauline Nestor"; Kristin Atherton is credited too, and no store says what she reads.
 
@@ -120,17 +120,35 @@ Ratings and prices as of November 12, 2026.
 
 Our pick stays Froggatt: no other recording comes close to her 8,661 ratings, and her performance score is 4.8. Choose Stevenson if accents matter most to you, and Wood if you want to borrow rather than buy.
 
-## Who narrates Wuthering Heights, and which audiobooks give Lockwood and Nelly separate voices?
+## Who narrates Wuthering Heights?
 
-Two people tell the story: Mr. Lockwood, the tenant who opens and closes the book, and Nelly Dean, the housekeeper who tells him most of it. Of the complete recordings on sale, Naxos, AmazonClassics and Arcturus put Lockwood in a man's voice.
+Two narrators tell *Wuthering Heights*: Mr. Lockwood, the tenant who opens and closes the book, and Nelly Dean, the housekeeper who tells him most of it.
 
 Lockwood narrates Chapters 1 to 3 and the start of Chapter 4, then Nelly takes over. By our count of Project Gutenberg eBook #768, the narration changes hands 16 times:
 
 | Who tells it | Words | Share | At 151 words a minute |
 |---|---|---|---|
-| Mr. Lockwood: Chapters 1 to 3 and the start of 4, short interludes, the 1802 visit in Chapters 30 to 32, the last page | 17,103 | 14.7% | 1 h 53 min |
+| Mr. Lockwood: Chapters 1 to 3, the start of 4, five short breaks, the end of 30 to the start of 32, and the end of 34 | 17,103 | 14.7% | 1 h 53 min |
 | Nelly Dean: her tale, with the speeches she reports | 95,830 | 82.3% | 10 h 35 min |
 | Isabella's letter, inside Nelly's tale in Chapter 13 | 3,507 | 3.0% | 23 min |
+
+**Who narrates each chapter**, checked against the text of eBook #768:
+
+| Chapters | Who tells it |
+|---|---|
+| 1 to 3 | Lockwood |
+| 4 | Lockwood, then Nelly from "Before I came to live here, she commenced" |
+| 5 to 30 | Nelly. Isabella's letter fills the end of Chapter 13. Lockwood breaks in five times, for 120 to 675 words: at the end of Chapter 7, in the middle of 8, from the end of 9 into 10, from the end of 14 into 15, and at the start of 25. He takes over for the last 81 words of 30 |
+| 31 | Lockwood |
+| 32 | Lockwood from "1802.—This September", then Nelly from "I was summoned to Wuthering Heights" |
+| 33 | Nelly |
+| 34 | Nelly, then Lockwood from "They are going to the Grange, then?" to the last line |
+
+Nelly's story catches up with the present at the end of Chapter 30. There Lockwood, recovering in "the second week in January", plans to ride to the Heights and give notice. Chapter 31 is that visit: he tells Heathcliff he is leaving for London and will not keep the Grange. Chapter 32 opens "1802.—This September", when he comes back, finds Nelly living at the Heights, and hears the rest from her.
+
+### Which audiobooks give Lockwood and Nelly separate voices?
+
+Of the complete recordings on sale, Naxos, AmazonClassics and Arcturus put Lockwood in a man's voice.
 
 Lockwood's opening stretch, from Chapter 1 to "Before I came to live here, she commenced" in Chapter 4, is 10,997 words, about 73 minutes. So in a one-voice recording you spend your first hour hearing Lockwood in the narrator's own voice. One listener on r/audiobooks in 2022: "I thought the narrator was a woman for the first 3 chapters until I read chapter summaries online!"
 
@@ -150,11 +168,11 @@ Which recordings split the two:
 
 LibriVox's free dramatic reading casts Mr. Lockwood (Jason Mills) and Ellen Dean (Tiffany Halla Colonna) separately.
 
-## What is Joseph saying in Wuthering Heights, and which audiobook makes his Yorkshire easiest to follow?
+## What is Joseph saying in Wuthering Heights?
 
-Yorkshire dialect, spelled as it sounds: by our count Joseph speaks it 42 times, about 12 minutes of listening in the whole novel. Reviewers single out Emma Messenger's Joseph and Juliet Stevenson's northern accents.
+Joseph speaks Yorkshire dialect spelled as it sounds: his first line, "T' maister's down i' t' fowld," means "The master's down in the fold," the sheep pen.
 
-Joseph is the old servant at Wuthering Heights. Irene Wiltshire, writing in Brontë Studies in 2005, puts the contrast this way: "The outsider Lockwood speaks received English while the servant Joseph speaks the purest form of Yorkshire dialect." His first lines come in Chapter 2, when Lockwood arrives at the gate; they are in the table below, in two spellings.
+Joseph is the old servant at Wuthering Heights. Irene Wiltshire, writing in Brontë Studies in 2005, puts the contrast this way: "The outsider Lockwood speaks received English while the servant Joseph speaks the purest form of Yorkshire dialect." His first lines come in Chapter 2, when Lockwood arrives at the gate; they are in the table below, in two spellings and in plain English.
 
 By our count of Project Gutenberg eBook #768, Joseph's 42 speeches in dialect come to 1,814 words, 1.56% of the novel, in 13 chapters. A quarter of those words are Yorkshire forms such as t', i', wi', nobbut, maister and mun. Here is where they fall:
 
@@ -174,16 +192,44 @@ By our count of Project Gutenberg eBook #768, Joseph's 42 speeches in dialect co
 | 33 | 207 |
 | 34 | 29 |
 
-That averages about 43 words a speech. His longest, in Chapter 10, is 215 words, under a minute and a half at 151 words a minute. Joseph is not the only one, either: Hareton, Zillah, old Mr. Earnshaw and a few others speak some dialect, briefly. For his lines in plain English, the "Joseph's Speech" page at wuthering-heights.co.uk translates them under 11 chapter headings; our count also finds him in Chapters 33 and 34.
+That averages about 43 words a speech. His longest, in Chapter 10, is 215 words, under a minute and a half at 151 words a minute. Joseph is not the only one, either: Hareton, Zillah, old Mr. Earnshaw and a few others speak some dialect, briefly.
 
-**Which spelling you hear.** Charlotte Brontë changed Joseph's spelling for the 1850 edition. She wrote to her publisher's reader, W. S. Williams, on September 29, 1850: "It seems to me advisable to modify the orthography of the old servant Joseph's speeches; for though, as it stands, it exactly renders the Yorkshire dialect to a Yorkshire ear, yet, I am sure Southerns must find it unintelligible; and thus one of the most graphic characters in the book is lost on them." Here are his first words in both versions:
+**Which spelling you hear.** Charlotte Brontë changed Joseph's spelling for the 1850 edition. She wrote to her publisher's reader, W. S. Williams, on September 29, 1850: "It seems to me advisable to modify the orthography of the old servant Joseph's speeches; for though, as it stands, it exactly renders the Yorkshire dialect to a Yorkshire ear, yet, I am sure Southerns must find it unintelligible; and thus one of the most graphic characters in the book is lost on them." Here are his first words in both versions, and what they mean:
 
-| 1847 text (Harper & Brothers reprint, New York, 1848) | 1850 text (Project Gutenberg eBook #768) |
-|---|---|
-| "Whet are ye for?" he shouted. "T' maister's dahn i' t' fowld. Goa rahnd by th' end ut' laith, if yah went tuh spake tull him." | "What are ye for?" he shouted. "T' maister's down i' t' fowld. Go round by th' end o' t' laith, if ye went to spake to him." |
-| "They's nobbut t' missis, and shoo'll nut oppen't an ye mak yer flaysome dins till neeght." | "There's nobbut t' missis; and shoo'll not oppen 't an ye mak' yer flaysome dins till neeght." |
+| 1847 text (Harper & Brothers reprint, New York, 1848) | 1850 text (Project Gutenberg eBook #768) | In plain English |
+|---|---|---|
+| "Whet are ye for?" he shouted. "T' maister's dahn i' t' fowld. Goa rahnd by th' end ut' laith, if yah went tuh spake tull him." | "What are ye for?" he shouted. "T' maister's down i' t' fowld. Go round by th' end o' t' laith, if ye went to spake to him." | "What do you want?" he shouted. "The master's down in the fold. Go round by the end of the barn if you want to speak to him." |
+| "They's nobbut t' missis, and shoo'll nut oppen't an ye mak yer flaysome dins till neeght." | "There's nobbut t' missis; and shoo'll not oppen 't an ye mak' yer flaysome dins till neeght." | "There's nobody but the mistress, and she won't open it even if you make your frightful din till night." |
 
 The 1889 Smith, Elder edition from London matches Gutenberg's first line. All three LibriVox recordings read the Gutenberg text, so the free recordings give you Joseph as Charlotte respelled him.
+
+The plain English is ours. For the rest of his lines, the "Joseph's Speech" page at wuthering-heights.co.uk translates 29 of his 42 speeches into modern English, in all 13 chapters where he speaks dialect, by our match on November 12, 2026.
+
+**His most common words.** Every Yorkshire form Joseph uses seven times or more in his 42 speeches:
+
+| Joseph says | Means | Times in his speeches |
+|---|---|---|
+| t', th' | the | 83 |
+| yah, ye | you | 64 |
+| o' | of | 26 |
+| maister | master | 23 |
+| un, und | and | 21 |
+| i' | in | 15 |
+| wi' | with | 10 |
+| nowt | nothing, or a good-for-nothing | 10 |
+| wer | was, were, or our | 10 |
+| hev | have | 8 |
+| mun | must | 7 |
+| shoo | she | 7 |
+| soa | so | 7 |
+
+Our count of Project Gutenberg eBook #768 on November 12, 2026, including joined forms such as t'other and shoo'll. Meanings from the "Joseph's Speech" and Glossary pages at wuthering-heights.co.uk, read the same day, and the lines around each word.
+
+With these, most of his lines read straight through.
+
+### Which audiobook makes Joseph's Yorkshire easiest to follow?
+
+Reviewers single out Emma Messenger's Joseph and Juliet Stevenson's northern accents, and LibriVox's free dramatic reading gives Joseph a reader of his own.
 
 **What listeners say about Joseph on audio.**
 
@@ -220,7 +266,7 @@ Yes: LibriVox has three complete free recordings, and Ruth Golding's solo readin
 
 Running times, dates and zip sizes come from the LibriVox catalog and API; downloads and ratings were read from the Internet Archive on November 12, 2026. Words a minute is our calculation.
 
-**Which one to pick.** Version 2 is one voice, complete, and the best reviewed: "Ruth Golding's unhurried and lively way of reading brought out much more of the detail and imagery," one reviewer wrote in 2013. On r/audible in 2020, a listener put it plainly: "Ruth Golding from Librivox. She does a great job." At one hour a day it takes 15 days at 1x, 12 at 1.25x, 10 at 1.5x and 8 at 2x. Version 1 changes reader by chapter; a 2009 reviewer wrote "The voices of the narrators were so bad I could not even listen", and a 2013 review points listeners to Version 2. Version 3 gives the characters their own readers, Joseph included (Algy Pug); a 2019 Reddit post called it a "Cool dramatic reading".
+**Which one to pick.** Version 2 is one voice, complete, and the best reviewed: "Ruth Golding's unhurried and lively way of reading brought out much more of the detail and imagery," one reviewer wrote in 2013. At one hour a day it takes 15 days at 1x, 12 at 1.25x, 10 at 1.5x and 8 at 2x. Version 1 changes reader by chapter; a 2009 reviewer wrote "The voices of the narrators were so bad I could not even listen", and a 2013 review points listeners to Version 2. Version 3 gives the characters their own readers, Joseph included (Algy Pug).
 
 **Other free routes.** Full uploads on YouTube rank for "wuthering heights audiobook youtube"; we did not check their source or rights. Other Internet Archive items called Wuthering Heights name no reader, and one item's name suggests a machine voice, so we left them out. Project Gutenberg eBook #768, the text all three LibriVox versions read, is free too. Our guide to [free read-along audiobooks](/blog/free-read-along-audiobooks) explains where recordings like these come from.
 
@@ -242,7 +288,7 @@ Nine listings we found are cut, condensed or dramatised, from 1 hour to 7 hours 
 
 Runtimes are Audible's, except Prunella Scales and Samuel West's (OverDrive). Read November 12, 2026.
 
-**The BBC dramatisation.** It is the one to choose for a drama. It has 4.5 stars from 39 ratings on Audible UK, where its format reads "unabridged" even though it is an adaptation. In the US it is sold only inside The Brontë BBC Radio Drama Collection, seven dramatisations in 15 hours 40 minutes with 4.6 stars from 141 ratings. On r/audiobooks in 2021, one listener said "the BBC Dramatization of Wuthering Heights was good".
+**The BBC dramatisation.** It is the one to choose for a drama. It has 4.5 stars from 39 ratings on Audible UK, where its format reads "unabridged" even though it is an adaptation. In the US it is sold only inside The Brontë BBC Radio Drama Collection, seven dramatisations in 15 hours 40 minutes with 4.6 stars from 141 ratings.
 
 **The film tie-in link.** Penguin UK's page for its 2026 film tie-in paperback (ISBN 9780241819937, published January 22, 2026) lists an "Audio Download" format. It links to Juliet Stevenson's 2012 abridgement, which Penguin lists at "Length: 161 minutes".
 
@@ -254,9 +300,11 @@ Runtimes are Audible's, except Prunella Scales and Samuel West's (OverDrive). Re
 
 ## How do you keep the two Catherines, the Lintons and the Earnshaws straight?
 
-![Family tree titled "Wuthering Heights family tree" over two generations, with a double line for married. The two houses are bracketed: Wuthering Heights, the Earnshaws, over Hindley Earnshaw and Catherine Earnshaw, also Cathy and Mrs. Linton; Thrushcross Grange, the Lintons, over Edgar Linton and Isabella Linton, also Mrs. Heathcliff. First generation: Frances is married to Hindley, Catherine Earnshaw to Edgar, and Isabella to Heathcliff, the foundling. Second generation, their children: Hareton Earnshaw; Catherine Linton, also Cathy and Mrs. Heathcliff; and Linton Heathcliff, called Linton. Catherine Linton is married to Linton Heathcliff. Names and family ties from the text of the novel, Project Gutenberg eBook #768.](/assets/img/blog/wuthering-heights-family-tree.webp "wide")
+![Wuthering Heights family tree, grouped by house. Couples: Frances and Hindley Earnshaw, Catherine Earnshaw and Edgar Linton, Isabella Linton and Heathcliff. Children: Hareton Earnshaw, Catherine Linton and Linton Heathcliff; the last two are married.](/assets/img/blog/wuthering-heights-family-tree.webp "wide")
 
 Sort them by house and by generation: the two Catherines are mother and daughter, and the daughter's names run the other way from her mother's.
+
+The tree has no spoilers. Lockwood learns every marriage and parent in it by the end of Chapter 4, where Nelly tells him the young widow's "husband was her cousin also: one on the mother's, the other on the father's side: Heathcliff married Mr. Linton's sister." The one exception is that Frances is Hareton's mother, which the book makes plain at his birth in Chapter 8.
 
 By our count of Project Gutenberg eBook #768, "Catherine" appears 379 times for two women: Catherine Earnshaw and her daughter, Catherine Linton. "Linton" appears 404 times: it is the surname of Edgar, Isabella and their parents, and the first name of Isabella's son. "Mrs. Heathcliff" means Isabella or the younger Catherine (25 times), and "Mr. Earnshaw" (38 times) can be the father, Hindley or, once, Hareton.
 
@@ -270,31 +318,27 @@ The chapter in brackets is where the book says so.
 | Hindley (80), later "Mr. Earnshaw" | Catherine's elder brother; comes home with a wife, Frances (Ch. 6); Hareton's father (Ch. 4) | Wuthering Heights |
 | Catherine Earnshaw, later Mrs. Linton | The heroine; "the late Mrs. Linton" by 1801 (Ch. 4) | Wuthering Heights, then Thrushcross Grange |
 | Heathcliff (475), Mr. Heathcliff (130) | The foundling, named for "a son who died in childhood", "both for Christian and surname" (Ch. 4); owns the Grange in 1801 (Ch. 1) | Wuthering Heights |
-| Edgar Linton (116), Mr. Linton | The elder Catherine's husband and the younger Catherine's father; "Mr. Linton" is also his father | Thrushcross Grange |
+| Edgar Linton (116), Mr. Linton | The elder Catherine's husband and the younger Catherine's father (Ch. 4); "Mr. Linton" is also his father (Ch. 6) | Thrushcross Grange |
 | Isabella Linton (62), later Mrs. Heathcliff | Edgar's sister; marries Heathcliff, and her son is christened Linton (Ch. 17) | Thrushcross Grange, then Wuthering Heights |
 | Catherine Linton, Cathy, later Mrs. Heathcliff | The elder Catherine's daughter: "Catherine Linton was her maiden name" (Ch. 4); Heathcliff's "daughter-in-law" (Ch. 2) | Thrushcross Grange, then Wuthering Heights |
 | Linton Heathcliff, "Linton" | Heathcliff and Isabella's son; dead by 1801 (Ch. 4) | Wuthering Heights |
-| Hareton Earnshaw (179) | Hindley's son, born in "the summer of 1778" (Ch. 7); "the late Mrs. Linton's nephew" (Ch. 4) | Wuthering Heights |
+| Hareton Earnshaw (179) | Hindley's son, "the last of the ancient Earnshaw stock", born in the summer of 1778 (Ch. 7 to 8); "the late Mrs. Linton's nephew" (Ch. 4) | Wuthering Heights |
 | Nelly (89), Ellen (98), Mrs. Dean (37) | Servant, then housekeeper; tells most of the story | Both houses |
 | Mr. Lockwood (19) | Tenant of the Grange in 1801; opens and closes the book | Thrushcross Grange |
 | Joseph (140) | The old servant | Wuthering Heights |
 | Zillah (35) | Housekeeper at the Heights in Lockwood's time | Wuthering Heights |
 
-For dates, the text gives 1801 when Lockwood arrives (Ch. 1), 1802 when he comes back (Ch. 32), and "the summer of 1778" for Hareton's birth (Ch. 7). Our guide on how to [keep track of characters](/blog/how-to-keep-track-of-characters-in-a-book) has methods that work for any book.
+For dates, the text gives 1801 when Lockwood arrives (Ch. 1), 1802 when he comes back (Ch. 32), and "the summer of 1778" for Hareton's birth: those are the last words of Chapter 7, and Chapter 8 opens with the birth. Our guide on how to [keep track of characters](/blog/how-to-keep-track-of-characters-in-a-book) has methods that work for any book.
 
 ## Should you read or listen to Wuthering Heights?
 
 Either works for following the story, but minds wander most when people only listen, and no study has tested a whole novel.
 
-The print is hard too. In TODAY's February 19, 2026 report on the rush to re-read the novel, a teacher named "the terminology, the sentence structure and the density of the prose" and the "incomprehensible Yorkshire dialect". Here is what the studies found about reading and listening:
+Is *Wuthering Heights* hard to read? In places, yes. Joseph's Yorkshire dialect is only 1.56% of the words by our count, about 12 minutes of listening, but two narrators share the telling and two women are called Catherine. In TODAY's February 19, 2026 report on the rush to re-read the novel, a teacher named "the terminology, the sentence structure and the density of the prose" and the "incomprehensible Yorkshire dialect".
 
-- **No reliable overall difference.** A 2022 meta-analysis by Clinton-Lisell of 46 studies with 4,687 people found no reliable difference between understanding a text by reading and by listening (g = 0.07). Reading did better when readers set their own pace (g = 0.13) and on questions that need inference.
-- **More mind wandering while listening.** In a 2013 study of 211 students, Varao Sousa, Carriere and Smilek found that listening to a passage led to the most mind wandering and the poorest memory, and reading aloud to the least.
-- **Literary texts.** In a 2016 study using The Red-Headed League and Walden, Kopp and D'Mello found that audio alone produced the most mind wandering; following the text while listening produced about as much as reading at your own pace. The abstract gives no sample size.
-- **Reading along.** Clinton-Lisell's 2023 meta-analysis of 30 studies (1,945 people) found a trivial overall benefit of reading while listening over reading only (g = 0.18), and no reliable benefit when readers set their own pace.
-- **Novel excerpts.** In a study published in 2026, Hui and Godfroid had 86 intermediate to advanced Chinese learners of English read, listen to, or read and listen to excerpts of a novel. Both reading conditions beat listening alone; reading while listening scored below silent reading.
+Following the story holds up by ear. Clinton-Lisell's 2022 meta-analysis pooled 46 studies with 4,687 people and found no reliable difference between understanding a text you read and one you hear. Attention is the weak spot: when Varao Sousa, Carriere and Smilek tested 211 students in 2013, minds wandered most, and memory was poorest, when the students only listened to a passage.
 
-None of these studies tested a whole novel, a story told by two narrators, or a dialect. For *Wuthering Heights*, that points to a simple rule: listen when it fits your day, and have the text in front of you for Joseph and the names. Our guide on [how to read classics without getting bored](/blog/how-to-read-classics-without-getting-bored) covers older books in general.
+Neither study used a whole novel, a story with two narrators, or a dialect. For *Wuthering Heights*, that points to a simple rule: listen when it fits your day, and have the text in front of you for Joseph and the names. Our guide on [how to read classics without getting bored](/blog/how-to-read-classics-without-getting-bored) covers older books in general.
 
 ## What we could not verify
 
@@ -309,7 +353,7 @@ None of these studies tested a whole novel, a story told by two narrators, or a 
 
 ## Is there a Wuthering Heights audiobook with text?
 
-![Two HushBook phone screens with Ruth Golding's free LibriVox recording, titled Wuthering Heights (Solo Version). Left: the player, with the LibriVox cover of a stormy moor, a Read along button and 16 minutes left in the chapter. Right: the read-along page for Chapter I on a cream background, opening "1801, I have just returned from a visit to my landlord", with the words just read, "In all", tinted red and the current word, "England", underlined.](/assets/img/blog/wuthering-heights-read-along.webp "wide")
+![Two HushBook phone screens with Ruth Golding's free LibriVox recording: the player with a Read along button, and the Chapter I read-along page, with the words just read tinted red and the current word, "England", underlined.](/assets/img/blog/wuthering-heights-read-along.webp "wide")
 
 Yes: HushBook, the app we built, plays an audiobook and shows its words in time with the voice, on iPhone, Android and Windows.
 
@@ -369,17 +413,16 @@ HushBook works with free public domain recordings and audio files you own withou
 - [Internet Archive, "Wuthering Heights: a novel" (New York, Harper & Brothers, 1848)](https://archive.org/details/wutheringheights04bron)
 - [Internet Archive, "Wuthering Heights" (London, Smith, Elder & Co., 1889)](https://archive.org/details/wutheringheights00bron)
 - [Understanding Joseph's speech in Wuthering Heights (wuthering-heights.co.uk)](https://wuthering-heights.co.uk/josephs-speech.php)
+- [Glossary (wuthering-heights.co.uk)](https://wuthering-heights.co.uk/glossary)
 - [Warner Bros., "Wuthering Heights"](https://www.warnerbros.com/movies/wuthering-heights)
 - [The Guardian, "Wuthering Heights by Emily Brontë audiobook review: Aimee Lou Wood reads the romance of the moment" (Fiona Sturges, 5 February 2026)](https://www.theguardian.com/books/2026/feb/05/wuthering-heights-by-emily-bronte-audiobook-review-aimee-lou-wood-reads-the-romance-of-the-moment)
 - [The Independent, "Aimee Lou Wood voices audiobook of Wuthering Heights, here's where to listen" (12 February 2026)](https://www.independent.co.uk/extras/indybest/books/wuthering-heights-audiobook-aimee-lou-wood-b2918366.html)
 - [TODAY, "People Are Re-Reading 'Wuthering Heights.' It Isn't Going Well" (19 February 2026)](https://www.today.com/popculture/books/reading-wuthering-heights-book-trend-rcna259613)
 - [Reddit r/audible, "Wuthering Heights" (2020)](https://www.reddit.com/r/audible/comments/fxtq06/)
 - [Reddit r/audible, "Which version of Wuthering Heights is best?" (2018)](https://www.reddit.com/r/audible/comments/7p6zng/)
-- [Reddit r/audiobooks, "What is the best audio recording for Wuthering Heights?" (2021)](https://www.reddit.com/r/audiobooks/comments/px6ykl/)
 - [Reddit r/audiobooks, "What is the best version of Wuthering heights?" (2022)](https://www.reddit.com/r/audiobooks/comments/ul16bc/)
 - [Reddit r/classicliterature, "Joseph Wuthering Heights" (2026)](https://www.reddit.com/r/classicliterature/comments/1qtb2ku/)
 - [Reddit r/books, thread on reading Joseph's lines (2018)](https://www.reddit.com/r/books/comments/9ubk2s/)
-- [Reddit r/thehemingwaylist, thread on the LibriVox dramatic reading (2019)](https://www.reddit.com/r/thehemingwaylist/comments/antni0/)
 - [Wiltshire (2005), "Speech in Wuthering Heights: Joseph's Dialect and Charlotte's Emendations", Brontë Studies](https://doi.org/10.1179/147489304x18821)
 - [Clarke and Garrett (2004), "Rapid adaptation to foreign-accented English", Journal of the Acoustical Society of America](https://doi.org/10.1121/1.1815131)
 - [Floccia, Goslin, Girard and Konopczynski (2006), "Does a regional accent perturb speech processing?", Journal of Experimental Psychology: Human Perception and Performance](https://doi.org/10.1037/0096-1523.32.5.1276)
@@ -390,6 +433,3 @@ HushBook works with free public domain recordings and audio files you own withou
 - [Rodero and Lucas (2023), "Synthetic versus human voices in audiobooks: The human emotional intimacy effect", New Media & Society](https://doi.org/10.1177/14614448211024142)
 - [Clinton-Lisell (2022), "Listening Ears or Reading Eyes: A Meta-Analysis of Reading and Listening Comprehension Comparisons", Review of Educational Research](https://doi.org/10.3102/00346543211060871)
 - [Varao Sousa, Carriere and Smilek (2013), "The way we encounter reading material influences how frequently we mind wander", Frontiers in Psychology](https://doi.org/10.3389/fpsyg.2013.00892)
-- [Kopp and D'Mello (2016), "The Impact of Modality on Mind Wandering during Comprehension", Applied Cognitive Psychology](https://doi.org/10.1002/acp.3163)
-- [Clinton-Lisell (2023), "Does Reading While Listening to Text Improve Comprehension Compared to Reading Only? A Systematic Review and Meta-Analysis", Educational Research: Theory and Practice (ERIC EJ1403866)](https://eric.ed.gov/?id=EJ1403866)
-- [Hui and Godfroid (2026), "Listening, Reading, or Both? Rethinking the Comprehension Benefits of Reading-While-Listening", Language Learning](https://doi.org/10.1111/lang.12721)

@@ -40,3 +40,18 @@ Run Python with `python -I`; keep every download in its own new folder outside t
 - **Lockwood in a female voice** is a real listener complaint (Reddit ul16bc) and a clean comparison column ("voices for Lockwood / Nelly").
 - **Naxos role split** is measured, not stated; phrase as "a male voice reads Lockwood".
 - **Owner's no-dash rule** (last two posts): the Guardian and Independent titles contain en dashes; adjust in Sources.
+
+## Review fixes 2026-11-12
+
+Applied to the live post and its registry entry after an editorial review. No build, tests or commit (the orchestrator builds).
+
+- **Script:** `scripts/wh-review-fixes.py` (loads `wh-wordcount.py`; run `python -I wh-review-fixes.py <pg768.txt> [<josephs-speech.html>]`). It rebuilds Joseph's 42 speeches (1,814 words, unchanged), counts glossary forms, prints who narrates each chapter from the 16 anchors, and locates every quote used below. Fan-site page saved by the reviewer; glossary page fetched today with a generic User-Agent into its own scratch folder.
+- **Joseph translated (fix 1):** plain-English column on the first-lines table (our wording, close to wuthering-heights.co.uk's). Glossary of every form he uses 7+ times: t'/th' 83, yah/ye 64, o' 26, maister 23, un/und 21 (excludes "'un" = one), i' 15, wi' 10, nowt 10, wer 10, hev 8, mun 7, shoo 7, soa 7. owt occurs 0 times, so it is not listed. Meanings from the site's "Joseph's Speech" translations and Glossary page (nowt = naught; owt = aught; yah = ye; thear = there; un, und = and). The fan page now has 13 chapter headings (it had 11 at research time) and covers 29 of his 42 speeches (1,569 of 1,814 words) by a first-18-letters match, so the post says 29 of 42, not "all".
+- **H2 split (fix 2):** new anchors `who-narrates-wuthering-heights`, `what-is-joseph-saying-in-wuthering-heights`; H3s under each. No repo file linked the old anchors except the generated HTML (rebuilt by the build).
+- **Chapter narrators (fix 3):** chapter table from the anchors. Lockwood breaks are five, not eight, because the end of 9 runs into 10 (85 + 422 words) and the end of 14 into 15 (82 + 63); others: end of 7 (675), middle of 8 (120), start of 25 (340). End of 30 (81 words, "the second week in January"), all of 31 (the visit where he gives notice), start of 32 ("1802.—This September", 1,774 words), last 372 words of 34.
+- **No spoilers (fix 4):** every marriage and parent in the tree is in Chapters 2 to 4 (and Frances as Hindley's wife in the Chapter 3 diary), except Frances as Hareton's mother, which is plain only at his birth (Ch. 8); the post says so. Edgar's father as "Mr. Linton" is Ch. 6, now cited.
+- **FAQs (fix 5):** two-narrators FAQ dropped; added free audiobook and hard-to-read; Joseph answer carries the translated first line.
+- **Small fixes (fix 6):** Hareton (Ch. 7 to 8); five Libby systems named; Donada Peters has no pace figure (not on Audible; the pace script used Audible and LibriVox runtimes); Fulford-Brown Spotify note.
+- **Alts (fix 7):** 228, 212, 250, 224 characters.
+- **Picks linked (fix 8);** generic study bullets replaced by two cited sentences (fix 9), Kopp and D'Mello, Clinton-Lisell 2023 and Hui and Godfroid removed from Sources; low-information quotes cut (fix 10), Reddit px6ykl and thehemingwaylist removed from Sources. Glossary page added to Sources.
+- **Result:** body 6,181 words, `readingTime: '28 min read'`; six internal links; self-check clean (dashes only inside quotes, tables well formed, Joseph table sums to 1,814).

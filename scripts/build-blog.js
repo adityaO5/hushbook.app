@@ -178,7 +178,30 @@ function parseMarkdown(source) {
   return { title, headings, html: html.join('\n'), wordCount: text.trim().split(/\s+/).filter(Boolean).length };
 }
 
-function head({ title, description, canonical, schema, type, extra = '' }) {
+const DEFAULT_SHARE_IMAGE = { url: `${site}/assets/img/og-hushbook.webp`, width: 1200, height: 630 };
+
+// A post whose hero embed is a wide picture (the book posts' picks card) shares that picture:
+// BlogPosting.image is the picture itself, og:image and twitter:image are its 1200x630
+// "<name>-og.webp" sibling (node tools/blog/og-card.mjs). Every other post keeps the site card.
+function shareImages(post) {
+  const fallback = { og: DEFAULT_SHARE_IMAGE, schema: DEFAULT_SHARE_IMAGE };
+  if (!post.hero) return fallback;
+  const embed = fs.readFileSync(path.join(root, 'content', 'blog', 'embeds', `${post.hero}.html`), 'utf8');
+  const img = (embed.match(/<img\b[^>]*>/) || [])[0];
+  if (!img) return fallback;
+  const attr = (name) => (img.match(new RegExp(`\\s${name}="([^"]*)"`)) || [])[1];
+  const src = attr('src');
+  const width = Number(attr('width'));
+  const height = Number(attr('height'));
+  if (!src || !/^\/assets\/img\/[\w./-]+\.webp$/.test(src) || !(width >= 1200) || !(height > 0)) return fallback;
+  const ogSrc = src.replace(/\.webp$/, '-og.webp');
+  return {
+    og: fs.existsSync(path.join(root, ogSrc)) ? { url: `${site}${ogSrc}`, width: 1200, height: 630 } : DEFAULT_SHARE_IMAGE,
+    schema: { url: `${site}${src}`, width, height }
+  };
+}
+
+function head({ title, description, canonical, schema, type, extra = '', image = DEFAULT_SHARE_IMAGE }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -199,14 +222,14 @@ function head({ title, description, canonical, schema, type, extra = '' }) {
 <meta property="og:title" content="${escapeHtml(title)}">
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${site}/assets/img/og-hushbook.webp">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="${image.url}">
+<meta property="og:image:width" content="${image.width}">
+<meta property="og:image:height" content="${image.height}">
 ${extra}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@hushbookapp">
 <meta name="twitter:title" content="${escapeHtml(title)}">
 <meta name="twitter:description" content="${escapeHtml(description)}">
-<meta name="twitter:image" content="${site}/assets/img/og-hushbook.webp">
+<meta name="twitter:image" content="${image.url}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -274,7 +297,7 @@ function postSchema(post, parsed) {
         headline: post.title,
         description: post.description,
         abstract: post.takeaways.join(' '),
-        image: { '@type': 'ImageObject', url: `${site}/assets/img/og-hushbook.webp`, width: 1200, height: 630 },
+        image: { '@type': 'ImageObject', ...shareImages(post).schema },
         datePublished: post.datePublished,
         dateModified: post.dateModified,
         inLanguage: 'en',
@@ -368,7 +391,7 @@ function renderPost(post) {
     ''
   ].join('\n');
 
-  return `${head({ title: (`${post.metaTitle} | HushBook`.length <= 60 ? `${post.metaTitle} | HushBook` : post.metaTitle), description: post.metaDescription || post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra })}
+  return `${head({ title: (`${post.metaTitle} | HushBook`.length <= 60 ? `${post.metaTitle} | HushBook` : post.metaTitle), description: post.metaDescription || post.description, canonical, schema: postSchema(post, parsed), type: 'article', extra, image: shareImages(post).og })}
 <body>
 ${nav()}
 <main id="content">

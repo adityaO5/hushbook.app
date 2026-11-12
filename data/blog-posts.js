@@ -18,7 +18,7 @@ const posts = [
     category: 'Reading and listening',
     datePublished: '2026-11-12',
     dateModified: '2026-11-12',
-    readingTime: '24 min read',
+    readingTime: '25 min read',
     keywords: [
       'best pride and prejudice audiobook',
       'which pride and prejudice audiobook is best',
@@ -37,12 +37,13 @@ const posts = [
       'The novel has 121,676 words in 61 chapters: 13 hours 26 minutes at 1x, 10 hours 45 minutes at 1.25x, 8 hours 57 minutes at 1.5x, 6 hours 43 minutes at 2x.'
     ],
     faqs: [
-      ['Who is the best narrator of Pride and Prejudice?', 'Rosamund Pike, on the evidence we could check. Her 2015 Audible Studios recording has 4.8 stars from 43,975 Audible US ratings. Juliet Stevenson\'s 2021 Naxos recording has the highest average, 4.9 from 204 ratings.'],
+      ['Who is the best narrator of Pride and Prejudice?', 'Rosamund Pike, on the evidence we could check. Her 2015 Audible Studios recording has 4.8 stars from 43,975 Audible US ratings. Juliet Stevenson\'s 2021 Naxos recording has the highest average among editions with over 100 ratings, 4.9 from 204.'],
       ['How long is the Pride and Prejudice audiobook?', 'About 13 hours 26 minutes at 1x, by our count of 121,676 words. Complete readings run from 10 hours 23 minutes (Karen Savage, LibriVox) to 14 hours 27 minutes (LibriVox Version 5).'],
       ['Is there a free Pride and Prejudice audiobook?', 'Yes. LibriVox has six complete free recordings. Karen Savage reads Version 3 alone in 10 hours 23 minutes, and Version 6 is a dramatic reading with 26 readers, one per character.'],
-      ['Is the Audible full-cast Pride and Prejudice unabridged?', 'No. The 2025 Audible Original with Marisa Abela and Harris Dickinson is a 4 hour 34 minute adaptation by Lulu Raczka. Every complete reading of the novel takes at least 10 hours 23 minutes.'],
-      ['How many chapters are in Pride and Prejudice?', '61. The 1813 first edition has three volumes of 23, 19 and 19 chapters, so Volume II, Chapter 1 is Chapter 24 in editions that number straight through, such as Project Gutenberg\'s.'],
-      ['Is there a Pride and Prejudice audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+      ['Is there a Pride and Prejudice audiobook with an American accent?', 'Yes. Elizabeth Klett\'s free LibriVox Version 4, 11 hours 10 minutes, is narrated in an American accent with the dialogue in British accents, according to two Internet Archive reviews. In HushBook Discover it is "Pride and Prejudice (version 4)".'],
+      ['Is the Julie Andrews Pride and Prejudice the full book?', 'Yes, by Noiser\'s account: it calls the series "unabridged". Julie Andrews reads it in 25 parts, 17 hours 16 minutes of episodes, in Noiser\'s free podcast "Jane Austen Stories". We did not check it against the text.'],
+      ['Is Pride and Prejudice hard to read?', 'No. It is modern English, published in 1813, with a Project Gutenberg reading ease of 69.2: "Neither easy nor difficult to read." The harder part is dialogue: 46.8% of the words, with 61.5% of speech paragraphs naming no speaker.'],
+      ['Is there a Pride and Prejudice audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows. E-book sync, in beta, can show Austen\'s own text.']
     ]
   },
   {
@@ -56,7 +57,7 @@ const posts = [
     category: 'Reading and listening',
     datePublished: '2026-11-12',
     dateModified: '2026-11-12',
-    readingTime: '26 min read',
+    readingTime: '28 min read',
     keywords: [
       'best wuthering heights audiobook',
       'wuthering heights audiobook narrator',
@@ -77,8 +78,9 @@ const posts = [
     faqs: [
       ['Who is the best narrator of Wuthering Heights?', 'Joanne Froggatt, on the evidence we could check. Her 2017 Audible Studios recording has 4.4 stars from 8,661 Audible US ratings and 4.8 for performance. Juliet Stevenson\'s is the highest rated, at 4.6 from 427.'],
       ['How long is the Wuthering Heights audiobook?', 'About 12 hours 51 minutes at 1x, by our count of 116,440 words. Complete recordings run from 11 hours 1 minute (Kate Petrie) to 14 hours 49 minutes (Ruth Golding\'s free LibriVox reading).'],
-      ['Which Wuthering Heights audiobook has two narrators?', 'Janet McTeer and David Timson\'s Naxos recording, Michael Page and Laural Merlington\'s AmazonClassics edition, and Ciaran Saward and Sherry Baines\'s 2026 Arcturus edition. In each one\'s sample, a male voice reads Lockwood.'],
-      ['What is Joseph saying in Wuthering Heights?', 'Yorkshire dialect, spelled as it sounds. By our count his 42 speeches in dialect come to 1,814 words, about 12 minutes of listening. Charlotte Brontë respelled his lines for the 1850 edition.'],
+      ['What is Joseph saying in Wuthering Heights?', 'Yorkshire dialect, spelled as it sounds. His first line, "T\' maister\'s down i\' t\' fowld," means "The master\'s down in the fold." By our count his 42 speeches in dialect come to 1,814 words, about 12 minutes of listening.'],
+      ['Is there a free Wuthering Heights audiobook?', 'Yes. LibriVox has three complete free recordings. Ruth Golding\'s solo reading, Version 2, is the one to pick: 14 hours 49 minutes, with 4.33 stars from 13 reviews on the Internet Archive.'],
+      ['Is Wuthering Heights hard to read?', 'Yes, in places. Joseph\'s Yorkshire dialect is only 1.56% of the words, about 12 minutes of listening, but two narrators share the telling and two women are called Catherine.'],
       ['Is there a Wuthering Heights audiobook read by the 2026 film\'s cast?', 'No. On November 12, 2026, Audible narrator searches for the cast, Margot Robbie and Jacob Elordi included, found no Brontë title. The recording the film brought back into the news is Aimee Lou Wood\'s 2020 reading.'],
       ['Is there a Wuthering Heights audiobook with text?', 'Yes. HushBook, the app we built, plays Ruth Golding\'s free LibriVox recording or DRM-free MP3 and M4B files you own and shows the words in time with the voice, on iPhone, Android and Windows.']
     ]
