@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Pride and Prejudice length</title>
+<!--
+  Figure for /blog/best-pride-and-prejudice-audiobook (assets/img/blog/pride-and-prejudice-length.webp).
+  Data: docs/seo/drafts/2026-11-12-best-pride-and-prejudice-audiobook/research-platforms.md, section 3:
+  121,676 words (the site's published figure for Project Gutenberg #1342, which the research says to keep;
+  our own count is 121,850, the same to within a minute at every speed), 61 chapters (3b), the first
+  edition's three volumes of 23, 19 and 19 chapters (3b, Wikisource), listening time at 151 wpm from
+  121,676 words (3c: 13 h 26 / 10 h 45 / 8 h 57 / 6 h 43 min).
+  Same tiles as the War and Peace figure, plus a segmented bar for the three volumes. Re-render (2x, WebP):
+    node render-html.mjs length-tiles.html pride-and-prejudice-length.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #655E57;           /* volume blocks: paper text inside 5.5:1 */
+    --coral: #E8613F;          /* the one accent */
+    --hair: rgba(246, 239, 228, .12);
+    --track: rgba(246, 239, 228, .14);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row.two { grid-template-columns: repeat(2, 1fr); }
+  .row.four { grid-template-columns: repeat(4, 1fr); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 18px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 17px; font-weight: 500; letter-spacing: 0; margin-left: 5px; color: var(--paper-dim); }
+  .four .tile { padding: 16px 14px 15px; }
+  .four .v { font-size: 28px; }
+  .four .v small { font-size: 15px; margin-left: 4px; margin-right: 7px; }
+  .four .v small:last-child { margin-right: 0; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); }
+  .speed { font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 12px; }
+  /* Meter: this speed's listening time against the 1x time, coral fill on a track of the same paper. */
+  .meter { margin-top: 16px; height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; }
+  .meter b { display: block; height: 100%; border-radius: 4px; background: var(--coral); }
+  .rowlabel { margin: 26px 0 12px; font-size: 15px; font-weight: 500; color: var(--paper-dim); }
+  /* Tall segmented bar: one whole (61 chapters) in three blocks, widths by chapter count, 2 px gaps. */
+  .vols { display: flex; gap: 2px; }
+  .vol { min-width: 0; }
+  .vol .blk {
+    height: 28px; border-radius: 4px; background: var(--gray);
+    display: flex; align-items: center; padding: 0 10px; box-sizing: border-box;
+    font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; line-height: 1;
+  }
+  .vol .blk span { font-weight: 400; color: var(--paper); margin-left: 6px; }   /* paper on the gray block: 5.5:1 */
+  .vol .ch { margin-top: 8px; padding-left: 2px; font-size: 15px; color: var(--paper-dim); white-space: nowrap; }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>How long Pride and Prejudice is</h1>
+  <div class="row two">
+    <div class="tile"><i class="dash"></i><div class="v">121,676<small>words</small></div><div class="l">in the novel</div></div>
+    <div class="tile"><i class="dash"></i><div class="v">61<small>chapters</small></div><div class="l">in three volumes</div></div>
+  </div>
+  <div class="rowlabel">Listening time at 151 words a minute</div>
+  <div class="row four" id="speeds"></div>
+  <div class="rowlabel">The three volumes of the first edition, 1813</div>
+  <div class="vols" id="vols"></div>
+  <p class="src">Our count of Project Gutenberg eBook #1342. 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study. Volumes as in the 1813 edition on Wikisource</p>
+</div>
+<script>
+  // research-platforms.md 3c, "121,676 (site) at 151 wpm": 13 h 26, 10 h 45, 8 h 57, 6 h 43 min.
+  const WORDS = 121676, WPM = 151;
+  const SPEEDS = [['1x', 1], ['1.25x', 1.25], ['1.5x', 1.5], ['2x', 2]];
+  const base = WORDS / WPM;                       // 805.8 min at 1x
+  let html = '';
+  for (const [label, k] of SPEEDS) {
+    const min = WORDS / WPM / k, total = Math.round(min);
+    const h = Math.floor(total / 60), m = total % 60;
+    html += '<div class="tile"><div class="speed">' + label + '</div>' +
+      '<div class="v">' + h + '<small>h</small>' + m + '<small>min</small></div>' +
+      '<div class="meter"><b style="width:' + (min / base * 100).toFixed(2) + '%"></b></div></div>';
+  }
+  document.getElementById('speeds').innerHTML = html;
+  window.__minutes = SPEEDS.map(([l, k]) => [l, +(WORDS / WPM / k).toFixed(1)]);
+  // research-platforms.md 3b: Volume I = chapters 1 to 23, II = 24 to 42, III = 43 to 61 (61 in all).
+  const VOLS = [['Volume I', 23], ['Volume II', 19], ['Volume III', 19]];
+  let first = 1, vh = '';
+  for (const [name, n] of VOLS) {
+    vh += '<div class="vol" style="flex:' + n + ' 1 0"><div class="blk">' + name + '<span>' + n + ' chapters</span></div>' +
+      '<div class="ch">Chapters ' + first + ' to ' + (first + n - 1) + '</div></div>';
+    first += n;
+  }
+  document.getElementById('vols').innerHTML = vh;
+  // Fit check for the renderer: every value and block label must sit inside its box. A getter, so the
+  // renderer measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const out = [...document.querySelectorAll('.v')].map(v => {
+      const t = v.parentElement, cs = getComputedStyle(t);
+      const room = t.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+    }).filter(f => f.need > f.room);
+    for (const b of document.querySelectorAll('.blk')) {
+      const need = [...b.childNodes].reduce((s, n) => { const r = document.createRange(); r.selectNodeContents(n); return s + r.getBoundingClientRect().width; }, 0) + 26;
+      if (need > b.clientWidth) out.push({ label: b.textContent, room: b.clientWidth, need: +need.toFixed(1) });
+    }
+    for (const c of document.querySelectorAll('.vol .ch')) if (c.scrollWidth > c.parentElement.clientWidth) out.push({ label: c.textContent });
+    return out;
+  } });
+</script>
+</body>
+</html>

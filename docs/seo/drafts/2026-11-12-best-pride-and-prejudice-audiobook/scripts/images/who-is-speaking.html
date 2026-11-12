@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Who is speaking</title>
+<!--
+  Figure for /blog/best-pride-and-prejudice-audiobook (assets/img/blog/pride-and-prejudice-who-is-speaking.webp).
+  Data: docs/seo/drafts/2026-11-12-best-pride-and-prejudice-audiobook/research-platforms.md, 3d and 3e (and
+  notes.md, "Miss Bennet"): 46.8% of the words inside quotation marks (57,027 of 121,850); 754 of the 1,227
+  paragraphs that open with a quotation mark (61.5%) name no speaker and use no speech verb outside the
+  quotes; "Miss Bennet" 65 times, 39 meaning Jane and 26 meaning Elizabeth (assigned by hand from context).
+  Same tokens and tiles as length-tiles.html. Re-render (2x, WebP):
+    node render-html.mjs who-is-speaking.html pride-and-prejudice-who-is-speaking.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #655E57;           /* the Jane segment: 3.1:1 on ink */
+    --coral: #E8613F;          /* the one accent: meters and the Elizabeth segment */
+    --hair: rgba(246, 239, 228, .12);
+    --track: rgba(246, 239, 228, .14);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row.two { grid-template-columns: repeat(2, 1fr); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 18px 18px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .tile.wide { margin-top: 12px; }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 17px; font-weight: 500; letter-spacing: 0; margin-left: 6px; color: var(--paper-dim); }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); text-wrap: balance; }
+  .l b { font-weight: 600; color: var(--paper); }
+  /* Meter: the share, coral fill on a track of the same paper. */
+  .row.two .tile { display: flex; flex-direction: column; }
+  .row.two .l { margin-bottom: 16px; }
+  .meter { margin-top: auto; height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; }   /* bottom of the tile, so both meters line up */
+  .meter b { display: block; height: 100%; border-radius: 4px; background: var(--coral); }
+  .lead { font-size: 15px; font-weight: 500; color: var(--paper-dim); margin-bottom: 14px; }
+  /* Thin segmented bar: one whole (65 uses) in two parts, widths by count, 2 px gap, fully rounded ends.
+     Each part's count and name sit above its own segment. */
+  .split { display: flex; gap: 2px; }
+  .part { min-width: 0; }
+  .part .v { padding-left: 1px; }
+  .seg { margin-top: 14px; height: 8px; border-radius: 4px; background: var(--gray); }
+  .part.eliz .seg { background: var(--coral); }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Who is speaking in Pride and Prejudice</h1>
+  <div class="row two">
+    <div class="tile"><i class="dash"></i><div class="v">46.8%</div>
+      <div class="l">of the words are dialogue</div>
+      <div class="meter"><b style="width:46.8%"></b></div></div>
+    <div class="tile"><i class="dash"></i><div class="v">61.5%</div>
+      <div class="l"><b>754 of 1,227</b> speech paragraphs name no speaker</div>
+      <div class="meter"><b style="width:61.5%"></b></div></div>
+  </div>
+  <div class="tile wide"><i class="dash"></i>
+    <div class="lead">Who “Miss Bennet” means, 65 times in the text</div>
+    <div class="split">
+      <div class="part jane" style="flex:39 1 0"><div class="v">39<small>times Jane</small></div><div class="seg"></div></div>
+      <div class="part eliz" style="flex:26 1 0"><div class="v">26<small>times Elizabeth</small></div><div class="seg"></div></div>
+    </div>
+  </div>
+  <p class="src">Our count of the Project Gutenberg text (eBook #1342): words inside quotation marks; paragraphs that open with a quotation mark and have no speaker’s name or speech verb outside it; each “Miss Bennet” read in context</p>
+</div>
+<script>
+  // Fit check for the renderer: every value must sit inside its tile or its part. A getter, so the renderer
+  // measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => [...document.querySelectorAll('.v')].map(v => {
+    const t = v.closest('.part') || v.parentElement, cs = getComputedStyle(t);
+    const room = t.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+  }).filter(f => f.need > f.room) });
+</script>
+</body>
+</html>

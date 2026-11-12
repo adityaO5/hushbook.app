@@ -8,7 +8,7 @@ Listening is the hard case. In print you can flip back to the page where someone
 
 Write down three things for each character when they first appear:
 
-1. **The name, plus any other name they go by.** Nicknames, titles and surnames can look like new people. Put them all on one line.
+1. **The name, plus any other name they go by.** Nicknames, titles and surnames can look like new people. Put them all on one line. In *Pride and Prejudice*, "Miss Bennet" is usually Jane but sometimes Elizabeth, and our [guide to its audiobooks](/blog/best-pride-and-prejudice-audiobook) counts which is which.
 2. **A role in a few words.** "Hamlet's uncle." "The landlady." "The narrator's best friend."
 3. **One tie to someone already on the list.** This is the step most lists skip, and it turns a column of names into a map of who matters to whom.
 
@@ -22,7 +22,7 @@ Start with what the book gives you, then add your own notes.
 
 - **The edition's own list.** Plays often open with one. The Project Gutenberg text of *Hamlet* begins with a Dramatis Personae that works like a map in words: "CLAUDIUS, King of Denmark, Hamlet's uncle", "LAERTES, Son to Polonius", "OPHELIA, Daughter to Polonius". Check the front and back of your edition for a cast list, family tree or appendix before you start, and bookmark it if there is one.
 - **An index card as your bookmark.** It moves through the book with you, so the cast list is always on the right page. Add names in pencil as they appear.
-- **A family tree for family sagas.** When a story follows several families, give each family its own small tree. Marriages and feuds then show up as lines between trees.
+- **A family tree for family sagas.** When a story follows several families, give each family its own small tree. Marriages and feuds then show up as lines between trees. *Wuthering Heights* needs one: two houses and two generations share the names Catherine, Linton and Heathcliff, and our [guide to its audiobooks](/blog/best-wuthering-heights-audiobook) sorts them by house.
 - **Sticky flags.** Flag the page where each major character first appears. When a name returns and you can't place it, you know exactly where to look.
 - **Search, in an ebook.** Search for the name. The earliest result is usually where the character was introduced.
 - **Kindle X-Ray.** In Kindle books that have it, X-Ray lets readers "learn more about a character, topic, event, place, or any other term, simply by pressing and holding on the word or phrase," in the words of Amazon's help for authors. Authors can write the entries. Otherwise Amazon creates them "using a range of publicly available sources, machine learning, and manual review." Two catches from the same pages: X-Ray "is only available for eBooks published in English," and Amazon's advice to authors mentions hiding entries "that may provide spoilers or give away key plot points or character development." So an entry can tell you more than you have read so far.

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Wuthering Heights family tree</title>
+<!--
+  Figure for /blog/best-wuthering-heights-audiobook (assets/img/blog/wuthering-heights-family-tree.webp).
+  Data: docs/seo/drafts/2026-11-12-best-wuthering-heights-audiobook/research-platforms.md, section 5 (names
+  table, from the text of Project Gutenberg #768). Generations run left to right so each card has room for
+  the other names the text uses. Houses: Wuthering Heights = the Earnshaws (Hindley, Catherine), Thrushcross
+  Grange = the Lintons (Edgar, Isabella); a coloured left edge marks the house each person grew up in
+  (Heathcliff, the foundling, at the Heights; Frances came from elsewhere, Linton Heathcliff was raised near London).
+  Marriages: Hindley and Frances (Ch. 6), Catherine and Edgar, Isabella and Heathcliff, Catherine Linton and
+  Linton Heathcliff. The ending (Catherine Linton and Hareton, Ch. 34) is left out on purpose. Re-render (2x, WebP):
+    node render-html.mjs family-tree.html wuthering-heights-family-tree.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink; the Lintons' bracket and edge */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --coral: #E8613F;          /* the one accent: the Earnshaws' bracket and edge */
+    --hair: rgba(246, 239, 228, .14);
+    --line: rgba(246, 239, 228, .55);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+  }
+  .key { display: flex; gap: 22px; margin-top: 12px; font-size: 15px; color: var(--paper-dim); }
+  .key span { display: inline-flex; align-items: center; gap: 8px; }
+  .tree { position: relative; margin-top: 26px; }
+  .tree svg { position: absolute; left: 0; top: 0; overflow: visible; }
+  .card {
+    position: absolute; box-sizing: border-box;
+    border: 1px solid var(--hair); border-radius: 10px;
+    background: #15130F;
+    padding: 0 14px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .card.e { border-left: 4px solid var(--coral); padding-left: 11px; }
+  .card.l { border-left: 4px solid var(--paper-dim); padding-left: 11px; }
+  .card .n {
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 20px; line-height: 1.15; color: var(--paper); white-space: nowrap;
+  }
+  .card .a { margin-top: 4px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .house { position: absolute; text-align: right; }
+  .house .hn {
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 20px; line-height: 1.15; color: var(--paper);
+  }
+  .house .hf { margin-top: 4px; font-size: 15px; color: var(--paper-dim); }
+  .src { margin: 26px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Wuthering Heights family tree</h1>
+  <div class="key">
+    <span><svg width="30" height="10"><line x1="0" y1="3" x2="30" y2="3" stroke="#F6EFE4" stroke-opacity=".55" stroke-width="1.5"/><line x1="0" y1="7" x2="30" y2="7" stroke="#F6EFE4" stroke-opacity=".55" stroke-width="1.5"/></svg>married</span>
+  </div>
+  <div class="tree" id="tree"></div>
+  <p class="src">Names and family ties from the text of the novel, Project Gutenberg eBook #768</p>
+</div>
+<script>
+  // Generation 1, top to bottom: each marriage between neighbours, each house's two children side by side.
+  // [name, other names in the text, house grown up in: 'e' Wuthering Heights, 'l' Thrushcross Grange, '' neither]
+  const G1 = [
+    ['Frances', '', ''],
+    ['Hindley Earnshaw', '', 'e'],
+    ['Catherine Earnshaw', 'Cathy · Mrs. Linton', 'e'],
+    ['Edgar Linton', '', 'l'],
+    ['Isabella Linton', 'Mrs. Heathcliff', 'l'],
+    ['Heathcliff', 'the foundling', 'e'],
+  ];
+  // Generation 2: the child of each marriage, in the same order.
+  const G2 = [
+    ['Hareton Earnshaw', '', 'e'],        // Hindley and Frances
+    ['Catherine Linton', 'Cathy · Mrs. Heathcliff', 'l'],   // Catherine and Edgar
+    ['Linton Heathcliff', 'Linton', ''],  // Isabella and Heathcliff
+  ];
+  const H = 64, GAP_M = 30, GAP_S = 22;          // card height, gap at a marriage, gap between siblings
+  const X1 = 190, W1 = 202, X2 = 430, W2 = 198;   // generation columns (x, width) inside the 628 px content
+  const BR = X1 - 14;                            // the house brackets' spine
+  const DBL = 2.5;                               // half the gap between a marriage's two lines
+  const ys = [];                                 // generation 1 card tops
+  let y = 0;
+  G1.forEach((_, i) => { ys.push(y); y += H + (i % 2 === 0 ? GAP_M : GAP_S); });
+  const treeH = ys[5] + H;
+  const midGap = i => ys[i] + H + GAP_M / 2;     // the middle of the marriage gap under card i (i = 0, 2, 4)
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const card = (p, x, top, w) => '<div class="card' + (p[2] ? ' ' + p[2] : '') + '" style="left:' + x + 'px;top:' + top + 'px;width:' + w + 'px;height:' + H + 'px">' +
+    '<div class="n">' + esc(p[0]) + '</div>' + (p[1] ? '<div class="a">' + esc(p[1]) + '</div>' : '') + '</div>';
+  let html = '', svg = '';
+  const L = (x1, y1, x2, y2, extra = '') => '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="#F6EFE4" stroke-opacity=".55" stroke-width="1.5"' + extra + '/>';
+  G1.forEach((p, i) => { html += card(p, X1, ys[i], W1); });
+  const cx1 = X1 + W1 / 2, cx2 = X2 + W2 / 2;
+  const y2 = [];
+  for (const i of [0, 2, 4]) {
+    // Marriage: two short lines across the gap; the child line leaves from its middle to the right.
+    const a = ys[i] + H, b = ys[i + 1], m = midGap(i);
+    svg += L(cx1 - DBL, a, cx1 - DBL, b) + L(cx1 + DBL, a, cx1 + DBL, b);
+    svg += L(cx1 + DBL, m, X2, m);
+    y2.push(m - H / 2);
+  }
+  G2.forEach((p, k) => { html += card(p, X2, y2[k], W2); });
+  // Generation 2: Catherine Linton and Linton Heathcliff married.
+  svg += L(cx2 - DBL, y2[1] + H, cx2 - DBL, y2[2]) + L(cx2 + DBL, y2[1] + H, cx2 + DBL, y2[2]);
+  // Houses: a bracket from the label to the two children of each house.
+  const HOUSES = [['Wuthering Heights', 'the Earnshaws', 1, 2, '#E8613F'], ['Thrushcross Grange', 'the Lintons', 3, 4, '#CABFB0']];
+  for (const [name, fam, i, j, c] of HOUSES) {
+    const ya = ys[i] + H / 2, yb = ys[j] + H / 2, ym = (ya + yb) / 2;
+    const S = (x1, y1, x2, y2) => '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + c + '" stroke-width="2" stroke-linecap="round"/>';
+    svg += S(BR, ya, BR, yb) + S(BR, ya, X1, ya) + S(BR, yb, X1, yb) + S(BR - 10, ym, BR, ym);
+    html += '<div class="house" style="right:' + (628 - (BR - 18)) + 'px;top:' + (ym - 26) + 'px"><div class="hn">' + name + '</div><div class="hf">' + fam + '</div></div>';
+  }
+  const tree = document.getElementById('tree');
+  tree.style.height = treeH + 'px';
+  tree.innerHTML = '<svg width="628" height="' + treeH + '">' + svg + '</svg>' + html;
+  // Fit check for the renderer: every text inside its card, and the house labels clear of the content's left edge.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const out = [];
+    for (const c of document.querySelectorAll('.card')) {
+      const cs = getComputedStyle(c), room = c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      for (const t of c.children) if (t.scrollWidth > room) out.push({ label: t.textContent, room, need: t.scrollWidth });
+    }
+    const left = document.getElementById('tree').getBoundingClientRect().left;
+    for (const h of document.querySelectorAll('.house')) {
+      const r = h.getBoundingClientRect();
+      for (const t of h.children) { const w = t.scrollWidth; if (r.right - w < left - 0.5) out.push({ label: t.textContent, past: +(left - (r.right - w)).toFixed(1) }); }
+    }
+    return out;
+  } });
+</script>
+</body>
+</html>

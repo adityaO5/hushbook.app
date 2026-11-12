@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Wuthering Heights length</title>
+<!--
+  Figure for /blog/best-wuthering-heights-audiobook (assets/img/blog/wuthering-heights-length.webp).
+  Data: docs/seo/drafts/2026-11-12-best-wuthering-heights-audiobook/research-platforms.md, section 4
+  (116,440 words in Project Gutenberg #768; 34 chapters, shortest Chapter 5 at 9.4 min, longest Chapter 17
+  at 45.2 min; 12 h 51 min at 151 wpm) and section 3d (Lockwood 17,103 words, 14.7%, 1 h 53 min; Nelly
+  95,830, 82.3%, 10 h 35 min; Isabella's letter 3,507, 3.0%, 23 min). Re-render (2x, WebP):
+    node render-html.mjs length-tiles.html wuthering-heights-length.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink; also the third part of the narrator bar */
+    --gray: #655E57;           /* Nelly's part of the narrator bar */
+    --coral: #E8613F;          /* the one accent: tile dashes and Lockwood's part */
+    --hair: rgba(246, 239, 228, .12);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row.three { grid-template-columns: repeat(3, 1fr); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 16px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 36px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 16px; font-weight: 500; letter-spacing: 0; margin-left: 4px; margin-right: 6px; color: var(--paper-dim); }
+  .v small:last-child { margin-right: 0; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); text-wrap: balance; }
+  .wide { margin-top: 12px; }
+  .wide .head { font-size: 15px; font-weight: 600; color: var(--paper); }
+  /* Segmented bar: one whole (the novel's words) split by who narrates; 2 px gaps between parts. */
+  .seg { display: flex; gap: 2px; margin-top: 14px; height: 14px; }
+  .seg b { display: block; height: 100%; border-radius: 4px; }
+  .legend { display: grid; grid-template-columns: 1.05fr 1.15fr 1fr; gap: 12px; margin-top: 16px; }
+  .key { display: flex; gap: 9px; align-items: flex-start; }
+  .key .sw { flex: none; width: 12px; height: 12px; border-radius: 3px; margin-top: 4px; }
+  .key .name { font-size: 15px; font-weight: 500; line-height: 1.3; color: var(--paper); white-space: nowrap; }
+  .key .pct { margin-top: 6px; font-size: 26px; font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--paper); }
+  .key .t { margin-top: 6px; font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>How long Wuthering Heights is, and who tells it</h1>
+  <div class="row three" id="tiles"></div>
+  <div class="tile wide">
+    <div class="head">Who narrates, by share of the words</div>
+    <div class="seg" id="seg"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <p class="src">Our count of Project Gutenberg eBook #768. 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study</p>
+</div>
+<script>
+  // research-platforms.md section 4: 116,440 words, 34 chapters (Chapter 5 1,414 words, Chapter 17 6,832),
+  // 12 h 51 min at 151 wpm. Section 3d: the narrators' words.
+  const WORDS = 116440, WPM = 151;
+  const hm = min => { const t = Math.round(min); return [Math.floor(t / 60), t % 60]; };
+  const [h1x, m1x] = hm(WORDS / WPM);                       // 771.1 min -> 12 h 51 min
+  const shortest = Math.round(1414 / WPM), longest = Math.round(6832 / WPM);   // 9.4 -> 9, 45.2 -> 45
+  document.getElementById('tiles').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">116,440<small>words</small></div><div class="l">in the novel</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">34<small>chapters</small></div><div class="l">' + shortest + ' to ' + longest + ' minutes each at 1x</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + h1x + '<small>h</small>' + m1x + '<small>min</small></div><div class="l">listening time at 1x, at 151 words a minute</div></div>';
+  const PARTS = [
+    ['Lockwood', 17103, 'var(--coral)'],
+    ['Nelly Dean', 95830, 'var(--gray)'],
+    ['Isabella’s letter', 3507, 'var(--muted)'],
+  ];
+  const total = PARTS.reduce((s, p) => s + p[1], 0);       // 116,440: the three parts are the whole novel
+  let seg = '', leg = '';
+  for (const [name, w, c] of PARTS) {
+    const share = (w / total * 100).toFixed(1);
+    const [h, m] = hm(w / WPM);
+    seg += '<b style="flex:' + w + ' 1 0;background:' + c + '"></b>';
+    leg += '<div class="key"><i class="sw" style="background:' + c + '"></i><div><div class="name">' + name + '</div>' +
+      '<div class="pct">' + share + '%</div><div class="t">' + (h ? h + ' h ' : '') + m + ' min at 1x</div></div></div>';
+  }
+  document.getElementById('seg').innerHTML = seg;
+  document.getElementById('legend').innerHTML = leg;
+  window.__check = { total, shares: PARTS.map(p => (p[1] / total * 100).toFixed(1)), oneX: [h1x, m1x], chapters: [shortest, longest] };
+  // Fit check for the renderer: every value must sit inside its tile's padding. A getter, so it measures
+  // after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => [...document.querySelectorAll('.v, .key .t, .key .name')].map(v => {
+    const t = v.closest('.tile, .key'), cs = getComputedStyle(t);
+    const room = t.getBoundingClientRect().right - parseFloat(cs.paddingRight) - v.getBoundingClientRect().left;
+    return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+  }).filter(f => f.need > f.room) });
+</script>
+</body>
+</html>

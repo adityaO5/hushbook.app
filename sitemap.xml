@@ -1702,11 +1702,27 @@
   </url>
   <url>
     <loc>https://hushbook.app/blog</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-pride-and-prejudice-audiobook</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-pride-and-prejudice-audiobook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-pride-and-prejudice-audiobook"/>
+  </url>
+  <url>
+    <loc>https://hushbook.app/blog/best-wuthering-heights-audiobook</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushbook.app/blog/best-wuthering-heights-audiobook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushbook.app/blog/best-wuthering-heights-audiobook"/>
   </url>
   <url>
     <loc>https://hushbook.app/blog/best-war-and-peace-audiobook</loc>

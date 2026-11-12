@@ -8,6 +8,82 @@
 
 const posts = [
   {
+    slug: 'best-pride-and-prejudice-audiobook',
+    hero: 'pride-and-prejudice-picks',
+    cta: { heading: 'See who is speaking in Pride and Prejudice', text: 'HushBook finds the free LibriVox recordings of Pride and Prejudice and highlights each word as the narrator reads, so no line of dialogue slips past you. Free on iPhone, Android and Windows, no account.' },
+    title: 'Best Pride and Prejudice Audiobook: Every Narrator, Free Version and Dramatisation Compared',
+    metaTitle: 'Best Pride and Prejudice Audiobook: Every Edition Compared',
+    metaDescription: 'Rosamund Pike\'s recording is the best Pride and Prejudice audiobook; Karen Savage\'s free LibriVox reading runs 10 hours 23 minutes. Every edition compared.',
+    description: 'Rosamund Pike\'s Audible recording is our pick, Juliet Stevenson\'s the runner-up and Karen Savage\'s LibriVox reading the free one. Every unabridged edition by runtime, the full-cast and BBC versions, the American narrators and the names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-12',
+    dateModified: '2026-11-12',
+    readingTime: '24 min read',
+    keywords: [
+      'best pride and prejudice audiobook',
+      'which pride and prejudice audiobook is best',
+      'pride and prejudice audiobook length',
+      'pride and prejudice audiobook juliet stevenson',
+      'pride and prejudice audiobook rosamund pike',
+      'pride and prejudice audiobook american accent',
+      'pride and prejudice audiobook free',
+      'pride and prejudice audible full cast'
+    ],
+    takeaways: [
+      'Rosamund Pike\'s Audible Studios recording, 11 hours 35 minutes, is our best overall pick: 4.8 stars from 43,975 Audible US ratings, about eight times as many as the next most rated edition.',
+      'Juliet Stevenson\'s Naxos recording, 14 hours 2 minutes, is the runner-up with 4.9 stars from 204 ratings. Her 2 hour 47 minute abridged recording is sold under the same plain title.',
+      'The best free version is Karen Savage\'s LibriVox Version 3: one voice, 10 hours 23 minutes, 61 sections, one per chapter. LibriVox has six complete free recordings in all.',
+      'Audible\'s 2025 full-cast Pride and Prejudice, a 2026 Audie finalist, is a 4 hour 34 minute adaptation, not the novel. Every complete reading takes at least 10 hours 23 minutes.',
+      'The novel has 121,676 words in 61 chapters: 13 hours 26 minutes at 1x, 10 hours 45 minutes at 1.25x, 8 hours 57 minutes at 1.5x, 6 hours 43 minutes at 2x.'
+    ],
+    faqs: [
+      ['Who is the best narrator of Pride and Prejudice?', 'Rosamund Pike, on the evidence we could check. Her 2015 Audible Studios recording has 4.8 stars from 43,975 Audible US ratings. Juliet Stevenson\'s 2021 Naxos recording has the highest average, 4.9 from 204 ratings.'],
+      ['How long is the Pride and Prejudice audiobook?', 'About 13 hours 26 minutes at 1x, by our count of 121,676 words. Complete readings run from 10 hours 23 minutes (Karen Savage, LibriVox) to 14 hours 27 minutes (LibriVox Version 5).'],
+      ['Is there a free Pride and Prejudice audiobook?', 'Yes. LibriVox has six complete free recordings. Karen Savage reads Version 3 alone in 10 hours 23 minutes, and Version 6 is a dramatic reading with 26 readers, one per character.'],
+      ['Is the Audible full-cast Pride and Prejudice unabridged?', 'No. The 2025 Audible Original with Marisa Abela and Harris Dickinson is a 4 hour 34 minute adaptation by Lulu Raczka. Every complete reading of the novel takes at least 10 hours 23 minutes.'],
+      ['How many chapters are in Pride and Prejudice?', '61. The 1813 first edition has three volumes of 23, 19 and 19 chapters, so Volume II, Chapter 1 is Chapter 24 in editions that number straight through, such as Project Gutenberg\'s.'],
+      ['Is there a Pride and Prejudice audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+    ]
+  },
+  {
+    slug: 'best-wuthering-heights-audiobook',
+    hero: 'wuthering-heights-picks',
+    cta: { heading: 'Read Wuthering Heights as you hear it', text: 'HushBook finds Ruth Golding\'s free LibriVox reading of Wuthering Heights and shows each word in time with her voice, so neither Catherine slips past you. Free on iPhone, Android and Windows, no account.' },
+    title: 'Best Wuthering Heights Audiobook: Every Narrator and Edition Compared',
+    metaTitle: 'Best Wuthering Heights Audiobook: Every Narrator Compared',
+    metaDescription: 'Joanne Froggatt\'s recording is the best Wuthering Heights audiobook. Juliet Stevenson\'s is the highest rated, and Ruth Golding\'s LibriVox reading is free.',
+    description: 'Joanne Froggatt\'s recording is our pick, Juliet Stevenson\'s the highest rated, Naxos the best with two voices and Ruth Golding\'s LibriVox reading the free one. Every edition, listening time, Joseph\'s Yorkshire and the names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-12',
+    dateModified: '2026-11-12',
+    readingTime: '26 min read',
+    keywords: [
+      'best wuthering heights audiobook',
+      'wuthering heights audiobook narrator',
+      'wuthering heights audiobook length',
+      'wuthering heights audiobook joanne froggatt',
+      'wuthering heights audiobook aimee lou wood',
+      'who narrates wuthering heights in the book',
+      'wuthering heights joseph translation',
+      'wuthering heights audiobook librivox'
+    ],
+    takeaways: [
+      'Joanne Froggatt\'s 2017 Audible Studios recording, 12 hours 32 minutes, is our best overall pick: 4.4 stars from 8,661 Audible US ratings and 4.8 for performance.',
+      'Juliet Stevenson\'s 2015 recording, 13 hours 24 minutes, is the highest rated: 4.6 stars from 427 US ratings and 4.7 from 507 UK. Skip her abridgement of 2 hours 41 minutes.',
+      'Janet McTeer and David Timson\'s Naxos recording, 13 hours 9 minutes, gives Lockwood and Nelly separate voices, and the New York Public Library had 14 copies on Libby.',
+      'The best free version is Ruth Golding\'s solo LibriVox reading, 14 hours 49 minutes. It reads Project Gutenberg\'s text, which uses Charlotte Brontë\'s 1850 spelling of Joseph\'s Yorkshire dialect.',
+      'The novel has 116,440 words in 34 chapters by our count: 12 hours 51 minutes at 1x, 10 hours 17 minutes at 1.25x and 8 hours 34 minutes at 1.5x.'
+    ],
+    faqs: [
+      ['Who is the best narrator of Wuthering Heights?', 'Joanne Froggatt, on the evidence we could check. Her 2017 Audible Studios recording has 4.4 stars from 8,661 Audible US ratings and 4.8 for performance. Juliet Stevenson\'s is the highest rated, at 4.6 from 427.'],
+      ['How long is the Wuthering Heights audiobook?', 'About 12 hours 51 minutes at 1x, by our count of 116,440 words. Complete recordings run from 11 hours 1 minute (Kate Petrie) to 14 hours 49 minutes (Ruth Golding\'s free LibriVox reading).'],
+      ['Which Wuthering Heights audiobook has two narrators?', 'Janet McTeer and David Timson\'s Naxos recording, Michael Page and Laural Merlington\'s AmazonClassics edition, and Ciaran Saward and Sherry Baines\'s 2026 Arcturus edition. In each one\'s sample, a male voice reads Lockwood.'],
+      ['What is Joseph saying in Wuthering Heights?', 'Yorkshire dialect, spelled as it sounds. By our count his 42 speeches in dialect come to 1,814 words, about 12 minutes of listening. Charlotte Brontë respelled his lines for the 1850 edition.'],
+      ['Is there a Wuthering Heights audiobook read by the 2026 film\'s cast?', 'No. On November 12, 2026, Audible narrator searches for the cast, Margot Robbie and Jacob Elordi included, found no Brontë title. The recording the film brought back into the news is Aimee Lou Wood\'s 2020 reading.'],
+      ['Is there a Wuthering Heights audiobook with text?', 'Yes. HushBook, the app we built, plays Ruth Golding\'s free LibriVox recording or DRM-free MP3 and M4B files you own and shows the words in time with the voice, on iPhone, Android and Windows.']
+    ]
+  },
+  {
     slug: 'best-war-and-peace-audiobook',
     hero: 'war-and-peace-picks',
     cta: { heading: 'See every name in War and Peace as it is read', text: 'HushBook finds the free LibriVox recording of War and Peace and highlights each word as the narrator reads, so no name slips past you in 62 hours. Free on iPhone, Android and Windows, no account.' },

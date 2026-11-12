@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Pride and Prejudice editions</title>
+<!--
+  Figure for /blog/best-pride-and-prejudice-audiobook (assets/img/blog/pride-and-prejudice-editions.webp).
+  Data: docs/seo/drafts/2026-11-12-best-pride-and-prejudice-audiobook/research-platforms.md, table 8 (the
+  VERIFIED comparison rows) with runtimes, publishers and ratings from tables 1a and 2a. Julie Andrews'
+  Noiser podcast (17 h 16 min of episodes, with music) is left out: a podcast, not a reading pace.
+  Runtime = Audible's for the Audible rows, Apple's for Beckinsale and Kate Reading, OverDrive's for
+  Kellgren, LibriVox's own for the free sets, rounded to the minute as table 8 rounds them.
+  Ratings: Audible US overall stars (count); Apple Books stars (count); archive.org review average (count).
+  Same tokens and fonts as the War and Peace figure; rows are two lines (label over a bar) so that the
+  pick tags and ratings fit. Re-render (2x, WebP):
+    node render-html.mjs editions-figure.html pride-and-prejudice-editions.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #655E57;           /* neutral bars: 3.1:1 on ink */
+    --coral: #E8613F;          /* the one accent: the three picks, ink text on the tags 5.8:1 */
+    --hair: rgba(246, 239, 228, .10);
+    --base: rgba(246, 239, 228, .34);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 8px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    max-width: 610px;
+    text-wrap: balance;
+  }
+  .group { margin-top: 20px; }
+  .gh {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    margin: 0 0 8px; padding-top: 14px; border-top: 1px solid var(--hair);
+  }
+  .gh .name {
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 22px; line-height: 1.2; color: var(--paper);
+  }
+  .gh .src { font-size: 15px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+  .plot { position: relative; }
+  .row { position: relative; margin-bottom: 9px; }
+  .row:last-child { margin-bottom: 0; }
+  .lab { display: flex; align-items: center; height: 21px; font-size: 15px; line-height: 1; white-space: nowrap; }
+  .who b { font-weight: 600; color: var(--paper); }
+  .who span { font-weight: 400; color: var(--paper-dim); }
+  .tag {
+    margin-left: 10px; padding: 3px 7px 3px; border-radius: 4px;
+    background: var(--coral); color: var(--ink); font-weight: 600; line-height: 1;
+  }
+  .rating { margin-left: auto; padding-left: 12px; font-weight: 600; color: var(--paper); }
+  .rating i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .track { position: relative; display: flex; align-items: center; height: 14px; margin-top: 3px; }
+  /* Zero baseline the bars grow from, one short tick per bar so it never crosses a label; every bar
+     carries its value, so no gridlines. */
+  .track::before { content: ""; position: absolute; left: 0; top: -2px; bottom: -2px; width: 1px; background: var(--base); }
+  .bar { height: 10px; flex: none; background: var(--gray); border-radius: 0 4px 4px 0; }
+  .pick .bar { background: var(--coral); }
+  .val { margin-left: 8px; font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; line-height: 1; }
+  .val i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .axis { position: relative; height: 34px; margin-top: 12px; border-top: 1px solid var(--hair); }
+  .mark { position: absolute; top: -1px; width: 1px; height: 6px; background: rgba(246, 239, 228, .22); }
+  .tick { position: absolute; top: 10px; transform: translateX(-50%); font-size: 15px; color: var(--muted); white-space: nowrap; }
+  .tick.first { transform: none; }
+  .srcline { margin: 16px 0 0; font-size: 15px; line-height: 1.4; color: var(--muted); max-width: 628px; }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Pride and Prejudice, unabridged: running time and rating</h1>
+  <div id="groups"></div>
+  <div class="axis" id="axis"></div>
+  <p class="srcline">Runtimes and ratings as listed by Audible US, Apple Books US, OverDrive, LibriVox and archive.org, read November 12, 2026. Indira Varma’s time includes an introduction</p>
+</div>
+<script>
+  // Rows: [reader, label, hours, minutes, seconds, rating, count, pick tag]. Seconds only where the source
+  // prints them (Apple, OverDrive, LibriVox); labels round to the minute as table 8 does.
+  const GROUPS = [
+    { name: 'Audible', src: 'Audible US rating', rows: [
+      ['Rosamund Pike', 'Audible Studios', 11, 35, 0, '4.8', '43,975', 'Best overall'],
+      ['Lindsay Duncan', 'Audible Studios', 12, 3, 0, '4.7', '5,348'],
+      ['Juliet Stevenson', 'Naxos AudioBooks', 14, 2, 0, '4.9', '204', 'Runner-up'],
+      ['Emilia Fox', 'Naxos AudioBooks', 13, 2, 0, '4.7', '787'],
+      ['Indira Varma', 'Penguin Classics', 13, 27, 0, '4.7', '195'],
+      ['Carolyn Seymour', 'Blackstone', 11, 28, 0, '4.6', '1,902'],
+      ['Flo Gibson', 'Recorded Books', 11, 28, 0, '4.6', '252'],
+    ] },
+    { name: 'Apple Books and Libby', src: 'Apple Books rating', rows: [
+      ['Kate Beckinsale', 'Apple', 11, 43, 4, '4.5', '8,598'],
+      ['Kate Reading', 'Books on Tape', 12, 8, 9, '4.2', '203'],
+      ['Katherine Kellgren', 'Duke Classics', 12, 20, 38, '', ''],
+    ] },
+    { name: 'Free on LibriVox', src: 'archive.org reviews', rows: [
+      ['Karen Savage', 'version 3', 10, 23, 0, '4.25', '17', 'Best free'],
+      ['Elizabeth Klett', 'version 4', 11, 9, 53, '4.91', '12'],
+      ['26 readers', 'version 6, dramatic reading', 11, 57, 51, '5', '1'],
+      ['Annie Coleman Rothenberg', 'version 2', 13, 25, 1, '4.8', '5'],
+    ] },
+  ];
+  const MAX_H = 15, PLOT_W = 530;            // 0 to 15 hours across 530 px; the value rides past the tip
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const x = h => h / MAX_H * PLOT_W;
+  const hm = r => {                          // rounded to the minute
+    const total = Math.round(r[2] * 60 + r[3] + r[4] / 60);
+    return [Math.floor(total / 60), total % 60];
+  };
+  let html = '';
+  for (const g of GROUPS) {
+    html += '<section class="group"><div class="gh"><span class="name">' + esc(g.name) + '</span><span class="src">' + esc(g.src) + '</span></div>';
+    const rows = g.rows.map((d, i) => ({ i, d, hours: d[2] + d[3] / 60 + d[4] / 3600 }))
+      .sort((a, c) => a.hours - c.hours || a.i - c.i);   // shortest first
+    html += '<div class="plot">';
+    for (const { d, hours } of rows) {
+      const [h, m] = hm(d);
+      html += '<div class="row' + (d[7] ? ' pick' : '') + '">' +
+        '<div class="lab"><span class="who"><b>' + esc(d[0]) + '</b><span> · ' + esc(d[1]) + '</span></span>' +
+          (d[7] ? '<span class="tag">' + esc(d[7]) + '</span>' : '') +
+          (d[5] ? '<span class="rating">' + d[5] + '<i> (' + d[6] + ')</i></span>' : '') +
+        '</div>' +
+        '<div class="track"><div class="bar" style="width:' + x(hours).toFixed(2) + 'px"></div>' +
+          '<span class="val">' + h + '<i> h </i>' + m + '<i> min</i></span></div>' +
+      '</div>';
+    }
+    html += '</div></section>';
+  }
+  document.getElementById('groups').innerHTML = html;
+  let ticks = '';
+  for (let h = 0; h <= MAX_H; h += 5) {
+    ticks += '<div class="mark" style="left:' + x(h).toFixed(2) + 'px"></div>' +
+      '<div class="tick' + (h === 0 ? ' first' : '') + '" style="left:' + x(h).toFixed(2) + 'px">' + (h === 0 ? '0' : h + ' h') + '</div>';
+  }
+  const axis = document.getElementById('axis');
+  axis.style.width = (PLOT_W + 1) + 'px';
+  axis.innerHTML = ticks;
+  // Fit check for the renderer: each label line (name, tag, rating) must fit the row, and each value must
+  // end inside the figure. A getter, so the renderer measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const out = [];
+    for (const lab of document.querySelectorAll('.lab')) {
+      const need = [...lab.children].reduce((s, c) => s + c.getBoundingClientRect().width, 0) + 22;
+      if (need > lab.clientWidth) out.push({ label: lab.textContent, room: lab.clientWidth, need: +need.toFixed(1) });
+    }
+    const right = document.querySelector('.fig').getBoundingClientRect().right - 36;
+    for (const v of document.querySelectorAll('.val')) if (v.getBoundingClientRect().right > right) out.push({ value: v.textContent });
+    return out;
+  } });
+</script>
+</body>
+</html>

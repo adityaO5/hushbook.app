@@ -30,7 +30,7 @@ These are solo LibriVox recordings, the free volunteer recordings of public doma
 - *The Great Gatsby*: 48,032 words, 5 hours 38 minutes (142 words a minute)
 - *Frankenstein*: 74,936 words, 7 hours 26 minutes (168 words a minute)
 - *The Odyssey*, Samuel Butler's translation: 118,744 words, 11 hours 2 minutes (179 words a minute)
-- *Pride and Prejudice*: 121,676 words, 13 hours 25 minutes (151 words a minute)
+- [*Pride and Prejudice*](/blog/best-pride-and-prejudice-audiobook): 121,676 words, 13 hours 25 minutes (151 words a minute)
 - *Moby-Dick*: 208,234 words, 24 hours 38 minutes (141 words a minute)
 - *The Count of Monte Cristo*: 459,752 words, 54 hours 16 minutes (141 words a minute)
 - [*War and Peace*](/blog/best-war-and-peace-audiobook), the Maude translation: 561,870 words, 62 hours 27 minutes across four volumes (150 words a minute)
@@ -60,7 +60,7 @@ Faster is not always better. A 2022 UCLA study found lectures at up to 2x did no
 
 ## Why the same book can have different lengths
 
-- **The narrator.** Our ten readers ranged from 131 to 179 words a minute. On LibriVox, different recordings of the same book often differ by 10% or more. *The Count of Monte Cristo* runs from about 50 to 54 hours depending on the version. We compare every unabridged recording of it in [the best Count of Monte Cristo audiobook](/blog/best-count-of-monte-cristo-audiobook).
+- **The narrator.** Our ten readers ranged from 131 to 179 words a minute. On LibriVox, different recordings of the same book often differ by 10% or more. The three free LibriVox recordings of *Wuthering Heights* run from 11 hours 33 minutes to 14 hours 49 minutes, and our [guide to its audiobooks](/blog/best-wuthering-heights-audiobook) times every complete recording. *The Count of Monte Cristo* runs from about 50 to 54 hours depending on the version. We compare every unabridged recording of it in [the best Count of Monte Cristo audiobook](/blog/best-count-of-monte-cristo-audiobook).
 - **Abridged or unabridged.** An abridged edition is cut by an editor, so it can be half the length. Check the listing says unabridged. We explain the difference in [abridged vs unabridged audiobooks](/blog/abridged-vs-unabridged-audiobooks).
 - **Translation and edition.** Different translations and editions of the same classic can differ a lot in length.
 - **Extras.** Introductions, afterwords, author interviews and music add minutes.
