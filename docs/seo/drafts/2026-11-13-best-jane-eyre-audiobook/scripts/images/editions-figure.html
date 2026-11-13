@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Jane Eyre editions</title>
+<!--
+  Figure for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-editions.webp).
+  Data: docs/seo/drafts/2026-11-13-best-jane-eyre-audiobook/research-platforms.md, the sixteen rows of the
+  ready-to-paste table (section 10: twelve VERIFIED complete store recordings and four LibriVox sets), with
+  runtimes and ratings from table 1a, section 2a and the Discover cards in 7a. Runtime = Audible's for the
+  store editions except Josephine Bailey (not on Audible: OverDrive 20:55:05), LibriVox's own for the free
+  sets, rounded to the minute. Rating = Audible US overall stars (number of ratings); for LibriVox the
+  archive.org rating as archive.org and HushBook Discover show it. The group set's rating is left out on
+  purpose: most of its reviews praise Elizabeth Klett's recording, posted on the wrong page (2a).
+  Picks: section 9. Same layout as the Wuthering Heights figure. Re-render (2x, WebP):
+    node render-html.mjs editions-figure.html jane-eyre-editions.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --gray: #655E57;           /* neutral bars: 3.1:1 on ink, paper text inside 5.5:1 */
+    --coral: #E8613F;          /* the one accent: the four picks, ink text inside 5.8:1 */
+    --hair: rgba(246, 239, 228, .10);
+    --base: rgba(246, 239, 228, .34);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 30px 30px; }
+  h1 {
+    margin: 0 0 8px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    max-width: 610px;
+    text-wrap: balance;
+  }
+  .group { margin-top: 24px; }
+  .gh {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    margin: 0 0 12px; padding-top: 14px; border-top: 1px solid var(--hair);
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 22px; line-height: 1.2; color: var(--paper);
+  }
+  .gh .col { font-family: 'HBInter', system-ui, sans-serif; font-size: 15px; font-weight: 500; color: var(--paper-dim); }
+  .plot { position: relative; width: 640px; }
+  /* Zero baseline the bars grow from; every bar carries its value, so no gridlines. */
+  .zero { position: absolute; top: -4px; bottom: -4px; left: 0; width: 1px; background: var(--base); }
+  .row { position: relative; height: 24px; margin-bottom: 7px; display: flex; align-items: center; }
+  .row:last-child { margin-bottom: 0; }
+  .bar {
+    position: relative; height: 24px; flex: none;
+    background: var(--gray);
+    border-radius: 0 4px 4px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    box-sizing: border-box; padding: 0 9px;
+    font-size: 15px; line-height: 1; white-space: nowrap;
+    color: var(--paper);
+  }
+  .pick .bar { background: var(--coral); color: var(--ink); }
+  .who b { font-weight: 600; }
+  .who span { font-weight: 400; }
+  .tag { font-weight: 600; }
+  .val { margin-left: 8px; font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; }
+  .val i, .rt i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .rt { position: absolute; right: 0; font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rt.none { font-weight: 400; color: var(--muted); }
+  .axis { position: relative; height: 34px; margin-top: 10px; border-top: 1px solid var(--hair); }
+  .mark { position: absolute; top: -1px; width: 1px; height: 6px; background: rgba(246, 239, 228, .22); }
+  .tick { position: absolute; top: 10px; transform: translateX(-50%); font-size: 15px; color: var(--muted); white-space: nowrap; }
+  .tick.first { transform: none; }
+  .src { margin: 16px 0 0; font-size: 15px; line-height: 1.4; color: var(--muted); max-width: 640px; }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>Jane Eyre, unabridged: running time and rating</h1>
+  <div id="groups"></div>
+  <div class="axis" id="axis"></div>
+  <p class="src">Runtimes as listed by Audible, OverDrive and LibriVox. Ratings from Audible US and archive.org, read November 13, 2026</p>
+</div>
+<script>
+  // Rows: [reader, label, hours, minutes, seconds, pick tag, rating, number of ratings, empty note].
+  // Seconds only where the source prints them; labels round to the minute.
+  const GROUPS = [
+    { name: 'Sold by stores', col: 'Audible US rating', rows: [
+      ['Thandiwe Newton', 'Audible Studios', 19, 10, 0, 'Best overall', '4.8', '22,153'],
+      ['Juliet Stevenson', 'Audible Studios', 19, 13, 0, 'Runner-up', '4.7', '2,188'],
+      ['Emma Messenger', 'Trout Lake Media', 21, 47, 0, null, '4.6', '2,041'],
+      ['Lucy Scott', 'RNIB', 20, 27, 0, null, '4.6', '567'],
+      ['Susan Ericksen', 'Brilliance', 17, 27, 0, null, '4.7', '567'],
+      ['Amanda Root', 'Naxos AudioBooks', 20, 33, 0, null, '4.7', '279'],
+      ['Anna Popplewell', 'Penguin Classics', 22, 51, 0, 'Best to borrow', '4.8', '219'],
+      ['Wanda McCaddon', 'Tantor', 17, 56, 0, null, '4.4', '102'],
+      ['Wanda McCaddon', 'Blackstone', 18, 51, 0, null, '4.5', '75'],
+      ['Flo Gibson', 'Recorded Books', 18, 26, 0, null, '4.2', '108'],
+      ['Josephine Bailey', 'Books on Tape', 20, 55, 5, null, null, null, 'not on Audible'],
+      ['Full cast', 'Spoken Realms', 19, 38, 0, null, '4.8', '28'],
+    ] },
+    { name: 'Free on LibriVox', col: 'archive.org rating', rows: [
+      ['Elizabeth Klett', 'solo', 18, 36, 29, 'Best free', '5.0', '22'],
+      ['36 readers', 'dramatic reading', 19, 42, 53, null, '5.0', '2'],
+      ['Dawn Sutton', 'solo', 25, 19, 6, null, null, null, 'none'],
+      ['21 readers', 'group reading', 20, 36, 36, null, null, null, ''],
+    ] },
+  ];
+  const MAX_H = 25, PLOT_W = 480;            // 0 to 25 hours across 480 px; the value label rides past the tip
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const x = h => h / MAX_H * PLOT_W;
+  const hm = r => {                          // rounded to the minute
+    const total = Math.round(r[2] * 60 + r[3] + r[4] / 60);
+    return [Math.floor(total / 60), total % 60];
+  };
+  let html = '';
+  for (const g of GROUPS) {
+    html += '<section class="group"><div class="gh"><span>' + esc(g.name) + '</span><span class="col">' + esc(g.col) + '</span></div>';
+    const rows = g.rows.map((d, i) => ({ i, d, hours: d[2] + d[3] / 60 + d[4] / 3600 }))
+      .sort((a, c) => a.hours - c.hours || a.i - c.i);   // shortest first
+    html += '<div class="plot"><div class="zero"></div>';
+    for (const { d, hours } of rows) {
+      const [h, m] = hm(d);
+      html += '<div class="row' + (d[5] ? ' pick' : '') + '">' +
+        '<div class="bar" style="width:' + x(hours).toFixed(2) + 'px">' +
+          '<span class="who"><b>' + esc(d[0]) + '</b><span> · ' + esc(d[1]) + '</span></span>' +
+          (d[5] ? '<span class="tag">' + esc(d[5]) + '</span>' : '') +
+        '</div>' +
+        '<span class="val">' + h + '<i> h </i>' + m + '<i> min</i></span>' +
+        (d[6] ? '<span class="rt">' + d[6] + '<i> (' + d[7] + ')</i></span>' : '<span class="rt none">' + esc(d[8]) + '</span>') +
+      '</div>';
+    }
+    html += '</div></section>';
+  }
+  document.getElementById('groups').innerHTML = html;
+  let ticks = '';
+  for (let h = 0; h <= MAX_H; h += 5) {
+    ticks += '<div class="mark" style="left:' + x(h).toFixed(2) + 'px"></div>' +
+      '<div class="tick' + (h === 0 ? ' first' : '') + '" style="left:' + x(h).toFixed(2) + 'px">' + (h === 0 ? '0' : h + ' h') + '</div>';
+  }
+  const axis = document.getElementById('axis');
+  axis.style.width = (x(26) + 1).toFixed(2) + 'px';   // past the longest bar (25 h 19 min)
+  axis.innerHTML = ticks;
+  // Fit check for the renderer: every label must sit inside its bar with its padding, and every value
+  // label must end before its row's rating starts. A getter, so it measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => [...document.querySelectorAll('.row')].flatMap(r => {
+    const b = r.querySelector('.bar'), out = [];
+    const who = b.querySelector('.who').getBoundingClientRect().width;
+    const tag = b.querySelector('.tag') ? b.querySelector('.tag').getBoundingClientRect().width + 12 : 0;
+    const need = who + tag + 18, bar = b.getBoundingClientRect().width;
+    if (need > bar) out.push({ label: b.textContent, bar: +bar.toFixed(1), need: +need.toFixed(1) });
+    const rt = r.querySelector('.rt');
+    if (rt.textContent) {
+      const gap = rt.getBoundingClientRect().left - r.querySelector('.val').getBoundingClientRect().right;
+      if (gap < 12) out.push({ label: b.textContent, valueToRatingGap: +gap.toFixed(1) });
+    }
+    return out;
+  }) });
+  window.__slack = () => [...document.querySelectorAll('.row')].map(r => {
+    const b = r.querySelector('.bar');
+    const who = b.querySelector('.who').getBoundingClientRect().width;
+    const tag = b.querySelector('.tag') ? b.querySelector('.tag').getBoundingClientRect().width + 12 : 0;
+    return [b.querySelector('.who').textContent, +(b.getBoundingClientRect().width - who - tag - 18).toFixed(1)];
+  });
+</script>
+</body>
+</html>

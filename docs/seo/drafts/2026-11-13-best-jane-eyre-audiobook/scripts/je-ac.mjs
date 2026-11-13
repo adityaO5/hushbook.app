@@ -1,0 +1,89 @@
+// Jane Eyre phrasing sweep, 2026-11-13.
+// Copied from ../../2026-11-12-best-wuthering-heights-audiobook/scripts/wh-ac.mjs (parent: War and Peace wp-ac.mjs);
+// same engines, same cache format; seeds changed for Jane Eyre.
+// node je-ac.mjs <cache.json> <engine...>   engines: gchrome gfirefox youtube bing ddg
+// Seeds cover narrator (every name in the Audible/Apple catalogues and audiobook.co.uk's table), length, chapters,
+// free, abridged, with text / read along, hard to read, the French passages (Adele), "St. John" and "Eyre"
+// pronunciation, the first-person narrator, names, BBC / radio / full cast, accent, films and TV.
+// Google clients also get "jane eyre audiobook <a..z>".
+// Responses are cached per engine+query in <cache.json>; rerun skips cached calls.
+import fs from 'node:fs';
+const [, , cacheFile, ...engines] = process.argv;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
+const T = 'jane eyre';
+export const seeds = [
+  `${T} audiobook`, `best ${T} audiobook`, `best audiobook version of ${T}`, `which ${T} audiobook`, `best ${T}`,
+  `${T} audiobook narrator`, `${T} audiobook best narrator`, `who narrates ${T}`, `${T} narrated by`, `${T} read by`,
+  `${T} audible`, `${T} audiobook review`, `${T} audiobook reddit`, `is ${T} good on audiobook`,
+  `how long is the ${T} audiobook`, `${T} audiobook length`, `how long is ${T}`, `how long to read ${T}`, `how long does it take to read ${T}`,
+  `${T} chapters`, `how many chapters in ${T}`, `${T} volume`, `${T} audiobook chapter 1`, `${T} audiobook part`,
+  `is ${T} hard to read`, `is ${T} worth reading`, `is ${T} boring`, `should i read or listen to ${T}`, `${T} audiobook vs book`, `${T} audiobook or book`,
+  `${T} or wuthering heights`, `${T} vocabulary`, `${T} modern english`,
+  `${T} audiobook free`, `${T} librivox`, `${T} audiobook youtube`, `${T} audiobook spotify`, `${T} audiobook libby`,
+  `${T} unabridged audiobook`, `${T} abridged audiobook`, `${T} abridged`,
+  `${T} read along`, `${T} audiobook with text`, `${T} audiobook and ebook`, `${T} read aloud`,
+  `${T} characters`, `${T} character list`, `${T} names`, `${T} character map`, `${T} family tree`, `${T} cousins`, `${T} rochester`,
+  `${T} st john`, `${T} st john pronunciation`, `how to pronounce st john in ${T}`, `how to pronounce ${T}`, `${T} pronunciation`,
+  `${T} french`, `${T} french translation`, `${T} adele`, `what does adele say in ${T}`, `${T} french parts`,
+  `${T} narrator`, `who is the narrator of ${T}`, `${T} first person`, `${T} reader i married him`,
+  `${T} audiobook accent`, `${T} audiobook british`, `${T} audiobook american`,
+  `${T} bbc`, `${T} bbc radio`, `${T} radio drama`, `${T} full cast`, `${T} dramatised`, `${T} audible original`, `${T} audio drama`,
+  `${T} movie`, `${T} 2011`, `${T} 2006`, `${T} book vs movie`, `${T} adaptation`, `${T} new adaptation`,
+  `${T} juliet stevenson`, `${T} thandiwe newton`, `${T} thandie newton`, `${T} amanda root`, `${T} anna popplewell`,
+  `${T} juliet mills`, `${T} susan ericksen`, `${T} josephine bailey`, `${T} nadia may`, `${T} flo gibson`,
+  `${T} elizabeth klett`, `${T} dawn sutton`, `${T} lucy scott`, `${T} emma messenger`, `${T} naxos`, `${T} penguin audiobook`, `${T} claire bloom`,
+  `${T} reading guide`, `how to read ${T}`, `${T} audiobook 2026`, `${T} audiobook new`,
+];
+const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const gsuggest = (client) => async (q) => {
+  const r = await fetch(`https://suggestqueries.google.com/complete/search?client=${client}&hl=en&gl=us&q=${encodeURIComponent(q)}`, { headers: { 'User-Agent': UA } });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const txt = Buffer.from(await r.arrayBuffer()).toString('latin1');
+  const j = JSON.parse(txt);
+  const rel = j[4]?.['google:suggestrelevance'] || [];
+  const typ = j[4]?.['google:suggesttype'] || [];
+  return j[1].map((s, i) => ({ s, rel: rel[i], type: typ[i] })).filter((x) => x.type !== 'NAVIGATION');
+};
+const FETCH = {
+  gchrome: gsuggest('chrome'),
+  gfirefox: gsuggest('firefox'),
+  youtube: async (q) => {
+    const r = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&hl=en&gl=us&q=${encodeURIComponent(q)}`, { headers: { 'User-Agent': UA } });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = JSON.parse(Buffer.from(await r.arrayBuffer()).toString('latin1'));
+    return j[1].map((s) => ({ s }));
+  },
+  bing: async (q) => {
+    const r = await fetch(`https://api.bing.com/osjson.aspx?market=en-US&query=${encodeURIComponent(q)}`, { headers: { 'User-Agent': UA } });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    return j[1].map((s) => ({ s }));
+  },
+  ddg: async (q) => {
+    const r = await fetch(`https://duckduckgo.com/ac/?kl=us-en&q=${encodeURIComponent(q)}`, { headers: { 'User-Agent': UA } });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    return j.map((x) => ({ s: x.phrase }));
+  },
+};
+const DELAY = { gchrome: 350, gfirefox: 350, youtube: 350, bing: 250, ddg: 300 };
+const cache = fs.existsSync(cacheFile) ? JSON.parse(fs.readFileSync(cacheFile, 'utf8')) : {};
+for (const eng of engines) {
+  cache[eng] ||= {};
+  const qs = [...seeds];
+  if (eng === 'gchrome' || eng === 'gfirefox') for (const l of letters) qs.push(`${T} audiobook ${l}`);
+  let calls = 0, fails = 0;
+  for (const q of qs) {
+    if (cache[eng][q]) continue;
+    let res = null;
+    for (let a = 0; a < 3 && !res; a++) {
+      try { res = await FETCH[eng](q); } catch (e) { fails++; console.error(eng, 'fail', q, e.message); await sleep(5000 * (a + 1)); }
+    }
+    if (res) cache[eng][q] = res;
+    calls++;
+    await sleep(DELAY[eng]);
+  }
+  fs.writeFileSync(cacheFile, JSON.stringify(cache));
+  console.error(`done ${eng}: ${calls} new calls, ${fails} failures, ${Object.keys(cache[eng]).length} cached queries`);
+}

@@ -10,7 +10,7 @@ Thandiwe Newton for most listeners, Neville Jason to borrow from a library, Mark
 
 ### Best overall: Thandiwe Newton (Audible Studios, 2021)
 
-Thandiwe Newton's recording won the 2023 Audie Award for Literary Fiction & Classics, and she was a finalist for Best Female Narrator the same year, according to the Audio Publishers Association. In our scan of the association's Audie pages from 2000 to 2026, it is the only *War and Peace* recording that won. Many people search for it as the Thandie Newton *War and Peace*.
+Thandiwe Newton's recording won the 2023 Audie Award for Literary Fiction & Classics, and she was a finalist for Best Female Narrator the same year, according to the Audio Publishers Association. In our scan of the association's Audie pages from 2000 to 2026, it is the only *War and Peace* recording that won. Many people search for it as the Thandie Newton *War and Peace*. Newton also reads our pick for the [best Jane Eyre audiobook](/blog/best-jane-eyre-audiobook).
 
 On Audible US it has 4.6 stars from 1,613 ratings and 4.7 for performance, as of November 11, 2026. It is one title, not two volumes. Audible credits Louise and Aylmer Maude as translators, and its sample matched the Maude text (see the comparison below). The US page showed "Listen for free" to a signed-out visitor, against an Audible list price of $30.00; Apple Books sold it for $32.99. A 2023 Apple Books reviewer praised her for "embodying dozens of characters speaking English, French, German, Russian and Latin." Two 2025 reviewers found some character voices too loud. We did not find it on Libby or hoopla.
 

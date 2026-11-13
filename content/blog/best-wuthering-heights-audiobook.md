@@ -288,7 +288,7 @@ Nine listings we found are cut, condensed or dramatised, from 1 hour to 7 hours 
 
 Runtimes are Audible's, except Prunella Scales and Samuel West's (OverDrive). Read November 12, 2026.
 
-**The BBC dramatisation.** It is the one to choose for a drama. It has 4.5 stars from 39 ratings on Audible UK, where its format reads "unabridged" even though it is an adaptation. In the US it is sold only inside The Brontë BBC Radio Drama Collection, seven dramatisations in 15 hours 40 minutes with 4.6 stars from 141 ratings.
+**The BBC dramatisation.** It is the one to choose for a drama. It has 4.5 stars from 39 ratings on Audible UK, where its format reads "unabridged" even though it is an adaptation. In the US it is sold only inside The Brontë BBC Radio Drama Collection, seven dramatisations in 15 hours 40 minutes with 4.6 stars from 141 ratings. The collection's first two tracks are the BBC *Jane Eyre*, which our [Jane Eyre audiobook comparison](/blog/best-jane-eyre-audiobook) sets beside the complete recordings.
 
 **The film tie-in link.** Penguin UK's page for its 2026 film tie-in paperback (ISBN 9780241819937, published January 22, 2026) lists an "Audio Download" format. It links to Juliet Stevenson's 2012 abridgement, which Penguin lists at "Length: 161 minutes".
 

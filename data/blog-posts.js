@@ -8,6 +8,45 @@
 
 const posts = [
   {
+    slug: 'best-jane-eyre-audiobook',
+    hero: 'jane-eyre-picks',
+    cta: { heading: 'Read Jane Eyre along with the free recording', text: 'HushBook finds Elizabeth Klett\'s free LibriVox reading of Jane Eyre and shows each word in time with her voice, through all 38 chapters. Free on iPhone, Android and Windows, no account.' },
+    title: 'Best Jane Eyre Audiobook: Every Narrator and Edition Compared',
+    metaTitle: 'Best Jane Eyre Audiobook: Every Narrator and Free Version',
+    metaDescription: 'Thandiwe Newton\'s 19 hour 10 minute recording is the best Jane Eyre audiobook; Elizabeth Klett\'s LibriVox reading is free. Every edition, the French, the names.',
+    description: 'Thandiwe Newton\'s Audible recording is our pick, Juliet Stevenson\'s the runner-up, Elizabeth Klett\'s LibriVox reading the free one and Anna Popplewell\'s the one to borrow. Every edition by runtime, the French, St. John and the names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-13',
+    dateModified: '2026-11-13',
+    readingTime: '28 min read',
+    keywords: [
+      'best jane eyre audiobook',
+      'jane eyre audiobook length',
+      'jane eyre audiobook thandie newton',
+      'jane eyre audiobook juliet stevenson',
+      'jane eyre audiobook free',
+      'jane eyre audiobook librivox',
+      'jane eyre audiobook bbc',
+      'jane eyre french translations'
+    ],
+    takeaways: [
+      'Thandiwe Newton\'s 2016 Audible Studios recording, 19 hours 10 minutes, is our best overall pick: 4.8 stars from 22,153 Audible US ratings, ten times as many as the next most rated edition.',
+      'Juliet Stevenson\'s 2009 Audible Studios recording, 19 hours 13 minutes, is the runner-up: 4.7 stars from 2,188 US ratings, and 4.8 from 1,715 on Audible UK with 4.9 for performance.',
+      'The best free version is Elizabeth Klett\'s solo LibriVox reading, 18 hours 36 minutes. LibriVox calls it version 2 and the Internet Archive version 3, so pick it by its length.',
+      'The novel has 186,145 words in 38 chapters by our count: 20 hours 33 minutes at 1x, 16 hours 26 minutes at 1.25x and 13 hours 42 minutes at 1.5x.',
+      'French is only 346 of the novel\'s 186,145 words by our count, under 0.2% and about two minutes of listening. Adèle speaks 84% of it, all in Chapters 11 to 24.'
+    ],
+    faqs: [
+      ['What is the best Jane Eyre audiobook?', 'Thandiwe Newton\'s unabridged Audible Studios recording, 19 hours 10 minutes, with 4.8 stars from 22,153 Audible US ratings on November 13, 2026. Juliet Stevenson\'s is the runner-up, and Elizabeth Klett\'s LibriVox reading is the best free one.'],
+      ['How long is the Jane Eyre audiobook?', '20 hours 33 minutes at 1x for the novel\'s 186,145 words, by our count at 151 words a minute. Complete recordings run from 17 hours 21 minutes (Susan Ericksen) to 25 hours 19 minutes (Dawn Sutton, LibriVox).'],
+      ['Is Thandie Newton\'s Jane Eyre unabridged?', 'Yes. It is the same recording that Audible now credits to Thandiwe Newton: Audible Studios, 2016, 19 hours 10 minutes, unabridged.'],
+      ['Is there a free Jane Eyre audiobook?', 'Yes. LibriVox has four complete free English recordings. Elizabeth Klett\'s solo reading, 18 hours 36 minutes, is the one to pick; Dawn Sutton\'s solo reading runs 25 hours 19 minutes, and a dramatic reading has 36 readers.'],
+      ['Is the BBC Jane Eyre audiobook the full book?', 'No. The BBC Radio 4 dramatisation with Amanda Hale and Tom Burke, adapted by Rachel Joyce, runs 2 hours 13 minutes. Complete recordings of the novel on sale take at least 17 hours 21 minutes.'],
+      ['How do you pronounce St. John in Jane Eyre?', 'SIN-jin, the traditional British way and the one listeners report hearing on the recordings. Eyre sounds like "air".'],
+      ['Do you need to know French to listen to Jane Eyre?', 'No. By our count French is 346 of the novel\'s 186,145 words, under 0.2%, about two minutes of listening. Adèle speaks 84% of it, and Brontë prints most of Adèle\'s talk in English.']
+    ]
+  },
+  {
     slug: 'best-pride-and-prejudice-audiobook',
     hero: 'pride-and-prejudice-picks',
     cta: { heading: 'See who is speaking in Pride and Prejudice', text: 'HushBook finds the free LibriVox recordings of Pride and Prejudice and highlights each word as the narrator reads, so no line of dialogue slips past you. Free on iPhone, Android and Windows, no account.' },

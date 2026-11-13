@@ -44,7 +44,7 @@ A note on how we measured. We left out prefaces, contents pages and the translat
 
 Not an official one. Audible, ACX and the Audio Publishers Association do not publish an average length, so be wary of any site that quotes one as fact.
 
-What we can say is that a typical novel of 70,000 to 120,000 words comes out at roughly 7.5 to 13 hours at the ACX pace. Short books and novellas run 2 to 5 hours. Big classics and fantasy series often go past 20 hours a book.
+What we can say is that a typical novel of 70,000 to 120,000 words comes out at roughly 7.5 to 13 hours at the ACX pace. Short books and novellas run 2 to 5 hours. Big classics and fantasy series often go past 20 hours a book. *Jane Eyre*, for example, takes 20 hours 33 minutes at 151 words a minute, as our [Jane Eyre audiobook comparison](/blog/best-jane-eyre-audiobook) shows.
 
 ## How long does it take at 1.25x, 1.5x or 2x?
 

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Jane Eyre French</title>
+<!--
+  Figure for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-french.webp).
+  Data: docs/seo/drafts/2026-11-13-best-jane-eyre-audiobook/research-platforms.md, section 3a (scripts/je-french.py
+  and a hand check): 346 French words in 55 passages, 0.19% of the novel's 186,145 words (section 4), about
+  2.3 minutes at 151 wpm; by chapter 10: 2, 11: 33, 12: 10, 13: 76, 14: 50, 15: 12, 16: 18, 17: 98, 18: 5,
+  22: 9, 24: 31, 37: 2, nothing elsewhere; Adele 291 words (84%), spread over Chapters 11 to 24, most in 13,
+  14 and 17 (section 8). The page computes the share, the time and Adele's percentage from the counts.
+  Same tokens and tiles as length-tiles.html; one accent. Re-render (2x, WebP):
+    node render-html.mjs french-tiles.html jane-eyre-french.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink */
+    --coral: #E8613F;          /* the one accent: tile dashes, the meter, the columns */
+    --hair: rgba(246, 239, 228, .12);
+    --track: rgba(246, 239, 228, .14);
+    --base: rgba(246, 239, 228, .34);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row + .row, .row + .tile { margin-top: 12px; }
+  .row.three { grid-template-columns: repeat(3, 1fr); }
+  .row.two { grid-template-columns: repeat(2, 1fr); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 16px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .row.two .tile { display: flex; flex-direction: column; padding: 18px 18px 18px; }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 36px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 16px; font-weight: 500; letter-spacing: 0; margin-left: 4px; margin-right: 6px; color: var(--paper-dim); }
+  .v small:last-child { margin-right: 0; }
+  .v small.pre { margin-left: 0; margin-right: 6px; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); text-wrap: balance; }
+  .row.two .l { margin-bottom: 16px; }
+  /* Meter: the share, coral fill on a track of the same paper; at the bottom of the tile. */
+  .meter { margin-top: auto; height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; }
+  .meter b { display: block; height: 100%; border-radius: 4px; background: var(--coral); }
+  .spacer { margin-top: auto; height: 8px; }
+  .head { font-size: 15px; font-weight: 600; color: var(--paper); }
+  .tile.chart { padding: 18px 10px 17px; }
+  .tile.chart .head { padding: 0 6px; }
+  /* Columns: one series, French words per chapter, from a zero baseline; value on each cap that has one. */
+  .cols { position: relative; display: flex; align-items: flex-end; margin-top: 18px; border-bottom: 1px solid var(--base); }
+  .slot { position: relative; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+  .slot .n { font-size: 15px; font-weight: 600; line-height: 1; color: var(--paper); margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+  .slot .c { width: 20px; background: var(--coral); border-radius: 4px 4px 0 0; }
+  .xl { display: flex; margin-top: 8px; }
+  .xl span { flex: 1 1 0; text-align: center; font-size: 15px; line-height: 1; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>How much French there is in Jane Eyre</h1>
+  <div class="row three" id="tiles"></div>
+  <div class="row two" id="adele"></div>
+  <div class="tile wide chart">
+    <div class="head">French words by chapter</div>
+    <div class="cols" id="cols"></div>
+    <div class="xl" id="xl"></div>
+  </div>
+  <p class="src">Our count of Project Gutenberg eBook #1260, November 13, 2026: French found by script, every passage checked by hand and its speaker read in context. 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study</p>
+</div>
+<script>
+  // research-platforms.md 3a: 346 French words; by chapter; Adele 291. Section 4: 186,145 words. 151 wpm.
+  const FRENCH = 346, NOVEL = 186145, WPM = 151, ADELE = 291;
+  const BY_CHAPTER = { 10: 2, 11: 33, 12: 10, 13: 76, 14: 50, 15: 12, 16: 18, 17: 98, 18: 5, 22: 9, 24: 31, 37: 2 };
+  const sum = Object.values(BY_CHAPTER).reduce((s, n) => s + n, 0);   // must be 346
+  const share = (FRENCH / NOVEL * 100).toFixed(2);                      // 0.1859 -> 0.19
+  const mins = (FRENCH / WPM).toFixed(1);                               // 2.29 -> 2.3
+  const adele = Math.round(ADELE / FRENCH * 100);                       // 84.1 -> 84
+  document.getElementById('tiles').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">' + FRENCH + '<small>words</small></div><div class="l">of French, by our count</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + share + '%</div><div class="l">of the novel’s ' + NOVEL.toLocaleString('en-US') + ' words</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + mins + '<small>min</small></div><div class="l">listening time at 1x, at 151 words a minute</div></div>';
+  document.getElementById('adele').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">' + adele + '%</div>' +
+      '<div class="l">is Adèle’s: ' + ADELE + ' of the ' + FRENCH + ' words</div>' +
+      '<div class="meter"><b style="width:' + (ADELE / FRENCH * 100).toFixed(1) + '%"></b></div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v"><small class="pre">Ch.</small>11 to 24</div>' +
+      '<div class="l">where Adèle’s French falls, most of it in 13, 14 and 17</div><div class="spacer"></div></div>';
+  // Slots [label, words, width in single-chapter slots]: chapters 1 to 9 as one (none), 10 to 24 one each,
+  // 25 to 36 as one (none), 37, 38. The two merged slots are as wide as their labels need.
+  const SLOTS = [['1 to 9', 0, 2]];
+  for (let c = 10; c <= 24; c++) SLOTS.push([String(c), BY_CHAPTER[c] || 0, 1]);
+  SLOTS.push(['25 to 36', 0, 2.6], ['37', BY_CHAPTER[37], 1], ['38', 0, 1]);
+  const MAX = 98, H = 112;                                              // the tallest column, Chapter 17, is 112 px
+  let cols = '', xl = '';
+  for (const [lab, n, w] of SLOTS) {
+    const h = n / MAX * H;
+    cols += '<div class="slot" style="flex:' + w + ' 1 0;height:' + (H + 24) + 'px">' +
+      (n ? '<div class="n">' + n + '</div><div class="c" style="height:' + h.toFixed(2) + 'px"></div>' : '') + '</div>';
+    xl += '<span style="flex:' + w + ' 1 0">' + lab + '</span>';
+  }
+  document.getElementById('cols').innerHTML = cols;
+  document.getElementById('xl').innerHTML = xl;
+  window.__check = { sum, share, mins, adele };
+  // Fit check for the renderer: every value must sit inside its tile, and every chapter label inside its slot.
+  // A getter, so it measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => [
+    ...[...document.querySelectorAll('.v')].map(v => {
+      const t = v.closest('.tile'), cs = getComputedStyle(t);
+      const room = t.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+    }),
+    ...[...document.querySelectorAll('.xl span, .slot .n')].map(s => {
+      const r = document.createRange(); r.selectNodeContents(s);
+      const box = s.classList.contains('n') ? s.parentElement : s;   // a cap value has its column's slot
+      return { label: s.textContent, room: +box.getBoundingClientRect().width.toFixed(1), need: +(r.getBoundingClientRect().width + 4).toFixed(1) };
+    }),
+  ].filter(f => f.need > f.room).concat(sum === FRENCH ? [] : [{ label: 'chapter counts add to ' + sum }]) });
+</script>
+</body>
+</html>
