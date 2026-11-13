@@ -301,7 +301,7 @@ const posts = [
       'Kindle e-readers from the 11th generation on, Kindle Scribe and Kindle Colorsoft have Assistive Reader in five languages, with sound through Bluetooth headphones or a speaker. Older Kindles have VoiceView.',
       'Books need Enhanced Typesetting and must come from the Kindle store, Kindle+, Prime Reading, an official Kindle partner or Family Library. Amazon does not list public library loans.',
       'Alexa reads Kindle books on the original Alexa only. Amazon says Kindle Assistive Reader isn\'t available on Alexa+, which US Prime members have had at no extra cost since February 2026.',
-      'A human narrator costs extra on Kindle: an Audible add-on or a Kindle+ title with audio. HushBook is the better alternative for a human narrator with synced words, free on phone and Windows.'
+      'A human narrator costs extra on Kindle: an Audible add-on or a Kindle+ title with audio. HushBook is the better alternative for a human narrator with synced words, free on phone, Windows and Mac.'
     ],
     faqs: [
       ['Can Kindle Unlimited books read to you?', 'Yes. Assistive Reader reads books borrowed from Kindle+, the new name for Kindle Unlimited, if they have Enhanced Typesetting. For a human narrator, borrow a Kindle+ title labeled "Books with Audio" and you get the audiobook too.'],

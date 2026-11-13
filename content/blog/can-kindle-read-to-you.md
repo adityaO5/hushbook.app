@@ -2,7 +2,7 @@
 
 Yes. The free Kindle app and newer Kindle e-readers read books aloud with Assistive Reader, a text-to-speech feature that highlights the words as it reads.
 
-Assistive Reader costs nothing. It runs in the Kindle app on iPhone, iPad, Android, Mac and Fire tablets, and on Kindle e-readers from the 11th generation on, Kindle Scribe and Kindle Colorsoft. The voice is your device's text-to-speech voice. A person reading costs extra: you add the Audible audiobook to your Kindle book at a discount, or borrow a Kindle+ title that comes with one. For a human narrator with every word highlighted, **[HushBook](/)**, the app we built, is the better alternative. It is free on iPhone, Android and [Windows](/desktop) with no account, and because it can't open Kindle files, it is for public domain classics and audiobooks you own. This guide gives the steps for each device, Alexa (which can't do it on Alexa+), the voice and speed, why some books won't read, and what research says about computer voices against human narrators. The Amazon facts come from Amazon's help pages, read on November 9, 2026.
+Assistive Reader costs nothing. It runs in the Kindle app on iPhone, iPad, Android, Mac and Fire tablets, and on Kindle e-readers from the 11th generation on, Kindle Scribe and Kindle Colorsoft. The voice is your device's text-to-speech voice. A person reading costs extra: you add the Audible audiobook to your Kindle book at a discount, or borrow a Kindle+ title that comes with one. For a human narrator with every word highlighted, **[HushBook](/)**, the app we built, is the better alternative. It is free on iPhone, Android, [Windows and Mac](/desktop) with no account, and because it can't open Kindle files, it is for public domain classics and audiobooks you own. This guide gives the steps for each device, Alexa (which can't do it on Alexa+), the voice and speed, why some books won't read, and what research says about computer voices against human narrators. The Amazon facts come from Amazon's help pages, read on November 9, 2026.
 
 ## Can Kindle read to you?
 
@@ -140,9 +140,9 @@ Yes. For a human narrator with every word on screen, free, **HushBook** is the b
 
 ![Two HushBook phone screens. Left: the player for Pride and Prejudice by Jane Austen, with a Read along button. Right: the read-along page showing chapter 1, with the sentence being spoken tinted and the current word underlined.](/assets/img/blog/can-kindle-read-to-you-read-along.webp "wide")
 
-**HushBook** is the better choice in four cases. You want a classic such as Pride and Prejudice read by a real narrator, for free. You own audiobooks from any store, in files without DRM. You want to read along on a big screen on a Windows PC. Or you care about privacy: **HushBook** transcribes on your own phone or PC, and nothing is uploaded.
+**HushBook** is the better choice in four cases. You want a classic such as Pride and Prejudice read by a real narrator, for free. You own audiobooks from any store, in files without DRM. You want to read along on a big screen on a Windows PC or a Mac. Or you care about privacy: **HushBook** transcribes on your own phone or computer, and nothing is uploaded.
 
-**[HushBook for your computer](/desktop)** runs on Windows 10 or 11, 64-bit. It transcribes audiobooks on your PC's graphics card, free and unlimited, as fast as your graphics card allows. You read along on a big screen, where every word lights up as the narrator reads it, set in pages like a printed book. Pair it once with your phone over the same Wi-Fi, with no cloud in between, and your listening progress carries between the two.
+**[HushBook for your computer](/desktop)** runs on Windows 10 or 11, 64-bit, and on macOS 14 or later. It transcribes audiobooks on your own computer, free and unlimited, as fast as your graphics card allows. You read along on a big screen, where every word lights up as the narrator reads it, set in pages like a printed book. Pair it once with your phone over the same Wi-Fi, with no cloud in between, and your listening progress carries between the two.
 
 If the book exists only in your Kindle library, Kindle's own read-aloud is the right tool, because **HushBook** can't open it.
 
@@ -199,7 +199,7 @@ There is history here too. On February 27, 2009, after the Authors Guild objecte
 
 ## Use HushBook instead for a human narrator and every word on screen
 
-If you want a person reading and every word in front of you, use **HushBook**. [Get HushBook for iPhone and Android](/), and add [HushBook for your computer on Windows](/desktop) for a big screen.
+If you want a person reading and every word in front of you, use **HushBook**. [Get HushBook for iPhone and Android](/), and add [HushBook for your computer on Windows or Mac](/desktop) for a big screen.
 
 On the phone, **HushBook** is free to download, with **no ads and no account**. It has a built-in catalogue of free public domain audiobooks from LibriVox and the Internet Archive, in six languages, and you can import audio files you own, such as MP3 and M4B. It transcribes the recording on your phone and highlights each word as the narrator says it. Long-press a line to play from there. After a one-time engine download, it *works offline*. Pro is optional, for extras such as Transcribe on my PC and Insights.
 

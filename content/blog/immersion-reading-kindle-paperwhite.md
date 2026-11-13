@@ -167,7 +167,7 @@ Not on Windows. Amazon and Audible list no Immersion Reading for a Windows PC; o
 - **Audible on Windows.** Audible says "The Audible Android app is no longer available or supported on Windows 11," after Microsoft discontinued the Amazon Appstore in March 2024. Its suggested Cloud Player at Audible.com is not on its immersion reading list.
 - **Mac.** Audible lists the "Audible App for macOS" for immersion reading. One Amazon page mentions Audible highlighting in Kindle for Mac, but the product pop-up and Audible's lists don't name it.
 
-For audiobook files you own rather than Audible titles, the free [HushBook for your computer](/desktop) highlights every word as the narrator reads, on Windows 10 or 11.
+For audiobook files you own rather than Audible titles, the free [HushBook for your computer](/desktop) highlights every word as the narrator reads, on Windows 10 or 11 and macOS 14 or later.
 
 ## Why doesn't my Kindle have Immersion Reading?
 
@@ -247,7 +247,7 @@ The Kindle route is the right one when the book lives in your Kindle and Audible
 
 ## HushBook for audiobooks you own
 
-HushBook highlights each word as the narrator reads, for audiobook files you own and free classics. [Get HushBook for iPhone and Android](/), or [HushBook for your computer on Windows](/desktop).
+HushBook highlights each word as the narrator reads, for audiobook files you own and free classics. [Get HushBook for iPhone and Android](/), or [HushBook for your computer on Windows or Mac](/desktop).
 
 On the phone, HushBook is free for read-along. It imports 15 audio formats, including MP3 and M4B, and has free public domain audiobooks from LibriVox and the Internet Archive in six languages. HushBook transcribes on your phone, with no upload and no account, and works offline after a one-time engine download. Long-press a line to play from there.
 
