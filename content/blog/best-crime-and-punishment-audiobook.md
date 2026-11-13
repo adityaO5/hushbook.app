@@ -212,7 +212,7 @@ None of these studies tested a whole novel, and none measured how listeners keep
 
 ![Two HushBook phone screens with the free LibriVox recording Crime and Punishment (Version 3). Left: the player, with the LibriVox cover and the title "Crime and Punishment (Version 3)". Right: Part 1, Chapter 1 as read-along text opening "On an exceptionally hot evening early in July", with the line "as though in hesitation, towards K. bridge" being read and the current word, "towards", underlined.](/assets/img/blog/crime-and-punishment-read-along.webp "wide")
 
-Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings, on iPhone, Android and Windows.
+Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings, on iPhone, Android, Windows and Mac.
 
 HushBook is free, with no account, and transcription runs on your own device. For this book, open Discover, search "crime and punishment" and pick "Crime and Punishment (Version 3)", the 22-hour one, which is Mark Nelson's solo reading. Play a 30-second sample before you download. The download is about 640 MB, and HushBook transcribes it on your phone; each chapter is ready to read the moment it finishes. Words fill in as the narrator reads them, with a red underline on the current one. Long-press any line to play from there. For Expatriate's faster solo reading, pick the "Crime and Punishment" that runs 19 hours 53 minutes.
 

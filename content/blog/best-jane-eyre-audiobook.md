@@ -359,7 +359,7 @@ For *Jane Eyre*, the load on your attention is length, 38 chapters averaging 32 
 
 ![Two HushBook screens for Elizabeth Klett's free LibriVox recording, Jane Eyre (version 3): the player 10 seconds into the first chapter, and its read-along page in warm paper, with "but since dinner, Mrs." tinted red and "Reed," underlined.](/assets/img/blog/jane-eyre-read-along.webp "wide")
 
-Yes: HushBook, the app we built, plays an audiobook and shows its words in time with the voice, on iPhone, Android and Windows.
+Yes: HushBook, the app we built, plays an audiobook and shows its words in time with the voice, on iPhone, Android, Windows and Mac.
 
 HushBook is free, with no account, and transcription runs on your own device. In Discover, search "jane eyre" and pick "Jane Eyre (version 3)", the card that reads 18h 36m: that is Elizabeth Klett's LibriVox reading, 38 chapters in a 511 MB download, one chapter per file. Play a sample first if you like. HushBook queues the transcription on your phone as soon as the book is added.
 

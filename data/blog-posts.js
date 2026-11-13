@@ -10,7 +10,7 @@ const posts = [
   {
     slug: 'best-jane-eyre-audiobook',
     hero: 'jane-eyre-picks',
-    cta: { heading: 'Read Jane Eyre along with the free recording', text: 'HushBook finds Elizabeth Klett\'s free LibriVox reading of Jane Eyre and shows each word in time with her voice, through all 38 chapters. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'Read Jane Eyre along with the free recording', text: 'HushBook finds Elizabeth Klett\'s free LibriVox reading of Jane Eyre and shows each word in time with her voice, through all 38 chapters. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Jane Eyre Audiobook: Every Narrator and Edition Compared',
     metaTitle: 'Best Jane Eyre Audiobook: Every Narrator and Free Version',
     metaDescription: 'Thandiwe Newton\'s 19 hour 10 minute recording is the best Jane Eyre audiobook; Elizabeth Klett\'s LibriVox reading is free. Every edition, the French, the names.',
@@ -49,7 +49,7 @@ const posts = [
   {
     slug: 'best-pride-and-prejudice-audiobook',
     hero: 'pride-and-prejudice-picks',
-    cta: { heading: 'See who is speaking in Pride and Prejudice', text: 'HushBook finds the free LibriVox recordings of Pride and Prejudice and highlights each word as the narrator reads, so no line of dialogue slips past you. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'See who is speaking in Pride and Prejudice', text: 'HushBook finds the free LibriVox recordings of Pride and Prejudice and highlights each word as the narrator reads, so no line of dialogue slips past you. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Pride and Prejudice Audiobook: Every Narrator, Free Version and Dramatisation Compared',
     metaTitle: 'Best Pride and Prejudice Audiobook: Every Edition Compared',
     metaDescription: 'Rosamund Pike\'s recording is the best Pride and Prejudice audiobook; Karen Savage\'s free LibriVox reading runs 10 hours 23 minutes. Every edition compared.',
@@ -82,13 +82,13 @@ const posts = [
       ['Is there a Pride and Prejudice audiobook with an American accent?', 'Yes. Elizabeth Klett\'s free LibriVox Version 4, 11 hours 10 minutes, is narrated in an American accent with the dialogue in British accents, according to two Internet Archive reviews. In HushBook Discover it is "Pride and Prejudice (version 4)".'],
       ['Is the Julie Andrews Pride and Prejudice the full book?', 'Yes, by Noiser\'s account: it calls the series "unabridged". Julie Andrews reads it in 25 parts, 17 hours 16 minutes of episodes, in Noiser\'s free podcast "Jane Austen Stories". We did not check it against the text.'],
       ['Is Pride and Prejudice hard to read?', 'No. It is modern English, published in 1813, with a Project Gutenberg reading ease of 69.2: "Neither easy nor difficult to read." The harder part is dialogue: 46.8% of the words, with 61.5% of speech paragraphs naming no speaker.'],
-      ['Is there a Pride and Prejudice audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows. E-book sync, in beta, can show Austen\'s own text.']
+      ['Is there a Pride and Prejudice audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android, Windows and Mac. E-book sync, in beta, can show Austen\'s own text.']
     ]
   },
   {
     slug: 'best-wuthering-heights-audiobook',
     hero: 'wuthering-heights-picks',
-    cta: { heading: 'Read Wuthering Heights as you hear it', text: 'HushBook finds Ruth Golding\'s free LibriVox reading of Wuthering Heights and shows each word in time with her voice, so neither Catherine slips past you. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'Read Wuthering Heights as you hear it', text: 'HushBook finds Ruth Golding\'s free LibriVox reading of Wuthering Heights and shows each word in time with her voice, so neither Catherine slips past you. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Wuthering Heights Audiobook: Every Narrator and Edition Compared',
     metaTitle: 'Best Wuthering Heights Audiobook: Every Narrator Compared',
     metaDescription: 'Joanne Froggatt\'s recording is the best Wuthering Heights audiobook. Juliet Stevenson\'s is the highest rated, and Ruth Golding\'s LibriVox reading is free.',
@@ -121,13 +121,13 @@ const posts = [
       ['Is there a free Wuthering Heights audiobook?', 'Yes. LibriVox has three complete free recordings. Ruth Golding\'s solo reading, Version 2, is the one to pick: 14 hours 49 minutes, with 4.33 stars from 13 reviews on the Internet Archive.'],
       ['Is Wuthering Heights hard to read?', 'Yes, in places. Joseph\'s Yorkshire dialect is only 1.56% of the words, about 12 minutes of listening, but two narrators share the telling and two women are called Catherine.'],
       ['Is there a Wuthering Heights audiobook read by the 2026 film\'s cast?', 'No. On November 12, 2026, Audible narrator searches for the cast, Margot Robbie and Jacob Elordi included, found no Brontë title. The recording the film brought back into the news is Aimee Lou Wood\'s 2020 reading.'],
-      ['Is there a Wuthering Heights audiobook with text?', 'Yes. HushBook, the app we built, plays Ruth Golding\'s free LibriVox recording or DRM-free MP3 and M4B files you own and shows the words in time with the voice, on iPhone, Android and Windows.']
+      ['Is there a Wuthering Heights audiobook with text?', 'Yes. HushBook, the app we built, plays Ruth Golding\'s free LibriVox recording or DRM-free MP3 and M4B files you own and shows the words in time with the voice, on iPhone, Android, Windows and Mac.']
     ]
   },
   {
     slug: 'best-war-and-peace-audiobook',
     hero: 'war-and-peace-picks',
-    cta: { heading: 'See every name in War and Peace as it is read', text: 'HushBook finds the free LibriVox recording of War and Peace and highlights each word as the narrator reads, so no name slips past you in 62 hours. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'See every name in War and Peace as it is read', text: 'HushBook finds the free LibriVox recording of War and Peace and highlights each word as the narrator reads, so no name slips past you in 62 hours. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Audiobook Version of War and Peace: Every Translation and Narrator Compared',
     metaTitle: 'Best War and Peace Audiobook: Every Edition Compared',
     metaDescription: 'Thandiwe Newton\'s 2023 Audie winner is the best War and Peace audiobook; Mark Nelson\'s free LibriVox reading of the Maude translation runs 62 hours 27 minutes.',
@@ -159,13 +159,13 @@ const posts = [
       ['Which translation of War and Peace is best for audiobooks?', 'The Maude translation, for choice: ten of the twelve complete recordings on sale read it, and so do both complete free ones. Penguin\'s Briggs recording is the only modern translation on audio.'],
       ['Is there a Pevear and Volokhonsky audiobook of War and Peace?', 'No. On November 11, 2026 we found none on Audible in four countries, Apple Books, OverDrive, Kobo or hoopla. The only modern translation on audio is Penguin\'s 2020 recording of Anthony Briggs\'s.'],
       ['Do War and Peace audiobooks read the French parts?', 'Mostly in English. Every complete recording reads the Maude, Garnett or Briggs translation, which put almost all of Tolstoy\'s French into English. The French is heaviest in the first five hours.'],
-      ['Is there a War and Peace audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox Maude recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+      ['Is there a War and Peace audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox Maude recordings or DRM-free MP3 and M4B files you own, on iPhone, Android, Windows and Mac.']
     ]
   },
   {
     slug: 'best-crime-and-punishment-audiobook',
     hero: 'crime-and-punishment-picks',
-    cta: { heading: 'Read Crime and Punishment as you hear it', text: 'HushBook finds the free LibriVox recordings of Crime and Punishment and highlights each word as the narrator reads, so no name slips past you. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'Read Crime and Punishment as you hear it', text: 'HushBook finds the free LibriVox recordings of Crime and Punishment and highlights each word as the narrator reads, so no name slips past you. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Audiobook Version of Crime and Punishment: Every Translation and Narrator Compared',
     metaTitle: 'Best Crime and Punishment Audiobook: Every Edition Compared',
     metaDescription: 'Anthony Heald\'s Blackstone recording is the best Crime and Punishment audiobook; Mark Nelson\'s LibriVox Version 3 is the best free one. 20 editions compared.',
@@ -197,12 +197,12 @@ const posts = [
       ['Is there a free Crime and Punishment audiobook?', 'Yes. LibriVox has four free recordings of Constance Garnett\'s translation. In Version 3, Mark Nelson reads alone for 22 hours 2 minutes; Version 4 is a dramatic reading with 49 volunteers.'],
       ['Is there an audiobook of the Penguin Classics translation?', 'Yes, of Oliver Ready\'s: Penguin\'s 2020 unabridged recording, read by Don Warrington, runs 1,502 minutes. We found no unabridged audiobook of David McDuff\'s translation, the Penguin Classics paperback sold in the US.'],
       ['Which translation of Crime and Punishment is best for listening?', 'Garnett\'s, for choice: most audiobooks and all four free ones read her 1914 translation. For modern English, Don Warrington reads Oliver Ready\'s and Bill Homewood reads Pevear and Volokhonsky\'s.'],
-      ['Is there a Crime and Punishment audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android and Windows.']
+      ['Is there a Crime and Punishment audiobook with text?', 'Yes. HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings or DRM-free MP3 and M4B files you own, on iPhone, Android, Windows and Mac.']
     ]
   },
   {
     slug: 'best-count-of-monte-cristo-audiobook',
-    cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android and Windows, no account.' },
+    cta: { heading: 'See every word of the free recording as it is read', text: 'HushBook finds the free LibriVox recordings of The Count of Monte Cristo and highlights each word as the narrator reads. Free on iPhone, Android, Windows and Mac, no account.' },
     title: 'Best Audiobook Version of The Count of Monte Cristo: Every Unabridged Edition Compared',
     metaTitle: 'Best Count of Monte Cristo Audiobook: Every Edition Compared',
     metaDescription: 'John Lee\'s Blackstone recording is the best paid Count of Monte Cristo audiobook; David Clarke\'s LibriVox reading is the best free one. 17 editions compared.',
@@ -240,7 +240,7 @@ const posts = [
   },
   {
     slug: 'immersion-reading-kindle-paperwhite',
-    cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android and Windows. Free, with no account.' },
+    cta: { heading: 'See every word as the narrator reads it', text: 'No Kindle e-reader highlights words with the narration. HushBook does, for audiobook files you own and free public domain classics, on iPhone, Android, Windows and Mac. Free, with no account.' },
     title: 'Does Kindle Paperwhite Support Immersion Reading? Every Kindle, Checked',
     metaTitle: 'Does Kindle Paperwhite Support Immersion Reading? By Model',
     metaDescription: 'No. No Kindle e-reader highlights words with Audible narration. Immersion Reading works on Fire tablets and in the Kindle and Audible apps. Every model checked.',
@@ -272,12 +272,12 @@ const posts = [
       ['Is immersion reading free?', 'No. You need both the Kindle eBook and the Audible audiobook, often sold as a discounted add-on, or a Kindle+ title with audio at $11.99 a month in the US. Kindle+ is not part of Prime.'],
       ['Does immersion reading work offline?', 'No, not fully in the Audible app. Audible says the ebook text loads from the internet, though some pages are saved so you can still see them without a connection.'],
       ['Can I listen to Audible on a Kindle Paperwhite without headphones?', 'No. Amazon says you must first pair a Bluetooth audio device, such as headphones, speakers or earbuds, to listen to Audible books on a Kindle. A Bluetooth speaker plays the book out loud.'],
-      ['Is there a better alternative to Immersion Reading on Kindle?', 'Yes, for audiobook files you own and free classics. HushBook highlights each word as the narrator reads, free on iPhone, Android and Windows, with no account.']
+      ['Is there a better alternative to Immersion Reading on Kindle?', 'Yes, for audiobook files you own and free classics. HushBook highlights each word as the narrator reads, free on iPhone, Android, Windows and Mac, with no account.']
     ]
   },
   {
     slug: 'can-kindle-read-to-you',
-    cta: { heading: 'Hear a narrator and see every word, free', text: 'Kindle\'s read-aloud is a computer voice, and a human narrator costs extra. HushBook highlights each word as a recorded narrator says it, free on iPhone, Android and Windows, in public domain classics or audio you own. No ads, no account.' },
+    cta: { heading: 'Hear a narrator and see every word, free', text: 'Kindle\'s read-aloud is a computer voice, and a human narrator costs extra. HushBook highlights each word as a recorded narrator says it, free on iPhone, Android, Windows and Mac, in public domain classics or audio you own. No ads, no account.' },
     title: 'Can Kindle Read to You? How to Make Kindle Read Aloud, by Device',
     metaTitle: 'Can Kindle Read to You? How to Make Kindle Read Aloud',
     metaDescription: 'Yes. Assistive Reader reads Kindle books aloud free in a computer voice. Steps by device and for Alexa, plus HushBook, the free human-narrated alternative.',
@@ -310,7 +310,7 @@ const posts = [
       ['Is there a monthly fee for Kindle?', 'No. The Kindle app is free, and Assistive Reader, VoiceView and Alexa reading cost nothing extra. Kindle+, at $11.99 a month in the US, and Audible narration are optional paid extras.'],
       ['Can Alexa read my Kindle books?', 'Yes, on the original Alexa. Ask Alexa to read a book by its title, then pause, skip chapters or change the speed by voice. Amazon says Kindle Assistive Reader isn\'t available on Alexa+.'],
       ['Can you change the Kindle Assistive Reader voice?', 'No, not inside the Kindle app. Amazon says Assistive Reader uses your device\'s own text-to-speech engine, so the voice comes from your phone, tablet or computer settings. Amazon does not say which setting.'],
-      ['Is there a better alternative to Kindle read-aloud?', 'Yes. HushBook is the better alternative for a human narrator with every word highlighted. It is free on iPhone, Android and Windows, with no account. It plays public domain classics and audiobooks you own, not Kindle books.']
+      ['Is there a better alternative to Kindle read-aloud?', 'Yes. HushBook is the better alternative for a human narrator with every word highlighted. It is free on iPhone, Android, Windows and Mac, with no account. It plays public domain classics and audiobooks you own, not Kindle books.']
     ]
   },
   {

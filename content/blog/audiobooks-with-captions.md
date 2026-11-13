@@ -77,7 +77,7 @@ Three routes, from easiest to most technical.
 
 **2. On a computer, with Whisper.** OpenAI's Whisper and the whisper.cpp port are free under the MIT licence, and both write SRT and VTT subtitle files straight from an audio file. A ten-hour book takes a while on a laptop, and you then need a player that shows subtitles with audio. WorkAudioBook does that on Windows and Android, and SubRead Overlay on Android "shows the lines of a subtitle file (.srt) over the app that plays your audiobook". This route gives you a file you can keep and edit.
 
-**3. Live captions while you listen.** The iPhone, Android and Windows captions above. Nothing to set up and nothing saved.
+**3. Live captions while you listen.** The iPhone, Android, Windows and Mac captions above. Nothing to set up and nothing saved.
 
 What you cannot do is caption a copy-protected book. Audible's conditions of use, updated November 2, 2026, say you may not "attempt to disable, bypass, modify, defeat, or otherwise circumvent any digital rights management". Libby and hoopla loans and Apple Books and Spotify purchases are protected the same way, so none of the apps above can open them. Recordings from LibriVox are the opposite case. LibriVox says "anyone can use all our recordings however they wish (even to sell them)", so transcribing, sharing or editing their text is fine. Our guide to the [best LibriVox apps](/blog/best-librivox-app) covers that catalogue.
 

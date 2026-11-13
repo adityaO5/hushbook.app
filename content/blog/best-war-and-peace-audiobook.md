@@ -249,7 +249,7 @@ None of these studies tested anything longer than a book chapter, and none measu
 
 ![Two HushBook screens for the free LibriVox recording War and Peace, Volume 1 (Maude translation): the player with the LibriVox cover at the start of chapter 1 of 68, with a Read along button, and the read-along page in the warm paper theme showing the opening of Book 1, Chapter 1, Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes, where the words already read are tinted red and the word being spoken, horrors, is underlined.](/assets/img/blog/war-and-peace-read-along.webp "wide")
 
-Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings, on iPhone, Android and Windows.
+Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings, on iPhone, Android, Windows and Mac.
 
 HushBook is free, with no account, and transcription runs on your own device. For this book, open Discover, search "war and peace" and download the four titles named "War and Peace, Volume 1 (Maude translation)" to "War and Peace, Volume 4 (Maude Translation)". Their cards read 14h 35m, 16h 9m, 17h 0m and 14h 44m: together Mark Nelson's 62 hours 27 minutes, about 1.7 GB. Play them in order, 1 to 4. Each arrives as its own book with one chapter per section, from "Book 01 Chapter 01" to "Second Epilogue Chapter 12". The similar "War and Peace Vol. 1 (1805-1806)" is the first volume of the Dole translation. Play a 30-second sample before you download.
 

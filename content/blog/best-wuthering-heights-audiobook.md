@@ -355,7 +355,7 @@ Neither study used a whole novel, a story with two narrators, or a dialect. For 
 
 ![Two HushBook phone screens with Ruth Golding's free LibriVox recording: the player with a Read along button, and the Chapter I read-along page, with the words just read tinted red and the current word, "England", underlined.](/assets/img/blog/wuthering-heights-read-along.webp "wide")
 
-Yes: HushBook, the app we built, plays an audiobook and shows its words in time with the voice, on iPhone, Android and Windows.
+Yes: HushBook, the app we built, plays an audiobook and shows its words in time with the voice, on iPhone, Android, Windows and Mac.
 
 HushBook is free, with no account, and transcription runs on your own device. In Discover, search "wuthering heights" and pick "Wuthering Heights (Solo Version)", 14h 49m: that is Ruth Golding's LibriVox reading, 34 chapters in a 407 MB download. Play a sample first if you like. HushBook queues the transcription on your phone as soon as the book is added.
 

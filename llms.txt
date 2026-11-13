@@ -8,7 +8,7 @@ Site: https://hushbook.app/
 
 - [HushBook](https://hushbook.app/): Word-level read-along for owned audiobook files and free public-domain classics.
 - [About](https://hushbook.app/about): How the app is built and what it is for.
-- [HushBook for your computer](https://hushbook.app/desktop): Windows app. Transcribes audiobooks on the PC with whisper.cpp, free and unlimited, highlights each word on a big screen, and pairs with the phone over Wi-Fi.
+- [HushBook for your computer](https://hushbook.app/desktop): Windows and Mac app. Transcribes audiobooks on your computer with whisper.cpp, free and unlimited, highlights each word on a big screen, and pairs with the phone over Wi-Fi.
 
 ## Guides
 

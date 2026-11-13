@@ -254,7 +254,7 @@ None of these four studies tested a whole novel by ear, and none measured how li
 
 ![Two HushBook phone screens with the free LibriVox Pride and Prejudice (version 3), read by Karen Savage: the read-along page for Chapter XXIX with "Do you play and sing, Miss Bennet? A little." highlighted, and the player with a Read along button.](/assets/img/blog/pride-and-prejudice-audiobook-with-text.webp "wide")
 
-Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings of *Pride and Prejudice*, on iPhone, Android and Windows.
+Yes: HushBook, the app we built, highlights each word as the narrator reads the free LibriVox recordings of *Pride and Prejudice*, on iPhone, Android, Windows and Mac.
 
 HushBook is free, with no account, and transcription runs on your own device. For this book, open Discover, search "pride and prejudice" and pick "Pride and Prejudice (version 3)", the card that reads 10h 23m. That is Karen Savage's reading: on November 12, 2026 the card showed 61 chapters and a 299 MB download, and the book arrives with one chapter per file, "Chapter 01" to "Chapter 61". For Elizabeth Klett's reading, pick "Pride and Prejudice (version 4)", 11h 10m and 307 MB. Play a 30-second sample before you download.
 
