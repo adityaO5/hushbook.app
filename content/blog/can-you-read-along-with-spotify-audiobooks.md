@@ -12,13 +12,13 @@ Yes, if you bring the book. Spotify has three features that touch on reading, an
 
 - **Page Match** syncs your place between the audiobook and your own print or e-book copy. Details below.
 - **Recaps** are short spoken summaries of what you've heard so far.
-- **Follow-Along**, which Spotify described as a test in November 2024, shows "time-synchronized illustrations, photos, and graphics" on select titles, in the audiobook's extras. Pictures, not text.
+- **Follow-Along** adds "time-synchronized illustrations, photos, and graphics for select titles," in the words of Spotify's audiobooks page. Spotify first described it as a test in November 2024. Pictures, not the book's text.
 
 So reading along on Spotify means holding a book or e-reader while the app plays. That suits plenty of people. It is just more manual than an app that highlights each word for you. Audible has one of those, Read & Listen, if you own both the Audible audiobook and the Kindle ebook. Our guide to [reading along with Audible](/blog/can-you-read-along-with-audible) covers it.
 
 ## Do Spotify audiobooks have text or transcripts?
 
-No. Spotify's "Unlock Audiobooks" help page lists what the Now Playing view gives you on an audiobook: play speed, skip forward or back 15 seconds, a sleep timer, a rating once you've heard a chapter, and sharing. There is no text. Spotify's help center has no article on audiobook transcripts, and none of the audiobook announcements we read, from November 2024 to October 2026, mention one. For every service's caption status, and how to caption a file you own, see [audiobooks with captions](/blog/audiobooks-with-captions).
+No. Spotify's "Unlock Audiobooks" help page lists what the Now Playing view gives you on an audiobook: play speed, skip forward or back 15 seconds, a sleep timer, a rating once you've heard a chapter, and sharing. There is no text. Spotify's help center has no article on audiobook transcripts, and none of the audiobook announcements we read, from November 2024 to November 2026, mention one. For every service's caption status, and how to caption a file you own, see [audiobooks with captions](/blog/audiobooks-with-captions).
 
 The mix-up is easy to make. Podcasts and audiobooks sit side by side in the same app, and many podcast episodes do show their words as they play. That is a podcast feature, covered further down.
 
@@ -65,6 +65,10 @@ Many do. In September 2023, Spotify began rolling out "auto-generated and time-s
 
 Not every show has them. Spotify's help for creators puts it plainly: "Some shows have auto-generated episode transcripts." Creators can turn them off for an episode or a whole show, and transcripts aren't offered to every creator. So if one episode shows text and another doesn't, that's down to the show, not your app.
 
+### How do you turn off read along on Spotify?
+
+Spotify's "Now Playing view" help page lists podcast transcripts but no setting to hide them. Its "Managing episode transcripts on Spotify" page says the show's creator can turn transcripts off for one episode or for the whole show.
+
 ## How to read along word by word instead
 
 Page Match keeps your place, but it can't put the words in front of you or show which one the narrator is on. For that you need an app that lines the text up with the recording.
@@ -84,7 +88,7 @@ For more ways to get the words for a recording, see [audiobook with text](/audio
 
 ## Honest limits
 
-- Spotify changes its features often. Everything here comes from Spotify's support pages and newsroom posts, checked on October 27, 2026. Its posts announce features but rarely say when a test ends, so we don't know whether Follow-Along is still running.
+- Spotify changes its features often. Everything here comes from Spotify's support pages, newsroom posts and audiobooks page, checked on November 13, 2026. Follow-Along is still offered. Spotify's May 26, 2026 post, "Spotify Brings Long-Form Magazine Articles to Audio," lists "Page Match, Recaps, and Follow Along" among its audiobook features, and its audiobooks page offers Follow-Along "for select titles." Neither page says which titles have it.
 - "No text for audiobooks" rests on what Spotify's pages leave out: no help article on audiobook transcripts, and no mention in the announcements we read. We did not check every title or app version.
 - We did not test Page Match or Recaps. Spotify's pages don't say how reliably a scan matches, including a scan of an e-reader screen.
 - Spotify's posts say which languages and devices get Page Match, not which countries.
@@ -95,6 +99,7 @@ For more ways to get the words for a recording, see [audiobook with text](/audio
 - [Spotify Newsroom, "Spotify Partners With Bookshop.org and Debuts Page Match Feature to Bridge Physical, E-book, and Audio Formats" (February 5, 2026)](https://newsroom.spotify.com/2026-02-05/bookshop-partnership-page-match-announcement/)
 - [Spotify Newsroom, "How to Use Page Match to Seamlessly Switch Between a Book and Its Audiobook on Spotify" (February 5, 2026)](https://newsroom.spotify.com/2026-02-05/page-match-how-to/)
 - [Spotify Newsroom, "Spotify Expands Audiobook Features, and Printed Book Sales Go Live in the US and UK" (April 15, 2026)](https://newsroom.spotify.com/2026-04-15/audiobook-charts-recaps-page-match-bookshop-update/)
+- [Spotify Newsroom, "Spotify Brings Long-Form Magazine Articles to Audio" (May 26, 2026)](https://newsroom.spotify.com/2026-05-26/articles-magazine-test-launch/)
 - [Spotify Newsroom, "Audiobooks on Spotify Are Going Global" (October 7, 2026)](https://newsroom.spotify.com/2026-10-07/audiobooks-global-expansion/)
 - [Spotify Newsroom, "Introducing Audiobook Recaps, a New Way to Reengage With Your Favorite Stories" (November 13, 2025)](https://newsroom.spotify.com/2025-11-13/audiobook-recaps-beta-test/)
 - [Spotify Newsroom, "6 Spotify Audiobook Features That Level Up Your Listening Experience" (November 21, 2024)](https://newsroom.spotify.com/2024-11-21/6-spotify-audiobook-features-that-level-up-your-listening-experience/)
@@ -103,6 +108,7 @@ For more ways to get the words for a recording, see [audiobook with text](/audio
 - [Spotify Support, "Audiobooks in Premium plans"](https://support.spotify.com/us/article/audiobooks-premium-plans/)
 - [Spotify Support, "Now Playing view"](https://support.spotify.com/us/article/now-playing/)
 - [Spotify for Creators Support, "Managing episode transcripts on Spotify"](https://support.spotify.com/us/creators/article/managing-episode-transcripts-on-spotify/)
+- [Spotify, "Audiobooks on Spotify"](https://www.spotify.com/us/audiobooks/)
 - [Spotify, "User Guidelines"](https://www.spotify.com/us/legal/user-guidelines/)
 - [Audible Help, "Learn about Read & Listen"](https://help.audible.com/s/article/listen-with-whispersync-for-voice?language=en_US)
 - [Adesope and Nesbit (2012), "Verbal redundancy in multimedia learning environments: A meta-analysis", Journal of Educational Psychology](https://doi.org/10.1037/a0026147)

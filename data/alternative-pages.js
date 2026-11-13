@@ -406,7 +406,7 @@ const pages = [
     faqs: [
       ['Does HushBook work on Android and iPhone?', 'Yes. HushBook is free on both, with the same local-file playback, on-device transcription, and word-level highlighting.'],
       ['Can HushBook play the local files I already keep in BookPlayer?', 'If the file is a supported format such as MP3, M4B, or FLAC, import it into HushBook. Chapters and cover art come along when the file includes them.'],
-      ['What does HushBook add on top of a file player?', 'It transcribes the narration on your phone and highlights each word as it is spoken, so you can read along, tap a line to skip, and save quotes.'],
+      ['What does HushBook add on top of a file player?', 'It transcribes the narration on your phone and highlights each word as it is spoken, so you can read along, long-press a line to play from there, and save quotes.'],
       ['Do I need a home server to use HushBook?', 'No. Your books stay on the device. After one engine download, playback and transcription work offline.'],
       ['Why pick HushBook on iPhone if I already like BookPlayer?', 'Choose HushBook when you want the words on screen with the original narrator, plus dyslexia, vision, and comprehension profiles on files you already own.']
     ],
@@ -422,7 +422,7 @@ const pages = [
     slug: 'storytel-alternatives',
     competitor: 'Storytel',
     title: '5 Best Storytel Alternatives for Reading and Listening',
-    description: 'Compare five Storytel alternatives for owned audiobooks, commercial catalogs, ebooks, free classics, private transcripts, and offline listening in 2026.',
+    description: 'HushBook, Audible, Everand, Spotify and LibriVox as Storytel alternatives, compared on cost, offline listening, your own files and read-along text.',
     question: 'What are the best Storytel alternatives for readers who want owned files, free classics, private offline playback, synchronized text, and flexible reading tools?',
     directAnswer: 'HushBook is the best overall Storytel alternative for people who want to read and listen at the same time. Instead of switching between an ebook and an audiobook, you see each word highlight as the narrator reads. It is free to start, includes free classics, and needs no subscription. Audible is best for buying new releases, Everand for ebook-and-audiobook unlocks, and Spotify for bundled listening hours.',
     hushbookVerdict: 'Storytel gives you ebooks and audiobooks side by side. HushBook joins them: the narrator reads and the words light up in step, on your own files or free classics, with no monthly fee to keep your library.',
@@ -441,7 +441,7 @@ const pages = [
     faqs: [
       ['Does HushBook include free public-domain audiobooks?', 'Yes. LibriVox and Internet Archive classics are already in HushBook’s library. You can download them in the app and follow the narration word by word.'],
       ['Can I use my own files in HushBook after I leave Storytel?', 'HushBook imports compatible audio you own. Streamed Storytel titles stay with that subscription unless you have a separate file you are allowed to keep.'],
-      ['How does HushBook help me read while I listen?', 'Every spoken word lights up with the narrator. You follow the story on screen, tap a word to jump, and stay on the line you just heard.'],
+      ['How does HushBook help me read while I listen?', 'Every spoken word lights up with the narrator. You follow the story on screen, long-press a line to play from there, and stay on the line you just heard.'],
       ['Does HushBook need an account or a cloud library?', 'No. There is no HushBook account. Transcription stays on the phone.'],
       ['Will HushBook replace a Storytel catalog of new paid books?', 'HushBook is a player for owned files and free classics. For a large paid streaming catalog you would still use a subscription service.']
     ],
