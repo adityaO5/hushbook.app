@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <title>Jane Eyre picks</title>
 <!--
-  Lead image for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-picks.webp).
+  Lead image for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-picks-v2.webp).
   Data: research-platforms.md section 9 (picks), with table 1a and section 2a (VERIFIED). Runtimes: Audible
   for Newton (19 hrs 10 mins), Stevenson (19 hrs 13 mins) and Popplewell (22 hrs 51 mins); LibriVox 18:36:29
   for Elizabeth Klett. phone-player.png = tools/mockups/out/en-_tmp-je-player.png from the temp scene in
@@ -22,6 +22,8 @@
   copied next to this file for the render and deleted after. Same layout as the Wuthering Heights card.
   Re-render (2x, WebP, 16:9):
     node render-html.mjs picks-card.html jane-eyre-picks.webp 700 394
+  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
+    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -69,12 +71,18 @@
     font-size: 22px; line-height: 1.12; color: var(--paper);
   }
   .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .det b { font-weight: 600; color: var(--paper); }
 </style>
 </head>
 <body>
   <img class="phone" src="phone-player.png" alt="">
   <div class="side">
     <h1>Jane Eyre audiobooks:<br>our picks</h1>
+    <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Elizabeth Klett</div>
+      <div class="det"><b>HushBook app</b> · 18 h 36 min</div>
+    </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Thandiwe Newton</div>
@@ -84,11 +92,6 @@
       <div class="lab">Runner-up</div>
       <div class="val">Juliet Stevenson</div>
       <div class="det">Audible Studios · 19 h 13 min</div>
-    </div>
-    <div class="pick">
-      <div class="lab">Best free</div>
-      <div class="val">Elizabeth Klett</div>
-      <div class="det">LibriVox · 18 h 36 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best to borrow</div>

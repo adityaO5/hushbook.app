@@ -14,12 +14,14 @@
 <meta charset="utf-8">
 <title>Crime and Punishment picks</title>
 <!--
-  Lead image for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-picks.webp).
+  Lead image for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-picks-v2.webp).
   Data: research-platforms.md section 7 and table 8; the same values as content/blog/best-crime-and-punishment-audiobook.md
-  ("Best overall", "Best free", "Best modern translation"). phone-player.png = tools/mockups/out/en-_tmp-cp-player.png from
+  ("Best free", "Best overall", "Best modern translation"). phone-player.png = tools/mockups/out/en-_tmp-cp-player.png from
   the temp scene in temp-scenes.patch (player-cover copy, cover crimepunishment_1708.jpg, elapsed 10, length 1283,
   chapter 2 of 41), copied next to this file. Re-render (2x, WebP, fixed 16:9):
     node render-html.mjs picks-card.html crime-and-punishment-audiobook-picks.webp 700 394
+  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
+    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -67,6 +69,7 @@
     font-size: 23px; line-height: 1.15; color: var(--paper);
   }
   .det { margin-top: 2px; font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; }
+  .det b { font-weight: 600; color: var(--paper); }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 </style>
 </head>
@@ -75,14 +78,14 @@
   <div class="side">
     <h1>Crime and Punishment audiobooks: our picks</h1>
     <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Mark Nelson</div>
+      <div class="det"><b>HushBook app</b> · Version 3 · 22 h 2 min</div>
+    </div>
+    <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Anthony Heald</div>
       <div class="det">Blackstone · 20 h 28 min</div>
-    </div>
-    <div class="pick">
-      <div class="lab">Best free</div>
-      <div class="val">Mark Nelson</div>
-      <div class="det">LibriVox Version 3 · 22 h 2 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best modern translation</div>

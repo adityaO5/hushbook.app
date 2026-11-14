@@ -14,13 +14,15 @@
 <meta charset="utf-8">
 <title>Wuthering Heights picks</title>
 <!--
-  Lead image for /blog/best-wuthering-heights-audiobook (assets/img/blog/wuthering-heights-picks.webp).
+  Lead image for /blog/best-wuthering-heights-audiobook (assets/img/blog/wuthering-heights-picks-v2.webp).
   Data: research-platforms.md section 9 and table 1a (VERIFIED). Runtimes: Audible for Froggatt and
   Stevenson, Naxos's own 13 h 09 m (booklet 13:09:16) for McTeer with Timson, LibriVox 14:48:42 for
   Ruth Golding. phone-player.png = tools/mockups/out/en-_tmp-wh-player.png from the temp scene in
   temp-scenes.patch (player-cover copy, cover Wuthering_Heights.jpg, elapsed 10, length 936, chapter 1
   of 34), copied next to this file. Same layout as the War and Peace card. Re-render (2x, WebP, 16:9):
     node render-html.mjs picks-card.html wuthering-heights-picks.webp 700 394
+  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
+    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -68,12 +70,18 @@
     font-size: 22px; line-height: 1.12; color: var(--paper);
   }
   .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .det b { font-weight: 600; color: var(--paper); }
 </style>
 </head>
 <body>
   <img class="phone" src="phone-player.png" alt="">
   <div class="side">
     <h1>Wuthering Heights audiobooks: our picks</h1>
+    <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Ruth Golding</div>
+      <div class="det"><b>HushBook app</b> · solo version · 14 h 49 min</div>
+    </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Joanne Froggatt</div>
@@ -88,11 +96,6 @@
       <div class="lab">Best two-voice</div>
       <div class="val">Janet McTeer with David Timson</div>
       <div class="det">Naxos AudioBooks · 13 h 9 min</div>
-    </div>
-    <div class="pick">
-      <div class="lab">Best free</div>
-      <div class="val">Ruth Golding</div>
-      <div class="det">LibriVox, solo version · 14 h 49 min</div>
     </div>
   </div>
 </body>

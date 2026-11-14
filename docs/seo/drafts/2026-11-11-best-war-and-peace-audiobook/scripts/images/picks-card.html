@@ -14,12 +14,14 @@
 <meta charset="utf-8">
 <title>War and Peace picks</title>
 <!--
-  Lead image for /blog/best-war-and-peace-audiobook (assets/img/blog/war-and-peace-audiobook-picks.webp).
+  Lead image for /blog/best-war-and-peace-audiobook (assets/img/blog/war-and-peace-audiobook-picks-v2.webp).
   Data: research-platforms.md section 7 and tables 1a, 2a and 8 (VERIFIED). phone-player.png =
   tools/mockups/out/en-_tmp-wp-player.png from the temp scene in temp-scenes.patch (player-cover copy, cover
   warandpeacevolume1_2212.jpg, elapsed 10, length 872, chapter 1 of 68), copied next to this file.
   Same layout as the Crime and Punishment card, with four rows set tighter. Re-render (2x, WebP, fixed 16:9):
     node render-html.mjs picks-card.html war-and-peace-audiobook-picks.webp 700 394
+  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
+    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -67,12 +69,18 @@
     font-size: 22px; line-height: 1.12; color: var(--paper);
   }
   .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .det b { font-weight: 600; color: var(--paper); }
 </style>
 </head>
 <body>
   <img class="phone" src="phone-player.png" alt="">
   <div class="side">
     <h1>War and Peace audiobooks: our picks</h1>
+    <div class="pick">
+      <div class="lab">Best free</div>
+      <div class="val">Mark Nelson</div>
+      <div class="det"><b>HushBook app</b> · Volumes 1 to 4 · 62 h 27 min</div>
+    </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Thandiwe Newton</div>
@@ -82,11 +90,6 @@
       <div class="lab">Best to borrow</div>
       <div class="val">Neville Jason</div>
       <div class="det">Naxos AudioBooks · 2 volumes · 61 h 43 min</div>
-    </div>
-    <div class="pick">
-      <div class="lab">Best free</div>
-      <div class="val">Mark Nelson</div>
-      <div class="det">LibriVox Volumes 1 to 4 · 62 h 27 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best modern translation</div>

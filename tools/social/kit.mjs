@@ -9,7 +9,8 @@
 //   instagram.png            1080x1080, the card under a "Today's audiobook pick" heading
 //   caption.txt              the caption, then a version that fits a post on X
 import { createRequire } from 'node:module';
-import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, readdir, rename, rm } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import entries from './kit.data.mjs';
@@ -62,6 +63,20 @@ const page = await browser.newPage({ viewport: { width: 1080, height: 1080 }, de
 const shell = path.join(out, '.square.html');
 await mkdir(out, { recursive: true });
 
+// A new post moves every book down one number, so each book's old folder follows it:
+// renamed to the new number, or removed when the new one is there and the old holds only kit files.
+const kitFiles = ['caption.txt', 'instagram.png', 'x-linkedin-facebook.png'];
+for (const [i, entry] of entries.entries()) {
+  const want = `${i + 1} ${entry.folder}`;
+  for (const name of await readdir(out)) {
+    if (name === want || name.replace(/^\d+ /, '') !== entry.folder || !/^\d+ /.test(name)) continue;
+    const old = path.join(out, name);
+    if (!existsSync(path.join(out, want))) await rename(old, path.join(out, want));
+    else if ((await readdir(old)).every((f) => kitFiles.includes(f))) await rm(old, { recursive: true });
+    else console.warn(`${name}: holds other files, left beside ${want}`);
+  }
+}
+
 let n = 0;
 for (const entry of entries) {
   n += 1;
@@ -83,6 +98,5 @@ for (const entry of entries) {
 }
 
 await browser.close();
-const { rm } = await import('node:fs/promises');
 await rm(shell, { force: true });
 console.log(out);

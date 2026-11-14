@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <title>Brothers Karamazov picks</title>
 <!--
-  Lead image for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-picks.webp).
+  Lead image for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-picks-v2.webp).
   Data: research-platforms.md section 9 (picks) with table 1a (store runtimes, publishers, translations),
   section 2a (LibriVox Version 3: 39:37:50, Bruce Pirie) and section 10 (publisher names). Labels as fixed
   by the orchestrator. phone-player.png = tools/mockups/out/en-_tmp-bk-player.png from the temp scene in
@@ -24,6 +24,8 @@
   so the heading's first line and the longest details line fit.
   Re-render (2x, WebP, 16:9):
     node render-html.mjs picks-card.html brothers-karamazov-picks.webp 700 394
+  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
+    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -72,6 +74,7 @@
   .rt { font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; }
   .rt i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
   .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .det b { font-weight: 600; color: var(--paper); }
 </style>
 </head>
 <body>
@@ -81,12 +84,13 @@
     <div id="picks"></div>
   </div>
 <script>
-  // [label, narrator, publisher, translation, hours, minutes, seconds]. Seconds only where the source prints
-  // them (LibriVox); the card rounds to the minute.
+  // [label, narrator, publisher (HTML), translation, hours, minutes, seconds]. Seconds only where the source
+  // prints them (LibriVox); the card rounds to the minute. Best free first: the LibriVox recording, free in
+  // the HushBook app's Discover catalogue.
   const PICKS = [
+    ['Best free', 'Bruce Pirie', '<b>HushBook app</b>', 'Garnett', 39, 37, 50],         // 2a Version 3: 39:37:50
     ['Best overall', 'Luke Thompson', 'Penguin Classics', 'McDuff', 43, 6, 0],          // 1a row 1: 43 hrs 6 mins
     ['Most rated', 'Constantine Gregory', 'Naxos AudioBooks', 'Garnett', 37, 4, 0],    // 1a row 3: 37 hrs 4 mins
-    ['Best free', 'Bruce Pirie', 'LibriVox', 'Garnett', 39, 37, 50],                   // 2a Version 3: 39:37:50
     ['Best to borrow', 'Ben Miles', 'Macmillan Audio', 'Pevear and Volokhonsky', 42, 16, 0],   // 1a row 2: 42 hrs 16 mins
   ];
   const hm = p => { const t = Math.round(p[4] * 60 + p[5] + p[6] / 60); return [Math.floor(t / 60), t % 60]; };
