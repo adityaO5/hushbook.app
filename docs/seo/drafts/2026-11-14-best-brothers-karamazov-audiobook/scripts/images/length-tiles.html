@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Brothers Karamazov length</title>
+<!--
+  Figure for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-length.webp).
+  Data: docs/seo/drafts/2026-11-14-best-brothers-karamazov-audiobook/research-platforms.md, section 4:
+  349,788 words in Project Gutenberg #28054 (Garnett; without heading lines, footnote markers and THE END);
+  96 chapters, shortest Book I Ch. 2 at 1,297 words, longest the Grand Inquisitor at 9,287 (section 3);
+  38 h 36 min at 151 wpm; four parts and the epilogue: Part I (Books I to III) 69,503 words, Part II (IV to
+  VI) 77,054, Part III (VII to IX) 83,306, Part IV (X to XII) 110,575, Epilogue 9,350; chapters per book
+  5, 8, 11, 7, 7, 3, 4, 8, 9, 7, 10, 14 and 3, so 24, 17, 21, 31 and 3 per part. The page computes every
+  time from the word counts. Same tokens and tiles as the Jane Eyre figure. Re-render (2x, WebP):
+    node render-html.mjs length-tiles.html brothers-karamazov-length.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink; the parts' segments */
+    --coral: #E8613F;          /* the one accent: tile dashes */
+    --hair: rgba(246, 239, 228, .12);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row.three { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr); }   /* the first tile holds 349,788 words */
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 16px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 36px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 16px; font-weight: 500; letter-spacing: 0; margin-left: 4px; margin-right: 6px; color: var(--paper-dim); }
+  .v small:last-child { margin-right: 0; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); text-wrap: balance; }
+  .wide { margin-top: 12px; }
+  .wide .head { font-size: 15px; font-weight: 600; color: var(--paper); }
+  /* Segmented bar: one whole (the novel's words) split into the four parts and the epilogue; 2 px gaps.
+     One neutral fill: the segments carry their names directly below, so colour carries no identity. */
+  .seg { display: flex; gap: 2px; margin-top: 14px; height: 14px; }
+  .seg b { display: block; height: 100%; border-radius: 4px; background: var(--muted); }
+  .segl { position: relative; height: 19px; margin-top: 8px; }
+  .segl span { position: absolute; top: 0; transform: translateX(-50%); font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+  .segl span.end { transform: translateX(-100%); }
+  .parts { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .parts td { padding: 7px 0 7px 22px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .parts td:first-child { padding-left: 0; }
+  .parts td.b { width: 100%; }
+  .parts .name { font-weight: 600; color: var(--paper); }
+  .parts .t { font-weight: 600; color: var(--paper); text-align: right; }
+  .parts .t i, .parts .w i, .parts .c i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .parts .w, .parts .c { text-align: right; }
+  .parts .w { color: var(--paper); }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>How long The Brothers Karamazov is, part by part</h1>
+  <div class="row three" id="tiles"></div>
+  <div class="tile wide">
+    <div class="head">The four parts and the epilogue, by share of the words</div>
+    <div class="seg" id="seg"></div>
+    <div class="segl" id="segl"></div>
+    <table class="parts"><tbody id="parts"></tbody></table>
+  </div>
+  <p class="src">Our count of Project Gutenberg eBook #28054, Constance Garnett’s translation, November&nbsp;14, 2026. 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study</p>
+</div>
+<script>
+  // research-platforms.md section 4: 349,788 words, 96 chapters (shortest Book I Ch. 2, 1,297 words; longest
+  // Book V Ch. 5, 9,287, section 3), 38 h 36 min at 151 wpm; the parts' books, chapters and words.
+  const WORDS = 349788, WPM = 151, CHAPTERS = 96;
+  const hm = min => { const t = Math.round(min); return [Math.floor(t / 60), t % 60]; };
+  const hmHTML = ([h, m]) => (h ? h + '<small>h</small>' : '') + m + '<small>min</small>';
+  const hmText = ([h, m]) => (h ? h + '<i> h </i>' : '') + m + '<i> min</i>';
+  const [h1x, m1x] = hm(WORDS / WPM);                       // 2,316.5 min -> 38 h 36 min
+  const shortest = Math.round(1297 / WPM), longest = Math.round(9287 / WPM);   // 8.6 -> 9, 61.5 -> 62
+  document.getElementById('tiles').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">' + WORDS.toLocaleString('en-US') + '<small>words</small></div><div class="l">in Constance Garnett’s translation</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + CHAPTERS + '<small>chapters</small></div><div class="l">' + shortest + ' to ' + longest + ' minutes each at 1x</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + hmHTML([h1x, m1x]) + '</div><div class="l">listening time at 1x, at 151 words a minute</div></div>';
+  // [name, books, chapters per book, words]
+  const PARTS = [
+    ['Part I', 'Books I to III', [5, 8, 11], 69503],
+    ['Part II', 'Books IV to VI', [7, 7, 3], 77054],
+    ['Part III', 'Books VII to IX', [4, 8, 9], 83306],
+    ['Part IV', 'Books X to XII', [7, 10, 14], 110575],
+    ['Epilogue', '', [3], 9350],
+  ];
+  const total = PARTS.reduce((s, p) => s + p[3], 0);       // 349,788: the parts and the epilogue are the whole novel
+  const chapters = PARTS.reduce((s, p) => s + p[2].reduce((a, b) => a + b, 0), 0);   // 96
+  let seg = '', rows = '';
+  for (const [name, books, ch, w] of PARTS) {
+    const n = ch.reduce((a, b) => a + b, 0);
+    seg += '<b style="flex:' + w + ' 1 0"></b>';
+    rows += '<tr><td class="name">' + name + '</td><td class="b">' + books + '</td>' +
+      '<td class="c">' + n + '<i> chapters</i></td>' +
+      '<td class="t">' + hmText(hm(w / WPM)) + '</td>' +
+      '<td class="w">' + w.toLocaleString('en-US') + '<i> words</i></td></tr>';
+  }
+  document.getElementById('seg').innerHTML = seg;
+  document.getElementById('parts').innerHTML = rows;
+  // Names under the segments, centred on each (the epilogue's flush with the bar's end).
+  const bar = document.getElementById('seg').getBoundingClientRect();
+  document.getElementById('segl').innerHTML = [...document.querySelectorAll('#seg b')].map((b, i) => {
+    const r = b.getBoundingClientRect(), last = i === PARTS.length - 1;
+    const at = last ? r.right - bar.left : r.left - bar.left + r.width / 2;
+    return '<span' + (last ? ' class="end"' : '') + ' style="left:' + at.toFixed(1) + 'px">' + PARTS[i][0] + '</span>';
+  }).join('');
+  window.__check = { total, chapters, oneX: [h1x, m1x], chapterMinutes: [shortest, longest],
+    times: PARTS.map(p => p[0] + ' ' + hm(p[3] / WPM).join(' h ') + ' min'),
+    timesAddTo: PARTS.reduce((s, p) => s + Math.round(p[3] / WPM), 0) };
+  // Fit check for the renderer: every value must sit inside its tile's padding, and the names under the bar
+  // must not touch. A getter, so it measures after the web fonts load.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const out = [...document.querySelectorAll('.v')].map(v => {
+      const t = v.closest('.tile'), cs = getComputedStyle(t);
+      const room = t.getBoundingClientRect().right - parseFloat(cs.paddingRight) - v.getBoundingClientRect().left;
+      return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+    }).filter(f => f.need > f.room);
+    const labs = [...document.querySelectorAll('#segl span')].map(s => s.getBoundingClientRect());
+    for (let i = 1; i < labs.length; i++) if (labs[i].left - labs[i - 1].right < 10) out.push({ label: 'segment names ' + (i - 1) + '/' + i, gap: +(labs[i].left - labs[i - 1].right).toFixed(1) });
+    const tile = document.querySelector('.wide').getBoundingClientRect(), grid = document.getElementById('parts').getBoundingClientRect();
+    if (grid.right > tile.right - 16) out.push({ label: 'parts table', right: grid.right, room: tile.right - 16 });
+    return out;
+  } });
+</script>
+</body>
+</html>

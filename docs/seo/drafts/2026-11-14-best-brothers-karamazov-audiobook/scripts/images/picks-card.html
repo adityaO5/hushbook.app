@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Brothers Karamazov picks</title>
+<!--
+  Lead image for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-picks.webp).
+  Data: research-platforms.md section 9 (picks) with table 1a (store runtimes, publishers, translations),
+  section 2a (LibriVox Version 3: 39:37:50, Bruce Pirie) and section 10 (publisher names). Labels as fixed
+  by the orchestrator. phone-player.png = tools/mockups/out/en-_tmp-bk-player.png from the temp scene in
+  temp-scenes.patch (player-cover copy, cover brothers_karamazov_3.jpg, elapsed 10, length 579, chapter 1 of
+  96), copied next to this file for the render and deleted after. The Jane Eyre card's layout, with the
+  runtime moved to the name line and the translation in the details line; the right column is 34 px wider
+  so the heading's first line and the longest details line fit.
+  Re-render (2x, WebP, 16:9):
+    node render-html.mjs picks-card.html brothers-karamazov-picks.webp 700 394
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --coral: #E8613F;          /* the one accent: the four labels */
+    --hair: rgba(246, 239, 228, .12);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px; height: 394px; overflow: hidden; position: relative;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(330px 170px at 42% -6%, rgba(232, 97, 63, .26), transparent 72%),
+      radial-gradient(240px 170px at -4% 108%, rgba(232, 97, 63, .10), transparent 72%),
+      var(--ink);
+  }
+  .phone {
+    position: absolute; left: 36px; top: 30px; height: 460px; width: auto;
+    filter: drop-shadow(0 13px 19px rgba(0, 0, 0, .62));
+  }
+  .side { position: absolute; left: 290px; right: 26px; top: 18px; }
+  h1 {
+    margin: 0 0 6px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 26px; line-height: 1.12; letter-spacing: -.005em;
+  }
+  .pick { padding: 5px 0 5px; border-top: 1px solid var(--hair); }
+  .lab { font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--coral); }
+  .top { margin-top: 1px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .val {
+    font-family: 'HBNews', Georgia, serif; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-size: 22px; line-height: 1.12; color: var(--paper); white-space: nowrap;
+  }
+  .rt { font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; }
+  .rt i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
+  .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
+</style>
+</head>
+<body>
+  <img class="phone" src="phone-player.png" alt="">
+  <div class="side">
+    <h1>Brothers Karamazov audiobooks:<br>our picks</h1>
+    <div id="picks"></div>
+  </div>
+<script>
+  // [label, narrator, publisher, translation, hours, minutes, seconds]. Seconds only where the source prints
+  // them (LibriVox); the card rounds to the minute.
+  const PICKS = [
+    ['Best overall', 'Luke Thompson', 'Penguin Classics', 'McDuff', 43, 6, 0],          // 1a row 1: 43 hrs 6 mins
+    ['Most rated', 'Constantine Gregory', 'Naxos AudioBooks', 'Garnett', 37, 4, 0],    // 1a row 3: 37 hrs 4 mins
+    ['Best free', 'Bruce Pirie', 'LibriVox', 'Garnett', 39, 37, 50],                   // 2a Version 3: 39:37:50
+    ['Best to borrow', 'Ben Miles', 'Macmillan Audio', 'Pevear and Volokhonsky', 42, 16, 0],   // 1a row 2: 42 hrs 16 mins
+  ];
+  const hm = p => { const t = Math.round(p[4] * 60 + p[5] + p[6] / 60); return [Math.floor(t / 60), t % 60]; };
+  document.getElementById('picks').innerHTML = PICKS.map(p => {
+    const [h, m] = hm(p);
+    return '<div class="pick"><div class="lab">' + p[0] + '</div>' +
+      '<div class="top"><span class="val">' + p[1] + '</span><span class="rt">' + h + '<i> h </i>' + m + '<i> min</i></span></div>' +
+      '<div class="det">' + p[2] + ' · ' + p[3] + ' translation</div></div>';
+  }).join('');
+  window.__check = PICKS.map(p => [p[1], hm(p).join(' h ') + ' min']);
+  // Fit check for the renderer: every details line and name line must end inside the right column.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const side = document.querySelector('.side').getBoundingClientRect();
+    return [...document.querySelectorAll('.det, .top, h1')].map(el => {
+      const r = document.createRange(); r.selectNodeContents(el);
+      const w = el.classList.contains('top') ? el.querySelector('.val').getBoundingClientRect().width + 12 + el.querySelector('.rt').getBoundingClientRect().width : r.getBoundingClientRect().width;
+      return { label: el.textContent, room: +side.width.toFixed(1), need: +w.toFixed(1) };
+    }).filter(f => f.need > f.room);
+  } });
+</script>
+</body>
+</html>

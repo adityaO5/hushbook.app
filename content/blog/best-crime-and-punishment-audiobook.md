@@ -158,7 +158,7 @@ Runtimes are Audible's, except Michael Sheen's (Naxos). Every complete recording
 
 Not sentence by sentence; the names, the long speeches and the length are the hard part.
 
-Project Gutenberg gives Garnett's text a reading ease score of 83.0, "6th grade", and our count puts the average sentence at 12.7 words. That formula measures only sentence and word length. It says nothing about the people, the ideas or the 22 hours.
+Project Gutenberg gives Garnett's text a reading ease score of 83.0, "6th grade", and our count puts the average sentence at 12.7 words. That formula measures only sentence and word length. It says nothing about the people, the ideas or the 22 hours. *The Brothers Karamazov* scores 82.0 by the same measure and runs 1.72 times as long, as our [Brothers Karamazov audiobook comparison](/blog/best-brothers-karamazov-audiobook) shows.
 
 What makes it demanding on audio is talk. 55.4% of Garnett's words sit inside quotation marks: dialogue, letters and quoted thoughts, all voiced by one narrator in most recordings. The mother's letter in Part I, Chapter 3 runs 4,306 words, about 28 minutes without a break.
 

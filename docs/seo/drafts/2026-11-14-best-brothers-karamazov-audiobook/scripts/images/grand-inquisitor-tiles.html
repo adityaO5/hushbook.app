@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM7TGB9SZC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KM7TGB9SZC');
+</script>
+
+<meta charset="utf-8">
+<title>Brothers Karamazov Grand Inquisitor</title>
+<!--
+  Figure for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-grand-inquisitor.webp).
+  Data: docs/seo/drafts/2026-11-14-best-brothers-karamazov-audiobook/research-platforms.md.
+    Section 3: the Grand Inquisitor = Part II, Book V ("Pro and Contra"), Chapter 5, the 36th of 96 chapters;
+      9,287 words, the longest chapter; starts after 107,753 of 349,788 words (30.8%), 11 h 54 min in at
+      151 wpm. Book V: 7 chapters, 32,812 words, 3 h 37 min. Book VI ("The Russian Monk"): 3 chapters,
+      21,761 words, 2 h 24 min.
+    Section 2b: in Bruce Pirie's free LibriVox recording (Version 3) the chapter is file 36, starting at
+      12:13:52, 59:15 long.
+    Section 4: chapters per book (5, 8, 11, 7, 7, 3, 4, 8, 9, 7, 10, 14; Epilogue 3); 349,788 words.
+    Words per book: the output of the research's scripts/bk-wordcount.py on the same Gutenberg #28054 file
+      (SHA-256 2e75c187...d22fe), re-run for this figure with identical output: 12,365; 26,255; 30,883;
+      22,481; 32,812; 21,761; 17,460; 36,048; 29,798; 21,358; 43,377; 45,840; Epilogue 9,350 (section 4
+      prints the part sums and Books V, VI and XII; the others are the same run's lines).
+  No spoilers: books are labelled by number only; the only titles printed are Book V's, Book VI's and the
+  chapter's own. The page computes every derived value from these base numbers. Re-render (2x, WebP):
+    node render-html.mjs grand-inquisitor-tiles.html brothers-karamazov-grand-inquisitor.webp 700 auto
+-->
+<style>
+  @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: 'HBInter'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Inter-SemiBold.ttf'); font-weight: 600; }
+
+  :root {
+    --ink: #0B0A09;
+    --paper: #F6EFE4;
+    --paper-dim: #CABFB0;      /* 10.9:1 on ink */
+    --muted: #9A9086;          /* 6.3:1 on ink; Book VI */
+    --gray: #655E57;           /* the other books */
+    --coral: #E8613F;          /* the one accent: tile dashes, the meter, Book V */
+    --hair: rgba(246, 239, 228, .12);
+    --track: rgba(246, 239, 228, .14);
+  }
+  html, body { margin: 0; background: var(--ink); }
+  body {
+    width: 700px;
+    color: var(--paper);
+    font-family: 'HBInter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(90% 60% at 100% 105%, rgba(232, 97, 63, .09), transparent 70%),
+      var(--ink);
+  }
+  .fig { padding: 38px 36px 30px; }
+  h1 {
+    margin: 0 0 24px;
+    font-family: 'HBNews', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: "opsz" 36;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -.005em;
+    text-wrap: balance;
+  }
+  .row { display: grid; gap: 12px; }
+  .row + .row, .row + .tile { margin-top: 12px; }
+  .row.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile {
+    border: 1px solid var(--hair); border-radius: 14px;
+    padding: 18px 16px 17px;
+    background: rgba(246, 239, 228, .025);
+  }
+  .row.two .tile { display: flex; flex-direction: column; padding: 18px 18px 18px; }
+  .tile i.dash { display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--coral); margin-bottom: 14px; }
+  .v { font-weight: 600; font-size: 36px; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .v small { font-size: 16px; font-weight: 500; letter-spacing: 0; margin-left: 4px; margin-right: 6px; color: var(--paper-dim); }
+  .v small:last-child { margin-right: 0; }
+  .l { margin-top: 10px; font-size: 15px; line-height: 1.4; color: var(--paper-dim); text-wrap: balance; }
+  .row.two .l { margin-bottom: 16px; }
+  /* Meter: how far in the chapter starts, coral fill on a track of the same paper; at the bottom of the tile. */
+  .meter { margin-top: auto; height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; }
+  .meter b { display: block; height: 100%; border-radius: 4px; background: var(--coral); }
+  .spacer { margin-top: auto; height: 8px; }
+  .head { font-size: 15px; font-weight: 600; color: var(--paper); }
+  /* The novel as one bar: twelve books and the epilogue, widths by listening time (words at 151 wpm),
+     2 px gaps. Book V coral, the chapter inside it paper, Book VI the lighter gray, the rest gray. */
+  .call { position: relative; height: 44px; margin-top: 16px; }
+  .call .txt { position: absolute; bottom: 10px; font-size: 15px; line-height: 1.3; color: var(--paper); white-space: nowrap; }
+  .call .txt b { font-weight: 600; }
+  .call .txt i { font-style: normal; color: var(--paper-dim); }
+  .call .stem { position: absolute; bottom: -4px; width: 1px; height: 14px; background: var(--paper); }
+  .seg { position: relative; display: flex; gap: 2px; height: 18px; }
+  .seg b { position: relative; display: block; height: 100%; border-radius: 4px; background: var(--gray); }
+  .seg b.v5 { background: var(--coral); }
+  .seg b.v6 { background: var(--muted); }
+  .seg .gi { position: absolute; top: 0; bottom: 0; background: var(--paper); border-radius: 1px; }
+  .segl { position: relative; height: 19px; margin-top: 8px; }
+  .segl span { position: absolute; top: 0; transform: translateX(-50%); font-size: 15px; line-height: 1.25; color: var(--muted); white-space: nowrap; }
+  .segl span.on { color: var(--paper); font-weight: 600; }
+  .segl span.end { transform: translateX(-100%); }
+  .axis { position: relative; height: 30px; margin-top: 10px; border-top: 1px solid var(--hair); }
+  .mark { position: absolute; top: -1px; width: 1px; height: 6px; background: rgba(246, 239, 228, .22); }
+  .tick { position: absolute; top: 9px; transform: translateX(-50%); font-size: 15px; color: var(--muted); white-space: nowrap; }
+  .tick.first { transform: none; }
+  .tick.end { transform: translateX(-100%); }
+  .legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--hair); }
+  .key { display: flex; gap: 9px; align-items: flex-start; }
+  .key .sw { flex: none; width: 12px; height: 12px; border-radius: 3px; margin-top: 4px; }
+  .key .name { font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--paper); white-space: nowrap; }
+  .key .ti { font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; }
+  .key .pct { margin-top: 8px; font-size: 26px; font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--paper); white-space: nowrap; }
+  .key .pct small { font-size: 15px; font-weight: 500; letter-spacing: 0; margin-left: 3px; margin-right: 5px; color: var(--paper-dim); }
+  .key .pct small:last-child { margin-right: 0; }
+  .key .t { margin-top: 6px; font-size: 15px; line-height: 1.3; color: var(--paper-dim); white-space: nowrap; }
+  .src { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--hair); font-size: 15px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="fig">
+  <h1>The Grand Inquisitor: where it falls and how long it runs</h1>
+  <div class="row three" id="tiles"></div>
+  <div class="row two" id="where"></div>
+  <div class="tile wide">
+    <div class="head">The twelve books and the epilogue, by listening time at 1x</div>
+    <div class="call" id="call"></div>
+    <div class="seg" id="seg"></div>
+    <div class="segl" id="segl"></div>
+    <div class="axis" id="axis"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <p class="src">Our count of Project Gutenberg eBook #28054, Constance Garnett’s translation, November&nbsp;14, 2026; start time in the recording from archive.org’s file lengths. 151 words a minute is the median pace of ten LibriVox readers in our audiobook length study</p>
+</div>
+<script>
+  const WPM = 151;
+  // Books I to XII and the Epilogue: [label, chapters, words] (research-platforms.md section 4; bk-wordcount.py).
+  const BOOKS = [
+    ['I', 5, 12365], ['II', 8, 26255], ['III', 11, 30883], ['IV', 7, 22481], ['V', 7, 32812], ['VI', 3, 21761],
+    ['VII', 4, 17460], ['VIII', 8, 36048], ['IX', 9, 29798], ['X', 7, 21358], ['XI', 10, 43377], ['XII', 14, 45840],
+    ['Ep.', 3, 9350],
+  ];
+  const GI = { book: 5, chapter: 5, words: 9287, startWord: 107753 };   // section 3
+  const PIRIE_START = [12, 13, 52];                                       // section 2b: file 36 at 12:13:52
+  const TOTAL = BOOKS.reduce((s, b) => s + b[2], 0);                     // 349,788
+  const CHAPTERS = BOOKS.reduce((s, b) => s + b[1], 0);                  // 96
+  const giIndex = BOOKS.slice(0, GI.book - 1).reduce((s, b) => s + b[1], 0) + GI.chapter;   // 31 + 5 = 36
+  const bookVStart = BOOKS.slice(0, GI.book - 1).reduce((s, b) => s + b[2], 0);              // 91,984
+  const hm = min => { const t = Math.round(min); return [Math.floor(t / 60), t % 60]; };
+  const hmHTML = ([h, m]) => (h ? h + '<small>h</small>' : '') + m + '<small>min</small>';
+  const hmText = ([h, m]) => (h ? h + ' h ' : '') + m + ' min';
+  const giMin = Math.round(GI.words / WPM);                              // 61.5 -> 62
+  const share = (GI.startWord / TOTAL * 100).toFixed(1);                 // 30.81 -> 30.8
+  const startAt = hm(GI.startWord / WPM);                                // 713.8 min -> 11 h 54 min
+  const pirie = hm(PIRIE_START[0] * 60 + PIRIE_START[1] + PIRIE_START[2] / 60);   // 733.9 -> 12 h 14 min
+  document.getElementById('tiles').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">' + giIndex + '<small>of ' + CHAPTERS + ' chapters</small></div><div class="l">Book&nbsp;V, Chapter&nbsp;5</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + GI.words.toLocaleString('en-US') + '<small>words</small></div><div class="l">the longest chapter in the novel</div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + giMin + '<small>min</small></div><div class="l">listening time at 1x, at 151 words a minute</div></div>';
+  document.getElementById('where').innerHTML =
+    '<div class="tile"><i class="dash"></i><div class="v">' + share + '%</div>' +
+      '<div class="l">of the way in: it starts ' + hmText(startAt).replace(/ /g, '&nbsp;') + ' into the book at 1x</div>' +
+      '<div class="meter"><b style="width:' + share + '%"></b></div></div>' +
+    '<div class="tile"><i class="dash"></i><div class="v">' + hmHTML(pirie) + '</div>' +
+      '<div class="l">where it starts in Bruce Pirie’s free LibriVox recording</div><div class="spacer"></div></div>';
+  // The bar: one segment per book, flex-grow by words (time at a fixed pace is proportional to words).
+  let seg = '';
+  BOOKS.forEach((b, i) => {
+    const cls = i === GI.book - 1 ? 'v5' : i === GI.book ? 'v6' : '';
+    let inner = '';
+    if (i === GI.book - 1) {                                             // the chapter inside Book V
+      const a = (GI.startWord - bookVStart) / b[2] * 100, w = GI.words / b[2] * 100;
+      inner = '<span class="gi" style="left:' + a.toFixed(2) + '%;width:' + w.toFixed(2) + '%"></span>';
+    }
+    seg += '<b class="' + cls + '" style="flex:' + b[2] + ' 1 0">' + inner + '</b>';
+  });
+  document.getElementById('seg').innerHTML = seg;
+  const bar = document.getElementById('seg').getBoundingClientRect();
+  const segs = [...document.querySelectorAll('#seg b')];
+  document.getElementById('segl').innerHTML = segs.map((s, i) => {
+    const r = s.getBoundingClientRect(), last = i === BOOKS.length - 1, on = i === GI.book - 1 || i === GI.book;
+    const at = last ? r.right - bar.left : r.left - bar.left + r.width / 2;
+    return '<span class="' + (on ? 'on' : '') + (last ? ' end' : '') + '" style="left:' + at.toFixed(1) + 'px">' + BOOKS[i][0] + '</span>';
+  }).join('');
+  // Callout: a stem down to the chapter's start, with its name and start time.
+  const gi = document.querySelector('#seg .gi').getBoundingClientRect();
+  const giX = gi.left - bar.left;
+  document.getElementById('call').innerHTML =
+    '<div class="txt" style="left:' + (giX - 1).toFixed(1) + 'px"><b>The Grand Inquisitor</b> <i>starts ' + hmText(startAt) + ' in</i></div>' +
+    '<div class="stem" style="left:' + giX.toFixed(1) + 'px"></div>';
+  // Hour axis under the names: 0, 10 h, 20 h, 30 h and the whole novel's length at the end.
+  const totalMin = TOTAL / WPM, xAt = min => min / totalMin * bar.width;
+  let ticks = '';
+  for (const h of [0, 10, 20, 30]) ticks += '<div class="mark" style="left:' + xAt(h * 60).toFixed(1) + 'px"></div>' +
+    '<div class="tick' + (h === 0 ? ' first' : '') + '" style="left:' + xAt(h * 60).toFixed(1) + 'px">' + (h ? h + ' h' : '0') + '</div>';
+  ticks += '<div class="mark" style="left:' + (bar.width - 1).toFixed(1) + 'px"></div><div class="tick end" style="left:' + bar.width.toFixed(1) + 'px">' + hmText(hm(totalMin)) + '</div>';
+  document.getElementById('axis').innerHTML = ticks;
+  // Legend: Book V and the next one, Book VI, named with their titles and values.
+  const key = (cls, color, name, title, b) => '<div class="key"><i class="sw" style="background:' + color + '"></i><div>' +
+    '<div class="name">' + name + '</div><div class="ti">' + title + '</div>' +
+    '<div class="pct">' + hmHTML(hm(b[2] / WPM)) + '</div><div class="t">' + b[1] + ' chapters, ' + b[2].toLocaleString('en-US') + ' words</div></div></div>';
+  document.getElementById('legend').innerHTML =
+    key('v5', 'var(--coral)', 'Book V', '“Pro and Contra”', BOOKS[4]) +
+    key('v6', 'var(--muted)', 'Next: Book VI', '“The Russian Monk”', BOOKS[5]);
+  window.__check = { total: TOTAL, chapters: CHAPTERS, giIndex, giMin, share, startAt, pirie, bookVStart,
+    giOffsetInBookV: GI.startWord - bookVStart, oneX: hm(totalMin), bookV: hm(BOOKS[4][2] / WPM), bookVI: hm(BOOKS[5][2] / WPM),
+    giPx: +gi.width.toFixed(1), giX: +giX.toFixed(1) };
+  // Fit check for the renderer: tile values inside their padding, book names apart, callout inside the tile.
+  Object.defineProperty(window, '__fit', { get: () => {
+    const out = [...document.querySelectorAll('.v, .key .name, .key .ti, .key .pct, .key .t')].map(v => {
+      const t = v.closest('.key') || v.closest('.tile'), cs = getComputedStyle(t);
+      const room = t.getBoundingClientRect().right - parseFloat(cs.paddingRight) - v.getBoundingClientRect().left;
+      return { label: v.textContent, room: +room.toFixed(1), need: v.scrollWidth };
+    }).filter(f => f.need > f.room);
+    const labs = [...document.querySelectorAll('#segl span')].map(s => s.getBoundingClientRect());
+    for (let i = 1; i < labs.length; i++) if (labs[i].left - labs[i - 1].right < 6) out.push({ label: 'book names ' + i, gap: +(labs[i].left - labs[i - 1].right).toFixed(1) });
+    const tile = document.querySelector('.wide').getBoundingClientRect(), txt = document.querySelector('.call .txt').getBoundingClientRect();
+    if (txt.right > tile.right - 16) out.push({ label: 'callout', right: txt.right, room: tile.right - 16 });
+    const tk = [...document.querySelectorAll('.tick')].map(s => s.getBoundingClientRect());
+    for (let i = 1; i < tk.length; i++) if (tk[i].left - tk[i - 1].right < 8) out.push({ label: 'ticks ' + i, gap: +(tk[i].left - tk[i - 1].right).toFixed(1) });
+    return out;
+  } });
+</script>
+</body>
+</html>

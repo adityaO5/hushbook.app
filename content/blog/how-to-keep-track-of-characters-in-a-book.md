@@ -8,7 +8,7 @@ Listening is the hard case. In print you can flip back to the page where someone
 
 Write down three things for each character when they first appear:
 
-1. **The name, plus any other name they go by.** Nicknames, titles and surnames can look like new people. Put them all on one line. In *Pride and Prejudice*, "Miss Bennet" is usually Jane but sometimes Elizabeth, and our [guide to its audiobooks](/blog/best-pride-and-prejudice-audiobook) counts which is which.
+1. **The name, plus any other name they go by.** Nicknames, titles and surnames can look like new people. Put them all on one line. In *Pride and Prejudice*, "Miss Bennet" is usually Jane but sometimes Elizabeth, and our [guide to its audiobooks](/blog/best-pride-and-prejudice-audiobook) counts which is which. In *The Brothers Karamazov*, the eldest brother is "Mitya" 911 times and "Dmitri" 380, and our [Brothers Karamazov audiobook comparison](/blog/best-brothers-karamazov-audiobook) lists every name form in a spoiler-free table.
 2. **A role in a few words.** "Hamlet's uncle." "The landlady." "The narrator's best friend."
 3. **One tie to someone already on the list.** This is the step most lists skip, and it turns a column of names into a map of who matters to whom.
 

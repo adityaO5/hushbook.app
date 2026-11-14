@@ -8,6 +8,45 @@
 
 const posts = [
   {
+    slug: 'best-brothers-karamazov-audiobook',
+    hero: 'brothers-karamazov-picks',
+    cta: { heading: 'Read the Grand Inquisitor along with the free recording', text: 'HushBook finds Bruce Pirie\'s free LibriVox reading of The Brothers Karamazov and shows each word in time with his voice, through all 96 chapters. Free on iPhone, Android, Windows and Mac, no account.' },
+    title: 'Best Brothers Karamazov Audiobook: Every Translation and Narrator Compared',
+    metaTitle: 'Best Brothers Karamazov Audiobook: Narrators by Translation',
+    metaDescription: 'Luke Thompson\'s 43 hour 6 minute recording is the best Brothers Karamazov audiobook; Bruce Pirie\'s LibriVox reading is free. Every translation and narrator.',
+    description: 'Luke Thompson\'s Penguin recording is our pick, Constantine Gregory\'s the most rated, Bruce Pirie\'s LibriVox reading the free one and Ben Miles\'s the one to borrow. Every recording by translation, the Grand Inquisitor, length and names.',
+    category: 'Reading and listening',
+    datePublished: '2026-11-14',
+    dateModified: '2026-11-14',
+    readingTime: '28 min read',
+    keywords: [
+      'the brothers karamazov audiobook',
+      'the brothers karamazov audiobook length',
+      'the brothers karamazov audiobook luke thompson',
+      'the brothers karamazov audiobook penguin classics',
+      'brothers karamazov translations',
+      'brothers karamazov pevear and volokhonsky',
+      'grand inquisitor chapter brothers karamazov',
+      'brothers karamazov names and nicknames'
+    ],
+    takeaways: [
+      'Luke Thompson\'s 2021 Penguin Classics recording of David McDuff\'s translation, 43 hours 6 minutes, is our best overall pick: 4.7 stars from 858 Audible US ratings and 4.9 for performance.',
+      'Constantine Gregory\'s Naxos recording, 37 hours 4 minutes, is the most rated, with 5,910 Audible US ratings, and our pick for Constance Garnett\'s translation, which 10 of 13 complete Audible recordings read.',
+      'The best free version is Bruce Pirie\'s solo LibriVox reading, 39 hours 38 minutes, titled "The Brothers Karamazov (version 3)"; the other two free recordings share a plain title.',
+      'The Grand Inquisitor is Book V, Chapter 5, the longest of the novel\'s 96 chapters: 9,287 words by our count, about 62 minutes at 151 words a minute.',
+      'Garnett\'s translation has 349,788 words in 96 chapters by our count: 38 hours 36 minutes at 1x, 30 hours 53 minutes at 1.25x and 25 hours 44 minutes at 1.5x.'
+    ],
+    faqs: [
+      ['What is the best Brothers Karamazov audiobook?', 'Luke Thompson\'s Penguin Classics recording of David McDuff\'s translation, 43 hours 6 minutes, with 4.7 stars from 858 Audible US ratings on November 14, 2026. Constantine Gregory\'s Naxos recording of Garnett\'s translation is the most rated.'],
+      ['How long is The Brothers Karamazov audiobook?', '38 hours 36 minutes at 1x for Garnett\'s 349,788 words, by our count at 151 words a minute. Complete Audible recordings run 34 hours 18 minutes to 43 hours 6 minutes; Tony Addison\'s free reading takes 46 hours 25 minutes.'],
+      ['Is there a Pevear and Volokhonsky audiobook of The Brothers Karamazov?', 'Yes. Ben Miles reads it unabridged in Macmillan Audio\'s 2024 Bicentennial Edition, 42 hours 16 minutes. It is the only unabridged recording of that translation we found, and hoopla carries it.'],
+      ['What chapter is the Grand Inquisitor in?', 'Book V, Chapter 5, the 36th of 96 chapters. It is the longest chapter, 9,287 words by our count, about 62 minutes at 151 words a minute, and starts roughly 12 hours into a complete recording.'],
+      ['Is there a free Brothers Karamazov audiobook?', 'Yes. LibriVox has three complete free recordings of Constance Garnett\'s translation: Bruce Pirie\'s solo reading (39 hours 38 minutes), Tony Addison\'s (46 hours 25 minutes) and a 27-reader group reading (37 hours 55 minutes).'],
+      ['Which Brothers Karamazov audiobook matches the Penguin Classics edition?', 'Luke Thompson\'s. Penguin publishes it from the same David McDuff translation, and the recording includes McDuff\'s introduction.'],
+      ['Is there an audiobook of the Katz or Avsey translation?', 'No. On November 14, 2026 we found none on Audible in four countries, Apple Books, Libby or hoopla. The modern translations on audio are Pevear and Volokhonsky\'s, read by Ben Miles, and McDuff\'s, read by Luke Thompson.']
+    ]
+  },
+  {
     slug: 'best-jane-eyre-audiobook',
     hero: 'jane-eyre-picks',
     cta: { heading: 'Read Jane Eyre along with the free recording', text: 'HushBook finds Elizabeth Klett\'s free LibriVox reading of Jane Eyre and shows each word in time with her voice, through all 38 chapters. Free on iPhone, Android, Windows and Mac, no account.' },

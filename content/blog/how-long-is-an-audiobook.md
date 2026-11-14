@@ -62,7 +62,7 @@ Faster is not always better. A 2022 UCLA study found lectures at up to 2x did no
 
 - **The narrator.** Our ten readers ranged from 131 to 179 words a minute. On LibriVox, different recordings of the same book often differ by 10% or more. The three free LibriVox recordings of *Wuthering Heights* run from 11 hours 33 minutes to 14 hours 49 minutes, and our [guide to its audiobooks](/blog/best-wuthering-heights-audiobook) times every complete recording. *The Count of Monte Cristo* runs from about 50 to 54 hours depending on the version. We compare every unabridged recording of it in [the best Count of Monte Cristo audiobook](/blog/best-count-of-monte-cristo-audiobook).
 - **Abridged or unabridged.** An abridged edition is cut by an editor, so it can be half the length. Check the listing says unabridged. We explain the difference in [abridged vs unabridged audiobooks](/blog/abridged-vs-unabridged-audiobooks).
-- **Translation and edition.** Different translations and editions of the same classic can differ a lot in length.
+- **Translation and edition.** Different translations and editions of the same classic can differ a lot in length. The two modern translations of *The Brothers Karamazov*, for example, run 42 and 43 hours on audio against 37 hours 4 minutes for Constantine Gregory's Garnett, as our [Brothers Karamazov audiobook comparison](/blog/best-brothers-karamazov-audiobook) shows.
 - **Extras.** Introductions, afterwords, author interviews and music add minutes.
 
 ## How long will it take you to finish?

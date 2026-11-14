@@ -6,6 +6,33 @@ const link = (slug) => `https://hushbook.app/blog/${slug}`;
 
 export default [
   {
+    folder: 'Brothers Karamazov',
+    slug: 'best-brothers-karamazov-audiobook',
+    card: 'assets/img/blog/brothers-karamazov-picks.webp',
+    caption: `Today's audiobook pick: The Brothers Karamazov 🎧
+
+Best overall: Luke Thompson, 43 h 6 min
+Best free: Bruce Pirie on LibriVox, 39 h 38 min
+
+Good to know
+• 38 h 36 min at 1x. 25 h 44 min at 1.5x.
+• The Grand Inquisitor, Book V, Chapter 5, is the longest of its 96 chapters: about 62 minutes.
+• Luke Thompson reads David McDuff's translation; Ben Miles reads Pevear and Volokhonsky's.
+
+Every translation and narrator compared:
+${link('best-brothers-karamazov-audiobook')}
+
+#BrothersKaramazov #Dostoevsky #audiobooks #classicbooks`,
+    x: `Today's audiobook pick: The Brothers Karamazov 🎧
+
+Best overall: Luke Thompson (43 h 6 min)
+Best free: Bruce Pirie on LibriVox
+
+The Grand Inquisitor, Book V, Chapter 5, is the novel's longest chapter: about 62 minutes.
+
+${link('best-brothers-karamazov-audiobook')}`,
+  },
+  {
     folder: 'Jane Eyre',
     slug: 'best-jane-eyre-audiobook',
     card: 'assets/img/blog/jane-eyre-picks.webp',

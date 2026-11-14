@@ -29,7 +29,7 @@ If both versions exist, the unabridged one is nearly always the longer listing, 
 
 Unabridged, in almost every case. You get the book the author wrote, and if you're reading for a class or a book club, you're on the same page as everyone else, literally.
 
-Abridged editions make sense in a few situations: a long non-fiction book where you only want the main argument, a classic you want to sample before committing to 40 hours, or a young listener who'd struggle with the full text. Just know what you're getting. For *The Count of Monte Cristo*, which is sold both ways, our [guide to its audiobook editions](/blog/best-count-of-monte-cristo-audiobook) separates the complete recordings from the cut ones.
+Abridged editions make sense in a few situations: a long non-fiction book where you only want the main argument, a classic you want to sample before committing to 40 hours, or a young listener who'd struggle with the full text. Just know what you're getting. For *The Count of Monte Cristo*, which is sold both ways, our [guide to its audiobook editions](/blog/best-count-of-monte-cristo-audiobook) separates the complete recordings from the cut ones. Simon Vance's abridged *Brothers Karamazov* runs 19 hours 8 minutes, long enough to pass for complete, and our [Brothers Karamazov audiobook comparison](/blog/best-brothers-karamazov-audiobook) flags it beside the complete recordings.
 
 ## Why it matters if you read along
 
