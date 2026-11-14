@@ -14,18 +14,17 @@
 <meta charset="utf-8">
 <title>Brothers Karamazov picks</title>
 <!--
-  Lead image for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-picks-v2.webp).
-  Data: research-platforms.md section 9 (picks) with table 1a (store runtimes, publishers, translations),
-  section 2a (LibriVox Version 3: 39:37:50, Bruce Pirie) and section 10 (publisher names). Labels as fixed
-  by the orchestrator. phone-player.png = tools/mockups/out/en-_tmp-bk-player.png from the temp scene in
+  Lead image for /blog/best-brothers-karamazov-audiobook (assets/img/blog/brothers-karamazov-picks-v3.webp).
+  Data: research-platforms.md section 9 (picks) with table 1a (store runtimes) and section 2a (LibriVox
+  Version 3: 39:37:50, Bruce Pirie). Labels as fixed by the orchestrator. phone-player.png = tools/mockups/out/en-_tmp-bk-player.png from the temp scene in
   temp-scenes.patch (player-cover copy, cover brothers_karamazov_3.jpg, elapsed 10, length 579, chapter 1 of
-  96), copied next to this file for the render and deleted after. The Jane Eyre card's layout, with the
-  runtime moved to the name line and the translation in the details line; the right column is 34 px wider
-  so the heading's first line and the longest details line fit.
+  96), copied next to this file for the render and deleted after. The Jane Eyre card's layout; the right
+  column is 34 px wider so the heading's first line fits.
   Re-render (2x, WebP, 16:9):
     node render-html.mjs picks-card.html brothers-karamazov-picks.webp 700 394
-  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
-    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
+  phone-player.png is gone, so a list change is repainted onto the first-generation card, from the repo root:
+    git show 1499ab6:assets/img/blog/brothers-karamazov-picks.webp > <scratch>/brothers-karamazov-picks.webp
+    node tools/blog/picks-card-repaint.mjs <this file> <scratch>/brothers-karamazov-picks.webp <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -65,14 +64,12 @@
   }
   .pick { padding: 5px 0 5px; border-top: 1px solid var(--hair); }
   .lab { font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--coral); }
-  .top { margin-top: 1px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .val {
+    margin-top: 1px;
     font-family: 'HBNews', Georgia, serif; font-weight: 500;
     font-variation-settings: "opsz" 24;
-    font-size: 22px; line-height: 1.12; color: var(--paper); white-space: nowrap;
+    font-size: 22px; line-height: 1.12; color: var(--paper);
   }
-  .rt { font-size: 15px; font-weight: 600; color: var(--paper); white-space: nowrap; }
-  .rt i { font-style: normal; font-weight: 400; color: var(--paper-dim); }
   .det { margin-top: 1px; font-size: 15px; line-height: 1.25; color: var(--paper-dim); white-space: nowrap; }
   .det b { font-weight: 600; color: var(--paper); }
 </style>
@@ -84,30 +81,28 @@
     <div id="picks"></div>
   </div>
 <script>
-  // [label, narrator, publisher (HTML), translation, hours, minutes, seconds]. Seconds only where the source
+  // [label, narrator, hours, minutes, seconds, where (HTML, Best free only)]. Seconds only where the source
   // prints them (LibriVox); the card rounds to the minute. Best free first: the LibriVox recording, free in
-  // the HushBook app's Discover catalogue.
+  // the HushBook app's Discover catalogue. No other brand on the card, just narrators and running times.
   const PICKS = [
-    ['Best free', 'Bruce Pirie', '<b>HushBook app</b>', 'Garnett', 39, 37, 50],         // 2a Version 3: 39:37:50
-    ['Best overall', 'Luke Thompson', 'Penguin Classics', 'McDuff', 43, 6, 0],          // 1a row 1: 43 hrs 6 mins
-    ['Most rated', 'Constantine Gregory', 'Naxos AudioBooks', 'Garnett', 37, 4, 0],    // 1a row 3: 37 hrs 4 mins
-    ['Best to borrow', 'Ben Miles', 'Macmillan Audio', 'Pevear and Volokhonsky', 42, 16, 0],   // 1a row 2: 42 hrs 16 mins
+    ['Best free', 'Bruce Pirie', 39, 37, 50, '<b>HushBook app</b>'],   // 2a Version 3: 39:37:50
+    ['Best overall', 'Luke Thompson', 43, 6, 0],                       // 1a row 1: 43 hrs 6 mins
+    ['Most rated', 'Constantine Gregory', 37, 4, 0],                   // 1a row 3: 37 hrs 4 mins
+    ['Best to borrow', 'Ben Miles', 42, 16, 0],                        // 1a row 2: 42 hrs 16 mins
   ];
-  const hm = p => { const t = Math.round(p[4] * 60 + p[5] + p[6] / 60); return [Math.floor(t / 60), t % 60]; };
+  const hm = p => { const t = Math.round(p[2] * 60 + p[3] + p[4] / 60); return [Math.floor(t / 60), t % 60]; };
   document.getElementById('picks').innerHTML = PICKS.map(p => {
     const [h, m] = hm(p);
-    return '<div class="pick"><div class="lab">' + p[0] + '</div>' +
-      '<div class="top"><span class="val">' + p[1] + '</span><span class="rt">' + h + '<i> h </i>' + m + '<i> min</i></span></div>' +
-      '<div class="det">' + p[2] + ' · ' + p[3] + ' translation</div></div>';
+    return '<div class="pick"><div class="lab">' + p[0] + '</div><div class="val">' + p[1] + '</div>' +
+      '<div class="det">' + (p[5] ? p[5] + ' · ' : '') + h + ' h ' + m + ' min</div></div>';
   }).join('');
   window.__check = PICKS.map(p => [p[1], hm(p).join(' h ') + ' min']);
-  // Fit check for the renderer: every details line and name line must end inside the right column.
+  // Fit check for the renderer: every details line, name line and the heading must end inside the right column.
   Object.defineProperty(window, '__fit', { get: () => {
     const side = document.querySelector('.side').getBoundingClientRect();
-    return [...document.querySelectorAll('.det, .top, h1')].map(el => {
+    return [...document.querySelectorAll('.det, .val, h1')].map(el => {
       const r = document.createRange(); r.selectNodeContents(el);
-      const w = el.classList.contains('top') ? el.querySelector('.val').getBoundingClientRect().width + 12 + el.querySelector('.rt').getBoundingClientRect().width : r.getBoundingClientRect().width;
-      return { label: el.textContent, room: +side.width.toFixed(1), need: +w.toFixed(1) };
+      return { label: el.textContent, room: +side.width.toFixed(1), need: +r.getBoundingClientRect().width.toFixed(1) };
     }).filter(f => f.need > f.room);
   } });
 </script>

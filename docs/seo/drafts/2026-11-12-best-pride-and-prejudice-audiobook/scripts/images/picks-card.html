@@ -14,15 +14,16 @@
 <meta charset="utf-8">
 <title>Pride and Prejudice picks</title>
 <!--
-  Lead image for /blog/best-pride-and-prejudice-audiobook (assets/img/blog/pride-and-prejudice-picks-v2.webp).
+  Lead image for /blog/best-pride-and-prejudice-audiobook (assets/img/blog/pride-and-prejudice-picks-v3.webp).
   Data: research-platforms.md section 7 and tables 1a, 1b, 2a and 8 (VERIFIED). phone-player.png =
   tools/mockups/out/en-_tmp-pp-player.png from the temp scene in temp-scenes.patch (player-cover copy, cover
   pride_and_prejudice3.jpg of archive.org item pride_prejudice_krs_librivox, elapsed 518, length 805,
   chapter 29 of 61), copied next to this file.
   Same layout as the War and Peace card (four rows). Re-render (2x, WebP, fixed 16:9):
     node render-html.mjs picks-card.html pride-and-prejudice-picks.webp 700 394
-  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
-    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
+  phone-player.png is gone, so a list change is repainted onto the first-generation card, from the repo root:
+    git show 1499ab6:assets/img/blog/pride-and-prejudice-picks.webp > <scratch>/pride-and-prejudice-picks.webp
+    node tools/blog/picks-card-repaint.mjs <this file> <scratch>/pride-and-prejudice-picks.webp <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -80,22 +81,22 @@
     <div class="pick">
       <div class="lab">Best free</div>
       <div class="val">Karen Savage</div>
-      <div class="det"><b>HushBook app</b> · version 3 · 10 h 23 min</div>
+      <div class="det"><b>HushBook app</b> · 10 h 23 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Rosamund Pike</div>
-      <div class="det">Audible Studios · 11 h 35 min</div>
+      <div class="det">11 h 35 min</div>
     </div>
     <div class="pick">
       <div class="lab">Runner-up</div>
       <div class="val">Juliet Stevenson</div>
-      <div class="det">Naxos AudioBooks · 14 h 2 min</div>
+      <div class="det">14 h 2 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best dramatised</div>
-      <div class="val">Audible Original, 2025</div>
-      <div class="det">Full cast · 4 h 34 min adaptation</div>
+      <div class="val">Full-cast adaptation</div>
+      <div class="det">4 h 34 min</div>
     </div>
   </div>
 </body>

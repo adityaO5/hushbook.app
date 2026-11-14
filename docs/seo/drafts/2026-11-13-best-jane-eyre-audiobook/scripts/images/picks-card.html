@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <title>Jane Eyre picks</title>
 <!--
-  Lead image for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-picks-v2.webp).
+  Lead image for /blog/best-jane-eyre-audiobook (assets/img/blog/jane-eyre-picks-v3.webp).
   Data: research-platforms.md section 9 (picks), with table 1a and section 2a (VERIFIED). Runtimes: Audible
   for Newton (19 hrs 10 mins), Stevenson (19 hrs 13 mins) and Popplewell (22 hrs 51 mins); LibriVox 18:36:29
   for Elizabeth Klett. phone-player.png = tools/mockups/out/en-_tmp-je-player.png from the temp scene in
@@ -22,8 +22,9 @@
   copied next to this file for the render and deleted after. Same layout as the Wuthering Heights card.
   Re-render (2x, WebP, 16:9):
     node render-html.mjs picks-card.html jane-eyre-picks.webp 700 394
-  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
-    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
+  phone-player.png is gone, so a list change is repainted onto the first-generation card, from the repo root:
+    git show 1499ab6:assets/img/blog/jane-eyre-picks.webp > <scratch>/jane-eyre-picks.webp
+    node tools/blog/picks-card-repaint.mjs <this file> <scratch>/jane-eyre-picks.webp <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -86,17 +87,17 @@
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Thandiwe Newton</div>
-      <div class="det">Audible Studios · 19 h 10 min</div>
+      <div class="det">19 h 10 min</div>
     </div>
     <div class="pick">
       <div class="lab">Runner-up</div>
       <div class="val">Juliet Stevenson</div>
-      <div class="det">Audible Studios · 19 h 13 min</div>
+      <div class="det">19 h 13 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best to borrow</div>
       <div class="val">Anna Popplewell</div>
-      <div class="det">Penguin Classics · 22 h 51 min</div>
+      <div class="det">22 h 51 min</div>
     </div>
   </div>
 </body>

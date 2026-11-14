@@ -8,7 +8,7 @@ export default [
   {
     folder: 'Brothers Karamazov',
     slug: 'best-brothers-karamazov-audiobook',
-    card: 'assets/img/blog/brothers-karamazov-picks-v2.webp',
+    card: 'assets/img/blog/brothers-karamazov-picks-v3.webp',
     caption: `Today's audiobook pick: The Brothers Karamazov 🎧
 
 Best free: Bruce Pirie in the HushBook app, 39 h 38 min
@@ -35,7 +35,7 @@ ${link('best-brothers-karamazov-audiobook')}`,
   {
     folder: 'Jane Eyre',
     slug: 'best-jane-eyre-audiobook',
-    card: 'assets/img/blog/jane-eyre-picks-v2.webp',
+    card: 'assets/img/blog/jane-eyre-picks-v3.webp',
     caption: `Today's audiobook pick: Jane Eyre 🎧
 
 Best free: Elizabeth Klett in the HushBook app, 18 h 36 min
@@ -62,7 +62,7 @@ ${link('best-jane-eyre-audiobook')}`,
   {
     folder: 'Pride and Prejudice',
     slug: 'best-pride-and-prejudice-audiobook',
-    card: 'assets/img/blog/pride-and-prejudice-picks-v2.webp',
+    card: 'assets/img/blog/pride-and-prejudice-picks-v3.webp',
     caption: `Today's audiobook pick: Pride and Prejudice 🎧
 
 Best free: Karen Savage in the HushBook app, 10 h 23 min
@@ -89,7 +89,7 @@ ${link('best-pride-and-prejudice-audiobook')}`,
   {
     folder: 'Wuthering Heights',
     slug: 'best-wuthering-heights-audiobook',
-    card: 'assets/img/blog/wuthering-heights-picks-v2.webp',
+    card: 'assets/img/blog/wuthering-heights-picks-v3.webp',
     caption: `Today's audiobook pick: Wuthering Heights 🎧
 
 Best free: Ruth Golding in the HushBook app, 14 h 49 min
@@ -116,7 +116,7 @@ ${link('best-wuthering-heights-audiobook')}`,
   {
     folder: 'War and Peace',
     slug: 'best-war-and-peace-audiobook',
-    card: 'assets/img/blog/war-and-peace-audiobook-picks-v2.webp',
+    card: 'assets/img/blog/war-and-peace-audiobook-picks-v3.webp',
     caption: `Today's audiobook pick: War and Peace 🎧
 
 Best free: Mark Nelson in the HushBook app, 62 h 27 min
@@ -143,7 +143,7 @@ ${link('best-war-and-peace-audiobook')}`,
   {
     folder: 'Crime and Punishment',
     slug: 'best-crime-and-punishment-audiobook',
-    card: 'assets/img/blog/crime-and-punishment-audiobook-picks-v2.webp',
+    card: 'assets/img/blog/crime-and-punishment-audiobook-picks-v3.webp',
     caption: `Today's audiobook pick: Crime and Punishment 🎧
 
 Best free: Mark Nelson in the HushBook app, 22 h 2 min

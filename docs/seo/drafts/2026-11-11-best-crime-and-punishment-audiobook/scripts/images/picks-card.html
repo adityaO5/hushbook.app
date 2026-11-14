@@ -14,14 +14,15 @@
 <meta charset="utf-8">
 <title>Crime and Punishment picks</title>
 <!--
-  Lead image for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-picks-v2.webp).
+  Lead image for /blog/best-crime-and-punishment-audiobook (assets/img/blog/crime-and-punishment-audiobook-picks-v3.webp).
   Data: research-platforms.md section 7 and table 8; the same values as content/blog/best-crime-and-punishment-audiobook.md
   ("Best free", "Best overall", "Best modern translation"). phone-player.png = tools/mockups/out/en-_tmp-cp-player.png from
   the temp scene in temp-scenes.patch (player-cover copy, cover crimepunishment_1708.jpg, elapsed 10, length 1283,
   chapter 2 of 41), copied next to this file. Re-render (2x, WebP, fixed 16:9):
     node render-html.mjs picks-card.html crime-and-punishment-audiobook-picks.webp 700 394
-  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
-    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
+  phone-player.png is gone, so a list change is repainted onto the first-generation card, from the repo root:
+    git show 1499ab6:assets/img/blog/crime-and-punishment-audiobook-picks.webp > <scratch>/crime-and-punishment-audiobook-picks.webp
+    node tools/blog/picks-card-repaint.mjs <this file> <scratch>/crime-and-punishment-audiobook-picks.webp <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -80,12 +81,12 @@
     <div class="pick">
       <div class="lab">Best free</div>
       <div class="val">Mark Nelson</div>
-      <div class="det"><b>HushBook app</b> · Version 3 · 22 h 2 min</div>
+      <div class="det"><b>HushBook app</b> · 22 h 2 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Anthony Heald</div>
-      <div class="det">Blackstone · 20 h 28 min</div>
+      <div class="det">20 h 28 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best modern translation</div>

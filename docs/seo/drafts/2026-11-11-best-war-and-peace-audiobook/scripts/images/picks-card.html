@@ -14,14 +14,15 @@
 <meta charset="utf-8">
 <title>War and Peace picks</title>
 <!--
-  Lead image for /blog/best-war-and-peace-audiobook (assets/img/blog/war-and-peace-audiobook-picks-v2.webp).
+  Lead image for /blog/best-war-and-peace-audiobook (assets/img/blog/war-and-peace-audiobook-picks-v3.webp).
   Data: research-platforms.md section 7 and tables 1a, 2a and 8 (VERIFIED). phone-player.png =
   tools/mockups/out/en-_tmp-wp-player.png from the temp scene in temp-scenes.patch (player-cover copy, cover
   warandpeacevolume1_2212.jpg, elapsed 10, length 872, chapter 1 of 68), copied next to this file.
   Same layout as the Crime and Punishment card, with four rows set tighter. Re-render (2x, WebP, fixed 16:9):
     node render-html.mjs picks-card.html war-and-peace-audiobook-picks.webp 700 394
-  phone-player.png is gone, so a list change is repainted onto the published card from the repo root:
-    node tools/blog/picks-card-repaint.mjs <this file> <published card.webp> <new card.webp>
+  phone-player.png is gone, so a list change is repainted onto the first-generation card, from the repo root:
+    git show 1499ab6:assets/img/blog/war-and-peace-audiobook-picks.webp > <scratch>/war-and-peace-audiobook-picks.webp
+    node tools/blog/picks-card-repaint.mjs <this file> <scratch>/war-and-peace-audiobook-picks.webp <new card.webp>
 -->
 <style>
   @font-face { font-family: 'HBNews'; src: url('file:///D:/hushbook.app/tools/mockups/assets/fonts/Newsreader-Variable.ttf'); font-weight: 200 800; }
@@ -79,22 +80,22 @@
     <div class="pick">
       <div class="lab">Best free</div>
       <div class="val">Mark Nelson</div>
-      <div class="det"><b>HushBook app</b> · Volumes 1 to 4 · 62 h 27 min</div>
+      <div class="det"><b>HushBook app</b> · 62 h 27 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best overall</div>
       <div class="val">Thandiwe Newton</div>
-      <div class="det">Audible Studios · 60 h 14 min</div>
+      <div class="det">60 h 14 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best to borrow</div>
       <div class="val">Neville Jason</div>
-      <div class="det">Naxos AudioBooks · 2 volumes · 61 h 43 min</div>
+      <div class="det">61 h 43 min</div>
     </div>
     <div class="pick">
       <div class="lab">Best modern translation</div>
-      <div class="val">Penguin Classics</div>
-      <div class="det">Anthony Briggs · 5 readers · 67 h 13 min</div>
+      <div class="val">Five readers</div>
+      <div class="det">Anthony Briggs translation · 67 h 13 min</div>
     </div>
   </div>
 </body>
